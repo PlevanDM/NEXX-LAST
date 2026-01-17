@@ -13,7 +13,12 @@
       "voltage": "5V/9V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2400BO.html",
-      "price_range": "$3-8"
+      "price_range": "$3-8",
+      "full_name": "Tristar U4500 Charging IC",
+      "voltage_support": "5V/9V",
+      "max_current": "2.4A",
+      "fast_charging": "No",
+      "datasheet_url": "https://files.pine64.org/doc/datasheet/pine64/SN2400BO_datasheet.pdf"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -37,19 +42,34 @@
       "Не включается",
       "Нет звука",
       "Touch ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не заряжается от оригинального зарядного",
+      "Медленная зарядка",
+      "Перегрев при зарядке",
+      "Ошибка 'Аксессуар не поддерживается'",
+      "USB не распознается компьютером"
     ],
     "repair_notes": "iPhone 6s (2015) с процессором Apple A9. Lightning интерфейс. Проверить SN2400BO, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_6s",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 2,
@@ -65,7 +85,12 @@
       "voltage": "5V/9V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2400BO.html",
-      "price_range": "$3-8"
+      "price_range": "$3-8",
+      "full_name": "Tristar U4500 Charging IC",
+      "voltage_support": "5V/9V",
+      "max_current": "2.4A",
+      "fast_charging": "No",
+      "datasheet_url": "https://files.pine64.org/doc/datasheet/pine64/SN2400BO_datasheet.pdf"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -91,19 +116,34 @@
       "Не включается",
       "Нет звука",
       "Touch ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не заряжается от оригинального зарядного",
+      "Медленная зарядка",
+      "Перегрев при зарядке",
+      "Ошибка 'Аксессуар не поддерживается'",
+      "USB не распознается компьютером"
     ],
     "repair_notes": "iPhone 6s Plus (2015) с процессором Apple A9. Lightning интерфейс. Проверить SN2400BO, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_6s_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 3,
@@ -119,7 +159,12 @@
       "voltage": "5V/9V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2400BO.html",
-      "price_range": "$3-8"
+      "price_range": "$3-8",
+      "full_name": "Tristar U4500 Charging IC",
+      "voltage_support": "5V/9V",
+      "max_current": "2.4A",
+      "fast_charging": "No",
+      "datasheet_url": "https://files.pine64.org/doc/datasheet/pine64/SN2400BO_datasheet.pdf"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -146,19 +191,34 @@
       "Не включается",
       "Нет звука",
       "Touch ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не заряжается от оригинального зарядного",
+      "Медленная зарядка",
+      "Перегрев при зарядке",
+      "Ошибка 'Аксессуар не поддерживается'",
+      "USB не распознается компьютером"
     ],
     "repair_notes": "iPhone SE (1st gen) (2016) с процессором Apple A9. Lightning интерфейс. Проверить SN2400BO, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_SE_(1st_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 4,
@@ -174,7 +234,12 @@
       "voltage": "5V/9V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611A0.html",
-      "price_range": "$3-8"
+      "price_range": "$3-8",
+      "full_name": "Tristar U3300/U4500 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -198,19 +263,32 @@
       "Не включается",
       "Нет звука",
       "Touch ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не поддерживает быструю зарядку",
+      "USB не работает",
+      "Перегрев разъема при зарядке"
     ],
     "repair_notes": "iPhone 7 (2016) с процессором Apple A10 Fusion. Lightning интерфейс. Проверить SN2611A0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_7",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 5,
@@ -226,7 +304,12 @@
       "voltage": "5V/9V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611A0.html",
-      "price_range": "$3-8"
+      "price_range": "$3-8",
+      "full_name": "Tristar U3300/U4500 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -253,19 +336,32 @@
       "Не включается",
       "Нет звука",
       "Touch ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не поддерживает быструю зарядку",
+      "USB не работает",
+      "Перегрев разъема при зарядке"
     ],
     "repair_notes": "iPhone 7 Plus (2016) с процессором Apple A10 Fusion. Lightning интерфейс. Проверить SN2611A0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_7_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 6,
@@ -281,7 +377,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -305,19 +407,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Медленная зарядка",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone 8 (2017) с процессором Apple A11 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_8",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 7,
@@ -333,7 +449,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -360,19 +482,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Медленная зарядка",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone 8 Plus (2017) с процессором Apple A11 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_8_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 8,
@@ -388,7 +524,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -415,19 +557,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Медленная зарядка",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone X (2017) с процессором Apple A11 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_X",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 9,
@@ -443,7 +599,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -470,19 +632,32 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone XR (2018) с процессором Apple A12 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_XR",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 10,
@@ -498,7 +673,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -525,19 +706,32 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone XS (2018) с процессором Apple A12 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_XS",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 11,
@@ -553,7 +747,13 @@
       "voltage": "5V/9V/15V",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611B0.html",
-      "price_range": "$5-10"
+      "price_range": "$5-10",
+      "full_name": "Tristar U3300 Charging IC",
+      "voltage_support": "5V/9V/15V",
+      "max_current": "2.4A",
+      "fast_charging": "Yes (18W)",
+      "usb_pd": "Yes",
+      "wireless_charging": "Yes (7.5W)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -580,19 +780,32 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Отсутствует беспроводная зарядка",
+      "Не заряжается по Lightning",
+      "Перегрев при зарядке"
     ],
     "repair_notes": "iPhone XS Max (2018) с процессором Apple A12 Bionic. Lightning интерфейс. Проверить SN2611B0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_XS_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 12,
@@ -608,7 +821,13 @@
       "voltage": "5V/9V/15V PD",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -635,19 +854,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 11 (2019) с процессором Apple A13 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_11",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 13,
@@ -663,7 +896,13 @@
       "voltage": "5V/9V/15V PD",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -690,19 +929,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 11 Pro (2019) с процессором Apple A13 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_11_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 14,
@@ -718,7 +971,13 @@
       "voltage": "5V/9V/15V PD",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -745,19 +1004,33 @@
       "Не включается",
       "Нет звука",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 11 Pro Max (2019) с процессором Apple A13 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
+      "Паяльная станция с контролем температуры",
       "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_11_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 15,
@@ -773,7 +1046,13 @@
       "voltage": "5V/9V/15V PD",
       "current": "До 2.4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -801,21 +1080,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone SE (2nd gen) (2020) с процессором Apple A13 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_SE_(2nd_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 16,
@@ -831,7 +1123,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -858,21 +1156,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 12 mini (2020) с процессором Apple A14 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_12_mini",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 17,
@@ -888,7 +1199,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -915,21 +1232,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 12 (2020) с процессором Apple A14 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_12",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 18,
@@ -945,7 +1275,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -972,21 +1308,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 12 Pro (2020) с процессором Apple A14 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_12_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 19,
@@ -1002,7 +1351,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "NVMe",
@@ -1029,21 +1384,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 12 Pro Max (2020) с процессором Apple A14 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_12_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 20,
@@ -1059,7 +1427,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1086,22 +1460,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 13 mini (2021) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_13_mini",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 21,
@@ -1117,7 +1503,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1144,22 +1536,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 13 (2021) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_13",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 22,
@@ -1175,7 +1579,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1202,22 +1612,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 13 Pro (2021) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_13_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 23,
@@ -1233,7 +1655,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1260,22 +1688,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 13 Pro Max (2021) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_13_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 24,
@@ -1325,16 +1765,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_SE_(3rd_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 25,
@@ -1350,7 +1798,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1377,22 +1831,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 14 (2022) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_14",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 26,
@@ -1408,7 +1874,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$5-12"
+      "price_range": "$5-12",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1435,22 +1907,34 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPhone 14 Plus (2022) с процессором Apple A15 Bionic. Lightning интерфейс. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_14_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 27,
@@ -1466,7 +1950,13 @@
       "voltage": "5V/9V/15V/20V PD 3.0",
       "current": "До 3A (27W)",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$8-15"
+      "price_range": "$8-15",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 3.1",
@@ -1499,16 +1989,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_14_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 28,
@@ -1557,16 +2055,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPhone",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_14_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 29,
@@ -1582,7 +2088,13 @@
       "voltage": "5V/9V/15V/20V PD 3.0",
       "current": "До 3A (27W)",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$8-15"
+      "price_range": "$8-15",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1616,15 +2128,24 @@
     "repair_time": "3-6 часов",
     "tools_needed": [
       "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
       "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_15",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 30,
@@ -1640,7 +2161,13 @@
       "voltage": "5V/9V/15V/20V PD 3.0",
       "current": "До 3A (27W)",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$8-15"
+      "price_range": "$8-15",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1671,15 +2198,24 @@
     "repair_time": "3-6 часов",
     "tools_needed": [
       "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
       "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_15_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 31,
@@ -1695,7 +2231,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1729,15 +2272,24 @@
     "repair_time": "3-6 часов",
     "tools_needed": [
       "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
       "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_15_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 32,
@@ -1753,7 +2305,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1787,15 +2346,24 @@
     "repair_time": "3-6 часов",
     "tools_needed": [
       "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
       "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_15_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 33,
@@ -1811,7 +2379,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1844,16 +2419,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_16",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 34,
@@ -1869,7 +2455,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1899,16 +2492,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_16_Plus",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 35,
@@ -1924,7 +2528,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -1957,16 +2568,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_16_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 36,
@@ -1982,7 +2604,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -2012,16 +2641,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_16_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 37,
@@ -2070,16 +2710,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_16e",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 38,
@@ -2095,7 +2746,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -2125,16 +2783,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_17",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 39,
@@ -2150,7 +2819,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -2183,16 +2859,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_Air",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 40,
@@ -2208,7 +2895,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -2238,16 +2932,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_17_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 41,
@@ -2263,7 +2968,14 @@
       "voltage": "5V/9V/15V/20V/28V PD 3.1",
       "current": "До 4.7A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$10-20"
+      "price_range": "$10-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
@@ -2293,16 +3005,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPhone",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS 4.0",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPhone_17_Pro_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 42,
@@ -2346,13 +3069,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_mini_4",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 43,
@@ -2396,13 +3129,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(1st)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 44,
@@ -2446,13 +3189,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_9.7\"",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 45,
@@ -2476,7 +3229,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB9943",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A9, регуляторы напряжения"
     },
@@ -2496,13 +3249,26 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "audio_codec": {
+      "main": "CS42L71 (Cirrus Logic)"
+    },
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(5th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 46,
@@ -2546,13 +3312,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_10.5\"",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 47,
@@ -2596,13 +3372,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(2nd)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 48,
@@ -2626,7 +3412,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB9955",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A10, регуляторы напряжения"
     },
@@ -2646,13 +3432,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(6th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 49,
@@ -2676,7 +3472,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2696,13 +3492,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_11\"_(1st)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 50,
@@ -2726,7 +3532,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2746,13 +3552,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(3rd)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 51,
@@ -2776,7 +3592,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2796,13 +3612,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_(3rd)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 52,
@@ -2826,7 +3652,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2846,13 +3672,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_mini_(5th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 53,
@@ -2876,7 +3712,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB9955",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A10, регуляторы напряжения"
     },
@@ -2896,13 +3732,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для iPad",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(7th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 54,
@@ -2926,7 +3772,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2946,15 +3792,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_11\"_(2nd)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 55,
@@ -2978,7 +3833,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -2998,15 +3853,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(4th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 56,
@@ -3030,7 +3894,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A12, регуляторы напряжения"
     },
@@ -3050,15 +3914,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(8th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 57,
@@ -3082,7 +3955,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6830",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A14, регуляторы напряжения"
     },
@@ -3102,15 +3975,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "QIANLI iCopy Plus",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_(4th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 58,
@@ -3126,7 +4008,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3148,22 +4036,35 @@
       "Не включается",
       "Перегрев",
       "Проблемы с дисплеем",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPad Pro 11\" (3rd) (2021) с процессором Apple M1. Apple Silicon - проприетарные компоненты. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_11\"_(3rd)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 59,
@@ -3179,7 +4080,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3201,22 +4108,35 @@
       "Не включается",
       "Перегрев",
       "Проблемы с дисплеем",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPad Pro 12.9\" (5th) (2021) с процессором Apple M1. Apple Silicon - проприетарные компоненты. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(5th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 60,
@@ -3240,7 +4160,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6829",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A13, регуляторы напряжения"
     },
@@ -3260,16 +4180,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(9th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 61,
@@ -3293,7 +4221,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6830",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A15, регуляторы напряжения"
     },
@@ -3313,16 +4241,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_mini_(6th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 62,
@@ -3338,7 +4274,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611C0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Tigris U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD",
+      "max_current": "3A",
+      "fast_charging": "Yes (20W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3360,22 +4302,35 @@
       "Не включается",
       "Перегрев",
       "Проблемы с дисплеем",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "MagSafe не работает",
+      "Медленная зарядка через Lightning",
+      "Не работает USB PD",
+      "Перегрев при быстрой зарядке"
     ],
     "repair_notes": "iPad Air (5th) (2022) с процессором Apple M1. Apple Silicon - проприетарные компоненты. Проверить SN2611C0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_(5th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 63,
@@ -3399,7 +4354,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6830",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A14, регуляторы напряжения"
     },
@@ -3419,16 +4374,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
-      "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(10th_gen)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 64,
@@ -3444,7 +4407,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3472,16 +4441,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_11\"_(4th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 65,
@@ -3497,7 +4475,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3525,16 +4509,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для iPad",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
       "QIANLI iCopy Plus",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_12.9\"_(6th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 66,
@@ -3550,7 +4543,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3578,16 +4577,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_11\"_(6th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 67,
@@ -3603,7 +4613,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3631,16 +4647,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_13\"_(6th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 68,
@@ -3656,7 +4683,14 @@
       "voltage": "5V/9V/15V/20V/28V PD",
       "current": "До 5A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$12-20"
+      "price_range": "$12-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3684,16 +4718,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_11\"_(5th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 69,
@@ -3709,7 +4754,14 @@
       "voltage": "5V/9V/15V/20V/28V PD",
       "current": "До 5A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
-      "price_range": "$12-20"
+      "price_range": "$12-20",
+      "full_name": "USB-C Controller IC",
+      "voltage_support": "5V/9V/15V/20V/28V PD 3.1",
+      "max_current": "4.7A",
+      "fast_charging": "Yes (up to 130W capability)",
+      "usb_pd": "3.1",
+      "usb_standard": "USB-C",
+      "data_speed": "USB 3.0/3.1"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3737,16 +4789,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Pro_13\"_(5th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 70,
@@ -3770,7 +4833,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6822",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A17, регуляторы напряжения"
     },
@@ -3790,16 +4853,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_mini_(7th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 71,
@@ -3823,7 +4897,7 @@
       "price": "$25-80"
     },
     "power_ic": {
-      "main": "Multi-phase PMIC",
+      "main": "PMB6826",
       "location": "Центр платы, рядом с процессором",
       "functions": "Управление питанием A16, регуляторы напряжения"
     },
@@ -3843,16 +4917,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_(11th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 72,
@@ -3868,7 +4953,13 @@
       "voltage": "5V/9V/15V/20V PD",
       "current": "До 4A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611D0.html",
-      "price_range": "$10-18"
+      "price_range": "$10-18",
+      "full_name": "Hydra U3300 Charging IC",
+      "voltage_support": "5V/9V/15V/20V PD 3.0",
+      "max_current": "3A (27W)",
+      "fast_charging": "Yes (27W)",
+      "usb_pd": "3.0",
+      "wireless_charging": "Yes (15W MagSafe)"
     },
     "memory": {
       "type": "UFS 3.1+",
@@ -3896,16 +4987,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для iPad",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "QIANLI iCopy Plus",
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
       "JC V1S Pro",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iPad_Air_(7th)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 73,
@@ -3946,13 +5048,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_12\"_(Early_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 74,
@@ -3996,13 +5108,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_11\"_(Early_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 75,
@@ -4046,13 +5168,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_(Early_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 76,
@@ -4096,13 +5228,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_13\"_Retina_(Early_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 77,
@@ -4145,13 +5287,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_Retina_(Mid-2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 78,
@@ -4192,13 +5344,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_21.5\"_(Late_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 79,
@@ -4239,13 +5401,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_21.5\"_4K_(Late_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 80,
@@ -4289,13 +5461,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_(Late_2015)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 81,
@@ -4336,13 +5518,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 25x-40x",
-      "Термофен",
-      "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_12\"_(Mid-2016)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 82,
@@ -4386,13 +5580,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_13\"_(Late_2016)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 83,
@@ -4435,13 +5639,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_(Late_2016)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 84,
@@ -4485,13 +5699,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_(2017)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 85,
@@ -4535,13 +5759,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_Pro_27\"_5K",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 86,
@@ -4585,13 +5819,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_(2018)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 87,
@@ -4635,13 +5879,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_(2018)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 88,
@@ -4685,13 +5939,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Pro_(2019)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 89,
@@ -4735,14 +5999,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_M1",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 90,
@@ -4786,14 +6061,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_13\"_M1",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 91,
@@ -4837,14 +6123,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M1",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 92,
@@ -4888,14 +6185,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_24\"_M1",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 93,
@@ -4939,14 +6247,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M1_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 94,
@@ -4989,14 +6308,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_M1_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 95,
@@ -5040,14 +6370,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_M2",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 96,
@@ -5091,14 +6432,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_13\"_M2",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 97,
@@ -5142,14 +6494,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Studio_M1_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 98,
@@ -5193,14 +6556,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Studio_M1_Ultra",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 99,
@@ -5244,14 +6618,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M2_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 100,
@@ -5294,14 +6681,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_M2_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 101,
@@ -5345,14 +6745,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M2",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 102,
@@ -5396,14 +6809,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M2_Pro",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 103,
@@ -5447,14 +6873,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Pro_M2_Ultra",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 104,
@@ -5498,14 +6937,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_15\"_M2",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 105,
@@ -5549,14 +7001,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_24\"_M3",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 106,
@@ -5600,14 +7065,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_M3",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 107,
@@ -5651,14 +7129,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_15\"_M3",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 108,
@@ -5702,14 +7193,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M4",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 109,
@@ -5752,14 +7256,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_M4_Max",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 110,
@@ -5803,14 +7320,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M4",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 111,
@@ -5854,14 +7384,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_24\"_M4",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 112,
@@ -5905,13 +7448,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_Late_2015_(i5_3.2GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 113,
@@ -5955,13 +7508,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_11\"_Early_2015",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 114,
@@ -6004,13 +7567,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_Touch_Late_2016_(i7_2.6GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 115,
@@ -6053,13 +7626,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_Touch_Late_2016_(i7_2.7GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 116,
@@ -6103,13 +7686,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_Mid-2017_(i5_3.4GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 117,
@@ -6153,13 +7746,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_Pro_27\"_5K_(Xeon_W_8-core)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 118,
@@ -6200,13 +7803,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 25x-40x",
-      "Термофен",
-      "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_12\"_Mid-2017_(m3_1.2GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 119,
@@ -6250,13 +7865,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_Mid-2017",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 120,
@@ -6299,13 +7924,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Термофен",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_Touch_Mid-2017_(i7_2.9GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 121,
@@ -6348,13 +7983,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_15\"_Touch_2018_(i9_2.9GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 122,
@@ -6398,13 +8043,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_Late_2018_(i5_3.0GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 123,
@@ -6448,13 +8103,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_2019_(i9_3.6GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 124,
@@ -6497,13 +8162,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_2019_(i9_2.3GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 125,
@@ -6547,13 +8222,23 @@
     "repair_difficulty": "Средняя",
     "repair_time": "1-3 часа",
     "tools_needed": [
-      "Паяльная станция",
-      "BGA трафареты для Mac",
+      "Паяльная станция с контролем температуры",
+      "BGA трафареты для iPhone",
       "Микроскоп 25x-40x",
-      "Hot air станция",
+      "Термофен (hot air station)",
       "Программатор NAND/SPI",
-      "Мультиметр"
-    ]
+      "Мультиметр",
+      "Набор отверток Pentalobe/Phillips",
+      "Пинцет ESD-safe",
+      "Изопропиловый спирт 99%"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Pro_2019_(Xeon_W_8-core)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 126,
@@ -6597,14 +8282,24 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
+      "Паяльная станция Pro с точным контролем",
+      "BGA трафареты для iPhone (полный набор)",
       "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор NAND/SPI",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Hot air станция профессиональная",
+      "Программатор UFS/NAND/SPI",
+      "QIANLI iCopy Plus (для Face ID/True Tone)",
+      "JC V1S Pro (для копирования данных)",
+      "Мультиметр цифровой",
+      "Анализатор питания",
+      "Паяльная проволока низкотемпературная"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_27\"_5K_2020_(i9_3.6GHz)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 127,
@@ -6648,14 +8343,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_24\"_M1_2021",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 128,
@@ -6698,14 +8404,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_Late_2021_(M1_Max)",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 129,
@@ -6749,14 +8466,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Studio_M1_Max_2022",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 130,
@@ -6800,14 +8528,25 @@
     "repair_difficulty": "Очень сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Паяльная станция Pro",
-      "BGA трафареты для Mac",
-      "Микроскоп 40x-60x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция",
+      "BGA трафареты для iPhone (точные)",
+      "Микроскоп 50x-80x с камерой",
+      "Hot air станция с точным контролем",
+      "Программатор UFS 4.0",
+      "QIANLI iCopy Plus",
+      "JC V1S Pro",
+      "Осциллограф",
+      "Мультиметр высокоточный",
+      "Анализатор питания с логированием",
+      "UV-лампа для снятия клея"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Studio_M1_Ultra_2022",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 131,
@@ -6851,14 +8590,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 50x-80x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_Studio_M2_Ultra_2023",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 132,
@@ -6902,14 +8654,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_M3_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 133,
@@ -6953,14 +8718,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_15\"_M3_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 134,
@@ -7004,14 +8782,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M4_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 135,
@@ -7055,14 +8846,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M4_Pro_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 136,
@@ -7106,14 +8910,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_14\"_M4_Max_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 137,
@@ -7156,14 +8973,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_M4_Pro_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 138,
@@ -7206,14 +9036,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_16\"_M4_Max_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 139,
@@ -7257,14 +9100,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/iMac_24\"_M4_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 140,
@@ -7308,14 +9164,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M4_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 141,
@@ -7359,14 +9228,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/Mac_mini_M4_Pro_2024",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 142,
@@ -7410,14 +9292,27 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_13\"_M4_2025",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   },
   {
     "id": 143,
@@ -7461,13 +9356,26 @@
     "repair_difficulty": "Экстремально сложная",
     "repair_time": "4-8 часов",
     "tools_needed": [
-      "Высокоточная паяльная станция",
-      "BGA трафареты для Mac",
-      "Микроскоп 60x-100x",
-      "Hot air станция",
-      "Программатор UFS/NAND",
-      "Мультиметр",
-      "Анализатор питания"
-    ]
+      "Высокоточная паяльная станция (Pace/JBC)",
+      "BGA трафареты для iPhone (заводское качество)",
+      "Микроскоп 60x-100x с HDMI выводом",
+      "Hot air станция Quick 861DW или аналог",
+      "Программатор UFS 4.0 профессиональный",
+      "QIANLI iCopy Plus последняя версия",
+      "JC V1S Pro",
+      "Осциллограф 2-канальный",
+      "Мультиметр Fluke или аналог",
+      "Анализатор питания Power-Z KM003C",
+      "UV-лампа",
+      "Нагревательная платформа",
+      "Вакуумный держатель плат"
+    ],
+    "technical_specs": {},
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Air_15\"_M4_2025",
+      "apple_support": "https://support.apple.com/",
+      "boardview": "Проверить в базе boardview",
+      "schematics": "Проверить в базе схем"
+    }
   }
 ]

@@ -110,13 +110,14 @@ const RepairTool = () => {
 
       // Charging IC
       selectedDevice.charging_ic && renderSection(
-        'Charging IC',
+        'Charging IC (Контроллер зарядки)',
         '⚡',
         h('div', null,
-          h('div', { className: 'grid grid-cols-2 gap-4' },
+          h('div', { className: 'grid grid-cols-2 gap-4 mb-4' },
             h('div', null,
               h('p', { className: 'text-sm text-gray-600' }, 'Микросхема:'),
-              h('p', { className: 'font-semibold' }, selectedDevice.charging_ic.main)
+              h('p', { className: 'font-semibold' }, selectedDevice.charging_ic.main),
+              selectedDevice.charging_ic.full_name && h('p', { className: 'text-xs text-gray-500 mt-1' }, selectedDevice.charging_ic.full_name)
             ),
             h('div', null,
               h('p', { className: 'text-sm text-gray-600' }, 'Расположение:'),
@@ -124,18 +125,40 @@ const RepairTool = () => {
             ),
             h('div', null,
               h('p', { className: 'text-sm text-gray-600' }, 'Напряжение:'),
-              h('p', { className: 'font-semibold' }, selectedDevice.charging_ic.voltage)
+              h('p', { className: 'font-semibold' }, selectedDevice.charging_ic.voltage_support || selectedDevice.charging_ic.voltage)
             ),
             h('div', null,
-              h('p', { className: 'text-sm text-gray-600' }, 'Цена:'),
-              h('p', { className: 'font-semibold text-green-600' }, selectedDevice.charging_ic.price_range)
+              h('p', { className: 'text-sm text-gray-600' }, 'Макс. ток:'),
+              h('p', { className: 'font-semibold' }, selectedDevice.charging_ic.max_current || selectedDevice.charging_ic.current)
             )
           ),
-          selectedDevice.charging_ic.aliexpress && h('a', {
-            href: selectedDevice.charging_ic.aliexpress,
-            target: '_blank',
-            className: 'inline-block mt-3 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 text-sm'
-          }, '🛒 Купить на AliExpress')
+          // Дополнительные характеристики
+          (selectedDevice.charging_ic.fast_charging || selectedDevice.charging_ic.usb_pd || selectedDevice.charging_ic.wireless_charging) && 
+          h('div', { className: 'grid grid-cols-3 gap-2 mb-4 text-xs' },
+            selectedDevice.charging_ic.fast_charging && h('div', { className: 'bg-green-50 p-2 rounded' },
+              h('p', { className: 'text-gray-600' }, '⚡ Быстрая зарядка:'),
+              h('p', { className: 'font-semibold text-green-700' }, selectedDevice.charging_ic.fast_charging)
+            ),
+            selectedDevice.charging_ic.usb_pd && h('div', { className: 'bg-blue-50 p-2 rounded' },
+              h('p', { className: 'text-gray-600' }, '🔌 USB PD:'),
+              h('p', { className: 'font-semibold text-blue-700' }, selectedDevice.charging_ic.usb_pd)
+            ),
+            selectedDevice.charging_ic.wireless_charging && h('div', { className: 'bg-purple-50 p-2 rounded' },
+              h('p', { className: 'text-gray-600' }, '📡 Беспроводная:'),
+              h('p', { className: 'font-semibold text-purple-700' }, selectedDevice.charging_ic.wireless_charging)
+            )
+          ),
+          h('div', { className: 'flex gap-2' },
+            selectedDevice.charging_ic.aliexpress && h('a', {
+              href: selectedDevice.charging_ic.aliexpress,
+              target: '_blank',
+              className: 'inline-block px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 text-sm'
+            }, '🛒 Купить на AliExpress'),
+            h('div', { className: 'flex-1' }),
+            selectedDevice.charging_ic.price_range && h('div', { className: 'px-4 py-2 bg-green-100 text-green-700 rounded font-semibold' }, 
+              '💰 ', selectedDevice.charging_ic.price_range
+            )
+          )
         ),
         'charging'
       ),
@@ -233,6 +256,29 @@ const RepairTool = () => {
         selectedDevice.repair_time && h('div', null,
           h('span', { className: 'text-sm text-gray-600' }, 'Время: '),
           h('span', { className: 'font-semibold' }, selectedDevice.repair_time)
+        )
+      ),
+
+      // Documentation Links
+      selectedDevice.documentation_links && h('div', { className: 'mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg' },
+        h('h3', { className: 'text-lg font-semibold mb-3 text-gray-800' }, '📚 Полезные ресурсы'),
+        h('div', { className: 'grid grid-cols-2 gap-2' },
+          Object.entries(selectedDevice.documentation_links).map(([key, url]) =>
+            h('a', {
+              key: key,
+              href: url,
+              target: '_blank',
+              className: 'flex items-center gap-2 px-3 py-2 bg-white rounded shadow-sm hover:shadow-md transition-shadow text-sm'
+            },
+              h('span', { className: 'text-blue-600' }, '🔗'),
+              h('span', { className: 'text-gray-700' }, 
+                key === 'ifixit' ? 'iFixit Руководство' :
+                key === 'apple_support' ? 'Apple Support' :
+                key === 'boardview' ? 'BoardView' :
+                key === 'schematics' ? 'Схемы' : key
+              )
+            )
+          )
         )
       )
     );
