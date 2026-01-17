@@ -1,0 +1,2229 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 6s",
+    "model": "A1633, A1688, A1700",
+    "year": 2015,
+    "category": "iPhone",
+    "processor": "Apple A9",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 6s (2015). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "iPhone 6s Plus",
+    "model": "A1634, A1687, A1699",
+    "year": 2015,
+    "category": "iPhone",
+    "processor": "Apple A9",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 6s Plus (2015). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "iPhone SE (1st gen)",
+    "model": "A1723, A1662, A1724",
+    "year": 2016,
+    "category": "iPhone",
+    "processor": "Apple A9",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone SE (1st gen) (2016). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "iPhone 7",
+    "model": "A1660, A1778, A1779",
+    "year": 2016,
+    "category": "iPhone",
+    "processor": "Apple A10 Fusion",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 7 (2016). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "iPhone 7 Plus",
+    "model": "A1661, A1784, A1785",
+    "year": 2016,
+    "category": "iPhone",
+    "processor": "Apple A10 Fusion",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 7 Plus (2016). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "iPhone 8",
+    "model": "A1863, A1905, A1906",
+    "year": 2017,
+    "category": "iPhone",
+    "processor": "Apple A11 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMD9655",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Данные из схем"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 8 (2017). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "iPhone 8 Plus",
+    "model": "A1864, A1897, A1898",
+    "year": 2017,
+    "category": "iPhone",
+    "processor": "Apple A11 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMD9655",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Данные из схем"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 8 Plus (2017). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "iPhone X",
+    "model": "A1865, A1901, A1902",
+    "year": 2017,
+    "category": "iPhone",
+    "processor": "Apple A11 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMD9645 / PMB6826 / PMD9655",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Данные из схем"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone X (2017). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "iPhone XR",
+    "model": "A1984, A2105, A2106, A2107, A2108",
+    "year": 2018,
+    "category": "iPhone",
+    "processor": "Apple A12 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone XR (2018). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "iPhone XS",
+    "model": "A1920, A2097, A2098, A2099, A2100",
+    "year": 2018,
+    "category": "iPhone",
+    "processor": "Apple A12 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone XS (2018). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "iPhone XS Max",
+    "model": "A1921, A2101, A2102, A2103, A2104",
+    "year": 2018,
+    "category": "iPhone",
+    "processor": "Apple A12 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone XS Max (2018). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "iPhone 11",
+    "model": "A2111, A2221, A2223",
+    "year": 2019,
+    "category": "iPhone",
+    "processor": "Apple A13 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 11 (2019). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "iPhone 11 Pro",
+    "model": "A2160, A2215, A2217",
+    "year": 2019,
+    "category": "iPhone",
+    "processor": "Apple A13 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 11 Pro (2019). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "iPhone 11 Pro Max",
+    "model": "A2161, A2218, A2220",
+    "year": 2019,
+    "category": "iPhone",
+    "processor": "Apple A13 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 11 Pro Max (2019). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Средняя",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "iPhone SE (2nd gen)",
+    "model": "A2275, A2296, A2298",
+    "year": 2020,
+    "category": "iPhone",
+    "processor": "Apple A13 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone SE (2nd gen) (2020). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "iPhone 12 mini",
+    "model": "A2176, A2398, A2399, A2400",
+    "year": 2020,
+    "category": "iPhone",
+    "processor": "Apple A14 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1614A1 (Tristar U9300/U6300)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1614A1.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 12",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 12 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 12 mini (2020). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "iPhone 12",
+    "model": "A2172, A2402, A2403, A2404",
+    "year": 2020,
+    "category": "iPhone",
+    "processor": "Apple A14 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1614A1 (Tristar U9300/U6300)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com, fonefunshop.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1614A1.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 12 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 12 (2020). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "iPhone 12 Pro",
+    "model": "A2341, A2406, A2407, A2408",
+    "year": 2020,
+    "category": "iPhone",
+    "processor": "Apple A14 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1614A1 (Tristar U9300/U6300)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1614A1.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 12 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 12 Pro (2020). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "iPhone 12 Pro Max",
+    "model": "A2342, A2410, A2411, A2412",
+    "year": 2020,
+    "category": "iPhone",
+    "processor": "Apple A14 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1614A1 (Tristar U9300/U6300)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1614A1.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 12 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 12 Pro Max (2020). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "iPhone 13 mini",
+    "model": "A2481, A2626, A2628, A2629, A2630",
+    "year": 2021,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1616A0 (Tristar U2)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1616A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 13",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 13 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 13 mini (2021). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "iPhone 13",
+    "model": "A2482, A2631, A2633, A2634, A2635",
+    "year": 2021,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1616A0 (Tristar U2)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com, fonefunshop.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1616A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 13 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 13 (2021). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "iPhone 13 Pro",
+    "model": "A2483, A2636, A2638, A2639, A2640",
+    "year": 2021,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1616A0 (Tristar U2)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1616A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 13 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 13 Pro (2021). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "iPhone 13 Pro Max",
+    "model": "A2484, A2641, A2643, A2644, A2645",
+    "year": 2021,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1616A0 (Tristar U2)",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "wholesalegadgetparts.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1616A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 13 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 13 Pro Max (2021). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "iPhone SE (3rd gen)",
+    "model": "A2595, A2782, A2783, A2784, A2785",
+    "year": 2022,
+    "category": "iPhone",
+    "processor": "$429",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone SE (3rd gen) (2022). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "iPhone 14",
+    "model": "A2649, A2881, A2882, A2883, A2884",
+    "year": 2022,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1618A0",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "martview.com, cmedistribution.com.my",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1618A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 14 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 14 (2022). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "iPhone 14 Plus",
+    "model": "A2632, A2885, A2886, A2887, A2888",
+    "year": 2022,
+    "category": "iPhone",
+    "processor": "Apple A15 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1618A0",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "martview.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1618A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 14",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 14 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 14 Plus (2022). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "iPhone 14 Pro",
+    "model": "A2650, A2889, A2890, A2891, A2892",
+    "year": 2022,
+    "category": "iPhone",
+    "processor": "Apple A16 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1618A0",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "martview.com",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1618A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro Max"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 14 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 14 Pro (2022). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "iPhone 14 Pro Max",
+    "model": "A2651, A2893, A2894, A2895, A2896",
+    "year": 2022,
+    "category": "iPhone",
+    "processor": "$1,099",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "1618A0",
+      "reliability": "ПРОВЕРЕНО ✅",
+      "source": "cmedistribution.com.my",
+      "location": "Lightning разъем (нижняя плата)",
+      "note": "Данные подтверждены магазинами запчастей и форумами",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-1618A0.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro"
+      ],
+      "reliability": "ПРОВЕРЕНО ✅",
+      "note": "Все модели iPhone 14 series используют одинаковый charging IC"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 14 Pro Max (2022). Charging IC: ПРОВЕРЕНО ✅. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "iPhone 15",
+    "model": "A2846, A3089, A3090, A3092",
+    "year": 2023,
+    "category": "iPhone",
+    "processor": "Apple A16 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 15 (2023). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "iPhone 15 Plus",
+    "model": "A2847, A3093, A3094, A3096",
+    "year": 2023,
+    "category": "iPhone",
+    "processor": "Apple A16 Bionic",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 15 Plus (2023). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "iPhone 15 Pro",
+    "model": "A2848, A3101, A3102, A3104",
+    "year": 2023,
+    "category": "iPhone",
+    "processor": "Apple A17 Pro",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 15 Pro (2023). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "iPhone 15 Pro Max",
+    "model": "A2849, A3105, A3106, A3108",
+    "year": 2023,
+    "category": "iPhone",
+    "processor": "Apple A17 Pro",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 15 Pro Max (2023). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "iPhone 16",
+    "model": "A3081, A3286, A3287, A3288",
+    "year": 2024,
+    "category": "iPhone",
+    "processor": "Apple A18",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 16 (2024). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "iPhone 16 Plus",
+    "model": "A3082, A3289, A3290, A3291",
+    "year": 2024,
+    "category": "iPhone",
+    "processor": "Apple A18",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 16 Plus (2024). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "iPhone 16 Pro",
+    "model": "A3083, A3292, A3293, A3294",
+    "year": 2024,
+    "category": "iPhone",
+    "processor": "Apple A18 Pro",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 16 Pro (2024). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "iPhone 16 Pro Max",
+    "model": "A3084, A3295, A3296, A3297",
+    "year": 2024,
+    "category": "iPhone",
+    "processor": "Apple A18 Pro",
+    "data_quality": "ПРОВЕРЕНО/ТИПОВОЕ",
+    "charging_ic": {
+      "main": "Tristar/SN26xx series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "source": "Общая информация",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "Требуется проверка по схеме конкретной платы",
+      "aliexpress_search": "https://www.aliexpress.com/w/wholesale-Tristar/SN26xx.html"
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "НЕ ПОДТВЕРЖДЕНО ⚠️",
+      "note": "Совместимость доноров требует проверки на практике"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 16 Pro Max (2024). Charging IC: ТИПОВОЕ ⚠️. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Очень сложная",
+    "tools_needed": [
+      "Паяльная станция",
+      "BGA трафареты",
+      "Микроскоп 40x-80x",
+      "Hot air",
+      "Программатор",
+      "Мультиметр"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "iPhone 16e",
+    "model": "A3212, A3408, A3409, A3410",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "$599",
+    "data_quality": "ПРОГНОЗ - НЕ ДЛЯ РЕМОНТА",
+    "charging_ic": {
+      "main": "Не определен (будущая модель)",
+      "reliability": "ПРОГНОЗ ❌",
+      "source": "Прогноз",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "НЕ ИСПОЛЬЗОВАТЬ для реального ремонта - модель еще не выпущена",
+      "aliexpress_search": ""
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "ПРОГНОЗ ❌",
+      "note": "Совместимость не может быть определена для будущих моделей"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 16e (2025). ⚠️ ПРОГНОЗНАЯ МОДЕЛЬ - данные могут не соответствовать реальности. Charging IC: ПРОГНОЗ ❌. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Неизвестна (модель не выпущена)",
+    "tools_needed": []
+  },
+  {
+    "id": 38,
+    "name": "iPhone 17",
+    "model": "A3258, A3519, A3520, A3521",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19",
+    "data_quality": "ПРОГНОЗ - НЕ ДЛЯ РЕМОНТА",
+    "charging_ic": {
+      "main": "Не определен (будущая модель)",
+      "reliability": "ПРОГНОЗ ❌",
+      "source": "Прогноз",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "НЕ ИСПОЛЬЗОВАТЬ для реального ремонта - модель еще не выпущена",
+      "aliexpress_search": ""
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "ПРОГНОЗ ❌",
+      "note": "Совместимость не может быть определена для будущих моделей"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 17 (2025). ⚠️ ПРОГНОЗНАЯ МОДЕЛЬ - данные могут не соответствовать реальности. Charging IC: ПРОГНОЗ ❌. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Неизвестна (модель не выпущена)",
+    "tools_needed": []
+  },
+  {
+    "id": 39,
+    "name": "iPhone Air",
+    "model": "A3260, A3516, A3517, A3518",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19 Pro",
+    "data_quality": "ПРОГНОЗ - НЕ ДЛЯ РЕМОНТА",
+    "charging_ic": {
+      "main": "Не определен (будущая модель)",
+      "reliability": "ПРОГНОЗ ❌",
+      "source": "Прогноз",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "НЕ ИСПОЛЬЗОВАТЬ для реального ремонта - модель еще не выпущена",
+      "aliexpress_search": ""
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "ПРОГНОЗ ❌",
+      "note": "Совместимость не может быть определена для будущих моделей"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone Air (2025). ⚠️ ПРОГНОЗНАЯ МОДЕЛЬ - данные могут не соответствовать реальности. Charging IC: ПРОГНОЗ ❌. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Неизвестна (модель не выпущена)",
+    "tools_needed": []
+  },
+  {
+    "id": 40,
+    "name": "iPhone 17 Pro",
+    "model": "A3256, A3522, A3523, A3524",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19 Pro",
+    "data_quality": "ПРОГНОЗ - НЕ ДЛЯ РЕМОНТА",
+    "charging_ic": {
+      "main": "Не определен (будущая модель)",
+      "reliability": "ПРОГНОЗ ❌",
+      "source": "Прогноз",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "НЕ ИСПОЛЬЗОВАТЬ для реального ремонта - модель еще не выпущена",
+      "aliexpress_search": ""
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "ПРОГНОЗ ❌",
+      "note": "Совместимость не может быть определена для будущих моделей"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 17 Pro (2025). ⚠️ ПРОГНОЗНАЯ МОДЕЛЬ - данные могут не соответствовать реальности. Charging IC: ПРОГНОЗ ❌. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Неизвестна (модель не выпущена)",
+    "tools_needed": []
+  },
+  {
+    "id": 41,
+    "name": "iPhone 17 Pro Max",
+    "model": "A3257, A3525, A3526, A3527",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19 Pro",
+    "data_quality": "ПРОГНОЗ - НЕ ДЛЯ РЕМОНТА",
+    "charging_ic": {
+      "main": "Не определен (будущая модель)",
+      "reliability": "ПРОГНОЗ ❌",
+      "source": "Прогноз",
+      "location": "USB-C порт (нижняя плата)",
+      "note": "НЕ ИСПОЛЬЗОВАТЬ для реального ремонта - модель еще не выпущена",
+      "aliexpress_search": ""
+    },
+    "power_ic": {
+      "main": "PMB/PMD series (уточнять по схеме)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее обозначение, требуется проверка"
+    },
+    "memory": {
+      "info": "NAND + RAM (типы зависят от конфигурации)",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Точные модели микросхем памяти требуют проверки по плате"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS42Lxx series",
+      "reliability": "ТИПОВОЕ ⚠️",
+      "note": "Общее название семейства, точная модель зависит от платы"
+    },
+    "donors": {
+      "compatible_models": [],
+      "reliability": "ПРОГНОЗ ❌",
+      "note": "Совместимость не может быть определена для будущих моделей"
+    },
+    "common_issues": [
+      "Не заряжается",
+      "Медленная зарядка",
+      "Не включается",
+      "Проблемы с USB",
+      "Перегрев при зарядке"
+    ],
+    "repair_notes": "iPhone 17 Pro Max (2025). ⚠️ ПРОГНОЗНАЯ МОДЕЛЬ - данные могут не соответствовать реальности. Charging IC: ПРОГНОЗ ❌. Всегда проверяйте маркировку чипов на конкретной плате перед заменой.",
+    "repair_difficulty": "Неизвестна (модель не выпущена)",
+    "tools_needed": []
+  }
+]
