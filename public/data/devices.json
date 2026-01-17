@@ -37,6 +37,8 @@
     },
     "donors": [],
     "common_issues": [
+      "🔥 No Power - Short on VCC_MAIN (often WiFi cap)",
+      "🔥 No Backlight - Short on backlight filter/diode",
       "Не заряжается",
       "Проблемы с батареей",
       "Не включается",
@@ -69,7 +71,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-5585"
+    ]
   },
   {
     "id": 2,
@@ -143,7 +148,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-5586"
+    ]
   },
   {
     "id": 3,
@@ -258,6 +266,9 @@
     },
     "donors": [],
     "common_issues": [
+      "🔥 TriStar failure (Fake charging)",
+      "🔥 No Service (Intel Models) - BBPMU internal failure",
+      "🔥 Audio IC Disease (Loop Disease) - C12 Pad broken under U3101",
       "Не заряжается",
       "Проблемы с батареей",
       "Не включается",
@@ -288,7 +299,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00188 (Qualcomm)",
+      "820-00189 (Intel)"
+    ]
   },
   {
     "id": 5,
@@ -331,6 +346,9 @@
       "iPhone 7"
     ],
     "common_issues": [
+      "🔥 Touch Disease (less common than 6 Plus but exists)",
+      "🔥 Camera LDO short - Black camera screen",
+      "🔥 Audio IC Disease (Loop Disease) - C12 Pad broken under U3101",
       "Не заряжается",
       "Проблемы с батареей",
       "Не включается",
@@ -361,7 +379,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00229 (Qualcomm)",
+      "820-00249 (Intel)"
+    ]
   },
   {
     "id": 6,
@@ -433,7 +455,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00909 (Qualcomm)",
+      "820-00908 (Intel)"
+    ]
   },
   {
     "id": 7,
@@ -508,7 +534,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00927 (Qualcomm)",
+      "820-00926 (Intel)"
+    ]
   },
   {
     "id": 8,
@@ -552,6 +582,9 @@
       "iPhone XS"
     ],
     "common_issues": [
+      "🔥 Short on VDD_MAIN",
+      "🔥 Face ID failure due to water ingress (Dot Projector)",
+      "🔥 Interposer Separation - Touch issues, No Sim, Restarting",
       "Не заряжается",
       "Проблемы с батареей",
       "Не включается",
@@ -583,7 +616,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00863 (Qualcomm)",
+      "820-00864 (Intel)"
+    ]
   },
   {
     "id": 9,
@@ -657,7 +694,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01173"
+    ]
   },
   {
     "id": 10,
@@ -731,7 +771,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01127"
+    ]
   },
   {
     "id": 11,
@@ -805,7 +848,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01053"
+    ]
   },
   {
     "id": 12,
@@ -880,7 +926,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01582"
+    ]
   },
   {
     "id": 13,
@@ -955,7 +1004,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01682"
+    ]
   },
   {
     "id": 14,
@@ -1030,7 +1082,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01682"
+    ]
   },
   {
     "id": 15,
@@ -1227,6 +1282,9 @@
       "iPhone 12 mini"
     ],
     "common_issues": [
+      "🔥 Camera glass easy to crack",
+      "🔥 Green Screen (Display issue)",
+      "🔥 No Service - Interposer crack",
       "Не заряжается",
       "Медленная зарядка",
       "Не включается",
@@ -1259,7 +1317,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02057"
+    ]
   },
   {
     "id": 18,
@@ -1335,7 +1396,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02057"
+    ]
   },
   {
     "id": 19,
@@ -1411,7 +1475,10 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02059"
+    ]
   },
   {
     "id": 20,
@@ -1683,6 +1750,9 @@
       "iPhone 12 Pro Max"
     ],
     "common_issues": [
+      "🔥 Rear System failure (Panic Full reset)",
+      "🔥 BSOD (Green Screen of Death)",
+      "🔥 WSOD (White Screen of Death) - LCD flex bonding issue",
       "Не заряжается",
       "Медленная зарядка",
       "Не включается",

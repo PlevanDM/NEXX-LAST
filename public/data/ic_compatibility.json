@@ -1,0 +1,549 @@
+{
+  "charging_ics": {
+    "SN2400BO": {
+      "name": "SN2400BO (Tristar)",
+      "designation": "U4500",
+      "package": "BGA 25-ball",
+      "functions": ["USB-C/Lightning контроль", "Зарядка", "Передача данных", "Аксессуары"],
+      "analogues": [
+        {"part": "SN2400AB0", "compatibility": "100%", "notes": "Ранняя версия"},
+        {"part": "610A3B", "compatibility": "95%", "notes": "Маркировка на корпусе"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 6s", "years": "2015", "location": "U4500", "difficulty": "Средняя"},
+        {"model": "iPhone 6s Plus", "years": "2015", "location": "U4500", "difficulty": "Средняя"},
+        {"model": "iPhone SE (1st gen)", "years": "2016", "location": "U4500", "difficulty": "Средняя"}
+      ],
+      "price_range": "$3-8",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2400BO.html",
+      "board_location": {
+        "side": "front",
+        "position": "bottom-center",
+        "near": ["Lightning connector", "U4501 Hydra"],
+        "coordinates": {"x": 45, "y": 85}
+      }
+    },
+    "SN2501": {
+      "name": "SN2501 (Hydra)",
+      "designation": "U3300",
+      "package": "BGA 36-ball",
+      "functions": ["Контроллер зарядки", "OVP защита", "USB PD", "Быстрая зарядка"],
+      "analogues": [
+        {"part": "SN2501A1", "compatibility": "100%", "notes": "Обновленная версия"},
+        {"part": "U3300", "compatibility": "100%", "notes": "Обозначение на схеме"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 8", "years": "2017", "location": "U3300", "difficulty": "Средняя"},
+        {"model": "iPhone 8 Plus", "years": "2017", "location": "U3300", "difficulty": "Средняя"},
+        {"model": "iPhone X", "years": "2017", "location": "U3300", "difficulty": "Сложная"}
+      ],
+      "price_range": "$4-10",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2501.html",
+      "board_location": {
+        "side": "front",
+        "position": "bottom-center",
+        "near": ["Tristar U6300", "Battery connector"],
+        "coordinates": {"x": 50, "y": 75}
+      }
+    },
+    "SN2611A0": {
+      "name": "SN2611A0 (Tigris)",
+      "designation": "U3300",
+      "package": "BGA 49-ball",
+      "functions": ["USB PD 3.0", "Быстрая зарядка", "Power Path", "OVP/OCP"],
+      "analogues": [
+        {"part": "SN2611A1", "compatibility": "100%", "notes": "Ревизия A1"},
+        {"part": "SN2611B0", "compatibility": "95%", "notes": "Ревизия B"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 11", "years": "2019", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 11 Pro", "years": "2019", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 11 Pro Max", "years": "2019", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone SE (2nd gen)", "years": "2020", "location": "U3300", "difficulty": "Сложная"}
+      ],
+      "price_range": "$6-15",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611A0.html",
+      "board_location": {
+        "side": "front",
+        "position": "middle-left",
+        "near": ["Battery connector", "Tristar U6300"],
+        "coordinates": {"x": 25, "y": 60}
+      }
+    },
+    "SN2611E0": {
+      "name": "SN2611E0 (Tigris E)",
+      "designation": "U3300",
+      "package": "BGA 49-ball",
+      "functions": ["USB PD 3.0", "20W+ быстрая зарядка", "MagSafe контроль", "OVP/OCP"],
+      "analogues": [
+        {"part": "SN2611E1", "compatibility": "100%", "notes": "Ревизия E1"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 12", "years": "2020", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 12 Mini", "years": "2020", "location": "U3300", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 12 Pro", "years": "2020", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 12 Pro Max", "years": "2020", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 13", "years": "2021", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 13 Mini", "years": "2021", "location": "U3300", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 13 Pro", "years": "2021", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 13 Pro Max", "years": "2021", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 14", "years": "2022", "location": "U3300", "difficulty": "Сложная"},
+        {"model": "iPhone 14 Plus", "years": "2022", "location": "U3300", "difficulty": "Сложная"}
+      ],
+      "price_range": "$8-18",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2611E0.html",
+      "board_location": {
+        "side": "front",
+        "position": "middle-left",
+        "near": ["Battery connector", "MagSafe coil"],
+        "coordinates": {"x": 25, "y": 55}
+      }
+    },
+    "SN2012027": {
+      "name": "SN2012027 (USB-C Controller)",
+      "designation": "U3000",
+      "package": "BGA 64-ball",
+      "functions": ["USB-C контроль", "USB PD 3.1", "Передача данных 10Gbps", "Video output"],
+      "analogues": [
+        {"part": "SN2012028", "compatibility": "95%", "notes": "Обновленная ревизия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 15", "years": "2023", "location": "U3000", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15 Plus", "years": "2023", "location": "U3000", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15 Pro", "years": "2023", "location": "U3000", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15 Pro Max", "years": "2023", "location": "U3000", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$15-35",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SN2012027.html",
+      "board_location": {
+        "side": "front",
+        "position": "bottom-center",
+        "near": ["USB-C connector", "USB retimer"],
+        "coordinates": {"x": 50, "y": 88}
+      }
+    },
+    "1612A1": {
+      "name": "1612A1 (Tristar 3)",
+      "designation": "U6300",
+      "package": "BGA 36-ball",
+      "functions": ["Lightning контроль", "Передача данных", "Распознавание аксессуаров", "OVP"],
+      "analogues": [
+        {"part": "610A3B", "compatibility": "80%", "notes": "Только для iPhone 7"},
+        {"part": "1610A3B", "compatibility": "90%", "notes": "Для iPhone 6s/7"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 8", "years": "2017", "location": "U6300", "difficulty": "Средняя"},
+        {"model": "iPhone 8 Plus", "years": "2017", "location": "U6300", "difficulty": "Средняя"},
+        {"model": "iPhone X", "years": "2017", "location": "U6300", "difficulty": "Сложная"},
+        {"model": "iPhone XR", "years": "2018", "location": "U6300", "difficulty": "Сложная"},
+        {"model": "iPhone XS", "years": "2018", "location": "U6300", "difficulty": "Сложная"},
+        {"model": "iPhone XS Max", "years": "2018", "location": "U6300", "difficulty": "Сложная"}
+      ],
+      "price_range": "$3-8",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-1612A1.html",
+      "board_location": {
+        "side": "front",
+        "position": "bottom-center",
+        "near": ["Lightning connector", "Hydra U3300"],
+        "coordinates": {"x": 50, "y": 90}
+      }
+    }
+  },
+  "power_ics": {
+    "PMB9943": {
+      "name": "PMB9943 (Main PMIC)",
+      "designation": "U1801",
+      "package": "BGA 169-ball",
+      "functions": ["Основное управление питанием", "Все напряжения CPU", "Подсветка", "Touch"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone 6s", "years": "2015", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 6s Plus", "years": "2015", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone SE (1st gen)", "years": "2016", "location": "U1801", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$8-20",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-PMB9943.html",
+      "board_location": {
+        "side": "front",
+        "position": "center",
+        "near": ["A9 processor", "NAND flash"],
+        "coordinates": {"x": 50, "y": 45}
+      }
+    },
+    "PMB6822": {
+      "name": "PMB6822 (Main PMIC)",
+      "designation": "U1801",
+      "package": "BGA 196-ball",
+      "functions": ["Основное управление питанием", "Напряжения CPU/GPU", "Подсветка", "Сенсоры"],
+      "analogues": [
+        {"part": "PMB6822-R", "compatibility": "100%", "notes": "Ревизия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 12", "years": "2020", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 12 Pro", "years": "2020", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 13", "years": "2021", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 13 Pro", "years": "2021", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 14", "years": "2022", "location": "U1801", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15", "years": "2023", "location": "U1801", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$15-40",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-PMB6822.html",
+      "board_location": {
+        "side": "front",
+        "position": "center",
+        "near": ["A-series processor", "L-shaped battery"],
+        "coordinates": {"x": 45, "y": 40}
+      }
+    },
+    "338S00383": {
+      "name": "338S00383 (Camera PMIC)",
+      "designation": "U3700",
+      "package": "BGA 72-ball",
+      "functions": ["Питание камеры", "LDO регуляторы", "Вспышка"],
+      "analogues": [
+        {"part": "338S00411", "compatibility": "85%", "notes": "Более новая версия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone X", "years": "2017", "location": "U3700", "difficulty": "Сложная"},
+        {"model": "iPhone XS", "years": "2018", "location": "U3700", "difficulty": "Сложная"},
+        {"model": "iPhone XS Max", "years": "2018", "location": "U3700", "difficulty": "Сложная"},
+        {"model": "iPhone XR", "years": "2018", "location": "U3700", "difficulty": "Сложная"}
+      ],
+      "price_range": "$5-15",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-338S00383.html",
+      "board_location": {
+        "side": "back",
+        "position": "top-right",
+        "near": ["Camera module", "Flash LED"],
+        "coordinates": {"x": 75, "y": 15}
+      }
+    }
+  },
+  "audio_ics": {
+    "CS42L71": {
+      "name": "CS42L71 (Cirrus Logic Audio)",
+      "designation": "U3500",
+      "package": "QFN 56-pin",
+      "functions": ["Audio DAC/ADC", "Микрофон", "Динамик", "Наушники"],
+      "analogues": [
+        {"part": "CS42L42", "compatibility": "70%", "notes": "Базовая версия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 6s", "years": "2015", "location": "U3500", "difficulty": "Средняя"},
+        {"model": "iPhone 6s Plus", "years": "2015", "location": "U3500", "difficulty": "Средняя"},
+        {"model": "iPhone SE (1st gen)", "years": "2016", "location": "U3500", "difficulty": "Средняя"}
+      ],
+      "price_range": "$4-12",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-CS42L71.html",
+      "board_location": {
+        "side": "front",
+        "position": "top-left",
+        "near": ["Earpiece speaker", "Front camera"],
+        "coordinates": {"x": 25, "y": 15}
+      }
+    },
+    "CS42L83": {
+      "name": "CS42L83 (Cirrus Logic Audio)",
+      "designation": "U5201",
+      "package": "BGA 81-ball",
+      "functions": ["Audio DAC/ADC", "Stereo speakers", "3 микрофона", "Noise cancellation"],
+      "analogues": [
+        {"part": "CS42L84", "compatibility": "95%", "notes": "Обновленная версия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone X", "years": "2017", "location": "U5201", "difficulty": "Сложная"},
+        {"model": "iPhone XS", "years": "2018", "location": "U5201", "difficulty": "Сложная"},
+        {"model": "iPhone XS Max", "years": "2018", "location": "U5201", "difficulty": "Сложная"},
+        {"model": "iPhone XR", "years": "2018", "location": "U5201", "difficulty": "Сложная"},
+        {"model": "iPhone 11", "years": "2019", "location": "U5201", "difficulty": "Сложная"}
+      ],
+      "price_range": "$6-18",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-CS42L83.html",
+      "board_location": {
+        "side": "front",
+        "position": "top-center",
+        "near": ["Face ID module", "Earpiece"],
+        "coordinates": {"x": 50, "y": 10}
+      }
+    },
+    "CS42L86": {
+      "name": "CS42L86 (Cirrus Logic Audio)",
+      "designation": "U5200",
+      "package": "BGA 100-ball",
+      "functions": ["Hi-Res Audio", "Spatial Audio", "4 микрофона", "Adaptive EQ"],
+      "analogues": [
+        {"part": "CS42L87", "compatibility": "90%", "notes": "Следующее поколение"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 14 Pro", "years": "2022", "location": "U5200", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 14 Pro Max", "years": "2022", "location": "U5200", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15", "years": "2023", "location": "U5200", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15 Pro", "years": "2023", "location": "U5200", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$10-25",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-CS42L86.html",
+      "board_location": {
+        "side": "front",
+        "position": "top-center",
+        "near": ["Dynamic Island", "Face ID"],
+        "coordinates": {"x": 50, "y": 8}
+      }
+    }
+  },
+  "wifi_bt_ics": {
+    "339S00648": {
+      "name": "339S00648 (WiFi/BT Module)",
+      "designation": "U5600",
+      "package": "PoP BGA",
+      "functions": ["WiFi 6E", "Bluetooth 5.3", "UWB control"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone 14", "years": "2022", "location": "U5600", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 14 Plus", "years": "2022", "location": "U5600", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 14 Pro", "years": "2022", "location": "U5600", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$25-60",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-339S00648.html",
+      "board_location": {
+        "side": "back",
+        "position": "center-right",
+        "near": ["WiFi antenna", "BT antenna"],
+        "coordinates": {"x": 70, "y": 45}
+      }
+    },
+    "USI 339S00761": {
+      "name": "USI 339S00761 (WiFi 6E Module)",
+      "designation": "U5600",
+      "package": "SiP Module",
+      "functions": ["WiFi 6E", "Bluetooth 5.3", "Thread", "UWB"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone 15", "years": "2023", "location": "U5600", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 15 Pro", "years": "2023", "location": "U5600", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$35-80",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-339S00761.html",
+      "board_location": {
+        "side": "back",
+        "position": "center-right",
+        "near": ["Antenna connectors", "mmWave module"],
+        "coordinates": {"x": 70, "y": 40}
+      }
+    }
+  },
+  "baseband_ics": {
+    "PMB5765": {
+      "name": "PMB5765 (Intel Baseband)",
+      "designation": "BB_IC",
+      "package": "PoP BGA",
+      "functions": ["4G LTE", "VoLTE", "Carrier aggregation"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone XS (Intel)", "years": "2018", "location": "BB_IC", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone XS Max (Intel)", "years": "2018", "location": "BB_IC", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone XR", "years": "2018", "location": "BB_IC", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 11", "years": "2019", "location": "BB_IC", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$30-80",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-PMB5765.html",
+      "board_location": {
+        "side": "back",
+        "position": "bottom-left",
+        "near": ["SIM tray", "Antenna flex"],
+        "coordinates": {"x": 25, "y": 80}
+      }
+    },
+    "SDX55M": {
+      "name": "SDX55M (Qualcomm 5G Modem)",
+      "designation": "U_BB",
+      "package": "PoP BGA",
+      "functions": ["5G Sub-6", "5G mmWave", "4G LTE", "eSIM"],
+      "analogues": [
+        {"part": "SDX55", "compatibility": "100%", "notes": "Та же серия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 12", "years": "2020", "location": "U_BB", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 12 Pro", "years": "2020", "location": "U_BB", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 13", "years": "2021", "location": "U_BB", "difficulty": "Экстремально сложная"},
+        {"model": "iPhone 13 Pro", "years": "2021", "location": "U_BB", "difficulty": "Экстремально сложная"}
+      ],
+      "price_range": "$50-120",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-SDX55M.html",
+      "board_location": {
+        "side": "back",
+        "position": "bottom-center",
+        "near": ["5G antenna", "eSIM chip"],
+        "coordinates": {"x": 50, "y": 75}
+      }
+    }
+  },
+  "nand_ics": {
+    "NAND_KIOXIA_128": {
+      "name": "Kioxia 128GB NAND",
+      "designation": "U1200",
+      "package": "BGA 132-ball",
+      "functions": ["Хранение данных", "NVMe", "Wear leveling"],
+      "analogues": [
+        {"part": "Samsung 128GB", "compatibility": "100%", "notes": "Требует перепрограммирование"},
+        {"part": "SK Hynix 128GB", "compatibility": "100%", "notes": "Требует перепрограммирование"},
+        {"part": "Sandisk 128GB", "compatibility": "100%", "notes": "Требует перепрограммирование"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 12 128GB", "years": "2020", "location": "U1200", "difficulty": "Сложная"},
+        {"model": "iPhone 13 128GB", "years": "2021", "location": "U1200", "difficulty": "Сложная"},
+        {"model": "iPhone 14 128GB", "years": "2022", "location": "U1200", "difficulty": "Сложная"}
+      ],
+      "price_range": "$25-50",
+      "notes": "Требуется JC Pro или аналог для переноса данных",
+      "board_location": {
+        "side": "front",
+        "position": "center-right",
+        "near": ["CPU", "PMIC"],
+        "coordinates": {"x": 65, "y": 40}
+      }
+    },
+    "NAND_KIOXIA_256": {
+      "name": "Kioxia 256GB NAND",
+      "designation": "U1200",
+      "package": "BGA 132-ball",
+      "functions": ["Хранение данных", "NVMe", "Wear leveling"],
+      "analogues": [
+        {"part": "Samsung 256GB", "compatibility": "100%", "notes": "Требует перепрограммирование"},
+        {"part": "SK Hynix 256GB", "compatibility": "100%", "notes": "Требует перепрограммирование"}
+      ],
+      "donor_models": [
+        {"model": "iPhone 12 Pro 256GB", "years": "2020", "location": "U1200", "difficulty": "Сложная"},
+        {"model": "iPhone 13 Pro 256GB", "years": "2021", "location": "U1200", "difficulty": "Сложная"},
+        {"model": "iPhone 14 Pro 256GB", "years": "2022", "location": "U1200", "difficulty": "Сложная"}
+      ],
+      "price_range": "$40-80",
+      "notes": "Требуется JC Pro или аналог для переноса данных",
+      "board_location": {
+        "side": "front",
+        "position": "center-right",
+        "near": ["CPU", "PMIC"],
+        "coordinates": {"x": 65, "y": 40}
+      }
+    }
+  },
+  "face_id_ics": {
+    "STM32_FACE_ID": {
+      "name": "STM32 Face ID Controller",
+      "designation": "U4600",
+      "package": "BGA 49-ball",
+      "functions": ["Dot projector control", "IR camera sync", "Secure Enclave link"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone X", "years": "2017", "location": "U4600", "difficulty": "Невозможно - привязка"},
+        {"model": "iPhone XS", "years": "2018", "location": "U4600", "difficulty": "Невозможно - привязка"},
+        {"model": "iPhone 11 Pro", "years": "2019", "location": "U4600", "difficulty": "Невозможно - привязка"}
+      ],
+      "price_range": "N/A",
+      "notes": "⚠️ ПРИВЯЗАН К ПЛАТЕ! Не подлежит замене без потери Face ID",
+      "board_location": {
+        "side": "front",
+        "position": "top-center",
+        "near": ["Face ID flex", "Dot projector"],
+        "coordinates": {"x": 50, "y": 5}
+      }
+    }
+  },
+  "display_ics": {
+    "65730": {
+      "name": "65730 (Display PMIC)",
+      "designation": "U5110",
+      "package": "BGA 40-ball",
+      "functions": ["Display power", "Подсветка OLED", "Voltage boost"],
+      "analogues": [
+        {"part": "65730A", "compatibility": "100%", "notes": "Обновленная версия"}
+      ],
+      "donor_models": [
+        {"model": "iPhone X", "years": "2017", "location": "U5110", "difficulty": "Сложная"},
+        {"model": "iPhone XS", "years": "2018", "location": "U5110", "difficulty": "Сложная"},
+        {"model": "iPhone 11 Pro", "years": "2019", "location": "U5110", "difficulty": "Сложная"}
+      ],
+      "price_range": "$5-15",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-65730-iPhone.html",
+      "board_location": {
+        "side": "front",
+        "position": "top-right",
+        "near": ["Display connector", "Touch IC"],
+        "coordinates": {"x": 75, "y": 20}
+      }
+    },
+    "STM32_Touch": {
+      "name": "STM32 Touch Controller",
+      "designation": "U5100",
+      "package": "QFN 64-pin",
+      "functions": ["Touch sensing", "Force Touch (3D Touch)", "Haptic sync"],
+      "analogues": [],
+      "donor_models": [
+        {"model": "iPhone 6s", "years": "2015", "location": "U5100", "difficulty": "Сложная"},
+        {"model": "iPhone 7", "years": "2016", "location": "U5100", "difficulty": "Сложная"},
+        {"model": "iPhone 8", "years": "2017", "location": "U5100", "difficulty": "Сложная"}
+      ],
+      "price_range": "$8-20",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-STM32-touch-iPhone.html",
+      "board_location": {
+        "side": "front",
+        "position": "top-right",
+        "near": ["Display connector", "3D Touch sensor"],
+        "coordinates": {"x": 80, "y": 25}
+      }
+    }
+  },
+  "board_layouts": {
+    "iphone_x_layout": {
+      "name": "iPhone X Board Layout",
+      "model": "iPhone X",
+      "board_type": "Sandwich (двойная)",
+      "dimensions": {"width": 60, "height": 100},
+      "components": [
+        {"id": "U5201", "name": "Audio Codec", "x": 50, "y": 10, "side": "front"},
+        {"id": "U5110", "name": "Display PMIC", "x": 75, "y": 20, "side": "front"},
+        {"id": "U1801", "name": "Main PMIC", "x": 45, "y": 40, "side": "front"},
+        {"id": "U1200", "name": "NAND Flash", "x": 65, "y": 40, "side": "front"},
+        {"id": "U3300", "name": "Hydra (Charging)", "x": 50, "y": 75, "side": "front"},
+        {"id": "U6300", "name": "Tristar", "x": 50, "y": 90, "side": "front"},
+        {"id": "U3700", "name": "Camera PMIC", "x": 75, "y": 15, "side": "back"},
+        {"id": "U5600", "name": "WiFi/BT", "x": 70, "y": 45, "side": "back"},
+        {"id": "BB_IC", "name": "Baseband", "x": 25, "y": 80, "side": "back"}
+      ]
+    },
+    "iphone_12_layout": {
+      "name": "iPhone 12 Board Layout",
+      "model": "iPhone 12",
+      "board_type": "L-shaped (L-образная)",
+      "dimensions": {"width": 65, "height": 95},
+      "components": [
+        {"id": "U5200", "name": "Audio Codec", "x": 50, "y": 8, "side": "front"},
+        {"id": "U5110", "name": "Display PMIC", "x": 75, "y": 20, "side": "front"},
+        {"id": "U1801", "name": "Main PMIC", "x": 40, "y": 35, "side": "front"},
+        {"id": "U1200", "name": "NAND Flash", "x": 60, "y": 35, "side": "front"},
+        {"id": "U3300", "name": "Tigris (Charging)", "x": 25, "y": 55, "side": "front"},
+        {"id": "U6300", "name": "Tristar", "x": 50, "y": 85, "side": "front"},
+        {"id": "U_BB", "name": "5G Modem", "x": 50, "y": 75, "side": "back"},
+        {"id": "U5600", "name": "WiFi/BT", "x": 70, "y": 40, "side": "back"},
+        {"id": "MagSafe", "name": "MagSafe Coil", "x": 50, "y": 50, "side": "back"}
+      ]
+    },
+    "iphone_15_layout": {
+      "name": "iPhone 15 Board Layout",
+      "model": "iPhone 15",
+      "board_type": "L-shaped (L-образная)",
+      "dimensions": {"width": 68, "height": 92},
+      "components": [
+        {"id": "U5200", "name": "Audio Codec CS42L86", "x": 50, "y": 8, "side": "front"},
+        {"id": "U5110", "name": "Display PMIC", "x": 78, "y": 18, "side": "front"},
+        {"id": "U1801", "name": "Main PMIC PMB6822", "x": 38, "y": 32, "side": "front"},
+        {"id": "U1200", "name": "NAND Flash", "x": 58, "y": 32, "side": "front"},
+        {"id": "U3300", "name": "Tigris E (Charging)", "x": 22, "y": 52, "side": "front"},
+        {"id": "U3000", "name": "USB-C Controller", "x": 50, "y": 88, "side": "front"},
+        {"id": "U_BB", "name": "5G Modem", "x": 50, "y": 72, "side": "back"},
+        {"id": "U5600", "name": "WiFi 6E Module", "x": 72, "y": 38, "side": "back"},
+        {"id": "MagSafe", "name": "MagSafe Coil", "x": 50, "y": 48, "side": "back"},
+        {"id": "USB_RT", "name": "USB Retimer", "x": 55, "y": 85, "side": "front"}
+      ]
+    }
+  }
+}
