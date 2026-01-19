@@ -106,93 +106,93 @@ const LiveCounter = () => {
 // HEADER COMPONENT
 // ============================================
 
-const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mastersMenuOpen, setMastersMenuOpen] = useState(false);
-  
-  const navItems = [
-    { label: 'Головна', href: '/' },
-    { label: 'Послуги', href: '/#services' },
-    { label: 'Калькулятор', href: '/calculator' },
-    { label: 'Курси', href: '/#courses' },
-    { label: 'FAQ', href: '/faq' },
-    { label: 'Контакти', href: '/#contact' },
-  ];
-  
-  const mastersItems = [
-    { label: 'NEXX Database', href: '/nexx', icon: 'fa-database', protected: true },
-    { label: 'База знань', href: '/nexx#knowledge', icon: 'fa-book' },
-    { label: 'Прайс-лист', href: '/nexx#prices', icon: 'fa-money-bill' },
-    { label: 'Інструменти', href: '/nexx#tools', icon: 'fa-toolbox' },
-  ];
-  
-  return h('header', { className: 'sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md' },
-    h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
-      h('div', { className: 'flex items-center justify-between h-16' },
-        h('div', { className: 'flex items-center' },
-          h('a', { href: '/', className: 'flex items-center gap-3' },
-            h('div', { className: 'w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center' },
-              h('i', { className: 'fa fa-mobile-screen text-white text-xl' })
-            ),
-            h('div', { className: 'hidden sm:block' },
-              h('div', { className: 'text-xl font-bold text-slate-900' }, SITE_CONFIG.name),
-              h('div', { className: 'text-xs text-slate-600' }, SITE_CONFIG.tagline)
-            )
-          )
-        ),
-        h('nav', { className: 'hidden lg:flex items-center gap-6' },
-          ...navItems.map(item =>
-            h('a', { key: item.href, href: item.href, className: 'text-sm font-medium transition-colors hover:text-blue-600 text-slate-700' }, item.label)
-          ),
-          h('div', { className: 'relative' },
-            h('button', {
-              onClick: () => setMastersMenuOpen(!mastersMenuOpen),
-              className: 'text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors flex items-center gap-1'
-            },
-              'Для майстрів',
-              h('i', { className: `fa fa-chevron-down text-xs transition-transform ${mastersMenuOpen ? 'rotate-180' : ''}` })
-            ),
-            mastersMenuOpen && h('div', { className: 'absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2' },
-              ...mastersItems.map(item =>
-                h('a', { key: item.href, href: item.href, className: 'block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors', onClick: () => setMastersMenuOpen(false) },
-                  h('i', { className: `fa ${item.icon} w-5` }),
-                  h('span', { className: 'ml-2' }, item.label),
-                  item.protected && h('i', { className: 'fa fa-lock text-xs ml-2 text-slate-400' })
-                )
-              )
-            )
-          )
-        ),
-        h('div', { className: 'hidden lg:block' },
-          h(Button, { variant: 'primary', icon: 'fa-phone', onClick: () => window.location.href = `tel:${SITE_CONFIG.phone.tel}` }, 'Зателефонувати')
-        ),
-        h('button', { className: 'lg:hidden p-2', onClick: () => setMobileMenuOpen(!mobileMenuOpen) },
-          h('i', { className: `fa ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl` })
-        )
-      ),
-      mobileMenuOpen && h('div', { className: 'lg:hidden border-t border-slate-200 py-4' },
-        h('nav', { className: 'flex flex-col gap-2' },
-          ...navItems.map(item =>
-            h('a', { key: item.href, href: item.href, className: 'px-4 py-2 text-sm font-medium rounded-lg transition-colors text-slate-700 hover:bg-slate-50', onClick: () => setMobileMenuOpen(false) }, item.label)
-          ),
-          h('div', { className: 'border-t border-slate-200 my-2' }),
-          h('div', { className: 'px-4 py-1 text-xs font-semibold text-slate-500 uppercase' }, 'Для майстрів'),
-          ...mastersItems.map(item =>
-            h('a', { key: item.href, href: item.href, className: 'px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors', onClick: () => setMobileMenuOpen(false) },
-              h('i', { className: `fa ${item.icon} w-5` }),
-              h('span', { className: 'ml-2' }, item.label),
-              item.protected && h('i', { className: 'fa fa-lock text-xs ml-2 text-slate-400' })
-            )
-          ),
-          h('div', { className: 'border-t border-slate-200 my-2' }),
-          h('div', { className: 'px-4' },
-            h(Button, { variant: 'primary', icon: 'fa-phone', onClick: () => window.location.href = `tel:${SITE_CONFIG.phone.tel}`, fullWidth: true }, 'Зателефонувати')
-          )
-        )
-      )
-    )
-  );
-};
+// const Header = () => {
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//   const [mastersMenuOpen, setMastersMenuOpen] = useState(false);
+//   
+//   const navItems = [
+//     { label: 'Головна', href: '/' },
+//     { label: 'Послуги', href: '/#services' },
+//     { label: 'Калькулятор', href: '/calculator' },
+//     { label: 'Курси', href: '/#courses' },
+//     { label: 'FAQ', href: '/faq' },
+//     { label: 'Контакти', href: '/#contact' },
+//   ];
+//   
+//   const mastersItems = [
+//     { label: 'NEXX Database', href: '/nexx', icon: 'fa-database', protected: true },
+//     { label: 'База знань', href: '/nexx#knowledge', icon: 'fa-book' },
+//     { label: 'Прайс-лист', href: '/nexx#prices', icon: 'fa-money-bill' },
+//     { label: 'Інструменти', href: '/nexx#tools', icon: 'fa-toolbox' },
+//   ];
+//   
+//   return h('header', { className: 'sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md' },
+//     h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+//       h('div', { className: 'flex items-center justify-between h-16' },
+//         h('div', { className: 'flex items-center' },
+//           h('a', { href: '/', className: 'flex items-center gap-3' },
+//             h('div', { className: 'w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center' },
+//               h('i', { className: 'fa fa-mobile-screen text-white text-xl' })
+//             ),
+//             h('div', { className: 'hidden sm:block' },
+//               h('div', { className: 'text-xl font-bold text-slate-900' }, SITE_CONFIG.name),
+//               h('div', { className: 'text-xs text-slate-600' }, SITE_CONFIG.tagline)
+//             )
+//           )
+//         ),
+//         h('nav', { className: 'hidden lg:flex items-center gap-6' },
+//           ...navItems.map(item =>
+//             h('a', { key: item.href, href: item.href, className: 'text-sm font-medium transition-colors hover:text-blue-600 text-slate-700' }, item.label)
+//           ),
+//           h('div', { className: 'relative' },
+//             h('button', {
+//               onClick: () => setMastersMenuOpen(!mastersMenuOpen),
+//               className: 'text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors flex items-center gap-1'
+//             },
+//               'Для майстрів',
+//               h('i', { className: `fa fa-chevron-down text-xs transition-transform ${mastersMenuOpen ? 'rotate-180' : ''}` })
+//             ),
+//             mastersMenuOpen && h('div', { className: 'absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2' },
+//               ...mastersItems.map(item =>
+//                 h('a', { key: item.href, href: item.href, className: 'block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors', onClick: () => setMastersMenuOpen(false) },
+//                   h('i', { className: `fa ${item.icon} w-5` }),
+//                   h('span', { className: 'ml-2' }, item.label),
+//                   item.protected && h('i', { className: 'fa fa-lock text-xs ml-2 text-slate-400' })
+//                 )
+//               )
+//             )
+//           )
+//         ),
+//         h('div', { className: 'hidden lg:block' },
+//           h(Button, { variant: 'primary', icon: 'fa-phone', onClick: () => window.location.href = `tel:${SITE_CONFIG.phone.tel}` }, 'Зателефонувати')
+//         ),
+//         h('button', { className: 'lg:hidden p-2', onClick: () => setMobileMenuOpen(!mobileMenuOpen) },
+//           h('i', { className: `fa ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl` })
+//         )
+//       ),
+//       mobileMenuOpen && h('div', { className: 'lg:hidden border-t border-slate-200 py-4' },
+//         h('nav', { className: 'flex flex-col gap-2' },
+//           ...navItems.map(item =>
+//             h('a', { key: item.href, href: item.href, className: 'px-4 py-2 text-sm font-medium rounded-lg transition-colors text-slate-700 hover:bg-slate-50', onClick: () => setMobileMenuOpen(false) }, item.label)
+//           ),
+//           h('div', { className: 'border-t border-slate-200 my-2' }),
+//           h('div', { className: 'px-4 py-1 text-xs font-semibold text-slate-500 uppercase' }, 'Для майстрів'),
+//           ...mastersItems.map(item =>
+//             h('a', { key: item.href, href: item.href, className: 'px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors', onClick: () => setMobileMenuOpen(false) },
+//               h('i', { className: `fa ${item.icon} w-5` }),
+//               h('span', { className: 'ml-2' }, item.label),
+//               item.protected && h('i', { className: 'fa fa-lock text-xs ml-2 text-slate-400' })
+//             )
+//           ),
+//           h('div', { className: 'border-t border-slate-200 my-2' }),
+//           h('div', { className: 'px-4' },
+//             h(Button, { variant: 'primary', icon: 'fa-phone', onClick: () => window.location.href = `tel:${SITE_CONFIG.phone.tel}`, fullWidth: true }, 'Зателефонувати')
+//           )
+//         )
+//       )
+//     )
+//   );
+// };
 
 // ============================================
 // HERO SECTION
@@ -608,37 +608,37 @@ const GallerySection = () => {
 // FOOTER
 // ============================================
 
-const Footer = () => {
-  return h('footer', { className: 'bg-slate-900 text-white py-16' },
-    h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
-      h('div', { className: 'grid md:grid-cols-3 gap-8 max-w-5xl mx-auto' },
-        h('div', {},
-          h('h3', { className: 'text-xl font-bold mb-4' }, 'NEXX Service Center'),
-          h('p', { className: 'text-slate-400' }, 'Професійний ремонт Apple техніки в Києві з 2014 року')
-        ),
-        h('div', {},
-          h('h4', { className: 'font-semibold mb-4' }, 'Контакти'),
-          h('div', { className: 'space-y-2 text-slate-400' },
-            h('p', {}, h('i', { className: 'fas fa-phone mr-2' }), SITE_CONFIG.phone.display),
-            h('p', {}, h('i', { className: 'fas fa-envelope mr-2' }), SITE_CONFIG.email),
-            h('p', {}, h('i', { className: 'fas fa-map-marker-alt mr-2' }), SITE_CONFIG.address.line1)
-          )
-        ),
-        h('div', {},
-          h('h4', { className: 'font-semibold mb-4' }, 'Графік роботи'),
-          h('div', { className: 'space-y-2 text-slate-400' },
-            h('p', {}, 'Пн-Пт: ', SITE_CONFIG.hours.weekdays),
-            h('p', {}, 'Сб: ', SITE_CONFIG.hours.saturday),
-            h('p', {}, 'Нд: ', SITE_CONFIG.hours.sunday)
-          )
-        )
-      ),
-      h('div', { className: 'border-t border-slate-800 mt-12 pt-8 text-center text-slate-500' },
-        h('p', {}, '© 2026 NEXX Service Center. Всі права захищені.')
-      )
-    )
-  );
-};
+// const Footer = () => {
+//   return h('footer', { className: 'bg-slate-900 text-white py-16' },
+//     h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+//       h('div', { className: 'grid md:grid-cols-3 gap-8 max-w-5xl mx-auto' },
+//         h('div', {},
+//           h('h3', { className: 'text-xl font-bold mb-4' }, 'NEXX Service Center'),
+//           h('p', { className: 'text-slate-400' }, 'Професійний ремонт Apple техніки в Києві з 2014 року')
+//         ),
+//         h('div', {},
+//           h('h4', { className: 'font-semibold mb-4' }, 'Контакти'),
+//           h('div', { className: 'space-y-2 text-slate-400' },
+//             h('p', {}, h('i', { className: 'fas fa-phone mr-2' }), SITE_CONFIG.phone.display),
+//             h('p', {}, h('i', { className: 'fas fa-envelope mr-2' }), SITE_CONFIG.email),
+//             h('p', {}, h('i', { className: 'fas fa-map-marker-alt mr-2' }), SITE_CONFIG.address.line1)
+//           )
+//         ),
+//         h('div', {},
+//           h('h4', { className: 'font-semibold mb-4' }, 'Графік роботи'),
+//           h('div', { className: 'space-y-2 text-slate-400' },
+//             h('p', {}, 'Пн-Пт: ', SITE_CONFIG.hours.weekdays),
+//             h('p', {}, 'Сб: ', SITE_CONFIG.hours.saturday),
+//             h('p', {}, 'Нд: ', SITE_CONFIG.hours.sunday)
+//           )
+//         )
+//       ),
+//       h('div', { className: 'border-t border-slate-800 mt-12 pt-8 text-center text-slate-500' },
+//         h('p', {}, '© 2026 NEXX Service Center. Всі права захищені.')
+//       )
+//     )
+//   );
+// };
 
 // ============================================
 // MAIN HOMEPAGE
@@ -646,15 +646,13 @@ const Footer = () => {
 
 const Homepage = () => {
   return h('div', { className: 'min-h-screen' },
-    h(Header),
     h(HeroSection),
     h(StatsSection),
     h(ServicesSection),
     h(PricingSection),
     h(CoursesSection),
     h(ContactSection),
-    h(GallerySection),
-    h(Footer)
+    h(GallerySection)
   );
 };
 

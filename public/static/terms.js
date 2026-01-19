@@ -339,4 +339,4 @@ function TermsPage() {
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<TermsPage />);
+root.render(React.createElement(TermsPage));

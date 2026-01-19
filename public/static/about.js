@@ -214,4 +214,4 @@ function AboutPage() {
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<AboutPage />);
+root.render(React.createElement(AboutPage));

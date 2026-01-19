@@ -242,4 +242,4 @@ function FAQPage() {
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<FAQPage />);
+root.render(React.createElement(FAQPage));

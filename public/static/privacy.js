@@ -268,4 +268,4 @@ function PrivacyPage() {
 
 // Render
 const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(<PrivacyPage />);
+root.render(React.createElement(PrivacyPage));
