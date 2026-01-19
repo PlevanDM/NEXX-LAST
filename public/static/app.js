@@ -1723,19 +1723,9 @@ const KnowledgeBasePanel = ({ knowledgeData, onClose }) => {
   );
 };
 
-// ===== DEVICE CARD (ENHANCED v6.9.6 - with Regional Codes) =====
-const DeviceCard = ({ device, onSelect, ukrainePrices, regionalCodes }) => {
+// ===== DEVICE CARD (ENHANCED v6.9.7) =====
+const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   const icon = getCategoryIcon(device.category);
-  
-  // Get popular regional codes to display (top 5 most common)
-  const popularRegionalCodes = useMemo(() => {
-    if (!regionalCodes) return [];
-    const popular = ['LL', 'ZA', 'X', 'KH', 'CH', 'J', 'B', 'AB', 'MY', 'RU'];
-    return popular.filter(code => regionalCodes[code]).slice(0, 4).map(code => ({
-      code: code + '/A',
-      region: regionalCodes[code]?.region?.split('/')[0] || regionalCodes[code]?.region || code
-    }));
-  }, [regionalCodes]);
   const hasServiceParts = device.service_parts && Object.keys(device.service_parts).length > 0;
   const partsCount = hasServiceParts ? Object.keys(device.service_parts).length : 0;
   
@@ -1876,20 +1866,6 @@ const DeviceCard = ({ device, onSelect, ukrainePrices, regionalCodes }) => {
         ...(device.model || '').split('/').filter(Boolean).map((m, i) => 
           h('span', { key: i, className: 'px-2 py-0.5 bg-slate-100/90 text-slate-600 rounded text-xs font-mono' }, m.trim())
         )
-      )
-    ),
-    
-    // Regional codes (LL/A, ZA/A, etc.)
-    (device.category === 'iPhone' && popularRegionalCodes.length > 0) && h('div', { className: 'mb-2' },
-      h('div', { className: 'flex flex-wrap gap-1' },
-        ...popularRegionalCodes.map((rc, i) => 
-          h('span', { 
-            key: i, 
-            className: 'px-1.5 py-0.5 bg-blue-50 text-blue-700 rounded text-xs font-mono border border-blue-200',
-            title: rc.region
-          }, rc.code)
-        ),
-        h('span', { className: 'text-xs text-slate-400' }, '...')
       )
     ),
     
@@ -2588,6 +2564,209 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
   );
 };
 
+// ===== REGION LOOKUP PANEL =====
+const RegionLookupPanel = ({ onClose }) => {
+  const [searchCode, setSearchCode] = useState('');
+  const [regionalData, setRegionalData] = useState(null);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    fetch('/data/regional_codes_extended.json')
+      .then(r => r.json())
+      .then(data => {
+        setRegionalData(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+  
+  const handleSearch = () => {
+    if (!regionalData || !searchCode.trim()) {
+      setResult(null);
+      return;
+    }
+    // Extract code from input (e.g., "LL/A" -> "LL", "LL" -> "LL", "MN6W3LL/A" -> "LL")
+    const input = searchCode.trim().toUpperCase();
+    let code = input;
+    
+    // If contains "/", get the part before it
+    if (input.includes('/')) {
+      const parts = input.split('/');
+      // Check if it's like "MN6W3LL/A" - code is 2 chars before /
+      const beforeSlash = parts[0];
+      if (beforeSlash.length > 2) {
+        code = beforeSlash.slice(-2);
+      } else {
+        code = beforeSlash;
+      }
+    }
+    
+    const regionInfo = regionalData.regional_codes[code];
+    if (regionInfo) {
+      setResult({ code, ...regionInfo });
+    } else {
+      setResult({ notFound: true, searchedCode: code });
+    }
+  };
+  
+  useEffect(() => {
+    if (searchCode.length >= 2) {
+      handleSearch();
+    } else {
+      setResult(null);
+    }
+  }, [searchCode, regionalData]);
+  
+  if (loading) {
+    return h(Modal, { title: '🌍 Определить регион', subtitle: 'Загрузка...', onClose, color: 'blue' },
+      h('div', { className: 'flex justify-center py-8' },
+        h('div', { className: 'w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin' })
+      )
+    );
+  }
+  
+  const popularCodes = ['LL', 'ZA', 'ZP', 'CH', 'J', 'KH', 'X', 'B', 'FB', 'HN'];
+  
+  return h(Modal, { title: '🌍 Определить регион', subtitle: 'Введите код региона из номера модели', onClose, color: 'blue' },
+    h('div', { className: 'space-y-4' },
+      // Search input
+      h('div', { className: 'relative' },
+        h('input', {
+          type: 'text',
+          value: searchCode,
+          onChange: e => setSearchCode(e.target.value),
+          placeholder: 'Введите код (LL, ZA, CH) или полный номер (MN6W3LL/A)...',
+          className: 'w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none text-lg font-mono'
+        })
+      ),
+      
+      // Popular codes
+      h('div', null,
+        h('p', { className: 'text-xs text-slate-500 mb-2' }, 'Популярные коды:'),
+        h('div', { className: 'flex flex-wrap gap-2' },
+          ...popularCodes.map(code => 
+            h('button', {
+              key: code,
+              onClick: () => setSearchCode(code),
+              className: 'px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm font-mono hover:bg-blue-100 transition-colors'
+            }, code + '/A')
+          )
+        )
+      ),
+      
+      // Result
+      result && (result.notFound 
+        ? h('div', { className: 'p-4 bg-red-50 rounded-xl border border-red-200' },
+            h('p', { className: 'text-red-700 font-semibold' }, `❌ Код "${result.searchedCode}" не найден`),
+            h('p', { className: 'text-sm text-red-600 mt-1' }, 'Проверьте правильность ввода')
+          )
+        : h('div', { className: 'p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200' },
+            h('div', { className: 'flex items-start gap-4' },
+              h('div', { className: 'w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-2xl font-bold' }, result.code),
+              h('div', { className: 'flex-1' },
+                h('h3', { className: 'text-xl font-bold text-slate-800' }, result.region),
+                h('p', { className: 'text-sm text-slate-600' }, result.countries?.join(', '))
+              )
+            ),
+            
+            // Features grid
+            h('div', { className: 'grid grid-cols-3 gap-3 mt-4' },
+              // FaceTime
+              h('div', { className: cn('p-3 rounded-lg text-center', 
+                result.facetime === true ? 'bg-green-100' : 
+                result.facetime === false ? 'bg-red-100' : 'bg-yellow-100'
+              )},
+                h('p', { className: 'text-2xl' }, result.facetime === true ? '✅' : result.facetime === false ? '❌' : '⚠️'),
+                h('p', { className: 'text-xs font-semibold mt-1' }, 'FaceTime'),
+                h('p', { className: 'text-xs text-slate-600' }, 
+                  result.facetime === true ? 'Есть' : 
+                  result.facetime === false ? 'Нет' : 'Зависит от оператора'
+                )
+              ),
+              // Dual SIM
+              h('div', { className: cn('p-3 rounded-lg text-center',
+                result.dual_sim === 'physical_dual' ? 'bg-purple-100' : 
+                result.dual_sim === true ? 'bg-green-100' : 'bg-slate-100'
+              )},
+                h('p', { className: 'text-2xl' }, result.dual_sim ? '📱📱' : '📱'),
+                h('p', { className: 'text-xs font-semibold mt-1' }, 'Dual SIM'),
+                h('p', { className: 'text-xs text-slate-600' }, 
+                  result.dual_sim === 'physical_dual' ? '2 физ. SIM' : 
+                  result.dual_sim === true ? 'eSIM + SIM' : 'Нет'
+                )
+              ),
+              // Charger
+              h('div', { className: cn('p-3 rounded-lg text-center',
+                result.box_contents?.charger ? 'bg-green-100' : 'bg-slate-100'
+              )},
+                h('p', { className: 'text-2xl' }, result.box_contents?.charger ? '🔌' : '📦'),
+                h('p', { className: 'text-xs font-semibold mt-1' }, 'Зарядка'),
+                h('p', { className: 'text-xs text-slate-600' }, 
+                  result.box_contents?.charger ? 'В комплекте' : 'Не включена'
+                )
+              )
+            ),
+            
+            // Notes
+            result.notes && h('div', { className: 'mt-4 p-3 bg-yellow-50 rounded-lg border border-yellow-200' },
+              h('p', { className: 'text-sm text-yellow-800' }, '📝 ' + result.notes)
+            ),
+            
+            // Special features (mmWave etc)
+            result.special_features && h('div', { className: 'mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200' },
+              h('p', { className: 'text-sm font-semibold text-purple-800' }, '⚡ Особенности:'),
+              result.special_features.mmwave_5g && h('p', { className: 'text-sm text-purple-700 mt-1' }, '• Поддержка mmWave 5G (только США)')
+            ),
+            
+            // Box contents
+            h('div', { className: 'mt-4 pt-4 border-t border-slate-200' },
+              h('p', { className: 'text-xs font-semibold text-slate-500 mb-2' }, '📦 В коробке (iPhone 12+):'),
+              h('div', { className: 'flex gap-2' },
+                result.box_contents?.cable && h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-xs' }, '🔌 USB-C кабель'),
+                result.box_contents?.charger && h('span', { className: 'px-2 py-1 bg-green-100 rounded text-xs' }, '🔋 Зарядка'),
+                result.box_contents?.earpods && h('span', { className: 'px-2 py-1 bg-blue-100 rounded text-xs' }, '🎧 EarPods')
+              )
+            )
+          )
+      ),
+      
+      // All codes table
+      !result && h('div', { className: 'mt-6' },
+        h('p', { className: 'text-sm font-semibold text-slate-700 mb-3' }, '📋 Все региональные коды:'),
+        h('div', { className: 'max-h-64 overflow-y-auto rounded-lg border border-slate-200' },
+          h('table', { className: 'w-full text-sm' },
+            h('thead', { className: 'bg-slate-50 sticky top-0' },
+              h('tr', null,
+                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Код'),
+                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Регион'),
+                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Страны'),
+                h('th', { className: 'px-3 py-2 text-center font-semibold' }, 'FT')
+              )
+            ),
+            h('tbody', null,
+              ...Object.entries(regionalData?.regional_codes || {}).map(([code, info]) =>
+                h('tr', { 
+                  key: code, 
+                  className: 'border-t border-slate-100 hover:bg-blue-50 cursor-pointer',
+                  onClick: () => setSearchCode(code)
+                },
+                  h('td', { className: 'px-3 py-2 font-mono font-bold text-blue-600' }, code + '/A'),
+                  h('td', { className: 'px-3 py-2' }, info.region),
+                  h('td', { className: 'px-3 py-2 text-xs text-slate-600' }, info.countries?.slice(0, 2).join(', ')),
+                  h('td', { className: 'px-3 py-2 text-center' }, 
+                    info.facetime === true ? '✅' : info.facetime === false ? '❌' : '⚠️'
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
 // ===== QUICK ACTION CARD =====
 const QuickCard = ({ name, icon, count, color, onClick }) => {
   const colors = {
@@ -2672,6 +2851,7 @@ const App = () => {
   const [showKnowledge, setShowKnowledge] = useState(false);
   const [showICs, setShowICs] = useState(false);
   const [showKeyCombos, setShowKeyCombos] = useState(false);
+  const [showRegionLookup, setShowRegionLookup] = useState(false);
   
   // Load data
   useEffect(() => {
@@ -2934,6 +3114,13 @@ const App = () => {
           count: 'Комбинации', 
           color: 'indigo',
           onClick: () => setShowKeyCombos(true) 
+        }),
+        h(QuickCard, { 
+          name: 'Регион', 
+          icon: '🌍', 
+          count: 'По коду', 
+          color: 'blue',
+          onClick: () => setShowRegionLookup(true) 
         })
       ),
       
@@ -2947,8 +3134,7 @@ const App = () => {
             key: device.name, 
             device, 
             onSelect: setSelectedDevice,
-            ukrainePrices,
-            regionalCodes
+            ukrainePrices
           })
         )
       )
@@ -2988,6 +3174,9 @@ const App = () => {
     }),
     showKeyCombos && h(KeyCombinationsPanel, { 
       onClose: () => setShowKeyCombos(false) 
+    }),
+    showRegionLookup && h(RegionLookupPanel, { 
+      onClose: () => setShowRegionLookup(false) 
     }),
     
     // Detail modal

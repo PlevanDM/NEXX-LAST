@@ -1,0 +1,687 @@
+{
+  "version": "2.0.0",
+  "updated_at": "2026-01-19",
+  "description": "Apple device regional codes with country information, FaceTime support, Dual SIM, and box contents",
+  "sources": [
+    "https://gist.github.com/donn/0c501ab625625c381fdf3210bf0ff275",
+    "https://theapplewiki.com/wiki/Models",
+    "https://support.apple.com/en-us/HT204042",
+    "https://www.apple.com/iphone/cellular/"
+  ],
+  "regional_codes": {
+    "AA": {
+      "region": "Middle East",
+      "countries": ["Egypt", "Saudi Arabia", "United Arab Emirates"],
+      "facetime": "carrier_dependent",
+      "dual_sim": true,
+      "notes": "FaceTime may need carrier whitelisting",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "AB": {
+      "region": "Middle East",
+      "countries": ["Egypt", "Jordan", "Saudi Arabia", "United Arab Emirates"],
+      "facetime": "carrier_dependent",
+      "dual_sim": true,
+      "notes": "FaceTime may need carrier whitelisting",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "AE": {
+      "region": "United Arab Emirates",
+      "countries": ["United Arab Emirates"],
+      "facetime": "carrier_dependent",
+      "dual_sim": true,
+      "notes": "FaceTime availability depends on carrier",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "AH": {
+      "region": "Middle East",
+      "countries": ["Egypt", "Saudi Arabia", "Greece"],
+      "facetime": "carrier_dependent",
+      "dual_sim": true,
+      "notes": "Greece reports unconfirmed",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "B": {
+      "region": "UK/Ireland",
+      "countries": ["United Kingdom", "Ireland"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Also used for some replacement units",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "BR": {
+      "region": "Brazil",
+      "countries": ["Brazil"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Assembled in Brazil",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    },
+    "BZ": {
+      "region": "Brazil",
+      "countries": ["Brazil"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Assembled in China for Brazil",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    },
+    "C": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "CL": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "CH": {
+      "region": "China",
+      "countries": ["China"],
+      "facetime": false,
+      "dual_sim": "physical_dual",
+      "notes": "Supports dual physical SIM cards (iPhone XS Max and later). No FaceTime.",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    },
+    "CZ": {
+      "region": "Czech Republic",
+      "countries": ["Czech Republic"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "D": {
+      "region": "Germany",
+      "countries": ["Germany"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "DN": {
+      "region": "DACH",
+      "countries": ["Austria", "Germany", "Netherlands"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "E": {
+      "region": "Mexico",
+      "countries": ["Mexico"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "EE": {
+      "region": "Estonia",
+      "countries": ["Estonia"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "FB": {
+      "region": "France/Benelux",
+      "countries": ["France", "Luxembourg"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "EarPods included until Jan 2022 due to radiation law",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "FD": {
+      "region": "Alps",
+      "countries": ["Austria", "Liechtenstein", "Switzerland"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "GR": {
+      "region": "Greece",
+      "countries": ["Greece"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "HB": {
+      "region": "Israel",
+      "countries": ["Israel"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "HN": {
+      "region": "India",
+      "countries": ["India"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Charger may be included",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    },
+    "IP": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "IR": {
+      "region": "Iran",
+      "countries": ["Iran"],
+      "facetime": false,
+      "dual_sim": true,
+      "notes": "FaceTime not available",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "J": {
+      "region": "Japan",
+      "countries": ["Japan"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Camera shutter sound cannot be muted",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "KH": {
+      "region": "Korea",
+      "countries": ["South Korea"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Camera shutter sound cannot be muted",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "KN": {
+      "region": "Norway",
+      "countries": ["Norway"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "KS": {
+      "region": "Scandinavia",
+      "countries": ["Finland", "Sweden"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "LA": {
+      "region": "Latin America",
+      "countries": ["Colombia", "Ecuador", "El Salvador", "Guatemala", "Honduras", "Peru"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "LE": {
+      "region": "Argentina",
+      "countries": ["Argentina"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "LL": {
+      "region": "USA",
+      "countries": ["United States", "Canada"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "iPhone 12+ has mmWave 5G. Also used for replacement units.",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      },
+      "special_features": {
+        "mmwave_5g": true,
+        "models_affected": ["iPhone 12", "iPhone 12 Pro", "iPhone 12 Pro Max", "iPhone 13", "iPhone 13 Pro", "iPhone 13 Pro Max", "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max", "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max", "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max"]
+      }
+    },
+    "LW": {
+      "region": "USA (Watch)",
+      "countries": ["United States"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Apple Watch with Blood Oxygen sensor disabled due to patent dispute",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "LZ": {
+      "region": "South America",
+      "countries": ["Chile", "Paraguay", "Uruguay"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "MG": {
+      "region": "Hungary",
+      "countries": ["Hungary"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "MO": {
+      "region": "Macau",
+      "countries": ["Macau", "Hong Kong"],
+      "facetime": true,
+      "dual_sim": "physical_dual",
+      "notes": "Supports dual physical SIM cards",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    },
+    "MY": {
+      "region": "Malaysia",
+      "countries": ["Malaysia"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "NF": {
+      "region": "France/Benelux",
+      "countries": ["Belgium", "France", "Luxembourg"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "PL": {
+      "region": "Poland",
+      "countries": ["Poland"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "PO": {
+      "region": "Portugal",
+      "countries": ["Portugal"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "PP": {
+      "region": "Philippines",
+      "countries": ["Philippines"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "RO": {
+      "region": "Romania",
+      "countries": ["Romania"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "RS": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "RU": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "SL": {
+      "region": "Slovakia",
+      "countries": ["Slovakia"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "SO": {
+      "region": "South Africa",
+      "countries": ["South Africa"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "T": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "TA": {
+      "region": "Taiwan",
+      "countries": ["Taiwan"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "TU": {
+      "region": "Turkey",
+      "countries": ["Turkey"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "TY": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "UA": {
+      "region": "Ukraine",
+      "countries": ["Ukraine"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "VC": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "VN": {
+      "region": "Vietnam",
+      "countries": ["Vietnam"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "X": {
+      "region": "Australia/NZ",
+      "countries": ["Australia", "New Zealand"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "Y": {
+      "region": "Spain",
+      "countries": ["Spain"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "ZA": {
+      "region": "Singapore/HK",
+      "countries": ["Singapore", "Hong Kong"],
+      "facetime": true,
+      "dual_sim": "physical_dual",
+      "notes": "May support dual physical SIM cards",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": false
+      }
+    },
+    "ZP": {
+      "region": "Hong Kong/Macau",
+      "countries": ["Hong Kong", "Macau"],
+      "facetime": true,
+      "dual_sim": "physical_dual",
+      "notes": "Supports dual physical SIM cards",
+      "box_contents": {
+        "cable": true,
+        "earpods": false,
+        "charger": true
+      }
+    }
+  },
+  "facetime_notes": {
+    "carrier_dependent": "FaceTime availability depends on carrier whitelisting. May not work with foreign SIM cards.",
+    "reference_middle_east": "https://support.apple.com/en-us/HT204042",
+    "reference_egypt": "https://support.apple.com/en-us/HT204045"
+  },
+  "dual_sim_notes": {
+    "physical_dual": "Supports two physical nano-SIM cards (iPhone XS Max and later in China/HK/Macau)",
+    "esim": "Most other regions use eSIM + physical SIM combination"
+  },
+  "box_contents_history": {
+    "before_iphone_12": {
+      "cable": true,
+      "earpods": true,
+      "charger": true
+    },
+    "iphone_12_and_later": {
+      "cable": true,
+      "earpods": false,
+      "charger": false,
+      "exceptions": ["France (EarPods until Jan 2022)", "Brazil", "China", "India"]
+    }
+  }
+}
