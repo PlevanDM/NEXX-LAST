@@ -82,5 +82,46 @@
       "Specialized tools required",
       "Very limited parts availability"
     ]
-  }
+  },
+  "Series_8": {
+    "processor": "S8 SiP (Apple)",
+    "display": "LTPO OLED Always-On",
+    "common_issues": [
+      "Battery drain after watchOS update",
+      "Screen not responding to touch",
+      "Won't turn on (red lightning bolt)",
+      "GPS inaccuracy",
+      "Heart rate sensor issues"
+    ],
+    "repair_difficulty": "Очень сложная - клей и плотная компоновка",
+    "battery_replacement": "$79 Apple / $40-60 third party"
+  },
+  "Series_9": {
+    "processor": "S9 SiP (Apple)",
+    "features": [
+      "Double Tap gesture",
+      "Brighter display 2000 nits"
+    ],
+    "common_issues": [
+      "Battery drain",
+      "Double Tap not working",
+      "Display ghost touch"
+    ],
+    "repair_difficulty": "Очень сложная"
+  },
+  "Ultra_2": {
+    "processor": "S9 SiP (Apple)",
+    "features": [
+      "Titanium case",
+      "Action button",
+      "Dual-frequency GPS"
+    ],
+    "common_issues": [
+      "Action button stuck",
+      "GPS issues in mountains",
+      "Crown rotation issues"
+    ],
+    "repair_difficulty": "Экстремально сложная - титановый корпус"
+  },
+  "updated": "2026-01-19T05:31:23.003512"
 }

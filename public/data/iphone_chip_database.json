@@ -1,287 +1,249 @@
 {
-  "iPhone_6": {
-    "model": "iPhone 6",
-    "board": "D10 / D11",
-    "year": "2014",
-    "chips": {
-      "CPU": {
-        "marking": "APL0698 / A8",
-        "location": "U0201",
-        "package": "PoP with RAM"
-      },
-      "PMIC": {
-        "marking": "338S1251-AZ",
-        "location": "U1202",
-        "type": "Power Management"
-      },
-      "NAND": {
-        "marking": "Various (Toshiba/SanDisk/SK Hynix)",
-        "location": "U0601",
-        "sizes": [
-          "16GB",
-          "64GB",
-          "128GB"
-        ]
-      },
-      "Audio_Codec": {
-        "marking": "338S1201",
-        "location": "U0900",
-        "type": "Cirrus Logic"
-      },
-      "Tristar": {
-        "marking": "610A2",
-        "location": "U2",
-        "type": "USB Controller"
-      },
-      "Touch_IC": {
-        "marking": "343S0694",
-        "location": "U2402",
-        "type": "Cumulus Touch Controller"
-      },
-      "WiFi_BT": {
-        "marking": "339S0228",
-        "location": "U5201_RF",
-        "type": "Murata/USI Module"
-      },
-      "Baseband": {
-        "marking": "MDM9625M",
-        "location": "U_BB_RF",
-        "type": "Qualcomm"
-      }
+  "iPhone_15_Pro_Max": {
+    "processor": {
+      "main": "Apple APL1V02 / 339S01257 A17 Pro",
+      "cores": "6 (2 performance + 4 efficiency)",
+      "gpu": "6-core GPU",
+      "neural_engine": "16-core Neural Engine",
+      "process": "TSMC 3nm",
+      "ram": "8GB LPDDR5 (SK hynix H58G66AK6HX132)"
     },
-    "test_points": {
-      "PP_VDD_MAIN": "4.2V",
-      "PP_BATT_VCC": "3.8V",
-      "PP3V0_NAND": "3.0V",
-      "PP1V8_SDRAM": "1.8V",
-      "PP_CPU": "0.9-1.1V"
-    }
-  },
-  "iPhone_7": {
-    "model": "iPhone 7",
-    "board": "D10 / D11",
-    "year": "2016",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W24 / A10 Fusion",
-        "location": "U1000",
-        "package": "PoP with RAM"
-      },
-      "PMIC": {
-        "marking": "338S00225",
-        "location": "U2700",
-        "type": "Dialog Power Management"
-      },
-      "Audio_IC": {
-        "marking": "338S00105",
-        "location": "U3500/U3101",
-        "type": "Cirrus Logic CS42L77"
-      },
-      "Tristar": {
-        "marking": "610A3B",
-        "location": "U4500/U2",
-        "type": "USB/Lightning Controller"
-      },
-      "Baseband_Intel": {
-        "marking": "PMB9943 (Intel)",
-        "location": "U_BB",
-        "type": "Intel XMM7360"
-      },
-      "Baseband_Qualcomm": {
-        "marking": "MDM9645M (Qualcomm)",
-        "location": "U_BB",
-        "type": "Qualcomm X12 LTE"
-      },
-      "WiFi_BT": {
-        "marking": "339S00199",
-        "location": "U5200",
-        "type": "USI Module"
-      }
+    "modem": {
+      "main": "Qualcomm SDX70M (Snapdragon X70)",
+      "type": "5G modem",
+      "bands": "Sub-6GHz + mmWave"
     },
-    "test_points": {
-      "PP_VDD_MAIN": "4.3V",
-      "PP_GPU": "Variable",
-      "PP3V0_NAND": "3.0V",
-      "PP1V8": "1.8V"
-    }
-  },
-  "iPhone_X": {
-    "model": "iPhone X",
-    "board": "D22 / D221",
-    "year": "2017",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W72 / A11 Bionic",
-        "location": "Upper board U1000",
-        "package": "PoP with RAM"
+    "power_management": [
+      {
+        "chip": "Apple APL109A / 338S01022",
+        "function": "Main PMIC"
       },
-      "PMIC_Main": {
-        "marking": "338S00341",
-        "location": "Lower board",
-        "type": "Main PMIC"
+      {
+        "chip": "STMicroelectronics STCPM1A3",
+        "function": "Power management"
       },
-      "PMIC_Sub": {
-        "marking": "338S00383",
-        "location": "Lower board",
-        "type": "Sub PMIC"
+      {
+        "chip": "STMicroelectronics STB605A11",
+        "function": "Power management"
       },
-      "Audio_Codec": {
-        "marking": "338S00248",
-        "location": "Lower board",
-        "type": "Audio IC"
+      {
+        "chip": "Apple 338S00946-B0",
+        "function": "Power management"
       },
-      "Hydra": {
-        "marking": "U6300",
-        "location": "Lower board",
-        "type": "USB-C/Lightning Controller"
+      {
+        "chip": "Apple 338S00616",
+        "function": "Power management"
       },
-      "NAND": {
-        "marking": "Various (SanDisk/Toshiba)",
-        "location": "Upper board",
-        "sizes": [
-          "64GB",
-          "256GB"
-        ]
-      },
-      "Display_Driver": {
-        "marking": "S2D18A01X01",
-        "location": "Upper board",
-        "type": "Samsung OLED Driver"
+      {
+        "chip": "Qualcomm PMX65",
+        "function": "RF PMIC"
       }
+    ],
+    "charging": {
+      "main": "Texas Instruments SN2012017",
+      "type": "Battery charger",
+      "usb_c": true
     },
-    "test_points": {
-      "VDD_MAIN": "4.3V",
-      "VDD_BOOST": "4.6V",
-      "PP3V0": "3.0V"
+    "audio": [
+      {
+        "chip": "Apple 338S00739",
+        "function": "Audio CODEC"
+      },
+      {
+        "chip": "Apple 338S00537",
+        "function": "Audio amplifier"
+      }
+    ],
+    "wireless": {
+      "wifi_bt": "Apple 339S01232 WiFi & Bluetooth module",
+      "uwb": "Apple 339M00298 UWB Module",
+      "nfc": "NXP Semiconductor NFC controller"
     },
-    "sandwich_board_notes": [
-      "Two boards connected via interposer",
-      "Requires separation for many repairs",
-      "Critical: maintain alignment during reassembly"
-    ]
-  },
-  "iPhone_11": {
-    "model": "iPhone 11",
-    "board": "N104",
-    "year": "2019",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W85 / A13 Bionic",
-        "location": "U1000",
-        "package": "PoP with RAM"
+    "rf_components": [
+      {
+        "chip": "Qualcomm SDR735",
+        "function": "RF transceiver"
       },
-      "PMIC": {
-        "marking": "338S00509",
-        "location": "U2700",
-        "type": "Power Management"
+      {
+        "chip": "Qualcomm SMR546",
+        "function": "RF transceiver"
       },
-      "Audio_IC": {
-        "marking": "338S00537",
-        "location": "U3300",
-        "type": "Audio Codec"
+      {
+        "chip": "Qualcomm QET7100",
+        "function": "Wideband envelope tracker"
       },
-      "U2_IC": {
-        "marking": "U6300",
-        "location": "U6300",
-        "type": "USB/Lightning Controller"
+      {
+        "chip": "Broadcom AFEM-8234",
+        "function": "Front-end module"
       },
-      "UWB": {
-        "marking": "U1 Chip",
-        "location": "U5600",
-        "type": "Ultra Wideband"
+      {
+        "chip": "Skyworks SKY58440-11",
+        "function": "Front-end module"
       },
-      "WiFi6_BT5": {
-        "marking": "339S00647",
-        "location": "U7000",
-        "type": "WiFi 6 + BT 5.0"
+      {
+        "chip": "Qorvo QM76305",
+        "function": "Front-end module"
+      },
+      {
+        "chip": "Broadcom AFEM-8245",
+        "function": "Front-end module"
       }
-    }
-  },
-  "iPhone_12": {
-    "model": "iPhone 12",
-    "board": "D52G / D53G",
-    "year": "2020",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W05 / A14 Bionic",
-        "location": "Upper layer",
-        "package": "PoP with RAM"
-      },
-      "PMIC_Main": {
-        "marking": "338S00689",
-        "location": "Lower layer",
-        "type": "Main PMIC"
-      },
-      "5G_Modem": {
-        "marking": "SDX55M (Qualcomm)",
-        "location": "RF board",
-        "type": "5G Modem"
-      },
-      "Audio_IC": {
-        "marking": "338S00740",
-        "location": "Lower layer",
-        "type": "Audio Codec"
-      },
-      "MagSafe": {
-        "marking": "NFC Controller",
-        "location": "U8100",
-        "type": "MagSafe/NFC"
-      }
+    ],
+    "display": {
+      "driver": "Texas Instruments TPS65657B0",
+      "function": "Display power supply"
     },
-    "sandwich_board": true,
-    "test_points": {
-      "VDD_MAIN": "4.45V",
-      "VDD_BOOST": "4.7V",
-      "PP3V3": "3.3V"
+    "storage": {
+      "nand": "Kioxia K5A4RB6302CA12304 256GB",
+      "type": "NAND flash"
+    },
+    "wireless_charging": {
+      "chip": "Broadcom BCM59365EA1IUBG",
+      "function": "Wireless power receiver"
+    },
+    "sensors": {
+      "motion": "Bosch Sensortec 6-axis MEMS accelerometer & gyroscope"
+    },
+    "security": {
+      "esim": "STMicroelectronics ST33J",
+      "function": "Secure microcontroller / eSIM"
+    },
+    "flash": {
+      "chip": "Texas Instruments LM3567A1",
+      "function": "Flash controller"
+    },
+    "nor_flash": {
+      "chip": "Winbond W25Q80DVUXIE",
+      "size": "1 MB",
+      "function": "Serial NOR flash memory"
     }
   },
-  "iPhone_13": {
-    "model": "iPhone 13",
-    "board": "D16 / D17",
-    "year": "2021",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W07 / A15 Bionic",
-        "location": "Upper layer",
-        "package": "PoP with LPDDR4X"
+  "iPhone_16_Pro": {
+    "processor": {
+      "main": "Apple APL1V07 / 339S01527 A18 Pro",
+      "cores": "6 (2 performance + 4 efficiency)",
+      "gpu": "6-core GPU",
+      "neural_engine": "16-core Neural Engine",
+      "process": "TSMC 3nm (2nd gen)",
+      "ram": "Micron MT62F1G64D4AQ-031 XT:C LPDDR5X SDRAM"
+    },
+    "modem": {
+      "main": "Qualcomm SDX71M-000",
+      "type": "5G modem",
+      "bands": "Sub-6GHz + mmWave"
+    },
+    "power_management": [
+      {
+        "chip": "Apple APL109A / 338S01119",
+        "function": "Main PMIC"
       },
-      "PMIC": {
-        "marking": "338S00770",
-        "location": "Lower layer",
-        "type": "Power Management"
+      {
+        "chip": "STMicroelectronics STPMIA3C",
+        "function": "Power management"
       },
-      "Audio_IC": {
-        "marking": "338S00773",
-        "location": "Lower layer",
-        "type": "Audio Codec"
+      {
+        "chip": "Apple 338S00616",
+        "function": "DC-DC converter"
       },
-      "5G_Modem": {
-        "marking": "SDR865 (Qualcomm)",
-        "location": "RF board",
-        "type": "5G Modem"
+      {
+        "chip": "Apple 338S01026-B1",
+        "function": "Power management"
+      },
+      {
+        "chip": "Qualcomm PMX65-000",
+        "function": "RF PMIC"
+      },
+      {
+        "chip": "Cirrus Logic 338S00843",
+        "function": "Power management"
       }
+    ],
+    "charging": {
+      "main": "Texas Instruments SN2012027",
+      "type": "USB type-C controller",
+      "battery_charger": "Texas Instruments CP3200B1G0",
+      "usb_c": true,
+      "usb_pd": "3.1"
+    },
+    "audio": [
+      {
+        "chip": "Cirrus Logic 338S00967",
+        "function": "Audio codec"
+      },
+      {
+        "chip": "Cirrus Logic 338S01087",
+        "function": "Audio amplifier (x2)"
+      }
+    ],
+    "wireless": {
+      "wifi_bt": "USI 339S01464 Bluetooth & WiFi Module",
+      "uwb": "USI 339M00326 UWB module",
+      "nfc": "NXP Semiconductors NFC controller"
+    },
+    "rf_components": [
+      {
+        "chip": "Qualcomm SDR735-001",
+        "function": "RF transceiver"
+      },
+      {
+        "chip": "Qualcomm SMR546-002",
+        "function": "IF transceiver"
+      },
+      {
+        "chip": "Qualcomm QET7100-001",
+        "function": "Wideband envelope tracker"
+      },
+      {
+        "chip": "Broadcom AFEM-8234",
+        "function": "Front-end module"
+      },
+      {
+        "chip": "Skyworks SKY58440-11",
+        "function": "Front-end module"
+      },
+      {
+        "chip": "Qorvo QM76307",
+        "function": "Front-end module"
+      },
+      {
+        "chip": "Qorvo QM76306",
+        "function": "Front-end module"
+      }
+    ],
+    "display": {
+      "driver": "Texas Instruments TPS65657B0",
+      "function": "Display power supply"
+    },
+    "storage": {
+      "nand": "Kioxia K5A3RF9864 128GB",
+      "type": "NAND flash"
+    },
+    "wireless_charging": {
+      "chip": "Broadcom BCM59367A1",
+      "function": "Wireless charging controller"
+    },
+    "sensors": {
+      "motion": "Bosch Sensortec accelerometer & gyroscope",
+      "adc": "Analog Devices MAX11390A analog to digital converter"
+    },
+    "security": {
+      "esim": "STMicroelectronics ST33J",
+      "function": "eSIM/secure element"
+    },
+    "flash": {
+      "chip": "Texas Instruments LM3567A1",
+      "function": "LED flash driver"
+    },
+    "nor_flash": {
+      "chip": "GigaDevice GD25Q80E",
+      "size": "1 MB",
+      "function": "Serial NOR flash memory"
+    },
+    "battery_frontend": {
+      "chip": "Texas Instruments TPS61280H",
+      "function": "Battery front-end DC-DC converter"
     }
   },
-  "iPhone_14": {
-    "model": "iPhone 14",
-    "board": "D27 / D28",
-    "year": "2022",
-    "chips": {
-      "CPU": {
-        "marking": "APL1W07 / A15 Bionic",
-        "location": "Main board",
-        "package": "PoP with 6GB LPDDR4X"
-      },
-      "PMIC": {
-        "marking": "338S00817",
-        "location": "Power board",
-        "type": "Power Management"
-      },
-      "eSIM": {
-        "marking": "eSIM Controller",
-        "location": "U7700",
-        "type": "eSIM only (US models)"
-      }
-    }
-  }
+  "source": "iFixit Chip ID Guide",
+  "updated": "2026-01-19T05:31:23.005151"
 }

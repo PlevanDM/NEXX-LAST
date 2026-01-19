@@ -2494,5 +2494,208 @@
     ],
     "difficulty": "High",
     "time": "45-60 minutes"
+  },
+  "usb_c_controllers": {
+    "CD3217B12": {
+      "name": "CD3217B12 (USB-C Controller)",
+      "manufacturer": "Texas Instruments",
+      "designation": "U3100",
+      "package": "BGA 64-ball",
+      "functions": [
+        "USB-C Power Delivery",
+        "USB 3.1 Gen 2 контроль",
+        "Зарядка до 140W",
+        "Data role swap"
+      ],
+      "devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPad Pro M2/M4",
+        "iPad Air M2",
+        "MacBook Air M1/M2/M3",
+        "MacBook Pro M1/M2/M3"
+      ],
+      "common_issues": [
+        "No charge / No power",
+        "USB-C not recognized",
+        "No data transfer",
+        "Baseband failure (связь с модемом)",
+        "Перегрев при зарядке"
+      ],
+      "repair_notes": "Критический чип для USB-C устройств. Часто требует прошивки после замены. Использовать JCID V1S Pro.",
+      "price_range": "$8-20",
+      "aliexpress": "https://www.aliexpress.com/w/wholesale-CD3217B12.html",
+      "donor_models": [
+        {
+          "model": "iPhone 15",
+          "years": "2023",
+          "difficulty": "Сложная"
+        },
+        {
+          "model": "iPad Pro 11\" M2",
+          "years": "2022",
+          "difficulty": "Очень сложная"
+        }
+      ]
+    },
+    "SN2012027": {
+      "name": "SN2012027 (USB-C Controller iPhone 16)",
+      "manufacturer": "Texas Instruments",
+      "designation": "U3100",
+      "functions": [
+        "USB Type-C controller",
+        "USB PD 3.1",
+        "Быстрая зарядка",
+        "Data transfer"
+      ],
+      "devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "price_range": "$10-25",
+      "repair_notes": "Новый контроллер для iPhone 16 серии. Требует калибровки."
+    },
+    "CP3200B1G0": {
+      "name": "CP3200B1G0 (Battery Charger)",
+      "manufacturer": "Texas Instruments",
+      "designation": "U3200",
+      "functions": [
+        "Battery charging control",
+        "OVP/OCP protection",
+        "Thermal management"
+      ],
+      "devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "price_range": "$8-18"
+    }
+  },
+  "modems": {
+    "SDX70M": {
+      "name": "Qualcomm Snapdragon X70 (SDX70M)",
+      "type": "5G Modem-RF System",
+      "process": "4nm",
+      "devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max"
+      ],
+      "features": [
+        "5G Sub-6 + mmWave",
+        "AI-based modem",
+        "Smart Transmit 3.0",
+        "Dual SIM Dual Active"
+      ],
+      "common_issues": [
+        "No Service / Searching",
+        "No IMEI",
+        "No Modem Firmware",
+        "Weak signal / Dropping calls",
+        "SIM not detected"
+      ],
+      "diagnosis": [
+        "Проверить *#06# - должен показать IMEI",
+        "Settings > General > About - Modem Firmware должен быть",
+        "Диагностика: отсутствие modem firmware = baseband CPU failure",
+        "Проверить RF кабели и антенны"
+      ],
+      "repair_difficulty": "Очень сложная",
+      "price_range": "$50-150 (reballing/замена)"
+    },
+    "SDX71M": {
+      "name": "Qualcomm Snapdragon X71 (SDX71M-000)",
+      "type": "5G Modem-RF System",
+      "process": "4nm (enhanced)",
+      "devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "features": [
+        "5G Sub-6 + mmWave enhanced",
+        "AI-based modem v2",
+        "Improved power efficiency",
+        "Better signal reception"
+      ],
+      "common_issues": [
+        "No Service / Searching",
+        "No IMEI",
+        "No Modem Firmware",
+        "eSIM activation issues"
+      ]
+    }
+  },
+  "face_id": {
+    "dot_projector": {
+      "name": "Dot Projector",
+      "function": "Проецирует 30,000+ инфракрасных точек на лицо",
+      "issues": [
+        "Face ID unavailable",
+        "Move iPhone a little higher/lower",
+        "Face ID не настраивается"
+      ],
+      "repair": {
+        "difficulty": "Экстремально сложная",
+        "requires": [
+          "QianLi iCopy Plus",
+          "Микроскоп 40x+",
+          "Специальный паяльник для micro BGA"
+        ],
+        "procedure": [
+          "1. Снять Dot Projector с поврежденного flex",
+          "2. Очистить под микроскопом",
+          "3. Припаять на новый QianLi flex",
+          "4. Калибровка через специальный софт"
+        ],
+        "success_rate": "60-70%",
+        "notes": "Paired to CPU. Нельзя просто заменить на новый."
+      }
+    },
+    "flood_illuminator": {
+      "name": "Flood Illuminator",
+      "function": "Инфракрасная подсветка для Face ID",
+      "issues": [
+        "Face ID не работает в темноте",
+        "Proximity sensor не работает"
+      ],
+      "repair": {
+        "difficulty": "Очень сложная",
+        "procedure": [
+          "1. Reballing Flood Illuminator",
+          "2. Или перенос на donor flex",
+          "3. Проверка proximity sensor"
+        ]
+      }
+    },
+    "ir_camera": {
+      "name": "Infrared Camera",
+      "function": "Захват IR изображения для Face ID",
+      "repair_notes": "Можно заменить отдельно, не paired"
+    },
+    "models_support": {
+      "iPhone X": "Face ID v1",
+      "iPhone XR": "Face ID v1 (без Animoji depth)",
+      "iPhone XS/XS Max": "Face ID v1",
+      "iPhone 11 series": "Face ID v2 (широкий угол)",
+      "iPhone 12 series": "Face ID v2 (меньший модуль)",
+      "iPhone 13 series": "Face ID v2.1 (диагональный)",
+      "iPhone 14 series": "Face ID v2.2",
+      "iPhone 14 Pro/Pro Max": "Face ID + Dynamic Island",
+      "iPhone 15 series": "Face ID + Dynamic Island",
+      "iPhone 16 series": "Face ID + Dynamic Island v2"
+    }
   }
 }

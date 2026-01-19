@@ -1,0 +1,131 @@
+{
+  "itunes_restore_errors": {
+    "error_9": {
+      "code": 9,
+      "meaning": "Device disconnected during restore",
+      "hardware_causes": [
+        "Неисправный USB кабель/порт",
+        "Tristar/Hydra IC поврежден",
+        "NAND flash failure",
+        "Baseband CPU issue"
+      ],
+      "software_causes": [
+        "Timeout при записи firmware",
+        "Антивирус блокирует iTunes"
+      ],
+      "diagnosis": [
+        "Попробовать другой кабель/порт/компьютер",
+        "Восстановить без экрана (отключить дисплей)",
+        "Проверить NAND на программаторе"
+      ]
+    },
+    "error_14": {
+      "code": 14,
+      "meaning": "USB disconnect or firmware mismatch",
+      "hardware_causes": [
+        "NAND flash ошибка чтения/записи",
+        "USB IC (Tristar) повреждение"
+      ],
+      "diagnosis": [
+        "Аналогично error 9"
+      ]
+    },
+    "error_4005": {
+      "code": 4005,
+      "meaning": "Device timeout during restore",
+      "hardware_causes": [
+        "NAND timing issue",
+        "Memory controller failure",
+        "Logic board damage"
+      ]
+    },
+    "error_4013": {
+      "code": 4013,
+      "meaning": "Device disconnected",
+      "hardware_causes": [
+        "NAND flash failure (80% случаев)",
+        "Tristar IC damage",
+        "Board-level short circuit",
+        "Water damage корозия"
+      ],
+      "repair_approach": [
+        "1. Попробовать restore без дисплея",
+        "2. Проверить NAND через программатор JCID",
+        "3. Reballing NAND",
+        "4. Замена NAND (потеря данных)",
+        "5. Проверить baseband PMIC"
+      ]
+    },
+    "error_4014": {
+      "code": 4014,
+      "meaning": "Device timeout (similar to 4013)",
+      "hardware_causes": [
+        "NAND flash failure",
+        "Memory controller",
+        "Baseband issues"
+      ],
+      "notes": "Часто связано с sandwich board issues на iPhone X+"
+    },
+    "error_2001_2011": {
+      "codes": "2001-2011",
+      "meaning": "USB communication errors",
+      "causes": [
+        "Tristar IC failure",
+        "USB port damage",
+        "Lightning connector damage"
+      ]
+    },
+    "error_40_53_56": {
+      "codes": "40, 53, 56",
+      "meaning": "Security / Hardware mismatch",
+      "causes": [
+        "Error 40: Заменен Audio IC без reballing (iPhone 7)",
+        "Error 53: Touch ID mismatch (replaced home button)",
+        "Error 56: NFC chip issue"
+      ]
+    },
+    "error_1": {
+      "code": 1,
+      "meaning": "Hardware incompatible with firmware",
+      "causes": [
+        "Wrong firmware for device",
+        "Modded firmware",
+        "Baseband mismatch"
+      ]
+    },
+    "error_(-1)": {
+      "code": -1,
+      "meaning": "Baseband update failure",
+      "causes": [
+        "Baseband CPU/PMIC failure",
+        "RF section damage",
+        "Antenna disconnected"
+      ],
+      "diagnosis": [
+        "Проверить наличие IMEI (*#06#)",
+        "Проверить Modem Firmware в настройках",
+        "Если пусто - baseband hardware failure"
+      ]
+    }
+  },
+  "mac_diagnostics": {
+    "ADP000": "No issues found - все OK",
+    "CNW001-CNW006": "WiFi/Bluetooth hardware issue",
+    "CNB001-CNB004": "Bluetooth issue",
+    "NDC001-NDC006": "Camera issue",
+    "NDD001": "USB hardware issue",
+    "NNN001": "Serial number not found",
+    "PFM001-PFM007": "System Management Controller issue",
+    "PFR001": "System firmware issue",
+    "PPF001-PPF004": "Fan issue",
+    "PPM001-PPM015": "Memory issue",
+    "PPP001-PPP007": "Power adapter issue",
+    "PPR001": "CPU issue",
+    "PPT001-PPT007": "Battery issue",
+    "VDC001-VDC007": "Graphics/display issue",
+    "VFD001-VFD007": "Display issue",
+    "VFF001": "Audio hardware issue",
+    "SDC001": "SD Card reader issue"
+  },
+  "updated": "2026-01-19T05:31:23.001031"
+}

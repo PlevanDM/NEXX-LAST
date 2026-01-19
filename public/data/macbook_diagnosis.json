@@ -1,0 +1,95 @@
+{
+  "m1_m2_m3_common_issues": {
+    "no_power": {
+      "symptoms": [
+        "Не включается от кнопки",
+        "Не заряжается",
+        "MagSafe не светится",
+        "USB-C не распознается"
+      ],
+      "diagnosis_steps": [
+        "1. Проверить зарядку с оригинальным адаптером",
+        "2. SMC reset: зажать power 10 сек",
+        "3. Проверить USB-C порты визуально",
+        "4. Подключить USB-C амперметр - ток должен быть",
+        "5. Если нет тока - проблема с CD3217 или PMIC"
+      ],
+      "common_culprits": [
+        "CD3217B12 USB-C controller (90% случаев)",
+        "Liquid damage на USB-C порту",
+        "Main PMIC failure"
+      ]
+    },
+    "no_display": {
+      "symptoms": [
+        "Включается (звук), но экран черный",
+        "Внешний монитор работает, встроенный нет"
+      ],
+      "diagnosis": [
+        "Проверить яркость (F2)",
+        "Shine flashlight - видно изображение = backlight failure",
+        "NVRAM reset: Option+Command+P+R при загрузке"
+      ]
+    },
+    "kernel_panic": {
+      "symptoms": [
+        "Restart notification",
+        "Зависания"
+      ],
+      "common_causes": [
+        "RAM issue (не заменяется на M-чипах!)",
+        "SSD controller failure",
+        "Перегрев из-за термопасты"
+      ]
+    },
+    "usb_c_issues": {
+      "symptoms": [
+        "Только один порт работает",
+        "Зарядка работает, данные нет"
+      ],
+      "causes": [
+        "CD3217B12 для этого порта поврежден",
+        "Физическое повреждение порта"
+      ]
+    }
+  },
+  "diagnostic_codes": {
+    "ADP000": "No issues found - все OK",
+    "CNW001-CNW006": "WiFi/Bluetooth hardware issue",
+    "CNB001-CNB004": "Bluetooth issue",
+    "NDC001-NDC006": "Camera issue",
+    "NDD001": "USB hardware issue",
+    "NNN001": "Serial number not found",
+    "PFM001-PFM007": "System Management Controller issue",
+    "PFR001": "System firmware issue",
+    "PPF001-PPF004": "Fan issue",
+    "PPM001-PPM015": "Memory issue",
+    "PPP001-PPP007": "Power adapter issue",
+    "PPR001": "CPU issue",
+    "PPT001-PPT007": "Battery issue",
+    "VDC001-VDC007": "Graphics/display issue",
+    "VFD001-VFD007": "Display issue",
+    "VFF001": "Audio hardware issue",
+    "SDC001": "SD Card reader issue"
+  },
+  "repair_limitations": {
+    "not_repairable": [
+      "RAM (встроена в чип)",
+      "CPU (M1/M2/M3 - весь SoC)",
+      "Neural Engine",
+      "GPU"
+    ],
+    "board_level_only": [
+      "CD3217 USB-C controllers",
+      "SSD controller",
+      "PMIC chips",
+      "Audio codec"
+    ],
+    "user_replaceable": [
+      "SSD (модульный на некоторых моделях)",
+      "Battery (с инструментами)",
+      "Display assembly",
+      "Keyboard/TopCase"
+    ]
+  }
+}

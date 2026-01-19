@@ -164,5 +164,37 @@
       "PP_CPU": "Dynamic",
       "PP_GPU": "Dynamic"
     }
-  }
+  },
+  "iPad_Pro_M2": {
+    "processor": "Apple M2",
+    "display": "Liquid Retina XDR (12.9\") / Liquid Retina (11\")",
+    "charging": "USB-C (CD3217B12)",
+    "common_issues": [
+      "Ghost touch / phantom touches",
+      "Face ID unavailable",
+      "USB-C not charging",
+      "Bent frame (из-за тонкости)",
+      "Apple Pencil not pairing"
+    ],
+    "repair_notes": "Очень тонкий корпус - легко гнется"
+  },
+  "iPad_Pro_M4": {
+    "processor": "Apple M4 (OLED модели)",
+    "display": "Ultra Retina XDR OLED",
+    "common_issues": [
+      "Touch issues / dead zones",
+      "Face ID calibration needed after screen repair",
+      "USB-C port damage"
+    ],
+    "repair_notes": "OLED дисплей - дорогая замена. Face ID может потребовать калибровку."
+  },
+  "iPad_Air_M2": {
+    "processor": "Apple M2",
+    "common_issues": [
+      "Battery drain",
+      "Charging slow",
+      "Magic Keyboard issues"
+    ]
+  },
+  "updated": "2026-01-19T05:31:23.004278"
 }
