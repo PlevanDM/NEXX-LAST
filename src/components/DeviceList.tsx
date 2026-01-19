@@ -104,16 +104,43 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
             <div
               key={device.name}
               onClick={() => onSelect(device)}
-              className="bg-white rounded-lg border border-slate-300 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col h-full"
+              className="bg-white rounded-lg border border-slate-300 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col h-full group"
             >
+              {/* Device Image */}
+              {device.ifixit_image ? (
+                <div className="h-32 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200 overflow-hidden">
+                  <img
+                    src={device.ifixit_image}
+                    alt={device.name}
+                    loading="lazy"
+                    className="max-h-28 object-contain opacity-90 transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="h-32 flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 border-b border-slate-200">
+                  <div className="text-6xl opacity-30">
+                    {device.category?.toLowerCase().includes('iphone') ? '📱' : 
+                     device.category?.toLowerCase().includes('ipad') ? '📟' : 
+                     device.category?.toLowerCase().includes('macbook') ? '💻' : 
+                     device.category?.toLowerCase().includes('mac') ? '🖥️' : 
+                     device.category?.toLowerCase().includes('watch') ? '⌚' : 
+                     device.category?.toLowerCase().includes('airpods') ? '🎧' : '🔧'}
+                  </div>
+                </div>
+              )}
+
               {/* Header: Name & Year */}
               <div className="p-3 bg-slate-50 border-b border-slate-200 flex justify-between items-start">
-                <div>
-                  <div className="font-bold text-slate-800 text-lg leading-tight">{device.name}</div>
+                <div className="flex-1">
+                  <div className="font-bold text-slate-800 text-base leading-tight line-clamp-2">{device.name}</div>
                   <div className="text-xs text-slate-500 font-medium mt-1">{device.category}</div>
                 </div>
                 {device.year && (
-                  <div className="bg-slate-200 text-slate-700 text-xs font-bold px-2 py-1 rounded">
+                  <div className="bg-slate-200 text-slate-700 text-xs font-bold px-2 py-1 rounded ml-2 flex-shrink-0">
                     {device.year}
                   </div>
                 )}
