@@ -1,71 +1,301 @@
 {
+  "source": "Compiled from repair community knowledge",
+  "updated_at": "2026-01-19",
   "rear_cameras": {
+    "iPhone_5s_SE1": {
+      "resolution": "8MP",
+      "compatible": ["iPhone 5s", "iPhone SE 1st Gen"],
+      "features": ["True Tone Flash"],
+      "notes": "Можно поменять между этими моделями"
+    },
     "iPhone_6_6Plus": {
       "resolution": "8MP",
-      "compatible": [
-        "iPhone 6",
-        "iPhone 6 Plus"
-      ],
-      "not_compatible": [
-        "6S due to different connector"
-      ]
+      "compatible": ["iPhone 6", "iPhone 6 Plus"],
+      "not_compatible": ["iPhone 6s (другой коннектор)"],
+      "features": ["Phase Detection AF", "True Tone Flash"],
+      "notes": "6 и 6 Plus имеют разные модули, но коннекторы совместимы"
     },
-    "iPhone_7_7Plus": {
+    "iPhone_6s_6sPlus": {
       "resolution": "12MP",
-      "compatible": [
-        "Same model only"
-      ],
-      "features": [
-        "OIS",
-        "Dual camera (Plus)"
-      ]
+      "compatible": ["iPhone 6s", "iPhone 6s Plus"],
+      "features": ["4K video", "OIS (только Plus)", "Live Photos"],
+      "notes": "Модули различаются: Plus имеет OIS"
+    },
+    "iPhone_7": {
+      "resolution": "12MP",
+      "compatible": ["iPhone 7 только"],
+      "features": ["OIS", "f/1.8"],
+      "notes": "Не совместим с 7 Plus"
+    },
+    "iPhone_7Plus": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone 7 Plus только"],
+      "features": ["Dual camera", "Portrait mode", "2x optical zoom"],
+      "notes": "Уникальный двойной модуль"
+    },
+    "iPhone_8": {
+      "resolution": "12MP",
+      "compatible": ["iPhone 8 только"],
+      "features": ["OIS", "4K 60fps", "Slow-mo 1080p 240fps"],
+      "notes": "Не совместим с 8 Plus"
+    },
+    "iPhone_8Plus": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone 8 Plus только"],
+      "features": ["Dual camera", "Portrait mode", "Portrait Lighting"],
+      "notes": "Уникальный модуль"
     },
     "iPhone_X_XS": {
       "resolution": "12MP dual",
-      "compatible": [
-        "X and XS interchangeable"
-      ],
-      "note": "Requires reprogramming"
+      "compatible": ["iPhone X", "iPhone XS"],
+      "features": ["Smart HDR", "Portrait mode", "Depth Control"],
+      "notes": "X и XS взаимозаменяемы, но требуется программирование для True Tone"
     },
-    "iPhone_11_series": {
+    "iPhone_XS_Max": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone XS Max только"],
+      "features": ["Identical to XS but larger flex"],
+      "notes": "Физически больше, не подходит к XS"
+    },
+    "iPhone_XR": {
+      "resolution": "12MP single",
+      "compatible": ["iPhone XR только"],
+      "features": ["Portrait mode via software", "Smart HDR"],
+      "notes": "Одинарная камера, уникальный модуль"
+    },
+    "iPhone_11": {
+      "resolution": "12MP dual (wide + ultra wide)",
+      "compatible": ["iPhone 11 только"],
+      "features": ["Ultra Wide", "Night mode", "4K 60fps"],
+      "notes": "Уникальный модуль с Ultra Wide"
+    },
+    "iPhone_11_Pro_ProMax": {
+      "resolution": "12MP triple",
+      "compatible": ["iPhone 11 Pro", "iPhone 11 Pro Max"],
+      "features": ["Triple camera", "Night mode", "Deep Fusion"],
+      "notes": "Pro и Pro Max используют одинаковые камеры"
+    },
+    "iPhone_12_12Pro": {
       "resolution": "12MP dual/triple",
-      "compatible": [
-        "Within same model"
-      ],
-      "features": [
-        "Ultra wide",
-        "Night mode"
-      ]
+      "compatible": ["iPhone 12", "iPhone 12 Pro (main camera)"],
+      "features": ["Dolby Vision HDR", "Night mode (all cameras)"],
+      "notes": "⚠️ Требуется программирование! Без него появится ошибка 'Unable to verify camera'"
     },
-    "iPhone_12_13": {
-      "resolution": "12MP",
-      "compatible": [
-        "12 and 12 Pro",
-        "13 and 13 Pro"
-      ],
-      "note": "ProRAW requires original camera"
+    "iPhone_12_mini": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone 12 mini только"],
+      "features": ["Same as 12 but smaller flex"],
+      "notes": "Меньший флекс-кабель"
+    },
+    "iPhone_12_Pro_Max": {
+      "resolution": "12MP triple",
+      "compatible": ["iPhone 12 Pro Max только"],
+      "features": ["Sensor-shift OIS", "LiDAR"],
+      "notes": "Уникальный датчик с sensor-shift"
+    },
+    "iPhone_13_13Pro": {
+      "resolution": "12MP dual/triple",
+      "compatible": ["iPhone 13", "iPhone 13 Pro (main camera)"],
+      "features": ["Sensor-shift OIS", "Cinematic mode"],
+      "notes": "⚠️ Требуется программирование! Face ID может быть затронут"
+    },
+    "iPhone_13_mini": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone 13 mini только"],
+      "notes": "Меньший форм-фактор"
+    },
+    "iPhone_13_Pro_Max": {
+      "resolution": "12MP triple",
+      "compatible": ["iPhone 13 Pro Max только"],
+      "features": ["ProRes video", "3x optical zoom"],
+      "notes": "Уникальный телеобъектив"
+    },
+    "iPhone_14_14Plus": {
+      "resolution": "12MP dual",
+      "compatible": ["iPhone 14", "iPhone 14 Plus"],
+      "features": ["Photonic Engine", "Action mode"],
+      "notes": "⚠️ Требуется программирование через Apple tools"
+    },
+    "iPhone_14_Pro": {
+      "resolution": "48MP triple",
+      "compatible": ["iPhone 14 Pro только"],
+      "features": ["48MP main sensor", "Dynamic Island"],
+      "notes": "Уникальный 48MP датчик"
+    },
+    "iPhone_14_Pro_Max": {
+      "resolution": "48MP triple",
+      "compatible": ["iPhone 14 Pro Max только"],
+      "features": ["Same as 14 Pro"],
+      "notes": "Больший flex connector"
+    },
+    "iPhone_15_15Plus": {
+      "resolution": "48MP dual",
+      "compatible": ["iPhone 15", "iPhone 15 Plus"],
+      "features": ["48MP main", "USB 3 support"],
+      "notes": "⚠️ Требуется программирование"
+    },
+    "iPhone_15_Pro": {
+      "resolution": "48MP triple",
+      "compatible": ["iPhone 15 Pro только"],
+      "features": ["5x telephoto", "ProRes Log"],
+      "notes": "Уникальный телеобъектив с призмой"
+    },
+    "iPhone_15_Pro_Max": {
+      "resolution": "48MP triple",
+      "compatible": ["iPhone 15 Pro Max только"],
+      "features": ["Tetraprism 5x telephoto"],
+      "notes": "Уникальная тетра-призма"
+    },
+    "iPhone_16_16Plus": {
+      "resolution": "48MP Fusion",
+      "compatible": ["iPhone 16", "iPhone 16 Plus"],
+      "features": ["Camera Control button", "Spatial photos/video"],
+      "notes": "⚠️ Требуется программирование. Camera Control button paired"
+    },
+    "iPhone_16_Pro": {
+      "resolution": "48MP quad-pixel",
+      "compatible": ["iPhone 16 Pro только"],
+      "features": ["5x telephoto", "4K 120fps ProRes"],
+      "notes": "Уникальный модуль"
+    },
+    "iPhone_16_Pro_Max": {
+      "resolution": "48MP quad-pixel",
+      "compatible": ["iPhone 16 Pro Max только"],
+      "features": ["Largest sensor yet"],
+      "notes": "Уникальный крупный датчик"
     }
   },
   "front_cameras": {
-    "group_1": [
-      "iPhone 6",
-      "iPhone 6 Plus"
+    "iPhone_5s_SE1": {
+      "compatible": ["iPhone 5s", "iPhone SE 1st Gen"],
+      "resolution": "1.2MP",
+      "notes": "Взаимозаменяемы"
+    },
+    "iPhone_6_6Plus": {
+      "compatible": ["iPhone 6", "iPhone 6 Plus"],
+      "resolution": "1.2MP",
+      "notes": "Взаимозаменяемы"
+    },
+    "iPhone_6s_6sPlus": {
+      "compatible": ["iPhone 6s", "iPhone 6s Plus"],
+      "resolution": "5MP",
+      "notes": "Взаимозаменяемы"
+    },
+    "iPhone_7_7Plus": {
+      "compatible": ["iPhone 7", "iPhone 7 Plus"],
+      "resolution": "7MP",
+      "notes": "Взаимозаменяемы"
+    },
+    "iPhone_8_8Plus_SE2_SE3": {
+      "compatible": ["iPhone 8", "iPhone 8 Plus", "iPhone SE 2nd Gen", "iPhone SE 3rd Gen"],
+      "resolution": "7MP",
+      "notes": "Все совместимы между собой"
+    },
+    "iPhone_X": {
+      "compatible": ["iPhone X только"],
+      "resolution": "7MP + TrueDepth",
+      "notes": "⚠️ TrueDepth (Face ID) НЕ переносится"
+    },
+    "iPhone_XS_XS_Max": {
+      "compatible": ["iPhone XS", "iPhone XS Max"],
+      "resolution": "7MP + TrueDepth",
+      "notes": "⚠️ TrueDepth (Face ID) НЕ переносится"
+    },
+    "iPhone_XR": {
+      "compatible": ["iPhone XR только"],
+      "resolution": "7MP + TrueDepth",
+      "notes": "⚠️ Уникальный модуль"
+    },
+    "iPhone_11": {
+      "compatible": ["iPhone 11 только"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "⚠️ TrueDepth (Face ID) привязан к плате"
+    },
+    "iPhone_11_Pro_ProMax": {
+      "compatible": ["iPhone 11 Pro", "iPhone 11 Pro Max"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "Взаимозаменяемы, но Face ID привязан"
+    },
+    "iPhone_12_series": {
+      "compatible": ["iPhone 12", "iPhone 12 Pro"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "12 и 12 Pro взаимозаменяемы (размер одинаковый)"
+    },
+    "iPhone_12_mini": {
+      "compatible": ["iPhone 12 mini только"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "Уникальный размер"
+    },
+    "iPhone_12_Pro_Max": {
+      "compatible": ["iPhone 12 Pro Max только"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "Уникальный размер"
+    },
+    "iPhone_13_series": {
+      "compatible": ["iPhone 13", "iPhone 13 Pro"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "⚠️ Face ID sensor требует программирования"
+    },
+    "iPhone_14_series": {
+      "compatible": ["iPhone 14", "iPhone 14 Plus"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "⚠️ Face ID требует программирования"
+    },
+    "iPhone_14_Pro_series": {
+      "compatible": ["iPhone 14 Pro", "iPhone 14 Pro Max"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "Dynamic Island модуль, уникальный"
+    },
+    "iPhone_15_series": {
+      "compatible": ["iPhone 15", "iPhone 15 Plus"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "⚠️ Face ID требует Apple tools"
+    },
+    "iPhone_16_series": {
+      "compatible": ["iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max"],
+      "resolution": "12MP + TrueDepth",
+      "notes": "⚠️ Face ID привязан к материнской плате, требуется Apple service"
+    }
+  },
+  "display_compatibility": {
+    "iPhone_6s_SE1": {
+      "compatible": ["iPhone 6s (4.7\")", "iPhone SE 1st Gen"],
+      "notes": "Дисплеи взаимозаменяемы, одинаковый размер"
+    },
+    "iPhone_7_8_SE2_SE3": {
+      "compatible": ["iPhone 7", "iPhone 8", "iPhone SE 2nd Gen", "iPhone SE 3rd Gen"],
+      "notes": "⚠️ Физически подходят, но Touch ID привязан к плате. True Tone требует программирования."
+    },
+    "iPhone_12_12Pro": {
+      "compatible": ["iPhone 12", "iPhone 12 Pro"],
+      "notes": "⚠️ Одинаковый размер (6.1\"), но True Tone требует программирования"
+    },
+    "iPhone_13_14": {
+      "compatible": ["iPhone 13", "iPhone 14"],
+      "notes": "⚠️ Частично совместимы, требуется программирование. Некоторые функции могут не работать."
+    }
+  },
+  "programming_requirements": {
+    "no_programming": [
+      "iPhone 5s", "iPhone 6", "iPhone 6 Plus", "iPhone 6s", "iPhone 6s Plus",
+      "iPhone SE 1st Gen", "iPhone 7", "iPhone 7 Plus"
     ],
-    "group_2": [
-      "iPhone 6S",
-      "iPhone 6S Plus"
+    "true_tone_programming": [
+      "iPhone 8", "iPhone 8 Plus", "iPhone X", "iPhone XR", "iPhone XS", "iPhone XS Max"
     ],
-    "group_3": [
-      "iPhone 7",
-      "iPhone 7 Plus"
-    ],
-    "group_4": [
-      "iPhone X",
-      "iPhone XS"
-    ],
-    "group_5": [
-      "iPhone 11",
-      "iPhone 12 same size"
+    "full_programming_required": [
+      "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max",
+      "iPhone 12", "iPhone 12 mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
+      "iPhone 13", "iPhone 13 mini", "iPhone 13 Pro", "iPhone 13 Pro Max",
+      "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
+      "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
+      "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max"
     ]
+  },
+  "warnings": {
+    "face_id": "Face ID модуль (TrueDepth) привязан к материнской плате и НЕ может быть перенесён на другое устройство",
+    "touch_id": "Touch ID кнопка привязана к материнской плате. При замене дисплея можно перенести оригинальную кнопку",
+    "camera_programming": "Камеры iPhone 12 и новее требуют программирования для полной функциональности",
+    "battery_health": "Батареи с неоригинальным BMS показывают 'Service' в настройках"
   }
 }
