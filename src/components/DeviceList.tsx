@@ -107,7 +107,26 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
               className="bg-white rounded-lg border border-slate-300 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col h-full group"
             >
               {/* Device Image */}
-              {device.ifixit_image ? (
+              {device.icon_url ? (
+                <div className="h-32 flex items-center justify-center bg-white border-b border-slate-200 overflow-hidden">
+                  <img
+                    src={device.icon_url}
+                    alt={device.name}
+                    loading="lazy"
+                    className="max-h-28 object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      // Попробовать fallback на ifixit_image
+                      if (device.ifixit_image) {
+                        target.src = device.ifixit_image;
+                        target.style.display = 'block';
+                        target.style.opacity = '0.9';
+                      }
+                    }}
+                  />
+                </div>
+              ) : device.ifixit_image ? (
                 <div className="h-32 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200 overflow-hidden">
                   <img
                     src={device.ifixit_image}
