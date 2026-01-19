@@ -139,20 +139,55 @@
       "processor": "Apple M5"
     },
     {
-      "device": "iPhone 17",
-      "model": "A3258",
-      "emc": "5200",
-      "board_number": "820-03520",
+      "device": "iPhone 17 Pro Max",
+      "board_number": "820-03258",
+      "processor": "Apple A19 Pro",
       "year": 2025,
-      "processor": "Apple A19"
+      "ram": "8 GB",
+      "storage_options": [
+        "256GB",
+        "512GB",
+        "1TB",
+        "2TB"
+      ],
+      "notes": "Titanium design, Pro camera system"
+    },
+    {
+      "device": "iPhone 17 Pro",
+      "board_number": "820-03257",
+      "processor": "Apple A19 Pro",
+      "year": 2025,
+      "ram": "8 GB",
+      "storage_options": [
+        "256GB",
+        "512GB",
+        "1TB"
+      ],
+      "notes": "Titanium design, Pro camera system"
+    },
+    {
+      "device": "iPhone 17",
+      "board_number": "820-03520",
+      "processor": "Apple A19",
+      "year": 2025,
+      "ram": "8 GB",
+      "storage_options": [
+        "256GB",
+        "512GB"
+      ],
+      "notes": "Center Stage front camera"
     },
     {
       "device": "iPhone Air",
-      "model": "A3260",
-      "emc": "5205",
       "board_number": "820-03525",
+      "processor": "Apple A19",
       "year": 2025,
-      "processor": "Apple A19"
+      "ram": "8 GB",
+      "storage_options": [
+        "256GB",
+        "512GB"
+      ],
+      "notes": "Ultra-thin design, 6.6-inch display"
     }
   ],
   "intel_boards": [

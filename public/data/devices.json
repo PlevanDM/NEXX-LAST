@@ -4514,52 +4514,125 @@
     "repair_time": "2-6 часов"
   },
   {
-    "name": "iPhone 17",
-    "model": "A3258",
-    "year": 2025,
+    "name": "iPhone 17 Pro Max",
     "category": "iPhone",
-    "processor": "Apple A19",
-    "ram": "8GB",
+    "year": 2025,
+    "processor": "Apple A19 Pro",
+    "display": "6.9-inch Super Retina XDR OLED",
+    "storage": [
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "connectivity": [
+      "5G",
+      "WiFi 7",
+      "Bluetooth 6.0",
+      "USB-C"
+    ],
+    "features": [
+      "ProMotion 120Hz",
+      "Dynamic Island",
+      "Always-On Display",
+      "Apple Intelligence",
+      "Titanium Design"
+    ],
+    "model_numbers": [
+      "A3258"
+    ],
+    "board_numbers": [
+      "820-03258"
+    ]
+  },
+  {
+    "name": "iPhone 17 Pro",
+    "category": "iPhone",
+    "year": 2025,
+    "processor": "Apple A19 Pro",
     "display": "6.3-inch Super Retina XDR OLED",
+    "storage": [
+      "256GB",
+      "512GB",
+      "1TB"
+    ],
+    "connectivity": [
+      "5G",
+      "WiFi 7",
+      "Bluetooth 6.0",
+      "USB-C"
+    ],
+    "features": [
+      "ProMotion 120Hz",
+      "Dynamic Island",
+      "Always-On Display",
+      "Apple Intelligence",
+      "Titanium Design"
+    ],
+    "model_numbers": [
+      "A3257"
+    ],
+    "board_numbers": [
+      "820-03257"
+    ]
+  },
+  {
+    "name": "iPhone 17",
+    "category": "iPhone",
+    "year": 2025,
+    "processor": "Apple A19",
+    "display": "6.3-inch Super Retina XDR OLED",
+    "storage": [
+      "256GB",
+      "512GB"
+    ],
+    "connectivity": [
+      "5G",
+      "WiFi 7",
+      "Bluetooth 6.0",
+      "USB-C"
+    ],
+    "features": [
+      "ProMotion 120Hz",
+      "Dynamic Island",
+      "Apple Intelligence",
+      "Center Stage Front Camera"
+    ],
+    "model_numbers": [
+      "A3520"
+    ],
     "board_numbers": [
       "820-03520"
+    ]
+  },
+  {
+    "name": "iPhone Air",
+    "category": "iPhone",
+    "year": 2025,
+    "processor": "Apple A19",
+    "display": "6.6-inch Super Retina XDR OLED",
+    "storage": [
+      "256GB",
+      "512GB"
     ],
-    "connector_type": "USB-C",
-    "ifixit_page": "https://www.ifixit.com/Device/iPhone_17",
-    "common_repairs": [
-      "display",
-      "battery",
-      "rear_camera",
-      "front_camera",
-      "charging_port"
+    "connectivity": [
+      "5G",
+      "WiFi 7",
+      "Bluetooth 6.0",
+      "USB-C"
     ],
-    "charging_ic": "Apple N1",
-    "common_issues": [
-      "Display cracks",
-      "Battery degradation",
-      "Charging issues",
-      "Camera focus problems"
+    "features": [
+      "Ultra-thin Design",
+      "ProMotion 120Hz",
+      "Dynamic Island",
+      "Apple Intelligence"
     ],
-    "repair_difficulty": "Средняя",
-    "repair_time": "2-3 часа",
-    "official_service_prices": {
-      "battery": {
-        "price_usd": 99,
-        "article": "661-56064"
-      },
-      "display": {
-        "price_usd": 359,
-        "article": "661-56065"
-      },
-      "rear_camera": {
-        "price_usd": 219,
-        "article": "661-56067"
-      },
-      "front_camera": {
-        "price_usd": 169,
-        "article": "661-56066"
-      }
-    }
+    "model_numbers": [
+      "A3260"
+    ],
+    "board_numbers": [
+      "820-03525"
+    ]
   },
   {
     "name": "iPhone Air",

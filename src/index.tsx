@@ -22,8 +22,9 @@ app.get('/', (c) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🛠️ Apple Intake Desk</title>
-        <meta name="description" content="Софт для приёмки устройств Apple: чек-листы, диагностика и база по платам">
+        <title>NEXX Database - Apple Repair</title>
+        <meta name="description" content="NEXX Database - База данных для ремонта устройств Apple: цены, платы, микросхемы">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         
         <!-- Local Vendor Scripts -->

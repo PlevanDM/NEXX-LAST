@@ -1,4 +1,4 @@
-// Apple Intake Desk - Main Application v4.0
+// NEXX Database - Apple Repair Database v5.0
 // Full-featured repair tool with diagnostics, error codes, and calculators
 const { useState, useMemo, useEffect, createElement: h } = React;
 
@@ -1683,8 +1683,15 @@ const RepairTool = () => {
   return h('div', { className: 'min-h-screen bg-gray-100' },
     h('div', { className: 'bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white py-8 px-4' },
       h('div', { className: 'max-w-6xl mx-auto text-center space-y-3' },
-        h('h1', { className: 'text-2xl md:text-3xl font-bold' }, '🛠️ Apple Intake Desk'),
-        h('p', { className: 'text-indigo-100 text-sm' }, 'Полная база для приёмки и ремонта'),
+        h('div', { className: 'flex items-center justify-center gap-4 mb-3' },
+          h('img', { 
+            src: '/static/nexx-logo.png', 
+            alt: 'NEXX Logo',
+            className: 'h-12 md:h-16 object-contain'
+          }),
+          h('h1', { className: 'text-2xl md:text-4xl font-bold' }, 'NEXX Database')
+        ),
+        h('p', { className: 'text-indigo-100 text-sm' }, 'База данных для ремонта устройств Apple'),
         h('div', { className: 'flex flex-wrap gap-2 justify-center text-xs' },
           h('span', { className: 'px-2 py-1 rounded-full bg-white/15' }, `${stats.total} устройств`),
           h('span', { className: 'px-2 py-1 rounded-full bg-green-500/30' }, `${stats.articles} артикулов`),
