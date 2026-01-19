@@ -493,11 +493,63 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
     return Object.entries(prices).filter(([model]) => !term || model.toLowerCase().includes(term));
   }, [prices, searchTerm]);
   
-  // Функция для поиска украинской цены по артикулу
-  const findUkrainePrice = (article) => {
-    if (!article || !uahCatalog[article]) return null;
-    const uahPrice = uahCatalog[article].price_uah;
-    return Math.round(uahPrice / eurUahRate * 100) / 100; // Конвертация в EUR
+  // Маппинг типов запчастей для поиска
+  const partKeywords = {
+    'battery': ['battery', 'батарея', 'аккумулятор'],
+    'display': ['display', 'дисплей', 'экран', 'lcd', 'screen'],
+    'rear_camera': ['rear camera', 'back camera', 'задняя камера', 'camera', 'камера'],
+    'front_camera': ['front camera', 'truedepth', 'фронтальная камера', 'передняя камера'],
+    'speaker': ['speaker', 'динамик'],
+    'taptic_engine': ['taptic', 'вибромотор', 'haptic'],
+    'logic_board': ['logic board', 'материнская плата', 'плата']
+  };
+  
+  // Функция для поиска украинской цены по артикулу или названию
+  const findUkrainePrice = (article, modelName, partType) => {
+    // Сначала пробуем точное совпадение по артикулу
+    if (article && uahCatalog[article]) {
+      const uahPrice = uahCatalog[article].price_uah;
+      return Math.round(uahPrice / eurUahRate * 100) / 100;
+    }
+    
+    // Затем ищем по названию модели и типа запчасти
+    const modelLower = modelName.toLowerCase();
+    const partKeys = partKeywords[partType] || [partType.toLowerCase()];
+    
+    let bestMatch = null;
+    let bestScore = 0;
+    
+    for (const [catArticle, item] of Object.entries(uahCatalog)) {
+      const descLower = item.description.toLowerCase();
+      let score = 0;
+      
+      // Проверяем совпадение модели (ищем ключевые части названия)
+      const modelParts = modelLower.split(' ').filter(p => p.length > 2);
+      let modelMatches = 0;
+      for (const part of modelParts) {
+        if (descLower.includes(part)) modelMatches++;
+      }
+      if (modelMatches >= 2) score += 10; // Минимум 2 совпадения для модели
+      
+      // Проверяем совпадение типа запчасти
+      for (const key of partKeys) {
+        if (descLower.includes(key)) {
+          score += 5;
+          break;
+        }
+      }
+      
+      if (score > bestScore && score >= 10) {
+        bestScore = score;
+        bestMatch = item;
+      }
+    }
+    
+    if (bestMatch) {
+      return Math.round(bestMatch.price_uah / eurUahRate * 100) / 100;
+    }
+    
+    return null;
   };
   
   return h('div', { className: 'fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm' },
@@ -506,7 +558,8 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
         h('div', { className: 'flex justify-between items-start' },
           h('div', null,
             h('h2', { className: 'text-2xl font-bold' }, '💰 Цены на запчасти'),
-            h('p', { className: 'text-amber-100 text-sm' }, '🇪🇺 Self Repair Europe | 🇺🇦 Украина')
+            h('p', { className: 'text-amber-100 text-sm' }, '🇪🇺 Self Repair Europe | 🇺🇦 Украина'),
+            h('p', { className: 'text-amber-200 text-xs mt-1' }, `📊 Доступно ${Object.keys(uahCatalog).length} украинских позиций из 4683`)
           ),
           h('button', { onClick: onClose, className: 'w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-xl' }, '×')
         )
@@ -548,7 +601,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
               
               return parts.map((part, idx) => {
                 const euPrice = part.data.price_usd;
-                const uaPrice = findUkrainePrice(part.data.article);
+                const uaPrice = findUkrainePrice(part.data.article, model, part.key);
                 const savings = uaPrice ? Math.round((euPrice - uaPrice) * 100) / 100 : null;
                 const savingsPercent = savings && euPrice ? Math.round((savings / euPrice) * 100) : 0;
                 
