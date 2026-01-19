@@ -28096,5 +28096,822 @@
     "description": "AirPods Pro 3, Left, CI/AR, VN, INT",
     "price_uah": 3959.12,
     "discount": 0
+  },
+  "661-56068": {
+    "article": "661-56068",
+    "description": "Speaker Module for iPhone 17",
+    "price_uah": 2823,
+    "discount": 0
+  },
+  "661-56069": {
+    "article": "661-56069",
+    "description": "Taptic Engine for iPhone 17",
+    "price_uah": 2823,
+    "discount": 0
+  },
+  "661-56054": {
+    "description": "Taptic Engine for iPhone 16 Pro Max",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-56055": {
+    "description": "Logic Board for iPhone 16 Pro Max",
+    "price_uah": 24858.5,
+    "discount": 0
+  },
+  "661-56123": {
+    "description": "Rear Camera for iPhone 16 Pro",
+    "price_uah": 10333.5,
+    "discount": 0
+  },
+  "661-56124": {
+    "description": "Front Camera for iPhone 16 Pro",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-56070": {
+    "description": "Battery for iPhone 16",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-56071": {
+    "description": "Display for iPhone 16",
+    "price_uah": 12408.5,
+    "discount": 0
+  },
+  "661-56072": {
+    "description": "Rear Camera for iPhone 16",
+    "price_uah": 7843.5,
+    "discount": 0
+  },
+  "661-56073": {
+    "description": "Front Camera for iPhone 16",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-56074": {
+    "description": "Speaker for iPhone 16",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-53781": {
+    "description": "Battery for iPhone 15 Pro Max",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-53782": {
+    "description": "Display for iPhone 15 Pro Max",
+    "price_uah": 15728.5,
+    "discount": 0
+  },
+  "661-53783": {
+    "description": "Rear Camera for iPhone 15 Pro Max",
+    "price_uah": 10333.5,
+    "discount": 0
+  },
+  "661-53784": {
+    "description": "Front Camera for iPhone 15 Pro Max",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-53785": {
+    "description": "Speaker for iPhone 15 Pro Max",
+    "price_uah": 2448.5,
+    "discount": 0
+  },
+  "661-53786": {
+    "description": "Taptic Engine for iPhone 15 Pro Max",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-53787": {
+    "description": "Battery for iPhone 15 Pro",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-53788": {
+    "description": "Display for iPhone 15 Pro",
+    "price_uah": 14898.5,
+    "discount": 0
+  },
+  "661-53789": {
+    "description": "Rear Camera for iPhone 15 Pro",
+    "price_uah": 10333.5,
+    "discount": 0
+  },
+  "661-53790": {
+    "description": "Front Camera for iPhone 15 Pro",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-53791": {
+    "description": "Speaker for iPhone 15 Pro",
+    "price_uah": 2448.5,
+    "discount": 0
+  },
+  "661-53792": {
+    "description": "Battery for iPhone 15 Plus",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-53793": {
+    "description": "Display for iPhone 15 Plus",
+    "price_uah": 12408.5,
+    "discount": 0
+  },
+  "661-53794": {
+    "description": "Rear Camera for iPhone 15 Plus",
+    "price_uah": 7428.5,
+    "discount": 0
+  },
+  "661-53795": {
+    "description": "Front Camera for iPhone 15 Plus",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-53796": {
+    "description": "Speaker for iPhone 15 Plus",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-53797": {
+    "description": "Battery for iPhone 15",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-53798": {
+    "description": "Display for iPhone 15",
+    "price_uah": 11578.5,
+    "discount": 0
+  },
+  "661-53799": {
+    "description": "Rear Camera for iPhone 15",
+    "price_uah": 7428.5,
+    "discount": 0
+  },
+  "661-53800": {
+    "description": "Front Camera for iPhone 15",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-53801": {
+    "description": "Speaker for iPhone 15",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-31048": {
+    "description": "Battery for iPhone 14 Pro Max",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-31049": {
+    "description": "Display for iPhone 14 Pro Max",
+    "price_uah": 15313.5,
+    "discount": 0
+  },
+  "661-31050": {
+    "description": "Rear Camera for iPhone 14 Pro Max",
+    "price_uah": 9918.5,
+    "discount": 0
+  },
+  "661-31051": {
+    "description": "Front Camera for iPhone 14 Pro Max",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-31052": {
+    "description": "Speaker for iPhone 14 Pro Max",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-31053": {
+    "description": "Taptic Engine for iPhone 14 Pro Max",
+    "price_uah": 1867.5,
+    "discount": 0
+  },
+  "661-31054": {
+    "description": "Battery for iPhone 14 Pro",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-31055": {
+    "description": "Display for iPhone 14 Pro",
+    "price_uah": 14483.5,
+    "discount": 0
+  },
+  "661-31056": {
+    "description": "Rear Camera for iPhone 14 Pro",
+    "price_uah": 9918.5,
+    "discount": 0
+  },
+  "661-31057": {
+    "description": "Front Camera for iPhone 14 Pro",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-31058": {
+    "description": "Speaker for iPhone 14 Pro",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-31059": {
+    "description": "Battery for iPhone 14 Plus",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-31060": {
+    "description": "Display for iPhone 14 Plus",
+    "price_uah": 12408.5,
+    "discount": 0
+  },
+  "661-31061": {
+    "description": "Rear Camera for iPhone 14 Plus",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-31062": {
+    "description": "Front Camera for iPhone 14 Plus",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-31063": {
+    "description": "Speaker for iPhone 14 Plus",
+    "price_uah": 2075.0,
+    "discount": 0
+  },
+  "661-31064": {
+    "description": "Battery for iPhone 14",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-31065": {
+    "description": "Display for iPhone 14",
+    "price_uah": 11578.5,
+    "discount": 0
+  },
+  "661-31066": {
+    "description": "Rear Camera for iPhone 14",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-31067": {
+    "description": "Front Camera for iPhone 14",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-31068": {
+    "description": "Speaker for iPhone 14",
+    "price_uah": 2075.0,
+    "discount": 0
+  },
+  "661-21565": {
+    "description": "Battery for iPhone 13 Pro Max",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-21566": {
+    "description": "Display for iPhone 13 Pro Max",
+    "price_uah": 13653.5,
+    "discount": 0
+  },
+  "661-21567": {
+    "description": "Rear Camera for iPhone 13 Pro Max",
+    "price_uah": 9088.5,
+    "discount": 0
+  },
+  "661-21568": {
+    "description": "Front Camera for iPhone 13 Pro Max",
+    "price_uah": 5768.5,
+    "discount": 0
+  },
+  "661-21569": {
+    "description": "Speaker for iPhone 13 Pro Max",
+    "price_uah": 1867.5,
+    "discount": 0
+  },
+  "661-21570": {
+    "description": "Battery for iPhone 13 Pro",
+    "price_uah": 3278.5,
+    "discount": 0
+  },
+  "661-21571": {
+    "description": "Display for iPhone 13 Pro",
+    "price_uah": 12823.5,
+    "discount": 0
+  },
+  "661-21572": {
+    "description": "Rear Camera for iPhone 13 Pro",
+    "price_uah": 9088.5,
+    "discount": 0
+  },
+  "661-21573": {
+    "description": "Front Camera for iPhone 13 Pro",
+    "price_uah": 5768.5,
+    "discount": 0
+  },
+  "661-21574": {
+    "description": "Speaker for iPhone 13 Pro",
+    "price_uah": 1867.5,
+    "discount": 0
+  },
+  "661-21580": {
+    "description": "Battery for iPhone 13 mini",
+    "price_uah": 2697.5,
+    "discount": 0
+  },
+  "661-21581": {
+    "description": "Display for iPhone 13 mini",
+    "price_uah": 10333.5,
+    "discount": 0
+  },
+  "661-21582": {
+    "description": "Rear Camera for iPhone 13 mini",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-21583": {
+    "description": "Front Camera for iPhone 13 mini",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-21584": {
+    "description": "Speaker for iPhone 13 mini",
+    "price_uah": 1660.0,
+    "discount": 0
+  },
+  "661-21575": {
+    "description": "Battery for iPhone 13",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-21576": {
+    "description": "Display for iPhone 13",
+    "price_uah": 11163.5,
+    "discount": 0
+  },
+  "661-21577": {
+    "description": "Rear Camera for iPhone 13",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-21578": {
+    "description": "Front Camera for iPhone 13",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-21579": {
+    "description": "Speaker for iPhone 13",
+    "price_uah": 1660.0,
+    "discount": 0
+  },
+  "661-18254": {
+    "description": "Battery for iPhone 12 Pro Max",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-18255": {
+    "description": "Display for iPhone 12 Pro Max",
+    "price_uah": 12408.5,
+    "discount": 0
+  },
+  "661-18256": {
+    "description": "Rear Camera for iPhone 12 Pro Max",
+    "price_uah": 8258.5,
+    "discount": 0
+  },
+  "661-18257": {
+    "description": "Front Camera for iPhone 12 Pro Max",
+    "price_uah": 4938.5,
+    "discount": 0
+  },
+  "661-18258": {
+    "description": "Speaker for iPhone 12 Pro Max",
+    "price_uah": 1660.0,
+    "discount": 0
+  },
+  "661-18259": {
+    "description": "Battery for iPhone 12 Pro",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-18260": {
+    "description": "Display for iPhone 12 Pro",
+    "price_uah": 11578.5,
+    "discount": 0
+  },
+  "661-18261": {
+    "description": "Rear Camera for iPhone 12 Pro",
+    "price_uah": 8258.5,
+    "discount": 0
+  },
+  "661-18262": {
+    "description": "Front Camera for iPhone 12 Pro",
+    "price_uah": 4938.5,
+    "discount": 0
+  },
+  "661-18263": {
+    "description": "Speaker for iPhone 12 Pro",
+    "price_uah": 1660.0,
+    "discount": 0
+  },
+  "661-18270": {
+    "description": "Display for iPhone 12 mini",
+    "price_uah": 9503.5,
+    "discount": 0
+  },
+  "661-18264": {
+    "description": "Battery for iPhone 12",
+    "price_uah": 2697.5,
+    "discount": 0
+  },
+  "661-18265": {
+    "description": "Display for iPhone 12",
+    "price_uah": 10748.5,
+    "discount": 0
+  },
+  "661-18266": {
+    "description": "Rear Camera for iPhone 12",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-18267": {
+    "description": "Front Camera for iPhone 12",
+    "price_uah": 4523.5,
+    "discount": 0
+  },
+  "661-14633": {
+    "description": "Battery for iPhone 11 Pro Max",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-14634": {
+    "description": "Display for iPhone 11 Pro Max",
+    "price_uah": 11578.5,
+    "discount": 0
+  },
+  "661-14635": {
+    "description": "Rear Camera for iPhone 11 Pro Max",
+    "price_uah": 7843.5,
+    "discount": 0
+  },
+  "661-14636": {
+    "description": "Front Camera for iPhone 11 Pro Max",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-14637": {
+    "description": "Battery for iPhone 11 Pro",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-14638": {
+    "description": "Display for iPhone 11 Pro",
+    "price_uah": 10748.5,
+    "discount": 0
+  },
+  "661-14639": {
+    "description": "Rear Camera for iPhone 11 Pro",
+    "price_uah": 7843.5,
+    "discount": 0
+  },
+  "661-14640": {
+    "description": "Front Camera for iPhone 11 Pro",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-14641": {
+    "description": "Battery for iPhone 11",
+    "price_uah": 2282.5,
+    "discount": 0
+  },
+  "661-14642": {
+    "description": "Display for iPhone 11",
+    "price_uah": 8258.5,
+    "discount": 0
+  },
+  "661-14643": {
+    "description": "Rear Camera for iPhone 11",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-14644": {
+    "description": "Front Camera for iPhone 11",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-11076": {
+    "description": "Battery for iPhone XS Max",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-11077": {
+    "description": "Display for iPhone XS Max",
+    "price_uah": 13653.5,
+    "discount": 0
+  },
+  "661-11078": {
+    "description": "Rear Camera for iPhone XS Max",
+    "price_uah": 7428.5,
+    "discount": 0
+  },
+  "661-11079": {
+    "description": "Front Camera for iPhone XS Max",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-11080": {
+    "description": "Battery for iPhone XS",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-11081": {
+    "description": "Display for iPhone XS",
+    "price_uah": 12408.5,
+    "discount": 0
+  },
+  "661-11082": {
+    "description": "Rear Camera for iPhone XS",
+    "price_uah": 7428.5,
+    "discount": 0
+  },
+  "661-11083": {
+    "description": "Front Camera for iPhone XS",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-11084": {
+    "description": "Battery for iPhone XR",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-11085": {
+    "description": "Display for iPhone XR",
+    "price_uah": 8258.5,
+    "discount": 0
+  },
+  "661-11086": {
+    "description": "Rear Camera for iPhone XR",
+    "price_uah": 4938.5,
+    "discount": 0
+  },
+  "661-11087": {
+    "description": "Front Camera for iPhone XR",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-09565": {
+    "description": "Battery for iPhone X",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-09566": {
+    "description": "Display for iPhone X",
+    "price_uah": 11578.5,
+    "discount": 0
+  },
+  "661-09567": {
+    "description": "Rear Camera for iPhone X",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-09568": {
+    "description": "Front Camera for iPhone X",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-08926": {
+    "description": "Battery for iPhone 8 Plus",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-08927": {
+    "description": "Display for iPhone 8 Plus",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-08928": {
+    "description": "Rear Camera for iPhone 8 Plus",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-08929": {
+    "description": "Front Camera for iPhone 8 Plus",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-08930": {
+    "description": "Battery for iPhone 8",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-08931": {
+    "description": "Display for iPhone 8",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-04749": {
+    "description": "Battery for iPhone 7 Plus",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-04750": {
+    "description": "Display for iPhone 7 Plus",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-04751": {
+    "description": "Rear Camera for iPhone 7 Plus",
+    "price_uah": 3693.5,
+    "discount": 0
+  },
+  "661-04752": {
+    "description": "Battery for iPhone 7",
+    "price_uah": 2033.5,
+    "discount": 0
+  },
+  "661-04753": {
+    "description": "Display for iPhone 7",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-04754": {
+    "description": "Rear Camera for iPhone 7",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-03275": {
+    "description": "Battery for iPhone 6s Plus",
+    "price_uah": 1618.5,
+    "discount": 0
+  },
+  "661-03276": {
+    "description": "Display for iPhone 6s Plus",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-03277": {
+    "description": "Battery for iPhone 6s",
+    "price_uah": 1618.5,
+    "discount": 0
+  },
+  "661-03278": {
+    "description": "Display for iPhone 6s",
+    "price_uah": 4523.5,
+    "discount": 0
+  },
+  "661-61003": {
+    "description": "Battery for iPad Pro 11\" M4",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-61004": {
+    "description": "Display for iPad Pro 11\" M4",
+    "price_uah": 20708.5,
+    "discount": 0
+  },
+  "661-61001": {
+    "description": "Battery for iPad Pro 13\" M4",
+    "price_uah": 7428.5,
+    "discount": 0
+  },
+  "661-61002": {
+    "description": "Display for iPad Pro 13\" M4",
+    "price_uah": 24858.5,
+    "discount": 0
+  },
+  "661-28601": {
+    "description": "Battery for MacBook Air 13\" M2 2022",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-28602": {
+    "description": "Display for MacBook Air 13\" M2 2022",
+    "price_uah": 22783.5,
+    "discount": 0
+  },
+  "661-28603": {
+    "description": "Keyboard for MacBook Air 13\" M2 2022",
+    "price_uah": 16558.5,
+    "discount": 0
+  },
+  "661-60845": {
+    "description": "Battery for MacBook Air 13\" M3 2024",
+    "price_uah": 5353.5,
+    "discount": 0
+  },
+  "661-60846": {
+    "description": "Display for MacBook Air 13\" M3 2024",
+    "price_uah": 22783.5,
+    "discount": 0
+  },
+  "661-60847": {
+    "description": "Keyboard for MacBook Air 13\" M3 2024",
+    "price_uah": 16558.5,
+    "discount": 0
+  },
+  "661-60848": {
+    "description": "Battery for MacBook Air 15\" M3 2024",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-60849": {
+    "description": "Display for MacBook Air 15\" M3 2024",
+    "price_uah": 24858.5,
+    "discount": 0
+  },
+  "661-60850": {
+    "description": "Keyboard for MacBook Air 15\" M3 2024",
+    "price_uah": 18633.5,
+    "discount": 0
+  },
+  "661-56890": {
+    "description": "Battery for MacBook Pro 14\" M3 2023",
+    "price_uah": 8258.5,
+    "discount": 0
+  },
+  "661-56891": {
+    "description": "Display for MacBook Pro 14\" M3 2023",
+    "price_uah": 31083.5,
+    "discount": 0
+  },
+  "661-56892": {
+    "description": "Keyboard for MacBook Pro 14\" M3 2023",
+    "price_uah": 22783.5,
+    "discount": 0
+  },
+  "661-56080": {
+    "description": "Battery for iPhone Air",
+    "price_uah": 4108.5,
+    "discount": 0
+  },
+  "661-56081": {
+    "description": "Display for iPhone Air",
+    "price_uah": 16558.5,
+    "discount": 0
+  },
+  "661-56082": {
+    "description": "Rear Camera for iPhone Air",
+    "price_uah": 9088.5,
+    "discount": 0
+  },
+  "661-56083": {
+    "description": "Front Camera for iPhone Air",
+    "price_uah": 7013.5,
+    "discount": 0
+  },
+  "661-56084": {
+    "description": "Speaker for iPhone Air",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-56085": {
+    "description": "Taptic Engine for iPhone Air",
+    "price_uah": 2863.5,
+    "discount": 0
+  },
+  "661-62001": {
+    "description": "Battery for MacBook Air 13-inch M4 2025",
+    "price_uah": 5768.5,
+    "discount": 0
+  },
+  "661-62002": {
+    "description": "Display for MacBook Air 13-inch M4 2025",
+    "price_uah": 21538.5,
+    "discount": 0
+  },
+  "661-62003": {
+    "description": "Keyboard for MacBook Air 13-inch M4 2025",
+    "price_uah": 15728.5,
+    "discount": 0
+  },
+  "661-62011": {
+    "description": "Battery for MacBook Air 15-inch M4 2025",
+    "price_uah": 6183.5,
+    "discount": 0
+  },
+  "661-62012": {
+    "description": "Display for MacBook Air 15-inch M4 2025",
+    "price_uah": 26518.5,
+    "discount": 0
+  },
+  "661-62013": {
+    "description": "Keyboard for MacBook Air 15-inch M4 2025",
+    "price_uah": 17388.5,
+    "discount": 0
+  },
+  "661-62021": {
+    "description": "Battery for MacBook Pro 14-inch M5 2025",
+    "price_uah": 6598.5,
+    "discount": 0
+  },
+  "661-62022": {
+    "description": "Display for MacBook Pro 14-inch M5 2025",
+    "price_uah": 28178.5,
+    "discount": 0
+  },
+  "661-62023": {
+    "description": "Keyboard for MacBook Pro 14-inch M5 2025",
+    "price_uah": 18633.5,
+    "discount": 0
   }
 }

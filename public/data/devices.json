@@ -2253,7 +2253,28 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "923-00044",
+        "description": "Battery Adhesive Pack, iPhone 6 Plus, 10pk",
+        "price_usd": 7.03
+      },
+      "front_camera": {
+        "article": "661-02522",
+        "description": "iPhone 6 Plus, front camera",
+        "price_usd": 75.36
+      },
+      "speaker": {
+        "article": "923-00038",
+        "description": "Speaker, iPhone 6 Plus",
+        "price_usd": 61.14
+      },
+      "display": {
+        "article": "923-00114",
+        "description": "200PK, Display Cowling Screw, medium, iPhone 6 Plus",
+        "price_usd": 7.03
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2290,7 +2311,28 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "923-00044",
+        "description": "Battery Adhesive Pack, iPhone 6 Plus, 10pk",
+        "price_usd": 7.03
+      },
+      "front_camera": {
+        "article": "661-02522",
+        "description": "iPhone 6 Plus, front camera",
+        "price_usd": 75.36
+      },
+      "speaker": {
+        "article": "923-00038",
+        "description": "Speaker, iPhone 6 Plus",
+        "price_usd": 61.14
+      },
+      "display": {
+        "article": "923-00114",
+        "description": "200PK, Display Cowling Screw, medium, iPhone 6 Plus",
+        "price_usd": 7.03
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2327,7 +2369,38 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-15741",
+        "description": "Battery, iPhone SE 2nd gen for iPhone SE (2nd generation)",
+        "price_uah": 2455.69,
+        "price_usd": 58.94
+      },
+      "display": {
+        "article": "661-26353",
+        "description": "Display, iPhone SE 3rd generation",
+        "price_uah": 5780.33,
+        "price_usd": 138.73
+      },
+      "rear_camera": {
+        "article": "661-15742",
+        "description": "Rear Camera, iPhone SE 2nd gen for iPhone SE (2nd generation)",
+        "price_uah": 3850.27,
+        "price_usd": 92.41
+      },
+      "speaker": {
+        "article": "923-04080",
+        "description": "Speaker, iPhone SE 2nd gen",
+        "price_uah": 3093.48,
+        "price_usd": 74.24
+      },
+      "taptic_engine": {
+        "article": "923-04089",
+        "description": "Taptic Engine, iPhone SE 2nd gen for iPhone SE (2nd generation)",
+        "price_uah": 3093.48,
+        "price_usd": 74.24
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2356,7 +2429,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_00471",
+        "description": "iPad Air 2, Wi-Fi + Cellular, 64GB, Silver, International for Only Battery Price",
+        "price_usd": 192.97
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2383,7 +2462,20 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2411,7 +2503,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_04306",
+        "description": "128GB, Silver, Wi-Fi, iPad Pro 9.7-inch, English Int for Only Battery Program",
+        "price_usd": 177.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2439,7 +2537,18 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_06881",
+        "description": "32GB, Space Gray, iPad (5th generation) Wi-Fi, International  for Only Battery Price",
+        "price_usd": 129.27
+      },
+      "charging_port": {
+        "article": "ZM923-01386",
+        "description": "SVC,LIGHTNING TO 3.5MM HEADPHONE ADTR EU for iPhone 7, iPad (5th gen) Wi-Fi, Cellular",
+        "price_usd": 9.48
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2466,7 +2575,20 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2494,7 +2616,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_08071",
+        "description": "64GB, Space Gray, iPad Pro 10.5-inch, Cellular, Int. for Only Battery Price",
+        "price_usd": 209.02
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2522,7 +2650,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_09654",
+        "description": "128GB, Space Gray, iPad (6th gen), Wi-Fi, INT for Only Battery Price for iPad (6th generation) Wi-Fi",
+        "price_usd": 135.98
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2549,7 +2683,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_28926",
+        "description": "Blue, iPad 10th generation, 64GB, Cellular, INT for Battery Only Price",
+        "price_usd": 192.65
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2577,7 +2717,20 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2605,7 +2758,20 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_00471",
+        "description": "iPad Air 2, Wi-Fi + Cellular, 64GB, Silver, International for Only Battery Price",
+        "price_uah": 8040.21,
+        "price_usd": 192.97
+      },
+      "keyboard": {
+        "article": "RS661-08952",
+        "description": "Space Gray, Magic Keyboard with Numeric Keypad, ISO-SUN - iMac (Retina 5K, 27-inch, 2019); iPad Air Wi-Fi, Cellular; MacBook (Retina,12-inch,2017); MacBook Pro (15-inch, 2019); Mac mini (2018); MAC MINI (2018); iPad Pro 9.7-inch WiFi, Cellular; iPad",
+        "price_uah": 6401.15,
+        "price_usd": 153.63
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2632,7 +2798,18 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_06881",
+        "description": "32GB, Space Gray, iPad (5th generation) Wi-Fi, International  for Only Battery Price",
+        "price_usd": 129.27
+      },
+      "charging_port": {
+        "article": "ZM923-01386",
+        "description": "SVC,LIGHTNING TO 3.5MM HEADPHONE ADTR EU for iPhone 7, iPad (5th gen) Wi-Fi, Cellular",
+        "price_usd": 9.48
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2659,7 +2836,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_13658",
+        "description": "Gold, 128GB, iPad 7th gen, Cellular, INT for Battery Only Price",
+        "price_usd": 141.12
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2686,7 +2869,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "charging_port": {
+        "article": "922-9888",
+        "description": "Apple Dock, iPad 2",
+        "price_usd": 21.1
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2714,7 +2903,20 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2742,7 +2944,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_16752",
+        "description": "Silver, 128GB, iPad 8th gen, Wi-Fi, INT for Battery Only Price",
+        "price_usd": 138.8
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2769,7 +2977,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "charging_port": {
+        "article": "923-0342",
+        "description": "DONGLE,LIGHTNING TO DIGITAL AV for iPad (4th gen) Wi-Fi, Cellular (MM)",
+        "price_usd": 52.78
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2796,7 +3010,20 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_10785",
+        "description": "iPad Pro 11-inch, Wi-Fi, 64GB, Space Gray for Battery Only Price",
+        "price_uah": 8217.92,
+        "price_usd": 197.23
+      },
+      "keyboard": {
+        "article": "RS661-11714",
+        "description": "Smart Keyboard Folio for 11-inch iPad Pro - Russia, Model A2038",
+        "price_uah": 7325.19,
+        "price_usd": 175.8
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2824,7 +3051,20 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2852,7 +3092,20 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_06881",
+        "description": "32GB, Space Gray, iPad (5th generation) Wi-Fi, International  for Only Battery Price",
+        "price_uah": 5386.07,
+        "price_usd": 129.27
+      },
+      "keyboard": {
+        "article": "RS661-15767",
+        "description": "12.9-inch, iPad Smart Keyboard Folio, ISO, SUN",
+        "price_uah": 8139.19,
+        "price_usd": 195.34
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2879,7 +3132,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_09654",
+        "description": "128GB, Space Gray, iPad (6th gen), Wi-Fi, INT for Only Battery Price for iPad (6th generation) Wi-Fi",
+        "price_usd": 135.98
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2906,7 +3165,18 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_06881",
+        "description": "32GB, Space Gray, iPad (5th generation) Wi-Fi, International  for Only Battery Price",
+        "price_usd": 129.27
+      },
+      "charging_port": {
+        "article": "ZM923-01386",
+        "description": "SVC,LIGHTNING TO 3.5MM HEADPHONE ADTR EU for iPhone 7, iPad (5th gen) Wi-Fi, Cellular",
+        "price_usd": 9.48
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2933,7 +3203,13 @@
       "designation": "Tristar"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_28926",
+        "description": "Blue, iPad 10th generation, 64GB, Cellular, INT for Battery Only Price",
+        "price_usd": 192.65
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2960,7 +3236,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "charging_port": {
+        "article": "923-0342",
+        "description": "DONGLE,LIGHTNING TO DIGITAL AV for iPad (4th gen) Wi-Fi, Cellular (MM)",
+        "price_usd": 52.78
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -2988,7 +3270,20 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_29104",
+        "description": "Silver, iPad Pro 12.9-inch 6th gen, 128GB, Wi-Fi, INT for Only Battery Price",
+        "price_uah": 11262.98,
+        "price_usd": 270.31
+      },
+      "keyboard": {
+        "article": "RS661-05388",
+        "description": "Smart Keyboard for iPad Pro 12.9-inch, ISO, SUN",
+        "price_uah": 4468.89,
+        "price_usd": 107.25
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -3016,7 +3311,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_09654",
+        "description": "128GB, Space Gray, iPad (6th gen), Wi-Fi, INT for Only Battery Price for iPad (6th generation) Wi-Fi",
+        "price_usd": 135.98
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -3043,7 +3344,13 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661_09654",
+        "description": "128GB, Space Gray, iPad (6th gen), Wi-Fi, INT for Only Battery Price for iPad (6th generation) Wi-Fi",
+        "price_usd": 135.98
+      }
+    },
     "common_issues": [
       "Разбитый экран",
       "Не заряжается",
@@ -3156,7 +3463,26 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "display": {
+        "article": "661-02345",
+        "description": "LCD, Display Clamshell, 11-inch, Glossy for MacBook Air (11-inch, Early 2015)",
+        "price_uah": 12987.44,
+        "price_usd": 311.7
+      },
+      "speaker": {
+        "article": "923-0434",
+        "description": "SPEAKER,LEFT,MBA 11'' for MacBook Air (11-inch,Mid 2013)",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-7473",
+        "description": "Housing, Top Case with Keyboard, No Trackpad, US for MacBook Air (11-inch, Early 2015)",
+        "price_uah": 11265.36,
+        "price_usd": 270.37
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3187,7 +3513,26 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "display": {
+        "article": "661-02345",
+        "description": "LCD, Display Clamshell, 11-inch, Glossy for MacBook Air (11-inch, Early 2015)",
+        "price_uah": 12987.44,
+        "price_usd": 311.7
+      },
+      "speaker": {
+        "article": "923-0434",
+        "description": "SPEAKER,LEFT,MBA 11'' for MacBook Air (11-inch,Mid 2013)",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-7473",
+        "description": "Housing, Top Case with Keyboard, No Trackpad, US for MacBook Air (11-inch, Early 2015)",
+        "price_uah": 11265.36,
+        "price_usd": 270.37
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3218,7 +3563,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3249,7 +3625,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3280,7 +3687,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3312,7 +3750,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3345,7 +3814,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3378,7 +3878,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3409,7 +3940,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-04570",
+        "description": "Battery, Li-Ion, 50W - VIN,MacBook Air (13-inch, Mid 2012)",
+        "price_uah": 6636.48,
+        "price_usd": 159.28
+      },
+      "display": {
+        "article": "661-09733",
+        "description": "Display Assembly, Space Gray - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "speaker": {
+        "article": "923-0127",
+        "description": "Speaker, Right for MacBook Air (13-inch, Mid 2012).",
+        "price_uah": 292.98,
+        "price_usd": 7.03
+      },
+      "keyboard": {
+        "article": "661-12592",
+        "description": "Top Case with Keyboard, ANSI, Space Gray - MacBook Air (Retina, 13-inch, 2019)",
+        "price_uah": 13440.66,
+        "price_usd": 322.58
+      },
+      "charging_port": {
+        "article": "923-02813",
+        "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
+        "price_uah": 692.0,
+        "price_usd": 16.61
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3487,7 +4049,26 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-34706",
+        "description": "Battery for MacBook Air (15-inch, M2, 2023)",
+        "price_uah": 7133.3,
+        "price_usd": 171.2
+      },
+      "display": {
+        "article": "661-34705",
+        "description": "Display, Midnight for MacBook Air (15-inch, M2, 2023)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "keyboard": {
+        "article": "661-7473",
+        "description": "Housing, Top Case with Keyboard, No Trackpad, US for MacBook Air (11-inch, Early 2015)",
+        "price_uah": 11265.36,
+        "price_usd": 270.37
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3614,7 +4195,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3645,7 +4257,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3676,7 +4319,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3707,7 +4381,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3739,7 +4444,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3771,7 +4507,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3803,7 +4570,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3835,7 +4633,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3868,7 +4697,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3901,7 +4761,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3934,7 +4825,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3963,7 +4885,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -3992,7 +4945,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4021,7 +5005,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "speaker": {
+        "article": "923-03312",
+        "description": "Speaker, Pair for MacBook Pro (13-inch, 2019, 2 TBT3)",
+        "price_uah": 1696.32,
+        "price_usd": 40.71
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4050,7 +5065,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661-21973",
+        "description": "Top Case with Battery, Silver, ISO, INT for MacBook Pro (14-inch,2021)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-32209",
+        "description": "Display, Silver for MacBook Pro (14-inch, 2023)",
+        "price_uah": 30839.26,
+        "price_usd": 740.14
+      },
+      "speaker": {
+        "article": "923-0557",
+        "description": "SPEAKER,LEFT/RIGHT,13''MBP RETINA for MacBook Pro (Retina, 13-inch, Mid 2014)",
+        "price_uah": 943.64,
+        "price_usd": 22.65
+      },
+      "keyboard": {
+        "article": "B923-0130",
+        "description": "Kit, Keycap, Black, Backlit, S, British for VIN,MacBook Air (13-inch,Mid 2013); MacBook Pro (Retina, 13-inch, Late 2013); MacBook Pro (Retina, Mid 2012); VIN,MacBook Pro(Retina, 15-in, Mid 2014); MacBook Air (13-inch, 2017);",
+        "price_uah": 843.73,
+        "price_usd": 20.25
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4079,7 +5119,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-05333",
+        "description": "Top Case with Battery, ANSI, Space Gray for MacBook Pro (13-inch, 2016, 4 TBT3)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "923-01480",
+        "description": "I/O Board for MacBook Pro (15-inch, Late 2016)",
+        "price_uah": 593.27,
+        "price_usd": 14.24
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4108,7 +5173,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661-21973",
+        "description": "Top Case with Battery, Silver, ISO, INT for MacBook Pro (14-inch,2021)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-32209",
+        "description": "Display, Silver for MacBook Pro (14-inch, 2023)",
+        "price_uah": 30839.26,
+        "price_usd": 740.14
+      },
+      "speaker": {
+        "article": "923-0557",
+        "description": "SPEAKER,LEFT/RIGHT,13''MBP RETINA for MacBook Pro (Retina, 13-inch, Mid 2014)",
+        "price_uah": 943.64,
+        "price_usd": 22.65
+      },
+      "keyboard": {
+        "article": "B923-0130",
+        "description": "Kit, Keycap, Black, Backlit, S, British for VIN,MacBook Air (13-inch,Mid 2013); MacBook Pro (Retina, 13-inch, Late 2013); MacBook Pro (Retina, Mid 2012); VIN,MacBook Pro(Retina, 15-in, Mid 2014); MacBook Air (13-inch, 2017);",
+        "price_uah": 843.73,
+        "price_usd": 20.25
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4137,7 +5227,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-05333",
+        "description": "Top Case with Battery, ANSI, Space Gray for MacBook Pro (13-inch, 2016, 4 TBT3)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "923-01480",
+        "description": "I/O Board for MacBook Pro (15-inch, Late 2016)",
+        "price_uah": 593.27,
+        "price_usd": 14.24
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4215,7 +5330,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "Z661-21973",
+        "description": "Top Case with Battery, Silver, ISO, INT for MacBook Pro (14-inch,2021)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-32209",
+        "description": "Display, Silver for MacBook Pro (14-inch, 2023)",
+        "price_uah": 30839.26,
+        "price_usd": 740.14
+      },
+      "speaker": {
+        "article": "923-0557",
+        "description": "SPEAKER,LEFT/RIGHT,13''MBP RETINA for MacBook Pro (Retina, 13-inch, Mid 2014)",
+        "price_uah": 943.64,
+        "price_usd": 22.65
+      },
+      "keyboard": {
+        "article": "B923-0130",
+        "description": "Kit, Keycap, Black, Backlit, S, British for VIN,MacBook Air (13-inch,Mid 2013); MacBook Pro (Retina, 13-inch, Late 2013); MacBook Pro (Retina, Mid 2012); VIN,MacBook Pro(Retina, 15-in, Mid 2014); MacBook Air (13-inch, 2017);",
+        "price_uah": 843.73,
+        "price_usd": 20.25
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4244,7 +5384,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-05333",
+        "description": "Top Case with Battery, ANSI, Space Gray for MacBook Pro (13-inch, 2016, 4 TBT3)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "923-01480",
+        "description": "I/O Board for MacBook Pro (15-inch, Late 2016)",
+        "price_uah": 593.27,
+        "price_usd": 14.24
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4273,7 +5438,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4304,7 +5500,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4335,7 +5562,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4366,7 +5624,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4398,7 +5687,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4430,7 +5750,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4463,7 +5814,38 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-02361",
+        "description": "Top Case w/Battery, US for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 17789.87,
+        "price_usd": 426.96
+      },
+      "display": {
+        "article": "661-02532",
+        "description": "Display Assembly for MacBook Pro (Retina, 15-inch, Mid 2015)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "speaker": {
+        "article": "922-9048",
+        "description": "APPLE Foam,Right Speaker Connector for MacBook Pro 15\"",
+        "price_uah": 168.68,
+        "price_usd": 4.05
+      },
+      "keyboard": {
+        "article": "923-02494",
+        "description": "Flex Cable, Keyboard, ANSI-ISO for MacBook Pro (15-inch, 2019); MacBook Pro (15-inch, 2018)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "661-02457",
+        "description": "I/O Board for MacBook Pro (Retina, 13-inch,Early 2015)",
+        "price_uah": 2019.27,
+        "price_usd": 48.46
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4496,7 +5878,32 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {},
-    "service_parts": {},
+    "service_parts": {
+      "battery": {
+        "article": "661-05333",
+        "description": "Top Case with Battery, ANSI, Space Gray for MacBook Pro (13-inch, 2016, 4 TBT3)",
+        "price_uah": 24314.04,
+        "price_usd": 583.54
+      },
+      "display": {
+        "article": "661-05095",
+        "description": "Display Assembly, Space Gray for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 18103.64,
+        "price_usd": 434.49
+      },
+      "keyboard": {
+        "article": "923-01447",
+        "description": "Keyboard to Logic Board, Flex Cable for MacBook Pro (13-inch, Late 2016, 2 TBT3)",
+        "price_uah": 444.96,
+        "price_usd": 10.68
+      },
+      "charging_port": {
+        "article": "923-01480",
+        "description": "I/O Board for MacBook Pro (15-inch, Late 2016)",
+        "price_uah": 593.27,
+        "price_usd": 14.24
+      }
+    },
     "common_issues": [
       "Не включается",
       "Не заряжается",
@@ -4543,7 +5950,39 @@
     ],
     "board_numbers": [
       "820-03258"
-    ]
+    ],
+    "service_parts": {
+      "battery": {
+        "article": "661-56049",
+        "description": "Battery",
+        "price_usd": 109.0
+      },
+      "display": {
+        "article": "661-56050",
+        "description": "Display",
+        "price_usd": 459.0
+      },
+      "rear_camera": {
+        "article": "661-56052",
+        "description": "Rear Camera",
+        "price_usd": 269.0
+      },
+      "front_camera": {
+        "article": "661-56051",
+        "description": "Front Camera",
+        "price_usd": 219.0
+      },
+      "speaker": {
+        "article": "923-13581",
+        "description": "Speaker",
+        "price_usd": 79.0
+      },
+      "taptic_engine": {
+        "article": "923-13583",
+        "description": "Taptic Engine",
+        "price_usd": 79.0
+      }
+    }
   },
   {
     "name": "iPhone 17 Pro",
@@ -4574,7 +6013,39 @@
     ],
     "board_numbers": [
       "820-03257"
-    ]
+    ],
+    "service_parts": {
+      "battery": {
+        "article": "661-56121",
+        "description": "Battery",
+        "price_usd": 109.0
+      },
+      "display": {
+        "article": "661-56125",
+        "description": "Display",
+        "price_usd": 409.0
+      },
+      "rear_camera": {
+        "article": "661-56127",
+        "description": "Rear Camera",
+        "price_usd": 269.0
+      },
+      "front_camera": {
+        "article": "661-56126",
+        "description": "Front Camera",
+        "price_usd": 219.0
+      },
+      "speaker": {
+        "article": "923-13631",
+        "description": "Speaker",
+        "price_usd": 79.0
+      },
+      "taptic_engine": {
+        "article": "923-13625",
+        "description": "Taptic Engine",
+        "price_usd": 79.0
+      }
+    }
   },
   {
     "name": "iPhone 17",
@@ -4603,7 +6074,39 @@
     ],
     "board_numbers": [
       "820-03520"
-    ]
+    ],
+    "service_parts": {
+      "battery": {
+        "article": "661-56064",
+        "description": "Battery",
+        "price_usd": 99
+      },
+      "display": {
+        "article": "661-56065",
+        "description": "Display",
+        "price_usd": 359
+      },
+      "rear_camera": {
+        "article": "661-56067",
+        "description": "Rear Camera",
+        "price_usd": 219
+      },
+      "front_camera": {
+        "article": "661-56066",
+        "description": "Front Camera",
+        "price_usd": 169
+      },
+      "speaker": {
+        "article": "661-56068",
+        "description": "Speaker",
+        "price_usd": 69
+      },
+      "taptic_engine": {
+        "article": "661-56069",
+        "description": "Taptic Engine",
+        "price_usd": 69
+      }
+    }
   },
   {
     "name": "iPhone Air",
@@ -4632,7 +6135,39 @@
     ],
     "board_numbers": [
       "820-03525"
-    ]
+    ],
+    "service_parts": {
+      "battery": {
+        "article": "661-56080",
+        "description": "Battery",
+        "price_usd": 99
+      },
+      "display": {
+        "article": "661-56081",
+        "description": "Display",
+        "price_usd": 399
+      },
+      "rear_camera": {
+        "article": "661-56082",
+        "description": "Rear Camera",
+        "price_usd": 219
+      },
+      "front_camera": {
+        "article": "661-56083",
+        "description": "Front Camera",
+        "price_usd": 169
+      },
+      "speaker": {
+        "article": "661-56084",
+        "description": "Speaker",
+        "price_usd": 69
+      },
+      "taptic_engine": {
+        "article": "661-56085",
+        "description": "Taptic Engine",
+        "price_usd": 69
+      }
+    }
   },
   {
     "name": "iPhone Air",
@@ -4678,6 +6213,38 @@
         "price_usd": 169,
         "article": "661-56083"
       }
+    },
+    "service_parts": {
+      "battery": {
+        "article": "661-56080",
+        "description": "Battery",
+        "price_usd": 99
+      },
+      "display": {
+        "article": "661-56081",
+        "description": "Display",
+        "price_usd": 399
+      },
+      "rear_camera": {
+        "article": "661-56082",
+        "description": "Rear Camera",
+        "price_usd": 219
+      },
+      "front_camera": {
+        "article": "661-56083",
+        "description": "Front Camera",
+        "price_usd": 169
+      },
+      "speaker": {
+        "article": "661-56084",
+        "description": "Speaker",
+        "price_usd": 69
+      },
+      "taptic_engine": {
+        "article": "661-56085",
+        "description": "Taptic Engine",
+        "price_usd": 69
+      }
     }
   },
   {
@@ -4704,7 +6271,24 @@
       "Keyboard problems"
     ],
     "repair_difficulty": "Сложная",
-    "repair_time": "3-4 часа"
+    "repair_time": "3-4 часа",
+    "service_parts": {
+      "battery": {
+        "article": "661-62001",
+        "description": "Battery",
+        "price_usd": 139
+      },
+      "display": {
+        "article": "661-62002",
+        "description": "Display",
+        "price_usd": 519
+      },
+      "keyboard": {
+        "article": "661-62003",
+        "description": "Keyboard",
+        "price_usd": 379
+      }
+    }
   },
   {
     "name": "MacBook Air 15-inch M4 2025",
@@ -4730,7 +6314,24 @@
       "Keyboard problems"
     ],
     "repair_difficulty": "Сложная",
-    "repair_time": "3-4 часа"
+    "repair_time": "3-4 часа",
+    "service_parts": {
+      "battery": {
+        "article": "661-62011",
+        "description": "Battery",
+        "price_usd": 149
+      },
+      "display": {
+        "article": "661-62012",
+        "description": "Display",
+        "price_usd": 639
+      },
+      "keyboard": {
+        "article": "661-62013",
+        "description": "Keyboard",
+        "price_usd": 419
+      }
+    }
   },
   {
     "name": "MacBook Pro 14-inch M5 2025",
@@ -4755,6 +6356,23 @@
       "Display issues"
     ],
     "repair_difficulty": "Очень сложная",
-    "repair_time": "4-5 часов"
+    "repair_time": "4-5 часов",
+    "service_parts": {
+      "battery": {
+        "article": "661-62021",
+        "description": "Battery",
+        "price_usd": 159
+      },
+      "display": {
+        "article": "661-62022",
+        "description": "Display",
+        "price_usd": 679
+      },
+      "keyboard": {
+        "article": "661-62023",
+        "description": "Keyboard",
+        "price_usd": 449
+      }
+    }
   }
 ]
