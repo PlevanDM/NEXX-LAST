@@ -201,9 +201,19 @@ for device in devices:
     original = device.copy()
     
     # Добавляем детальную информацию о Charging IC
-    if device.get('charging_ic') and device['charging_ic'].get('main'):
-        ic_model = device['charging_ic']['main'].split()[0]  # Берем первое слово (модель)
-        if ic_model in COMPONENT_INFO:
+    if device.get('charging_ic'):
+        ic_value = device['charging_ic']
+        ic_model = None
+        
+        # Обработка разных типов данных (строка или словарь)
+        if isinstance(ic_value, dict) and ic_value.get('main'):
+            ic_model = ic_value['main'].split()[0]
+        elif isinstance(ic_value, str):
+            ic_model = ic_value.split()[0]
+            # Превращаем строку в словарь для единообразия
+            device['charging_ic'] = {'main': ic_value}
+            
+        if ic_model and ic_model in COMPONENT_INFO:
             device['charging_ic'].update(COMPONENT_INFO[ic_model])
             enriched_count += 1
     

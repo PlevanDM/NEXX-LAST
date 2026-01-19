@@ -1,0 +1,1761 @@
+{
+  "iPhone": [
+    {
+      "model": "iPhone 17 Pro Max (2025) – A3257, A3525, A3527, A3526",
+      "services": {
+        "Display Apple": "3449"
+      }
+    },
+    {
+      "model": "iPhone 17 Pro (2025) – A3256, A3522, A3524, A3523",
+      "services": {
+        "Display Apple": "3199"
+      }
+    },
+    {
+      "model": "iPhone 17 (2025) – A3258, A3519, A3521, A3520",
+      "services": {
+        "Display Apple": "2999"
+      }
+    },
+    {
+      "model": "iPhone 17 Air (2025) – A3260, A3516, A3518, A3517",
+      "services": {
+        "Display Apple": "2999"
+      }
+    },
+    {
+      "model": "iPhone 16 Pro Max (2024) – A3084, A3295, A3297, A3296",
+      "services": {
+        "OKA": "1799",
+        "Display SWAP": "2799",
+        "Display Apple": "2999",
+        "Sticla spate": "1599",
+        "Baterie         +149 lei prog": "599",
+        "Baterie Apple": "899",
+        "Sticla camera": "599",
+        "Camera spate": "1649.0",
+        "Reparatie placa": "1799.0",
+        "Mufa incarcare": "799.0",
+        "Microfon": "799.0"
+      }
+    },
+    {
+      "model": "iPhone 16 Pro (2024) – A3083, A3292, A3294, A3293",
+      "services": {
+        "OKA": "1699",
+        "Display SWAP": " ",
+        "Display Apple": "2750",
+        "Sticla spate": "1599",
+        "Baterie         +149 lei prog": "599",
+        "Baterie Apple": "899",
+        "Sticla camera": "599",
+        "Camera spate": "1649.0",
+        "Reparatie placa": "1799.0",
+        "Mufa incarcare": "799.0",
+        "Microfon": "799.0"
+      }
+    },
+    {
+      "model": "iPhone 16 Plus (2024) – A3082, A3289, A3291, A3290",
+      "services": {
+        "OKA": "1500",
+        "Display SWAP": "1999",
+        "Display Apple": "2550",
+        "Sticla spate": "1599",
+        "Baterie         +149 lei prog": "599",
+        "Baterie Apple": "899",
+        "Sticla camera": "599",
+        "Camera spate": "1199.0",
+        "Reparatie placa": "1699.0",
+        "Mufa incarcare": "799.0",
+        "Microfon": "799.0"
+      }
+    },
+    {
+      "model": "iPhone 16 e (2024)",
+      "services": {
+        "OKA": " "
+      }
+    },
+    {
+      "model": "iPhone 16 (2024) – A3081, A3286, A3288, A3287",
+      "services": {
+        "OKA": "1500",
+        "Display SWAP": "1699",
+        "Display Apple": "2250",
+        "Sticla spate": "1499",
+        "Baterie         +149 lei prog": "599",
+        "Baterie Apple": "899",
+        "Sticla camera": "599",
+        "Camera spate": "1199.0",
+        "Reparatie placa": "1699.0",
+        "Mufa incarcare": "799.0",
+        "Microfon": "799.0"
+      }
+    },
+    {
+      "model": "iPhone 15 Pro Max (2023) – A2849, A3105, A3108, A3106",
+      "services": {
+        "OKA": "1500",
+        "Display SWAP": "2299",
+        "Display Apple": "2800",
+        "Sticla spate": "1199",
+        "Baterie         +149 lei prog": "499",
+        "Baterie Apple": "799",
+        "Sticla camera": "499",
+        "Camera spate": "999.0",
+        "Carcasa": "1499.0",
+        "Reparatie placa": "1499.0",
+        "Mufa incarcare": "599.0",
+        "Microfon": "599.0"
+      }
+    },
+    {
+      "model": "iPhone 15 Pro (2023) – A2848, A3101, A3104, A3102",
+      "services": {
+        "OKA": "1500",
+        "Display SWAP": "2299",
+        "Display Apple": "2500",
+        "Sticla spate": "1199",
+        "Baterie         +149 lei prog": "499",
+        "Baterie Apple": "799",
+        "Sticla camera": "499",
+        "Camera spate": "999.0",
+        "Carcasa": "1499.0",
+        "Reparatie placa": "1499.0",
+        "Mufa incarcare": "599.0",
+        "Microfon": "599.0"
+      }
+    },
+    {
+      "model": "iPhone 15 Plus (2023) – A2847, A3093, A3096, A3094",
+      "services": {
+        "OKA": "1300",
+        "Display SWAP": "1599",
+        "Display Apple": "2300",
+        "Sticla spate": "1099",
+        "Baterie         +149 lei prog": "499",
+        "Baterie Apple": "799",
+        "Sticla camera": "499",
+        "Camera spate": "849.0",
+        "Carcasa": "1199.0",
+        "Reparatie placa": "1399.0",
+        "Mufa incarcare": "599.0",
+        "Microfon": "599.0"
+      }
+    },
+    {
+      "model": "iPhone 15 (2023) – A2846, A3089, A3092, A3090",
+      "services": {
+        "OKA": "1300",
+        "Display SWAP": "1499",
+        "Display Apple": "2000",
+        "Sticla spate": "1099",
+        "Baterie         +149 lei prog": "499",
+        "Baterie Apple": "799",
+        "Sticla camera": "499",
+        "Camera spate": "849.0",
+        "Carcasa": "1199.0",
+        "Reparatie placa": "1399.0",
+        "Mufa incarcare": "599.0",
+        "Microfon": "599.0"
+      }
+    },
+    {
+      "model": "iPhone 14 Pro Max (2022) – A2651, A2893, A2896, A2895, A2894",
+      "services": {
+        "OKA": "1195",
+        "Display SWAP": "1899",
+        "Display Apple": "2600",
+        "Sticla spate": "849",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "699",
+        "Sticla camera": "399",
+        "Camera spate": "749.0",
+        "Carcasa": "1749.0",
+        "Reparatie placa": "999.0",
+        "Mufa incarcare": "499.0",
+        "Microfon": "499.0"
+      }
+    },
+    {
+      "model": "iPhone 14 Pro (2022) – A2650, A2889, A2892, A2891, A2890",
+      "services": {
+        "OKA": "1145",
+        "Display SWAP": "1599",
+        "Display Apple": "2450",
+        "Sticla spate": "849",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "699",
+        "Sticla camera": "399",
+        "Camera spate": "699.0",
+        "Carcasa": "1749.0",
+        "Reparatie placa": "999.0",
+        "Mufa incarcare": "499.0",
+        "Microfon": "499.0"
+      }
+    },
+    {
+      "model": "iPhone 14 Plus (2022) – A2632, A2885, A2888, A2887, A2886",
+      "services": {
+        "OKA": "995",
+        "Display SWAP": "1299",
+        "Display Apple": "2400",
+        "Sticla spate": "799",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "699",
+        "Sticla camera": "399",
+        "Camera spate": "649.0",
+        "Carcasa": "1499.0",
+        "Reparatie placa": "999.0",
+        "Mufa incarcare": "499.0",
+        "Microfon": "499.0"
+      }
+    },
+    {
+      "model": "iPhone 14 (2022) – A2649, A2881, A2882, A2883, A2884",
+      "services": {
+        "OKA": "995",
+        "Display SWAP": "1199",
+        "Display Apple": "1800",
+        "Sticla spate": "799",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "699",
+        "Sticla camera": "399",
+        "Camera spate": "649.0",
+        "Carcasa": "1499.0",
+        "Reparatie placa": "999.0",
+        "Mufa incarcare": "499.0",
+        "Microfon": "499.0"
+      }
+    },
+    {
+      "model": "iPhone 13 Pro Max (2021) – A2484, A2641, A2644, A2645, A2643",
+      "services": {
+        "OKA": "995",
+        "Display SWAP": "1599",
+        "Display Apple": "2400",
+        "Sticla spate": "699",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "649",
+        "Sticla camera": "299",
+        "Camera spate": "549.0",
+        "Carcasa": "1449.0",
+        "Reparatie placa": "899.0",
+        "Mufa incarcare": "449.0",
+        "Microfon": "449.0"
+      }
+    },
+    {
+      "model": "iPhone 13 Pro (2021) – A2483, A2636, A2639, A2640, A2638",
+      "services": {
+        "OKA": "945",
+        "Display SWAP": "1399",
+        "Display Apple": "2100",
+        "Sticla spate": "699",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "649",
+        "Sticla camera": "299",
+        "Camera spate": "499.0",
+        "Carcasa": "1449.0",
+        "Reparatie placa": "899.0",
+        "Mufa incarcare": "449.0",
+        "Microfon": "449.0"
+      }
+    },
+    {
+      "model": "iPhone 13 (2021) – A2482, A2631, A2634, A2635, A2633",
+      "services": {
+        "OKA": "895",
+        "Display SWAP": "1199",
+        "Display Apple": "1650",
+        "Sticla spate": "599",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "649",
+        "Sticla camera": "299",
+        "Camera spate": "449.0",
+        "Carcasa": "1299.0",
+        "Reparatie placa": "899.0",
+        "Mufa incarcare": "449.0",
+        "Microfon": "449.0"
+      }
+    },
+    {
+      "model": "iPhone 13 mini (2021) – A2481, A2626, A2629, A2630, A2628",
+      "services": {
+        "OKA": "845",
+        "Display SWAP": "999",
+        "Display Apple": "1650",
+        "Sticla spate": "599",
+        "Baterie         +149 lei prog": "449",
+        "Baterie Apple": "649",
+        "Sticla camera": "299",
+        "Camera spate": "399.0",
+        "Carcasa": "1199.0",
+        "Reparatie placa": "899.0",
+        "Mufa incarcare": "449.0",
+        "Microfon": "449.0"
+      }
+    },
+    {
+      "model": "iPhone 12 Pro Max (2020) – A2342, A2410, A2412, A2411",
+      "services": {
+        "OKA": "845",
+        "Display SWAP": "1499",
+        "Display Apple": "2400",
+        "Aftermarket": "749.0",
+        "Sticla spate": "599",
+        "Baterie         +149 lei prog": "399",
+        "Baterie Apple": "599",
+        "Sticla camera": "249",
+        "Camera spate": "499.0",
+        "Carcasa": "1299.0",
+        "Reparatie placa": "799.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 12 Pro (2020) – A2341, A2406, A2408, A2407",
+      "services": {
+        "OKA": "745",
+        "Display SWAP": "800",
+        "Display Apple": "1800",
+        "Sticla spate": "599",
+        "Baterie         +149 lei prog": "399",
+        "Baterie Apple": "599",
+        "Sticla camera": "249",
+        "Camera spate": "449.0",
+        "Carcasa": "1299.0",
+        "Reparatie placa": "799.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 12 (2020) – A2403, A2404, A2405, A2172",
+      "services": {
+        "OKA": "745",
+        "Display SWAP": "1199",
+        "Display Apple": "1800",
+        "Sticla spate": "499",
+        "Baterie         +149 lei prog": "399",
+        "Baterie Apple": "599",
+        "Sticla camera": "249",
+        "Camera spate": "449.0",
+        "Carcasa": "999.0",
+        "Reparatie placa": "799.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 12 mini (2020) – A2176, A2398, A2400, A2399",
+      "services": {
+        "OKA": "645",
+        "Display SWAP": "899",
+        "Display Apple": "1650",
+        "Sticla spate": "499",
+        "Baterie         +149 lei prog": "399",
+        "Baterie Apple": "599",
+        "Sticla camera": "249",
+        "Camera spate": "349.0",
+        "Carcasa": "999.0",
+        "Reparatie placa": "799.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 11 Pro Max (2019) – A2161, A2220, A2218",
+      "services": {
+        "OKA": "745",
+        "Display SWAP": "999",
+        "Sticla spate": "399",
+        "Baterie         +149 lei prog": "349",
+        "Sticla camera": "199",
+        "Camera spate": "399.0",
+        "Carcasa": "749.0",
+        "Reparatie placa": "599.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 11 Pro (2019) – A2160, A2217, A2215",
+      "services": {
+        "OKA": "645",
+        "Display SWAP": "899",
+        "Sticla spate": "399",
+        "Baterie         +149 lei prog": "349",
+        "Sticla camera": "199",
+        "Camera spate": "399.0",
+        "Carcasa": "649.0",
+        "Reparatie placa": "599.0",
+        "Mufa incarcare": "399.0",
+        "Microfon": "399.0"
+      }
+    },
+    {
+      "model": "iPhone 11 (2019) – A2111, A2223, A2221",
+      "services": {
+        "OKA": "495",
+        "Display SWAP": "599",
+        "Sticla spate": "399",
+        "Baterie         +149 lei prog": "349",
+        "Sticla camera": "199",
+        "Camera spate": "349.0",
+        "Carcasa": "599.0",
+        "Reparatie placa": "599.0",
+        "Mufa incarcare": "349.0",
+        "Microfon": "349.0"
+      }
+    },
+    {
+      "model": "iPhone XS Max (2018) – A1921, A2101, A2102, A2103, A2104",
+      "services": {
+        "OKA": "495",
+        "Display SWAP": "749",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "299",
+        "Baterie Apple": " ",
+        "Sticla camera": "199",
+        "Camera spate": "349.0",
+        "Carcasa": "599.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "299.0",
+        "Microfon": "299.0"
+      }
+    },
+    {
+      "model": "iPhone XS (2018) – A1920, A2097, A2098, A2099, A2100",
+      "services": {
+        "OKA": "445",
+        "Display SWAP": "549",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "299",
+        "Sticla camera": "199",
+        "Camera spate": "349.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "iPhone XR (2018) – A1984, A2105, A2106, A2107, A2108",
+      "services": {
+        "OKA": "445",
+        "Display SWAP": "499",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "299",
+        "Sticla camera": "199",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "iPhone X (2017) – A1865, A1901, A1902",
+      "services": {
+        "OKA": "445",
+        "Display SWAP": "549",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "299",
+        "Sticla camera": "199",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "Iphone SE (2022) 3 gen",
+      "services": {
+        "OKA": "349",
+        "Display SWAP": "449",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "299",
+        "Sticla camera": "199",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "Iphone SE (2020) 2 gen - A2275, A2298 и A2296",
+      "services": {
+        "OKA": "349",
+        "Display SWAP": "399",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "249",
+        "Sticla camera": "199",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "iPhone 8 Plus (2017) – A1864, A1897, A1898",
+      "services": {
+        "Display SWAP": "399",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "199",
+        "Sticla camera": "149",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "199.0",
+        "Microfon": "199.0"
+      }
+    },
+    {
+      "model": "iPhone 8 (2017) – A1863, A1905, A1906",
+      "services": {
+        "Display SWAP": "399",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "199",
+        "Sticla camera": "149",
+        "Camera spate": "299.0",
+        "Carcasa": "549.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "199.0",
+        "Microfon": "199.0"
+      }
+    },
+    {
+      "model": "iPhone 7 Plus (2016) – A1661, A1784, A1785\niPhone 7 (2016) – A1660, A1778, A1779",
+      "services": {
+        "OKA": "295",
+        "Display SWAP": "399",
+        "Sticla spate": "299",
+        "Baterie         +149 lei prog": "199",
+        "Sticla camera": "149",
+        "Camera spate": "299.0",
+        "Carcasa": "545.0",
+        "Reparatie placa": "449.0",
+        "Mufa incarcare": "249.0",
+        "Microfon": "249.0"
+      }
+    },
+    {
+      "model": "Model",
+      "services": {
+        "OKA": "Display",
+        "Display SWAP": "Case",
+        "Display Apple": "Battery",
+        "Sticla spate": "Rear Glass",
+        "Baterie         +149 lei prog": "Charging Port \nFlex",
+        "Baterie Apple": "Camera Rear",
+        "Sticla camera": "Camera Front"
+      }
+    }
+  ],
+  "MacBook": [
+    {
+      "model": "A3xxx – MacBook Air 13″ & 15″ (M4, 2025)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "3749",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "1499/3249",
+        "Keyboard": "999.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "999/1400",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A3114 – MacBook Air 15″ (M3, 2024)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "2999/3499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "1499/3249",
+        "Keyboard": "949.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "999/1400",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A3113 – MacBook Air 13″ (M3, 2024)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "2999/3499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "1499/3249",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "999/1400",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2941 – MacBook Air 15″ (M2, 2023)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "2599/3499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1499.0",
+        "Swap/Top case": "1499/3249",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "999/1400",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2681 – MacBook Air 13″ (M2, 2022)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "749.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "2499/3299",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1499.0",
+        "Swap/Top case": "1499/2999",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "999.0",
+        "Battery Swap": "949/1200",
+        "Speaker/mic Swap": "749",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2337 – MacBook Air 13″ (M1, 2020)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "749.0",
+        "Repair Logic Board": "1249.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "2849",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1499.0",
+        "Swap/Top case": "1249/2249",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "749.0",
+        "Battery Swap": "849/1200",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2179 – MacBook Air 13″ Retina (2020, Intel)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": " ",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "999",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499"
+      }
+    },
+    {
+      "model": "A1932 – MacBook Air 13″ Retina (2018, 2019)",
+      "services": {
+        "Diagnostics": "989.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "999",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499"
+      }
+    },
+    {
+      "model": "A1466 – MacBook Air 13″ (Early 2015, 2017)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "499.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1199",
+        "Repair Flexgate": "999.0",
+        "Swap/Top case": "499",
+        "Keyboard": "499.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "299.0",
+        "Battery Swap": "499",
+        "Speaker/mic Swap": "449",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "349.0"
+      }
+    },
+    {
+      "model": "A1465 – MacBook Air 11″ (Early 2015)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "249.0",
+        "Repair Logic Board": "499.0",
+        "Clean/Thremal": "199.0",
+        "Display/Lid Swap": "999",
+        "Repair Flexgate": "999.0",
+        "Swap/Top case": "499",
+        "Keyboard": "499.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "299.0",
+        "Battery Swap": "499",
+        "Speaker/mic Swap": "299",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "349.0"
+      }
+    },
+    {
+      "model": "A3xxx – MacBook Pro 14″ & 16″ (M3/M4, 2023–2024)",
+      "services": {
+        "Diagnostics": "299.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "5499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "3999",
+        "Keyboard": "1999.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1499.0",
+        "Battery Swap": "1999",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2780 – MacBook Pro 16″ (M2 Pro/Max, 2023)",
+      "services": {
+        "Diagnostics": "299.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "4499/4999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "3499",
+        "Keyboard": "1999.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "1999",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2779 – MacBook Pro 14″ (M2 Pro/Max, 2023)",
+      "services": {
+        "Diagnostics": "299.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "3749/4499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "2999",
+        "Keyboard": "1999.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "1249.0",
+        "Battery Swap": "1499",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2485 – MacBook Pro 16″ (M1 Pro/Max, 2021)",
+      "services": {
+        "Diagnostics": "299.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "4499/4999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "2499",
+        "Keyboard": "1499.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "999.0",
+        "Battery Swap": "1749",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2442 – MacBook Pro 14″ (M1 Pro/Max, 2021)",
+      "services": {
+        "Diagnostics": "299.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0",
+        "Display/Lid Swap": "3749/4499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1999.0",
+        "Swap/Top case": "1999",
+        "Keyboard": "1499.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "999.0",
+        "Battery Swap": "1299",
+        "Speaker/mic Swap": "749/999",
+        "Type C/MagSafe": "749/999",
+        "Swap Fan": "749/999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2338 – MacBook Pro 13″ (M1,M2 20-22)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "749.0",
+        "Repair Logic Board": "1249.0",
+        "Clean/Thremal": "449.0",
+        "Display/Lid Swap": "2999/3499",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1499.0",
+        "Swap/Top case": "1249",
+        "Keyboard": "1249.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "999.0",
+        "Battery Swap": "999",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "749",
+        "Swap Fan": "749",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2251 / A2289 – MacBook Pro 13″ (2020, Intel)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "2249",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1499",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "749.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2141 – MacBook Pro 16″ (2019)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "749.0",
+        "Repair Logic Board": "1249.0",
+        "Clean/Thremal": "399.0",
+        "Display/Lid Swap": "2499/3999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1499.0",
+        "Swap/Top case": "1999/3999",
+        "Keyboard": "999.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "749.0",
+        "Battery Swap": "949",
+        "Speaker/mic Swap": "749",
+        "Type C/MagSafe": "749",
+        "Swap Fan": "749",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1990 – MacBook Pro 15″ (2018, 2019)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "349.0",
+        "Display/Lid Swap": "2249",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1749",
+        "Keyboard": "899.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "599.0",
+        "Battery Swap": "899",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A2159 – MacBook Pro 13″ (2019, Two Thunderbolt ports)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1499",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1989 – MacBook Pro 13″ (2018, 2019, Touch Bar)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1999",
+        "Touch ID": "1249.0",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1499",
+        "Keyboard": "899.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1707 – MacBook Pro 15″ (2016, 2017)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "349.0",
+        "Display/Lid Swap": "1999",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1499",
+        "Keyboard": "899.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "599.0",
+        "Battery Swap": "899",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1708 – MacBook Pro 13″ (2016, 2017, no Touch Bar)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1999",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1249",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1706 – MacBook Pro 13″ (2016, 2017, Touch Bar)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "299.0",
+        "Display/Lid Swap": "1999",
+        "Repair Flexgate": "1199.0",
+        "Swap/Top case": "1249",
+        "Keyboard": "849.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "499.0",
+        "Battery Swap": "849",
+        "Speaker/mic Swap": "499",
+        "Type C/MagSafe": "999",
+        "Swap Fan": "999",
+        "Audio board": "499.0"
+      }
+    },
+    {
+      "model": "A1398 – MacBook Pro 15″ Retina (Mid 2015)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "499.0",
+        "Clean/Thremal": "249.0",
+        "Display/Lid Swap": "999",
+        "Repair Flexgate": "999.0",
+        "Swap/Top case": "999",
+        "Keyboard": "799.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "299.0",
+        "Battery Swap": "799",
+        "Speaker/mic Swap": "299",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "349.0"
+      }
+    },
+    {
+      "model": "A1502 – MacBook Pro 13″ Retina (Early 2015)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "249.0",
+        "Repair Logic Board": "499.0",
+        "Clean/Thremal": "249.0",
+        "Display/Lid Swap": "999",
+        "Repair Flexgate": "999.0",
+        "Swap/Top case": "999",
+        "Keyboard": "799.0",
+        "Bottom/ Set": "49/999",
+        "Trackpad Swap": "299.0",
+        "Battery Swap": "799",
+        "Speaker/mic Swap": "299",
+        "Type C/MagSafe": "499",
+        "Swap Fan": "499",
+        "Audio board": "349.0"
+      }
+    },
+    {
+      "model": "A3xxx – iMac 24″ (M4, 2024)",
+      "services": {
+        "Diagnostics": "999.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "999.0",
+        "Clean/Thremal": "999.0",
+        "Display/Lid Swap": "3999",
+        "Speaker/mic Swap": "999"
+      }
+    },
+    {
+      "model": "A2989 / A2990 – iMac 24″ (M3, 2023)",
+      "services": {
+        "Diagnostics": "999.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "999.0",
+        "Clean/Thremal": "999.0",
+        "Display/Lid Swap": "3499",
+        "Speaker/mic Swap": "999"
+      }
+    },
+    {
+      "model": "A2438 – iMac 24″ (M1, 2021)",
+      "services": {
+        "Diagnostics": "749.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "749.0",
+        "Display/Lid Swap": "3499",
+        "Speaker/mic Swap": "999"
+      }
+    },
+    {
+      "model": "A1418 – iMac 21.5″ (2015–2019)",
+      "services": {
+        "Diagnostics": "749.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "749.0",
+        "Display/Lid Swap": "1999/2249",
+        "Speaker/mic Swap": "749/999"
+      }
+    },
+    {
+      "model": "A1419 – iMac 27″ Retina (2015–2020)",
+      "services": {
+        "Diagnostics": "999.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "999.0",
+        "Clean/Thremal": "999.0",
+        "Display/Lid Swap": "2999",
+        "Speaker/mic Swap": "749/999"
+      }
+    },
+    {
+      "model": "A1862 – iMac Pro 27″ (2017)",
+      "services": {
+        "Diagnostics": "999.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "999.0",
+        "Clean/Thremal": "999.0",
+        "Display/Lid Swap": "3249",
+        "Speaker/mic Swap": "749/999"
+      }
+    },
+    {
+      "model": "A3xxx – Mac Studio (M4 Max/M3 Ultra, 2025)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "999.0"
+      }
+    },
+    {
+      "model": "A2786 – Mac Pro (M2 Ultra, 2023)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "999.0"
+      }
+    },
+    {
+      "model": "A2438 / A2439 – Mac mini (M2/M2 Pro, 2023)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0"
+      }
+    },
+    {
+      "model": "A2816 – Mac Studio (M2 Max/Ultra, 2023)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0"
+      }
+    },
+    {
+      "model": "A2686 – Mac Studio (M1 Max/Ultra, 2022)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "999.0",
+        "Repair Logic Board": "1499.0",
+        "Clean/Thremal": "499.0"
+      }
+    },
+    {
+      "model": "A2348 – Mac mini (M1, 2020)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "749.0",
+        "Repair Logic Board": "1249.0",
+        "Clean/Thremal": "499.0"
+      }
+    },
+    {
+      "model": "A1993 – Mac mini (2018 Intel)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "499.0",
+        "Repair Logic Board": "749.0",
+        "Clean/Thremal": "449.0"
+      }
+    },
+    {
+      "model": "A1347 – Mac mini (Late 2014, sold until 2017)",
+      "services": {
+        "Diagnostics": "199.0",
+        "Liquid Damage": "249.0",
+        "Repair Logic Board": "349.0",
+        "Clean/Thremal": "349.0"
+      }
+    }
+  ],
+  "iPad": [
+    {
+      "model": "Pro 13\" 8 Gen (M5)\nA2898 (Wi-Fi), A2899 (Cellular)",
+      "services": {
+        "OKA": "2700",
+        "Display \nApple": "-",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12.9 M4 (2024) 7\nA2925, A2926, A3008, A3009",
+      "services": {
+        "OKA": "2400",
+        "Display \nApple": "-",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 M2 (2022) 6    \nA2436 (Wi-Fi), A2764 (Cellular), A2437 (Cellular), A2766 (Cellular)",
+      "services": {
+        "OKA": "1900",
+        "Display SWAP": "2499",
+        "Display \nApple": "-",
+        "Baterie": "1200.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 M1 (2021) 5\nA2378 (Wi-Fi), A2461 (Cellular), A2379 (Cellular), A2462 (Cellular)",
+      "services": {
+        "OKA": "1900",
+        "Display SWAP": "2499",
+        "Display \nApple": "-",
+        "Baterie": "1200.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 (2020) 4\nA2229 (Wi-Fi), A2069 (Cellular), A2232 (Cellular)",
+      "services": {
+        "OKA": "1800",
+        "Display SWAP": "1999",
+        "Display \nApple": "-",
+        "Baterie": "1200.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 (2018) 3\nA1876 (Wi-Fi), A2014 (Cellular), A1895 (Cellular)",
+      "services": {
+        "OKA": "1800",
+        "Display SWAP": "1999",
+        "Display \nApple": "-",
+        "Baterie": "1000.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 (2017) 2\nA1670 (Wi-Fi), A1671 (Cellular)",
+      "services": {
+        "OKA": "1400",
+        "Display SWAP": "1600",
+        "Display \nApple": "-",
+        "Baterie": "800.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 12,9 (2015) 1\nA1584 (Wi-Fi), A1652 (Cellular)",
+      "services": {
+        "OKA": "1400",
+        "Display SWAP": "1600",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 11 M4 (2024) 5\nA2836 (Wi-Fi), A2837 (Cellular), A3006 (Cellular), A3007 (Cellular)",
+      "services": {
+        "OKA": "2000",
+        "Display \nApple": "-",
+        "Baterie": "1100.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 11 M2 (2022) 4\nA2759 (Wi-Fi), A2761 (Cellular), A2435 (Cellular), A2762 (Cellular)",
+      "services": {
+        "OKA": "1800",
+        "Display SWAP": "2400",
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 11 M1 (2021) 3\nA2377 (Wi-Fi), A2459 (Cellular), A2301 (Cellular), A2460 (Cellular)",
+      "services": {
+        "OKA": "1800",
+        "Display SWAP": "2400",
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 11 (2020) 2\nA2228 (Wi-Fi), A2068 (Cellular), A2230 (Cellular), A2231 (Cellular)",
+      "services": {
+        "OKA": "1600",
+        "Display SWAP": "1900",
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 11 (2018) 1\nA1980 (Wi-Fi), A2013 (Cellular), A1934 (Cellular), A1979 (Cellular)",
+      "services": {
+        "OKA": "1600",
+        "Display SWAP": "1900",
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 10,5 (2017)\nA1701 (Wi-Fi), A1709 (Cellular), A1852 (Cellular)",
+      "services": {
+        "OKA": "900",
+        "Display SWAP": "1300",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Pro 9,7 (2016)\nA1673 (Wi-Fi), A1674 (Cellular), A1675 (Cellular)",
+      "services": {
+        "OKA": "500",
+        "Display SWAP": "899",
+        "Display \nApple": "-",
+        "Baterie": "600.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 7 (M3) 11\" (2025)\nA3266 (Wi-Fi), A3267 (Cellular), A3270 (Cellular)",
+      "services": {
+        "Display \nApple": "-",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 6 (M2) 13\" (2024)\nA2898 (Wi-Fi), A2899 (Cellular), A2900 (Cellular)",
+      "services": {
+        "OKA": " ",
+        "Display \nApple": "-",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 6 (M2) 11\" (2024)\nA2898 (Wi-Fi), A2899 (Cellular), A3006 (Cellular)",
+      "services": {
+        "Display \nApple": "-",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 5 (M1) (2022)\nA2588 (Wi-Fi), A2589 (Cellular), A2591 (Cellular)",
+      "services": {
+        "OKA": "1600",
+        "Display SWAP": "1900",
+        "Display \nApple": "-",
+        "Baterie": "800.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 4 (2020)\nA2316 (Wi-Fi), A2324 (Cellular), A2325 (Cellular), A2072 (Cellular)",
+      "services": {
+        "OKA": "1600",
+        "Display SWAP": "1800",
+        "Display \nApple": "-",
+        "Baterie": "800.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 3 (2019)\nA2152 (Wi-Fi), A2123 (Cellular), A2153 (Cellular), A2154 (Cellular)",
+      "services": {
+        "OKA": "849",
+        "Display SWAP": "1400",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Air 2 (2018)\nA1566 (Wi-Fi), A1567 (Cellular)",
+      "services": {
+        "Display \nApple": "-",
+        "Baterie": "500.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "mini 7 (2024)\n       A2993 (Wi-Fi), A2995 (Cellular), A2996 (Cellular)",
+      "services": {
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "mini 6 (2021)\nA2567 (Wi-Fi), A2568 (Cellular), A2569 (Cellular)",
+      "services": {
+        "OKA": "1700",
+        "Display SWAP": "2000",
+        "Display \nApple": "-",
+        "Baterie": "900.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "mini 5 (2019)\nA2133 (Wi-Fi), A2124 (Cellular), A2126 (Cellular), A2125 (Cellular)",
+      "services": {
+        "OKA": "600",
+        "Display SWAP": "900",
+        "Display \nApple": "-",
+        "Baterie": "600.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "mini 4 (2015)\nA1538 (Wi-Fi), A1550 (Cellular)",
+      "services": {
+        "OKA": "500",
+        "Display SWAP": "700",
+        "Display \nApple": "-",
+        "Baterie": "500.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 10 (2022)\n(Wi-Fi), A2757 (Cellular), A2777 (Cellular)",
+      "services": {
+        "OKA": "900",
+        "Display SWAP": "1200",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 9 (2021)\nA2602 (Wi-Fi), A2604 (Cellular), A2603 (Cellular)",
+      "services": {
+        "OKA": "800",
+        "Display SWAP": "800",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 8 (2020)\nA2270 (Wi-Fi), A2428 (Cellular), A2429 (Cellular), A2430 (Cellular)",
+      "services": {
+        "OKA": "800",
+        "Display SWAP": "800",
+        "Display \nApple": "-",
+        "Baterie": "700.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 7 (2019)\nA2197 (Wi-Fi), A2200 (Cellular), A2198 (Cellular)",
+      "services": {
+        "OKA": "700",
+        "Display SWAP": "700",
+        "Display \nApple": "-",
+        "Baterie": "600.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 6 (2018)\nA1893 (Wi-Fi), A1954 (Cellular)",
+      "services": {
+        "OKA": "600",
+        "Display SWAP": "600",
+        "Display \nApple": "-",
+        "Baterie": "500.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "iPad 5 (2017)\nA1822 (Wi-Fi), A1823 (Cellular)",
+      "services": {
+        "OKA": "500",
+        "Display SWAP": "500",
+        "Display \nApple": "-",
+        "Baterie": "500.0",
+        "Baterie \nApple": "-"
+      }
+    },
+    {
+      "model": "Alte servicii",
+      "services": {
+        "OKA": "Termen",
+        "Display SWAP": "Pret"
+      }
+    },
+    {
+      "model": "„Actualizare / Firmware / Resetare\niPhone \"",
+      "services": {
+        "OKA": "1 ora",
+        "Display SWAP": "99"
+      }
+    },
+    {
+      "model": "„Actualizare / Firmware / Resetare\n iPad\"",
+      "services": {
+        "OKA": "1 ora",
+        "Display SWAP": "149"
+      }
+    },
+    {
+      "model": "„Actualizare / Firmware / Resetare\n Mac\"",
+      "services": {
+        "OKA": "1 ora",
+        "Display SWAP": "199"
+      }
+    },
+    {
+      "model": "Alte servicii",
+      "services": {
+        "OKA": "1-6 hours",
+        "Display SWAP": "150"
+      }
+    },
+    {
+      "model": "Recuperare date\n(după ce memoria este plină)",
+      "services": {
+        "OKA": "1 day",
+        "Display SWAP": "150"
+      }
+    },
+    {
+      "model": "Curățarea difuzoarelor (fără deschidere)",
+      "services": {
+        "OKA": "10-20min",
+        "Display SWAP": "99"
+      }
+    },
+    {
+      "model": "Curățarea AirPod-urilor",
+      "services": {
+        "OKA": "1 hour",
+        "Display SWAP": "99"
+      }
+    },
+    {
+      "model": "Sticla de protectie iPhone",
+      "services": {
+        "OKA": "15 min",
+        "Display SWAP": "99"
+      }
+    },
+    {
+      "model": "Consultare",
+      "services": {
+        "OKA": "Termen",
+        "Display SWAP": "Pret"
+      }
+    },
+    {
+      "model": "Creați și configurați un cont Apple ID",
+      "services": {
+        "OKA": "30min",
+        "Display SWAP": "99"
+      }
+    },
+    {
+      "model": "„Deblocarea dispozitivului dacă ID-ul Apple este fraudulos,\ndar dispozitivul are factura\"",
+      "services": {
+        "OKA": "2 weeks",
+        "Display SWAP": "499"
+      }
+    },
+    {
+      "model": "Deblocați dispozitivul dacă ați uitat parola ID-ului Apple\nși nu îl puteți restaura singur",
+      "services": {
+        "OKA": "2 weeks",
+        "Display SWAP": "199"
+      }
+    }
+  ],
+  "Apple Watch": [
+    {
+      "model": "Apple Watch SE 3 gen (2025)\nA3324 (42 мм, GPS)\nA3326 (42 мм, GPS + Cellular)\nA3325 (46 мм, GPS)\nA3328 (46 мм, GPS + Cellular)",
+      "services": {
+        "Magsafe": "849.0"
+      }
+    },
+    {
+      "model": "Series 11 (2025)\nA3078 (41 мм, GPS)\nA3079 (45 мм, GPS)\nA3080 / A3081 (GPS + Cellular)",
+      "services": {
+        "Soft": "199.0",
+        "Polisare": "399.0",
+        "Unnamed: 9": "Transfer de date\n(cu instalarea aplicației)\"",
+        "Unnamed: 10": "1-6 hours",
+        "Unnamed: 11": "249"
+      }
+    },
+    {
+      "model": "Series 10 (2024)\nA2982 (41 мм, GPS)\nA2983 (45 мм, GPS)\nA2984 / A2985 (GPS + Cellular)",
+      "services": {
+        "Micro/Bottom": "749.0",
+        "Baterie": "749.0",
+        "Soft": "199.0",
+        "Polisare": "399.0",
+        "Unnamed: 9": "Curățarea difuzoarelor (fără deschidere)",
+        "Unnamed: 10": "10-20min",
+        "Unnamed: 11": "99"
+      }
+    },
+    {
+      "model": "Series 9 (2023)\nA2978 (41 мм, GPS)\nA2979 (45 мм, GPS)\nA2980 / A2981 (GPS + Cellular)",
+      "services": {
+        "Display": "1099.0",
+        "Micro/Bottom": "749.0",
+        "Baterie": "749.0",
+        "Soft": "199.0",
+        "Polisare": "399.0",
+        "Unnamed: 9": "Sticla de protectie iPhone/ Ipad",
+        "Unnamed: 10": "15 min",
+        "Unnamed: 11": "99/149"
+      }
+    },
+    {
+      "model": "Apple Watch SE 2 gen (2022–2023):\nA2722  (40 мм, GPS)\nA2723  (40 мм, GPS + Cellular)\nA2724  (44 мм, GPS)\nA2725  (44 мм, GPS + Cellular)",
+      "services": {
+        "OKA": "849.0",
+        "Display": "999.0",
+        "Micro/Bottom": "649.0",
+        "Baterie": "649.0",
+        "Soft": "199.0",
+        "Polisare": "399.0",
+        "Unnamed: 9": "Consultare",
+        "Unnamed: 10": "Termen",
+        "Unnamed: 11": "Pret"
+      }
+    },
+    {
+      "model": "Series 8 (2022)\nA2770 (41 мм, GPS)\nA2771 (45 мм, GPS)\nA2772 / A2773 (GPS + Cellular)",
+      "services": {
+        "OKA": "749.0",
+        "Display": "999.0",
+        "Micro/Bottom": "549.0",
+        "Baterie": "549.0",
+        "Soft": "199.0",
+        "Polisare": "399.0",
+        "Unnamed: 9": "„Deblocarea dispozitivului dacă ID-ul Apple este fraudulos,\ndar dispozitivul are factura\"",
+        "Unnamed: 10": "2 weeks",
+        "Unnamed: 11": "499"
+      }
+    },
+    {
+      "model": "Series 7 (2021)\nA2473 (41 мм, GPS)\nA2474 (45 мм, GPS)\nA2475 / A2476 (GPS + Cellular)",
+      "services": {
+        "OKA": "749.0",
+        "Display": "999.0",
+        "Micro/Bottom": "549.0",
+        "Baterie": "499.0",
+        "Soft": "199.0",
+        "Polisare": "399.0"
+      }
+    },
+    {
+      "model": "Series 6 (2020)\nA2291 (40 мм, GPS)\nA2292 (44 мм, GPS)\nA2293 / A2294 (GPS + Cellular)",
+      "services": {
+        "OKA": "599.0",
+        "Display": "945.0",
+        "Micro/Bottom": "449.0",
+        "Baterie": "449.0",
+        "Soft": "199.0",
+        "Polisare": "399.0"
+      }
+    },
+    {
+      "model": "Series SE 1st gen (2020)\nA2351 (40 мм, GPS)\nA2352 (44 мм, GPS)\nA2353 / A2354 (GPS + Cellular)",
+      "services": {
+        "OKA": "499.0",
+        "Display": "749.0",
+        "Micro/Bottom": "449.0",
+        "Baterie": "399.0",
+        "Soft": "199.0",
+        "Polisare": "399.0"
+      }
+    },
+    {
+      "model": "Series 5 (2019)\nA2092 (40 мм, GPS)\nA2093 (44 мм, GPS)\nA2156 / A2157 (GPS + Cellular)",
+      "services": {
+        "OKA": "499.0",
+        "Display": "749.0",
+        "Micro/Bottom": "449.0",
+        "Baterie": "399.0",
+        "Soft": "199.0",
+        "Polisare": "399.0"
+      }
+    },
+    {
+      "model": "Series 4 (2018)\nA1977 (40 мм, GPS)\nA1978 (44 мм, GPS)\nA2007 / A2008 (GPS + Cellular)",
+      "services": {
+        "OKA": "449.0",
+        "Display": "649.0",
+        "Micro/Bottom": "449.0",
+        "Baterie": "349.0",
+        "Soft": "199.0",
+        "Polisare": "399.0"
+      }
+    }
+  ]
+}

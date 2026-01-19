@@ -11,6 +11,26 @@ app.use('/api/*', cors())
 app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/data/*', serveStatic({ root: './public' }))
 
+// API Routes
+app.get('/api/settings', (c) => {
+  return c.json({
+    currency: {
+      rates: {
+        UAH_TO_USD: 0.024,
+        UAH_TO_EUR: 0.022,
+        USD_TO_UAH: 41.5,
+        EUR_TO_UAH: 45.0
+      },
+      updated_at: new Date().toISOString()
+    },
+    service: {
+      name: "NEXX Repair",
+      phone: "+380 00 000 0000",
+      working_hours: "10:00 - 19:00"
+    }
+  })
+})
+
 // Favicon
 app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
 
@@ -27,23 +47,15 @@ app.get('/', (c) => {
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         
-        <!-- Local Vendor Scripts -->
-        <script src="/static/vendor/react.production.min.js"></script>
-        <script src="/static/vendor/react-dom.production.min.js"></script>
-
-        <!-- Error Handling -->
-        <script>
-          window.onerror = function(msg, url, line, col, error) {
-            document.body.innerHTML = '<div style="color:red; padding:20px;"><h1>Something went wrong</h1><pre>' + msg + '\\n' + url + ':' + line + '</pre></div>';
-          };
-          if (typeof React === 'undefined') {
-            document.body.innerHTML = '<div style="color:red; padding:20px;"><h1>Error: React failed to load</h1><p>Check your internet connection or vendor files.</p></div>';
-          }
-        </script>
+        <!-- Vite Entry Point -->
+        ${import.meta.env.PROD ? `
+          <script type="module" src="/static/client-v2.js"></script>
+        ` : `
+          <script type="module" src="/src/client.tsx"></script>
+        `}
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
-        <script src="/static/app.js?v=5.0"></script>
     </body>
     </html>
   `)

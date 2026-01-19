@@ -1568,6 +1568,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedYear, setSelectedYear] = useState('all');
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   
@@ -1615,22 +1616,32 @@ const App = () => {
     return ['all', ...Array.from(cats).sort()];
   }, [devices]);
   
+  // Years
+  const years = useMemo(() => {
+    const yrs = new Set(devices.map(d => d.year).filter(Boolean));
+    return ['all', ...Array.from(yrs).sort((a, b) => b - a)];
+  }, [devices]);
+  
   // Filtered devices
   const filteredDevices = useMemo(() => {
     let result = devices;
     if (selectedCategory !== 'all') {
       result = result.filter(d => d.category === selectedCategory);
     }
+    if (selectedYear !== 'all') {
+      result = result.filter(d => d.year === parseInt(selectedYear));
+    }
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       result = result.filter(d =>
         (d.name || '').toLowerCase().includes(term) ||
         (d.model || '').toLowerCase().includes(term) ||
+        (d.processor || '').toLowerCase().includes(term) ||
         (d.board_numbers || []).some(bn => bn.toLowerCase().includes(term))
       );
     }
     return result;
-  }, [devices, searchTerm, selectedCategory]);
+  }, [devices, searchTerm, selectedCategory, selectedYear]);
   
   // Stats
   const stats = useMemo(() => ({
@@ -1715,7 +1726,7 @@ const App = () => {
         h('div', { className: 'relative' },
           h('input', {
             type: 'text',
-            placeholder: 'Поиск по модели, номеру платы...',
+            placeholder: 'Поиск по модели, процессору, номеру платы...',
             value: searchTerm,
             onChange: e => setSearchTerm(e.target.value),
             className: 'w-full px-5 py-3 pl-12 rounded-xl border-0 bg-slate-50 focus:ring-2 focus:ring-indigo-500 focus:outline-none'
@@ -1724,14 +1735,29 @@ const App = () => {
         )
       ),
       
-      // Categories
-      h('div', { className: 'flex gap-2 mb-4 overflow-x-auto pb-2' },
-        ...categories.map(cat => h('button', {
-          key: cat,
-          onClick: () => setSelectedCategory(cat),
-          className: cn('px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-sm transition-all',
-            selectedCategory === cat ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
-        }, cat === 'all' ? 'Все' : cat))
+      // Filters row (Categories + Year)
+      h('div', { className: 'flex flex-wrap gap-4 mb-4 items-center' },
+        // Categories
+        h('div', { className: 'flex gap-2 overflow-x-auto pb-1' },
+          ...categories.map(cat => h('button', {
+            key: cat,
+            onClick: () => setSelectedCategory(cat),
+            className: cn('px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-sm transition-all',
+              selectedCategory === cat ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
+          }, cat === 'all' ? 'Все' : cat))
+        ),
+        
+        // Year filter
+        h('div', { className: 'flex items-center gap-2' },
+          h('span', { className: 'text-sm text-slate-500' }, '📅'),
+          h('select', {
+            value: selectedYear,
+            onChange: e => setSelectedYear(e.target.value),
+            className: 'px-3 py-1.5 rounded-xl bg-white text-slate-700 border border-slate-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500'
+          },
+            ...years.map(yr => h('option', { key: yr, value: yr }, yr === 'all' ? 'Все года' : yr))
+          )
+        )
       ),
       
       // Quick actions
