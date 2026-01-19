@@ -2153,7 +2153,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   // Get logic board info from prices
   const boardInfo = useMemo(() => {
     if (!ukrainePrices || !device.name) return null;
-    const deviceNameLower = device.name.toLowerCase();
+    const deviceNameLower = (device.name || '').toLowerCase();
     // Find logic board for this device in prices
     const boardEntry = Object.entries(ukrainePrices).find(([_, data]) => {
       const desc = (data.description || '').toLowerCase();
@@ -2228,7 +2228,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
           (device.board_numbers?.length > 0) && h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-500 text-white shadow-sm' }, '🖥️')
         ),
         h('h3', { className: 'font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2' }, device.name),
-        device.model && h('p', { className: 'text-xs text-slate-500 mt-1 font-mono truncate' }, device.model.split('/')[0])
+        device.model && h('p', { className: 'text-xs text-slate-500 mt-1 font-mono truncate' }, (device.model || '').split('/')[0])
       ),
       // Device Icon - Show image if available, otherwise emoji
       h('div', { className: 'flex flex-col items-center' },
@@ -2273,10 +2273,10 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
     (device.board_numbers?.length > 0) && h('div', { className: 'mb-2' },
       h('div', { className: 'flex flex-wrap gap-1' },
         h('span', { className: 'text-xs text-purple-500' }, '🖥️'),
-        ...device.board_numbers.slice(0, 2).map((bn, i) => 
+        ...(device.board_numbers || []).slice(0, 2).map((bn, i) => 
           h('span', { key: i, className: 'px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded text-xs font-mono border border-purple-200' }, bn)
         ),
-        device.board_numbers.length > 2 && h('span', { className: 'px-1.5 py-0.5 text-xs text-slate-400 bg-white/50 rounded' }, `+${device.board_numbers.length - 2}`)
+        (device.board_numbers?.length || 0) > 2 && h('span', { className: 'px-1.5 py-0.5 text-xs text-slate-400 bg-white/50 rounded' }, `+${device.board_numbers.length - 2}`)
       )
     ),
     
@@ -2292,7 +2292,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
     device.charging_ic && h('div', { className: 'mb-3 p-2 bg-yellow-100/80 rounded-lg' },
       h('div', { className: 'flex items-center gap-2 text-xs' },
         h('span', { className: 'text-yellow-700' }, '⚡ IC:'),
-        h('span', { className: 'font-bold text-yellow-800' }, device.charging_ic.main)
+        h('span', { className: 'font-bold text-yellow-800' }, device.charging_ic?.main || 'N/A')
       )
     ),
     
@@ -2309,7 +2309,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
         ),
         device.common_issues?.length > 0 && h('div', { className: 'flex items-center gap-1 px-2 py-1 bg-red-100 rounded-full' },
           h('span', null, '⚠️'),
-          h('span', { className: 'font-semibold text-red-700' }, device.common_issues.length)
+          h('span', { className: 'font-semibold text-red-700' }, device.common_issues?.length || 0)
         )
       ),
       h('span', { className: 'text-indigo-600 text-sm font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1' }, 
@@ -2537,7 +2537,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
           // Model number
           device.model && h('div', { className: 'p-3 bg-slate-50 rounded-xl' },
             h('p', { className: 'text-xs text-slate-500' }, '📱 Модель'),
-            h('p', { className: 'font-bold text-slate-800 text-sm' }, device.model.split('/')[0])
+            h('p', { className: 'font-bold text-slate-800 text-sm' }, (device.model || '').split('/')[0])
           ),
           // Processor
           device.processor && h('div', { className: 'p-3 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl' },
@@ -2569,7 +2569,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
           device.board_numbers?.length > 0 && h('div', null,
             h('p', { className: 'text-xs text-slate-500 mb-2' }, 'Board Numbers'),
             h('div', { className: 'flex flex-wrap gap-2' },
-              ...device.board_numbers.map((bn, i) => 
+              ...(device.board_numbers || []).map((bn, i) => 
                 h('span', { key: i, className: 'px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg font-mono text-sm font-semibold' }, bn)
               )
             )
@@ -2585,7 +2585,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
       device.common_issues?.length > 0 && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
         h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '⚠️ Типовые неисправности'),
         h('ul', { className: 'space-y-2' },
-          ...device.common_issues.slice(0, 8).map((issue, i) =>
+          ...(device.common_issues || []).slice(0, 8).map((issue, i) =>
             h('li', { key: i, className: 'flex items-start gap-2 text-sm text-slate-700 p-2 bg-red-50 rounded-lg' },
               h('span', { className: 'text-red-500 mt-0.5' }, '⚡'), issue
             )
@@ -2600,8 +2600,8 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
           device.repair_difficulty && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
             h('p', { className: 'text-xs text-slate-500 mb-1' }, 'Сложность'),
             h('p', { className: cn('text-lg font-bold',
-              device.repair_difficulty.includes('Экстремал') || device.repair_difficulty.includes('Expert') ? 'text-red-600' :
-              device.repair_difficulty.includes('Сложн') || device.repair_difficulty.includes('Advanced') ? 'text-orange-600' : 'text-green-600'
+              (device.repair_difficulty || '').includes('Экстремал') || (device.repair_difficulty || '').includes('Expert') ? 'text-red-600' :
+              (device.repair_difficulty || '').includes('Сложн') || (device.repair_difficulty || '').includes('Advanced') ? 'text-orange-600' : 'text-green-600'
             ) }, device.repair_difficulty)
           ),
           device.repair_time && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
@@ -2719,7 +2719,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
           device.charging_ic && h('div', { 
             className: 'p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border border-yellow-200 cursor-pointer hover:shadow-md transition-all',
             onClick: () => {
-              const ic = icData?.charging_ics?.find(c => c.name === device.charging_ic.main);
+              const ic = device.charging_ic?.main ? icData?.charging_ics?.find(c => c.name === device.charging_ic.main) : null;
               if (ic) onSelectItem({ ...ic, type: 'ic' });
             }
           },
@@ -2727,8 +2727,8 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
               h('div', { className: 'w-10 h-10 rounded-lg bg-yellow-200 flex items-center justify-center' }, '⚡'),
               h('div', null,
                 h('p', { className: 'text-xs text-yellow-700 font-semibold' }, 'Charging IC (U2/Tristar)'),
-                h('p', { className: 'font-bold text-slate-800' }, device.charging_ic.main),
-                device.charging_ic.designation && h('p', { className: 'text-xs text-slate-500' }, device.charging_ic.designation)
+                h('p', { className: 'font-bold text-slate-800' }, device.charging_ic?.main || 'Unknown'),
+                device.charging_ic?.designation && h('p', { className: 'text-xs text-slate-500' }, device.charging_ic.designation)
               )
             )
           ),
@@ -2740,7 +2740,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
               h('div', null,
                 h('p', { className: 'text-xs text-purple-700 font-semibold' }, 'Процессор (SoC)'),
                 h('p', { className: 'font-bold text-slate-800' }, device.processor),
-                h('p', { className: 'text-xs text-slate-500' }, device.architecture || (device.processor.includes('M') ? 'Apple Silicon' : 'A-series'))
+                h('p', { className: 'text-xs text-slate-500' }, device.architecture || ((device.processor || '').includes('M') ? 'Apple Silicon' : 'A-series'))
               )
             )
           ),
@@ -2810,7 +2810,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
       (device.board_numbers?.length > 0) && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
         h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '🖥️ Board Numbers'),
         h('div', { className: 'flex flex-wrap gap-2' },
-          ...device.board_numbers.map((bn, i) => 
+          ...(device.board_numbers || []).map((bn, i) => 
             h('span', { key: i, className: 'px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg font-mono text-sm' }, bn)
           )
         ),
@@ -2821,7 +2821,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
       device.charging_ic && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
         h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '⚡ Быстрая диагностика зарядки'),
         h('div', { className: 'p-4 bg-yellow-50 rounded-xl' },
-          h('p', { className: 'font-semibold text-yellow-800 mb-2' }, `IC: ${device.charging_ic.main}`),
+          h('p', { className: 'font-semibold text-yellow-800 mb-2' }, `IC: ${device.charging_ic?.main || 'N/A'}`),
           h('div', { className: 'text-sm text-slate-700 space-y-1' },
             h('p', null, '• Диодный режим D+/D-: 0.400-0.600V'),
             h('p', null, '• PP5V0_USB: 5.0V при подключении'),
@@ -2960,7 +2960,7 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
             ),
             h('div', { className: 'p-3 bg-white/80 rounded-lg' },
               h('div', { className: 'flex items-center gap-3 mb-2' },
-                h('span', { className: 'px-3 py-1 bg-yellow-100 text-yellow-800 rounded-lg font-mono font-bold' }, device.charging_ic.main),
+                h('span', { className: 'px-3 py-1 bg-yellow-100 text-yellow-800 rounded-lg font-mono font-bold' }, device.charging_ic?.main || 'N/A'),
                 device.charging_ic.designation && h('span', { className: 'text-sm text-slate-600' }, device.charging_ic.designation)
               ),
               h('p', { className: 'text-sm text-slate-600' }, 
