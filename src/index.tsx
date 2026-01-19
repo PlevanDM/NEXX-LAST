@@ -42,7 +42,7 @@ app.get('/', (c) => {
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
-        <script src="/static/app.js?v=3.6"></script>
+        <script src="/static/app.js?v=4.0"></script>
     </body>
     </html>
   `)
