@@ -548,12 +548,39 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
     return keywords;
   };
   
+  // Реалистичные диапазоны цен в EUR для фильтрации
+  const priceRanges = {
+    'battery': [30, 200],
+    'display': [100, 800],
+    'rear_camera': [50, 400],
+    'front_camera': [30, 300],
+    'speaker': [10, 80],
+    'taptic_engine': [10, 60],
+    'logic_board': [150, 800],
+    'top_case': [100, 600],
+    'bottom_case': [30, 200],
+    'trackpad': [30, 150]
+  };
+  
+  // Функция проверки реалистичности цены
+  const isPriceRealistic = (priceEur, partType) => {
+    const range = priceRanges[partType];
+    if (!range) return true; // Если диапазон не задан, принимаем любую цену
+    return priceEur >= range[0] && priceEur <= range[1];
+  };
+  
   // Функция для поиска украинской цены по артикулу или названию
   const findUkrainePrice = (article, modelName, partType) => {
     // Сначала пробуем точное совпадение по артикулу
     if (article && uahCatalog[article]) {
       const uahPrice = uahCatalog[article].price_uah;
-      return Math.round(uahPrice / eurUahRate * 100) / 100;
+      const priceEur = Math.round(uahPrice / eurUahRate * 100) / 100;
+      
+      // Проверяем реалистичность цены
+      if (isPriceRealistic(priceEur, partType)) {
+        return priceEur;
+      }
+      // Если цена нереалистична, пробуем поиск по названию
     }
     
     // Затем ищем по названию модели и типа запчасти
@@ -591,6 +618,10 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
       
       // Требуем совпадение типа запчасти
       if (!partMatch) continue;
+      
+      // Проверяем реалистичность цены
+      const priceEur = Math.round(item.price_uah / eurUahRate * 100) / 100;
+      if (!isPriceRealistic(priceEur, partType)) continue;
       
       if (score > bestScore) {
         bestScore = score;
