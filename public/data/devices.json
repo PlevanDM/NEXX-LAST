@@ -6632,7 +6632,15 @@
     },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG42.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG42.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "official_service_prices": {
+      "battery": 109,
+      "display": 459,
+      "rear_camera": 269,
+      "front_camera": 219,
+      "speaker": 79,
+      "taptic_engine": 79
+    }
   },
   {
     "name": "iPhone 17 Pro",
@@ -6717,7 +6725,15 @@
     },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG41.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG41.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "official_service_prices": {
+      "battery": 109,
+      "display": 409,
+      "rear_camera": 269,
+      "front_camera": 219,
+      "speaker": 79,
+      "taptic_engine": 79
+    }
   },
   {
     "name": "iPhone 17",
@@ -6800,7 +6816,15 @@
     },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG34.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG34.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "official_service_prices": {
+      "battery": 99,
+      "display": 359,
+      "rear_camera": 219,
+      "front_camera": 169,
+      "speaker": 69,
+      "taptic_engine": 69
+    }
   },
   {
     "name": "iPhone Air",
@@ -6961,7 +6985,15 @@
       "Cloud White",
       "Light Gold",
       "Sky Blue"
-    ]
+    ],
+    "official_service_prices": {
+      "battery": 99,
+      "display": 399,
+      "rear_camera": 219,
+      "front_camera": 169,
+      "speaker": 69,
+      "taptic_engine": 69
+    }
   },
   {
     "name": "MacBook Air 13-inch M4 2025",
@@ -7012,7 +7044,12 @@
     "architecture": "Apple Silicon M4",
     "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
     "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "official_service_prices": {
+      "battery": 139,
+      "display": 519,
+      "keyboard": 379
+    }
   },
   {
     "name": "MacBook Air 15-inch M4 2025",
@@ -7063,7 +7100,12 @@
     "architecture": "Apple Silicon M4",
     "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
     "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "official_service_prices": {
+      "battery": 149,
+      "display": 639,
+      "keyboard": 419
+    }
   },
   {
     "name": "MacBook Pro 14-inch M5 2025",
@@ -7113,7 +7155,12 @@
     "architecture": "Apple Silicon M5",
     "device_icon": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.standard",
     "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.mini",
-    "icon_source": "ifixit"
+    "icon_source": "ifixit",
+    "official_service_prices": {
+      "battery": 159,
+      "display": 679,
+      "keyboard": 449
+    }
   },
   {
     "name": "iPhone 5s",
@@ -7185,7 +7232,9 @@
     ],
     "official_service_prices": {
       "battery": 49,
-      "display": 149
+      "display": 149,
+      "rear_camera": 89,
+      "front_camera": 59
     },
     "device_icon": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.standard",
     "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.mini",
@@ -7210,7 +7259,9 @@
     ],
     "official_service_prices": {
       "battery": 49,
-      "display": 179
+      "display": 179,
+      "rear_camera": 89,
+      "front_camera": 59
     },
     "device_icon": "https://guide-images.cdn.ifixit.com/igi/nIcnRhh4Z2qCIYpB.standard",
     "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/nIcnRhh4Z2qCIYpB.mini",

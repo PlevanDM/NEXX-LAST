@@ -44,6 +44,7 @@ app.get('/test-click', (c) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NEXX - Click Test</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     </head>
@@ -155,6 +156,7 @@ app.get('/', (c) => {
         <meta name="description" content="NEXX Database - База данных для ремонта устройств Apple: цены, платы, микросхемы">
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         
         <!-- React from CDN (dev mode for debugging) -->
         <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>

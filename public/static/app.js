@@ -2497,15 +2497,29 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
       displays: [],
       batteries: []
     };
+
+    const normalizeList = (value) => {
+      if (!value) return [];
+      if (Array.isArray(value)) return value.filter(Boolean);
+      if (typeof value === 'string') return [value];
+      if (typeof value === 'object') {
+        if (Array.isArray(value.compatible)) return normalizeList(value.compatible);
+        if (Array.isArray(value.devices)) return normalizeList(value.devices);
+        if (Array.isArray(value.models)) return normalizeList(value.models);
+        return Object.values(value).reduce((acc, item) => acc.concat(normalizeList(item)), []);
+      }
+      return [];
+    };
     
     // Check rear cameras
     if (compatibilityData.rear_cameras) {
       Object.entries(compatibilityData.rear_cameras).forEach(([group, data]) => {
-        if (data.compatible?.some(d => device.name.includes(d))) {
+        const compatibleList = normalizeList(data.compatible || data.devices || data.models);
+        if (compatibleList.some(d => device.name.includes(d))) {
           compat.cameras.push({
             type: 'rear',
             ...data,
-            compatibleWith: data.compatible
+            compatibleWith: compatibleList
           });
         }
       });
@@ -2514,10 +2528,11 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
     // Check front cameras
     if (compatibilityData.front_cameras) {
       Object.entries(compatibilityData.front_cameras).forEach(([group, devices]) => {
-        if (devices?.some(d => device.name.includes(d))) {
+        const deviceList = normalizeList(devices);
+        if (deviceList.some(d => device.name.includes(d))) {
           compat.cameras.push({
             type: 'front',
-            compatibleWith: devices
+            compatibleWith: deviceList
           });
         }
       });
