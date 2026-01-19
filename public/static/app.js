@@ -497,6 +497,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
   const partKeywords = {
     'battery': ['battery', 'батарея', 'аккумулятор'],
     'display': ['display', 'дисплей', 'экран', 'lcd', 'screen', 'retina'],
+    'keyboard': ['keyboard', 'клавиатура', 'top case'],
     'rear_camera': ['rear camera', 'back camera', 'задняя камера', 'camera', 'камера'],
     'front_camera': ['front camera', 'truedepth', 'фронтальная камера', 'передняя камера', 'facetime'],
     'speaker': ['speaker', 'динамик'],
@@ -552,6 +553,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
   const priceRanges = {
     'battery': [30, 200],
     'display': [100, 800],
+    'keyboard': [100, 600],
     'rear_camera': [50, 400],
     'front_camera': [30, 300],
     'speaker': [10, 80],
@@ -675,10 +677,12 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
               const parts = [
                 { key: 'battery', label: '🔋 Батарея', data: info.battery },
                 { key: 'display', label: '📱 Дисплей', data: info.display },
+                { key: 'keyboard', label: '⌨️ Клавиатура', data: info.keyboard },
                 { key: 'rear_camera', label: '📷 Задняя камера', data: info.rear_camera },
                 { key: 'front_camera', label: '🤳 Фронтальная камера', data: info.front_camera },
                 { key: 'speaker', label: '🔊 Динамик', data: info.speaker },
-                { key: 'taptic_engine', label: '📳 Taptic Engine', data: info.taptic_engine }
+                { key: 'taptic_engine', label: '📳 Taptic Engine', data: info.taptic_engine },
+                { key: 'logic_board', label: '🖥️ Плата', data: info.logic_board }
               ].filter(p => p.data?.price_usd);
               
               if (parts.length === 0) return [];
