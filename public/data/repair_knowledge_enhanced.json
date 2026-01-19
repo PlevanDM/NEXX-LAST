@@ -763,5 +763,1122 @@
         "With underfill": "$200-400"
       }
     }
+  },
+  "water_damage": {
+    "description": "Профессиональный ремонт iPhone после залития жидкостью. Критично важно: скорость реакции и правильная процедура очистки определяют успех восстановления.",
+    "alternative_names": ["Liquid Damage", "Залитие", "Water Damage", "Коррозия", "Окисление"],
+    "critical_time_windows": {
+      "0-1_hour": {
+        "status": "GOLDEN HOUR - максимальные шансы на полное восстановление",
+        "success_rate": "85-95%",
+        "action": "НЕМЕДЛЕННАЯ разборка и очистка"
+      },
+      "1-6_hours": {
+        "status": "Хорошие шансы при правильных действиях",
+        "success_rate": "70-85%",
+        "risk": "Начало окисления контактов"
+      },
+      "6-24_hours": {
+        "status": "Коррозия началась, но восстановление возможно",
+        "success_rate": "50-70%",
+        "risk": "Окисление контактов, возможны микрозамыкания"
+      },
+      "24-48_hours": {
+        "status": "КРИТИЧНО! Серьезная коррозия",
+        "success_rate": "30-50%",
+        "risk": "Глубокая коррозия, повреждение дорожек"
+      },
+      "48+_hours": {
+        "status": "Тяжелое повреждение, часто необратимое",
+        "success_rate": "10-30%",
+        "risk": "Разрушение металлизации, отслоение компонентов"
+      }
+    },
+    "immediate_actions_customer": {
+      "DO_IMMEDIATELY": [
+        "⚠️ НЕ ВКЛЮЧАТЬ устройство! (если включено - немедленно выключить)",
+        "⚠️ НЕ СТАВИТЬ НА ЗАРЯДКУ!",
+        "Извлечь SIM лоток (выпустить жидкость изнутри)",
+        "Протереть внешнюю влагу сухой тканью",
+        "Держать вертикально, наклонять для слива через порты",
+        "СРОЧНО доставить в ремонт (каждая минута критична!)"
+      ],
+      "DO_NOT": [
+        "❌ НЕ класть в рис (миф! не помогает, тратит время)",
+        "❌ НЕ использовать фен для сушки (перегрев!)",
+        "❌ НЕ трясти телефон (разносит жидкость внутри)",
+        "❌ НЕ пытаться зарядить для проверки",
+        "❌ НЕ класть на батарею/радиатор",
+        "❌ НЕ ждать \"высохнет само\" (коррозия не ждёт!)"
+      ]
+    },
+    "liquid_contact_indicators": {
+      "description": "LCI (Liquid Contact Indicator) - белые наклейки, краснеющие при контакте с водой",
+      "locations_by_model": {
+        "iPhone_5_to_7": [
+          "SIM card tray (видно снаружи)",
+          "Headphone jack (внутри разъёма)",
+          "Lightning connector (внутри порта)",
+          "Inside near battery connector"
+        ],
+        "iPhone_8_to_X": [
+          "SIM card tray",
+          "Lightning connector",
+          "Near bottom microphone",
+          "Near Taptic Engine"
+        ],
+        "iPhone_11_plus": [
+          "SIM card tray",
+          "Lightning/USB-C port",
+          "Near wireless charging coil",
+          "Inside near logic board"
+        ]
+      },
+      "color_meaning": {
+        "White_or_Silver": "Не было контакта с жидкостью",
+        "Pink_or_Red": "Был контакт с водой или жидкостью",
+        "Partially_red": "Влажность или брызги"
+      },
+      "note": "LCI могут сработать от ВЛАЖНОСТИ (душ, пар), но не означают серьёзное залитие"
+    },
+    "professional_repair_procedure": {
+      "step_1_disassembly": {
+        "priority": "URGENT - разобрать как можно быстрее",
+        "order": [
+          "1. Отключить батарею ПЕРВЫМ ДЕЛОМ (предотвратить короткое замыкание)",
+          "2. Снять дисплей",
+          "3. Снять все shields и металлические крышки",
+          "4. Извлечь logic board",
+          "5. Снять камеры, датчики, все flex cables",
+          "6. Разобрать полностью на компоненты"
+        ],
+        "caution": [
+          "Liquid damage может \"приклеить\" разъёмы - аккуратно!",
+          "Проверить battery на swelling/damage",
+          "Если батарея вздулась/bubbling - утилизировать отдельно"
+        ]
+      },
+      "step_2_initial_cleaning": {
+        "method": "Isopropyl Alcohol 99% (IPA) bath",
+        "procedure": [
+          "Погрузить logic board в контейнер с IPA 99%",
+          "Замочить на 5-10 минут",
+          "Аккуратно поболтать для вытеснения trapped liquid",
+          "Использовать soft brush (зубная щётка) для чистки",
+          "Особое внимание: connectors, pins, battery contacts, shields"
+        ],
+        "do_not_submerge": [
+          "❌ Display/LCD (повредится)",
+          "❌ Camera modules (fog inside)",
+          "❌ Sensors с optical coating",
+          "❌ Speakers (если не нужно чистить внутри)"
+        ],
+        "alcohol_safety": "IPA 99% - легковоспламеняющийся! Работать в вентилируемом месте, без открытого огня"
+      },
+      "step_3_ultrasonic_cleaning": {
+        "equipment": "Ultrasonic cleaner (ультразвуковая ванна)",
+        "settings": {
+          "frequency": "40-50 kHz",
+          "temperature": "35-45°C (тёплый, не горячий)",
+          "duration": "10-15 минут",
+          "solution": "IPA 99% или специальный cleaning solution"
+        },
+        "procedure": [
+          "Поместить logic board в ultrasonic bath",
+          "Запустить цикл 10-15 минут",
+          "Cavitation пузырьки выбьют коррозию из труднодоступных мест",
+          "После цикла - промыть свежим IPA",
+          "Повторить если нужно"
+        ],
+        "benefits": [
+          "Очистка под BGA chips",
+          "Удаление солей и минералов",
+          "Cleaning под shields",
+          "Лучше чем manual cleaning"
+        ],
+        "note": "Профессиональный ремонт практически ВСЕГДА требует ultrasonic cleaning"
+      },
+      "step_4_microscope_inspection": {
+        "magnification": "40x-60x минимум",
+        "inspect_for": [
+          {
+            "area": "Connectors и pins",
+            "look_for": "White chalky residue (коррозия)",
+            "action": "Чистить до блеска металла"
+          },
+          {
+            "area": "Battery connector",
+            "look_for": "Green/white oxidation на pins",
+            "action": "Critical! Может вызвать no-boot"
+          },
+          {
+            "area": "Display connector",
+            "look_for": "Corrosion на FPC pins",
+            "action": "Может вызвать no display или touch issues"
+          },
+          {
+            "area": "BGA chips (CPU, Baseband, PMU)",
+            "look_for": "Oxidation на exposed balls/pads",
+            "action": "Может потребовать reflow или replacement"
+          },
+          {
+            "area": "Small components (resistors, caps)",
+            "look_for": "Lifted components, broken solder joints",
+            "action": "Re-solder или replace"
+          }
+        ]
+      },
+      "step_5_targeted_cleaning": {
+        "tools": [
+          "Precision brush (detailing brush)",
+          "Cotton swabs",
+          "IPA 99%",
+          "Flux remover (optional)",
+          "Toothpick для tight spaces"
+        ],
+        "procedure": [
+          "Dip brush в IPA",
+          "Scrub каждый connector тщательно",
+          "Use cotton swab для pins",
+          "Toothpick для удаления stubborn corrosion",
+          "Rinse с fresh IPA",
+          "Check under microscope - должно блестеть!"
+        ]
+      },
+      "step_6_drying": {
+        "methods": [
+          {
+            "method": "Air drying (лучше всего)",
+            "duration": "2-4 часа в warm, dry место",
+            "temp": "Комнатная или слегка тёплая (30-40°C)"
+          },
+          {
+            "method": "Compressed air",
+            "use": "Blow под shields и в труднодоступные места",
+            "caution": "Low pressure! Не сдуть компоненты"
+          },
+          {
+            "method": "Cold blow dryer",
+            "temp": "ТОЛЬКО ХОЛОДНЫЙ режим",
+            "caution": "НЕ использовать горячий воздух!"
+          }
+        ],
+        "verify_dry": "Проверить под microscope - не должно быть liquid residue"
+      },
+      "step_7_testing": {
+        "test_procedure": [
+          "1. Подключить battery connector",
+          "2. Подключить display connector",
+          "3. НЕ ЗАКРУЧИВАТЬ ВИНТЫ ещё",
+          "4. Попытаться включить",
+          "5. Watch for: дым, странные звуки, запах горелого",
+          "6. Check battery - swelling или heating?",
+          "7. Если всё ОК - test все функции"
+        ],
+        "test_functions": [
+          "Power on/off",
+          "Touch screen (все зоны)",
+          "Display (no lines, artifacts)",
+          "Cameras (front + back)",
+          "Microphones (запись голоса)",
+          "Speakers (звонок, музыка)",
+          "WiFi/Bluetooth",
+          "Cellular (если есть SIM)",
+          "Charging",
+          "Home button/Face ID/Touch ID",
+          "Volume buttons, mute switch",
+          "Vibration/Taptic engine"
+        ],
+        "if_issues": "Disassemble, inspect problem area под microscope, re-clean или replace component"
+      }
+    },
+    "common_failures_after_water": {
+      "by_probability": [
+        {
+          "component": "Battery",
+          "failure_rate": "70-80%",
+          "symptoms": "Swelling, won't charge, rapid drain",
+          "action": "ВСЕГДА заменять после water damage"
+        },
+        {
+          "component": "Tristar/Hydra IC",
+          "failure_rate": "40-60%",
+          "symptoms": "No charging, USB not recognized",
+          "action": "Clean thoroughly, may need replacement"
+        },
+        {
+          "component": "Audio IC / Codec",
+          "failure_rate": "30-50%",
+          "symptoms": "No sound, microphone не работает, boot loop (iPhone 7)",
+          "action": "Replacement required"
+        },
+        {
+          "component": "Baseband IC",
+          "failure_rate": "20-40%",
+          "symptoms": "No service, no IMEI",
+          "action": "Very difficult repair, often terminal"
+        },
+        {
+          "component": "Backlight IC/Driver",
+          "failure_rate": "20-30%",
+          "symptoms": "Dim screen, no backlight",
+          "action": "Replacement или filter repair"
+        },
+        {
+          "component": "PMU (Power Management)",
+          "failure_rate": "15-30%",
+          "symptoms": "Won't turn on, stuck at Apple logo",
+          "action": "Expert repair required"
+        },
+        {
+          "component": "Display",
+          "failure_rate": "10-20%",
+          "symptoms": "Lines, dead pixels, water stains inside",
+          "action": "Replacement"
+        }
+      ]
+    },
+    "liquid_types": {
+      "fresh_water": {
+        "damage_level": "Low (но не безопасна!)",
+        "corrosion_speed": "Медленная (дни)",
+        "repair_difficulty": "Easiest",
+        "success_rate": "80-95%"
+      },
+      "salt_water_sea": {
+        "damage_level": "EXTREME",
+        "corrosion_speed": "Очень быстрая (часы)",
+        "repair_difficulty": "Very difficult",
+        "success_rate": "30-50%",
+        "note": "Соль - агрессивный электролит, разрушает металл"
+      },
+      "coffee_tea_juice": {
+        "damage_level": "Moderate-High",
+        "corrosion_speed": "Fast (содержат кислоты/сахара)",
+        "repair_difficulty": "Moderate",
+        "success_rate": "60-75%",
+        "note": "Сахар и кислоты требуют thorough cleaning"
+      },
+      "soda_beer": {
+        "damage_level": "High",
+        "corrosion_speed": "Fast (сахар + кислота + карбонизация)",
+        "repair_difficulty": "Moderate-Difficult",
+        "success_rate": "50-70%",
+        "note": "Sticky residue труднее очистить"
+      },
+      "alcohol_spirits": {
+        "damage_level": "Low-Moderate",
+        "corrosion_speed": "Slow",
+        "repair_difficulty": "Easy",
+        "success_rate": "75-90%",
+        "note": "Алкоголь испаряется быстрее воды"
+      },
+      "toilet_dirty_water": {
+        "damage_level": "High (биологическое загрязнение)",
+        "corrosion_speed": "Moderate",
+        "repair_difficulty": "Moderate (больше cleaning)",
+        "success_rate": "60-80%",
+        "note": "Требует дополнительная дезинфекция"
+      }
+    },
+    "tools_required": {
+      "essential": [
+        "IPA 99% (минимум 500ml)",
+        "Ultrasonic cleaner (3L+)",
+        "Microscope 40x-60x",
+        "Soft brushes (toothbrush, detailing brush)",
+        "Cotton swabs",
+        "Plastic container для IPA bath",
+        "Anti-static tweezers"
+      ],
+      "advanced": [
+        "Hot air station для component drying",
+        "DC power supply для testing",
+        "Multimeter для диагностики",
+        "Thermal camera (найти shorts)",
+        "Soldering station для component replacement",
+        "Flux remover"
+      ],
+      "safety": [
+        "Nitrile gloves",
+        "Safety glasses",
+        "Ventilated workspace (IPA fumes)",
+        "Fire extinguisher (IPA flammable!)"
+      ]
+    },
+    "prevention_customer_education": [
+      "iPhone водостойкий ≠ водонепроницаемый",
+      "IP67/IP68 rating деградирует со временем (wear, drops)",
+      "Не купаться с phone даже если \"waterproof\"",
+      "Не заряжать влажный phone",
+      "Не использовать в душе/ванне (пар!)",
+      "Сразу после намокания - сушить и нести в ремонт",
+      "Rice НЕ ПОМОГАЕТ - это миф!"
+    ],
+    "cost_estimates": {
+      "cleaning_only": {
+        "basic_cleaning": "$50-100",
+        "with_ultrasonic": "$80-150",
+        "thorough_professional": "$100-200"
+      },
+      "common_repairs": {
+        "battery_replacement": "$40-80",
+        "tristar_replacement": "$80-150",
+        "display_replacement": "$100-300",
+        "baseband_repair": "$150-400",
+        "motherboard_replacement": "$200-600"
+      },
+      "total_typical": "Cleaning + Battery + 1-2 components = $200-500"
+    }
+  },
+  "nand_programming": {
+    "description": "NAND flash программирование и ремонт iPhone - решение проблем с памятью, ошибок iTunes 4013/4014/9, recovery loops, upgrade памяти.",
+    "alternative_names": ["NAND Repair", "Flash Memory", "HDD IC", "Storage IC", "Memory Upgrade"],
+    "common_symptoms": [
+      "iTunes Error 4013 при восстановлении",
+      "iTunes Error 4014 при обновлении",  
+      "iTunes Error 9 (USB disconnect during restore)",
+      "Error 4005 (NAND not detected)",
+      "Boot loop - застрял на Apple logo",
+      "Recovery loop - постоянно запрашивает restore",
+      "Phone won't restore в iTunes",
+      "\"Attempting data recovery\" зависает",
+      "Slow performance - долгая загрузка apps",
+      "Storage full но нет файлов",
+      "Phone полностью dead (NAND shorted)"
+    ],
+    "error_codes_meaning": {
+      "error_4013": {
+        "meaning": "General hardware failure",
+        "common_causes": [
+          "Bad NAND IC (poor BGA connection)",
+          "NAND chip physical damage",
+          "Power supply issue to NAND",
+          "CPU communication problem",
+          "Baseband issue (реже)"
+        ],
+        "repair": "NAND reball или replacement"
+      },
+      "error_4014": {
+        "meaning": "Similar to 4013, но часто USB-related",
+        "common_causes": [
+          "NAND connection issue",
+          "Bad USB cable/port",
+          "Computer USB controller issue"
+        ],
+        "repair": "Check cable first, then NAND"
+      },
+      "error_9": {
+        "meaning": "USB disconnected during restore",
+        "common_causes": [
+          "Unstable NAND connection",
+          "Power fluctuation",
+          "Bad USB",
+          "Overheating"
+        ],
+        "repair": "Cool down, better USB, NAND reball"
+      },
+      "error_4005": {
+        "meaning": "NAND not responding",
+        "common_causes": [
+          "NAND completely failed",
+          "NAND power rail short",
+          "CPU can't communicate with NAND"
+        ],
+        "repair": "NAND replacement required"
+      }
+    },
+    "nand_types_by_model": {
+      "slc_nand": {
+        "models": ["iPhone 4", "iPhone 4S"],
+        "capacity": "8GB-64GB",
+        "technology": "Single-Level Cell",
+        "endurance": "100k write cycles",
+        "speed": "Slow",
+        "reliability": "Very high",
+        "repair_difficulty": "Easy (large chip)"
+      },
+      "mlc_nand": {
+        "models": ["iPhone 5", "5s", "6", "6 Plus", "6s", "7"],
+        "capacity": "16GB-256GB",
+        "technology": "Multi-Level Cell (2 bits/cell)",
+        "endurance": "10k write cycles",
+        "speed": "Medium",
+        "reliability": "Good",
+        "repair_difficulty": "Moderate"
+      },
+      "tlc_nand": {
+        "models": ["iPhone 8", "X", "XR", "XS", "11", "SE 2020", "12", "13"],
+        "capacity": "64GB-512GB",
+        "technology": "Triple-Level Cell (3 bits/cell)",
+        "endurance": "3k-5k write cycles",
+        "speed": "Fast",
+        "reliability": "Moderate (lower than MLC)",
+        "repair_difficulty": "Difficult (smaller, PoP)"
+      },
+      "3d_nand": {
+        "models": ["iPhone 14", "15", "16"],
+        "capacity": "128GB-1TB",
+        "technology": "3D NAND (vertical stacking)",
+        "endurance": "5k-10k write cycles",
+        "speed": "Very fast",
+        "reliability": "Good",
+        "repair_difficulty": "Very difficult (advanced PoP)"
+      }
+    },
+    "nand_manufacturers": [
+      {
+        "brand": "Samsung",
+        "models_used": "iPhone 6s, 7, 8, X, 11-16",
+        "quality": "Excellent",
+        "availability": "High"
+      },
+      {
+        "brand": "Toshiba/Kioxia",
+        "models_used": "iPhone 6, 7, 8, X",
+        "quality": "Very good",
+        "availability": "Medium"
+      },
+      {
+        "brand": "SK Hynix",
+        "models_used": "iPhone 8, X, 11-13",
+        "quality": "Good",
+        "availability": "Medium"
+      },
+      {
+        "brand": "Micron",
+        "models_used": "Older models, some iPad",
+        "quality": "Good",
+        "availability": "Low"
+      }
+    ],
+    "repair_methods": {
+      "method_1_reball": {
+        "name": "NAND Reball (сохранение данных)",
+        "when": "NAND работает но плохой контакт",
+        "difficulty": "Expert",
+        "data_loss": "NO (если успешно)",
+        "success_rate": "70-85%",
+        "procedure": [
+          "1. Backup: Сделать backup если возможно",
+          "2. Preheat: Прогреть плату до 100-120°C (КРИТИЧНО для NAND!)",
+          "3. Remove: Нагреть NAND до 380-400°C, снять",
+          "4. Clean pads: Очистить площадки от старого припоя",
+          "5. Reballing: Нанести flux, установить новые balls",
+          "6. Reinstall: Установить NAND обратно при 380°C",
+          "7. Cool: Остывание естественное (НЕ УСКОРЯТЬ!)",
+          "8. Test: Подключить к iTunes, restore"
+        ],
+        "critical_notes": [
+          "⚠️ Температура КРИТИЧНА! >420°C = мёртвый NAND",
+          "⚠️ Preheater ОБЯЗАТЕЛЕН для NAND",
+          "⚠️ Cooling слишком быстро = трещины внутри chip",
+          "⚠️ NAND после reball живёт 1-3 года обычно"
+        ],
+        "time": "1-2 часа"
+      },
+      "method_2_replacement": {
+        "name": "NAND Replacement (потеря данных)",
+        "when": "NAND физически повреждён или reball не помог",
+        "difficulty": "Expert+",
+        "data_loss": "YES (100% data loss)",
+        "success_rate": "80-95%",
+        "procedure": [
+          "1. Record Serial Number: КРИТИЧНО! Записать S/N, IMEI, WiFi MAC",
+          "2. Remove old NAND: Метод как при reball",
+          "3. Program new NAND: Использовать programmer (JC Pro1000S, etc)",
+          "4. Write Serial: Записать S/N, IMEI, WiFi MAC в новый NAND",
+          "5. Install: Установить новый NAND на плату",
+          "6. Restore: Подключить к iTunes, полный restore",
+          "7. Activate: Активация через iCloud"
+        ],
+        "critical_notes": [
+          "⚠️ БЕЗ Serial Number - phone будет disabled",
+          "⚠️ S/N находится на: logic board label, phone box, Settings",
+          "⚠️ IMEI должен совпадать с оригиналом",
+          "⚠️ На iPhone 12+ NAND привязан к Secure Enclave (очень сложно!)"
+        ],
+        "time": "2-4 часа"
+      },
+      "method_3_memory_upgrade": {
+        "name": "Memory Upgrade (16GB → 128GB, etc)",
+        "when": "Customer wants more storage",
+        "difficulty": "Expert+",
+        "data_loss": "YES",
+        "success_rate": "85-95%",
+        "procedure": [
+          "Similar to replacement, но:",
+          "1. Choose higher capacity NAND (same type!)",
+          "2. Program NAND с Serial Number",
+          "3. Install на плату",
+          "4. iTunes restore"
+        ],
+        "popular_upgrades": {
+          "16GB_to_64GB": "Most popular",
+          "32GB_to_128GB": "Very popular",
+          "64GB_to_256GB": "Common",
+          "128GB_to_512GB": "Less common (дорого)"
+        },
+        "compatibility": [
+          "✅ iPhone 5-7: Относительно просто",
+          "⚠️ iPhone 8-X: Сложнее (PoP)",
+          "⚠️ iPhone 11-13: Очень сложно",
+          "❌ iPhone 14+: Практически невозможно (Secure Enclave binding)"
+        ]
+      }
+    },
+    "nand_programmers": {
+      "jc_pro1000s": {
+        "brand": "JC",
+        "model": "Pro1000S",
+        "price": "$300-500",
+        "features": [
+          "Read/Write NAND",
+          "Read Serial Number, IMEI, WiFi",
+          "Write data to new NAND",
+          "Supports iPhone 4-12",
+          "Easy-to-use software"
+        ],
+        "pros": "Доступная цена, user-friendly",
+        "cons": "Медленнее чем профессиональные"
+      },
+      "jc_p7_p8": {
+        "brand": "JC",
+        "model": "P7 / P8",
+        "price": "$150-250",
+        "features": [
+          "Basic NAND operations",
+          "iPhone 5-8 support",
+          "Slower than Pro1000S"
+        ],
+        "pros": "Дешевле",
+        "cons": "Ограниченный функционал"
+      },
+      "magico_nand_box": {
+        "brand": "Magico",
+        "model": "NAND Flash Tool",
+        "price": "$500-800",
+        "features": [
+          "Professional-grade",
+          "Fast read/write",
+          "Advanced error correction",
+          "Supports newest iPhones"
+        ],
+        "pros": "Быстро, надёжно",
+        "cons": "Дорого"
+      },
+      "pcie_nand_programmer": {
+        "brand": "Various",
+        "model": "PCIe-based",
+        "price": "$1000-3000",
+        "features": [
+          "Fastest speed",
+          "Professional use",
+          "Support all NAND types"
+        ],
+        "pros": "Maximum speed",
+        "cons": "Очень дорого, для professional shops"
+      }
+    },
+    "syscfg_and_activation": {
+      "what_is_syscfg": "System Configuration partition - contains device-unique data",
+      "critical_data": [
+        "Serial Number (S/N)",
+        "IMEI (for cellular models)",
+        "WiFi MAC address",
+        "Bluetooth MAC",
+        "ECID (Exclusive Chip ID)",
+        "Region code",
+        "Color, Model",
+        "Calibration data (display, camera, etc)"
+      ],
+      "backup_methods": [
+        {
+          "method": "Using NAND programmer",
+          "tools": "JC Pro1000S, Magico Box",
+          "data": "Full NAND dump including SysCfg",
+          "recommended": true
+        },
+        {
+          "method": "Manual record",
+          "tools": "Paper and pen",
+          "data": "S/N, IMEI from Settings or box",
+          "recommended": "As backup only"
+        }
+      ],
+      "writing_syscfg": [
+        "Load original SysCfg from backup",
+        "Use programmer to write to new NAND",
+        "Verify S/N matches original",
+        "Test activation"
+      ]
+    },
+    "secure_enclave_issue": {
+      "description": "iPhone 12+ имеют Secure Enclave привязку к NAND",
+      "impact": "NAND replacement = phone может не активироваться",
+      "technical": "NAND cryptographically paired to CPU/Secure Enclave",
+      "workarounds": [
+        {
+          "method": "Use original NAND после reball",
+          "success": "Works если NAND не физически damaged"
+        },
+        {
+          "method": "Professional unbinding tools",
+          "success": "50-70%, requires special equipment",
+          "cost": "$500-2000",
+          "note": "Для профессиональных лабораторий"
+        }
+      ],
+      "affected_models": [
+        "iPhone 12 series (частично)",
+        "iPhone 13 series (сильнее)",
+        "iPhone 14 series (очень сильно)",
+        "iPhone 15/16 series (практически неремонтируемо)"
+      ],
+      "recommendation": "Для iPhone 12+ - ВСЕГДА пытаться reball ПЕРЕД replacement"
+    },
+    "prevention": [
+      "Регулярные backup (iCloud или iTunes)",
+      "Не заполнять storage >90% (износ NAND)",
+      "Избегать многократных restore",
+      "Не ронять phone (NAND хрупкий)",
+      "Обновлять iOS (улучшенное NAND management)",
+      "Не использовать дешёвые кабели (могут вызвать error 9)"
+    ],
+    "tools_required": {
+      "essential": [
+        "NAND programmer (JC Pro1000S minimum)",
+        "BGA rework station",
+        "Preheater (ОБЯЗАТЕЛЬНО для NAND)",
+        "Microscope 60x-80x",
+        "Hot air station 380-400°C",
+        "Multimeter"
+      ],
+      "consumables": [
+        "Flux low-temp",
+        "Solder balls 0.3-0.4mm",
+        "Reballing stencils для NAND",
+        "Thermal paste",
+        "Kapton tape",
+        "IPA 99%"
+      ],
+      "optional": [
+        "Logic board holder/jig",
+        "Thermal camera (spot overheating)",
+        "PC с iTunes/3uTools",
+        "Backup NAND chips"
+      ]
+    },
+    "cost_estimates": {
+      "reball": {
+        "labor": "$80-150",
+        "parts": "$5-20 (balls, flux)",
+        "time": "1-2 hours",
+        "total": "$100-200"
+      },
+      "replacement": {
+        "labor": "$100-200",
+        "parts_nand": "$30-150 (depends on capacity)",
+        "parts_consumables": "$10-30",
+        "time": "2-4 hours",
+        "total": "$150-400"
+      },
+      "memory_upgrade": {
+        "labor": "$120-250",
+        "parts_nand": "$50-200",
+        "time": "2-4 hours",
+        "total": "$200-500"
+      }
+    }
+  },
+  "tools_supplies": {
+    "description": "Полный список профессионально��о оборудования и расходных материалов для ремонта iPhone на уровне logic board / microsoldering.",
+    "categories": {
+      "tier_1_essential": "Минимум для начала board-level repairs",
+      "tier_2_professional": "Для полноценной microsoldering работы",
+      "tier_3_advanced": "Для expert-level ремонта (NAND, CPU, advanced diagnostics)"
+    },
+    "soldering_stations": {
+      "basic": [
+        {
+          "model": "Quick 861DW",
+          "type": "Hot air + Soldering iron combo",
+          "price": "$100-200",
+          "temp_range": "100-480°C",
+          "pros": "Budget-friendly, good for начала",
+          "cons": "Не очень точная температура",
+          "suitable_for": "Screen repairs, basic component replacement"
+        },
+        {
+          "model": "Yihua 8786D",
+          "type": "Digital hot air station",
+          "price": "$80-150",
+          "temp_range": "100-480°C",
+          "pros": "Дешёво, work well",
+          "cons": "Quality inconsistent",
+          "suitable_for": "Beginners"
+        }
+      ],
+      "professional": [
+        {
+          "model": "Hakko FR-810B",
+          "type": "BGA Rework Station",
+          "price": "$2000-3000",
+          "temp_range": "150-500°C",
+          "accuracy": "±5°C",
+          "pros": "Industry standard, очень надёжный",
+          "cons": "Дорого",
+          "suitable_for": "Professional repairs, BGA work"
+        },
+        {
+          "model": "Quick 3000ESD",
+          "type": "BGA Rework System",
+          "price": "$1500-2500",
+          "temp_range": "100-500°C",
+          "pros": "Good value, reliable",
+          "cons": "Heavier чем Hakko",
+          "suitable_for": "Professional shops"
+        },
+        {
+          "model": "JBC JTSE",
+          "type": "Precision Soldering Station",
+          "price": "$800-1200",
+          "temp_range": "90-450°C",
+          "pros": "Лучший контроль температуры, fast heat-up",
+          "cons": "Tips дорогие",
+          "suitable_for": "Precision microsoldering"
+        }
+      ]
+    },
+    "preheaters": {
+      "basic": [
+        {
+          "model": "Mechanic iH-01",
+          "type": "IR preheater",
+          "price": "$80-150",
+          "temp_range": "50-350°C",
+          "size": "Small (iPhone sized)",
+          "pros": "Компактный, affordable",
+          "cons": "Uneven heating",
+          "note": "OK для iPhone 5-8"
+        },
+        {
+          "model": "Yihua 853AAA",
+          "type": "Hot plate preheater",
+          "price": "$60-120",
+          "temp_range": "50-400°C",
+          "pros": "Дешёво",
+          "cons": "Slow heat-up, no precise control",
+          "note": "Не рекомендуется для NAND"
+        }
+      ],
+      "professional": [
+        {
+          "model": "IR6500 / IR6000",
+          "type": "Infrared BGA rework station",
+          "price": "$500-800",
+          "temp_range": "50-450°C",
+          "size": "Medium (laptop sized)",
+          "pros": "Even heating, programmable profiles",
+          "cons": "Большой",
+          "note": "Industry standard для BGA"
+        },
+        {
+          "model": "Dinghua DH-A1",
+          "type": "PCB preheater",
+          "price": "$150-300",
+          "temp_range": "50-300°C",
+          "pros": "Affordable professional option",
+          "cons": "Smaller heating area",
+          "note": "Good for iPhone/iPad boards"
+        }
+      ]
+    },
+    "microscopes": {
+      "basic": [
+        {
+          "model": "USB Digital Microscope 5MP",
+          "type": "USB camera",
+          "price": "$30-80",
+          "magnification": "Up to 200x (digital)",
+          "pros": "Очень дешёво",
+          "cons": "Low quality, unusable для precision work",
+          "note": "Только для inspection, НЕ для soldering"
+        },
+        {
+          "model": "Andonstar AD206",
+          "type": "Digital LCD microscope",
+          "price": "$200-400",
+          "magnification": "Up to 200x",
+          "pros": "HD screen, good для начала",
+          "cons": "Digital magnification, не optical",
+          "note": "Acceptable для beginner board work"
+        }
+      ],
+      "professional": [
+        {
+          "model": "AmScope SM-4TZ-144A",
+          "type": "Stereo zoom microscope",
+          "price": "$400-800",
+          "magnification": "7x-45x (optical)",
+          "working_distance": "100mm",
+          "pros": "True optical zoom, good working distance",
+          "cons": "Нужен external light",
+          "note": "Хороший выбор для microsoldering"
+        },
+        {
+          "model": "Mantis Elite Cam",
+          "type": "Professional repair microscope",
+          "price": "$2500-4000",
+          "magnification": "4x-10x",
+          "working_distance": "125-225mm",
+          "pros": "Огромное working distance, stereo vision",
+          "cons": "Очень дорого",
+          "note": "Industry standard, лучшее для microsoldering"
+        },
+        {
+          "model": "Zeiss Stemi 305",
+          "type": "Lab-grade stereo microscope",
+          "price": "$3000-5000+",
+          "magnification": "8x-40x",
+          "pros": "Лучшая оптика на рынке",
+          "cons": "Extremely expensive",
+          "note": "Для high-end professional labs"
+        }
+      ]
+    },
+    "measuring_equipment": {
+      "multimeters": [
+        {
+          "model": "UNI-T UT139C",
+          "price": "$25-50",
+          "features": "Basic DMM, diode mode, continuity",
+          "pros": "Дешёвый, reliable",
+          "tier": "Essential"
+        },
+        {
+          "model": "Fluke 87V",
+          "price": "$400-500",
+          "features": "True RMS, frequency, temperature",
+          "pros": "Industry standard, lifetime warranty",
+          "tier": "Professional"
+        },
+        {
+          "model": "Brymen BM869s",
+          "price": "$200-300",
+          "features": "Dual display, True RMS",
+          "pros": "Excellent value, accurate",
+          "tier": "Professional"
+        }
+      ],
+      "dc_power_supplies": [
+        {
+          "model": "Hanmatek HM305",
+          "price": "$80-150",
+          "output": "0-30V, 0-5A",
+          "features": "Adjustable CC/CV, LED display",
+          "pros": "Affordable, good specs",
+          "tier": "Essential"
+        },
+        {
+          "model": "RD6006",
+          "price": "$100-200",
+          "output": "0-60V, 0-6A",
+          "features": "WiFi, USB, app control",
+          "pros": "Precise, programmable",
+          "tier": "Professional"
+        },
+        {
+          "model": "Mechanic P30",
+          "price": "$150-250",
+          "output": "0-30V, 0-3A",
+          "features": "iPhone repair specific, shows current draw",
+          "pros": "Made for phone repair",
+          "tier": "Professional"
+        }
+      ],
+      "thermal_cameras": [
+        {
+          "model": "HT-02D",
+          "price": "$200-300",
+          "resolution": "32x32",
+          "pros": "Дешёвая thermal imaging",
+          "cons": "Low resolution",
+          "note": "Basic short finding"
+        },
+        {
+          "model": "FLIR ONE Pro",
+          "price": "$400-600",
+          "resolution": "160x120",
+          "pros": "Smartphone attachment, portable",
+          "note": "Good for mobile repairs"
+        }
+      ]
+    },
+    "consumables": {
+      "flux": [
+        {
+          "name": "Amtech NC-559-V2-TF",
+          "type": "No-clean flux",
+          "price": "$10-20 / 100g",
+          "use": "General purpose, BGA work",
+          "note": "Industry standard"
+        },
+        {
+          "name": "MG Chemicals 835",
+          "type": "No-clean flux pen",
+          "price": "$10-15",
+          "use": "Precision application",
+          "note": "Good for small components"
+        }
+      ],
+      "solder": [
+        {
+          "type": "Leaded solder (63/37)",
+          "price": "$15-30 / 100g",
+          "use": "General repairs",
+          "note": "Best flow, lowest temp"
+        },
+        {
+          "type": "Lead-free SAC305",
+          "price": "$20-40 / 100g",
+          "use": "RoHS compliance",
+          "note": "Higher temp needed"
+        },
+        {
+          "type": "Low-temp solder (138°C)",
+          "price": "$30-50 / 50g",
+          "use": "Sensitive components",
+          "note": "For NAND, CPU work"
+        }
+      ],
+      "bga_supplies": [
+        {
+          "item": "Solder balls",
+          "sizes": "0.25mm, 0.30mm, 0.35mm, 0.40mm, 0.45mm, 0.50mm, 0.60mm, 0.76mm",
+          "price": "$10-30 / 25k balls",
+          "note": "Different ICs need different sizes"
+        },
+        {
+          "item": "BGA stencils",
+          "price": "$5-20 each",
+          "note": "Need specific stencil для каждого IC"
+        },
+        {
+          "item": "Solder paste",
+          "price": "$20-50 / 50g",
+          "note": "Alternative to balls"
+        }
+      ],
+      "cleaning": [
+        {
+          "item": "IPA 99%",
+          "price": "$10-20 / liter",
+          "use": "Board cleaning, flux removal",
+          "note": "Essential!"
+        },
+        {
+          "item": "Flux remover spray",
+          "price": "$10-20 / can",
+          "use": "Remove stubborn flux",
+          "note": "Optional but helpful"
+        },
+        {
+          "item": "Cotton swabs",
+          "price": "$5 / 500pcs",
+          "use": "Applying IPA, cleaning"
+        },
+        {
+          "item": "Lint-free wipes",
+          "price": "$10 / 100pcs",
+          "use": "Board cleaning"
+        }
+      ],
+      "adhesives": [
+        {
+          "item": "B7000 glue",
+          "price": "$5-10 / 50ml",
+          "use": "Frame assembly, shim attachment"
+        },
+        {
+          "item": "Kapton tape",
+          "price": "$5-15 / roll",
+          "use": "Masking during soldering, insulation"
+        },
+        {
+          "item": "Thermal paste",
+          "price": "$5-20",
+          "use": "CPU, heat dissipation"
+        },
+        {
+          "item": "Underfill epoxy",
+          "price": "$20-50",
+          "use": "BGA reinforcement",
+          "note": "Makes future repair impossible"
+        }
+      ]
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "Qianli iCopy Plus",
+        "price": "$150-300",
+        "use": "Read/write chip data, True Tone restore",
+        "tier": "Professional"
+      },
+      {
+        "tool": "JC V1S",
+        "price": "$100-200",
+        "use": "Battery, screen testing",
+        "tier": "Essential"
+      },
+      {
+        "tool": "3uTools",
+        "price": "Free",
+        "use": "iPhone diagnostics, flashing, SHSH management",
+        "tier": "Essential"
+      }
+    ],
+    "safety_equipment": [
+      "ESD mat and wrist strap ($20-50)",
+      "Fume extractor ($100-300)",
+      "Safety glasses ($10-30)",
+      "Nitrile gloves ($10 / 100pcs)",
+      "Fire extinguisher ($30-80)",
+      "First aid kit ($20-50)"
+    ],
+    "workspace_setup": {
+      "minimum_budget": "$500-1000",
+      "includes": [
+        "Basic hot air station",
+        "Cheap microscope or magnifier",
+        "Multimeter",
+        "Basic DC power supply",
+        "Essential tools (tweezers, picks, etc)",
+        "Flux and solder",
+        "IPA"
+      ]
+    },
+    "professional_setup": {
+      "minimum_budget": "$5000-10000",
+      "includes": [
+        "Professional BGA rework station",
+        "Preheater",
+        "Quality stereo microscope",
+        "Fluke multimeter",
+        "Professional DC power supply",
+        "Thermal camera",
+        "NAND programmer",
+        "Full set of tools and consumables",
+        "Ultrasonic cleaner",
+        "Proper workspace with ESD protection"
+      ]
+    },
+    "recommended_brands": {
+      "stations": ["Hakko", "JBC", "Quick", "Pace"],
+      "microscopes": ["AmScope", "Mantis", "Zeiss", "Nikon"],
+      "meters": ["Fluke", "Brymen", "Keysight"],
+      "programmers": ["JC", "Magico", "Easy-JTAG"],
+      "avoid": "No-name Chinese brands на Alibaba (часто ломаются)"
+    }
   }
 }

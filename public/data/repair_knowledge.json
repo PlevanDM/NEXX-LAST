@@ -1,1081 +1,1884 @@
 {
-  "generated_at": "2026-01-19T08:09:17.412663",
-  "version": "2.0",
+  "generated_at": "2026-01-19T21:10:00.000000",
+  "version": "3.0-enhanced",
+  "source": "Open-source repair wikis and community knowledge",
   "tristar_hydra": {
-    "description": "Диагностика и ремонт Tristar/Hydra/U2 IC - контроллера зарядки iPhone",
+    "description": "Диагностика и ремонт Tristar/Hydra/U2/Kraken IC - контроллера зарядки и USB iPhone. Отвечает за управление зарядкой, USB данные, распознавание аксессуаров и Power Delivery.",
+    "common_names": ["Tristar", "Hydra", "U2", "U3300", "Tigris", "Kraken", "USB IC", "Charging IC"],
     "symptoms": [
-      "Не заряжается",
-      "Accessory not supported",
-      "Заряжается только от компьютера",
+      "Не заряжается совсем",
+      "\"Accessory not supported\" / \"Аксессуар не поддерживается\"",
+      "Заряжается только от компьютера или медленно",
       "Не определяется в iTunes/Finder",
       "Перегрев около порта зарядки",
-      "Boot loop после залития"
+      "Boot loop после залития или падения",
+      "Зарядка работает только с определенными кабелями",
+      "Нестабильная зарядка (периодически отключается)",
+      "Fake charging (процент не увеличивается)",
+      "Wireless charging работает, но проводная нет",
+      "Нет Fast Charging (застряло на 5W)",
+      "MagSafe работает, но Lightning нет"
     ],
-    "diagnosis": [
-      "Проверить диодный режим на D+ и D- (норма 0.450-0.650V)",
-      "Проверить наличие PP5V0_USB (5V при подключении)",
-      "Измерить потребление тока (норма 0.05-0.15A в покое)",
-      "Проверить наличие USB данных в диагностике"
-    ],
-    "solution": [
-      "Замена Tristar/Hydra IC требует BGA паяльной станции",
-      "Нужен preheater для прогрева платы",
-      "После замены требуется калибровка батареи"
-    ],
-    "tools": [
-      "Паяльная станция с горячим воздухом",
-      "BGA ребол станция",
-      "Мультиметр",
-      "DC Power Supply с измерением тока"
-    ],
-    "ic_by_model": {
-      "iPhone 5c": {
-        "ic_name": "1610A1",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges from PC/slow charger",
-          "Not detected in iTunes",
-          "Boot loop after water damage"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.420-0.580V",
-            "D-": "0.420-0.580V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.15A idle"
+    "diagnostics": {
+      "voltage_checks": [
+        {
+          "point": "PP_5V0_USB / PP_VBUS1_E75",
+          "expected": "5.0V при подключении зарядки",
+          "description": "Проверить наличие 5V ДО Tristar/Hydra IC"
         },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
+        {
+          "point": "PP_VAR_USB_RVP_TIGRIS_R",
+          "expected": "~5V",
+          "description": "USB verification line - нужна для валидации кабеля"
+        },
+        {
+          "point": "PWR_GATE_EN_VBUS_1_VALID",
+          "expected": "3.7-5.0V (любое напряжение >0V)",
+          "description": "Если 0V - USB IC не работает или не питается"
+        },
+        {
+          "point": "10Ω RVP Resistor",
+          "models": "iPhone 8/X, iPhone 13/14",
+          "expected": "~5V на обеих сторонах резистора",
+          "description": "Если напряжение только на одной стороне - резистор или downstream fault"
+        }
+      ],
+      "diode_mode_checks": [
+        {
+          "models": "iPhone 5c/5s/6/6+",
+          "ic": "1610A1/1610A2",
+          "D+": "0.420-0.650V",
+          "D-": "0.420-0.650V"
+        },
+        {
+          "models": "iPhone 6s/6s+/SE (1st)",
+          "ic": "1610A3",
+          "D+": "0.450-0.650V",
+          "D-": "0.450-0.650V"
+        },
+        {
+          "models": "iPhone 7/7+",
+          "ic": "1612A1 (Hydra)",
+          "D+": "0.480-0.680V",
+          "D-": "0.480-0.680V"
+        },
+        {
+          "models": "iPhone 8/8+/X",
+          "ic": "SN2501",
+          "CC1": "0.350-0.500V",
+          "CC2": "0.350-0.500V"
+        },
+        {
+          "models": "iPhone XR/XS/XS Max",
+          "ic": "SN2600B1/B2 (Tigris)",
+          "CC1": "0.380-0.520V",
+          "CC2": "0.380-0.520V"
+        },
+        {
+          "models": "iPhone 11/11 Pro/SE 2nd",
+          "ic": "SN2611A0 (Tigris)",
+          "CC1": "0.400-0.550V",
+          "CC2": "0.400-0.550V"
+        },
+        {
+          "models": "iPhone 12/12 Pro/13/13 Pro/14/SE 3rd",
+          "ic": "SN2611D0 (Tigris)",
+          "CC1": "0.420-0.580V",
+          "CC2": "0.420-0.580V"
+        },
+        {
+          "models": "iPhone 14 Pro/15/16",
+          "ic": "SN2800 (USB-C Controller)",
+          "CC1": "0.450-0.600V",
+          "CC2": "0.450-0.600V"
+        }
+      ],
+      "current_draw": [
+        {
+          "models": "iPhone 5/6",
+          "idle": "0.05-0.20A"
+        },
+        {
+          "models": "iPhone 7/8/X",
+          "idle": "0.08-0.40A"
+        },
+        {
+          "models": "iPhone 11/12",
+          "idle": "0.12-0.70A"
+        },
+        {
+          "models": "iPhone 13/14/15",
+          "idle": "0.18-0.80A"
+        }
+      ],
+      "tools_needed": [
+        "Мультиметр с диодным режимом",
+        "DC Power Supply с измерением тока (0-5A)",
+        "Микроскоп (40x минимум)",
+        "Схема платы (boardview) для нахождения test points",
+        "3uTools или iTunes для проверки USB коммуникации"
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "Замена Tristar/Hydra IC",
+          "difficulty": "Expert (требует микропайки)",
+          "steps": [
+            "Прогреть плату preheater до 100-120°C",
+            "Снять старый IC феном при 380-400°C",
+            "Очистить контактные площадки флюсом",
+            "Проверить площадки на окисление/повреждения",
+            "Нанести свежий припой на площадки",
+            "Установить новый IC используя BGA трафарет",
+            "Проверить установку под микроскопом",
+            "После замены: калибровка батареи"
+          ],
+          "time": "45-90 минут",
+          "success_rate": "85-95% при правильной технике"
+        },
+        {
+          "method": "Ребол (Reflow) существующего IC",
+          "difficulty": "Advanced",
+          "warning": "Временное решение! Работает только если нет окисления площадок",
+          "steps": [
+            "Прогреть плату preheater",
+            "Нагреть IC феном до оплавления припоя",
+            "Дать остыть естественно",
+            "Проверить функциональность"
+          ],
+          "success_rate": "30-50%, часто временно",
+          "duration": "Может работать 1-6 месяцев"
+        },
+        {
+          "method": "Проверка и замена компонентов питания",
+          "difficulty": "Intermediate",
+          "components": [
+            "10Ω RVP резистор (часто выходит из строя)",
+            "Фильтры на линии PP_5V0_USB",
+            "Конденсаторы около USB IC",
+            "Проверить короткое замыкание на ground"
+          ]
+        }
+      ],
+      "common_mistakes": [
+        "Ребол без проверки окисления площадок - неэффективно",
+        "Замена только одного IC когда проблема в питании",
+        "Перегрев платы (>420°C) - повреждение соседних компонентов",
+        "Установка IC без underfill на iPhone 12+ (опционально)",
+        "Пропуск калибровки батареи после замены"
+      ]
+    },
+    "tools_required": {
+      "essential": [
+        "BGA паяльная станция (Quick 861DW, JBC JTSE)",
+        "Preheater (обязательно для iPhone 7+)",
+        "Microscope 40x-60x минимум",
+        "DC Power Supply с ammeter",
+        "Hot air station 380-420°C",
+        "Мультиметр Fluke или аналог"
+      ],
+      "consumables": [
+        "Flux Amtech NC-559-V2-TF или аналог",
+        "BGA трафареты для Tristar/Hydra",
+        "Solder balls 0.25-0.30mm",
+        "Solder paste (low temp)",
+        "IPA 99% для очистки",
+        "Kapton tape"
+      ],
+      "optional": [
+        "Tristar Tester (для быстрой диагностики)",
+        "Underfill adhesive (для iPhone 12+)",
+        "UV lamp для underfill curing"
+      ]
+    },
+    "price_estimates": {
+      "parts": {
+        "Tristar IC 1610A1": "$2-5",
+        "Tristar IC 1610A2/A3": "$3-6",
+        "Hydra IC 1612A1": "$8-15",
+        "Hydra IC SN2501": "$10-20",
+        "Tigris IC SN2600/SN2611": "$12-30",
+        "USB-C IC SN2800": "$25-50"
       },
-      "iPhone 5s": {
-        "ic_name": "1610A1",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges from PC/slow charger",
-          "Not detected in iTunes",
-          "Boot loop after water damage"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.420-0.580V",
-            "D-": "0.420-0.580V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.15A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPad Air": {
-        "ic_name": "1610A1",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges from PC/slow charger",
-          "Not detected in iTunes",
-          "Boot loop after water damage"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.420-0.580V",
-            "D-": "0.420-0.580V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.15A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPad mini 2": {
-        "ic_name": "1610A1",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges from PC/slow charger",
-          "Not detected in iTunes",
-          "Boot loop after water damage"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.420-0.580V",
-            "D-": "0.420-0.580V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.15A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPad mini 3": {
-        "ic_name": "1610A1",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges from PC/slow charger",
-          "Not detected in iTunes",
-          "Boot loop after water damage"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.420-0.580V",
-            "D-": "0.420-0.580V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.15A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPhone 6": {
-        "ic_name": "1610A2",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges when off",
-          "Fake charging (percentage not increasing)",
-          "Random reboots"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.600V",
-            "D-": "0.450-0.600V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.20A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPhone 6 Plus": {
-        "ic_name": "1610A2",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges when off",
-          "Fake charging (percentage not increasing)",
-          "Random reboots"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.600V",
-            "D-": "0.450-0.600V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.20A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPad Air 2": {
-        "ic_name": "1610A2",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "Only charges when off",
-          "Fake charging (percentage not increasing)",
-          "Random reboots"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.600V",
-            "D-": "0.450-0.600V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.20A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$2-5"
-      },
-      "iPhone 6s": {
-        "ic_name": "1610A3",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Overheating near charging port",
-          "No response when plugged in"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.650V",
-            "D-": "0.450-0.650V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.25A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$3-6"
-      },
-      "iPhone 6s Plus": {
-        "ic_name": "1610A3",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Overheating near charging port",
-          "No response when plugged in"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.650V",
-            "D-": "0.450-0.650V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.25A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$3-6"
-      },
-      "iPhone SE (1st Gen)": {
-        "ic_name": "1610A3",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Overheating near charging port",
-          "No response when plugged in"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.650V",
-            "D-": "0.450-0.650V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.25A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$3-6"
-      },
-      "iPad Pro 9.7\"": {
-        "ic_name": "1610A3",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Overheating near charging port",
-          "No response when plugged in"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.650V",
-            "D-": "0.450-0.650V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.25A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$3-6"
-      },
-      "iPad Pro 12.9\" (1st Gen)": {
-        "ic_name": "1610A3",
-        "designation": "U2 / Tristar",
-        "symptoms": [
-          "Not charging",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Overheating near charging port",
-          "No response when plugged in"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.450-0.650V",
-            "D-": "0.450-0.650V"
-          },
-          "pp5v0_usb": "5.0V when connected",
-          "current_draw": "Normal: 0.05-0.25A idle"
-        },
-        "difficulty": "Advanced",
-        "price_range": "$3-6"
-      },
-      "iPhone 7": {
-        "ic_name": "1612A1 (Hydra)",
-        "designation": "U3300 / Hydra",
-        "symptoms": [
-          "Not charging",
-          "No audio through Lightning accessories",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Audio IC related failures (loop disease)"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.480-0.680V",
-            "D-": "0.480-0.680V"
-          },
-          "pp_vdd_main": "Check voltage rails",
-          "current_draw": "Normal: 0.08-0.30A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$8-15"
-      },
-      "iPhone 7 Plus": {
-        "ic_name": "1612A1 (Hydra)",
-        "designation": "U3300 / Hydra",
-        "symptoms": [
-          "Not charging",
-          "No audio through Lightning accessories",
-          "Accessory not supported",
-          "iTunes not detecting device",
-          "Audio IC related failures (loop disease)"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "D+": "0.480-0.680V",
-            "D-": "0.480-0.680V"
-          },
-          "pp_vdd_main": "Check voltage rails",
-          "current_draw": "Normal: 0.08-0.30A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$8-15"
-      },
-      "iPhone 8": {
-        "ic_name": "SN2501",
-        "designation": "U3300 / Hydra",
-        "symptoms": [
-          "Not charging",
-          "No fast charging",
-          "Audio issues with Lightning headphones",
-          "Accessory not supported",
-          "Device not detected"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.350-0.500V",
-            "CC2": "0.350-0.500V"
-          },
-          "usb_pd": "Check PD negotiation",
-          "current_draw": "Normal: 0.10-0.40A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$10-20"
-      },
-      "iPhone 8 Plus": {
-        "ic_name": "SN2501",
-        "designation": "U3300 / Hydra",
-        "symptoms": [
-          "Not charging",
-          "No fast charging",
-          "Audio issues with Lightning headphones",
-          "Accessory not supported",
-          "Device not detected"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.350-0.500V",
-            "CC2": "0.350-0.500V"
-          },
-          "usb_pd": "Check PD negotiation",
-          "current_draw": "Normal: 0.10-0.40A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$10-20"
-      },
-      "iPhone X": {
-        "ic_name": "SN2501",
-        "designation": "U3300 / Hydra",
-        "symptoms": [
-          "Not charging",
-          "No fast charging",
-          "Audio issues with Lightning headphones",
-          "Accessory not supported",
-          "Device not detected"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.350-0.500V",
-            "CC2": "0.350-0.500V"
-          },
-          "usb_pd": "Check PD negotiation",
-          "current_draw": "Normal: 0.10-0.40A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$10-20"
-      },
-      "iPhone XR": {
-        "ic_name": "SN2600B1/B2",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging",
-          "No fast charging (stuck at 5W)",
-          "Fake charging",
-          "iTunes not detecting device"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.380-0.520V",
-            "CC2": "0.380-0.520V"
-          },
-          "pp_vdd_main": "1.8V",
-          "current_draw": "Normal: 0.12-0.50A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$12-25"
-      },
-      "iPhone XS": {
-        "ic_name": "SN2600B1/B2",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging",
-          "No fast charging (stuck at 5W)",
-          "Fake charging",
-          "iTunes not detecting device"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.380-0.520V",
-            "CC2": "0.380-0.520V"
-          },
-          "pp_vdd_main": "1.8V",
-          "current_draw": "Normal: 0.12-0.50A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$12-25"
-      },
-      "iPhone XS Max": {
-        "ic_name": "SN2600B1/B2",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging",
-          "No fast charging (stuck at 5W)",
-          "Fake charging",
-          "iTunes not detecting device"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.380-0.520V",
-            "CC2": "0.380-0.520V"
-          },
-          "pp_vdd_main": "1.8V",
-          "current_draw": "Normal: 0.12-0.50A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$12-25"
-      },
-      "iPhone 11": {
-        "ic_name": "SN2611A0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging wired",
-          "No fast charging",
-          "Wireless charging still works (separate IC)",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.400-0.550V",
-            "CC2": "0.400-0.550V"
-          },
-          "current_draw": "Normal: 0.15-0.60A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$15-30"
-      },
-      "iPhone 11 Pro": {
-        "ic_name": "SN2611A0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging wired",
-          "No fast charging",
-          "Wireless charging still works (separate IC)",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.400-0.550V",
-            "CC2": "0.400-0.550V"
-          },
-          "current_draw": "Normal: 0.15-0.60A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$15-30"
-      },
-      "iPhone 11 Pro Max": {
-        "ic_name": "SN2611A0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging wired",
-          "No fast charging",
-          "Wireless charging still works (separate IC)",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.400-0.550V",
-            "CC2": "0.400-0.550V"
-          },
-          "current_draw": "Normal: 0.15-0.60A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$15-30"
-      },
-      "iPhone SE (2nd Gen)": {
-        "ic_name": "SN2611A0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging wired",
-          "No fast charging",
-          "Wireless charging still works (separate IC)",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.400-0.550V",
-            "CC2": "0.400-0.550V"
-          },
-          "current_draw": "Normal: 0.15-0.60A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$15-30"
-      },
-      "iPhone 12 mini": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 12": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 12 Pro": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 12 Pro Max": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 13 mini": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 13": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 13 Pro": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 13 Pro Max": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 14": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 14 Plus": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone SE (3rd Gen)": {
-        "ic_name": "SN2611D0",
-        "designation": "U3300 / Tigris",
-        "symptoms": [
-          "Not charging via Lightning",
-          "No fast charging",
-          "MagSafe may still work",
-          "Device not detected in Finder"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.420-0.580V",
-            "CC2": "0.420-0.580V"
-          },
-          "current_draw": "Normal: 0.18-0.70A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$18-35"
-      },
-      "iPhone 14 Pro": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 14 Pro Max": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 15": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 15 Plus": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 15 Pro": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 15 Pro Max": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 16": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 16 Plus": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 16 Pro": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
-      },
-      "iPhone 16 Pro Max": {
-        "ic_name": "SN2800",
-        "designation": "USB-C Controller",
-        "symptoms": [
-          "Not charging via USB-C",
-          "No data transfer",
-          "No video output",
-          "Accessory not supported"
-        ],
-        "diagnostics": {
-          "diode_mode": {
-            "CC1": "0.450-0.600V",
-            "CC2": "0.450-0.600V"
-          },
-          "usb_pd": "Check PD negotiation up to 9V/3A",
-          "current_draw": "Normal: 0.20-0.80A idle"
-        },
-        "difficulty": "Expert",
-        "price_range": "$25-50"
+      "labor": {
+        "Replacement": "$50-150",
+        "Reflow": "$30-80",
+        "Diagnostics": "$20-50"
       }
-    }
+    },
+    "prevention": [
+      "Использовать оригинальные или MFi-certified зарядные устройства",
+      "Избегать дешевых китайских адаптеров (могут давать нестабильное напряжение)",
+      "Не заряжать телефон в воде (даже если водонепроницаемый)",
+      "Чистить порт Lightning/USB-C от пыли раз в 2-3 месяца",
+      "Избегать зарядки при экстремальных температурах (<0°C или >40°C)"
+    ],
+    "related_issues": [
+      "Audio IC disease на iPhone 7 (та же проблема с BGA)",
+      "Baseband no service (может быть вызвано неисправным Tristar)",
+      "Battery drain (неисправный Tristar может потреблять ток)",
+      "iTunes Error 9/4013 при восстановлении (если USB data не работает)"
+    ]
   },
   "baseband": {
-    "description": "Диагностика baseband/модема - нет сети, нет IMEI",
+    "description": "Диагностика и ремонт baseband/модема iPhone - проблемы с сотовой сетью, нет IMEI, нет сервиса. Baseband IC отвечает за все сотовые коммуникации: звонки, SMS, 4G/5G данные.",
+    "alternative_names": ["Baseband", "Модем", "Modem IC", "RF IC", "Cellular IC", "BB_CPU"],
     "symptoms": [
-      "No Service / Searching...",
-      "Нет IMEI (Settings -> About)",
-      "Ошибка -1 или 1 при восстановлении",
-      "Нет сотовых данных"
+      "No Service / Searching... постоянно",
+      "Нет IMEI (Settings → General → About)",
+      "Нет Serial Number в разделе модема",
+      "Ошибка -1 или 1 при восстановлении iTunes",
+      "Ошибка \"Invalid SIM\" или \"No SIM\"",
+      "Нет сотовых данных (LTE/4G/5G)",
+      "Не видит SIM карту",
+      "Airplane mode не выключается",
+      "Моментальное падение сети",
+      "Modem Firmware пустой в настройках",
+      "iTunes не видит телефон после восстановления"
     ],
-    "diagnosis": [
-      "Проверить IMEI в настройках",
-      "Проверить антенный коннектор",
-      "Измерить напряжение питания baseband",
-      "Проверить наличие baseband в диагностике"
+    "common_causes": [
+      "Физическое повреждение baseband IC (drop/bend)",
+      "Вздутая батарея сдавила baseband IC",
+      "Неудачное обновление iOS (повредило baseband firmware)",
+      "Попытка unlock/jailbreak (повредило NVRAM)",
+      "Залитие водой (коррозия на контактах)",
+      "Перегрев (длительная работа в жару)",
+      "Плохой ремонт (перегрев при замене других IC)"
     ],
-    "solution": [
-      "Проверить и переустановить антенные коннекторы",
-      "Ребол baseband IC (сложно, PoP корпус)",
-      "Замена baseband IC требует переноса NVRAM"
+    "diagnostics": {
+      "software_checks": [
+        {
+          "step": "Проверить IMEI",
+          "location": "Settings → General → About",
+          "expected": "15-значный IMEI номер",
+          "if_missing": "Baseband не инициализируется или NVRAM поврежден"
+        },
+        {
+          "step": "Проверить Modem Firmware",
+          "location": "Settings → General → About",
+          "expected": "Версия firmware (например 8.80.00)",
+          "if_missing": "Baseband CPU не загружается"
+        },
+        {
+          "step": "iTunes Diagnostics",
+          "method": "Подключить к iTunes, проверить логи",
+          "errors": {
+            "-1": "Baseband не отвечает",
+            "1": "Baseband firmware не найден",
+            "9": "USB connection или baseband issue"
+          }
+        },
+        {
+          "step": "3uTools Check",
+          "method": "Запустить 3uTools, проверить Baseband Info",
+          "check": "IMEI, Modem Firmware, Signal strength"
+        }
+      ],
+      "hardware_checks": [
+        {
+          "component": "Антенный коннектор",
+          "check": "Визуальный осмотр на повреждения/коррозию",
+          "action": "Переустановить или заменить если поврежден"
+        },
+        {
+          "component": "RF Shield",
+          "check": "Снять RF shield, проверить baseband IC под микроскопом",
+          "signs": "Трещины в припое, поднятые углы IC, следы перегрева"
+        },
+        {
+          "component": "Power Rails",
+          "voltages": {
+            "PP_BASEBAND_VBAT": "3.8V (от батареи)",
+            "BASEBAND_1V8": "1.8V (core voltage)",
+            "BB_PMIC voltages": "Multiple rails 0.9-3.3V"
+          },
+          "tools": "DC Power Supply + Мультиметр"
+        },
+        {
+          "component": "I2C Communication",
+          "check": "Проверить I2C линии между CPU и Baseband",
+          "expected": "No shorts to ground, proper pull-up voltages"
+        }
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "1. Простые исправления (Software)",
+          "difficulty": "Easy",
+          "steps": [
+            "Hard reset: hold Power + Home/Volume Down 10 sec",
+            "Обновление iOS до последней версии",
+            "Reset Network Settings",
+            "Восстановление через iTunes (DFU mode)",
+            "Проверка с другой SIM картой",
+            "Активация через WiFi call для записи IMEI"
+          ],
+          "success_rate": "10-20% (работает при software glitches)"
+        },
+        {
+          "method": "2. Ребол Baseband IC",
+          "difficulty": "Expert",
+          "warning": "ОЧЕНЬ СЛОЖНО! Baseband - это PoP (Package-on-Package) с CPU и RAM",
+          "steps": [
+            "Backup NVRAM/EFS data через программатор",
+            "Прогреть плату до 120°C (обязательно!)",
+            "Снять RF shields",
+            "Нагреть baseband до 300-320°C (lower temp!)",
+            "Аккуратно снять IC (не перегреть RAM сверху!)",
+            "Очистить pads, проверить на окисление",
+            "Reballing с новыми solder balls",
+            "Установить обратно при 300-320°C",
+            "Восстановить NVRAM/EFS данные"
+          ],
+          "time": "2-4 часа",
+          "success_rate": "40-60%",
+          "risks": [
+            "Повреждение RAM чипа сверху (overheating)",
+            "Отрыв pads на плате",
+            "Потеря IMEI если NVRAM не сохранен",
+            "Повреждение соседних компонентов"
+          ]
+        },
+        {
+          "method": "3. Замена Baseband IC",
+          "difficulty": "Expert+",
+          "warning": "ТРЕБУЕТ ПЕРЕНОСА NVRAM! IMEI привязан к baseband",
+          "requirements": [
+            "Donor baseband IC",
+            "Программатор для NVRAM (JTAG/ISP)",
+            "Специальное ПО для чтения/записи NVRAM",
+            "Точное знание pinout baseband IC"
+          ],
+          "steps": [
+            "Прочитать NVRAM с оригинального baseband",
+            "Сохранить IMEI, EFS partition, calibration data",
+            "Установить новый baseband (метод аналогичен reflow)",
+            "Записать NVRAM в новый baseband",
+            "Активировать через iTunes"
+          ],
+          "success_rate": "50-70%",
+          "cost": "Donor IC $50-150 + labor $100-300"
+        },
+        {
+          "method": "4. Переустановка антенны / RF компонентов",
+          "difficulty": "Intermediate",
+          "when": "Baseband OK, но signal слабый или нет",
+          "components": [
+            "Antenna flex cable",
+            "RF connectors",
+            "RF filters and amplifiers",
+            "Antenna divider"
+          ],
+          "success_rate": "70-90% если baseband не поврежден"
+        }
+      ]
+    },
+    "baseband_ic_models": {
+      "qualcomm_modems": [
+        {
+          "models": "iPhone 5s/6",
+          "ic": "Qualcomm MDM9615 / MDM9625",
+          "bands": "LTE Cat 4",
+          "notes": "Относительно простой ремонт"
+        },
+        {
+          "models": "iPhone 6s/7",
+          "ic": "Qualcomm MDM9635",
+          "bands": "LTE Cat 6",
+          "notes": "PoP package, сложнее"
+        },
+        {
+          "models": "iPhone 12/13/14",
+          "ic": "Qualcomm X55 / X60 / X65",
+          "bands": "5G Sub-6 + mmWave",
+          "notes": "Очень сложный ремонт, 5G модули"
+        }
+      ],
+      "intel_modems": [
+        {
+          "models": "iPhone 7/8/X",
+          "ic": "Intel PMB9943 / PMB9948",
+          "bands": "LTE Cat 9-16",
+          "notes": "Проблемы с overheating, частые failures"
+        },
+        {
+          "models": "iPhone XS/XR/11",
+          "ic": "Intel PMB9955",
+          "bands": "Gigabit LTE",
+          "notes": "Последний Intel модем в iPhone"
+        }
+      ]
+    },
+    "tools_required": {
+      "essential": [
+        "BGA станция с точным контролем температуры (±2°C)",
+        "Preheater обязательно (для равномерного прогрева)",
+        "Microscope 60x+ (PoP package очень мелкий)",
+        "DC Power Supply для проверки power rails",
+        "Multimeter",
+        "Hot air station 300-350°C MAX"
+      ],
+      "advanced": [
+        "JTAG/ISP программатор для NVRAM backup",
+        "Специальное ПО: Easy-Jtag, Medusa Box, Octoplus",
+        "RF analyzer для проверки signal strength",
+        "Oscilloscope для проверки I2C/SPI",
+        "Reballing jig для baseband IC"
+      ],
+      "consumables": [
+        "Flux (низкая температура плавления)",
+        "Solder balls 0.25-0.35mm",
+        "RF shields replacement",
+        "Thermal paste для baseband cooling",
+        "Kapton tape",
+        "IPA 99%"
+      ]
+    },
+    "prevention": [
+      "Не ронять телефон (baseband IC очень хрупкий)",
+      "Избегать перегрева (не оставлять на солнце)",
+      "Не делать unlock через непроверенные сервисы",
+      "Регулярно обновлять iOS (carrier updates важны)",
+      "Проверять антенну после любого ремонта",
+      "Не использовать дешевые китайские SIM-адаптеры"
     ],
-    "tools": [
-      "BGA станция с точным контролем температуры",
-      "Программатор для NVRAM backup",
-      "Hot air station"
+    "data_recovery": [
+      "IMEI можно восстановить ТОЛЬКО если есть backup NVRAM",
+      "NVRAM backup делается ПЕРЕД ремонтом через JTAG",
+      "Без NVRAM backup - телефон потеряет IMEI навсегда",
+      "Original IMEI записан на коробке iPhone и в iCloud",
+      "После замены baseband - телефон может быть заблокирован оператором"
+    ],
+    "legal_considerations": [
+      "⚠️ Изменение IMEI НЕЗАКОННО в большинстве стран",
+      "⚠️ Запись IMEI с donor board = подделка IMEI",
+      "✅ Восстановление оригинального IMEI = законно",
+      "✅ Ремонт с сохранением NVRAM = законно",
+      "Всегда сохраняйте proof of purchase для клиента"
     ]
   },
   "touch_ic": {
-    "description": "Проблемы Touch IC на iPad и старых iPhone",
-    "symptoms": [
-      "Touch не работает полностью или частично",
-      "Мерцание серой полосы вверху экрана (iPad)",
-      "Touch работает после нажатия на экран"
+    "description": "iPhone Touch IC Disease - массовая проблема iPhone 6/6+ с сенсорными контроллерами Meson и Cumulus. Причина: отсутствие underfill и bendable корпус привели к трещинам в BGA соединениях.",
+    "alternative_names": ["Touch IC Disease", "Touch Disease", "Gray Bar Disease", "Meson/Cumulus Failure"],
+    "affected_models_primary": [
+      "iPhone 6 (массово)",
+      "iPhone 6 Plus (наиболее поражён)",
+      "iPad Pro 12.9\" (1st gen)",
+      "iPad Pro 9.7\""
     ],
-    "diagnosis": [
-      "Проверить flex cable дисплея",
-      "Проверить пайку Touch IC",
-      "Тест с новым дисплеем"
+    "affected_models_secondary": [
+      "iPhone 6s (реже)",
+      "iPhone 6s Plus (реже)",
+      "iPad Air 2 (изредка)"
     ],
-    "solution": [
-      "Jumper wire на отваливающиеся пады",
-      "Ребол Touch IC",
-      "Установка дополнительного шунта под разъём"
-    ]
+    "symptoms_progression": {
+      "stage_1_early": [
+        "Периодическая потеря touch в верхней части экрана",
+        "Touch восстанавливается после hard reset",
+        "Проблема появляется и исчезает случайно",
+        "Работает нормально несколько дней, затем снова глючит"
+      ],
+      "stage_2_moderate": [
+        "Мерцающая серая полоса в верхней части дисплея (1-2cm)",
+        "Touch работает только после сгибания phone или давления",
+        "Нужно нажимать на верхнюю часть экрана для работы",
+        "Ghost touches - экран регистрирует touches которых не было",
+        "Задержка ответа touch на 2-5 секунд"
+      ],
+      "stage_3_severe": [
+        "Серая полоса постоянная и широкая (3-5cm)",
+        "Touch не работает совсем в верхней трети экрана",
+        "Невозможно использовать notification center",
+        "Unlock slider не реагирует",
+        "Попытки давления/сгибания больше не помогают"
+      ],
+      "stage_4_terminal": [
+        "Touch полностью не работает по всему экрану",
+        "Серая полоса мерцает по всему дисплею",
+        "Phone полностью unusable",
+        "Oxidation завершена - восстановление невозможно без замены IC"
+      ]
+    },
+    "root_cause": {
+      "design_flaw": "iPhone 6/6+ имеет конструктивную проблему",
+      "factors": [
+        {
+          "issue": "Отсутствие Underfill",
+          "description": "Apple убрала underfill с Touch IC начиная с iPhone 5s для упрощения ремонта. iPhone 6/6+ продолжили эту практику.",
+          "consequence": "BGA solder balls держатся только на surface tension припоя без механической поддержки"
+        },
+        {
+          "issue": "Bendable корпус",
+          "description": "iPhone 6/6+ имеет большую площадь и тонкий алюминиевый корпус (6.9mm iPhone 6+)",
+          "consequence": "Нормальное использование (карман, сумка) приводит к micro-flexing платы"
+        },
+        {
+          "issue": "Позиция Touch IC",
+          "description": "Touch IC расположены в 'подвешенном' месте платы между двумя anchor screws",
+          "consequence": "Maximum flex stress концентрируется именно на Touch IC"
+        },
+        {
+          "issue": "Кумулятивный эффект",
+          "description": "Каждый flex cycle создаёт micro-crack в solder joints",
+          "consequence": "Через 6-18 месяцев использования - guaranteed failure"
+        }
+      ]
+    },
+    "technical_details": {
+      "touch_ics": [
+        {
+          "model": "iPhone 6/6+",
+          "ic1": {
+            "name": "U2402 Meson",
+            "part": "343S0694",
+            "function": "Primary touch controller",
+            "location": "Upper-middle board, near display connector",
+            "most_critical": true
+          },
+          "ic2": {
+            "name": "U2401 Cumulus",
+            "part": "BCM5976",
+            "function": "Touch co-processor",
+            "location": "Below Meson IC",
+            "failure_rate": "Lower than Meson"
+          }
+        },
+        {
+          "model": "iPhone 6s/6s+",
+          "ic1": {
+            "name": "U2401 Cumulus",
+            "part": "343S00025",
+            "note": "Improved BGA, меньше проблем"
+          }
+        },
+        {
+          "model": "iPad Pro",
+          "ic1": {
+            "name": "BCM15900",
+            "note": "Аналогичная проблема, но реже из-за меньшего flex"
+          }
+        }
+      ],
+      "failure_mechanism": [
+        "1. Micro-flex от normal use",
+        "2. Solder ball crack начинается",
+        "3. Intermittent connection (Stage 1 symptoms)",
+        "4. Crack deepens - more frequent loss (Stage 2)",
+        "5. Complete separation (Stage 3)",
+        "6. Oxidation of exposed pads (Stage 4 - terminal)"
+      ]
+    },
+    "diagnostics": {
+      "visual_inspection": [
+        "Серая flickering bar в верхней части - ОПРЕДЕЛЁННЫЙ признак Touch IC failure",
+        "Проверить board на bend/warp (положить на ровную поверхность)",
+        "Осмотр Touch IC под microscope на cracks/lifted corners"
+      ],
+      "functional_tests": [
+        {
+          "test": "Touch Test с новым дисплеем",
+          "method": "Подключить заведомо рабочий display",
+          "if_same_issue": "Проблема в Touch IC, не в display"
+        },
+        {
+          "test": "Pressure Test",
+          "method": "Нажать пальцем на Touch IC через board",
+          "if_works_temporarily": "Подтверждает BGA crack"
+        },
+        {
+          "test": "Flex Test",
+          "method": "Аккуратно согнуть phone (ОСТОРОЖНО!)",
+          "if_gray_bar_changes": "Confirms Touch IC connection issue"
+        },
+        {
+          "test": "Heat Test",
+          "method": "Использовать фен 80-100°C на Touch IC area",
+          "if_temporarily_fixes": "Solder joints re-established temporarily"
+        }
+      ],
+      "diode_mode_checks": [
+        "Проверить сопротивление I2C линий от Touch IC к CPU",
+        "Expected: 10kΩ-50kΩ pull-up resistors",
+        "If short to ground: Touch IC shorted",
+        "If open circuit: Trace break or IC lifted"
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "⚠️ Temporary Fixes (НЕ РЕКОМЕНДУЕТСЯ)",
+          "difficulty": "Easy",
+          "techniques": [
+            "Bending phone to restore connection",
+            "Applying pressure to screen",
+            "Heat gun on low temp"
+          ],
+          "duration": "Works for hours to days",
+          "warning": "Усугубляет проблему! Oxidation продолжается"
+        },
+        {
+          "method": "1. Reflow Touch IC (Плохое решение)",
+          "difficulty": "Intermediate",
+          "warning": "НЕ РЕКОМЕНДУЕТСЯ! Работает временно 1-6 месяцев",
+          "why_bad": [
+            "Oxidation на pads не удаляется",
+            "Solder не прилипает к oxidized pads хорошо",
+            "Root cause (lack of underfill) не решается",
+            "Повторный failure гарантирован"
+          ],
+          "steps": [
+            "Прогреть плату 100°C",
+            "Нагреть Touch IC 300-320°C",
+            "Дать остыть",
+            "Проверить"
+          ],
+          "success_rate": "30-60%, temporary"
+        },
+        {
+          "method": "2. Замена Touch IC (ПРАВИЛЬНОЕ решение)",
+          "difficulty": "Expert",
+          "why_best": [
+            "Удаляет oxidized IC",
+            "Позволяет очистить pads",
+            "Свежий припой = надёжное соединение",
+            "Можно добавить mechanical reinforcement"
+          ],
+          "steps": [
+            "Прогреть плату preheater 100-120°C",
+            "Снять metal shields над Touch IC",
+            "Нагреть Meson IC (U2402) 300-320°C",
+            "Снять IC using pick/tweezers",
+            "Очистить все pads от старого solder",
+            "Проверить pads под microscope на damage",
+            "If pads lifted: repair with jumper wire (M1 jumper method)",
+            "Нанести flux на чистые pads",
+            "Reballing: нанести новые solder balls или use solder paste",
+            "Установить новый Meson IC",
+            "Повторить для Cumulus IC (U2401)",
+            "Добавить metal shim под Logic board для rigidity (optional)",
+            "Install foam pad между board и frame для support (ВАЖНО!)"
+          ],
+          "time": "2-3 hours для обоих IC",
+          "success_rate": "85-95%"
+        },
+        {
+          "method": "3. M1 Jumper Method (при lifted pads)",
+          "difficulty": "Expert+",
+          "when": "Когда pad под Meson IC lifted/damaged",
+          "steps": [
+            "Найти alternate connection point для damaged pad",
+            "Проложить micro jumper wire (AWG 38-40)",
+            "Secure jumper с UV solder mask",
+            "Установить Touch IC"
+          ],
+          "success_rate": "70-85%"
+        },
+        {
+          "method": "4. Mechanical Reinforcement (КРИТИЧНО!)",
+          "difficulty": "Intermediate",
+          "why_critical": "Без этого - failure повторится через год",
+          "methods": [
+            {
+              "type": "Metal Shim Plate",
+              "description": "Металлическая пластина 0.1-0.2mm под logic board",
+              "benefit": "Reduce flex на ~70%",
+              "installation": "Между board и metal frame, secure with adhesive"
+            },
+            {
+              "type": "Foam Padding",
+              "description": "High-density foam между board и battery",
+              "benefit": "Provides constant support",
+              "thickness": "1-2mm"
+            },
+            {
+              "type": "Underfill Application",
+              "description": "Inject underfill под Touch IC после ремонта",
+              "benefit": "Professional-grade fix",
+              "material": "Epoxy underfill, UV cure",
+              "warning": "Делает будущий ремонт невозможным"
+            }
+          ]
+        }
+      ],
+      "apple_official_program": {
+        "status": "ENDED in 2018",
+        "details": "Apple признала проблему в мае 2016",
+        "offered": "$149 replacement (США), free если у вас AppleCare+",
+        "eligible": "iPhone 6 Plus purchased before Jan 3, 2015",
+        "current": "Program ended, теперь только OOW replacement $329"
+      }
+    },
+    "tools_required": {
+      "essential": [
+        "BGA rework station 300-350°C",
+        "Preheater (обязательно!)",
+        "Microscope 40x-60x minimum",
+        "Hot air station",
+        "Precision pick/tweezers",
+        "Solder wick for pad cleaning"
+      ],
+      "reballing": [
+        "BGA stencil for 343S0694 (Meson)",
+        "Solder balls 0.25mm или paste",
+        "Flux Amtech low-temp",
+        "Reballing jig/fixture"
+      ],
+      "reinforcement": [
+        "Metal shim plate (custom cut)",
+        "High-density foam 1-2mm",
+        "Underfill epoxy (optional)",
+        "UV lamp для cure (если используете underfill)",
+        "High-strength adhesive (B7000)"
+      ]
+    },
+    "prevention_after_repair": [
+      "⚠️ ОБЯЗАТЕЛЬНО установить metal shim для rigidity",
+      "Использовать quality case с rigid back support",
+      "Избегать хранения в заднем кармане",
+      "Не класть heavy objects на phone",
+      "Regular inspection каждые 6 месяцев",
+      "Consider underfill для permanent fix"
+    ],
+    "customer_communication": [
+      "Объяснить что это design flaw, не fault пользователя",
+      "Reflow = temporary fix (1-6 месяцев)",
+      "Replacement = proper fix с mechanical support (2-5+ лет)",
+      "Apple OOW swap НЕ РЕШАЕТ проблему (refurb phone будет иметь ту же issue)",
+      "Independent repair с reinforcement = best long-term solution"
+    ],
+    "cost_estimates": {
+      "parts": {
+        "Touch IC Meson 343S0694": "$5-15",
+        "Touch IC Cumulus": "$5-10",
+        "Metal shim plate": "$2-5",
+        "Foam padding": "$1-3",
+        "Underfill epoxy": "$10-20"
+      },
+      "labor": {
+        "Reflow only": "$50-100 (НЕ РЕКОМЕНДУЕТСЯ)",
+        "Replacement both ICs": "$120-250",
+        "With reinforcement": "$150-300",
+        "With underfill": "$200-400"
+      }
+    }
   },
   "water_damage": {
-    "immediate_actions": [
-      "НЕ включать устройство!",
-      "НЕ ставить на зарядку!",
-      "Извлечь SIM и лоток",
-      "Разобрать как можно быстрее",
-      "Отключить батарею в первую очередь"
+    "description": "Профессиональный ремонт iPhone после залития жидкостью. Критично важно: скорость реакции и правильная процедура очистки определяют успех восстановления.",
+    "alternative_names": ["Liquid Damage", "Залитие", "Water Damage", "Коррозия", "Окисление"],
+    "critical_time_windows": {
+      "0-1_hour": {
+        "status": "GOLDEN HOUR - максимальные шансы на полное восстановление",
+        "success_rate": "85-95%",
+        "action": "НЕМЕДЛЕННАЯ разборка и очистка"
+      },
+      "1-6_hours": {
+        "status": "Хорошие шансы при правильных действиях",
+        "success_rate": "70-85%",
+        "risk": "Начало окисления контактов"
+      },
+      "6-24_hours": {
+        "status": "Коррозия началась, но восстановление возможно",
+        "success_rate": "50-70%",
+        "risk": "Окисление контактов, возможны микрозамыкания"
+      },
+      "24-48_hours": {
+        "status": "КРИТИЧНО! Серьезная коррозия",
+        "success_rate": "30-50%",
+        "risk": "Глубокая коррозия, повреждение дорожек"
+      },
+      "48+_hours": {
+        "status": "Тяжелое повреждение, часто необратимое",
+        "success_rate": "10-30%",
+        "risk": "Разрушение металлизации, отслоение компонентов"
+      }
+    },
+    "immediate_actions_customer": {
+      "DO_IMMEDIATELY": [
+        "⚠️ НЕ ВКЛЮЧАТЬ устройство! (если включено - немедленно выключить)",
+        "⚠️ НЕ СТАВИТЬ НА ЗАРЯДКУ!",
+        "Извлечь SIM лоток (выпустить жидкость изнутри)",
+        "Протереть внешнюю влагу сухой тканью",
+        "Держать вертикально, наклонять для слива через порты",
+        "СРОЧНО доставить в ремонт (каждая минута критична!)"
+      ],
+      "DO_NOT": [
+        "❌ НЕ класть в рис (миф! не помогает, тратит время)",
+        "❌ НЕ использовать фен для сушки (перегрев!)",
+        "❌ НЕ трясти телефон (разносит жидкость внутри)",
+        "❌ НЕ пытаться зарядить для проверки",
+        "❌ НЕ класть на батарею/радиатор",
+        "❌ НЕ ждать \"высохнет само\" (коррозия не ждёт!)"
+      ]
+    },
+    "liquid_contact_indicators": {
+      "description": "LCI (Liquid Contact Indicator) - белые наклейки, краснеющие при контакте с водой",
+      "locations_by_model": {
+        "iPhone_5_to_7": [
+          "SIM card tray (видно снаружи)",
+          "Headphone jack (внутри разъёма)",
+          "Lightning connector (внутри порта)",
+          "Inside near battery connector"
+        ],
+        "iPhone_8_to_X": [
+          "SIM card tray",
+          "Lightning connector",
+          "Near bottom microphone",
+          "Near Taptic Engine"
+        ],
+        "iPhone_11_plus": [
+          "SIM card tray",
+          "Lightning/USB-C port",
+          "Near wireless charging coil",
+          "Inside near logic board"
+        ]
+      },
+      "color_meaning": {
+        "White_or_Silver": "Не было контакта с жидкостью",
+        "Pink_or_Red": "Был контакт с водой или жидкостью",
+        "Partially_red": "Влажность или брызги"
+      },
+      "note": "LCI могут сработать от ВЛАЖНОСТИ (душ, пар), но не означают серьёзное залитие"
+    },
+    "professional_repair_procedure": {
+      "step_1_disassembly": {
+        "priority": "URGENT - разобрать как можно быстрее",
+        "order": [
+          "1. Отключить батарею ПЕРВЫМ ДЕЛОМ (предотвратить короткое замыкание)",
+          "2. Снять дисплей",
+          "3. Снять все shields и металлические крышки",
+          "4. Извлечь logic board",
+          "5. Снять камеры, датчики, все flex cables",
+          "6. Разобрать полностью на компоненты"
+        ],
+        "caution": [
+          "Liquid damage может \"приклеить\" разъёмы - аккуратно!",
+          "Проверить battery на swelling/damage",
+          "Если батарея вздулась/bubbling - утилизировать отдельно"
+        ]
+      },
+      "step_2_initial_cleaning": {
+        "method": "Isopropyl Alcohol 99% (IPA) bath",
+        "procedure": [
+          "Погрузить logic board в контейнер с IPA 99%",
+          "Замочить на 5-10 минут",
+          "Аккуратно поболтать для вытеснения trapped liquid",
+          "Использовать soft brush (зубная щётка) для чистки",
+          "Особое внимание: connectors, pins, battery contacts, shields"
+        ],
+        "do_not_submerge": [
+          "❌ Display/LCD (повредится)",
+          "❌ Camera modules (fog inside)",
+          "❌ Sensors с optical coating",
+          "❌ Speakers (если не нужно чистить внутри)"
+        ],
+        "alcohol_safety": "IPA 99% - легковоспламеняющийся! Работать в вентилируемом месте, без открытого огня"
+      },
+      "step_3_ultrasonic_cleaning": {
+        "equipment": "Ultrasonic cleaner (ультразвуковая ванна)",
+        "settings": {
+          "frequency": "40-50 kHz",
+          "temperature": "35-45°C (тёплый, не горячий)",
+          "duration": "10-15 минут",
+          "solution": "IPA 99% или специальный cleaning solution"
+        },
+        "procedure": [
+          "Поместить logic board в ultrasonic bath",
+          "Запустить цикл 10-15 минут",
+          "Cavitation пузырьки выбьют коррозию из труднодоступных мест",
+          "После цикла - промыть свежим IPA",
+          "Повторить если нужно"
+        ],
+        "benefits": [
+          "Очистка под BGA chips",
+          "Удаление солей и минералов",
+          "Cleaning под shields",
+          "Лучше чем manual cleaning"
+        ],
+        "note": "Профессиональный ремонт практически ВСЕГДА требует ultrasonic cleaning"
+      },
+      "step_4_microscope_inspection": {
+        "magnification": "40x-60x минимум",
+        "inspect_for": [
+          {
+            "area": "Connectors и pins",
+            "look_for": "White chalky residue (коррозия)",
+            "action": "Чистить до блеска металла"
+          },
+          {
+            "area": "Battery connector",
+            "look_for": "Green/white oxidation на pins",
+            "action": "Critical! Может вызвать no-boot"
+          },
+          {
+            "area": "Display connector",
+            "look_for": "Corrosion на FPC pins",
+            "action": "Может вызвать no display или touch issues"
+          },
+          {
+            "area": "BGA chips (CPU, Baseband, PMU)",
+            "look_for": "Oxidation на exposed balls/pads",
+            "action": "Может потребовать reflow или replacement"
+          },
+          {
+            "area": "Small components (resistors, caps)",
+            "look_for": "Lifted components, broken solder joints",
+            "action": "Re-solder или replace"
+          }
+        ]
+      },
+      "step_5_targeted_cleaning": {
+        "tools": [
+          "Precision brush (detailing brush)",
+          "Cotton swabs",
+          "IPA 99%",
+          "Flux remover (optional)",
+          "Toothpick для tight spaces"
+        ],
+        "procedure": [
+          "Dip brush в IPA",
+          "Scrub каждый connector тщательно",
+          "Use cotton swab для pins",
+          "Toothpick для удаления stubborn corrosion",
+          "Rinse с fresh IPA",
+          "Check under microscope - должно блестеть!"
+        ]
+      },
+      "step_6_drying": {
+        "methods": [
+          {
+            "method": "Air drying (лучше всего)",
+            "duration": "2-4 часа в warm, dry место",
+            "temp": "Комнатная или слегка тёплая (30-40°C)"
+          },
+          {
+            "method": "Compressed air",
+            "use": "Blow под shields и в труднодоступные места",
+            "caution": "Low pressure! Не сдуть компоненты"
+          },
+          {
+            "method": "Cold blow dryer",
+            "temp": "ТОЛЬКО ХОЛОДНЫЙ режим",
+            "caution": "НЕ использовать горячий воздух!"
+          }
+        ],
+        "verify_dry": "Проверить под microscope - не должно быть liquid residue"
+      },
+      "step_7_testing": {
+        "test_procedure": [
+          "1. Подключить battery connector",
+          "2. Подключить display connector",
+          "3. НЕ ЗАКРУЧИВАТЬ ВИНТЫ ещё",
+          "4. Попытаться включить",
+          "5. Watch for: дым, странные звуки, запах горелого",
+          "6. Check battery - swelling или heating?",
+          "7. Если всё ОК - test все функции"
+        ],
+        "test_functions": [
+          "Power on/off",
+          "Touch screen (все зоны)",
+          "Display (no lines, artifacts)",
+          "Cameras (front + back)",
+          "Microphones (запись голоса)",
+          "Speakers (звонок, музыка)",
+          "WiFi/Bluetooth",
+          "Cellular (если есть SIM)",
+          "Charging",
+          "Home button/Face ID/Touch ID",
+          "Volume buttons, mute switch",
+          "Vibration/Taptic engine"
+        ],
+        "if_issues": "Disassemble, inspect problem area под microscope, re-clean или replace component"
+      }
+    },
+    "common_failures_after_water": {
+      "by_probability": [
+        {
+          "component": "Battery",
+          "failure_rate": "70-80%",
+          "symptoms": "Swelling, won't charge, rapid drain",
+          "action": "ВСЕГДА заменять после water damage"
+        },
+        {
+          "component": "Tristar/Hydra IC",
+          "failure_rate": "40-60%",
+          "symptoms": "No charging, USB not recognized",
+          "action": "Clean thoroughly, may need replacement"
+        },
+        {
+          "component": "Audio IC / Codec",
+          "failure_rate": "30-50%",
+          "symptoms": "No sound, microphone не работает, boot loop (iPhone 7)",
+          "action": "Replacement required"
+        },
+        {
+          "component": "Baseband IC",
+          "failure_rate": "20-40%",
+          "symptoms": "No service, no IMEI",
+          "action": "Very difficult repair, often terminal"
+        },
+        {
+          "component": "Backlight IC/Driver",
+          "failure_rate": "20-30%",
+          "symptoms": "Dim screen, no backlight",
+          "action": "Replacement или filter repair"
+        },
+        {
+          "component": "PMU (Power Management)",
+          "failure_rate": "15-30%",
+          "symptoms": "Won't turn on, stuck at Apple logo",
+          "action": "Expert repair required"
+        },
+        {
+          "component": "Display",
+          "failure_rate": "10-20%",
+          "symptoms": "Lines, dead pixels, water stains inside",
+          "action": "Replacement"
+        }
+      ]
+    },
+    "liquid_types": {
+      "fresh_water": {
+        "damage_level": "Low (но не безопасна!)",
+        "corrosion_speed": "Медленная (дни)",
+        "repair_difficulty": "Easiest",
+        "success_rate": "80-95%"
+      },
+      "salt_water_sea": {
+        "damage_level": "EXTREME",
+        "corrosion_speed": "Очень быстрая (часы)",
+        "repair_difficulty": "Very difficult",
+        "success_rate": "30-50%",
+        "note": "Соль - агрессивный электролит, разрушает металл"
+      },
+      "coffee_tea_juice": {
+        "damage_level": "Moderate-High",
+        "corrosion_speed": "Fast (содержат кислоты/сахара)",
+        "repair_difficulty": "Moderate",
+        "success_rate": "60-75%",
+        "note": "Сахар и кислоты требуют thorough cleaning"
+      },
+      "soda_beer": {
+        "damage_level": "High",
+        "corrosion_speed": "Fast (сахар + кислота + карбонизация)",
+        "repair_difficulty": "Moderate-Difficult",
+        "success_rate": "50-70%",
+        "note": "Sticky residue труднее очистить"
+      },
+      "alcohol_spirits": {
+        "damage_level": "Low-Moderate",
+        "corrosion_speed": "Slow",
+        "repair_difficulty": "Easy",
+        "success_rate": "75-90%",
+        "note": "Алкоголь испаряется быстрее воды"
+      },
+      "toilet_dirty_water": {
+        "damage_level": "High (биологическое загрязнение)",
+        "corrosion_speed": "Moderate",
+        "repair_difficulty": "Moderate (больше cleaning)",
+        "success_rate": "60-80%",
+        "note": "Требует дополнительная дезинфекция"
+      }
+    },
+    "tools_required": {
+      "essential": [
+        "IPA 99% (минимум 500ml)",
+        "Ultrasonic cleaner (3L+)",
+        "Microscope 40x-60x",
+        "Soft brushes (toothbrush, detailing brush)",
+        "Cotton swabs",
+        "Plastic container для IPA bath",
+        "Anti-static tweezers"
+      ],
+      "advanced": [
+        "Hot air station для component drying",
+        "DC power supply для testing",
+        "Multimeter для диагностики",
+        "Thermal camera (найти shorts)",
+        "Soldering station для component replacement",
+        "Flux remover"
+      ],
+      "safety": [
+        "Nitrile gloves",
+        "Safety glasses",
+        "Ventilated workspace (IPA fumes)",
+        "Fire extinguisher (IPA flammable!)"
+      ]
+    },
+    "prevention_customer_education": [
+      "iPhone водостойкий ≠ водонепроницаемый",
+      "IP67/IP68 rating деградирует со временем (wear, drops)",
+      "Не купаться с phone даже если \"waterproof\"",
+      "Не заряжать влажный phone",
+      "Не использовать в душе/ванне (пар!)",
+      "Сразу после намокания - сушить и нести в ремонт",
+      "Rice НЕ ПОМОГАЕТ - это миф!"
     ],
-    "professional_repair": [
-      "Ультразвуковая очистка в изопропиловом спирте",
-      "Осмотр под микроскопом на коррозию",
-      "Проверка всех коннекторов",
-      "Проверка после очистки перед сборкой"
-    ],
-    "common_failures_after_water": [
-      "Tristar/Hydra IC",
-      "Audio IC",
-      "Baseband IC",
-      "Backlight IC",
-      "Батарея"
-    ]
+    "cost_estimates": {
+      "cleaning_only": {
+        "basic_cleaning": "$50-100",
+        "with_ultrasonic": "$80-150",
+        "thorough_professional": "$100-200"
+      },
+      "common_repairs": {
+        "battery_replacement": "$40-80",
+        "tristar_replacement": "$80-150",
+        "display_replacement": "$100-300",
+        "baseband_repair": "$150-400",
+        "motherboard_replacement": "$200-600"
+      },
+      "total_typical": "Cleaning + Battery + 1-2 components = $200-500"
+    }
   },
   "nand_programming": {
-    "description": "NAND программирование и перенос данных",
-    "programmers": [
-      "JC P7 / P8 / Pro1000S",
-      "Magico NAND Box",
-      "PCIE NAND Programmer"
+    "description": "NAND flash программирование и ремонт iPhone - решение проблем с памятью, ошибок iTunes 4013/4014/9, recovery loops, upgrade памяти.",
+    "alternative_names": ["NAND Repair", "Flash Memory", "HDD IC", "Storage IC", "Memory Upgrade"],
+    "common_symptoms": [
+      "iTunes Error 4013 при восстановлении",
+      "iTunes Error 4014 при обновлении",  
+      "iTunes Error 9 (USB disconnect during restore)",
+      "Error 4005 (NAND not detected)",
+      "Boot loop - застрял на Apple logo",
+      "Recovery loop - постоянно запрашивает restore",
+      "Phone won't restore в iTunes",
+      "\"Attempting data recovery\" зависает",
+      "Slow performance - долгая загрузка apps",
+      "Storage full но нет файлов",
+      "Phone полностью dead (NAND shorted)"
     ],
-    "use_cases": [
-      "Ошибки 4013, 4014, 9",
-      "Расширение памяти (upgrade)",
-      "Перенос данных с неисправной платы",
-      "Замена NAND после физ. повреждения"
-    ],
-    "important_notes": [
-      "SN и ECID должны совпадать с оригиналом",
-      "SysCfg должен быть скопирован",
-      "На новых устройствах NAND привязан к CPU"
-    ]
-  },
-  "tools_supplies": {
-    "essential_tools": [
+    "error_codes_meaning": {
+      "error_4013": {
+        "meaning": "General hardware failure",
+        "common_causes": [
+          "Bad NAND IC (poor BGA connection)",
+          "NAND chip physical damage",
+          "Power supply issue to NAND",
+          "CPU communication problem",
+          "Baseband issue (реже)"
+        ],
+        "repair": "NAND reball или replacement"
+      },
+      "error_4014": {
+        "meaning": "Similar to 4013, но часто USB-related",
+        "common_causes": [
+          "NAND connection issue",
+          "Bad USB cable/port",
+          "Computer USB controller issue"
+        ],
+        "repair": "Check cable first, then NAND"
+      },
+      "error_9": {
+        "meaning": "USB disconnected during restore",
+        "common_causes": [
+          "Unstable NAND connection",
+          "Power fluctuation",
+          "Bad USB",
+          "Overheating"
+        ],
+        "repair": "Cool down, better USB, NAND reball"
+      },
+      "error_4005": {
+        "meaning": "NAND not responding",
+        "common_causes": [
+          "NAND completely failed",
+          "NAND power rail short",
+          "CPU can't communicate with NAND"
+        ],
+        "repair": "NAND replacement required"
+      }
+    },
+    "nand_types_by_model": {
+      "slc_nand": {
+        "models": ["iPhone 4", "iPhone 4S"],
+        "capacity": "8GB-64GB",
+        "technology": "Single-Level Cell",
+        "endurance": "100k write cycles",
+        "speed": "Slow",
+        "reliability": "Very high",
+        "repair_difficulty": "Easy (large chip)"
+      },
+      "mlc_nand": {
+        "models": ["iPhone 5", "5s", "6", "6 Plus", "6s", "7"],
+        "capacity": "16GB-256GB",
+        "technology": "Multi-Level Cell (2 bits/cell)",
+        "endurance": "10k write cycles",
+        "speed": "Medium",
+        "reliability": "Good",
+        "repair_difficulty": "Moderate"
+      },
+      "tlc_nand": {
+        "models": ["iPhone 8", "X", "XR", "XS", "11", "SE 2020", "12", "13"],
+        "capacity": "64GB-512GB",
+        "technology": "Triple-Level Cell (3 bits/cell)",
+        "endurance": "3k-5k write cycles",
+        "speed": "Fast",
+        "reliability": "Moderate (lower than MLC)",
+        "repair_difficulty": "Difficult (smaller, PoP)"
+      },
+      "3d_nand": {
+        "models": ["iPhone 14", "15", "16"],
+        "capacity": "128GB-1TB",
+        "technology": "3D NAND (vertical stacking)",
+        "endurance": "5k-10k write cycles",
+        "speed": "Very fast",
+        "reliability": "Good",
+        "repair_difficulty": "Very difficult (advanced PoP)"
+      }
+    },
+    "nand_manufacturers": [
       {
-        "name": "Hot Air Station",
-        "examples": "Quick 861DW, Atten ST-862D"
+        "brand": "Samsung",
+        "models_used": "iPhone 6s, 7, 8, X, 11-16",
+        "quality": "Excellent",
+        "availability": "High"
       },
       {
-        "name": "Soldering Station",
-        "examples": "JBC, Hakko FX-951"
+        "brand": "Toshiba/Kioxia",
+        "models_used": "iPhone 6, 7, 8, X",
+        "quality": "Very good",
+        "availability": "Medium"
       },
       {
-        "name": "Microscope",
-        "examples": "AmScope, Trinocular 7-45x"
+        "brand": "SK Hynix",
+        "models_used": "iPhone 8, X, 11-13",
+        "quality": "Good",
+        "availability": "Medium"
       },
       {
-        "name": "DC Power Supply",
-        "examples": "Mechanic P30, Sunshine P-3005DA"
-      },
-      {
-        "name": "Multimeter",
-        "examples": "Fluke 15B+, UNI-T UT61E"
-      },
-      {
-        "name": "Ultrasonic Cleaner",
-        "examples": "Vevor 6L, GT Sonic"
-      },
-      {
-        "name": "Preheater",
-        "examples": "UYUE 946S-II"
+        "brand": "Micron",
+        "models_used": "Older models, some iPad",
+        "quality": "Good",
+        "availability": "Low"
       }
     ],
-    "supplies": [
-      "Изопропиловый спирт 99%",
-      "Flux (паяльная паста)",
-      "Solder paste",
-      "BGA шарики разных размеров",
-      "Kapton tape",
-      "Термопаста"
-    ]
+    "repair_methods": {
+      "method_1_reball": {
+        "name": "NAND Reball (сохранение данных)",
+        "when": "NAND работает но плохой контакт",
+        "difficulty": "Expert",
+        "data_loss": "NO (если успешно)",
+        "success_rate": "70-85%",
+        "procedure": [
+          "1. Backup: Сделать backup если возможно",
+          "2. Preheat: Прогреть плату до 100-120°C (КРИТИЧНО для NAND!)",
+          "3. Remove: Нагреть NAND до 380-400°C, снять",
+          "4. Clean pads: Очистить площадки от старого припоя",
+          "5. Reballing: Нанести flux, установить новые balls",
+          "6. Reinstall: Установить NAND обратно при 380°C",
+          "7. Cool: Остывание естественное (НЕ УСКОРЯТЬ!)",
+          "8. Test: Подключить к iTunes, restore"
+        ],
+        "critical_notes": [
+          "⚠️ Температура КРИТИЧНА! >420°C = мёртвый NAND",
+          "⚠️ Preheater ОБЯЗАТЕЛЕН для NAND",
+          "⚠️ Cooling слишком быстро = трещины внутри chip",
+          "⚠️ NAND после reball живёт 1-3 года обычно"
+        ],
+        "time": "1-2 часа"
+      },
+      "method_2_replacement": {
+        "name": "NAND Replacement (потеря данных)",
+        "when": "NAND физически повреждён или reball не помог",
+        "difficulty": "Expert+",
+        "data_loss": "YES (100% data loss)",
+        "success_rate": "80-95%",
+        "procedure": [
+          "1. Record Serial Number: КРИТИЧНО! Записать S/N, IMEI, WiFi MAC",
+          "2. Remove old NAND: Метод как при reball",
+          "3. Program new NAND: Использовать programmer (JC Pro1000S, etc)",
+          "4. Write Serial: Записать S/N, IMEI, WiFi MAC в новый NAND",
+          "5. Install: Установить новый NAND на плату",
+          "6. Restore: Подключить к iTunes, полный restore",
+          "7. Activate: Активация через iCloud"
+        ],
+        "critical_notes": [
+          "⚠️ БЕЗ Serial Number - phone будет disabled",
+          "⚠️ S/N находится на: logic board label, phone box, Settings",
+          "⚠️ IMEI должен совпадать с оригиналом",
+          "⚠️ На iPhone 12+ NAND привязан к Secure Enclave (очень сложно!)"
+        ],
+        "time": "2-4 часа"
+      },
+      "method_3_memory_upgrade": {
+        "name": "Memory Upgrade (16GB → 128GB, etc)",
+        "when": "Customer wants more storage",
+        "difficulty": "Expert+",
+        "data_loss": "YES",
+        "success_rate": "85-95%",
+        "procedure": [
+          "Similar to replacement, но:",
+          "1. Choose higher capacity NAND (same type!)",
+          "2. Program NAND с Serial Number",
+          "3. Install на плату",
+          "4. iTunes restore"
+        ],
+        "popular_upgrades": {
+          "16GB_to_64GB": "Most popular",
+          "32GB_to_128GB": "Very popular",
+          "64GB_to_256GB": "Common",
+          "128GB_to_512GB": "Less common (дорого)"
+        },
+        "compatibility": [
+          "✅ iPhone 5-7: Относительно просто",
+          "⚠️ iPhone 8-X: Сложнее (PoP)",
+          "⚠️ iPhone 11-13: Очень сложно",
+          "❌ iPhone 14+: Практически невозможно (Secure Enclave binding)"
+        ]
+      }
+    },
+    "nand_programmers": {
+      "jc_pro1000s": {
+        "brand": "JC",
+        "model": "Pro1000S",
+        "price": "$300-500",
+        "features": [
+          "Read/Write NAND",
+          "Read Serial Number, IMEI, WiFi",
+          "Write data to new NAND",
+          "Supports iPhone 4-12",
+          "Easy-to-use software"
+        ],
+        "pros": "Доступная цена, user-friendly",
+        "cons": "Медленнее чем профессиональные"
+      },
+      "jc_p7_p8": {
+        "brand": "JC",
+        "model": "P7 / P8",
+        "price": "$150-250",
+        "features": [
+          "Basic NAND operations",
+          "iPhone 5-8 support",
+          "Slower than Pro1000S"
+        ],
+        "pros": "Дешевле",
+        "cons": "Ограниченный функционал"
+      },
+      "magico_nand_box": {
+        "brand": "Magico",
+        "model": "NAND Flash Tool",
+        "price": "$500-800",
+        "features": [
+          "Professional-grade",
+          "Fast read/write",
+          "Advanced error correction",
+          "Supports newest iPhones"
+        ],
+        "pros": "Быстро, надёжно",
+        "cons": "Дорого"
+      },
+      "pcie_nand_programmer": {
+        "brand": "Various",
+        "model": "PCIe-based",
+        "price": "$1000-3000",
+        "features": [
+          "Fastest speed",
+          "Professional use",
+          "Support all NAND types"
+        ],
+        "pros": "Maximum speed",
+        "cons": "Очень дорого, для professional shops"
+      }
+    },
+    "syscfg_and_activation": {
+      "what_is_syscfg": "System Configuration partition - contains device-unique data",
+      "critical_data": [
+        "Serial Number (S/N)",
+        "IMEI (for cellular models)",
+        "WiFi MAC address",
+        "Bluetooth MAC",
+        "ECID (Exclusive Chip ID)",
+        "Region code",
+        "Color, Model",
+        "Calibration data (display, camera, etc)"
+      ],
+      "backup_methods": [
+        {
+          "method": "Using NAND programmer",
+          "tools": "JC Pro1000S, Magico Box",
+          "data": "Full NAND dump including SysCfg",
+          "recommended": true
+        },
+        {
+          "method": "Manual record",
+          "tools": "Paper and pen",
+          "data": "S/N, IMEI from Settings or box",
+          "recommended": "As backup only"
+        }
+      ],
+      "writing_syscfg": [
+        "Load original SysCfg from backup",
+        "Use programmer to write to new NAND",
+        "Verify S/N matches original",
+        "Test activation"
+      ]
+    },
+    "secure_enclave_issue": {
+      "description": "iPhone 12+ имеют Secure Enclave привязку к NAND",
+      "impact": "NAND replacement = phone может не активироваться",
+      "technical": "NAND cryptographically paired to CPU/Secure Enclave",
+      "workarounds": [
+        {
+          "method": "Use original NAND после reball",
+          "success": "Works если NAND не физически damaged"
+        },
+        {
+          "method": "Professional unbinding tools",
+          "success": "50-70%, requires special equipment",
+          "cost": "$500-2000",
+          "note": "Для профессиональных лабораторий"
+        }
+      ],
+      "affected_models": [
+        "iPhone 12 series (частично)",
+        "iPhone 13 series (сильнее)",
+        "iPhone 14 series (очень сильно)",
+        "iPhone 15/16 series (практически неремонтируемо)"
+      ],
+      "recommendation": "Для iPhone 12+ - ВСЕГДА пытаться reball ПЕРЕД replacement"
+    },
+    "prevention": [
+      "Регулярные backup (iCloud или iTunes)",
+      "Не заполнять storage >90% (износ NAND)",
+      "Избегать многократных restore",
+      "Не ронять phone (NAND хрупкий)",
+      "Обновлять iOS (улучшенное NAND management)",
+      "Не использовать дешёвые кабели (могут вызвать error 9)"
+    ],
+    "tools_required": {
+      "essential": [
+        "NAND programmer (JC Pro1000S minimum)",
+        "BGA rework station",
+        "Preheater (ОБЯЗАТЕЛЬНО для NAND)",
+        "Microscope 60x-80x",
+        "Hot air station 380-400°C",
+        "Multimeter"
+      ],
+      "consumables": [
+        "Flux low-temp",
+        "Solder balls 0.3-0.4mm",
+        "Reballing stencils для NAND",
+        "Thermal paste",
+        "Kapton tape",
+        "IPA 99%"
+      ],
+      "optional": [
+        "Logic board holder/jig",
+        "Thermal camera (spot overheating)",
+        "PC с iTunes/3uTools",
+        "Backup NAND chips"
+      ]
+    },
+    "cost_estimates": {
+      "reball": {
+        "labor": "$80-150",
+        "parts": "$5-20 (balls, flux)",
+        "time": "1-2 hours",
+        "total": "$100-200"
+      },
+      "replacement": {
+        "labor": "$100-200",
+        "parts_nand": "$30-150 (depends on capacity)",
+        "parts_consumables": "$10-30",
+        "time": "2-4 hours",
+        "total": "$150-400"
+      },
+      "memory_upgrade": {
+        "labor": "$120-250",
+        "parts_nand": "$50-200",
+        "time": "2-4 hours",
+        "total": "$200-500"
+      }
+    }
+  },
+  "tools_supplies": {
+    "description": "Полный список профессионально��о оборудования и расходных материалов для ремонта iPhone на уровне logic board / microsoldering.",
+    "categories": {
+      "tier_1_essential": "Минимум для начала board-level repairs",
+      "tier_2_professional": "Для полноценной microsoldering работы",
+      "tier_3_advanced": "Для expert-level ремонта (NAND, CPU, advanced diagnostics)"
+    },
+    "soldering_stations": {
+      "basic": [
+        {
+          "model": "Quick 861DW",
+          "type": "Hot air + Soldering iron combo",
+          "price": "$100-200",
+          "temp_range": "100-480°C",
+          "pros": "Budget-friendly, good for начала",
+          "cons": "Не очень точная температура",
+          "suitable_for": "Screen repairs, basic component replacement"
+        },
+        {
+          "model": "Yihua 8786D",
+          "type": "Digital hot air station",
+          "price": "$80-150",
+          "temp_range": "100-480°C",
+          "pros": "Дешёво, work well",
+          "cons": "Quality inconsistent",
+          "suitable_for": "Beginners"
+        }
+      ],
+      "professional": [
+        {
+          "model": "Hakko FR-810B",
+          "type": "BGA Rework Station",
+          "price": "$2000-3000",
+          "temp_range": "150-500°C",
+          "accuracy": "±5°C",
+          "pros": "Industry standard, очень надёжный",
+          "cons": "Дорого",
+          "suitable_for": "Professional repairs, BGA work"
+        },
+        {
+          "model": "Quick 3000ESD",
+          "type": "BGA Rework System",
+          "price": "$1500-2500",
+          "temp_range": "100-500°C",
+          "pros": "Good value, reliable",
+          "cons": "Heavier чем Hakko",
+          "suitable_for": "Professional shops"
+        },
+        {
+          "model": "JBC JTSE",
+          "type": "Precision Soldering Station",
+          "price": "$800-1200",
+          "temp_range": "90-450°C",
+          "pros": "Лучший контроль температуры, fast heat-up",
+          "cons": "Tips дорогие",
+          "suitable_for": "Precision microsoldering"
+        }
+      ]
+    },
+    "preheaters": {
+      "basic": [
+        {
+          "model": "Mechanic iH-01",
+          "type": "IR preheater",
+          "price": "$80-150",
+          "temp_range": "50-350°C",
+          "size": "Small (iPhone sized)",
+          "pros": "Компактный, affordable",
+          "cons": "Uneven heating",
+          "note": "OK для iPhone 5-8"
+        },
+        {
+          "model": "Yihua 853AAA",
+          "type": "Hot plate preheater",
+          "price": "$60-120",
+          "temp_range": "50-400°C",
+          "pros": "Дешёво",
+          "cons": "Slow heat-up, no precise control",
+          "note": "Не рекомендуется для NAND"
+        }
+      ],
+      "professional": [
+        {
+          "model": "IR6500 / IR6000",
+          "type": "Infrared BGA rework station",
+          "price": "$500-800",
+          "temp_range": "50-450°C",
+          "size": "Medium (laptop sized)",
+          "pros": "Even heating, programmable profiles",
+          "cons": "Большой",
+          "note": "Industry standard для BGA"
+        },
+        {
+          "model": "Dinghua DH-A1",
+          "type": "PCB preheater",
+          "price": "$150-300",
+          "temp_range": "50-300°C",
+          "pros": "Affordable professional option",
+          "cons": "Smaller heating area",
+          "note": "Good for iPhone/iPad boards"
+        }
+      ]
+    },
+    "microscopes": {
+      "basic": [
+        {
+          "model": "USB Digital Microscope 5MP",
+          "type": "USB camera",
+          "price": "$30-80",
+          "magnification": "Up to 200x (digital)",
+          "pros": "Очень дешёво",
+          "cons": "Low quality, unusable для precision work",
+          "note": "Только для inspection, НЕ для soldering"
+        },
+        {
+          "model": "Andonstar AD206",
+          "type": "Digital LCD microscope",
+          "price": "$200-400",
+          "magnification": "Up to 200x",
+          "pros": "HD screen, good для начала",
+          "cons": "Digital magnification, не optical",
+          "note": "Acceptable для beginner board work"
+        }
+      ],
+      "professional": [
+        {
+          "model": "AmScope SM-4TZ-144A",
+          "type": "Stereo zoom microscope",
+          "price": "$400-800",
+          "magnification": "7x-45x (optical)",
+          "working_distance": "100mm",
+          "pros": "True optical zoom, good working distance",
+          "cons": "Нужен external light",
+          "note": "Хороший выбор для microsoldering"
+        },
+        {
+          "model": "Mantis Elite Cam",
+          "type": "Professional repair microscope",
+          "price": "$2500-4000",
+          "magnification": "4x-10x",
+          "working_distance": "125-225mm",
+          "pros": "Огромное working distance, stereo vision",
+          "cons": "Очень дорого",
+          "note": "Industry standard, лучшее для microsoldering"
+        },
+        {
+          "model": "Zeiss Stemi 305",
+          "type": "Lab-grade stereo microscope",
+          "price": "$3000-5000+",
+          "magnification": "8x-40x",
+          "pros": "Лучшая оптика на рынке",
+          "cons": "Extremely expensive",
+          "note": "Для high-end professional labs"
+        }
+      ]
+    },
+    "measuring_equipment": {
+      "multimeters": [
+        {
+          "model": "UNI-T UT139C",
+          "price": "$25-50",
+          "features": "Basic DMM, diode mode, continuity",
+          "pros": "Дешёвый, reliable",
+          "tier": "Essential"
+        },
+        {
+          "model": "Fluke 87V",
+          "price": "$400-500",
+          "features": "True RMS, frequency, temperature",
+          "pros": "Industry standard, lifetime warranty",
+          "tier": "Professional"
+        },
+        {
+          "model": "Brymen BM869s",
+          "price": "$200-300",
+          "features": "Dual display, True RMS",
+          "pros": "Excellent value, accurate",
+          "tier": "Professional"
+        }
+      ],
+      "dc_power_supplies": [
+        {
+          "model": "Hanmatek HM305",
+          "price": "$80-150",
+          "output": "0-30V, 0-5A",
+          "features": "Adjustable CC/CV, LED display",
+          "pros": "Affordable, good specs",
+          "tier": "Essential"
+        },
+        {
+          "model": "RD6006",
+          "price": "$100-200",
+          "output": "0-60V, 0-6A",
+          "features": "WiFi, USB, app control",
+          "pros": "Precise, programmable",
+          "tier": "Professional"
+        },
+        {
+          "model": "Mechanic P30",
+          "price": "$150-250",
+          "output": "0-30V, 0-3A",
+          "features": "iPhone repair specific, shows current draw",
+          "pros": "Made for phone repair",
+          "tier": "Professional"
+        }
+      ],
+      "thermal_cameras": [
+        {
+          "model": "HT-02D",
+          "price": "$200-300",
+          "resolution": "32x32",
+          "pros": "Дешёвая thermal imaging",
+          "cons": "Low resolution",
+          "note": "Basic short finding"
+        },
+        {
+          "model": "FLIR ONE Pro",
+          "price": "$400-600",
+          "resolution": "160x120",
+          "pros": "Smartphone attachment, portable",
+          "note": "Good for mobile repairs"
+        }
+      ]
+    },
+    "consumables": {
+      "flux": [
+        {
+          "name": "Amtech NC-559-V2-TF",
+          "type": "No-clean flux",
+          "price": "$10-20 / 100g",
+          "use": "General purpose, BGA work",
+          "note": "Industry standard"
+        },
+        {
+          "name": "MG Chemicals 835",
+          "type": "No-clean flux pen",
+          "price": "$10-15",
+          "use": "Precision application",
+          "note": "Good for small components"
+        }
+      ],
+      "solder": [
+        {
+          "type": "Leaded solder (63/37)",
+          "price": "$15-30 / 100g",
+          "use": "General repairs",
+          "note": "Best flow, lowest temp"
+        },
+        {
+          "type": "Lead-free SAC305",
+          "price": "$20-40 / 100g",
+          "use": "RoHS compliance",
+          "note": "Higher temp needed"
+        },
+        {
+          "type": "Low-temp solder (138°C)",
+          "price": "$30-50 / 50g",
+          "use": "Sensitive components",
+          "note": "For NAND, CPU work"
+        }
+      ],
+      "bga_supplies": [
+        {
+          "item": "Solder balls",
+          "sizes": "0.25mm, 0.30mm, 0.35mm, 0.40mm, 0.45mm, 0.50mm, 0.60mm, 0.76mm",
+          "price": "$10-30 / 25k balls",
+          "note": "Different ICs need different sizes"
+        },
+        {
+          "item": "BGA stencils",
+          "price": "$5-20 each",
+          "note": "Need specific stencil для каждого IC"
+        },
+        {
+          "item": "Solder paste",
+          "price": "$20-50 / 50g",
+          "note": "Alternative to balls"
+        }
+      ],
+      "cleaning": [
+        {
+          "item": "IPA 99%",
+          "price": "$10-20 / liter",
+          "use": "Board cleaning, flux removal",
+          "note": "Essential!"
+        },
+        {
+          "item": "Flux remover spray",
+          "price": "$10-20 / can",
+          "use": "Remove stubborn flux",
+          "note": "Optional but helpful"
+        },
+        {
+          "item": "Cotton swabs",
+          "price": "$5 / 500pcs",
+          "use": "Applying IPA, cleaning"
+        },
+        {
+          "item": "Lint-free wipes",
+          "price": "$10 / 100pcs",
+          "use": "Board cleaning"
+        }
+      ],
+      "adhesives": [
+        {
+          "item": "B7000 glue",
+          "price": "$5-10 / 50ml",
+          "use": "Frame assembly, shim attachment"
+        },
+        {
+          "item": "Kapton tape",
+          "price": "$5-15 / roll",
+          "use": "Masking during soldering, insulation"
+        },
+        {
+          "item": "Thermal paste",
+          "price": "$5-20",
+          "use": "CPU, heat dissipation"
+        },
+        {
+          "item": "Underfill epoxy",
+          "price": "$20-50",
+          "use": "BGA reinforcement",
+          "note": "Makes future repair impossible"
+        }
+      ]
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "Qianli iCopy Plus",
+        "price": "$150-300",
+        "use": "Read/write chip data, True Tone restore",
+        "tier": "Professional"
+      },
+      {
+        "tool": "JC V1S",
+        "price": "$100-200",
+        "use": "Battery, screen testing",
+        "tier": "Essential"
+      },
+      {
+        "tool": "3uTools",
+        "price": "Free",
+        "use": "iPhone diagnostics, flashing, SHSH management",
+        "tier": "Essential"
+      }
+    ],
+    "safety_equipment": [
+      "ESD mat and wrist strap ($20-50)",
+      "Fume extractor ($100-300)",
+      "Safety glasses ($10-30)",
+      "Nitrile gloves ($10 / 100pcs)",
+      "Fire extinguisher ($30-80)",
+      "First aid kit ($20-50)"
+    ],
+    "workspace_setup": {
+      "minimum_budget": "$500-1000",
+      "includes": [
+        "Basic hot air station",
+        "Cheap microscope or magnifier",
+        "Multimeter",
+        "Basic DC power supply",
+        "Essential tools (tweezers, picks, etc)",
+        "Flux and solder",
+        "IPA"
+      ]
+    },
+    "professional_setup": {
+      "minimum_budget": "$5000-10000",
+      "includes": [
+        "Professional BGA rework station",
+        "Preheater",
+        "Quality stereo microscope",
+        "Fluke multimeter",
+        "Professional DC power supply",
+        "Thermal camera",
+        "NAND programmer",
+        "Full set of tools and consumables",
+        "Ultrasonic cleaner",
+        "Proper workspace with ESD protection"
+      ]
+    },
+    "recommended_brands": {
+      "stations": ["Hakko", "JBC", "Quick", "Pace"],
+      "microscopes": ["AmScope", "Mantis", "Zeiss", "Nikon"],
+      "meters": ["Fluke", "Brymen", "Keysight"],
+      "programmers": ["JC", "Magico", "Easy-JTAG"],
+      "avoid": "No-name Chinese brands на Alibaba (часто ломаются)"
+    }
   }
 }
