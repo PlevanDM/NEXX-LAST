@@ -74,7 +74,12 @@
     },
     "board_numbers": [
       "820-5585"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9635M",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm"
+    }
   },
   {
     "id": 2,
@@ -151,7 +156,12 @@
     },
     "board_numbers": [
       "820-5586"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9635M",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm"
+    }
   },
   {
     "id": 3,
@@ -226,7 +236,15 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm MDM9625M",
+      "type": "4G LTE",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-5585"
+    ]
   },
   {
     "id": 4,
@@ -303,7 +321,13 @@
     "board_numbers": [
       "820-00188 (Qualcomm)",
       "820-00189 (Intel)"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9645M / Intel XMM7360",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm/Intel",
+      "notes": "A1660/A1661 = Qualcomm, A1778/A1784 = Intel"
+    }
   },
   {
     "id": 5,
@@ -383,7 +407,12 @@
     "board_numbers": [
       "820-00229 (Qualcomm)",
       "820-00249 (Intel)"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9645M / Intel XMM7360",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm/Intel"
+    }
   },
   {
     "id": 6,
@@ -459,7 +488,12 @@
     "board_numbers": [
       "820-00909 (Qualcomm)",
       "820-00908 (Intel)"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9655 / Intel XMM7480",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm/Intel"
+    }
   },
   {
     "id": 7,
@@ -538,7 +572,12 @@
     "board_numbers": [
       "820-00927 (Qualcomm)",
       "820-00926 (Intel)"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9655 / Intel XMM7480",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm/Intel"
+    }
   },
   {
     "id": 8,
@@ -620,7 +659,13 @@
     "board_numbers": [
       "820-00863 (Qualcomm)",
       "820-00864 (Intel)"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm MDM9655 / Intel XMM7480",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Qualcomm/Intel",
+      "notes": "Dual source: Qualcomm для US, Intel для остальных"
+    }
   },
   {
     "id": 9,
@@ -697,7 +742,12 @@
     },
     "board_numbers": [
       "820-01173"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7560",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Intel"
+    }
   },
   {
     "id": 10,
@@ -774,7 +824,12 @@
     },
     "board_numbers": [
       "820-01127"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7560",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Intel"
+    }
   },
   {
     "id": 11,
@@ -851,7 +906,12 @@
     },
     "board_numbers": [
       "820-01053"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7560",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Intel"
+    }
   },
   {
     "id": 12,
@@ -929,7 +989,13 @@
     },
     "board_numbers": [
       "820-01582"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7660",
+      "type": "4G LTE Advanced Pro",
+      "manufacturer": "Intel",
+      "notes": "Последний iPhone с Intel модемом"
+    }
   },
   {
     "id": 13,
@@ -1007,7 +1073,12 @@
     },
     "board_numbers": [
       "820-01682"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7660",
+      "type": "4G LTE Advanced Pro",
+      "manufacturer": "Intel"
+    }
   },
   {
     "id": 14,
@@ -1085,7 +1156,12 @@
     },
     "board_numbers": [
       "820-01682"
-    ]
+    ],
+    "modem": {
+      "chip": "Intel XMM7660",
+      "type": "4G LTE Advanced Pro",
+      "manufacturer": "Intel"
+    }
   },
   {
     "id": 15,
@@ -1113,7 +1189,9 @@
       "nand_type": "NVMe",
       "ram_type": "LPDDR4X",
       "price_nand": "$20-40",
-      "price_ram": "$10-18"
+      "price_ram": "$10-18",
+      "nand": "64/128/256GB NVMe",
+      "ram": "3GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6829",
@@ -1162,7 +1240,15 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Intel XMM7660 / Qualcomm SDX55",
+      "type": "4G LTE Advanced",
+      "manufacturer": "Intel/Qualcomm"
+    },
+    "board_numbers": [
+      "820-01798"
+    ]
   },
   {
     "id": 16,
@@ -1190,7 +1276,9 @@
       "nand_type": "NVMe",
       "ram_type": "LPDDR4X",
       "price_nand": "$20-40",
-      "price_ram": "$10-18"
+      "price_ram": "$10-18",
+      "nand": "64/128/256GB NVMe",
+      "ram": "4GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1238,7 +1326,14 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX55M (Snapdragon X55)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-01961"
+    ]
   },
   {
     "id": 17,
@@ -1260,13 +1355,16 @@
       "max_current": "3A",
       "fast_charging": "Yes (20W)",
       "usb_pd": "3.0",
-      "wireless_charging": "Yes (15W MagSafe)"
+      "wireless_charging": "Yes (15W MagSafe)",
+      "designation": "U3300"
     },
     "memory": {
       "nand_type": "NVMe",
       "ram_type": "LPDDR4X",
       "price_nand": "$20-40",
-      "price_ram": "$10-18"
+      "price_ram": "$10-18",
+      "nand": "64/128/256GB NVMe",
+      "ram": "4GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1320,7 +1418,12 @@
     },
     "board_numbers": [
       "820-02057"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm SDX55M (Snapdragon X55)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    }
   },
   {
     "id": 18,
@@ -1348,7 +1451,9 @@
       "nand_type": "NVMe",
       "ram_type": "LPDDR4X",
       "price_nand": "$20-40",
-      "price_ram": "$10-18"
+      "price_ram": "$10-18",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1399,7 +1504,12 @@
     },
     "board_numbers": [
       "820-02057"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm SDX55M (Snapdragon X55)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    }
   },
   {
     "id": 19,
@@ -1427,7 +1537,9 @@
       "nand_type": "NVMe",
       "ram_type": "LPDDR4X",
       "price_nand": "$20-40",
-      "price_ram": "$10-18"
+      "price_ram": "$10-18",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1478,12 +1590,17 @@
     },
     "board_numbers": [
       "820-02059"
-    ]
+    ],
+    "modem": {
+      "chip": "Qualcomm SDX55M (Snapdragon X55)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    }
   },
   {
     "id": 20,
     "name": "iPhone 13 mini",
-    "model": "A2481, A2626, A2628, A2629, A2630",
+    "model": "A2628, A2481, A2626, A2629, A2630",
     "year": 2021,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1506,7 +1623,9 @@
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB NVMe",
+      "ram": "4GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1554,12 +1673,19 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX60M (Snapdragon X60)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02095"
+    ]
   },
   {
     "id": 21,
     "name": "iPhone 13",
-    "model": "A2482, A2631, A2633, A2634, A2635",
+    "model": "A2633, A2482, A2631, A2634, A2635",
     "year": 2021,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1576,13 +1702,16 @@
       "max_current": "3A",
       "fast_charging": "Yes (20W)",
       "usb_pd": "3.0",
-      "wireless_charging": "Yes (15W MagSafe)"
+      "wireless_charging": "Yes (15W MagSafe)",
+      "designation": "U3300"
     },
     "memory": {
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB NVMe",
+      "ram": "4GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1630,12 +1759,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX60M (Snapdragon X60)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02096"
+    ]
   },
   {
     "id": 22,
     "name": "iPhone 13 Pro",
-    "model": "A2483, A2636, A2638, A2639, A2640",
+    "model": "A2638, A2483, A2636, A2639, A2640",
     "year": 2021,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1658,7 +1795,9 @@
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB/1TB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1706,12 +1845,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX60M (Snapdragon X60)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02097"
+    ]
   },
   {
     "id": 23,
     "name": "iPhone 13 Pro Max",
-    "model": "A2484, A2641, A2643, A2644, A2645",
+    "model": "A2643, A2484, A2641, A2644, A2645",
     "year": 2021,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1734,7 +1881,9 @@
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB/1TB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1785,7 +1934,14 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX60M (Snapdragon X60)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02098"
+    ]
   },
   {
     "id": 24,
@@ -1793,21 +1949,25 @@
     "model": "A2595, A2782, A2783, A2784, A2785",
     "year": 2022,
     "category": "iPhone",
-    "processor": "$429",
-    "processor_family": "Unknown",
+    "processor": "Apple A15 Bionic",
+    "processor_family": "A15",
     "charging_ic": {
       "main": "SN26xx series",
       "location": "Lightning разъем, нижняя плата",
       "voltage": "5V/9V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN26xx.html",
-      "price_range": "$5-15"
+      "price_range": "$5-15",
+      "fast_charging": "20W",
+      "wireless_charging": "Qi 7.5W"
     },
     "memory": {
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "64/128/256GB NVMe",
+      "ram": "4GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB/S2M series",
@@ -1852,12 +2012,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX55M (Snapdragon X55)",
+      "type": "5G Sub-6GHz",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02403"
+    ]
   },
   {
     "id": 25,
     "name": "iPhone 14",
-    "model": "A2649, A2881, A2882, A2883, A2884",
+    "model": "A2649, A2881, A2882, A2884",
     "year": 2022,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1874,13 +2042,16 @@
       "max_current": "3A",
       "fast_charging": "Yes (20W)",
       "usb_pd": "3.0",
-      "wireless_charging": "Yes (15W MagSafe)"
+      "wireless_charging": "Yes (15W MagSafe)",
+      "designation": "U3300"
     },
     "memory": {
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -1928,12 +2099,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX65M (Snapdragon X65)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02466"
+    ]
   },
   {
     "id": 26,
     "name": "iPhone 14 Plus",
-    "model": "A2632, A2885, A2886, A2887, A2888",
+    "model": "A2632, A2885, A2886, A2888",
     "year": 2022,
     "category": "iPhone",
     "processor": "Apple A15 Bionic",
@@ -1956,7 +2135,9 @@
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR4X"
     },
     "power_ic": {
       "main": "PMB6830",
@@ -2004,12 +2185,19 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX65M (Snapdragon X65)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02467"
+    ]
   },
   {
     "id": 27,
     "name": "iPhone 14 Pro",
-    "model": "A2650, A2889, A2890, A2891, A2892",
+    "model": "A2650, A2889, A2890, A2892",
     "year": 2022,
     "category": "iPhone",
     "processor": "Apple A16 Bionic",
@@ -2026,13 +2214,16 @@
       "max_current": "3A (27W)",
       "fast_charging": "Yes (27W)",
       "usb_pd": "3.0",
-      "wireless_charging": "Yes (15W MagSafe)"
+      "wireless_charging": "Yes (15W MagSafe)",
+      "designation": "U3300"
     },
     "memory": {
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB/1TB NVMe",
+      "ram": "6GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB6826",
@@ -2053,7 +2244,14 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "Не заряжается - Tigris SN2611C0",
+      "No Service - Qualcomm SDX65M",
+      "Face ID unavailable + Dynamic Island",
+      "Камера дрожит/вибрирует в сторонних приложениях",
+      "Always-On Display battery drain",
+      "Перегрев при видео",
+      "Error 4013/4014"
     ],
     "repair_notes": "iPhone 14 Pro (2022) с процессором Apple A16 Bionic. Lightning интерфейс. Проверить SN2611D0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Сложная",
@@ -2076,29 +2274,41 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX65M (Snapdragon X65)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02468"
+    ]
   },
   {
     "id": 28,
     "name": "iPhone 14 Pro Max",
-    "model": "A2651, A2893, A2894, A2895, A2896",
+    "model": "A2651, A2893, A2894, A2896",
     "year": 2022,
     "category": "iPhone",
-    "processor": "$1,099",
-    "processor_family": "Unknown",
+    "processor": "Apple A16 Bionic",
+    "processor_family": "A16",
     "charging_ic": {
       "main": "SN26xx series",
       "location": "Lightning разъем, нижняя плата",
       "voltage": "5V/9V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN26xx.html",
-      "price_range": "$5-15"
+      "price_range": "$5-15",
+      "fast_charging": "27W",
+      "wireless_charging": "MagSafe 15W"
     },
     "memory": {
       "nand_type": "UFS 3.1",
       "ram_type": "LPDDR5",
       "price_nand": "$30-60",
-      "price_ram": "$15-25"
+      "price_ram": "$15-25",
+      "nand": "128/256/512GB/1TB NVMe",
+      "ram": "6GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB/S2M series",
@@ -2142,7 +2352,14 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX65M (Snapdragon X65)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02469"
+    ]
   },
   {
     "id": 29,
@@ -2170,7 +2387,9 @@
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$50-80",
-      "price_ram": "$20-35"
+      "price_ram": "$20-35",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB6826",
@@ -2215,7 +2434,15 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX70M (Snapdragon X70)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02742"
+    ]
   },
   {
     "id": 30,
@@ -2243,7 +2470,9 @@
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$50-80",
-      "price_ram": "$20-35"
+      "price_ram": "$20-35",
+      "nand": "128/256/512GB NVMe",
+      "ram": "6GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB6826",
@@ -2285,7 +2514,14 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX70M (Snapdragon X70)",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02743"
+    ]
   },
   {
     "id": 31,
@@ -2308,13 +2544,16 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "wireless_charging": "MagSafe 15W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$50-80",
-      "price_ram": "$20-35"
+      "price_ram": "$20-35",
+      "nand": "Kioxia 128/256/512GB/1TB NVMe",
+      "ram": "8GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB6822",
@@ -2335,7 +2574,14 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "USB-C не заряжает - SN2012017",
+      "No Service - Qualcomm SDX70M",
+      "Face ID unavailable - Dot Projector",
+      "Перегрев при играх/видео",
+      "Sandwich board delamination",
+      "Action Button не работает",
+      "Error 4013/4014 - NAND"
     ],
     "repair_notes": "iPhone 15 Pro (2023) с процессором Apple A17 Pro. USB-C интерфейс. Проверить SN2611E0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -2359,7 +2605,15 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX70M (Snapdragon X70)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02744"
+    ]
   },
   {
     "id": 32,
@@ -2382,13 +2636,16 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "wireless_charging": "MagSafe 15W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$50-80",
-      "price_ram": "$20-35"
+      "price_ram": "$20-35",
+      "nand": "Kioxia K5A4RB6302CA12304 256GB/512GB/1TB",
+      "ram": "SK hynix H58G66AK6HX132 8GB LPDDR5"
     },
     "power_ic": {
       "main": "PMB6822",
@@ -2409,7 +2666,14 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "USB-C не заряжает / не передает данные",
+      "No Service - Qualcomm SDX70M или RF",
+      "Face ID unavailable",
+      "Sandwich board delamination",
+      "Перегрев при 4K ProRes",
+      "Battery drain на 5G",
+      "Error 4013/4014"
     ],
     "repair_notes": "iPhone 15 Pro Max (2023) с процессором Apple A17 Pro. USB-C интерфейс. Проверить SN2611E0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -2433,12 +2697,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX70M (Snapdragon X70)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02745"
+    ]
   },
   {
     "id": 33,
     "name": "iPhone 16",
-    "model": "A3081, A3286, A3287, A3288",
+    "model": "A3287, A3290, A3289, A3288",
     "year": 2024,
     "category": "iPhone",
     "processor": "Apple A18",
@@ -2456,13 +2728,18 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "battery_charger": "CP3200B1G0",
+      "wireless_charging": "MagSafe 25W, Qi2 15W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$60-100",
-      "price_ram": "$25-40"
+      "price_ram": "$25-40",
+      "nand": "128/256/512GB NVMe",
+      "ram": "8GB LPDDR5X",
+      "nand_manufacturer": "Kioxia/SK Hynix"
     },
     "power_ic": {
       "main": "PMB6825",
@@ -2483,7 +2760,14 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "USB-C не заряжает - проверить CD3217/SN2012027",
+      "No Service - Qualcomm SDX71M или антенна",
+      "Перегрев при использовании камеры",
+      "Face ID unavailable - Dot Projector",
+      "Батарея быстро разряжается",
+      "Error 4013/4014 при восстановлении - NAND",
+      "Wireless charging не работает - BCM59367"
     ],
     "repair_notes": "iPhone 16 (2024) с процессором Apple A18. USB-C интерфейс. Проверить SN2611E0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -2509,12 +2793,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX71M (Snapdragon X71)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02896"
+    ]
   },
   {
     "id": 34,
     "name": "iPhone 16 Plus",
-    "model": "A3082, A3289, A3290, A3291",
+    "model": "A3291, A3294, A3293, A3292",
     "year": 2024,
     "category": "iPhone",
     "processor": "Apple A18",
@@ -2532,13 +2824,17 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "battery_charger": "CP3200B1G0",
+      "wireless_charging": "MagSafe 25W, Qi2 15W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$60-100",
-      "price_ram": "$25-40"
+      "price_ram": "$25-40",
+      "nand": "128/256/512GB NVMe",
+      "ram": "8GB LPDDR5X"
     },
     "power_ic": {
       "main": "PMB6825",
@@ -2582,12 +2878,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX71M (Snapdragon X71)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02897"
+    ]
   },
   {
     "id": 35,
     "name": "iPhone 16 Pro",
-    "model": "A3083, A3292, A3293, A3294",
+    "model": "A3101, A3102, A3103, A3104",
     "year": 2024,
     "category": "iPhone",
     "processor": "Apple A18 Pro",
@@ -2605,13 +2909,17 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "battery_charger": "CP3200B1G0",
+      "wireless_charging": "MagSafe 25W, Qi2 15W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$60-100",
-      "price_ram": "$25-40"
+      "price_ram": "$25-40",
+      "nand": "Kioxia K5A3RF9864 128GB/256GB/512GB/1TB",
+      "ram": "Micron LPDDR5X 8GB"
     },
     "power_ic": {
       "main": "PMB6825",
@@ -2632,7 +2940,14 @@
       "Не включается",
       "Перегрев",
       "Face ID не работает",
-      "Камера не фокусируется"
+      "Камера не фокусируется",
+      "USB-C не заряжает / не передает данные",
+      "No Service - Qualcomm SDX71M-000 или RF",
+      "Face ID unavailable - Dot Projector",
+      "Перегрев при съемке видео 4K ProRes",
+      "Battery drain при использовании 5G",
+      "Error 4013/4014 - NAND Kioxia",
+      "Action Button не работает"
     ],
     "repair_notes": "iPhone 16 Pro (2024) с процессором Apple A18 Pro. USB-C интерфейс. Проверить SN2611E0, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -2658,12 +2973,20 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX71M-000 (Snapdragon X71)",
+      "type": "5G Sub-6GHz + mmWave",
+      "manufacturer": "Qualcomm"
+    },
+    "board_numbers": [
+      "820-02898"
+    ]
   },
   {
     "id": 36,
     "name": "iPhone 16 Pro Max",
-    "model": "A3084, A3295, A3296, A3297",
+    "model": "A3105, A3106, A3107, A3108",
     "year": 2024,
     "category": "iPhone",
     "processor": "Apple A18 Pro",
@@ -2681,13 +3004,17 @@
       "fast_charging": "Yes (up to 130W capability)",
       "usb_pd": "3.1",
       "usb_standard": "USB-C",
-      "data_speed": "USB 3.0/3.1"
+      "data_speed": "USB 3.0/3.1",
+      "battery_charger": "CP3200B1G0",
+      "wireless_charging": "MagSafe 25W"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$60-100",
-      "price_ram": "$25-40"
+      "price_ram": "$25-40",
+      "nand": "256GB/512GB/1TB NVMe",
+      "ram": "8GB LPDDR5X"
     },
     "power_ic": {
       "main": "PMB6825",
@@ -2731,29 +3058,40 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Qualcomm SDX71M-000",
+      "type": "5G Sub-6GHz + mmWave"
+    },
+    "board_numbers": [
+      "820-02899"
+    ]
   },
   {
     "id": 37,
     "name": "iPhone 16e",
-    "model": "A3212, A3408, A3409, A3410",
+    "model": "A3212, A3213",
     "year": 2025,
     "category": "iPhone",
-    "processor": "$599",
-    "processor_family": "Unknown",
+    "processor": "Apple A18",
+    "processor_family": "A18",
     "charging_ic": {
       "main": "SN26xx series",
       "location": "USB-C порт",
       "voltage": "5V/9V/20V PD",
       "current": "До 3A",
       "aliexpress": "https://www.aliexpress.com/w/wholesale-SN26xx.html",
-      "price_range": "$5-15"
+      "price_range": "$5-15",
+      "fast_charging": "27W USB-C PD",
+      "usb_pd": "3.1"
     },
     "memory": {
       "nand_type": "UFS 4.0",
       "ram_type": "LPDDR5X",
       "price_nand": "$60-100",
-      "price_ram": "$25-40"
+      "price_ram": "$25-40",
+      "nand": "128/256/512GB NVMe",
+      "ram": "8GB LPDDR5X"
     },
     "power_ic": {
       "main": "PMB/S2M series",
@@ -2800,7 +3138,16 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "modem": {
+      "chip": "Apple C1 (первый Apple modem)",
+      "type": "5G Sub-6GHz",
+      "manufacturer": "Apple",
+      "notes": "Первый собственный модем Apple"
+    },
+    "board_numbers": [
+      "TBD"
+    ]
   },
   {
     "id": 38,
@@ -9594,71 +9941,6 @@
       "Mini-LED blooming",
       "Thunderbolt port issues",
       "Liquid damage to USB-C"
-    ]
-  },
-  {
-    "id": 2001,
-    "name": "iPhone SE (2016)",
-    "model": "iPhone SE (A1662/A1723)",
-    "year": "2016",
-    "category": "iPhone",
-    "processor": "A9",
-    "board_numbers": [
-      "N69"
-    ]
-  },
-  {
-    "id": 2002,
-    "name": "iPhone SE (2020)",
-    "model": "iPhone SE 2nd Gen (A2275/A2296)",
-    "year": "2020",
-    "category": "iPhone",
-    "processor": "A13 Bionic",
-    "board_numbers": [
-      "D79"
-    ]
-  },
-  {
-    "id": 2003,
-    "name": "iPhone SE (2022)",
-    "model": "iPhone SE 3rd Gen (A2595/A2782)",
-    "year": "2022",
-    "category": "iPhone",
-    "processor": "A15 Bionic",
-    "board_numbers": [
-      "D49"
-    ]
-  },
-  {
-    "id": 2004,
-    "name": "iPhone 15",
-    "model": "iPhone 15 (A2846/A3089)",
-    "year": "2023",
-    "category": "iPhone",
-    "processor": "A16 Bionic",
-    "board_numbers": [
-      "D37"
-    ],
-    "common_issues": [
-      "USB-C port issues",
-      "Dynamic Island software bugs",
-      "Overheating with iOS 17"
-    ]
-  },
-  {
-    "id": 2005,
-    "name": "iPhone 15 Pro",
-    "model": "iPhone 15 Pro (A2848/A3101)",
-    "year": "2023",
-    "category": "iPhone",
-    "processor": "A17 Pro",
-    "board_numbers": [
-      "D38"
-    ],
-    "common_issues": [
-      "Titanium frame scratches",
-      "Action button failures",
-      "Thermal throttling"
     ]
   }
 ]
