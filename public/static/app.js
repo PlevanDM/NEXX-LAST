@@ -476,6 +476,12 @@ const LogicBoardsPanel = ({ data, onClose }) => {
 const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
+  console.log('OfficialPricesPanel render:', { 
+    hasData: !!data, 
+    hasUkraineData: !!ukraineData,
+    ukraineDataKeys: ukraineData ? Object.keys(ukraineData).length : 0
+  });
+  
   if (!data) return null;
   
   const prices = data.prices || {};
