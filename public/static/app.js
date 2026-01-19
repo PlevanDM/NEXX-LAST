@@ -1684,7 +1684,6 @@ const RepairTool = () => {
     h('div', { className: 'bg-white border-b border-gray-100 shadow-sm' },
       h('div', { className: 'max-w-6xl mx-auto px-4 py-4' },
         h('div', { className: 'flex items-center justify-between flex-wrap gap-4' },
-          // Logo
           h('div', { className: 'flex items-center gap-4' },
             h('img', { 
               src: '/static/nexx-logo.png', 
@@ -1695,7 +1694,6 @@ const RepairTool = () => {
               'База данных для ремонта устройств Apple'
             )
           ),
-          // Stats
           h('div', { className: 'flex flex-wrap gap-2 text-xs' },
             h('span', { className: 'px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 font-semibold border border-indigo-100' }, 
               `📱 ${stats.total} устройств`
