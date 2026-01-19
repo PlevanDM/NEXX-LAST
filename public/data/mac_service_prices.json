@@ -1,0 +1,2778 @@
+{
+  "generated_at": "2026-01-17T17:16:58.208775Z",
+  "count": 40,
+  "records": [
+    {
+      "series": "MacBook Air",
+      "a_number": "A3xxx",
+      "model_label": "MacBook Air 13″ & 15″ (M4, 2025)",
+      "year": 2025,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3749.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0,
+            3249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            999.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            999.0,
+            1400.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A3114",
+      "model_label": "MacBook Air 15″ (M3, 2024)",
+      "year": 2024,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2999.0,
+            3499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0,
+            3249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            949.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            999.0,
+            1400.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A3113",
+      "model_label": "MacBook Air 13″ (M3, 2024)",
+      "year": 2024,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2999.0,
+            3499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0,
+            3249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            999.0,
+            1400.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A2941",
+      "model_label": "MacBook Air 15″ (M2, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2599.0,
+            3499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0,
+            3249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            999.0,
+            1400.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A2681",
+      "model_label": "MacBook Air 13″ (M2, 2022)",
+      "year": 2022,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            749.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2499.0,
+            3299.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0,
+            2999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            949.0,
+            1200.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A2337",
+      "model_label": "MacBook Air 13″ (M1, 2020)",
+      "year": 2020,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            749.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2849.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1249.0,
+            2249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            749.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0,
+            1200.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A2179",
+      "model_label": "MacBook Air 13″ Retina (2020, Intel)",
+      "year": 2020,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A1932",
+      "model_label": "MacBook Air 13″ Retina (2018, 2019)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            989.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A1466",
+      "model_label": "MacBook Air 13″ (Early 2015, 2017)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            499.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            449.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            349.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Air",
+      "a_number": "A1465",
+      "model_label": "MacBook Air 11″ (Early 2015)",
+      "year": 2015,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            249.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            199.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            499.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            349.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A3xxx",
+      "model_label": "MacBook Pro 14″ & 16″ (M3/M4, 2023–2024)",
+      "year": 2024,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            299.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            5499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            3999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2780",
+      "model_label": "MacBook Pro 16″ (M2 Pro/Max, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            299.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            4499.0,
+            4999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            3499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2779",
+      "model_label": "MacBook Pro 14″ (M2 Pro/Max, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            299.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3749.0,
+            4499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            2999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2485",
+      "model_label": "MacBook Pro 16″ (M1 Pro/Max, 2021)",
+      "year": 2021,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            299.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            4499.0,
+            4999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            2499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            1749.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2442",
+      "model_label": "MacBook Pro 14″ (M1 Pro/Max, 2021)",
+      "year": 2021,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            299.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3749.0,
+            4499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            1299.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2338",
+      "model_label": "MacBook Pro 13″ (M1,M2 20-22)",
+      "year": null,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            749.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            449.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2999.0,
+            3499.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2251",
+      "model_label": "MacBook Pro 13″ (2020, Intel)",
+      "year": 2020,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2249.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            749.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2141",
+      "model_label": "MacBook Pro 16″ (2019)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            749.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            399.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2499.0,
+            3999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1999.0,
+            3999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            999.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            749.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            949.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            749.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            749.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1990",
+      "model_label": "MacBook Pro 15″ (2018, 2019)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            349.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2249.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1749.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            899.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            599.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            899.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A2159",
+      "model_label": "MacBook Pro 13″ (2019, Two Thunderbolt ports)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1989",
+      "model_label": "MacBook Pro 13″ (2018, 2019, Touch Bar)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "touch_id": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            899.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1707",
+      "model_label": "MacBook Pro 15″ (2016, 2017)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            349.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            899.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            599.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            899.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1708",
+      "model_label": "MacBook Pro 13″ (2016, 2017, no Touch Bar)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1706",
+      "model_label": "MacBook Pro 13″ (2016, 2017, Touch Bar)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            299.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            1199.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            849.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            849.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            499.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            999.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            999.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1398",
+      "model_label": "MacBook Pro 15″ Retina (Mid 2015)",
+      "year": 2015,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            249.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            799.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            799.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            349.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "MacBook Pro",
+      "a_number": "A1502",
+      "model_label": "MacBook Pro 13″ Retina (Early 2015)",
+      "year": 2015,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            249.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            249.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_flexgate": {
+          "prices": [
+            999.0
+          ]
+        },
+        "swap_top_case": {
+          "prices": [
+            999.0
+          ]
+        },
+        "keyboard": {
+          "prices": [
+            799.0
+          ]
+        },
+        "bottom_set": {
+          "prices": [
+            49.0,
+            999.0
+          ]
+        },
+        "trackpad_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "battery_swap": {
+          "prices": [
+            799.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            299.0
+          ]
+        },
+        "type_c_magsafe": {
+          "prices": [
+            499.0
+          ]
+        },
+        "swap_fan": {
+          "prices": [
+            499.0
+          ]
+        },
+        "audio_board": {
+          "prices": [
+            349.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A3xxx",
+      "model_label": "iMac 24″ (M4, 2024)",
+      "year": 2024,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            999.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            999.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3999.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A2989",
+      "model_label": "iMac 24″ (M3, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            999.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            999.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3499.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A2438",
+      "model_label": "iMac 24″ (M1, 2021)",
+      "year": 2021,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            749.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            749.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3499.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A1418",
+      "model_label": "iMac 21.5″ (2015–2019)",
+      "year": 2019,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            749.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            749.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            1999.0,
+            2249.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A1419",
+      "model_label": "iMac 27″ Retina (2015–2020)",
+      "year": 2020,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            999.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            999.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            2999.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "iMac",
+      "a_number": "A1862",
+      "model_label": "iMac Pro 27″ (2017)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            999.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            999.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        },
+        "display_lid_swap": {
+          "prices": [
+            3249.0
+          ]
+        },
+        "speaker_mic_swap": {
+          "prices": [
+            749.0,
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A3xxx",
+      "model_label": "Mac Studio (M4 Max/M3 Ultra, 2025)",
+      "year": 2025,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A2786",
+      "model_label": "Mac Pro (M2 Ultra, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            999.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A2438",
+      "model_label": "Mac mini (M2/M2 Pro, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A2816",
+      "model_label": "Mac Studio (M2 Max/Ultra, 2023)",
+      "year": 2023,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A2686",
+      "model_label": "Mac Studio (M1 Max/Ultra, 2022)",
+      "year": 2022,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            999.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1499.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A2348",
+      "model_label": "Mac mini (M1, 2020)",
+      "year": 2020,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            749.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            1249.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            499.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A1993",
+      "model_label": "Mac mini (2018 Intel)",
+      "year": 2018,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            499.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            749.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            449.0
+          ]
+        }
+      }
+    },
+    {
+      "series": "Mac mini / Mac Studio / Mac Pro",
+      "a_number": "A1347",
+      "model_label": "Mac mini (Late 2014, sold until 2017)",
+      "year": 2017,
+      "services": {
+        "diagnostics": {
+          "prices": [
+            199.0
+          ]
+        },
+        "liquid_damage": {
+          "prices": [
+            249.0
+          ]
+        },
+        "repair_logic_board": {
+          "prices": [
+            349.0
+          ]
+        },
+        "clean_thremal": {
+          "prices": [
+            349.0
+          ]
+        }
+      }
+    }
+  ]
+}

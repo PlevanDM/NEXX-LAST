@@ -19,15 +19,27 @@ app.get('/', (c) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🔧 Apple Repair Tool</title>
-        <meta name="description" content="Профессиональная база данных для ремонта устройств Apple">
+        <title>🛠️ Apple Intake Desk</title>
+        <meta name="description" content="Софт для приёмки устройств Apple: чек-листы, диагностика и база по платам">
         <script src="https://cdn.tailwindcss.com"></script>
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+        
+        <!-- Local Vendor Scripts -->
+        <script src="/static/vendor/react.production.min.js"></script>
+        <script src="/static/vendor/react-dom.production.min.js"></script>
+
+        <!-- Error Handling -->
+        <script>
+          window.onerror = function(msg, url, line, col, error) {
+            document.body.innerHTML = '<div style="color:red; padding:20px;"><h1>Something went wrong</h1><pre>' + msg + '\\n' + url + ':' + line + '</pre></div>';
+          };
+          if (typeof React === 'undefined') {
+            document.body.innerHTML = '<div style="color:red; padding:20px;"><h1>Error: React failed to load</h1><p>Check your internet connection or vendor files.</p></div>';
+          }
+        </script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
-        <script src="/static/app.js"></script>
+        <script src="/static/app.js?v=2.3"></script>
     </body>
     </html>
   `)

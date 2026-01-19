@@ -9447,5 +9447,85 @@
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
     }
+  },
+  {
+    "id": 144,
+    "name": "MacBook Pro 13\" (Late 2016, без Touch Bar)",
+    "model": "MacBookPro13,1",
+    "a_number": "A1708",
+    "year": 2016,
+    "category": "Mac",
+    "processor": "Intel Core i5/i7 (Skylake)",
+    "processor_family": "Intel",
+    "charging_ic": {
+      "main": "ISL9239 (U7000)",
+      "location": "Левая зона платы у USB-C контроллеров",
+      "voltage": "USB-C 5V/9V/20V PD",
+      "current": "До 61W",
+      "notes": "Часто повреждается после скачков напряжения или попадания влаги. Проверьте PPBUS_G3H и отсутствие коррозии под контроллером.",
+      "price_range": "$10-18"
+    },
+    "memory": {
+      "ram_type": "8/16GB 2133 MHz LPDDR3 (пайка)",
+      "storage_type": "PCIe NVMe SSD (проприетарный модуль)",
+      "notes": "SSD съёмный, но требует переходник под PCIe x2",
+      "price": "$80-250"
+    },
+    "power_ic": {
+      "main": "ISL9239 + SMC",
+      "location": "Центральная часть платы рядом с CPU",
+      "functions": "Генерация основных шин питания, зарядка батареи, мониторинг тока"
+    },
+    "audio_codec": {
+      "main": "Cirrus Logic CS8409 (U3800)",
+      "location": "Правая сторона платы",
+      "notes": "Нередко отваливается после жидкостей — проверяйте дорожки и питание"
+    },
+    "board_numbers": [
+      "820-00840-A",
+      "820-00840-B",
+      "820-00512-A"
+    ],
+    "donors": [
+      "MacBook Pro 13\" (2017, A1708)",
+      "MacBook Pro 13\" (2016 Touch Bar, частично по компонентам)"
+    ],
+    "common_issues": [
+      "Не заряжается от одного или обоих портов USB-C",
+      "Падение напряжения на PPBUS_G3H после короткого по ISL9239",
+      "Kernel panic из-за проблем с CD3215/CD3217",
+      "Нет звука (CS8409)",
+      "Резкая потеря емкости батареи",
+      "Не включается после залития"
+    ],
+    "repair_notes": "Проверьте USB-C контроллеры CD3215/3217, сопротивление на PPBUS_G3H, наличие 3.42V_S5. Часто помогает перекатка ISL9239 и чистка под SMC.",
+    "repair_difficulty": "Сложная",
+    "repair_time": "3-4 часа",
+    "tools_needed": [
+      "Паяльная станция JBC/Pace",
+      "Hot air станция Quick 861DW",
+      "Микроскоп 40x",
+      "Инфракрасный предподогрев",
+      "USB-C тестер (Power-Z)",
+      "Мультиметр Fluke",
+      "Набор Torx/Pentalobe",
+      "Изопропиловый спирт 99%",
+      "Трафареты для ISL9239/CD3215"
+    ],
+    "intake_focus": [
+      "Проверить зарядку на всех USB-C портах и передачу данных",
+      "Осмотреть клавиатуру butterfly на предмет залипаний",
+      "Зафиксировать состояние корпуса, вмятины возле портов",
+      "Уточнить наличие резервных копий (Time Machine) и пароль пользователя"
+    ],
+    "intake_notes": "Попросите отключить FileVault и предоставить пароль учётной записи. Без Touch Bar, Touch ID отсутствует — отметьте это в заказе.",
+    "service_notes": "Измеряйте PPDCIN_G3H и PPBUS_G3H, проверьте линию SMC_LID_OPEN и датчики жидкости. После замены ISL обязательно проверяйте отклик SMC.",
+    "intake_priority": "⚠️ Риск возврата",
+    "documentation_links": {
+      "ifixit": "https://www.ifixit.com/Device/MacBook_Pro_13-Inch_2016_Function_Keys",
+      "apple_support": "https://support.apple.com/en-us/HT207267",
+      "boardview": "820-00840 (ZXW/Boardviewer)",
+      "schematics": "Wistron 051-00840"
+    }
   }
 ]
