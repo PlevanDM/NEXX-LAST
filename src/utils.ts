@@ -26,6 +26,8 @@ export const convertPrice = (price: number | null | undefined, from: 'UAH' | 'US
   return price;
 };
 
+// Функция для получения иконки категории (только для фильтров)
+// Возвращает эмодзи для кнопок фильтров
 export const getCategoryIcon = (cat: string) => ({ 
   'iPhone': '📱', 
   'iPad': '📟', 
