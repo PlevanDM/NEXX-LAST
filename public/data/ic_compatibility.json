@@ -636,6 +636,213 @@
           "y": 15
         }
       }
+    },
+    "338S00122": {
+      "designation": "Big PMIC",
+      "package": "BGA",
+      "devices": [
+        "iPhone 6S",
+        "iPhone 6S Plus"
+      ],
+      "location": "U1202",
+      "functions": [
+        "Основное управление питанием",
+        "Регулировка напряжений для CPU/GPU",
+        "Управление зарядкой батареи",
+        "Контроль температуры"
+      ],
+      "analogues": [
+        {
+          "part": "338S00120",
+          "compatibility": "95%",
+          "notes": "Из iPhone 6 - требует доработки"
+        },
+        {
+          "part": "338S00155",
+          "compatibility": "100%",
+          "notes": "Из iPhone SE 1"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone 6S любой емкости",
+          "years": "2015-2016",
+          "location": "U1202",
+          "difficulty": "Средняя"
+        },
+        {
+          "model": "iPhone 6S Plus",
+          "years": "2015-2016",
+          "location": "U1202",
+          "difficulty": "Средняя"
+        },
+        {
+          "model": "iPhone SE 1st gen",
+          "years": "2016",
+          "location": "U1202",
+          "difficulty": "Средняя"
+        }
+      ],
+      "common_failures": [
+        "Не включается после падения",
+        "Перезагрузки при нагрузке",
+        "Не заряжается (вместе с Tristar)",
+        "Перегрев без нагрузки"
+      ],
+      "diagnostic": {
+        "resistance_to_ground": "10-25 Ohm",
+        "voltage_output": "Multiple rails 0.9V-3.8V",
+        "test_points": [
+          "PP_CPU",
+          "PP_GPU",
+          "PP_BATT_VCC"
+        ]
+      },
+      "repair_tips": [
+        "Проверить на трещины под микроскопом",
+        "Температура демонтажа 380-400°C",
+        "Обязательно reballing перед установкой",
+        "Проверить все выходные напряжения после замены"
+      ],
+      "price_range": "$15-25",
+      "aliexpress": "https://www.aliexpress.com/item/338S00122-power-ic.html"
+    },
+    "338S00309": {
+      "designation": "Main PMIC",
+      "package": "BGA",
+      "devices": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X",
+        "iPhone SE 2020"
+      ],
+      "location": "U2700",
+      "functions": [
+        "Управление всеми power rails",
+        "Поддержка беспроводной зарядки",
+        "Fast charging контроллер",
+        "Thermal management"
+      ],
+      "analogues": [
+        {
+          "part": "338S00309-B0",
+          "compatibility": "100%",
+          "notes": "Улучшенная ревизия"
+        },
+        {
+          "part": "338S00375",
+          "compatibility": "90%",
+          "notes": "Из iPhone XR - нужна прошивка"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone 8",
+          "years": "2017-2020",
+          "location": "U2700",
+          "difficulty": "Средняя"
+        },
+        {
+          "model": "iPhone 8 Plus",
+          "years": "2017-2020",
+          "location": "U2700",
+          "difficulty": "Средняя"
+        },
+        {
+          "model": "iPhone X",
+          "years": "2017-2018",
+          "location": "U2700",
+          "difficulty": "Высокая"
+        },
+        {
+          "model": "iPhone SE 2nd gen",
+          "years": "2020-2022",
+          "location": "U2700",
+          "difficulty": "Средняя"
+        }
+      ],
+      "common_failures": [
+        "Bootloop после обновления iOS",
+        "Не работает беспроводная зарядка",
+        "Случайные выключения",
+        "4013/4014 ошибки в iTunes"
+      ],
+      "diagnostic": {
+        "resistance_to_ground": "15-30 Ohm",
+        "i2c_communication": "Check with oscilloscope",
+        "test_points": [
+          "PPVDD_MAIN",
+          "PP3V0_TRISTAR",
+          "PP1V8_ALWAYS"
+        ]
+      },
+      "repair_tips": [
+        "Часто выходит из строя вместе с Tristar",
+        "Проверить underfill на трещины",
+        "После замены требуется restore через iTunes",
+        "Использовать качественный флюс"
+      ],
+      "price_range": "$20-35",
+      "aliexpress": "https://www.aliexpress.com/item/338S00309-ic.html"
+    },
+    "343S00089": {
+      "designation": "PMIC Tiger",
+      "package": "BGA",
+      "devices": [
+        "iPhone 7",
+        "iPhone 7 Plus"
+      ],
+      "location": "U2700",
+      "functions": [
+        "Основной контроллер питания",
+        "Управление haptic engine",
+        "Контроль home button",
+        "Power sequencing"
+      ],
+      "analogues": [
+        {
+          "part": "343S00091",
+          "compatibility": "100%",
+          "notes": "Полный аналог"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone 7",
+          "years": "2016-2019",
+          "location": "U2700",
+          "difficulty": "Средняя"
+        },
+        {
+          "model": "iPhone 7 Plus",
+          "years": "2016-2019",
+          "location": "U2700",
+          "difficulty": "Средняя"
+        }
+      ],
+      "common_failures": [
+        "Аудио-болезнь (Audio IC disease)",
+        "Не работает home button",
+        "Bootloop при холодном старте",
+        "Проблемы с haptic feedback"
+      ],
+      "diagnostic": {
+        "resistance_to_ground": "12-28 Ohm",
+        "boot_sequence": "Monitor current draw",
+        "test_points": [
+          "PP_VDD_MAIN",
+          "PP_VDD_BOOST",
+          "MESA_BOOST"
+        ]
+      },
+      "repair_tips": [
+        "Часто требует замены вместе с Audio IC",
+        "Проверить flex home button",
+        "Требует опыта в микропайке",
+        "Внимание к ориентации чипа"
+      ],
+      "price_range": "$18-28",
+      "aliexpress": "https://www.aliexpress.com/item/343S00089-pmic.html"
     }
   },
   "audio_ics": {
@@ -812,6 +1019,188 @@
           "y": 8
         }
       }
+    },
+    "338S00105": {
+      "designation": "Big Audio IC (Caltra)",
+      "package": "BGA",
+      "devices": [
+        "iPhone 6S",
+        "iPhone 6S Plus",
+        "iPhone 7",
+        "iPhone 7 Plus"
+      ],
+      "location": "U3500 (6S) / U3101 (7)",
+      "functions": [
+        "Аудио кодек для динамиков",
+        "Управление микрофонами",
+        "Обработка голоса для Siri",
+        "Noise cancellation"
+      ],
+      "analogues": [],
+      "donor_models": [
+        {
+          "model": "iPhone 6S/6S Plus",
+          "years": "2015-2016",
+          "location": "U3500",
+          "difficulty": "Высокая"
+        },
+        {
+          "model": "iPhone 7/7 Plus",
+          "years": "2016-2019",
+          "location": "U3101",
+          "difficulty": "Очень высокая"
+        },
+        {
+          "model": "iPhone SE 1st gen",
+          "years": "2016",
+          "location": "U3500",
+          "difficulty": "Высокая"
+        }
+      ],
+      "common_failures": [
+        "Серая кнопка Voice Memos",
+        "Нет звука при звонке",
+        "Siri не слышит голос",
+        "Bootloop (Audio IC disease на iPhone 7)"
+      ],
+      "diagnostic": {
+        "i2c_lines": "Check SDA/SCL communication",
+        "resistance": "350-450 Ohm to ground",
+        "test_points": [
+          "CODEC_TO_AP_I2S",
+          "AP_TO_CODEC_I2S"
+        ]
+      },
+      "repair_tips": [
+        "iPhone 7 требует дополнительную перемычку",
+        "Очень чувствителен к перегреву",
+        "Использовать low-melt solder для демонтажа",
+        "Проверить C12 pad на iPhone 7"
+      ],
+      "price_range": "$25-40",
+      "aliexpress": "https://www.aliexpress.com/item/338S00105-audio.html"
+    },
+    "CS42L77": {
+      "designation": "Audio Codec Cirrus Logic",
+      "package": "BGA",
+      "devices": [
+        "iPhone X",
+        "iPhone XS",
+        "iPhone XS Max"
+      ],
+      "location": "U4700",
+      "functions": [
+        "Высококачественный аудио кодек",
+        "Поддержка стерео записи",
+        "Управление haptic engine",
+        "Digital signal processing"
+      ],
+      "analogues": [
+        {
+          "part": "CS42L75",
+          "compatibility": "95%",
+          "notes": "Небольшие отличия в распиновке"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone X",
+          "years": "2017-2018",
+          "location": "U4700",
+          "difficulty": "Очень высокая"
+        },
+        {
+          "model": "iPhone XS/XS Max",
+          "years": "2018-2019",
+          "location": "U4700",
+          "difficulty": "Очень высокая"
+        }
+      ],
+      "common_failures": [
+        "Нет звука в наушниках",
+        "Проблемы с записью видео",
+        "Не работает громкая связь",
+        "Искажения звука"
+      ],
+      "diagnostic": {
+        "power_rails": "1.8V and 3.3V must be present",
+        "clock_signal": "24.576MHz",
+        "test_points": [
+          "I2S_AP_TO_CODEC",
+          "I2S_CODEC_TO_AP"
+        ]
+      },
+      "repair_tips": [
+        "Требует профессионального оборудования",
+        "Очень маленькие контактные площадки",
+        "Проверить все фильтры после замены",
+        "Часто повреждается при падении"
+      ],
+      "price_range": "$30-50",
+      "aliexpress": "https://www.aliexpress.com/item/CS42L77-codec.html"
+    },
+    "338S00248": {
+      "designation": "Audio IC (338S00248)",
+      "package": "BGA",
+      "devices": [
+        "iPhone XS",
+        "iPhone XS Max",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max"
+      ],
+      "location": "U4700",
+      "functions": [
+        "Премиум аудио обработка",
+        "Spatial audio поддержка",
+        "Многоканальная запись",
+        "Эквалайзер и эффекты"
+      ],
+      "analogues": [
+        {
+          "part": "338S00411",
+          "compatibility": "80%",
+          "notes": "Из iPhone 11 - требует адаптации"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone XS",
+          "years": "2018-2019",
+          "location": "U4700",
+          "difficulty": "Экстремально сложная"
+        },
+        {
+          "model": "iPhone XS Max",
+          "years": "2018-2019",
+          "location": "U4700",
+          "difficulty": "Экстремально сложная"
+        },
+        {
+          "model": "iPhone 11 Pro/Pro Max",
+          "years": "2019-2020",
+          "location": "U4700",
+          "difficulty": "Экстремально сложная"
+        }
+      ],
+      "common_failures": [
+        "Пропадает звук после обновления",
+        "Не работает запись в 4K",
+        "Проблемы с FaceTime audio",
+        "Перегрев при использовании камеры"
+      ],
+      "diagnostic": {
+        "boot_check": "Monitor during boot sequence",
+        "voltage_check": "All rails must be stable",
+        "oscilloscope": "Check I2S data lines"
+      },
+      "repair_tips": [
+        "Используйте только оригинальные чипы",
+        "Требуется калибровка после замены",
+        "Защитите окружающие компоненты каптоном",
+        "Не превышать 380°C при демонтаже"
+      ],
+      "price_range": "$40-70",
+      "aliexpress": "https://www.aliexpress.com/item/338S00248.html"
     }
   },
   "wifi_bt_ics": {
@@ -1274,6 +1663,73 @@
           "y": 25
         }
       }
+    },
+    "backlight_drivers": {
+      "LM3534": {
+        "designation": "Backlight Driver",
+        "devices": [
+          "iPhone 6",
+          "iPhone 6 Plus"
+        ],
+        "location": "U1502",
+        "functions": [
+          "LED подсветка дисплея",
+          "Яркость экрана",
+          "Ambient light sensor"
+        ],
+        "common_failures": [
+          "Нет подсветки",
+          "Мерцание экрана",
+          "Не регулируется яркость"
+        ],
+        "donor_compatibility": [
+          "iPhone 6 ↔ iPhone 6 Plus"
+        ],
+        "price_range": "$8-15"
+      },
+      "TPS65730": {
+        "designation": "Display Power Management",
+        "devices": [
+          "iPhone 7",
+          "iPhone 8"
+        ],
+        "location": "U3703",
+        "functions": [
+          "Boost converter для подсветки",
+          "True Tone контроль",
+          "Display timing"
+        ],
+        "common_failures": [
+          "Белый экран",
+          "Линии на экране",
+          "True Tone не работает"
+        ],
+        "donor_compatibility": [
+          "iPhone 7 → iPhone 8 (с модификацией)"
+        ],
+        "price_range": "$12-20"
+      }
+    },
+    "touch_controllers": {
+      "343S0694": {
+        "designation": "Touch IC Cumulus",
+        "devices": [
+          "iPad Air 2",
+          "iPad Mini 4"
+        ],
+        "package": "BGA",
+        "functions": [
+          "Обработка касаний",
+          "Palm rejection",
+          "Force touch"
+        ],
+        "common_failures": [
+          "Touch не работает после замены стекла",
+          "Ghost touch"
+        ],
+        "repair_difficulty": "Очень высокая - требует микроскопа",
+        "price_range": "$25-40"
+      }
     }
   },
   "board_layouts": {
@@ -1531,5 +1987,412 @@
       },
       "notes": "Более надежные чем Cumulus/Meson"
     }
+  },
+  "wifi_bluetooth_ics": {
+    "339S0242": {
+      "designation": "WiFi/BT Module BCM4355",
+      "package": "BGA Module",
+      "devices": [
+        "iPhone 6",
+        "iPhone 6 Plus"
+      ],
+      "location": "U5201_RF",
+      "functions": [
+        "WiFi 802.11 a/b/g/n/ac",
+        "Bluetooth 4.2",
+        "AirDrop поддержка",
+        "WiFi calling"
+      ],
+      "analogues": [
+        {
+          "part": "339S0228",
+          "compatibility": "100%",
+          "notes": "Полностью совместим"
+        },
+        {
+          "part": "339S0231",
+          "compatibility": "100%",
+          "notes": "Улучшенная версия"
+        }
+      ],
+      "donor_models": [
+        {
+          "model": "iPhone 6",
+          "years": "2014-2016",
+          "location": "U5201_RF",
+          "difficulty": "Высокая"
+        },
+        {
+          "model": "iPhone 6 Plus",
+          "years": "2014-2016",
+          "location": "U5201_RF",
+          "difficulty": "Высокая"
+        }
+      ],
+      "common_failures": [
+        "WiFi выделен серым",
+        "Bluetooth постоянно ищет",
+        "Слабый сигнал WiFi",
+        "AirDrop не работает"
+      ],
+      "diagnostic": {
+        "check_antenna": "Проверить антенные контакты",
+        "power_check": "1.2V, 1.8V, 3.3V rails",
+        "crystal": "37.4MHz oscillator"
+      },
+      "repair_tips": [
+        "Модуль с экранированием - снимать осторожно",
+        "Проверить все антенные коннекторы",
+        "После замены сбросить сетевые настройки",
+        "Часто помогает просто реболлинг"
+      ],
+      "price_range": "$20-35",
+      "aliexpress": "https://www.aliexpress.com/item/339S0242-wifi.html"
+    },
+    "339S00448": {
+      "designation": "WiFi/BT Module USI",
+      "package": "BGA Module with shield",
+      "devices": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X"
+      ],
+      "location": "U6200_RF",
+      "functions": [
+        "WiFi 802.11ac Wave 2",
+        "Bluetooth 5.0",
+        "NFC controller integration",
+        "MIMO 2x2 support"
+      ],
+      "analogues": [],
+      "donor_models": [
+        {
+          "model": "iPhone 8/8 Plus",
+          "years": "2017-2020",
+          "location": "U6200_RF",
+          "difficulty": "Очень высокая"
+        },
+        {
+          "model": "iPhone X",
+          "years": "2017-2018",
+          "location": "U6200_RF",
+          "difficulty": "Очень высокая"
+        }
+      ],
+      "common_failures": [
+        "Пропадает WiFi после падения",
+        "Bluetooth отключается сам",
+        "Не видит 5GHz сети",
+        "Проблемы с AirPods"
+      ],
+      "diagnostic": {
+        "module_test": "Проверить наличие MAC адреса",
+        "antenna_diversity": "Тест обеих антенн",
+        "nfc_check": "Проверить NFC если есть"
+      },
+      "repair_tips": [
+        "Снимать щит термофеном на 200°C",
+        "Модуль очень чувствителен к ESD",
+        "Проверить пасту под щитом",
+        "Возможны проблемы с True Tone после замены"
+      ],
+      "price_range": "$35-55",
+      "aliexpress": "https://www.aliexpress.com/item/339S00448.html"
+    },
+    "339S00761": {
+      "designation": "WiFi 6/BT 5.2 Module",
+      "package": "BGA Module",
+      "devices": [
+        "iPhone 12",
+        "iPhone 12 Pro",
+        "iPhone 13",
+        "iPhone 13 Pro"
+      ],
+      "location": "U7500_RF",
+      "functions": [
+        "WiFi 6 (802.11ax)",
+        "Bluetooth 5.2",
+        "Ultra Wideband (UWB)",
+        "5G/WiFi coexistence"
+      ],
+      "analogues": [],
+      "donor_models": [
+        {
+          "model": "iPhone 12 все версии",
+          "years": "2020-2021",
+          "location": "U7500_RF",
+          "difficulty": "Экстремально сложная"
+        },
+        {
+          "model": "iPhone 13 все версии",
+          "years": "2021-2022",
+          "location": "U7500_RF",
+          "difficulty": "Экстремально сложная"
+        }
+      ],
+      "common_failures": [
+        "Перегрев при использовании WiFi",
+        "UWB не работает (AirTag)",
+        "Низкая скорость WiFi 6",
+        "Конфликт с 5G модемом"
+      ],
+      "diagnostic": {
+        "uwb_test": "Проверить U1 chip communication",
+        "wifi6_features": "Test OFDMA and MU-MIMO",
+        "thermal": "Monitor temperature during operation"
+      },
+      "repair_tips": [
+        "Требует специального stencil для reballing",
+        "Критично соблюдать температурный режим",
+        "После замены нужна калибровка в сервисном режиме",
+        "Проверить термопасту на процессоре"
+      ],
+      "price_range": "$60-100",
+      "aliexpress": "https://www.aliexpress.com/item/339S00761-wifi6.html"
+    }
+  },
+  "memory_ics": {
+    "nand_flash": {
+      "SanDisk_SDMFLBCB2_128G": {
+        "capacity": "128GB",
+        "devices": [
+          "iPhone 6S Plus",
+          "iPhone 7"
+        ],
+        "technology": "3D TLC NAND",
+        "interface": "Toggle DDR 2.0",
+        "donor_notes": "Требуется программатор для переноса данных",
+        "compatibility": "Только той же емкости"
+      },
+      "Toshiba_THGBX5G8D4KLDXG": {
+        "capacity": "64GB",
+        "devices": [
+          "iPhone 8",
+          "iPhone X"
+        ],
+        "technology": "BiCS3 3D NAND",
+        "interface": "Toggle DDR 3.0",
+        "donor_notes": "Привязан к CPU - нужен программатор JC P11",
+        "compatibility": "Можно upgrade емкости с прошивкой"
+      }
+    },
+    "ram_modules": {
+      "Samsung_K3RG1G10BM": {
+        "capacity": "2GB LPDDR4",
+        "devices": [
+          "iPhone 7",
+          "iPhone 8"
+        ],
+        "frequency": "3200MHz",
+        "voltage": "1.1V",
+        "donor_compatibility": "Взаимозаменяемы между моделями",
+        "soldering_notes": "Критична соосность при установке"
+      },
+      "Micron_MT53D512M64D4SB": {
+        "capacity": "4GB LPDDR4X",
+        "devices": [
+          "iPhone X",
+          "iPhone XS"
+        ],
+        "frequency": "4266MHz",
+        "voltage": "0.6V",
+        "donor_compatibility": "XS → X возможен даунгрейд",
+        "soldering_notes": "Underfill обязателен"
+      }
+    }
+  },
+  "338S00122": {
+    "name": "PMIC iPhone 6",
+    "type": "Power Management",
+    "location": "U1202",
+    "symptoms": [
+      "Не включается после замены батареи",
+      "Перезагрузка при подключении камеры",
+      "Не заряжается, но работает от батареи",
+      "Греется в районе процессора"
+    ],
+    "test_points": {
+      "PP_VDD_MAIN": "4.2V при подключенном ЗУ",
+      "PP_BATT_VCC": "3.8-4.2V от батареи",
+      "PP3V0_NAND": "3.0V для памяти",
+      "PP1V8_SDRAM": "1.8V для ОЗУ",
+      "PP_CPU": "0.9-1.1V динамическое"
+    },
+    "procedure": [
+      "1. Проверить напряжения на тестовых точках",
+      "2. Если нет PP_VDD_MAIN - проверить Q1403 и U1401",
+      "3. Проверить сопротивление на линии PP_CPU (норма 20-40 Ом)",
+      "4. При замене: преднагрев плата 150°C, фен 350°C",
+      "5. Обязательно заменить C1239, C1240 возле PMIC",
+      "6. После установки проверить все выходные напряжения"
+    ],
+    "tools": "Паяльная станция, микроскоп, мультиметр, осциллограф",
+    "difficulty": "Высокая",
+    "time": "45-60 минут",
+    "common_mistakes": [
+      "Перегрев при демонтаже - отслоение дорожек",
+      "Не проверены конденсаторы возле PMIC",
+      "Неправильная ориентация микросхемы"
+    ]
+  },
+  "338S00105": {
+    "name": "Audio Codec iPhone 6S/7",
+    "type": "Audio IC",
+    "location": "U3500/U3101",
+    "symptoms": [
+      "Серый динамик при звонке",
+      "Voice memo не запускается",
+      "Bootloop после падения",
+      "Нет звука в наушниках",
+      "Siri не слышит голос"
+    ],
+    "test_points": {
+      "PP1V8_AUDIO": "1.8V питание аудио",
+      "CODEC_TO_AP_I2S": "Линии данных к процессору",
+      "C12_PAD": "Проверить на обрыв (iPhone 7)",
+      "FL3265": "Фильтр на линии микрофона"
+    },
+    "procedure": [
+      "1. Для iPhone 7: обязательно проверить C12 pad на обрыв",
+      "2. Если C12 оборван - делать джампер от площадки к via под IC",
+      "3. Снятие: преднагрев 180°C, температура фена 340°C",
+      "4. Очистить площадки, проверить целостность падов",
+      "5. При установке использовать флюс Amtech 559",
+      "6. После пайки: ультразвук 3 минуты в изопропиле",
+      "7. Обязательно проверить FL3265, FL3266"
+    ],
+    "jumper_wire": {
+      "from": "C12 pad",
+      "to": "Via hole под микросхемой",
+      "wire": "0.02mm эмалированный провод",
+      "note": "Критично для iPhone 7 Audio IC disease"
+    },
+    "tools": "Термофен, микроскоп 45X, паяльник с жалом 0.2mm",
+    "difficulty": "Очень высокая",
+    "time": "60-90 минут"
+  },
+  "339S00043": {
+    "name": "WiFi/BT Module",
+    "type": "Wireless IC",
+    "location": "U5200",
+    "symptoms": [
+      "WiFi кнопка серая",
+      "Bluetooth не включается",
+      "MAC адрес 02:00:00:00:00:00",
+      "WiFi работает только рядом с роутером"
+    ],
+    "test_points": {
+      "PP1V8_WLAN": "1.8V питание модуля",
+      "WL_REG_ON": "Сигнал включения WiFi",
+      "WLAN_DEVICE_WAKE": "Пробуждение модуля"
+    },
+    "procedure": [
+      "1. Проверить антенные коннекторы J2118, J3801",
+      "2. Измерить сопротивление антенных линий (норма 25 Ом)",
+      "3. Проверить FL1119-FL1125 (фильтры питания)",
+      "4. Замена: нанести флюс, прогрев 160°C",
+      "5. Демонтаж при 330°C круговыми движениями",
+      "6. Установка новой с BGA шариками 0.3mm",
+      "7. После пайки проверить короткое замыкание"
+    ],
+    "bga_profile": {
+      "preheat": "160°C 60 сек",
+      "reflow": "330°C 40 сек",
+      "cooling": "Естественное 120 сек"
+    },
+    "tools": "BGA станция, трафареты, шары 0.3mm",
+    "difficulty": "Высокая",
+    "time": "40-50 минут"
+  },
+  "U2700": {
+    "name": "Tristar/Hydra USB Controller",
+    "type": "Charging IC",
+    "location": "U2700/U4500",
+    "symptoms": [
+      "Не заряжается с оригинального кабеля",
+      "Заряжается только с одной стороны Lightning",
+      "Сообщение 'Accessory not supported'",
+      "Быстрый разряд батареи",
+      "Греется при зарядке"
+    ],
+    "test_points": {
+      "PP5V0_USB": "5V от зарядника",
+      "TRISTAR_TO_TIGRIS": "Связь с Tigris",
+      "D+/D-": "USB data линии"
+    },
+    "procedure": [
+      "1. Проверить разъем Lightning на окисление",
+      "2. Измерить напряжение PP5V0_USB при подключенном ЗУ",
+      "3. Проверить FL11, FL12 возле разъема",
+      "4. Снятие Tristar: 350°C, защитить окружающие компоненты",
+      "5. Очистить площадку от старых шариков",
+      "6. Новая микросхема обязательно с шариками",
+      "7. После установки тест всех режимов зарядки",
+      "8. Проверка USB синхронизации с iTunes"
+    ],
+    "prevention": "Использовать только оригинальные кабели",
+    "tools": "Термофен, каптон лента, USB тестер",
+    "difficulty": "Средняя",
+    "time": "30-40 минут"
+  },
+  "CD3215": {
+    "name": "USB-C Controller MacBook",
+    "type": "USB-C PD Controller",
+    "location": "U3100/U3200",
+    "symptoms": [
+      "Не заряжается ни с одного порта",
+      "Заряжается только один порт USB-C",
+      "20V присутствует но нет зарядки",
+      "Kernel panic при подключении USB-C"
+    ],
+    "test_points": {
+      "PP20V_USBC": "20V от адаптера",
+      "PP3V3_G3H": "3.3V standby",
+      "PPDCIN_G3H": "Вход питания к системе",
+      "CC1/CC2": "Configuration channel"
+    },
+    "procedure": [
+      "1. Проверить предохранители F3100, F3200",
+      "2. Измерить PP20V_USBC на каждом порту",
+      "3. Проверить SMC на наличие обновлений",
+      "4. Демонтаж CD3215: защита CPU каптоном",
+      "5. Температура 380°C, нижний подогрев 200°C",
+      "6. Обязательно заменить все керамические конденсаторы вокруг",
+      "7. После замены сброс SMC и NVRAM",
+      "8. Тест с оригинальным адаптером 61W/87W"
+    ],
+    "firmware": "Может требовать прошивку через USB-C updater",
+    "tools": "Инфракрасная паяльная станция, осциллограф",
+    "difficulty": "Очень высокая",
+    "time": "60-90 минут"
+  },
+  "TPS65730": {
+    "name": "Display Power IC",
+    "type": "Backlight Driver",
+    "location": "U8300",
+    "symptoms": [
+      "Черный экран но есть изображение на свету",
+      "Мерцание подсветки",
+      "Подсветка работает 1 секунду и гаснет",
+      "Линии на экране"
+    ],
+    "test_points": {
+      "PP5V7_LCM_AVDDH": "5.7V для LCD",
+      "PPVOUT_LCM": "Выход на подсветку",
+      "LCM_BKL_EN": "Сигнал включения подсветки"
+    },
+    "procedure": [
+      "1. Проверить шлейф дисплея на повреждения",
+      "2. Измерить PP5V7_LCM_AVDDH (норма 5.7V)",
+      "3. Проверить диоды D8301-D8306",
+      "4. Проверить катушку L8323",
+      "5. Замена TPS65730: температура 340°C",
+      "6. После замены калибровка True Tone",
+      "7. Тест на разных уровнях яркости"
+    ],
+    "calibration": "Требуется i2C программатор для True Tone",
+    "tools": "Термофен, программатор JC Pro1000S",
+    "difficulty": "Средняя",
+    "time": "30-40 минут"
   }
 }

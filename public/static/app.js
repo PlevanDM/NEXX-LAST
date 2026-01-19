@@ -1161,11 +1161,65 @@ const ChipDetailsModal = ({ chip, icData, onClose }) => {
           h('div', { className: 'grid grid-cols-2 gap-4' },
             h('div', { className: 'bg-gray-50 p-4 rounded-xl' },
               h('p', { className: 'text-xs text-gray-500 mb-1' }, 'Обозначение'),
-              h('p', { className: 'font-bold text-lg' }, chipData.designation || 'N/A')
+              h('p', { className: 'font-bold text-lg' }, chipData.designation || chipData.location || 'N/A')
             ),
             h('div', { className: 'bg-gray-50 p-4 rounded-xl' },
               h('p', { className: 'text-xs text-gray-500 mb-1' }, 'Корпус'),
-              h('p', { className: 'font-bold text-lg' }, chipData.package || 'N/A')
+              h('p', { className: 'font-bold text-lg' }, chipData.package || chipData.type || 'BGA')
+            )
+          ),
+
+          // Symptoms
+          chipData.symptoms && h('div', { className: 'bg-red-50 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-red-600 font-semibold mb-2' }, '⚠️ Симптомы неисправности'),
+            h('ul', { className: 'space-y-1' },
+              ...chipData.symptoms.map((symptom, idx) =>
+                h('li', { key: idx, className: 'text-sm text-red-800' }, `• ${symptom}`)
+              )
+            )
+          ),
+
+          // Test points
+          chipData.test_points && h('div', { className: 'bg-indigo-50 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-indigo-600 font-semibold mb-2' }, '🔬 Тест-поинты'),
+            h('div', { className: 'space-y-1' },
+              ...Object.entries(chipData.test_points).map(([point, value], idx) =>
+                h('div', { key: idx, className: 'flex justify-between text-sm' },
+                  h('span', { className: 'font-semibold text-indigo-800' }, point),
+                  h('span', { className: 'text-indigo-600' }, value)
+                )
+              )
+            )
+          ),
+
+          // Repair procedure
+          chipData.procedure && h('div', { className: 'bg-amber-50 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-amber-700 font-semibold mb-2' }, '🔧 Процедура ремонта'),
+            h('ol', { className: 'space-y-1' },
+              ...chipData.procedure.map((step, idx) =>
+                h('li', { key: idx, className: 'text-sm text-amber-800' }, step)
+              )
+            )
+          ),
+
+          // Jumper wire info for Audio IC
+          chipData.jumper_wire && h('div', { className: 'bg-orange-50 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-orange-600 font-semibold mb-2' }, '🔌 Джампер для Audio IC'),
+            h('div', { className: 'space-y-1 text-sm' },
+              h('p', null, h('span', { className: 'font-semibold' }, 'От: '), chipData.jumper_wire.from),
+              h('p', null, h('span', { className: 'font-semibold' }, 'К: '), chipData.jumper_wire.to),
+              h('p', null, h('span', { className: 'font-semibold' }, 'Провод: '), chipData.jumper_wire.wire),
+              h('p', { className: 'text-xs text-orange-700 mt-2' }, chipData.jumper_wire.note)
+            )
+          ),
+
+          // BGA profile
+          chipData.bga_profile && h('div', { className: 'bg-pink-50 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-pink-600 font-semibold mb-2' }, '🔥 Профиль пайки BGA'),
+            h('div', { className: 'space-y-1 text-sm' },
+              h('p', null, h('span', { className: 'font-semibold' }, 'Преднагрев: '), chipData.bga_profile.preheat),
+              h('p', null, h('span', { className: 'font-semibold' }, 'Оплавление: '), chipData.bga_profile.reflow),
+              h('p', null, h('span', { className: 'font-semibold' }, 'Охлаждение: '), chipData.bga_profile.cooling)
             )
           ),
 
@@ -1175,6 +1229,16 @@ const ChipDetailsModal = ({ chip, icData, onClose }) => {
             h('div', { className: 'flex flex-wrap gap-2' },
               ...chipData.functions.map((func, idx) =>
                 h('span', { key: idx, className: 'px-3 py-1 bg-white text-blue-700 rounded-full text-sm border border-blue-200' }, func)
+              )
+            )
+          ),
+
+          // Common mistakes
+          chipData.common_mistakes && h('div', { className: 'bg-gray-100 p-4 rounded-xl' },
+            h('p', { className: 'text-xs text-gray-600 font-semibold mb-2' }, '❌ Типичные ошибки'),
+            h('ul', { className: 'space-y-1' },
+              ...chipData.common_mistakes.map((mistake, idx) =>
+                h('li', { key: idx, className: 'text-sm text-gray-700' }, `• ${mistake}`)
               )
             )
           ),
@@ -1202,8 +1266,8 @@ const ChipDetailsModal = ({ chip, icData, onClose }) => {
               ...chipData.donor_models.map((donor, idx) =>
                 h('div', { key: idx, className: 'bg-white p-3 rounded-lg border border-purple-200' },
                   h('p', { className: 'font-semibold text-sm' }, donor.model),
-                  h('p', { className: 'text-xs text-gray-500' }, `${donor.years} • ${donor.location}`),
-                  h('span', { className: cn('inline-block mt-1 px-2 py-0.5 rounded text-xs',
+                  h('p', { className: 'text-xs text-gray-500' }, `${donor.years || ''} • ${donor.location}`),
+                  donor.difficulty && h('span', { className: cn('inline-block mt-1 px-2 py-0.5 rounded text-xs',
                     donor.difficulty.includes('Средняя') ? 'bg-yellow-100 text-yellow-800' :
                     donor.difficulty.includes('Сложная') ? 'bg-orange-100 text-orange-800' :
                     donor.difficulty.includes('Экстремально') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'
@@ -1211,6 +1275,28 @@ const ChipDetailsModal = ({ chip, icData, onClose }) => {
                 )
               )
             )
+          ),
+
+          // Tools and difficulty
+          h('div', { className: 'grid grid-cols-2 gap-3' },
+            chipData.tools && h('div', { className: 'bg-gray-50 p-3 rounded-xl' },
+              h('p', { className: 'text-xs text-gray-500 mb-1' }, '🛠 Инструменты'),
+              h('p', { className: 'text-sm text-gray-700' }, chipData.tools)
+            ),
+            chipData.difficulty && h('div', { className: 'bg-gray-50 p-3 rounded-xl' },
+              h('p', { className: 'text-xs text-gray-500 mb-1' }, '📊 Сложность'),
+              h('p', { className: cn('text-sm font-bold',
+                chipData.difficulty.includes('Очень высокая') ? 'text-red-600' :
+                chipData.difficulty.includes('Высокая') ? 'text-orange-600' :
+                chipData.difficulty.includes('Средняя') ? 'text-yellow-600' : 'text-green-600'
+              ) }, chipData.difficulty)
+            )
+          ),
+
+          // Time
+          chipData.time && h('div', { className: 'bg-blue-50 p-3 rounded-xl' },
+            h('p', { className: 'text-xs text-blue-500 mb-1' }, '⏱ Время работы'),
+            h('p', { className: 'text-sm font-bold text-blue-700' }, chipData.time)
           ),
 
           // Price and buy
@@ -1229,8 +1315,9 @@ const ChipDetailsModal = ({ chip, icData, onClose }) => {
             )
           )
         ) : h('div', { className: 'text-center py-12 text-gray-500' },
-          h('p', { className: 'text-4xl mb-4' }, '🔍'),
-          h('p', null, 'Подробная информация будет добавлена')
+          h('p', { className: 'text-4xl mb-4' }, '💡'),
+          h('p', { className: 'font-bold mb-2' }, 'Информация загружается'),
+          h('p', { className: 'text-sm' }, 'Данные по этой микросхеме обновляются')
         )
       )
     )

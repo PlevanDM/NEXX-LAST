@@ -298,5 +298,313 @@
         }
       }
     }
+  },
+  "temperature_profiles": {
+    "standard_bga": {
+      "preheating": {
+        "bottom": "150-180°C",
+        "duration": "60-90 секунд",
+        "purpose": "Равномерный прогрев платы"
+      },
+      "removal": {
+        "top": "380-400°C",
+        "bottom": "180-200°C",
+        "duration": "20-30 секунд",
+        "flux": "Обильно Amtech 559 или аналог"
+      },
+      "installation": {
+        "top": "360-380°C",
+        "bottom": "180-200°C",
+        "duration": "30-40 секунд",
+        "note": "Следить за выравниванием чипа"
+      }
+    },
+    "cpu_reballing": {
+      "warning": "Только для опытных мастеров!",
+      "preheating": {
+        "bottom": "200°C",
+        "duration": "120 секунд"
+      },
+      "removal": {
+        "top": "400-420°C",
+        "spiral_motion": "Да",
+        "duration": "40-60 секунд"
+      },
+      "reballing": {
+        "stencil": "Обязательно оригинальный",
+        "balls": "Leaded 0.35-0.4mm",
+        "temperature": "180-200°C для припоя"
+      }
+    },
+    "underfill_chips": {
+      "note": "Для чипов с underfill (compound)",
+      "removal": {
+        "top": "420-450°C",
+        "duration": "60-90 секунд",
+        "technique": "Покачивание пинцетом"
+      },
+      "cleaning": {
+        "tool": "Ультразвук или механически",
+        "solution": "Изопропанол 99%"
+      }
+    }
+  },
+  "face_id_touch_id": {
+    "face_id": {
+      "title": "Восстановление Face ID - Dot Projector",
+      "symptoms": [
+        "Face ID недоступен",
+        "Не работает Animoji",
+        "Портретный режим без размытия"
+      ],
+      "diagnosis": [
+        "Проверить целостность шлейфа",
+        "3uTools тест Dot Projector",
+        "Проверка flood illuminator"
+      ],
+      "repair_limitations": [
+        "Dot Projector привязан к плате криптографически",
+        "Замена только в паре с платой",
+        "Возможна только пересадка с донора вместе с платой"
+      ]
+    },
+    "touch_id": {
+      "title": "Восстановление Touch ID",
+      "iphone_7_8": [
+        "Home button привязан к плате",
+        "Замена только оригинальной парой",
+        "Возможен ремонт шлейфа"
+      ],
+      "repair_options": [
+        "Восстановление дорожек шлейфа",
+        "Замена только механики кнопки",
+        "JC programmer для копирования данных"
+      ]
+    }
+  },
+  "diagnostic_flowcharts": {
+    "no_power": {
+      "title": "Телефон не включается",
+      "steps": [
+        {
+          "check": "Подключить к ЗУ, проверить ток",
+          "if_yes": "Ток 0.00A -> проверить PMIC",
+          "if_no": "Ток есть -> проверить батарею"
+        },
+        {
+          "check": "PP_VDD_MAIN присутствует?",
+          "if_yes": "Проверить PP_CPU",
+          "if_no": "Заменить PMIC"
+        },
+        {
+          "check": "Короткое замыкание на VDD_MAIN?",
+          "if_yes": "Искать КЗ конденсаторы",
+          "if_no": "Проверить NAND"
+        }
+      ]
+    },
+    "no_image": {
+      "title": "Нет изображения",
+      "steps": [
+        {
+          "check": "Подсветка работает?",
+          "if_yes": "Проблема LCD или драйвер",
+          "if_no": "Проверить backlight IC"
+        },
+        {
+          "check": "Изображение видно на свету?",
+          "if_yes": "Заменить backlight IC/диоды",
+          "if_no": "Проверить шлейф/LCD"
+        }
+      ]
+    },
+    "no_charge": {
+      "title": "Не заряжается",
+      "steps": [
+        {
+          "check": "Проверить разъем на окисление",
+          "if_yes": "Чистка/замена разъема",
+          "if_no": "Проверить Tristar"
+        },
+        {
+          "check": "PP5V0_USB присутствует?",
+          "if_yes": "Проверить Tigris",
+          "if_no": "Заменить Tristar"
+        },
+        {
+          "check": "Ток зарядки присутствует?",
+          "if_yes": "Проверить батарею/Gas gauge",
+          "if_no": "Проверить PMIC"
+        }
+      ]
+    }
+  },
+  "error_codes": {
+    "iphone_errors": {
+      "9": "Ошибка прошивки - проверить NAND",
+      "14": "Проблема с baseband или NAND",
+      "21": "Baseband или батарея",
+      "35": "Отсутствует память NAND",
+      "40": "Проблема с NAND или CPU",
+      "53": "Touch ID не соответствует плате",
+      "56": "NFC или baseband проблема",
+      "1669": "Compass IC проблема",
+      "2009": "Проблема с памятью",
+      "3503": "Проблема с датчиками",
+      "4005": "Критическая ошибка прошивки",
+      "4013": "Отвал NAND или проблема с кабелем",
+      "4014": "Плохое соединение или отвал CPU"
+    },
+    "panic_codes": {
+      "panic-full": "Переполнение логов kernel panic",
+      "watchdog timeout": "Зависание процесса",
+      "i2c0 bus error": "Проблема с датчиками",
+      "thermalmonitord": "Перегрев",
+      "missing sensor": "Отсутствует датчик",
+      "smc failure": "Проблема с SMC (MacBook)"
+    }
+  },
+  "water_damage": {
+    "immediate_actions": [
+      "НЕ ВКЛЮЧАТЬ устройство",
+      "Извлечь батарею если возможно",
+      "Слить видимую жидкость",
+      "Не использовать фен или рис"
+    ],
+    "professional_repair": [
+      "1. Разборка в течение 24 часов",
+      "2. Промывка платы изопропиловым спиртом 99%",
+      "3. Ультразвуковая ванна 5-10 минут",
+      "4. Проверка под микроскопом на коррозию",
+      "5. Замена корродированных компонентов",
+      "6. Проверка всех разъемов и шлейфов",
+      "7. Сушка платы 60°C в течение 2 часов",
+      "8. Проверка изоляции всех цепей питания"
+    ],
+    "common_failures_after_water": [
+      "Backlight IC - сразу или через время",
+      "Touch IC - потеря тача",
+      "Audio IC - проблемы со звуком",
+      "Charging IC - не заряжается",
+      "Коррозия под BGA микросхемами"
+    ],
+    "inspection_points": [
+      "Индикаторы влаги (LCI)",
+      "Разъемы (особенно Lightning/USB-C)",
+      "Под экранирующими крышками",
+      "Возле батарейного коннектора",
+      "Power Management IC область"
+    ]
+  },
+  "tools_supplies": {
+    "essential_tools": {
+      "Микроскоп": "Минимум 45X для SMD работы",
+      "Паяльная станция": "Quick 861DW или Accta 301",
+      "Паяльник": "TS100/TS80 с жалами B2, D24",
+      "Мультиметр": "Fluke 15B+ или UNI-T UT61E",
+      "Осциллограф": "Rigol DS1054Z для диагностики",
+      "USB тестер": "Power-Z для проверки зарядки",
+      "Термопистолет": "Quick 857DW+ или Yihua 8786D"
+    },
+    "supplies": {
+      "Флюс": "Amtech 559, NC-223, Kingbo RMA-218",
+      "Припой": "Sn63/Pb37 0.6mm, низкотемпературный 138°C",
+      "BGA шары": "0.2mm, 0.25mm, 0.3mm, 0.35mm leaded",
+      "Медная оплетка": "2.0mm, 2.5mm, 3.0mm",
+      "Изопропанол": "99% для промывки",
+      "Каптон лента": "Для защиты компонентов",
+      "УФ маска": "MECHANIC LY-UVH900 для дорожек",
+      "Джамперы": "0.02mm эмалированный провод"
+    },
+    "bga_rework": {
+      "Трафареты": "iPhone 6-14 набор, MacBook набор",
+      "BGA станция": "Achi IR-6500 или Jovy RE-8500",
+      "Держатели плат": "Универсальные с регулировкой",
+      "Reballing kit": "Набор для реболлинга"
+    }
+  },
+  "macbook_boards": {
+    "820-00165": {
+      "model": "MacBook Pro 13\" 2016-2017",
+      "cpu": "Intel Core i5-6360U",
+      "gpu": "Intel Iris 540",
+      "ram": "LPDDR3 on board",
+      "common_issues": [
+        "CD3215 failure - не заряжается",
+        "Вздутие батареи",
+        "Flexgate - проблема шлейфа дисплея",
+        "Отвал Touch Bar контроллера"
+      ],
+      "test_points": {
+        "PPBUS_G3H": "12.6V главная шина",
+        "PP3V3_G3H": "3.3V standby",
+        "PP5V_G3S": "5V system",
+        "PP3V3_S5": "3.3V system"
+      },
+      "repair_notes": "Часто проблема с CD3215, проверить оба порта USB-C"
+    },
+    "820-01987": {
+      "model": "MacBook Pro 16\" 2019",
+      "cpu": "Intel Core i7-9750H",
+      "gpu": "AMD Radeon Pro 5300M",
+      "ram": "DDR4 on board",
+      "common_issues": [
+        "Перегрев VRM",
+        "Kernel panic от T2",
+        "Проблемы с дискретной графикой",
+        "Отказ порта Thunderbolt 3"
+      ],
+      "test_points": {
+        "PPVCORE_GPU": "GPU core напряжение",
+        "PP1V8_S0": "1.8V для периферии",
+        "PP0V9_S0": "0.9V CPU core"
+      },
+      "repair_notes": "T2 chip может блокировать загрузку после ремонта"
+    },
+    "820-01700": {
+      "model": "MacBook Air M1 2020",
+      "cpu": "Apple M1",
+      "gpu": "Apple M1 integrated",
+      "ram": "Unified memory",
+      "common_issues": [
+        "Нет изображения после падения",
+        "Жидкость на плате",
+        "USB-C порт не работает",
+        "Восстановление после DFU"
+      ],
+      "test_points": {
+        "PP3V3_AON": "Always-on 3.3V",
+        "PP1V8_AON": "Always-on 1.8V",
+        "PPVBAT_G3H_CHGR": "Напряжение батареи"
+      },
+      "repair_notes": "M1 требует специальные инструменты Apple Configurator"
+    }
+  },
+  "quick_tests": {
+    "battery_test": {
+      "tools": "3uTools, CoconutBattery",
+      "check": [
+        "Количество циклов < 500",
+        "Capacity > 80%",
+        "Voltage 3.7-4.2V",
+        "No Service Needed - статус"
+      ]
+    },
+    "display_test": {
+      "check": [
+        "3D Touch давление",
+        "True Tone работает",
+        "Яркость на максимум",
+        "Проверка битых пикселей"
+      ]
+    },
+    "camera_test": {
+      "check": [
+        "OIS стабилизация",
+        "Автофокус скорость",
+        "Вспышка яркость",
+        "Portrait mode blur"
+      ]
+    }
   }
 }
