@@ -1,0 +1,767 @@
+{
+  "generated_at": "2026-01-19T21:10:00.000000",
+  "version": "3.0-enhanced",
+  "source": "Open-source repair wikis and community knowledge",
+  "tristar_hydra": {
+    "description": "Диагностика и ремонт Tristar/Hydra/U2/Kraken IC - контроллера зарядки и USB iPhone. Отвечает за управление зарядкой, USB данные, распознавание аксессуаров и Power Delivery.",
+    "common_names": ["Tristar", "Hydra", "U2", "U3300", "Tigris", "Kraken", "USB IC", "Charging IC"],
+    "symptoms": [
+      "Не заряжается совсем",
+      "\"Accessory not supported\" / \"Аксессуар не поддерживается\"",
+      "Заряжается только от компьютера или медленно",
+      "Не определяется в iTunes/Finder",
+      "Перегрев около порта зарядки",
+      "Boot loop после залития или падения",
+      "Зарядка работает только с определенными кабелями",
+      "Нестабильная зарядка (периодически отключается)",
+      "Fake charging (процент не увеличивается)",
+      "Wireless charging работает, но проводная нет",
+      "Нет Fast Charging (застряло на 5W)",
+      "MagSafe работает, но Lightning нет"
+    ],
+    "diagnostics": {
+      "voltage_checks": [
+        {
+          "point": "PP_5V0_USB / PP_VBUS1_E75",
+          "expected": "5.0V при подключении зарядки",
+          "description": "Проверить наличие 5V ДО Tristar/Hydra IC"
+        },
+        {
+          "point": "PP_VAR_USB_RVP_TIGRIS_R",
+          "expected": "~5V",
+          "description": "USB verification line - нужна для валидации кабеля"
+        },
+        {
+          "point": "PWR_GATE_EN_VBUS_1_VALID",
+          "expected": "3.7-5.0V (любое напряжение >0V)",
+          "description": "Если 0V - USB IC не работает или не питается"
+        },
+        {
+          "point": "10Ω RVP Resistor",
+          "models": "iPhone 8/X, iPhone 13/14",
+          "expected": "~5V на обеих сторонах резистора",
+          "description": "Если напряжение только на одной стороне - резистор или downstream fault"
+        }
+      ],
+      "diode_mode_checks": [
+        {
+          "models": "iPhone 5c/5s/6/6+",
+          "ic": "1610A1/1610A2",
+          "D+": "0.420-0.650V",
+          "D-": "0.420-0.650V"
+        },
+        {
+          "models": "iPhone 6s/6s+/SE (1st)",
+          "ic": "1610A3",
+          "D+": "0.450-0.650V",
+          "D-": "0.450-0.650V"
+        },
+        {
+          "models": "iPhone 7/7+",
+          "ic": "1612A1 (Hydra)",
+          "D+": "0.480-0.680V",
+          "D-": "0.480-0.680V"
+        },
+        {
+          "models": "iPhone 8/8+/X",
+          "ic": "SN2501",
+          "CC1": "0.350-0.500V",
+          "CC2": "0.350-0.500V"
+        },
+        {
+          "models": "iPhone XR/XS/XS Max",
+          "ic": "SN2600B1/B2 (Tigris)",
+          "CC1": "0.380-0.520V",
+          "CC2": "0.380-0.520V"
+        },
+        {
+          "models": "iPhone 11/11 Pro/SE 2nd",
+          "ic": "SN2611A0 (Tigris)",
+          "CC1": "0.400-0.550V",
+          "CC2": "0.400-0.550V"
+        },
+        {
+          "models": "iPhone 12/12 Pro/13/13 Pro/14/SE 3rd",
+          "ic": "SN2611D0 (Tigris)",
+          "CC1": "0.420-0.580V",
+          "CC2": "0.420-0.580V"
+        },
+        {
+          "models": "iPhone 14 Pro/15/16",
+          "ic": "SN2800 (USB-C Controller)",
+          "CC1": "0.450-0.600V",
+          "CC2": "0.450-0.600V"
+        }
+      ],
+      "current_draw": [
+        {
+          "models": "iPhone 5/6",
+          "idle": "0.05-0.20A"
+        },
+        {
+          "models": "iPhone 7/8/X",
+          "idle": "0.08-0.40A"
+        },
+        {
+          "models": "iPhone 11/12",
+          "idle": "0.12-0.70A"
+        },
+        {
+          "models": "iPhone 13/14/15",
+          "idle": "0.18-0.80A"
+        }
+      ],
+      "tools_needed": [
+        "Мультиметр с диодным режимом",
+        "DC Power Supply с измерением тока (0-5A)",
+        "Микроскоп (40x минимум)",
+        "Схема платы (boardview) для нахождения test points",
+        "3uTools или iTunes для проверки USB коммуникации"
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "Замена Tristar/Hydra IC",
+          "difficulty": "Expert (требует микропайки)",
+          "steps": [
+            "Прогреть плату preheater до 100-120°C",
+            "Снять старый IC феном при 380-400°C",
+            "Очистить контактные площадки флюсом",
+            "Проверить площадки на окисление/повреждения",
+            "Нанести свежий припой на площадки",
+            "Установить новый IC используя BGA трафарет",
+            "Проверить установку под микроскопом",
+            "После замены: калибровка батареи"
+          ],
+          "time": "45-90 минут",
+          "success_rate": "85-95% при правильной технике"
+        },
+        {
+          "method": "Ребол (Reflow) существующего IC",
+          "difficulty": "Advanced",
+          "warning": "Временное решение! Работает только если нет окисления площадок",
+          "steps": [
+            "Прогреть плату preheater",
+            "Нагреть IC феном до оплавления припоя",
+            "Дать остыть естественно",
+            "Проверить функциональность"
+          ],
+          "success_rate": "30-50%, часто временно",
+          "duration": "Может работать 1-6 месяцев"
+        },
+        {
+          "method": "Проверка и замена компонентов питания",
+          "difficulty": "Intermediate",
+          "components": [
+            "10Ω RVP резистор (часто выходит из строя)",
+            "Фильтры на линии PP_5V0_USB",
+            "Конденсаторы около USB IC",
+            "Проверить короткое замыкание на ground"
+          ]
+        }
+      ],
+      "common_mistakes": [
+        "Ребол без проверки окисления площадок - неэффективно",
+        "Замена только одного IC когда проблема в питании",
+        "Перегрев платы (>420°C) - повреждение соседних компонентов",
+        "Установка IC без underfill на iPhone 12+ (опционально)",
+        "Пропуск калибровки батареи после замены"
+      ]
+    },
+    "tools_required": {
+      "essential": [
+        "BGA паяльная станция (Quick 861DW, JBC JTSE)",
+        "Preheater (обязательно для iPhone 7+)",
+        "Microscope 40x-60x минимум",
+        "DC Power Supply с ammeter",
+        "Hot air station 380-420°C",
+        "Мультиметр Fluke или аналог"
+      ],
+      "consumables": [
+        "Flux Amtech NC-559-V2-TF или аналог",
+        "BGA трафареты для Tristar/Hydra",
+        "Solder balls 0.25-0.30mm",
+        "Solder paste (low temp)",
+        "IPA 99% для очистки",
+        "Kapton tape"
+      ],
+      "optional": [
+        "Tristar Tester (для быстрой диагностики)",
+        "Underfill adhesive (для iPhone 12+)",
+        "UV lamp для underfill curing"
+      ]
+    },
+    "price_estimates": {
+      "parts": {
+        "Tristar IC 1610A1": "$2-5",
+        "Tristar IC 1610A2/A3": "$3-6",
+        "Hydra IC 1612A1": "$8-15",
+        "Hydra IC SN2501": "$10-20",
+        "Tigris IC SN2600/SN2611": "$12-30",
+        "USB-C IC SN2800": "$25-50"
+      },
+      "labor": {
+        "Replacement": "$50-150",
+        "Reflow": "$30-80",
+        "Diagnostics": "$20-50"
+      }
+    },
+    "prevention": [
+      "Использовать оригинальные или MFi-certified зарядные устройства",
+      "Избегать дешевых китайских адаптеров (могут давать нестабильное напряжение)",
+      "Не заряжать телефон в воде (даже если водонепроницаемый)",
+      "Чистить порт Lightning/USB-C от пыли раз в 2-3 месяца",
+      "Избегать зарядки при экстремальных температурах (<0°C или >40°C)"
+    ],
+    "related_issues": [
+      "Audio IC disease на iPhone 7 (та же проблема с BGA)",
+      "Baseband no service (может быть вызвано неисправным Tristar)",
+      "Battery drain (неисправный Tristar может потреблять ток)",
+      "iTunes Error 9/4013 при восстановлении (если USB data не работает)"
+    ]
+  },
+  "baseband": {
+    "description": "Диагностика и ремонт baseband/модема iPhone - проблемы с сотовой сетью, нет IMEI, нет сервиса. Baseband IC отвечает за все сотовые коммуникации: звонки, SMS, 4G/5G данные.",
+    "alternative_names": ["Baseband", "Модем", "Modem IC", "RF IC", "Cellular IC", "BB_CPU"],
+    "symptoms": [
+      "No Service / Searching... постоянно",
+      "Нет IMEI (Settings → General → About)",
+      "Нет Serial Number в разделе модема",
+      "Ошибка -1 или 1 при восстановлении iTunes",
+      "Ошибка \"Invalid SIM\" или \"No SIM\"",
+      "Нет сотовых данных (LTE/4G/5G)",
+      "Не видит SIM карту",
+      "Airplane mode не выключается",
+      "Моментальное падение сети",
+      "Modem Firmware пустой в настройках",
+      "iTunes не видит телефон после восстановления"
+    ],
+    "common_causes": [
+      "Физическое повреждение baseband IC (drop/bend)",
+      "Вздутая батарея сдавила baseband IC",
+      "Неудачное обновление iOS (повредило baseband firmware)",
+      "Попытка unlock/jailbreak (повредило NVRAM)",
+      "Залитие водой (коррозия на контактах)",
+      "Перегрев (длительная работа в жару)",
+      "Плохой ремонт (перегрев при замене других IC)"
+    ],
+    "diagnostics": {
+      "software_checks": [
+        {
+          "step": "Проверить IMEI",
+          "location": "Settings → General → About",
+          "expected": "15-значный IMEI номер",
+          "if_missing": "Baseband не инициализируется или NVRAM поврежден"
+        },
+        {
+          "step": "Проверить Modem Firmware",
+          "location": "Settings → General → About",
+          "expected": "Версия firmware (например 8.80.00)",
+          "if_missing": "Baseband CPU не загружается"
+        },
+        {
+          "step": "iTunes Diagnostics",
+          "method": "Подключить к iTunes, проверить логи",
+          "errors": {
+            "-1": "Baseband не отвечает",
+            "1": "Baseband firmware не найден",
+            "9": "USB connection или baseband issue"
+          }
+        },
+        {
+          "step": "3uTools Check",
+          "method": "Запустить 3uTools, проверить Baseband Info",
+          "check": "IMEI, Modem Firmware, Signal strength"
+        }
+      ],
+      "hardware_checks": [
+        {
+          "component": "Антенный коннектор",
+          "check": "Визуальный осмотр на повреждения/коррозию",
+          "action": "Переустановить или заменить если поврежден"
+        },
+        {
+          "component": "RF Shield",
+          "check": "Снять RF shield, проверить baseband IC под микроскопом",
+          "signs": "Трещины в припое, поднятые углы IC, следы перегрева"
+        },
+        {
+          "component": "Power Rails",
+          "voltages": {
+            "PP_BASEBAND_VBAT": "3.8V (от батареи)",
+            "BASEBAND_1V8": "1.8V (core voltage)",
+            "BB_PMIC voltages": "Multiple rails 0.9-3.3V"
+          },
+          "tools": "DC Power Supply + Мультиметр"
+        },
+        {
+          "component": "I2C Communication",
+          "check": "Проверить I2C линии между CPU и Baseband",
+          "expected": "No shorts to ground, proper pull-up voltages"
+        }
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "1. Простые исправления (Software)",
+          "difficulty": "Easy",
+          "steps": [
+            "Hard reset: hold Power + Home/Volume Down 10 sec",
+            "Обновление iOS до последней версии",
+            "Reset Network Settings",
+            "Восстановление через iTunes (DFU mode)",
+            "Проверка с другой SIM картой",
+            "Активация через WiFi call для записи IMEI"
+          ],
+          "success_rate": "10-20% (работает при software glitches)"
+        },
+        {
+          "method": "2. Ребол Baseband IC",
+          "difficulty": "Expert",
+          "warning": "ОЧЕНЬ СЛОЖНО! Baseband - это PoP (Package-on-Package) с CPU и RAM",
+          "steps": [
+            "Backup NVRAM/EFS data через программатор",
+            "Прогреть плату до 120°C (обязательно!)",
+            "Снять RF shields",
+            "Нагреть baseband до 300-320°C (lower temp!)",
+            "Аккуратно снять IC (не перегреть RAM сверху!)",
+            "Очистить pads, проверить на окисление",
+            "Reballing с новыми solder balls",
+            "Установить обратно при 300-320°C",
+            "Восстановить NVRAM/EFS данные"
+          ],
+          "time": "2-4 часа",
+          "success_rate": "40-60%",
+          "risks": [
+            "Повреждение RAM чипа сверху (overheating)",
+            "Отрыв pads на плате",
+            "Потеря IMEI если NVRAM не сохранен",
+            "Повреждение соседних компонентов"
+          ]
+        },
+        {
+          "method": "3. Замена Baseband IC",
+          "difficulty": "Expert+",
+          "warning": "ТРЕБУЕТ ПЕРЕНОСА NVRAM! IMEI привязан к baseband",
+          "requirements": [
+            "Donor baseband IC",
+            "Программатор для NVRAM (JTAG/ISP)",
+            "Специальное ПО для чтения/записи NVRAM",
+            "Точное знание pinout baseband IC"
+          ],
+          "steps": [
+            "Прочитать NVRAM с оригинального baseband",
+            "Сохранить IMEI, EFS partition, calibration data",
+            "Установить новый baseband (метод аналогичен reflow)",
+            "Записать NVRAM в новый baseband",
+            "Активировать через iTunes"
+          ],
+          "success_rate": "50-70%",
+          "cost": "Donor IC $50-150 + labor $100-300"
+        },
+        {
+          "method": "4. Переустановка антенны / RF компонентов",
+          "difficulty": "Intermediate",
+          "when": "Baseband OK, но signal слабый или нет",
+          "components": [
+            "Antenna flex cable",
+            "RF connectors",
+            "RF filters and amplifiers",
+            "Antenna divider"
+          ],
+          "success_rate": "70-90% если baseband не поврежден"
+        }
+      ]
+    },
+    "baseband_ic_models": {
+      "qualcomm_modems": [
+        {
+          "models": "iPhone 5s/6",
+          "ic": "Qualcomm MDM9615 / MDM9625",
+          "bands": "LTE Cat 4",
+          "notes": "Относительно простой ремонт"
+        },
+        {
+          "models": "iPhone 6s/7",
+          "ic": "Qualcomm MDM9635",
+          "bands": "LTE Cat 6",
+          "notes": "PoP package, сложнее"
+        },
+        {
+          "models": "iPhone 12/13/14",
+          "ic": "Qualcomm X55 / X60 / X65",
+          "bands": "5G Sub-6 + mmWave",
+          "notes": "Очень сложный ремонт, 5G модули"
+        }
+      ],
+      "intel_modems": [
+        {
+          "models": "iPhone 7/8/X",
+          "ic": "Intel PMB9943 / PMB9948",
+          "bands": "LTE Cat 9-16",
+          "notes": "Проблемы с overheating, частые failures"
+        },
+        {
+          "models": "iPhone XS/XR/11",
+          "ic": "Intel PMB9955",
+          "bands": "Gigabit LTE",
+          "notes": "Последний Intel модем в iPhone"
+        }
+      ]
+    },
+    "tools_required": {
+      "essential": [
+        "BGA станция с точным контролем температуры (±2°C)",
+        "Preheater обязательно (для равномерного прогрева)",
+        "Microscope 60x+ (PoP package очень мелкий)",
+        "DC Power Supply для проверки power rails",
+        "Multimeter",
+        "Hot air station 300-350°C MAX"
+      ],
+      "advanced": [
+        "JTAG/ISP программатор для NVRAM backup",
+        "Специальное ПО: Easy-Jtag, Medusa Box, Octoplus",
+        "RF analyzer для проверки signal strength",
+        "Oscilloscope для проверки I2C/SPI",
+        "Reballing jig для baseband IC"
+      ],
+      "consumables": [
+        "Flux (низкая температура плавления)",
+        "Solder balls 0.25-0.35mm",
+        "RF shields replacement",
+        "Thermal paste для baseband cooling",
+        "Kapton tape",
+        "IPA 99%"
+      ]
+    },
+    "prevention": [
+      "Не ронять телефон (baseband IC очень хрупкий)",
+      "Избегать перегрева (не оставлять на солнце)",
+      "Не делать unlock через непроверенные сервисы",
+      "Регулярно обновлять iOS (carrier updates важны)",
+      "Проверять антенну после любого ремонта",
+      "Не использовать дешевые китайские SIM-адаптеры"
+    ],
+    "data_recovery": [
+      "IMEI можно восстановить ТОЛЬКО если есть backup NVRAM",
+      "NVRAM backup делается ПЕРЕД ремонтом через JTAG",
+      "Без NVRAM backup - телефон потеряет IMEI навсегда",
+      "Original IMEI записан на коробке iPhone и в iCloud",
+      "После замены baseband - телефон может быть заблокирован оператором"
+    ],
+    "legal_considerations": [
+      "⚠️ Изменение IMEI НЕЗАКОННО в большинстве стран",
+      "⚠️ Запись IMEI с donor board = подделка IMEI",
+      "✅ Восстановление оригинального IMEI = законно",
+      "✅ Ремонт с сохранением NVRAM = законно",
+      "Всегда сохраняйте proof of purchase для клиента"
+    ]
+  },
+  "touch_ic": {
+    "description": "iPhone Touch IC Disease - массовая проблема iPhone 6/6+ с сенсорными контроллерами Meson и Cumulus. Причина: отсутствие underfill и bendable корпус привели к трещинам в BGA соединениях.",
+    "alternative_names": ["Touch IC Disease", "Touch Disease", "Gray Bar Disease", "Meson/Cumulus Failure"],
+    "affected_models_primary": [
+      "iPhone 6 (массово)",
+      "iPhone 6 Plus (наиболее поражён)",
+      "iPad Pro 12.9\" (1st gen)",
+      "iPad Pro 9.7\""
+    ],
+    "affected_models_secondary": [
+      "iPhone 6s (реже)",
+      "iPhone 6s Plus (реже)",
+      "iPad Air 2 (изредка)"
+    ],
+    "symptoms_progression": {
+      "stage_1_early": [
+        "Периодическая потеря touch в верхней части экрана",
+        "Touch восстанавливается после hard reset",
+        "Проблема появляется и исчезает случайно",
+        "Работает нормально несколько дней, затем снова глючит"
+      ],
+      "stage_2_moderate": [
+        "Мерцающая серая полоса в верхней части дисплея (1-2cm)",
+        "Touch работает только после сгибания phone или давления",
+        "Нужно нажимать на верхнюю часть экрана для работы",
+        "Ghost touches - экран регистрирует touches которых не было",
+        "Задержка ответа touch на 2-5 секунд"
+      ],
+      "stage_3_severe": [
+        "Серая полоса постоянная и широкая (3-5cm)",
+        "Touch не работает совсем в верхней трети экрана",
+        "Невозможно использовать notification center",
+        "Unlock slider не реагирует",
+        "Попытки давления/сгибания больше не помогают"
+      ],
+      "stage_4_terminal": [
+        "Touch полностью не работает по всему экрану",
+        "Серая полоса мерцает по всему дисплею",
+        "Phone полностью unusable",
+        "Oxidation завершена - восстановление невозможно без замены IC"
+      ]
+    },
+    "root_cause": {
+      "design_flaw": "iPhone 6/6+ имеет конструктивную проблему",
+      "factors": [
+        {
+          "issue": "Отсутствие Underfill",
+          "description": "Apple убрала underfill с Touch IC начиная с iPhone 5s для упрощения ремонта. iPhone 6/6+ продолжили эту практику.",
+          "consequence": "BGA solder balls держатся только на surface tension припоя без механической поддержки"
+        },
+        {
+          "issue": "Bendable корпус",
+          "description": "iPhone 6/6+ имеет большую площадь и тонкий алюминиевый корпус (6.9mm iPhone 6+)",
+          "consequence": "Нормальное использование (карман, сумка) приводит к micro-flexing платы"
+        },
+        {
+          "issue": "Позиция Touch IC",
+          "description": "Touch IC расположены в 'подвешенном' месте платы между двумя anchor screws",
+          "consequence": "Maximum flex stress концентрируется именно на Touch IC"
+        },
+        {
+          "issue": "Кумулятивный эффект",
+          "description": "Каждый flex cycle создаёт micro-crack в solder joints",
+          "consequence": "Через 6-18 месяцев использования - guaranteed failure"
+        }
+      ]
+    },
+    "technical_details": {
+      "touch_ics": [
+        {
+          "model": "iPhone 6/6+",
+          "ic1": {
+            "name": "U2402 Meson",
+            "part": "343S0694",
+            "function": "Primary touch controller",
+            "location": "Upper-middle board, near display connector",
+            "most_critical": true
+          },
+          "ic2": {
+            "name": "U2401 Cumulus",
+            "part": "BCM5976",
+            "function": "Touch co-processor",
+            "location": "Below Meson IC",
+            "failure_rate": "Lower than Meson"
+          }
+        },
+        {
+          "model": "iPhone 6s/6s+",
+          "ic1": {
+            "name": "U2401 Cumulus",
+            "part": "343S00025",
+            "note": "Improved BGA, меньше проблем"
+          }
+        },
+        {
+          "model": "iPad Pro",
+          "ic1": {
+            "name": "BCM15900",
+            "note": "Аналогичная проблема, но реже из-за меньшего flex"
+          }
+        }
+      ],
+      "failure_mechanism": [
+        "1. Micro-flex от normal use",
+        "2. Solder ball crack начинается",
+        "3. Intermittent connection (Stage 1 symptoms)",
+        "4. Crack deepens - more frequent loss (Stage 2)",
+        "5. Complete separation (Stage 3)",
+        "6. Oxidation of exposed pads (Stage 4 - terminal)"
+      ]
+    },
+    "diagnostics": {
+      "visual_inspection": [
+        "Серая flickering bar в верхней части - ОПРЕДЕЛЁННЫЙ признак Touch IC failure",
+        "Проверить board на bend/warp (положить на ровную поверхность)",
+        "Осмотр Touch IC под microscope на cracks/lifted corners"
+      ],
+      "functional_tests": [
+        {
+          "test": "Touch Test с новым дисплеем",
+          "method": "Подключить заведомо рабочий display",
+          "if_same_issue": "Проблема в Touch IC, не в display"
+        },
+        {
+          "test": "Pressure Test",
+          "method": "Нажать пальцем на Touch IC через board",
+          "if_works_temporarily": "Подтверждает BGA crack"
+        },
+        {
+          "test": "Flex Test",
+          "method": "Аккуратно согнуть phone (ОСТОРОЖНО!)",
+          "if_gray_bar_changes": "Confirms Touch IC connection issue"
+        },
+        {
+          "test": "Heat Test",
+          "method": "Использовать фен 80-100°C на Touch IC area",
+          "if_temporarily_fixes": "Solder joints re-established temporarily"
+        }
+      ],
+      "diode_mode_checks": [
+        "Проверить сопротивление I2C линий от Touch IC к CPU",
+        "Expected: 10kΩ-50kΩ pull-up resistors",
+        "If short to ground: Touch IC shorted",
+        "If open circuit: Trace break or IC lifted"
+      ]
+    },
+    "solution": {
+      "repair_methods": [
+        {
+          "method": "⚠️ Temporary Fixes (НЕ РЕКОМЕНДУЕТСЯ)",
+          "difficulty": "Easy",
+          "techniques": [
+            "Bending phone to restore connection",
+            "Applying pressure to screen",
+            "Heat gun on low temp"
+          ],
+          "duration": "Works for hours to days",
+          "warning": "Усугубляет проблему! Oxidation продолжается"
+        },
+        {
+          "method": "1. Reflow Touch IC (Плохое решение)",
+          "difficulty": "Intermediate",
+          "warning": "НЕ РЕКОМЕНДУЕТСЯ! Работает временно 1-6 месяцев",
+          "why_bad": [
+            "Oxidation на pads не удаляется",
+            "Solder не прилипает к oxidized pads хорошо",
+            "Root cause (lack of underfill) не решается",
+            "Повторный failure гарантирован"
+          ],
+          "steps": [
+            "Прогреть плату 100°C",
+            "Нагреть Touch IC 300-320°C",
+            "Дать остыть",
+            "Проверить"
+          ],
+          "success_rate": "30-60%, temporary"
+        },
+        {
+          "method": "2. Замена Touch IC (ПРАВИЛЬНОЕ решение)",
+          "difficulty": "Expert",
+          "why_best": [
+            "Удаляет oxidized IC",
+            "Позволяет очистить pads",
+            "Свежий припой = надёжное соединение",
+            "Можно добавить mechanical reinforcement"
+          ],
+          "steps": [
+            "Прогреть плату preheater 100-120°C",
+            "Снять metal shields над Touch IC",
+            "Нагреть Meson IC (U2402) 300-320°C",
+            "Снять IC using pick/tweezers",
+            "Очистить все pads от старого solder",
+            "Проверить pads под microscope на damage",
+            "If pads lifted: repair with jumper wire (M1 jumper method)",
+            "Нанести flux на чистые pads",
+            "Reballing: нанести новые solder balls или use solder paste",
+            "Установить новый Meson IC",
+            "Повторить для Cumulus IC (U2401)",
+            "Добавить metal shim под Logic board для rigidity (optional)",
+            "Install foam pad между board и frame для support (ВАЖНО!)"
+          ],
+          "time": "2-3 hours для обоих IC",
+          "success_rate": "85-95%"
+        },
+        {
+          "method": "3. M1 Jumper Method (при lifted pads)",
+          "difficulty": "Expert+",
+          "when": "Когда pad под Meson IC lifted/damaged",
+          "steps": [
+            "Найти alternate connection point для damaged pad",
+            "Проложить micro jumper wire (AWG 38-40)",
+            "Secure jumper с UV solder mask",
+            "Установить Touch IC"
+          ],
+          "success_rate": "70-85%"
+        },
+        {
+          "method": "4. Mechanical Reinforcement (КРИТИЧНО!)",
+          "difficulty": "Intermediate",
+          "why_critical": "Без этого - failure повторится через год",
+          "methods": [
+            {
+              "type": "Metal Shim Plate",
+              "description": "Металлическая пластина 0.1-0.2mm под logic board",
+              "benefit": "Reduce flex на ~70%",
+              "installation": "Между board и metal frame, secure with adhesive"
+            },
+            {
+              "type": "Foam Padding",
+              "description": "High-density foam между board и battery",
+              "benefit": "Provides constant support",
+              "thickness": "1-2mm"
+            },
+            {
+              "type": "Underfill Application",
+              "description": "Inject underfill под Touch IC после ремонта",
+              "benefit": "Professional-grade fix",
+              "material": "Epoxy underfill, UV cure",
+              "warning": "Делает будущий ремонт невозможным"
+            }
+          ]
+        }
+      ],
+      "apple_official_program": {
+        "status": "ENDED in 2018",
+        "details": "Apple признала проблему в мае 2016",
+        "offered": "$149 replacement (США), free если у вас AppleCare+",
+        "eligible": "iPhone 6 Plus purchased before Jan 3, 2015",
+        "current": "Program ended, теперь только OOW replacement $329"
+      }
+    },
+    "tools_required": {
+      "essential": [
+        "BGA rework station 300-350°C",
+        "Preheater (обязательно!)",
+        "Microscope 40x-60x minimum",
+        "Hot air station",
+        "Precision pick/tweezers",
+        "Solder wick for pad cleaning"
+      ],
+      "reballing": [
+        "BGA stencil for 343S0694 (Meson)",
+        "Solder balls 0.25mm или paste",
+        "Flux Amtech low-temp",
+        "Reballing jig/fixture"
+      ],
+      "reinforcement": [
+        "Metal shim plate (custom cut)",
+        "High-density foam 1-2mm",
+        "Underfill epoxy (optional)",
+        "UV lamp для cure (если используете underfill)",
+        "High-strength adhesive (B7000)"
+      ]
+    },
+    "prevention_after_repair": [
+      "⚠️ ОБЯЗАТЕЛЬНО установить metal shim для rigidity",
+      "Использовать quality case с rigid back support",
+      "Избегать хранения в заднем кармане",
+      "Не класть heavy objects на phone",
+      "Regular inspection каждые 6 месяцев",
+      "Consider underfill для permanent fix"
+    ],
+    "customer_communication": [
+      "Объяснить что это design flaw, не fault пользователя",
+      "Reflow = temporary fix (1-6 месяцев)",
+      "Replacement = proper fix с mechanical support (2-5+ лет)",
+      "Apple OOW swap НЕ РЕШАЕТ проблему (refurb phone будет иметь ту же issue)",
+      "Independent repair с reinforcement = best long-term solution"
+    ],
+    "cost_estimates": {
+      "parts": {
+        "Touch IC Meson 343S0694": "$5-15",
+        "Touch IC Cumulus": "$5-10",
+        "Metal shim plate": "$2-5",
+        "Foam padding": "$1-3",
+        "Underfill epoxy": "$10-20"
+      },
+      "labor": {
+        "Reflow only": "$50-100 (НЕ РЕКОМЕНДУЕТСЯ)",
+        "Replacement both ICs": "$120-250",
+        "With reinforcement": "$150-300",
+        "With underfill": "$200-400"
+      }
+    }
+  }
+}
