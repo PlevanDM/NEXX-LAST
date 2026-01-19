@@ -22,49 +22,49 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 399.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0,
-      "logic_board": 599.0
+      "battery": 99,
+      "display": 399,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49,
+      "logic_board": 599
     },
     "service_parts": {
       "battery": {
         "article": "661-56049",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-56050",
         "description": "Display Assembly",
-        "price_usd": 399.0
+        "price_usd": 399
       },
       "rear_camera": {
         "article": "661-56051",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-56052",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-56053",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-56054",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "logic_board": {
         "article": "661-56055",
         "description": "Logic Board",
-        "price_usd": 599.0
+        "price_usd": 599
       }
     },
     "common_issues": [
@@ -99,7 +99,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone17,2/Natural Titanium.png"
   },
   {
     "name": "iPhone 16 Pro",
@@ -124,43 +125,43 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 379.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0
+      "battery": 99,
+      "display": 379,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-56121",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-56122",
         "description": "Display Assembly",
-        "price_usd": 379.0
+        "price_usd": 379
       },
       "rear_camera": {
         "article": "661-56123",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-56124",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-56125",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-56126",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -183,7 +184,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone17,1/Silver.png"
   },
   {
     "name": "iPhone 16 Plus",
@@ -208,37 +210,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 329.0,
-      "rear_camera": 189.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 329,
+      "rear_camera": 189,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-56064",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-56065",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-56066",
         "description": "Dual Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-56067",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-56068",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -271,7 +273,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone17,4/Silver.png"
   },
   {
     "name": "iPhone 16",
@@ -296,37 +299,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 189.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 189,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-56070",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-56071",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-56072",
         "description": "Dual Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-56073",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-56074",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -359,7 +362,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone17,3/Silver.png"
   },
   {
     "name": "iPhone 15 Pro Max",
@@ -384,43 +388,43 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 379.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0
+      "battery": 99,
+      "display": 379,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-53781",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-53782",
         "description": "Display Assembly",
-        "price_usd": 379.0
+        "price_usd": 379
       },
       "rear_camera": {
         "article": "661-53783",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-53784",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-53785",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-53786",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -455,7 +459,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone16,2/Natural Titanium.png"
   },
   {
     "name": "iPhone 15 Pro",
@@ -480,37 +485,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 359.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0
+      "battery": 99,
+      "display": 359,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59
     },
     "service_parts": {
       "battery": {
         "article": "661-53787",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-53788",
         "description": "Display Assembly",
-        "price_usd": 359.0
+        "price_usd": 359
       },
       "rear_camera": {
         "article": "661-53789",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-53790",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-53791",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       }
     },
     "common_issues": [
@@ -533,7 +538,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone16,1/Silver.png"
   },
   {
     "name": "iPhone 15 Plus",
@@ -558,37 +564,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 179.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-53792",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-53793",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-53794",
         "description": "Dual Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-53795",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-53796",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -621,7 +627,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone15,5/Silver.png"
   },
   {
     "name": "iPhone 15",
@@ -646,37 +653,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 279.0,
-      "rear_camera": 179.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 279,
+      "rear_camera": 179,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-53797",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-53798",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-53799",
         "description": "Dual Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-53800",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-53801",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -709,7 +716,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone15,4/Silver.png"
   },
   {
     "name": "iPhone 14 Pro Max",
@@ -740,43 +748,43 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 89.0,
-      "display": 369.0,
-      "rear_camera": 239.0,
-      "front_camera": 159.0,
-      "speaker": 55.0,
-      "taptic_engine": 45.0
+      "battery": 89,
+      "display": 369,
+      "rear_camera": 239,
+      "front_camera": 159,
+      "speaker": 55,
+      "taptic_engine": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-31048",
         "description": "Battery",
-        "price_usd": 89.0
+        "price_usd": 89
       },
       "display": {
         "article": "661-31049",
         "description": "Display Assembly",
-        "price_usd": 369.0
+        "price_usd": 369
       },
       "rear_camera": {
         "article": "661-31050",
         "description": "Rear Camera System",
-        "price_usd": 239.0
+        "price_usd": 239
       },
       "front_camera": {
         "article": "661-31051",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-31052",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       },
       "taptic_engine": {
         "article": "661-31053",
         "description": "Taptic Engine",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -811,7 +819,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone15,3/Natural Titanium.png"
   },
   {
     "name": "iPhone 14 Pro",
@@ -842,37 +851,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 89.0,
-      "display": 349.0,
-      "rear_camera": 239.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 89,
+      "display": 349,
+      "rear_camera": 239,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-31054",
         "description": "Battery",
-        "price_usd": 89.0
+        "price_usd": 89
       },
       "display": {
         "article": "661-31055",
         "description": "Display Assembly",
-        "price_usd": 349.0
+        "price_usd": 349
       },
       "rear_camera": {
         "article": "661-31056",
         "description": "Rear Camera System",
-        "price_usd": 239.0
+        "price_usd": 239
       },
       "front_camera": {
         "article": "661-31057",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-31058",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -895,7 +904,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone15,2/Silver.png"
   },
   {
     "name": "iPhone 14 Plus",
@@ -926,37 +936,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 169.0,
-      "front_camera": 149.0,
-      "speaker": 50.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 169,
+      "front_camera": 149,
+      "speaker": 50
     },
     "service_parts": {
       "battery": {
         "article": "661-31059",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-31060",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-31061",
         "description": "Dual Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-31062",
         "description": "TrueDepth Camera",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "speaker": {
         "article": "661-31063",
         "description": "Speaker Module",
-        "price_usd": 50.0
+        "price_usd": 50
       }
     },
     "common_issues": [
@@ -989,7 +999,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,8/Silver.png"
   },
   {
     "name": "iPhone 14",
@@ -1020,37 +1031,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 279.0,
-      "rear_camera": 169.0,
-      "front_camera": 149.0,
-      "speaker": 50.0
+      "battery": 79,
+      "display": 279,
+      "rear_camera": 169,
+      "front_camera": 149,
+      "speaker": 50
     },
     "service_parts": {
       "battery": {
         "article": "661-31064",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-31065",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-31066",
         "description": "Dual Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-31067",
         "description": "TrueDepth Camera",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "speaker": {
         "article": "661-31068",
         "description": "Speaker Module",
-        "price_usd": 50.0
+        "price_usd": 50
       }
     },
     "common_issues": [
@@ -1083,7 +1094,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,7/Silver.png"
   },
   {
     "name": "iPhone 13 Pro Max",
@@ -1114,37 +1126,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 329.0,
-      "rear_camera": 219.0,
-      "front_camera": 139.0,
-      "speaker": 45.0
+      "battery": 79,
+      "display": 329,
+      "rear_camera": 219,
+      "front_camera": 139,
+      "speaker": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-21565",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-21566",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-21567",
         "description": "Rear Camera System",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "front_camera": {
         "article": "661-21568",
         "description": "TrueDepth Camera",
-        "price_usd": 139.0
+        "price_usd": 139
       },
       "speaker": {
         "article": "661-21569",
         "description": "Speaker Module",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -1179,7 +1191,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,3/Natural Titanium.png"
   },
   {
     "name": "iPhone 13 Pro",
@@ -1210,37 +1223,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 309.0,
-      "rear_camera": 219.0,
-      "front_camera": 139.0,
-      "speaker": 45.0
+      "battery": 79,
+      "display": 309,
+      "rear_camera": 219,
+      "front_camera": 139,
+      "speaker": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-21570",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-21571",
         "description": "Display Assembly",
-        "price_usd": 309.0
+        "price_usd": 309
       },
       "rear_camera": {
         "article": "661-21572",
         "description": "Rear Camera System",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "front_camera": {
         "article": "661-21573",
         "description": "TrueDepth Camera",
-        "price_usd": 139.0
+        "price_usd": 139
       },
       "speaker": {
         "article": "661-21574",
         "description": "Speaker Module",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -1263,7 +1276,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,2/Silver.png"
   },
   {
     "name": "iPhone 13 mini",
@@ -1294,37 +1308,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 65.0,
-      "display": 249.0,
-      "rear_camera": 159.0,
-      "front_camera": 129.0,
-      "speaker": 40.0
+      "battery": 65,
+      "display": 249,
+      "rear_camera": 159,
+      "front_camera": 129,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-21580",
         "description": "Battery",
-        "price_usd": 65.0
+        "price_usd": 65
       },
       "display": {
         "article": "661-21581",
         "description": "Display Assembly",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "rear_camera": {
         "article": "661-21582",
         "description": "Dual Camera System",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "front_camera": {
         "article": "661-21583",
         "description": "TrueDepth Camera",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "speaker": {
         "article": "661-21584",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1357,7 +1371,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,4/Silver.png"
   },
   {
     "name": "iPhone 13",
@@ -1388,37 +1403,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 269.0,
-      "rear_camera": 159.0,
-      "front_camera": 129.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 269,
+      "rear_camera": 159,
+      "front_camera": 129,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-21575",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-21576",
         "description": "Display Assembly",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "rear_camera": {
         "article": "661-21577",
         "description": "Dual Camera System",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "front_camera": {
         "article": "661-21578",
         "description": "TrueDepth Camera",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "speaker": {
         "article": "661-21579",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1451,7 +1466,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone14,5/Silver.png"
   },
   {
     "name": "iPhone 12 Pro Max",
@@ -1482,37 +1498,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 299.0,
-      "rear_camera": 199.0,
-      "front_camera": 119.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 299,
+      "rear_camera": 199,
+      "front_camera": 119,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-18254",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-18255",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-18256",
         "description": "Rear Camera System",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "front_camera": {
         "article": "661-18257",
         "description": "TrueDepth Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "speaker": {
         "article": "661-18258",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1547,7 +1563,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone13,4/Natural Titanium.png"
   },
   {
     "name": "iPhone 12 Pro",
@@ -1578,37 +1595,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 199.0,
-      "front_camera": 119.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 199,
+      "front_camera": 119,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-18259",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-18260",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-18261",
         "description": "Rear Camera System",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "front_camera": {
         "article": "661-18262",
         "description": "TrueDepth Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "speaker": {
         "article": "661-18263",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1631,7 +1648,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone13,3/Silver.png"
   },
   {
     "name": "iPhone 12 mini",
@@ -1662,37 +1680,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 59.0,
-      "display": 229.0,
-      "rear_camera": 149.0,
-      "front_camera": 109.0,
-      "speaker": 35.0
+      "battery": 59,
+      "display": 229,
+      "rear_camera": 149,
+      "front_camera": 109,
+      "speaker": 35
     },
     "service_parts": {
       "battery": {
         "article": "661-18269",
         "description": "Battery",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "display": {
         "article": "661-18270",
         "description": "Display Assembly",
-        "price_usd": 229.0
+        "price_usd": 229
       },
       "rear_camera": {
         "article": "661-18271",
         "description": "Dual Camera System",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "front_camera": {
         "article": "661-18272",
         "description": "TrueDepth Camera",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "speaker": {
         "article": "661-18273",
         "description": "Speaker Module",
-        "price_usd": 35.0
+        "price_usd": 35
       }
     },
     "common_issues": [
@@ -1725,7 +1743,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone13,1/Silver.png"
   },
   {
     "name": "iPhone 12",
@@ -1756,37 +1775,37 @@
       "wireless_charging": "Yes (15W MagSafe)"
     },
     "official_service_prices": {
-      "battery": 65.0,
-      "display": 259.0,
-      "rear_camera": 149.0,
-      "front_camera": 109.0,
-      "speaker": 35.0
+      "battery": 65,
+      "display": 259,
+      "rear_camera": 149,
+      "front_camera": 109,
+      "speaker": 35
     },
     "service_parts": {
       "battery": {
         "article": "661-18264",
         "description": "Battery",
-        "price_usd": 65.0
+        "price_usd": 65
       },
       "display": {
         "article": "661-18265",
         "description": "Display Assembly",
-        "price_usd": 259.0
+        "price_usd": 259
       },
       "rear_camera": {
         "article": "661-18266",
         "description": "Dual Camera System",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "front_camera": {
         "article": "661-18267",
         "description": "TrueDepth Camera",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "speaker": {
         "article": "661-18268",
         "description": "Speaker Module",
-        "price_usd": 35.0
+        "price_usd": 35
       }
     },
     "common_issues": [
@@ -1819,7 +1838,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone13,2/Silver.png"
   },
   {
     "name": "iPhone 11 Pro Max",
@@ -1844,31 +1864,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 189.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 189,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-14633",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-14634",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-14635",
         "description": "Rear Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-14636",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1902,7 +1922,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone12,5/Natural Titanium.png"
   },
   {
     "name": "iPhone 11 Pro",
@@ -1927,31 +1948,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 259.0,
-      "rear_camera": 189.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 259,
+      "rear_camera": 189,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-14637",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-14638",
         "description": "Display Assembly",
-        "price_usd": 259.0
+        "price_usd": 259
       },
       "rear_camera": {
         "article": "661-14639",
         "description": "Rear Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-14640",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1973,7 +1994,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone12,3/Silver.png"
   },
   {
     "name": "iPhone 11",
@@ -1998,31 +2020,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 55.0,
-      "display": 199.0,
-      "rear_camera": 129.0,
-      "front_camera": 89.0
+      "battery": 55,
+      "display": 199,
+      "rear_camera": 129,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-14641",
         "description": "Battery",
-        "price_usd": 55.0
+        "price_usd": 55
       },
       "display": {
         "article": "661-14642",
         "description": "Display Assembly",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "rear_camera": {
         "article": "661-14643",
         "description": "Dual Camera System",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "front_camera": {
         "article": "661-14644",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -2054,7 +2076,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone12,1/Silver.png"
   },
   {
     "name": "iPhone XS Max",
@@ -2080,31 +2103,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 329.0,
-      "rear_camera": 179.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 329,
+      "rear_camera": 179,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-11076",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-11077",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-11078",
         "description": "Rear Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-11079",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -2136,7 +2159,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone11,6/Silver.png"
   },
   {
     "name": "iPhone XS",
@@ -2162,31 +2186,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 299.0,
-      "rear_camera": 179.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-11080",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-11081",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-11082",
         "description": "Rear Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-11083",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -2218,7 +2242,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone11,2/Silver.png"
   },
   {
     "name": "iPhone XR",
@@ -2244,31 +2269,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 199.0,
-      "rear_camera": 119.0,
-      "front_camera": 89.0
+      "battery": 49,
+      "display": 199,
+      "rear_camera": 119,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-11084",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-11085",
         "description": "Display Assembly",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "rear_camera": {
         "article": "661-11086",
         "description": "Rear Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "front_camera": {
         "article": "661-11087",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -2300,7 +2325,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone11,8/Silver.png"
   },
   {
     "name": "iPhone X",
@@ -2326,31 +2352,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 169.0,
-      "front_camera": 89.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 169,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-09565",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-09566",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-09567",
         "description": "Rear Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-09568",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -2407,31 +2433,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 169.0,
-      "rear_camera": 99.0,
-      "front_camera": 49.0
+      "battery": 49,
+      "display": 169,
+      "rear_camera": 99,
+      "front_camera": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-08926",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-08927",
         "description": "Display Assembly",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "rear_camera": {
         "article": "661-08928",
         "description": "Rear Camera System",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "front_camera": {
         "article": "661-08929",
         "description": "Front Camera",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -2488,31 +2514,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 149.0,
-      "rear_camera": 79.0,
-      "front_camera": 49.0
+      "battery": 49,
+      "display": 149,
+      "rear_camera": 79,
+      "front_camera": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-08930",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-08931",
         "description": "Display Assembly",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "rear_camera": {
         "article": "661-08932",
         "description": "Rear Camera",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "front_camera": {
         "article": "661-08933",
         "description": "Front Camera",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -2569,25 +2595,25 @@
       "designation": "Hydra"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 149.0,
-      "rear_camera": 89.0
+      "battery": 49,
+      "display": 149,
+      "rear_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-04749",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-04750",
         "description": "Display Assembly",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "rear_camera": {
         "article": "661-04751",
         "description": "Rear Camera System",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -2645,25 +2671,25 @@
       "designation": "Hydra"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 129.0,
-      "rear_camera": 69.0
+      "battery": 49,
+      "display": 129,
+      "rear_camera": 69
     },
     "service_parts": {
       "battery": {
         "article": "661-04752",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-04753",
         "description": "Display Assembly",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "rear_camera": {
         "article": "661-04754",
         "description": "Rear Camera",
-        "price_usd": 69.0
+        "price_usd": 69
       }
     },
     "common_issues": [
@@ -2721,19 +2747,19 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {
-      "battery": 39.0,
-      "display": 129.0
+      "battery": 39,
+      "display": 129
     },
     "service_parts": {
       "battery": {
         "article": "661-03275",
         "description": "Battery",
-        "price_usd": 39.0
+        "price_usd": 39
       },
       "display": {
         "article": "661-03276",
         "description": "Display Assembly",
-        "price_usd": 129.0
+        "price_usd": 129
       }
     },
     "common_issues": [
@@ -2765,7 +2791,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone8,2/Silver.png"
   },
   {
     "name": "iPhone 6s",
@@ -2790,19 +2817,19 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {
-      "battery": 39.0,
-      "display": 109.0
+      "battery": 39,
+      "display": 109
     },
     "service_parts": {
       "battery": {
         "article": "661-03277",
         "description": "Battery",
-        "price_usd": 39.0
+        "price_usd": 39
       },
       "display": {
         "article": "661-03278",
         "description": "Display Assembly",
-        "price_usd": 109.0
+        "price_usd": 109
       }
     },
     "common_issues": [
@@ -2834,7 +2861,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone8,1/Silver.png"
   },
   {
     "name": "iPhone 6 Plus",
@@ -2910,7 +2938,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone7,1/Silver.png"
   },
   {
     "name": "iPhone 6",
@@ -2986,7 +3015,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone7,2/Silver.png"
   },
   {
     "name": "iPhone SE",
@@ -4615,19 +4645,19 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 159.0,
-      "display": 499.0
+      "battery": 159,
+      "display": 499
     },
     "service_parts": {
       "battery": {
         "article": "661-61003",
         "description": "Battery",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "display": {
         "article": "661-61004",
         "description": "Display Assembly",
-        "price_usd": 499.0
+        "price_usd": 499
       }
     },
     "common_issues": [
@@ -4676,19 +4706,19 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 179.0,
-      "display": 599.0
+      "battery": 179,
+      "display": 599
     },
     "service_parts": {
       "battery": {
         "article": "661-61001",
         "description": "Battery",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "display": {
         "article": "661-61002",
         "description": "Display Assembly",
-        "price_usd": 599.0
+        "price_usd": 599
       }
     },
     "common_issues": [
@@ -4790,7 +4820,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir7,1/Silver.png"
   },
   {
     "name": "MacBook Air 11\" Early 2015",
@@ -4859,7 +4890,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir7,1/Silver.png"
   },
   {
     "name": "MacBook Air 13\" Early 2014",
@@ -4905,7 +4937,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -4940,7 +4972,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir7,2-2017/Silver.png"
   },
   {
     "name": "MacBook Air 13\" Early 2015",
@@ -4986,7 +5019,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5021,7 +5054,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir7,2-2017/Silver.png"
   },
   {
     "name": "MacBook Air 13\" 2017",
@@ -5067,7 +5101,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5103,7 +5137,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir7,2-2017/Silver.png"
   },
   {
     "name": "MacBook Air 13\" 2018 Retina",
@@ -5149,7 +5184,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5186,7 +5221,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir8,2/Silver.png"
   },
   {
     "name": "MacBook Air 13\" 2019 Retina",
@@ -5232,7 +5268,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5269,7 +5305,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir8,2/Silver.png"
   },
   {
     "name": "MacBook Air 13\" 2020 Intel",
@@ -5315,7 +5352,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5350,7 +5387,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir9,1/Silver.png"
   },
   {
     "name": "MacBook Air 13\" M1 2020",
@@ -5396,7 +5434,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -5429,7 +5467,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookAir10,1/Silver.png"
   },
   {
     "name": "MacBook Air 13\" M2 2022",
@@ -5447,25 +5486,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 129.0,
-      "display": 549.0,
-      "keyboard": 399.0
+      "battery": 129,
+      "display": 549,
+      "keyboard": 399
     },
     "service_parts": {
       "battery": {
         "article": "661-28601",
         "description": "Battery",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "display": {
         "article": "661-28602",
         "description": "Display Assembly",
-        "price_usd": 549.0
+        "price_usd": 549
       },
       "keyboard": {
         "article": "661-28603",
         "description": "Top Case with Keyboard",
-        "price_usd": 399.0
+        "price_usd": 399
       }
     },
     "common_issues": [
@@ -5497,7 +5536,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac14,2/Silver.png"
   },
   {
     "name": "MacBook Air 15\" M2 2023",
@@ -5564,7 +5604,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac14,15/Silver.png"
   },
   {
     "name": "MacBook Air 13\" M3 2024",
@@ -5582,25 +5623,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 129.0,
-      "display": 549.0,
-      "keyboard": 399.0
+      "battery": 129,
+      "display": 549,
+      "keyboard": 399
     },
     "service_parts": {
       "battery": {
         "article": "661-60845",
         "description": "Battery",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "display": {
         "article": "661-60846",
         "description": "Display Assembly",
-        "price_usd": 549.0
+        "price_usd": 549
       },
       "keyboard": {
         "article": "661-60847",
         "description": "Top Case with Keyboard",
-        "price_usd": 399.0
+        "price_usd": 399
       }
     },
     "common_issues": [
@@ -5632,7 +5673,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac15,12/Silver.png"
   },
   {
     "name": "MacBook Air 15\" M3 2024",
@@ -5650,25 +5692,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 149.0,
-      "display": 599.0,
-      "keyboard": 449.0
+      "battery": 149,
+      "display": 599,
+      "keyboard": 449
     },
     "service_parts": {
       "battery": {
         "article": "661-60848",
         "description": "Battery",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "display": {
         "article": "661-60849",
         "description": "Display Assembly",
-        "price_usd": 599.0
+        "price_usd": 599
       },
       "keyboard": {
         "article": "661-60850",
         "description": "Top Case with Keyboard",
-        "price_usd": 449.0
+        "price_usd": 449
       }
     },
     "common_issues": [
@@ -5700,7 +5742,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac14,15/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" Late 2013",
@@ -5781,7 +5824,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro12,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" Mid 2014",
@@ -5862,7 +5906,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro12,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" Early 2015",
@@ -5943,7 +5988,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro12,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
@@ -6025,7 +6071,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
@@ -6107,7 +6154,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,2/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
@@ -6189,7 +6237,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
@@ -6271,7 +6320,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,2/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
@@ -6354,7 +6404,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro15,2-2018/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
@@ -6437,7 +6488,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro15,4/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
@@ -6520,7 +6572,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro15,2-2018/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
@@ -6599,7 +6652,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro16,2/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
@@ -6678,7 +6732,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro16,2/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" M1 2020",
@@ -6757,7 +6812,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro17,1/Silver.png"
   },
   {
     "name": "MacBook Pro 13\" M2 2022",
@@ -6909,7 +6965,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro18,3/Silver.png"
   },
   {
     "name": "MacBook Pro 16\" M1 Pro 2021",
@@ -6982,7 +7039,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro18,1/Silver.png"
   },
   {
     "name": "MacBook Pro 14\" M2 Pro 2023",
@@ -7055,7 +7113,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac14,5/Silver.png"
   },
   {
     "name": "MacBook Pro 16\" M2 Pro 2023",
@@ -7128,7 +7187,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac14,6/Silver.png"
   },
   {
     "name": "MacBook Pro 14\" M3 2023",
@@ -7146,25 +7206,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 199.0,
-      "display": 749.0,
-      "keyboard": 549.0
+      "battery": 199,
+      "display": 749,
+      "keyboard": 549
     },
     "service_parts": {
       "battery": {
         "article": "661-56890",
         "description": "Battery",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "display": {
         "article": "661-56891",
         "description": "Display Assembly",
-        "price_usd": 749.0
+        "price_usd": 749
       },
       "keyboard": {
         "article": "661-56892",
         "description": "Top Case with Keyboard",
-        "price_usd": 549.0
+        "price_usd": 549
       }
     },
     "common_issues": [
@@ -7196,7 +7256,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac15,3/Silver.png"
   },
   {
     "name": "MacBook Pro 14\" M3 Pro 2023",
@@ -7269,7 +7330,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac15,6/Silver.png"
   },
   {
     "name": "MacBook Pro 16\" M3 Pro 2023",
@@ -7342,7 +7404,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac15,7/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" Late 2013",
@@ -7423,7 +7486,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro11,5/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" Mid 2014",
@@ -7504,7 +7568,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro11,5/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" Mid 2015",
@@ -7585,7 +7650,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro11,5/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" 2016",
@@ -7667,7 +7733,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,3/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" 2017",
@@ -7749,7 +7816,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro13,3/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" 2018",
@@ -7832,7 +7900,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro15,3-2018/Silver.png"
   },
   {
     "name": "MacBook Pro 15\" 2019",
@@ -7915,7 +7984,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro15,3-2018/Silver.png"
   },
   {
     "name": "MacBook Pro 16\" 2019",
@@ -7992,7 +8062,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/MacBookPro16,1/Silver.png"
   },
   {
     "name": "iPhone 17 Pro Max",
@@ -8029,32 +8100,32 @@
       "battery": {
         "article": "661-56049",
         "description": "Battery",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "display": {
         "article": "661-56050",
         "description": "Display",
-        "price_usd": 459.0
+        "price_usd": 459
       },
       "rear_camera": {
         "article": "661-56052",
         "description": "Rear Camera",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "front_camera": {
         "article": "661-56051",
         "description": "Front Camera",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "speaker": {
         "article": "923-13581",
         "description": "Speaker",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "taptic_engine": {
         "article": "923-13583",
         "description": "Taptic Engine",
-        "price_usd": 79.0
+        "price_usd": 79
       }
     },
     "technical_specs": {},
@@ -8063,7 +8134,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,2/Natural Titanium.png"
   },
   {
     "name": "iPhone 17 Pro",
@@ -8099,32 +8171,32 @@
       "battery": {
         "article": "661-56121",
         "description": "Battery",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "display": {
         "article": "661-56125",
         "description": "Display",
-        "price_usd": 409.0
+        "price_usd": 409
       },
       "rear_camera": {
         "article": "661-56127",
         "description": "Rear Camera",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "front_camera": {
         "article": "661-56126",
         "description": "Front Camera",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "speaker": {
         "article": "923-13631",
         "description": "Speaker",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "taptic_engine": {
         "article": "923-13625",
         "description": "Taptic Engine",
-        "price_usd": 79.0
+        "price_usd": 79
       }
     },
     "technical_specs": {},
@@ -8133,7 +8205,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,1/Silver.png"
   },
   {
     "name": "iPhone 17",
@@ -8201,7 +8274,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,3/Silver.png"
   },
   {
     "name": "iPhone Air",
@@ -8269,7 +8343,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,4/Silver.png"
   },
   {
     "name": "iPhone Air",
@@ -8368,7 +8443,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,4/Silver.png"
   },
   {
     "name": "MacBook Air 13-inch M4 2025",
@@ -8430,7 +8506,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac16,12/Silver.png"
   },
   {
     "name": "MacBook Air 15-inch M4 2025",
@@ -8492,7 +8569,8 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/Mac16,13/Silver.png"
   },
   {
     "name": "MacBook Pro 14-inch M5 2025",
@@ -8554,6 +8632,7 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "icon_url": "https://img.appledb.dev/device@256/iPhone 16 Pro Clear Case with MagSafe/Silver.png"
   }
 ]
