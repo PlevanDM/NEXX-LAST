@@ -2242,7 +2242,7 @@ const App = () => {
     return ['all', ...Array.from(yrs).sort((a, b) => b - a)];
   }, [devices]);
   
-  // Filtered devices
+  // Filtered and sorted devices
   const filteredDevices = useMemo(() => {
     let result = devices;
     if (selectedCategory !== 'all') {
@@ -2260,7 +2260,18 @@ const App = () => {
         (d.board_numbers || []).some(bn => bn.toLowerCase().includes(term))
       );
     }
-    return result;
+    // Sort by year (newest first), then by name within same year
+    return result.sort((a, b) => {
+      // First sort by year descending
+      if (b.year !== a.year) return (b.year || 0) - (a.year || 0);
+      // Then by category order (iPhone, iPad, MacBook)
+      const catOrder = { 'iPhone': 0, 'iPad': 1, 'MacBook': 2 };
+      const catA = catOrder[a.category] ?? 99;
+      const catB = catOrder[b.category] ?? 99;
+      if (catA !== catB) return catA - catB;
+      // Finally by name for devices in same year and category
+      return (a.name || '').localeCompare(b.name || '');
+    });
   }, [devices, searchTerm, selectedCategory, selectedYear]);
   
   // Stats
