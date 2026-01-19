@@ -11,52 +11,12 @@
       "architecture": "Apple M1"
     },
     {
-      "model": "MacBook Air 13\" M2 2022",
-      "model_number": "A2681",
-      "emc": "EMC 4074",
-      "board_number": "820-02642",
-      "year": 2022,
-      "architecture": "Apple M2"
-    },
-    {
-      "model": "MacBook Air 15\" M2 2023",
-      "model_number": "A2941",
-      "emc": "EMC 4262",
-      "board_number": "820-02700",
-      "year": 2023,
-      "architecture": "Apple M2"
-    },
-    {
-      "model": "MacBook Air 13\" M3 2024",
-      "model_number": "A3113",
-      "emc": "EMC 4381",
-      "board_number": "820-02835",
-      "year": 2024,
-      "architecture": "Apple M3"
-    },
-    {
-      "model": "MacBook Air 15\" M3 2024",
-      "model_number": "A3114",
-      "emc": "EMC 4382",
-      "board_number": "820-02836",
-      "year": 2024,
-      "architecture": "Apple M3"
-    },
-    {
       "model": "MacBook Pro 13\" M1 2020",
       "model_number": "A2338",
       "emc": "EMC 3578",
       "board_number": "820-02020",
       "year": 2020,
       "architecture": "Apple M1"
-    },
-    {
-      "model": "MacBook Pro 13\" M2 2022",
-      "model_number": "A2689",
-      "emc": "EMC 4152",
-      "board_number": "820-02646",
-      "year": 2022,
-      "architecture": "Apple M2"
     },
     {
       "model": "MacBook Pro 14\" M1 Pro 2021",
@@ -73,6 +33,30 @@
       "board_number": "820-02134",
       "year": 2021,
       "architecture": "Apple M1 Pro/Max"
+    },
+    {
+      "model": "MacBook Air 13\" M2 2022",
+      "model_number": "A2681",
+      "emc": "EMC 4074",
+      "board_number": "820-02642",
+      "year": 2022,
+      "architecture": "Apple M2"
+    },
+    {
+      "model": "MacBook Pro 13\" M2 2022",
+      "model_number": "A2689",
+      "emc": "EMC 4152",
+      "board_number": "820-02646",
+      "year": 2022,
+      "architecture": "Apple M2"
+    },
+    {
+      "model": "MacBook Air 15\" M2 2023",
+      "model_number": "A2941",
+      "emc": "EMC 4262",
+      "board_number": "820-02700",
+      "year": 2023,
+      "architecture": "Apple M2"
     },
     {
       "model": "MacBook Pro 14\" M2 Pro 2023",
@@ -115,6 +99,62 @@
       "architecture": "Apple M3 Pro/Max"
     },
     {
+      "model": "MacBook Air 13\" M3 2024",
+      "model_number": "A3113",
+      "emc": "EMC 4381",
+      "board_number": "820-02835",
+      "year": 2024,
+      "architecture": "Apple M3"
+    },
+    {
+      "model": "MacBook Air 15\" M3 2024",
+      "model_number": "A3114",
+      "emc": "EMC 4382",
+      "board_number": "820-02836",
+      "year": 2024,
+      "architecture": "Apple M3"
+    },
+    {
+      "model": "MacBook Pro 14\" M4 2024",
+      "model_number": "A3082",
+      "board_number": "820-02871",
+      "emc": "EMC3891",
+      "year": 2024,
+      "architecture": "Apple M4",
+      "cpu_cores": "10-core CPU, 10-core GPU",
+      "unified_memory": "16GB/24GB"
+    },
+    {
+      "model": "MacBook Pro 16\" M4 2024",
+      "model_number": "A3083",
+      "board_number": "820-02872",
+      "emc": "EMC3892",
+      "year": 2024,
+      "architecture": "Apple M4",
+      "cpu_cores": "10-core CPU, 10-core GPU",
+      "unified_memory": "16GB/24GB/32GB"
+    },
+    {
+      "model": "MacBook Pro 14\" M4 Pro 2024",
+      "model_number": "A3084",
+      "board_number": "820-02873",
+      "emc": "EMC3893",
+      "year": 2024,
+      "architecture": "Apple M4 Pro/Max",
+      "cpu_cores": "14-core CPU, 20-core GPU",
+      "unified_memory": "24GB/36GB/48GB"
+    },
+    {
+      "model": "MacBook Pro 16\" M4 Pro 2024",
+      "model_number": "A3085",
+      "board_number": "820-02874",
+      "emc": "EMC3894",
+      "year": 2024,
+      "architecture": "Apple M4 Pro/Max",
+      "cpu_cores": "14-core CPU, 20-core GPU",
+      "unified_memory": "36GB/48GB/64GB/128GB"
+    },
+    {
       "device": "MacBook Air 13-inch M4 2025",
       "model": "A3240",
       "emc": "4400",
@@ -139,55 +179,34 @@
       "processor": "Apple M5"
     },
     {
-      "device": "iPhone 17 Pro Max",
-      "board_number": "820-03258",
-      "processor": "Apple A19 Pro",
+      "model": "MacBook Pro 16\" M5 2025",
+      "model_number": "A3195",
+      "board_number": "820-03906",
+      "emc": "EMC3981",
       "year": 2025,
-      "ram": "8 GB",
-      "storage_options": [
-        "256GB",
-        "512GB",
-        "1TB",
-        "2TB"
-      ],
-      "notes": "Titanium design, Pro camera system"
+      "architecture": "Apple M5",
+      "cpu_cores": "12-core CPU, 18-core GPU",
+      "unified_memory": "32GB/48GB"
     },
     {
-      "device": "iPhone 17 Pro",
-      "board_number": "820-03257",
-      "processor": "Apple A19 Pro",
+      "model": "MacBook Pro 14\" M5 Pro 2025",
+      "model_number": "A3196",
+      "board_number": "820-03907",
+      "emc": "EMC3982",
       "year": 2025,
-      "ram": "8 GB",
-      "storage_options": [
-        "256GB",
-        "512GB",
-        "1TB"
-      ],
-      "notes": "Titanium design, Pro camera system"
+      "architecture": "Apple M5 Pro/Max",
+      "cpu_cores": "16-core CPU, 24-core GPU",
+      "unified_memory": "36GB/48GB/64GB"
     },
     {
-      "device": "iPhone 17",
-      "board_number": "820-03520",
-      "processor": "Apple A19",
+      "model": "MacBook Pro 16\" M5 Pro 2025",
+      "model_number": "A3197",
+      "board_number": "820-03908",
+      "emc": "EMC3983",
       "year": 2025,
-      "ram": "8 GB",
-      "storage_options": [
-        "256GB",
-        "512GB"
-      ],
-      "notes": "Center Stage front camera"
-    },
-    {
-      "device": "iPhone Air",
-      "board_number": "820-03525",
-      "processor": "Apple A19",
-      "year": 2025,
-      "ram": "8 GB",
-      "storage_options": [
-        "256GB",
-        "512GB"
-      ],
-      "notes": "Ultra-thin design, 6.6-inch display"
+      "architecture": "Apple M5 Pro/Max",
+      "cpu_cores": "16-core CPU, 24-core GPU",
+      "unified_memory": "48GB/64GB/128GB"
     }
   ],
   "intel_boards": [

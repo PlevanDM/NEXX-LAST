@@ -1634,7 +1634,7 @@
     "name": "iPhone XS Max",
     "category": "iPhone",
     "model": "A1865/A1901",
-    "year": 2017,
+    "year": 2018,
     "ifixit_url": "https://www.ifixit.com/Device/iPhone_XS_Max",
     "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/BBjFFN1lmmWhH3gR.standard",
     "repairability": null,
@@ -1698,7 +1698,7 @@
     "name": "iPhone XS",
     "category": "iPhone",
     "model": "A1865/A1901",
-    "year": 2017,
+    "year": 2018,
     "ifixit_url": "https://www.ifixit.com/Device/iPhone_XS",
     "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/vQTvYLrOfMBrWxTy.standard",
     "repairability": null,
@@ -1762,7 +1762,7 @@
     "name": "iPhone XR",
     "category": "iPhone",
     "model": "A1865/A1901",
-    "year": 2017,
+    "year": 2018,
     "ifixit_url": "https://www.ifixit.com/Device/iPhone_XR",
     "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/yiiosKwJCvSrNS12.standard",
     "repairability": null,
@@ -2132,7 +2132,7 @@
     "name": "iPhone 6s Plus",
     "category": "iPhone",
     "model": "A1549/A1586",
-    "year": 2014,
+    "year": 2015,
     "ifixit_url": "https://www.ifixit.com/Device/iPhone_6s_Plus",
     "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/cMVbyIbIrTEbi2j5.standard",
     "repairability": null,
@@ -2183,7 +2183,7 @@
     "name": "iPhone 6s",
     "category": "iPhone",
     "model": "A1549/A1586",
-    "year": 2014,
+    "year": 2015,
     "ifixit_url": "https://www.ifixit.com/Device/iPhone_6s",
     "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/ipv5OG2NckM3DfE2.standard",
     "repairability": null,
@@ -2363,7 +2363,7 @@
     "board_numbers": [
       "820-01700"
     ],
-    "processor": "A9",
+    "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar U3300"
@@ -6351,6 +6351,272 @@
         "description": "Keyboard",
         "price_usd": 449
       }
+    }
+  },
+  {
+    "name": "iPhone 5s",
+    "category": "iPhone",
+    "model": "A1453/A1533",
+    "year": 2013,
+    "processor": "A7",
+    "charging_ic": {
+      "main": "1610A1",
+      "designation": "U2/Tristar"
+    },
+    "board_numbers": [
+      "820-3382"
+    ],
+    "common_issues": [
+      "Touch ID issues",
+      "Battery degradation",
+      "Home button failure"
+    ],
+    "official_service_prices": {
+      "battery": 49,
+      "display": 129
+    }
+  },
+  {
+    "name": "iPhone SE 1st Gen",
+    "category": "iPhone",
+    "model": "A1662/A1723",
+    "year": 2016,
+    "processor": "A9",
+    "charging_ic": {
+      "main": "1610A3",
+      "designation": "U2/Tristar"
+    },
+    "board_numbers": [
+      "820-00134"
+    ],
+    "common_issues": [
+      "Touch ID issues",
+      "Battery degradation"
+    ],
+    "official_service_prices": {
+      "battery": 49,
+      "display": 129
+    }
+  },
+  {
+    "name": "iPhone SE 2nd Gen",
+    "category": "iPhone",
+    "model": "A2275/A2296",
+    "year": 2020,
+    "processor": "A13 Bionic",
+    "charging_ic": {
+      "main": "SN2611D0",
+      "designation": "USB-C/Lightning Controller"
+    },
+    "board_numbers": [
+      "820-01700"
+    ],
+    "common_issues": [
+      "Touch ID issues",
+      "Battery health decline"
+    ],
+    "official_service_prices": {
+      "battery": 49,
+      "display": 149
+    }
+  },
+  {
+    "name": "iPhone SE 3rd Gen",
+    "category": "iPhone",
+    "model": "A2595/A2782",
+    "year": 2022,
+    "processor": "A15 Bionic",
+    "charging_ic": {
+      "main": "SN2611D0",
+      "designation": "USB-C/Lightning Controller"
+    },
+    "board_numbers": [
+      "820-02195"
+    ],
+    "common_issues": [
+      "Touch ID issues",
+      "5G connectivity"
+    ],
+    "official_service_prices": {
+      "battery": 49,
+      "display": 179
+    }
+  },
+  {
+    "name": "iPad mini 7th Gen",
+    "category": "iPad",
+    "model": "A2993/A2995",
+    "year": 2024,
+    "processor": "A17 Pro",
+    "board_numbers": [
+      "820-02680"
+    ],
+    "common_issues": [
+      "Jelly scrolling",
+      "Battery drain"
+    ],
+    "official_service_prices": {
+      "battery": 99,
+      "display": 349
+    }
+  },
+  {
+    "name": "iPad 11th Gen",
+    "category": "iPad",
+    "model": "A3178/A3179",
+    "year": 2025,
+    "processor": "A16 Bionic",
+    "board_numbers": [
+      "820-02750"
+    ],
+    "common_issues": [
+      "USB-C connectivity"
+    ],
+    "official_service_prices": {
+      "battery": 99,
+      "display": 249
+    }
+  },
+  {
+    "name": "MacBook Pro 14\" M4 2024",
+    "category": "MacBook",
+    "model": "A3082",
+    "year": 2024,
+    "architecture": "Apple M4",
+    "processor": "Apple M4",
+    "board_numbers": [
+      "820-02871"
+    ],
+    "emc": "EMC3891",
+    "common_issues": [
+      "Thermal throttling under heavy load",
+      "Display flickering (rare)"
+    ],
+    "official_service_prices": {
+      "battery": 199,
+      "display": 699,
+      "logic_board": 1299
+    }
+  },
+  {
+    "name": "MacBook Pro 16\" M4 2024",
+    "category": "MacBook",
+    "model": "A3083",
+    "year": 2024,
+    "architecture": "Apple M4",
+    "processor": "Apple M4",
+    "board_numbers": [
+      "820-02872"
+    ],
+    "emc": "EMC3892",
+    "common_issues": [
+      "Battery drain in sleep mode",
+      "Keyboard responsiveness"
+    ],
+    "official_service_prices": {
+      "battery": 249,
+      "display": 799,
+      "logic_board": 1499
+    }
+  },
+  {
+    "name": "MacBook Pro 14\" M4 Pro 2024",
+    "category": "MacBook",
+    "model": "A3084",
+    "year": 2024,
+    "architecture": "Apple M4 Pro/Max",
+    "processor": "Apple M4 Pro/Max",
+    "board_numbers": [
+      "820-02873"
+    ],
+    "emc": "EMC3893",
+    "common_issues": [
+      "Thunderbolt compatibility"
+    ],
+    "official_service_prices": {
+      "battery": 199,
+      "display": 699,
+      "logic_board": 1799
+    }
+  },
+  {
+    "name": "MacBook Pro 16\" M4 Pro 2024",
+    "category": "MacBook",
+    "model": "A3085",
+    "year": 2024,
+    "architecture": "Apple M4 Pro/Max",
+    "processor": "Apple M4 Pro/Max",
+    "board_numbers": [
+      "820-02874"
+    ],
+    "emc": "EMC3894",
+    "common_issues": [
+      "Fan noise under load"
+    ],
+    "official_service_prices": {
+      "battery": 249,
+      "display": 799,
+      "logic_board": 1999
+    }
+  },
+  {
+    "name": "MacBook Pro 16\" M5 2025",
+    "category": "MacBook",
+    "model": "A3195",
+    "year": 2025,
+    "architecture": "Apple M5",
+    "processor": "Apple M5",
+    "board_numbers": [
+      "820-03906"
+    ],
+    "emc": "EMC3981",
+    "common_issues": [
+      "New device - no common issues yet"
+    ],
+    "official_service_prices": {
+      "battery": 249,
+      "display": 899,
+      "logic_board": 1599
+    }
+  },
+  {
+    "name": "MacBook Pro 14\" M5 Pro 2025",
+    "category": "MacBook",
+    "model": "A3196",
+    "year": 2025,
+    "architecture": "Apple M5 Pro/Max",
+    "processor": "Apple M5 Pro/Max",
+    "board_numbers": [
+      "820-03907"
+    ],
+    "emc": "EMC3982",
+    "common_issues": [
+      "New device - no common issues yet"
+    ],
+    "official_service_prices": {
+      "battery": 199,
+      "display": 799,
+      "logic_board": 1899
+    }
+  },
+  {
+    "name": "MacBook Pro 16\" M5 Pro 2025",
+    "category": "MacBook",
+    "model": "A3197",
+    "year": 2025,
+    "architecture": "Apple M5 Pro/Max",
+    "processor": "Apple M5 Pro/Max",
+    "board_numbers": [
+      "820-03908"
+    ],
+    "emc": "EMC3983",
+    "common_issues": [
+      "New device - no common issues yet"
+    ],
+    "official_service_prices": {
+      "battery": 249,
+      "display": 899,
+      "logic_board": 2099
     }
   }
 ]

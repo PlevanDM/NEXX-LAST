@@ -537,6 +537,83 @@
       "solution": "Установить правильную дату, обновить систему",
       "hardware": false,
       "severity": "low"
+    },
+    {
+      "code": "75",
+      "description": "USB-C Power Delivery negotiation failed",
+      "category": "USB-C iPhone 15+",
+      "hardware": false,
+      "solution": "Use certified USB-C cable, try different charger, clean port"
+    },
+    {
+      "code": "76",
+      "description": "USB-C controller timeout",
+      "category": "USB-C iPhone 15+",
+      "hardware": true,
+      "severity": "high",
+      "solution": "Check U2 IC (SN2800/SN2900), may need reballing"
+    },
+    {
+      "code": "77",
+      "description": "USB-C data lines shorted",
+      "category": "USB-C iPhone 15+",
+      "hardware": true,
+      "severity": "critical",
+      "solution": "Inspect CC1/CC2 lines, check for water damage, replace charging port flex"
+    },
+    {
+      "code": "4100",
+      "description": "Satellite SOS hardware failure",
+      "category": "iPhone 14+",
+      "hardware": true,
+      "severity": "critical",
+      "solution": "Satellite antenna issue or modem failure, motherboard repair needed"
+    },
+    {
+      "code": "4101",
+      "description": "Satellite SOS activation failed",
+      "category": "iPhone 14+",
+      "hardware": false,
+      "solution": "Check carrier support, ensure location services enabled, update iOS"
+    },
+    {
+      "code": "5000",
+      "description": "Face ID depth sensor failure",
+      "category": "Face ID",
+      "hardware": true,
+      "severity": "high",
+      "solution": "Dot projector calibration needed, may require Apple service"
+    },
+    {
+      "code": "5001",
+      "description": "Face ID flood illuminator failure",
+      "category": "Face ID",
+      "hardware": true,
+      "severity": "high",
+      "solution": "IR illuminator damaged, Face ID module replacement"
+    },
+    {
+      "code": "5002",
+      "description": "Face ID TrueDepth calibration lost",
+      "category": "Face ID",
+      "hardware": true,
+      "severity": "critical",
+      "solution": "Requires Apple service for recalibration, aftermarket repair not possible"
+    },
+    {
+      "code": "6100",
+      "description": "Apple Intelligence initialization failed",
+      "category": "iPhone 16+",
+      "hardware": false,
+      "solution": "Requires A17 Pro or newer, 8GB+ RAM, iOS 18.1+, check region settings"
+    },
+    {
+      "code": "6101",
+      "description": "Neural Engine timeout",
+      "category": "iPhone 16+",
+      "hardware": true,
+      "severity": "medium",
+      "solution": "Reset device, if persists may indicate A-series chip degradation"
     }
   ],
   "mac_diagnostics": [

@@ -311,6 +311,41 @@
       },
       "price_range": "$25-50",
       "difficulty": "Expert"
+    },
+    {
+      "name": "SN2900",
+      "designation": "USB-C Controller (A19)",
+      "package": "BGA 52-ball",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "USB-C Power Delivery 3.1",
+        "Fast charging up to 45W",
+        "DisplayPort Alt Mode",
+        "Thunderbolt passthrough",
+        "Reverse charging"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Slow charging only",
+        "USB-C not detected",
+        "No data transfer",
+        "Overheating"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.400-0.520V",
+          "CC2": "0.400-0.520V"
+        },
+        "pp5v0_usb": "5.0V / 9V / 15V negotiated",
+        "current_draw": "Normal: 0.1-3.0A depending on charger"
+      },
+      "price_range": "$18-25",
+      "difficulty": "Expert"
     }
   ],
   "power_ics": [
@@ -380,6 +415,50 @@
         "Thermal throttling"
       ],
       "price_range": "$25-45",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00878",
+      "designation": "PMIC (A18 Bionic)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus"
+      ],
+      "functions": [
+        "Power regulation",
+        "Battery management",
+        "Thermal control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Random shutdowns",
+        "Battery not charging"
+      ],
+      "price_range": "$15-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00912",
+      "designation": "PMIC (A19)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "Power regulation",
+        "Battery management",
+        "Fast charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Overheating"
+      ],
+      "price_range": "$20-30",
       "difficulty": "Expert"
     }
   ],
@@ -542,6 +621,77 @@
       ],
       "price_range": "$40-80",
       "difficulty": "Expert"
+    },
+    {
+      "name": "Qualcomm X65",
+      "designation": "Modem (5G mmWave)",
+      "package": "PoP",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Plus"
+      ],
+      "functions": [
+        "5G Sub-6",
+        "5G mmWave",
+        "Carrier aggregation",
+        "WiFi calling"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "Searching...",
+        "Baseband error -1",
+        "No IMEI"
+      ],
+      "price_range": "$80-120",
+      "difficulty": "Expert (reballing required)"
+    },
+    {
+      "name": "Qualcomm X70",
+      "designation": "Modem (5G Advanced)",
+      "package": "PoP",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPhone 16 Plus"
+      ],
+      "functions": [
+        "5G-Advanced",
+        "Satellite connectivity",
+        "AI modem optimization"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "No satellite SOS",
+        "Baseband error"
+      ],
+      "price_range": "$100-150",
+      "difficulty": "Expert (reballing required)"
+    },
+    {
+      "name": "Apple 5G Modem (custom)",
+      "designation": "Apple Silicon Modem",
+      "package": "Integrated",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "5G-Advanced",
+        "Satellite v2",
+        "Ultra low power mode"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "No satellite",
+        "Searching permanently"
+      ],
+      "price_range": "N/A (logic board replacement)",
+      "difficulty": "N/A (non-replaceable)"
     }
   ],
   "nand_ics": [
