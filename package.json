@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
-    "build": "vite build --config vite.client.config.ts && vite build",
+    "build": "vite build --config vite.client.config.ts && vite build && npm run postbuild",
+    "postbuild": "cp -r public/images dist/ && cp -r public/data dist/ && echo 'Copied public assets to dist'",
     "preview": "wrangler pages dev dist",
     "deploy": "npm run build && wrangler pages deploy dist",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",

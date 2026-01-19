@@ -3,7 +3,8 @@
  * Full homepage with all React sections
  */
 
-const { createElement: h, useState, useEffect } = React;
+// h is already defined in shared-components.js
+const { useState, useEffect } = React;
 
 // ============================================
 // SITE CONFIG

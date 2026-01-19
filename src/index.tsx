@@ -45,8 +45,9 @@ app.get('/test-click', (c) => {
         <title>NEXX - Click Test</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- React Production from jsDelivr (better CORS) -->
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-100 p-4">
         <div id="app"></div>
@@ -158,9 +159,9 @@ app.get('/nexx', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         
-        <!-- React from CDN (dev mode for debugging) -->
-        <script crossorigin src="https://unpkg.com/react@18/umd/react-development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- React Production from jsDelivr (better CORS) -->
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
@@ -295,8 +296,9 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+        <!-- React Production from jsDelivr (better CORS) -->
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
         <style>
           html { scroll-behavior: smooth; }
         </style>

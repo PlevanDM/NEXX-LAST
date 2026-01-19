@@ -3,7 +3,8 @@
  * Калькулятор вартості ремонту
  */
 
-const { createElement: h, useState } = React;
+// h is already defined in shared-components.js
+const { useState } = React;
 
 // ============================================
 // DATA - Services by Device
