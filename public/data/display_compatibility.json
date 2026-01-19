@@ -1,0 +1,37 @@
+{
+  "interchangeable_groups": {
+    "group_1": {
+      "models": [
+        "iPhone X",
+        "iPhone XS"
+      ],
+      "note": "Взаимозаменяемы, требуется перепрограммирование True Tone"
+    },
+    "group_2": {
+      "models": [
+        "iPhone 11",
+        "iPhone XR"
+      ],
+      "note": "LCD дисплеи, разные разрешения, не совместимы"
+    },
+    "group_3": {
+      "models": [
+        "iPhone 12",
+        "iPhone 12 Pro"
+      ],
+      "note": "Полностью взаимозаменяемы"
+    },
+    "group_4": {
+      "models": [
+        "iPhone 13",
+        "iPhone 13 Pro"
+      ],
+      "note": "Разные частоты обновления (60Hz vs 120Hz ProMotion)"
+    }
+  },
+  "touch_ic_locations": {
+    "iPhone_6_Plus": "U2402 (Cumulus) + U2401 (Meson)",
+    "iPhone_7": "Integrated in display assembly",
+    "iPhone_X_up": "Integrated OLED controller"
+  }
+}

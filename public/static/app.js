@@ -872,51 +872,105 @@ const BoardReferencePanel = ({ data, onClose }) => {
         h('button', { onClick: onClose, className: 'w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 text-xl' }, '×')
       ),
       h('div', { className: 'flex-1 overflow-y-auto p-6 space-y-4' },
-        ...models.map((model, idx) =>
+        ...Object.entries(data).filter(([key]) => !['models', 'generated_at', 'attribution'].includes(key)).map(([boardCode, boardData], idx) =>
           h(Surface, {
-            key: idx,
+            key: boardCode,
             className: 'space-y-4 border border-emerald-100/60 bg-gradient-to-br from-white via-emerald-50/30 to-white'
           },
+            // Header with board info
             h('div', { className: 'flex flex-col md:flex-row md:items-start md:justify-between gap-4' },
               h('div', { className: 'space-y-2' },
-                h('h3', { className: 'text-xl font-semibold text-slate-800' }, model.label),
-                h('p', { className: 'text-sm text-slate-500' }, `${model.system_product_name} • ${model.family}`)
+                h('h3', { className: 'text-xl font-bold text-slate-800' }, boardCode),
+                h('p', { className: 'text-sm text-slate-600' }, boardData.model),
+                h('p', { className: 'text-xs text-slate-500' }, `Years: ${boardData.years} • Board: ${boardData.board_code || 'N/A'}`)
               ),
-              h('div', { className: 'flex flex-wrap gap-2 text-xs text-slate-600' },
-                model.model_years?.length > 0 && h('span', { className: cn(design.tag, 'bg-emerald-50/70 text-emerald-700') }, `Годы: ${model.model_years.join(', ')}`),
-                model.minimum_os_version && h('span', { className: cn(design.tag, 'bg-blue-50/70 text-blue-700') }, `minOS ${model.minimum_os_version}`),
-                model.maximum_os_version && h('span', { className: cn(design.tag, 'bg-blue-50/70 text-blue-700') }, `maxOS ${model.maximum_os_version}`)
+              h('div', { className: 'flex flex-wrap gap-2' },
+                h('span', { className: 'px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold' }, boardData.cpu),
+                boardData.gpu && h('span', { className: 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold' }, boardData.gpu),
+                h('span', { className: 'px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold' }, boardData.ram)
               )
             ),
-            model.board_product && model.board_product.length > 0 && h('p', { className: 'text-sm text-slate-600' }, `BoardProduct: ${model.board_product.join(', ')}`),
-            model.board_codes && h('p', { className: 'text-sm text-slate-600' }, `Board codes: ${renderBoardCodes(model.board_codes)}`),
-            model.board_revision && h('p', { className: 'text-sm text-slate-600' }, `Revision: ${model.board_revision}`),
-            h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-700' },
-              h('div', { className: 'rounded-2xl bg-white/75 border border-white/80 p-4 shadow-sm' },
-                h('p', { className: 'font-semibold text-slate-800 mb-2 uppercase tracking-wide text-xs' }, 'CPU'),
-                h('ul', { className: 'space-y-1 text-slate-600' },
-                  ...(model.cpu_options || []).map((cpu, cpuIdx) => h('li', { key: cpuIdx }, cpu))
-                )
-              ),
-              h('div', { className: 'rounded-2xl bg-white/75 border border-white/80 p-4 shadow-sm' },
-                h('p', { className: 'font-semibold text-slate-800 mb-2 uppercase tracking-wide text-xs' }, 'GPU'),
-                h('ul', { className: 'space-y-1 text-slate-600' },
-                  ...(model.gpu_options || []).map((gpu, gpuIdx) => h('li', { key: gpuIdx }, gpu))
-                )
-              ),
-              h('div', { className: 'rounded-2xl bg-white/75 border border-white/80 p-4 shadow-sm' },
-                h('p', { className: 'font-semibold text-slate-800 mb-2 uppercase tracking-wide text-xs' }, 'RAM'),
-                h('ul', { className: 'space-y-1 text-slate-600' },
-                  ...(model.ram_options || []).map((ram, ramIdx) => h('li', { key: ramIdx }, ram))
+
+            // Chips information
+            boardData.chips && h('div', { className: 'space-y-3' },
+              h('h4', { className: 'font-bold text-indigo-600' }, '🔧 Маркировки чипов:'),
+              h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
+                ...Object.entries(boardData.chips).map(([chipName, chipInfo]) =>
+                  h('div', { key: chipName, className: 'bg-white rounded-xl p-3 border border-gray-200' },
+                    h('div', { className: 'flex justify-between items-start' },
+                      h('div', null,
+                        h('p', { className: 'font-bold text-sm text-gray-800' }, chipName),
+                        h('p', { className: 'text-xs text-gray-600' }, chipInfo.marking),
+                        h('p', { className: 'text-xs text-indigo-600' }, `Location: ${chipInfo.location}`)
+                      ),
+                      h('div', { className: 'text-right' },
+                        h('span', { className: 'text-xs bg-gray-100 px-2 py-1 rounded' }, chipInfo.package),
+                        h('p', { className: 'text-xs text-gray-500 mt-1' }, chipInfo.type)
+                      )
+                    )
+                  )
                 )
               )
             ),
-            model.source && h('div', { className: 'text-xs text-slate-500 flex flex-wrap gap-2 items-center' },
-              h('span', null, model.source.license || ''),
-              model.source.html && h('a', { href: model.source.html, target: '_blank', rel: 'noreferrer', className: 'text-blue-600 hover:underline' }, 'Источник'),
-              model.platform_feature && h('span', { className: cn(design.tag, 'bg-white/70 text-slate-600') }, `PlatformFeature ${model.platform_feature}`),
-              model.smc_generation != null && h('span', { className: cn(design.tag, 'bg-white/70 text-slate-600') }, `SMC Gen ${model.smc_generation}`),
-              model.smc_platform?.length > 0 && h('span', { className: cn(design.tag, 'bg-white/70 text-slate-600') }, `SMC Platform ${model.smc_platform.join(' ')}`)
+
+            // Test points
+            boardData.test_points && h('div', { className: 'space-y-3' },
+              h('h4', { className: 'font-bold text-green-600' }, '📍 Тест-поинты:'),
+              h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-2' },
+                ...Object.entries(boardData.test_points).map(([point, value]) =>
+                  h('div', { key: point, className: 'bg-green-50 rounded-lg p-2' },
+                    h('p', { className: 'text-xs font-bold text-green-800' }, point),
+                    h('p', { className: 'text-sm text-green-600' }, value)
+                  )
+                )
+              )
+            ),
+
+            // Resistance values
+            boardData.resistance_values && h('div', { className: 'space-y-3' },
+              h('h4', { className: 'font-bold text-orange-600' }, '⚡ Сопротивления:'),
+              h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-2' },
+                ...Object.entries(boardData.resistance_values).map(([line, resistance]) =>
+                  h('div', { key: line, className: 'bg-orange-50 rounded-lg p-2' },
+                    h('p', { className: 'text-xs font-bold text-orange-800' }, line),
+                    h('p', { className: 'text-sm text-orange-600' }, resistance)
+                  )
+                )
+              )
+            ),
+
+            // Common failures
+            boardData.common_failures && h('div', { className: 'space-y-2' },
+              h('h4', { className: 'font-bold text-red-600' }, '⚠️ Типичные неисправности:'),
+              h('ul', { className: 'space-y-1' },
+                ...boardData.common_failures.map((failure, idx) =>
+                  h('li', { key: idx, className: 'text-sm text-red-700' }, `• ${failure}`)
+                )
+              )
+            ),
+
+            // Donor boards
+            boardData.donor_boards && h('div', { className: 'space-y-2' },
+              h('h4', { className: 'font-bold text-purple-600' }, '🔄 Платы-доноры:'),
+              h('div', { className: 'flex flex-wrap gap-2' },
+                ...boardData.donor_boards.map((donor, idx) =>
+                  h('span', { key: idx, className: 'px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm' }, donor)
+                )
+              )
+            )
+          )
+        ),
+        
+        // Show old format models if they exist
+        ...(models || []).map((model, idx) =>
+          h(Surface, {
+            key: `old-${idx}`,
+            className: 'space-y-4 border border-gray-200 bg-gray-50'
+          },
+            h('div', null,
+              h('h3', { className: 'text-lg font-semibold text-gray-700' }, model.label || 'Unknown Model'),
+              h('p', { className: 'text-sm text-gray-500' }, `${model.system_product_name || ''} • ${model.family || ''}`),
+              model.board_codes && h('p', { className: 'text-xs text-gray-500 mt-2' }, `Board codes: ${renderBoardCodes(model.board_codes)}`)
             )
           )
         ),

@@ -1,1505 +1,312 @@
 {
-  "generated_at": "2026-01-17T17:04:06.970261+00:00",
-  "dataset": "mac_board_reference",
-  "description": "Reference of Apple Mac logic boards derived from OpenCorePkg AppleModels database (BSD-3-Clause)",
-  "models": [
-    {
-      "label": "MacBook Pro (16-inch, 2019)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro16,1",
-      "system_report_names": [
-        "MacBook Pro (16-inch, 2019)"
-      ],
-      "marketing_names": [
-        "MacBook Pro (16-inch, 2019)"
-      ],
-      "a_numbers": [
-        "A2141"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-E1008331FDC96864"
-      ],
-      "board_revision": "0x3",
-      "board_type": "0xa",
-      "board_codes": [
-        "N9PR"
-      ],
-      "model_codes": [
-        "MD6N",
-        "MD6M",
-        "MD6X",
-        "MD6Q",
-        "MD6P",
-        "MD6R",
-        "MD6W",
-        "MD6V",
-        "PG8W",
-        "PG8V",
-        "PG8Y",
-        "PG8X",
-        "PG8T",
-        "PG90",
-        "PG91"
-      ],
-      "model_years": [
-        2019,
-        2020,
-        2021
-      ],
-      "cpu_options": [
-        "Intel Core i7-9750H @ 2.60 GHz",
-        "Intel Core i9-9880H @ 2.30 GHz",
-        "Intel Core i9-9980HK @ 2.40 GHz"
-      ],
-      "cpu_codenames": [
-        "Coffee Lake",
-        "Coffee Lake",
-        "Coffee Lake"
-      ],
-      "gpu_options": [
-        "AMD Radeon Pro 5300M",
-        "AMD Radeon Pro 5500M"
-      ],
-      "ram_options": [
-        "16GB 2666 MHz LPDDR4 SDRAM"
-      ],
-      "minimum_os_version": "10.15.1",
-      "maximum_os_version": null,
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x35",
-        "0x32",
-        "0x66",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x32",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xfdaff066",
-        "firmware_features_mask": "0xffffff7f",
-        "extended_firmware_features": "0x8fdaff066",
-        "extended_firmware_features_mask": "0x8ffffff7f"
+  "820-00165": {
+    "model": "MacBook Pro 13\" 2016-2017 Touch Bar",
+    "years": "2016-2017",
+    "cpu": "Intel Core i5-6267U / i7-6567U",
+    "gpu": "Intel Iris 550",
+    "ram": "8GB/16GB LPDDR3 on board",
+    "board_code": "J130",
+    "chips": {
+      "SMC": {
+        "marking": "980YFE1",
+        "location": "U4900",
+        "type": "System Management Controller",
+        "package": "BGA"
       },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP161.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP161.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
+      "ISL9239": {
+        "marking": "ISL9239HRZ",
+        "location": "U7800",
+        "type": "Charging Controller",
+        "package": "QFN-32"
+      },
+      "CD3215C00": {
+        "marking": "CD3215C00",
+        "location": "U3100/U3200",
+        "type": "USB-C Controller",
+        "package": "BGA-96"
+      },
+      "TPS65987D": {
+        "marking": "TPS65987DDHRSHR",
+        "location": "U3300/U3400",
+        "type": "USB-C PD Controller",
+        "package": "WQFN-54"
+      },
+      "TPS62180": {
+        "marking": "TPS62180",
+        "location": "U8410",
+        "type": "3.3V Buck Converter",
+        "package": "QFN-16"
+      },
+      "FDMF6808N": {
+        "marking": "FDMF6808N",
+        "location": "U7400",
+        "type": "CPU VCore Controller",
+        "package": "PQFN-31"
+      },
+      "BCM15700A2": {
+        "marking": "BCM15700A2KMLG",
+        "location": "U5870",
+        "type": "Camera Controller",
+        "package": "BGA"
       }
     },
-    {
-      "label": "MacBook Pro 16-inch with 5600M, 2020",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro16,4",
-      "system_report_names": [
-        "MacBook Pro (16-inch, 2019)"
-      ],
-      "marketing_names": [
-        "MacBook Pro 16-inch with 5600M, 2020"
-      ],
-      "a_numbers": [
-        "A2141"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-A61BADE1FDAD7B05"
-      ],
-      "board_revision": "0x3",
-      "board_type": "0xa",
-      "board_codes": [
-        "0000"
-      ],
-      "model_codes": [
-        "MD6T",
-        "03T9",
-        "0DH8",
-        "0051",
-        "05J5"
-      ],
-      "model_years": [
-        2020,
-        2021
-      ],
-      "cpu_options": [
-        "Intel Core i7-9750H @ 2.60 GHz",
-        "Intel Core i9-9880H @ 2.30 GHz",
-        "Intel Core i9-9980HK @ 2.40 GHz"
-      ],
-      "cpu_codenames": [
-        "Coffee Lake",
-        "Coffee Lake",
-        "Coffee Lake"
-      ],
-      "gpu_options": [
-        "AMD Radeon Pro 5600M"
-      ],
-      "ram_options": [
-        "16GB 2666 MHz LPDDR4 SDRAM"
-      ],
-      "minimum_os_version": "10.15.5",
-      "maximum_os_version": null,
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x32",
-        "0x31",
-        "0x35",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x32",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xfdaff066",
-        "firmware_features_mask": "0xffffff7f",
-        "extended_firmware_features": "0x8fdaff066",
-        "extended_firmware_features_mask": "0x8ffffff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP164.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP164.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
+    "test_points": {
+      "PPBUS_G3H": "12.6V",
+      "PP3V3_G3H": "3.3V",
+      "PP5V_G3S": "5V",
+      "PP3V3_S5": "3.3V",
+      "PP1V8_S3": "1.8V",
+      "PP1V2_S3": "1.2V",
+      "PPVRTC_G3H": "3.0V",
+      "PP3V3_S0": "3.3V in S0 state"
     },
-    {
-      "label": "15\" MacBook Pro with Thunderbolt 3 and Touch ID (Mid 2017)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro14,3",
-      "system_report_names": [
-        "MacBook Pro (15-inch, 2017)"
-      ],
-      "marketing_names": [
-        "15\" MacBook Pro with Thunderbolt 3 and Touch ID (Mid 2017)"
-      ],
-      "a_numbers": [
-        "A1707"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-551B86E5744E2388"
-      ],
-      "board_revision": "0x1c",
-      "board_type": "0xa",
-      "board_codes": [
-        "J1JH",
-        "J1JJ",
-        "J1JK",
-        "J1JL",
-        "J1JM",
-        "J1JN",
-        "J1JP",
-        "J1JQ",
-        "J1JR",
-        "HRDM",
-        "HRDR",
-        "HRFF",
-        "HRFK",
-        "HRL5",
-        "HRLK",
-        "HYR3",
-        "HYR7",
-        "HYRW",
-        "J1HH",
-        "J1HJ",
-        "J1HK",
-        "J1HL",
-        "J1HM",
-        "J1HN",
-        "J1HP",
-        "J1HQ",
-        "J1HR",
-        "HRDK",
-        "HRDP",
-        "HRFC",
-        "HRFH",
-        "HRL3",
-        "HRLH",
-        "HYR1",
-        "HYR5",
-        "HYRT",
-        "J1JT",
-        "J1JV",
-        "J1JW",
-        "J1JX",
-        "J1JY",
-        "J1K0",
-        "J1K1",
-        "J1K2",
-        "J1K3",
-        "J1J5",
-        "J1J6",
-        "J1J7",
-        "J1J8",
-        "J1J9",
-        "J1JC",
-        "J1JD",
-        "J1JF",
-        "J1JG",
-        "HRDL",
-        "HRDQ",
-        "HRFD",
-        "HRFJ",
-        "HRL4",
-        "HRLJ",
-        "HYR2",
-        "HYR6",
-        "HYRV"
-      ],
-      "model_codes": [
-        "HTD5",
-        "HTD6",
-        "HTD8",
-        "HTD9",
-        "HTDF",
-        "HTDH",
-        "HTDD",
-        "JD06",
-        "JD04",
-        "JHTD",
-        "J6CQ",
-        "J6CP",
-        "J939",
-        "J925",
-        "J926",
-        "HTDC",
-        "J8KC",
-        "J93P",
-        "J93F",
-        "J93G",
-        "J93D",
-        "J93C",
-        "J93N",
-        "J93L",
-        "J93M",
-        "J93J",
-        "J93K",
-        "J93H",
-        "J936",
-        "J937",
-        "J934",
-        "J935",
-        "J932",
-        "J933",
-        "J931",
-        "J938",
-        "HTD7",
-        "HTDG"
-      ],
-      "model_years": [
-        2017,
-        2018
-      ],
-      "cpu_options": [
-        "Intel Core i7-7700HQ @ 2.80 GHz",
-        "Intel Core i7-7820HQ @ 2.90 GHz",
-        "Intel Core i7-7920HQ @ 3.10 GHz"
-      ],
-      "cpu_codenames": [
-        "Kaby Lake",
-        "Kaby Lake",
-        "Kaby Lake"
-      ],
-      "gpu_options": [
-        "AMD Radeon Pro 555",
-        "AMD Radeon Pro 560"
-      ],
-      "ram_options": [
-        "2133 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.12.5",
-      "maximum_os_version": "13.7.7",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x38",
-        "0x30",
-        "0x67",
-        "0x61",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x1a",
-      "firmware": {
-        "bios_version": "529.140.2.0.0",
-        "bios_release_date": "06/23/2024",
-        "firmware_features": "0xff0ff57e",
-        "firmware_features_mask": "0xff1fff7f",
-        "extended_firmware_features": "0x8ff0ff57e",
-        "extended_firmware_features_mask": "0x8ff1fff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP143.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP143.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "13\" MacBook Pro with Thunderbolt 3 and Touch ID (2016)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro13,2",
-      "system_report_names": [
-        "MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)"
-      ],
-      "marketing_names": [
-        "13\" MacBook Pro with Thunderbolt 3 and Touch ID (2016)"
-      ],
-      "a_numbers": [
-        "A1706"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-66E35819EE2D0D05"
-      ],
-      "board_revision": "0x14",
-      "board_type": "0xa",
-      "board_codes": [
-        "H9W8",
-        "H9WC",
-        "H9WP",
-        "H9WR",
-        "H9W7",
-        "H9W9",
-        "H9WN",
-        "H9WQ",
-        "H1QG",
-        "H1QJ",
-        "H9WK",
-        "H9WM",
-        "H0D3",
-        "H0D5",
-        "H9WD",
-        "H9WG",
-        "H1QF",
-        "H1QH",
-        "H9WJ",
-        "H9WL",
-        "H0F2",
-        "H0F5",
-        "H9X4",
-        "H9X6",
-        "H0D9",
-        "H0DD",
-        "H9WV",
-        "H9WX",
-        "H0DX",
-        "H0F0",
-        "H9X0",
-        "H9X2",
-        "H0F1",
-        "H0F4",
-        "H9X3",
-        "H9X5",
-        "H0D8",
-        "H0DC",
-        "H9WT",
-        "H9WW",
-        "H0DV",
-        "H0DY",
-        "H9WY",
-        "H9X1",
-        "H0FD",
-        "H0FG",
-        "H9XK",
-        "H9XM",
-        "H5F6",
-        "H5F8",
-        "H9X8",
-        "H9XC",
-        "H0F7",
-        "H0F9",
-        "H9XF",
-        "H9XH",
-        "H0FC",
-        "H0FF",
-        "H9XJ",
-        "H9XL",
-        "H5F5",
-        "H5F7",
-        "H9X7",
-        "H9X9",
-        "H0F6",
-        "H0F8",
-        "H9XD",
-        "H9XG"
-      ],
-      "model_codes": [
-        "GYFH",
-        "GTDX",
-        "GTFJ",
-        "GYGR",
-        "HF1R",
-        "HF1P",
-        "HF1Q",
-        "HF1T",
-        "HP49",
-        "HP4D",
-        "HWH2",
-        "HXD5",
-        "GTFK"
-      ],
-      "model_years": [
-        2016,
-        2017
-      ],
-      "cpu_options": [
-        "Intel Core i7-6567U @ 3.30 GHz",
-        "Intel Core i5-6267U @ 2.90 GHz",
-        "Intel Core i5-6287U @ 3.10 GHz"
-      ],
-      "cpu_codenames": [
-        "Skylake",
-        "Skylake",
-        "Skylake"
-      ],
-      "gpu_options": [
-        "Intel Iris Graphics 550"
-      ],
-      "ram_options": [
-        "2133 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.12.1",
-      "maximum_os_version": "12.7.6",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x37",
-        "0x39",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x1a",
-      "firmware": {
-        "bios_version": "529.120.1.0.0",
-        "bios_release_date": "03/14/2024",
-        "firmware_features": "0xfc0fe137",
-        "firmware_features_mask": "0xff1fff3f",
-        "extended_firmware_features": "0x8fc0fe137",
-        "extended_firmware_features_mask": "0x8ff1fff3f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP132.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP132.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "13\" MacBook Pro with Thunderbolt 3 (Late 2016)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro13,1",
-      "system_report_names": [
-        "MacBook Pro (13-inch, 2016, Two Thunderbolt 3 ports)"
-      ],
-      "marketing_names": [
-        "13\" MacBook Pro with Thunderbolt 3 (Late 2016)"
-      ],
-      "a_numbers": [
-        "A1708"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-473D31EABEB93F9B"
-      ],
-      "board_revision": "0x14",
-      "board_type": "0xa",
-      "board_codes": [
-        "HMHK",
-        "HMHL",
-        "HMHM",
-        "HMHC",
-        "HMHD",
-        "HMHF",
-        "HMHN",
-        "HMHP",
-        "HMHQ",
-        "HMHG",
-        "HMHH",
-        "HMHJ"
-      ],
-      "model_codes": [
-        "GVC1",
-        "GVC8",
-        "GY25",
-        "GY6N",
-        "HV5M",
-        "HV5H",
-        "HV5J",
-        "HV5K",
-        "HV5L",
-        "HV5G",
-        "HV5D",
-        "HV5N",
-        "HWCH",
-        "HYP5",
-        "J21W",
-        "J5KW"
-      ],
-      "model_years": [
-        2016,
-        2017
-      ],
-      "cpu_options": [
-        "Intel Core i5-6360U @ 2.00 GHz",
-        "Intel Core i7-6660U @ 2.40 GHz"
-      ],
-      "cpu_codenames": [
-        "Skylake",
-        "Skylake"
-      ],
-      "gpu_options": [
-        "Intel Iris 540"
-      ],
-      "ram_options": [
-        "8GB 1866 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.12",
-      "maximum_os_version": "12.7.6",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x33",
-        "0x30",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x1a",
-      "firmware": {
-        "bios_version": "529.120.1.0.0",
-        "bios_release_date": "03/14/2024",
-        "firmware_features": "0xfc0fe137",
-        "firmware_features_mask": "0xff1fff3f",
-        "extended_firmware_features": "0x8fc0fe137",
-        "extended_firmware_features_mask": "0x8ff1fff3f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP131.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP131.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "13\" MacBook Pro with Retina display (Early 2015)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro12,1",
-      "system_report_names": [
-        "MacBook Pro (Retina, 13-inch, Early 2015)"
-      ],
-      "marketing_names": [
-        "13\" MacBook Pro with Retina display (Early 2015)"
-      ],
-      "a_numbers": [
-        "A1502"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-E43C1C25D4880AD6"
-      ],
-      "board_revision": null,
-      "board_type": "0xa",
-      "board_codes": [
-        "GDVV",
-        "GDVQ",
-        "GDVW",
-        "GDW6",
-        "GDVY",
-        "GDVT",
-        "GDW4",
-        "GDW5",
-        "GDVN",
-        "GDVR",
-        "GDVN",
-        "GDVR",
-        "GQ10",
-        "GDW1",
-        "GDW2",
-        "GDW3"
-      ],
-      "model_codes": [
-        "H1DP",
-        "FVH3",
-        "FVH4",
-        "FVH5",
-        "FVH6",
-        "FVH7",
-        "FVH8",
-        "FVH9",
-        "GKJG",
-        "GKJM",
-        "GKJN",
-        "GL36",
-        "GL37",
-        "GM0V",
-        "GM0W",
-        "GM10",
-        "GM11",
-        "GM12",
-        "GM13",
-        "GQR4",
-        "GQR5",
-        "GQR6",
-        "H1DQ",
-        "GN24",
-        "HV59",
-        "GL34",
-        "GL35",
-        "J69C",
-        "GM0Y",
-        "HTYF",
-        "GMDF",
-        "H1WK",
-        "J4NY"
-      ],
-      "model_years": [
-        2015,
-        2016,
-        2017
-      ],
-      "cpu_options": [
-        "Intel Core i5-5257U @ 2.70 GHz",
-        "Intel Core i5-5287U @ 2.90 GHz",
-        "Intel Core i7-5557U @ 3.10 GHz"
-      ],
-      "cpu_codenames": [
-        "Broadwell",
-        "Broadwell",
-        "Broadwell"
-      ],
-      "gpu_options": [
-        "Intel Iris 6100"
-      ],
-      "ram_options": [
-        "8GB 1866 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.10.2",
-      "maximum_os_version": "12.7.6",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x35",
-        "0x32",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x2",
-      "firmware": {
-        "bios_version": "489.0.0.0.0",
-        "bios_release_date": "10/07/2023",
-        "firmware_features": "0xfd0ff576",
-        "firmware_features_mask": "0xff1fff7f",
-        "extended_firmware_features": "0x8fd0ff576",
-        "extended_firmware_features_mask": "0x8ff1fff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP121.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP121.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "15\" MacBook Pro with Retina display (Mid 2014)",
-      "family": "MacBook Pro",
-      "system_product_name": "MacBookPro11,2",
-      "system_report_names": [
-        "MacBook Pro (Retina, 15-inch, Mid 2014)"
-      ],
-      "marketing_names": [
-        "15\" MacBook Pro with Retina display (Mid 2014)"
-      ],
-      "a_numbers": [
-        "A1398"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-3CBD00234E554E41"
-      ],
-      "board_revision": null,
-      "board_type": "0xa",
-      "board_codes": [
-        "FJQW",
-        "FJRP",
-        "FJRR",
-        "FJRH",
-        "FJRJ",
-        "FJRN",
-        "FJRC",
-        "FJRV",
-        "FJTQ",
-        "FJT1",
-        "FJTH",
-        "FJTL",
-        "FJRY",
-        "FJTC",
-        "FJTP",
-        "FJR7",
-        "FJR9",
-        "FJRM",
-        "G3M6",
-        "G3M8",
-        "G3M9",
-        "G3M4",
-        "G3M5",
-        "G3M7",
-        "G3MG",
-        "G3MJ",
-        "G3MK"
-      ],
-      "model_codes": [
-        "G86R",
-        "FD56",
-        "G3QC",
-        "G3QG",
-        "G3QN",
-        "G8J7",
-        "G8F4",
-        "G8L1",
-        "G974",
-        "G9L8",
-        "G9L9",
-        "G9L7",
-        "G96P",
-        "G96Q",
-        "G96K",
-        "G96N",
-        "G96L",
-        "G96M",
-        "G973",
-        "G9L6",
-        "GDPP",
-        "G9JN",
-        "G86Q",
-        "G86P",
-        "G9FT"
-      ],
-      "model_years": [
-        2013,
-        2014,
-        2015
-      ],
-      "cpu_options": [
-        "Intel Core i7-4770HQ @ 2.20 GHz",
-        "Intel Core i7-4850HQ @ 2.30 GHz",
-        "Intel Core i7-4870HQ @ 2.50 GHz",
-        "Intel Core i7-4960HQ @ 2.60 GHz",
-        "Intel Core i7-4750HQ @ 2.00 GHz",
-        "Intel Core i7-4980HQ @ 2.80 GHz"
-      ],
-      "cpu_codenames": [
-        "Crystal Well",
-        "Crystal Well",
-        "Crystal Well",
-        "Crystal Well",
-        "Crystal Well",
-        "Crystal Well"
-      ],
-      "gpu_options": [
-        "Intel Iris 5200 Pro graphics"
-      ],
-      "ram_options": [
-        "1600 MHz DDR3L SDRAM"
-      ],
-      "minimum_os_version": "10.9.4",
-      "maximum_os_version": "11.7.10",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x34",
-        "0x35",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x2",
-      "firmware": {
-        "bios_version": "478.0.0.0.0",
-        "bios_release_date": "01/13/2023",
-        "firmware_features": "0xeb0ff577",
-        "firmware_features_mask": "0xff1fff7f",
-        "extended_firmware_features": "0xeb0ff577",
-        "extended_firmware_features_mask": "0xff1fff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookPro/MBP112.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookPro/MBP112.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "MacBook Air (Retina, 13-inch, 2019)",
-      "family": "MacBook Air",
-      "system_product_name": "MacBookAir8,2",
-      "system_report_names": [
-        "MacBook Air (Retina, 13-inch, 2019)"
-      ],
-      "marketing_names": [
-        "MacBook Air (Retina, 13-inch, 2019)"
-      ],
-      "a_numbers": [
-        "A1932"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-226CB3C6A851A671"
-      ],
-      "board_revision": "0x3",
-      "board_type": "0xa",
-      "board_codes": [
-        "0000"
-      ],
-      "model_codes": [
-        "LYWM",
-        "M6X5",
-        "LYWG",
-        "LYWT",
-        "LYWV",
-        "LYWP",
-        "LYWQ",
-        "LYWR",
-        "M6X7",
-        "LYWL",
-        "LYWN",
-        "LYWH",
-        "LYWJ",
-        "LYWK",
-        "NY1J",
-        "NY1K",
-        "N797",
-        "P0GX",
-        "P0GW",
-        "P4L9",
-        "P4LD",
-        "P4LC"
-      ],
-      "model_years": [
-        2019,
-        2020
-      ],
-      "cpu_options": [
-        "Intel Core i5-8210Y @ 1.60 GHz"
-      ],
-      "cpu_codenames": [
-        "Amber Lake Y"
-      ],
-      "gpu_options": [
-        "Intel UHD 617"
-      ],
-      "ram_options": [
-        "8GB 2133 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.14.5",
-      "maximum_os_version": "14.7.7",
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x34",
-        "0x30",
-        "0x61",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x3a",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xfd8ff42e",
-        "firmware_features_mask": "0xff9fff3f",
-        "extended_firmware_features": "0x8fd8ff42e",
-        "extended_firmware_features_mask": "0x8ff9fff3f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookAir/MBA82.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookAir/MBA82.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "MacBook Air (Retina, 13-inch, 2018)",
-      "family": "MacBook Air",
-      "system_product_name": "MacBookAir8,1",
-      "system_report_names": [
-        "MacBook Air (Retina, 13-inch, 2018)"
-      ],
-      "marketing_names": [
-        "MacBook Air (Retina, 13-inch, 2018)"
-      ],
-      "a_numbers": [
-        "A1932"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-827FAC58A8FDFA22"
-      ],
-      "board_revision": "0x3",
-      "board_type": "0xa",
-      "board_codes": [
-        "KN2R",
-        "KN7H",
-        "KN7V",
-        "KN86",
-        "KN8M",
-        "KN34",
-        "KN3J",
-        "KN3Y",
-        "KMXD",
-        "KMXQ",
-        "KMY4",
-        "KMYH",
-        "KNDX",
-        "KNF8",
-        "KN9P",
-        "KNC2",
-        "KNCF",
-        "KNCR",
-        "KN5C",
-        "KN5P",
-        "KN62",
-        "KN6F",
-        "KN0L",
-        "KN0Y",
-        "KN19",
-        "KN1N",
-        "KNGC"
-      ],
-      "model_codes": [
-        "JK78",
-        "JK77",
-        "JK7C",
-        "JK7D",
-        "JK7F",
-        "JK7G",
-        "JK7L",
-        "JK7M",
-        "JK7P",
-        "JK7Q",
-        "JK7R",
-        "JK7T",
-        "LQDD",
-        "LR0X",
-        "LLDP",
-        "LR0Y",
-        "LLDQ",
-        "LLDN",
-        "MCKR",
-        "MCKT",
-        "LK88",
-        "LK87",
-        "LK86",
-        "MCKP",
-        "MCKQ",
-        "LQDC"
-      ],
-      "model_years": [
-        2018,
-        2019
-      ],
-      "cpu_options": [
-        "Intel Core i5-8210Y @ 1.60 GHz"
-      ],
-      "cpu_codenames": [
-        "Amber Lake Y"
-      ],
-      "gpu_options": [
-        "Intel UHD 617"
-      ],
-      "ram_options": [
-        "8GB 2133 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.14.1",
-      "maximum_os_version": "14.7.7",
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x34",
-        "0x30",
-        "0x6b",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x3a",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xfd8ff42e",
-        "firmware_features_mask": "0xff9fff3f",
-        "extended_firmware_features": "0x8fd8ff42e",
-        "extended_firmware_features_mask": "0x8ff9fff3f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookAir/MBA81.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookAir/MBA81.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "13\" MacBook Air (Early 2015)",
-      "family": "Mac",
-      "system_product_name": "MacBookAir7,2",
-      "system_report_names": [
-        "MacBook Air (13-inch, Early 2015)",
-        "MacBook Air (13-inch, 2017)"
-      ],
-      "marketing_names": [
-        "13\" MacBook Air (Early 2015)",
-        "13\" MacBook Air (2017)"
-      ],
-      "a_numbers": [
-        "A1466"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-937CB26E2E02BB01"
-      ],
-      "board_revision": null,
-      "board_type": "0xa",
-      "board_codes": [
-        "G91Q",
-        "G91T",
-        "G91Y",
-        "G925",
-        "G928",
-        "G92C",
-        "G922",
-        "G929",
-        "G92F",
-        "G91R",
-        "G926",
-        "G92G"
-      ],
-      "model_codes": [
-        "G940",
-        "G941",
-        "G942",
-        "G943",
-        "G944",
-        "GKJT",
-        "GKJV",
-        "GLCN",
-        "GLCP",
-        "GM14",
-        "GM15",
-        "GM38",
-        "GM9G",
-        "GMC3",
-        "GN8C",
-        "GNJJ",
-        "H3QD",
-        "H3QF",
-        "H3QJ",
-        "H3QK",
-        "H569",
-        "HD80",
-        "GM6M",
-        "J6VL",
-        "GNKM",
-        "H8VV",
-        "H8VW",
-        "H8VT",
-        "H8VX",
-        "HF4H",
-        "HF4F",
-        "HF9N",
-        "GMD3",
-        "HDV6",
-        "HDV4",
-        "HDV5",
-        "HD7X",
-        "GL25",
-        "GL24",
-        "GL23",
-        "GL22",
-        "GL21",
-        "GL20",
-        "HD98",
-        "J8XH",
-        "J8XG",
-        "JCD6",
-        "J9TN",
-        "J9TQ",
-        "J9TP",
-        "MFWJ",
-        "LQF1",
-        "LQ07",
-        "J8N7",
-        "JC9H",
-        "J9HX",
-        "JFLY",
-        "JKHD",
-        "JKHF",
-        "J1WK",
-        "J1WL",
-        "J1WM",
-        "J1WV",
-        "J1WT"
-      ],
-      "model_years": [
-        2015,
-        2016,
-        2017,
-        2018,
-        2019
-      ],
-      "cpu_options": [
-        "Intel Core i5-5250U @ 1.60 GHz",
-        "Intel Core i7-5650U @ 2.20 GHz"
-      ],
-      "cpu_codenames": [
-        "Broadwell",
-        "Broadwell"
-      ],
-      "gpu_options": [
-        "Intel HD Graphics 6000"
-      ],
-      "ram_options": [
-        "1600 MHz LPDDR3 SDRAM"
-      ],
-      "minimum_os_version": "10.12.5",
-      "maximum_os_version": "12.7.6",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x31",
-        "0x33",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x2",
-      "firmware": {
-        "bios_version": "489.0.0.0.0",
-        "bios_release_date": "10/07/2023",
-        "firmware_features": "0xff0ff576",
-        "firmware_features_mask": "0xff1fff7f",
-        "extended_firmware_features": "0x8ff0ff576",
-        "extended_firmware_features_mask": "0x8ff1fff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookAir/MBA72.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookAir/MBA72.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "MacBook Air (Retina, 13-inch, 2020)",
-      "family": "MacBook Air",
-      "system_product_name": "MacBookAir9,1",
-      "system_report_names": [
-        "MacBook Air (Retina, 13-inch, 2020)"
-      ],
-      "marketing_names": [
-        "MacBook Air (Retina, 13-inch, 2020)"
-      ],
-      "a_numbers": [
-        "A2179"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-0CFF9C7C2B63DF8D"
-      ],
-      "board_revision": "0x4",
-      "board_type": "0xa",
-      "board_codes": [
-        "0000"
-      ],
-      "model_codes": [
-        "MNHP",
-        "MNHY",
-        "MNHX",
-        "MNHR",
-        "MNHQ",
-        "M6KL",
-        "M6KM",
-        "M6KH",
-        "M6KJ",
-        "M6KK",
-        "M6KG",
-        "MNJ0",
-        "MLVD",
-        "MLVF",
-        "Q72V"
-      ],
-      "model_years": [
-        2020
-      ],
-      "cpu_options": [
-        "Intel Core i3-1000NG4 @ 1.10 GHz",
-        "Intel Core i5-1030NG7 @ 1.10 GHz",
-        "Intel Core i7-1060NG7 @ 1.20 GHz"
-      ],
-      "cpu_codenames": [
-        "Ice Lake Y",
-        "Ice Lake Y",
-        "Ice Lake Y"
-      ],
-      "gpu_options": [
-        "Intel Iris Plus Graphics"
-      ],
-      "ram_options": [
-        "8 GB 3733 MHz LPDDR4X SDRAM"
-      ],
-      "minimum_os_version": "10.15.3",
-      "maximum_os_version": "15.6",
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x32",
-        "0x33",
-        "0x30",
-        "0x6b",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x3a",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xffaff06e",
-        "firmware_features_mask": "0xffffff7f",
-        "extended_firmware_features": "0x8ffaff06e",
-        "extended_firmware_features_mask": "0x8ffffff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/MacBookAir/MBA91.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/MacBookAir/MBA91.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "iMac (Retina 5K, 27-inch, 2020)",
-      "family": "iMac",
-      "system_product_name": "iMac20,1",
-      "system_report_names": [
-        "iMac (Retina 5K, 27-inch, 2020)"
-      ],
-      "marketing_names": [
-        "iMac (Retina 5K, 27-inch, 2020)"
-      ],
-      "a_numbers": [
-        "A2115"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-CFF7D910A743CAAF"
-      ],
-      "board_revision": "0x3",
-      "board_type": "0xa",
-      "board_codes": [
-        "PHC1",
-        "PHCD"
-      ],
-      "model_codes": [
-        "PN5T",
-        "PN5Y",
-        "PN5X",
-        "PN5W",
-        "PN5V",
-        "PN78",
-        "PN7D",
-        "PN77",
-        "PN7C"
-      ],
-      "model_years": [
-        2020,
-        2021,
-        2022
-      ],
-      "cpu_options": [
-        "Intel Core i5-10500 @ 3.10 GHz",
-        "Intel Core i5-10600 @ 3.30 GHz",
-        "Intel Core i7-10700K @ 3.80 GHz"
-      ],
-      "cpu_codenames": [
-        "Comet Lake",
-        "Comet Lake",
-        "Comet Lake"
-      ],
-      "gpu_options": [
-        "Radeon Pro 5300",
-        "Radeon Pro 5500 XT",
-        "Radeon Pro 5700",
-        "Radeon Pro 5700 XT"
-      ],
-      "ram_options": [
-        "8GB 2666 MHz DDR4 SDRAM"
-      ],
-      "minimum_os_version": "10.15.6",
-      "maximum_os_version": null,
-      "smc_generation": 3,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x38",
-        "0x35",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x20",
-      "firmware": {
-        "bios_version": "2087.0.0.0.0",
-        "bios_release_date": "05/30/2025",
-        "firmware_features": "0xffb3f066",
-        "firmware_features_mask": "0xffffffff",
-        "extended_firmware_features": "0x8ffb3f066",
-        "extended_firmware_features_mask": "0x8ffffffff"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/iMac/IM201.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/iMac/IM201.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
-    },
-    {
-      "label": "iMac (Retina 4K, 21.5-inch, 2019)",
-      "family": "iMac",
-      "system_product_name": "iMac19,2",
-      "system_report_names": [
-        "iMac (Retina 4K, 21.5-inch, 2019)"
-      ],
-      "marketing_names": [
-        ""
-      ],
-      "a_numbers": [
-        "A2116"
-      ],
-      "fcc_ids": [],
-      "board_product": [
-        "Mac-63001698E7A34814"
-      ],
-      "board_revision": "0x7",
-      "board_type": "0xa",
-      "board_codes": [
-        "KGQG"
-      ],
-      "model_codes": [
-        "JWDW",
-        "JWDX",
-        "MQ87",
-        "MC9M",
-        "MC9L",
-        "MRVM",
-        "MPM0",
-        "MW28",
-        "JWDY",
-        "MMTK",
-        "MMTL",
-        "MTML",
-        "MCC1",
-        "JWF3",
-        "JWF2",
-        "JWF1",
-        "JWF0",
-        "JWF4",
-        "N6JT",
-        "N9LN",
-        "N07H",
-        "0LKD",
-        "0PYY",
-        "03C7",
-        "0MN1",
-        "0L08",
-        "0KYN",
-        "0JVT",
-        "07F8",
-        "07F5",
-        "07F4",
-        "07F7",
-        "07F6",
-        "07F1",
-        "07F3",
-        "07F2",
-        "0L0H",
-        "0L0F",
-        "0L0G",
-        "0L09",
-        "0LX4",
-        "0LX7",
-        "0LX8"
-      ],
-      "model_years": [
-        2019,
-        2020,
-        2021
-      ],
-      "cpu_options": [
-        "Intel Core i5-8500 @ 3.00 GHz",
-        "Intel Core i3-8100B @ 3.60 GHz",
-        "Intel Core i5-8500B @ 3.00 GHz",
-        "Intel Core i7-8700B @ 3.20 GHz"
-      ],
-      "cpu_codenames": [
-        "Coffee Lake",
-        "Coffee Lake",
-        "Coffee Lake",
-        "Coffee Lake"
-      ],
-      "gpu_options": [
-        "AMD Radeon Pro 555X",
-        "AMD Radeon Pro 560X",
-        "AMD Radeon Pro Vega 20"
-      ],
-      "ram_options": [
-        "2666 MHz DDR4 SDRAM"
-      ],
-      "minimum_os_version": "10.14.4",
-      "maximum_os_version": "15.6",
-      "smc_generation": 2,
-      "smc_platform": [
-        "0x6a",
-        "0x31",
-        "0x33",
-        "0x39",
-        "0x0",
-        "0x0",
-        "0x0",
-        "0x0"
-      ],
-      "platform_feature": "0x20",
-      "firmware": {
-        "bios_version": "2075.100.3.0.3",
-        "bios_release_date": "03/03/2025",
-        "firmware_features": "0xfd8ff576",
-        "firmware_features_mask": "0xffdfff7f",
-        "extended_firmware_features": "0x8fd8ff576",
-        "extended_firmware_features_mask": "0x8ffdfff7f"
-      },
-      "source": {
-        "html": "https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels/DataBase/iMac/IM192.yaml",
-        "raw": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/AppleModels/DataBase/iMac/IM192.yaml",
-        "license": "BSD-3-Clause (OpenCorePkg)"
-      }
+    "common_failures": [
+      "CD3215 failure - USB-C не работает",
+      "ISL9239 - не заряжается",
+      "Flexgate - проблема шлейфа дисплея",
+      "T1 chip issues - Touch Bar не работает"
+    ],
+    "donor_boards": [
+      "820-00164",
+      "820-00239",
+      "820-00875"
+    ],
+    "resistance_values": {
+      "PPBUS_G3H": "6.3 KΩ",
+      "PP3V3_G3H": "200 Ω",
+      "PP5V_G3S": "3.2 KΩ",
+      "PPVCORE_S0_CPU": "2.2 Ω"
     }
-  ],
-  "attribution": [
-    {
-      "name": "acidanthera/OpenCorePkg",
-      "url": "https://github.com/acidanthera/OpenCorePkg",
-      "license": "BSD-3-Clause"
+  },
+  "820-01987": {
+    "model": "MacBook Pro 13\" 2020 2 Thunderbolt",
+    "years": "2020",
+    "cpu": "Intel Core i5-8257U / i7-8557U",
+    "gpu": "Intel Iris Plus 645",
+    "ram": "8GB/16GB LPDDR3 on board",
+    "board_code": "J223",
+    "chips": {
+      "T2": {
+        "marking": "338S00584",
+        "location": "U7700",
+        "type": "T2 Security Chip",
+        "package": "BGA"
+      },
+      "ISL9240": {
+        "marking": "ISL9240HRZ",
+        "location": "U7800",
+        "type": "Charging Controller",
+        "package": "QFN-32"
+      },
+      "CD3215B03": {
+        "marking": "CD3215B03",
+        "location": "U3100/U3200",
+        "type": "USB-C Controller",
+        "package": "BGA-96"
+      },
+      "TPS62827": {
+        "marking": "TPS62827",
+        "location": "U8410",
+        "type": "1.2V Buck Converter",
+        "package": "QFN-8"
+      },
+      "BCM15700A2": {
+        "marking": "BCM15700A2",
+        "location": "U5870",
+        "type": "Camera Controller",
+        "package": "BGA"
+      }
+    },
+    "test_points": {
+      "PPBUS_G3H": "12.6V",
+      "PP3V3_G3H": "3.3V",
+      "PP5V_G3H": "5V",
+      "PP3V3_S5": "3.3V",
+      "PP1V8_AON": "1.8V always on",
+      "PP1V2_S3": "1.2V",
+      "PPVDDCPU": "0.7-1.2V dynamic"
+    },
+    "common_failures": [
+      "T2 kernel panic",
+      "CD3215 failure",
+      "ISL9240 charging issues",
+      "Bridge OS crashes"
+    ],
+    "donor_boards": [
+      "820-01949",
+      "820-01958"
+    ],
+    "resistance_values": {
+      "PPBUS_G3H": "7.1 KΩ",
+      "PP3V3_G3H": "190 Ω",
+      "PP5V_G3H": "2.9 KΩ"
     }
-  ]
+  },
+  "820-01700": {
+    "model": "MacBook Pro 16\" 2019",
+    "years": "2019",
+    "cpu": "Intel Core i7-9750H / i9-9880H",
+    "gpu": "AMD Radeon Pro 5300M/5500M",
+    "ram": "16GB/32GB/64GB DDR4 on board",
+    "board_code": "J152F",
+    "chips": {
+      "T2": {
+        "marking": "338S00584",
+        "location": "U7700",
+        "type": "T2 Security Chip",
+        "package": "BGA"
+      },
+      "ISL9240": {
+        "marking": "ISL9240HRZ",
+        "location": "U7800",
+        "type": "Charging Controller",
+        "package": "QFN-32"
+      },
+      "CD3215C00": {
+        "marking": "CD3215C00ZQZR",
+        "location": "U3100/U3200/U3300/U3400",
+        "type": "USB-C Controller",
+        "package": "BGA-96"
+      },
+      "ISL6259": {
+        "marking": "ISL6259AHRTZ",
+        "location": "U7900",
+        "type": "Battery Charger",
+        "package": "QFN-28"
+      },
+      "GPU_VRM": {
+        "marking": "IR35217",
+        "location": "U9850",
+        "type": "GPU Voltage Regulator",
+        "package": "QFN-56"
+      }
+    },
+    "test_points": {
+      "PPBUS_G3H": "12.6V",
+      "PP3V3_G3H": "3.3V",
+      "PP5V_G3S": "5V",
+      "PPVCORE_GPU": "0.85V",
+      "PP1V8_S0": "1.8V",
+      "PP0V9_S0": "0.9V"
+    },
+    "common_failures": [
+      "VRM перегрев",
+      "GPU kernel panic",
+      "CD3215 failure all 4 ports",
+      "T2 Bridge OS issues"
+    ],
+    "donor_boards": [
+      "820-01700-05",
+      "820-01700-07"
+    ],
+    "resistance_values": {
+      "PPBUS_G3H": "7.5 KΩ",
+      "PPVCORE_GPU": "1.8 Ω",
+      "PP5V_G3S": "3.1 KΩ"
+    }
+  },
+  "820-01814": {
+    "model": "MacBook Air M1 2020",
+    "years": "2020",
+    "cpu": "Apple M1",
+    "gpu": "Apple M1 GPU",
+    "ram": "8GB/16GB Unified Memory",
+    "board_code": "J313",
+    "chips": {
+      "M1": {
+        "marking": "APL1102 / 343S00467",
+        "location": "U1",
+        "type": "M1 SoC",
+        "package": "BGA"
+      },
+      "CD3217B12": {
+        "marking": "CD3217B12ACPR",
+        "location": "U3100/U3200",
+        "type": "USB-C Controller",
+        "package": "BGA-96"
+      },
+      "PMIC": {
+        "marking": "338S00571",
+        "location": "U7800",
+        "type": "Power Management IC",
+        "package": "BGA"
+      },
+      "WiFi_BT": {
+        "marking": "339S00758",
+        "location": "U4900",
+        "type": "WiFi/Bluetooth Module",
+        "package": "BGA"
+      }
+    },
+    "test_points": {
+      "PPVBAT_G3H_CHGR": "11.4V from battery",
+      "PP3V3_AON": "3.3V always on",
+      "PP1V8_AON": "1.8V always on",
+      "PP1V2_AON": "1.2V always on",
+      "PP5V_USB": "5V USB"
+    },
+    "common_failures": [
+      "Liquid damage near USB-C",
+      "No image after drop",
+      "DFU restore issues",
+      "CD3217 failure"
+    ],
+    "donor_boards": [
+      "820-02020",
+      "820-01958"
+    ],
+    "resistance_values": {
+      "PPVBAT": "450 KΩ",
+      "PP3V3_AON": "200 Ω",
+      "PP1V8_AON": "150 Ω"
+    }
+  },
+  "820-00850": {
+    "model": "MacBook Pro 15\" 2018",
+    "years": "2018",
+    "cpu": "Intel Core i7-8750H / i9-8950HK",
+    "gpu": "AMD Radeon Pro 555X/560X",
+    "ram": "16GB/32GB DDR4 on board",
+    "board_code": "J680",
+    "chips": {
+      "T2": {
+        "marking": "338S00427",
+        "location": "U7700",
+        "type": "T2 Security Chip",
+        "package": "BGA"
+      },
+      "ISL9239": {
+        "marking": "ISL9239HRZ",
+        "location": "U7800",
+        "type": "Charging Controller",
+        "package": "QFN-32"
+      },
+      "CD3215C00": {
+        "marking": "CD3215C00",
+        "location": "U3100/U3200/U3300/U3400",
+        "type": "USB-C Controller",
+        "package": "BGA-96"
+      }
+    },
+    "test_points": {
+      "PPBUS_G3H": "12.6V",
+      "PP3V3_G3H": "3.3V",
+      "PP5V_G3S": "5V",
+      "PPVCORE_S0_GPU": "0.9V"
+    },
+    "common_failures": [
+      "VRM failure",
+      "T2 panic",
+      "Display cable failure",
+      "GPU issues"
+    ],
+    "donor_boards": [
+      "820-00850-A",
+      "820-00928"
+    ],
+    "resistance_values": {
+      "PPBUS_G3H": "7.2 KΩ",
+      "PP3V3_G3H": "195 Ω"
+    }
+  }
 }

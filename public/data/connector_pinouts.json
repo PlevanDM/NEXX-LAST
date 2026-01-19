@@ -1,0 +1,59 @@
+{
+  "Lightning": {
+    "pins": 8,
+    "pinout": {
+      "1": "GND",
+      "2": "L0p (Data+)",
+      "3": "L0n (Data-)",
+      "4": "ID0",
+      "5": "PWR (5V)",
+      "6": "L1n",
+      "7": "L1p",
+      "8": "ID1"
+    }
+  },
+  "USB-C_MacBook": {
+    "pins": 24,
+    "pinout": {
+      "A1/B12": "GND",
+      "A2/B11": "TX1+/RX2+",
+      "A3/B10": "TX1-/RX2-",
+      "A4/B9": "VBUS",
+      "A5/B8": "CC1/CC2",
+      "A6/B7": "D+",
+      "A7/B6": "D-",
+      "A8/B5": "SBU1/SBU2",
+      "A9/B4": "VBUS",
+      "A10/B3": "RX1-/TX2-",
+      "A11/B2": "RX1+/TX2+",
+      "A12/B1": "GND"
+    }
+  },
+  "Display_Connector_iPhone": {
+    "iPhone_11_12_13": {
+      "pins": 40,
+      "important_pins": {
+        "1-4": "MIPI DSI Data Lanes",
+        "5-6": "MIPI Clock",
+        "10": "VSYNC",
+        "15": "Touch I2C SDA",
+        "16": "Touch I2C SCL",
+        "20": "LED Backlight Anode",
+        "25": "3D Touch/Force Touch",
+        "30-33": "Touch Drive Lines",
+        "38-40": "GND"
+      }
+    }
+  },
+  "Battery_Connector": {
+    "iPhone_X_11_12": {
+      "pins": 4,
+      "pinout": {
+        "1": "BATT_VCC (3.8V)",
+        "2": "BATT_SWI (Battery data)",
+        "3": "NTC (Temperature sensor)",
+        "4": "GND"
+      }
+    }
+  }
+}
