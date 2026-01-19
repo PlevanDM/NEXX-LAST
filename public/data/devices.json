@@ -22,49 +22,49 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 399.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0,
-      "logic_board": 599.0
+      "battery": 99,
+      "display": 399,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49,
+      "logic_board": 599
     },
     "service_parts": {
       "battery": {
         "article": "661-56049",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-56050",
         "description": "Display Assembly",
-        "price_usd": 399.0
+        "price_usd": 399
       },
       "rear_camera": {
         "article": "661-56051",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-56052",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-56053",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-56054",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "logic_board": {
         "article": "661-56055",
         "description": "Logic Board",
-        "price_usd": 599.0
+        "price_usd": 599
       }
     },
     "common_issues": [
@@ -105,43 +105,43 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 379.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0
+      "battery": 99,
+      "display": 379,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-56121",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-56122",
         "description": "Display Assembly",
-        "price_usd": 379.0
+        "price_usd": 379
       },
       "rear_camera": {
         "article": "661-56123",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-56124",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-56125",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-56126",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -182,37 +182,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 329.0,
-      "rear_camera": 189.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 329,
+      "rear_camera": 189,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-56064",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-56065",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-56066",
         "description": "Dual Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-56067",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-56068",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -252,37 +252,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 189.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 189,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-56070",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-56071",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-56072",
         "description": "Dual Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-56073",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-56074",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -322,43 +322,43 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 379.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0,
-      "taptic_engine": 49.0
+      "battery": 99,
+      "display": 379,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59,
+      "taptic_engine": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-53781",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-53782",
         "description": "Display Assembly",
-        "price_usd": 379.0
+        "price_usd": 379
       },
       "rear_camera": {
         "article": "661-53783",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-53784",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-53785",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "taptic_engine": {
         "article": "661-53786",
         "description": "Taptic Engine",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -399,37 +399,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 99.0,
-      "display": 359.0,
-      "rear_camera": 249.0,
-      "front_camera": 169.0,
-      "speaker": 59.0
+      "battery": 99,
+      "display": 359,
+      "rear_camera": 249,
+      "front_camera": 169,
+      "speaker": 59
     },
     "service_parts": {
       "battery": {
         "article": "661-53787",
         "description": "Battery",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "display": {
         "article": "661-53788",
         "description": "Display Assembly",
-        "price_usd": 359.0
+        "price_usd": 359
       },
       "rear_camera": {
         "article": "661-53789",
         "description": "Rear Camera System",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "front_camera": {
         "article": "661-53790",
         "description": "TrueDepth Camera",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "speaker": {
         "article": "661-53791",
         "description": "Speaker Module",
-        "price_usd": 59.0
+        "price_usd": 59
       }
     },
     "common_issues": [
@@ -470,37 +470,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 179.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-53792",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-53793",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-53794",
         "description": "Dual Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-53795",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-53796",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -540,37 +540,37 @@
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 279.0,
-      "rear_camera": 179.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 79,
+      "display": 279,
+      "rear_camera": 179,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-53797",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-53798",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-53799",
         "description": "Dual Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-53800",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-53801",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -610,43 +610,43 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 89.0,
-      "display": 369.0,
-      "rear_camera": 239.0,
-      "front_camera": 159.0,
-      "speaker": 55.0,
-      "taptic_engine": 45.0
+      "battery": 89,
+      "display": 369,
+      "rear_camera": 239,
+      "front_camera": 159,
+      "speaker": 55,
+      "taptic_engine": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-31048",
         "description": "Battery",
-        "price_usd": 89.0
+        "price_usd": 89
       },
       "display": {
         "article": "661-31049",
         "description": "Display Assembly",
-        "price_usd": 369.0
+        "price_usd": 369
       },
       "rear_camera": {
         "article": "661-31050",
         "description": "Rear Camera System",
-        "price_usd": 239.0
+        "price_usd": 239
       },
       "front_camera": {
         "article": "661-31051",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-31052",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       },
       "taptic_engine": {
         "article": "661-31053",
         "description": "Taptic Engine",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -687,37 +687,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 89.0,
-      "display": 349.0,
-      "rear_camera": 239.0,
-      "front_camera": 159.0,
-      "speaker": 55.0
+      "battery": 89,
+      "display": 349,
+      "rear_camera": 239,
+      "front_camera": 159,
+      "speaker": 55
     },
     "service_parts": {
       "battery": {
         "article": "661-31054",
         "description": "Battery",
-        "price_usd": 89.0
+        "price_usd": 89
       },
       "display": {
         "article": "661-31055",
         "description": "Display Assembly",
-        "price_usd": 349.0
+        "price_usd": 349
       },
       "rear_camera": {
         "article": "661-31056",
         "description": "Rear Camera System",
-        "price_usd": 239.0
+        "price_usd": 239
       },
       "front_camera": {
         "article": "661-31057",
         "description": "TrueDepth Camera",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "speaker": {
         "article": "661-31058",
         "description": "Speaker Module",
-        "price_usd": 55.0
+        "price_usd": 55
       }
     },
     "common_issues": [
@@ -758,37 +758,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 299.0,
-      "rear_camera": 169.0,
-      "front_camera": 149.0,
-      "speaker": 50.0
+      "battery": 79,
+      "display": 299,
+      "rear_camera": 169,
+      "front_camera": 149,
+      "speaker": 50
     },
     "service_parts": {
       "battery": {
         "article": "661-31059",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-31060",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-31061",
         "description": "Dual Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-31062",
         "description": "TrueDepth Camera",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "speaker": {
         "article": "661-31063",
         "description": "Speaker Module",
-        "price_usd": 50.0
+        "price_usd": 50
       }
     },
     "common_issues": [
@@ -828,37 +828,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 279.0,
-      "rear_camera": 169.0,
-      "front_camera": 149.0,
-      "speaker": 50.0
+      "battery": 79,
+      "display": 279,
+      "rear_camera": 169,
+      "front_camera": 149,
+      "speaker": 50
     },
     "service_parts": {
       "battery": {
         "article": "661-31064",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-31065",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-31066",
         "description": "Dual Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-31067",
         "description": "TrueDepth Camera",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "speaker": {
         "article": "661-31068",
         "description": "Speaker Module",
-        "price_usd": 50.0
+        "price_usd": 50
       }
     },
     "common_issues": [
@@ -898,37 +898,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 329.0,
-      "rear_camera": 219.0,
-      "front_camera": 139.0,
-      "speaker": 45.0
+      "battery": 79,
+      "display": 329,
+      "rear_camera": 219,
+      "front_camera": 139,
+      "speaker": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-21565",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-21566",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-21567",
         "description": "Rear Camera System",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "front_camera": {
         "article": "661-21568",
         "description": "TrueDepth Camera",
-        "price_usd": 139.0
+        "price_usd": 139
       },
       "speaker": {
         "article": "661-21569",
         "description": "Speaker Module",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -969,37 +969,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 79.0,
-      "display": 309.0,
-      "rear_camera": 219.0,
-      "front_camera": 139.0,
-      "speaker": 45.0
+      "battery": 79,
+      "display": 309,
+      "rear_camera": 219,
+      "front_camera": 139,
+      "speaker": 45
     },
     "service_parts": {
       "battery": {
         "article": "661-21570",
         "description": "Battery",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "display": {
         "article": "661-21571",
         "description": "Display Assembly",
-        "price_usd": 309.0
+        "price_usd": 309
       },
       "rear_camera": {
         "article": "661-21572",
         "description": "Rear Camera System",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "front_camera": {
         "article": "661-21573",
         "description": "TrueDepth Camera",
-        "price_usd": 139.0
+        "price_usd": 139
       },
       "speaker": {
         "article": "661-21574",
         "description": "Speaker Module",
-        "price_usd": 45.0
+        "price_usd": 45
       }
     },
     "common_issues": [
@@ -1040,37 +1040,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 65.0,
-      "display": 249.0,
-      "rear_camera": 159.0,
-      "front_camera": 129.0,
-      "speaker": 40.0
+      "battery": 65,
+      "display": 249,
+      "rear_camera": 159,
+      "front_camera": 129,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-21580",
         "description": "Battery",
-        "price_usd": 65.0
+        "price_usd": 65
       },
       "display": {
         "article": "661-21581",
         "description": "Display Assembly",
-        "price_usd": 249.0
+        "price_usd": 249
       },
       "rear_camera": {
         "article": "661-21582",
         "description": "Dual Camera System",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "front_camera": {
         "article": "661-21583",
         "description": "TrueDepth Camera",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "speaker": {
         "article": "661-21584",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1110,37 +1110,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 269.0,
-      "rear_camera": 159.0,
-      "front_camera": 129.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 269,
+      "rear_camera": 159,
+      "front_camera": 129,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-21575",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-21576",
         "description": "Display Assembly",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "rear_camera": {
         "article": "661-21577",
         "description": "Dual Camera System",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "front_camera": {
         "article": "661-21578",
         "description": "TrueDepth Camera",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "speaker": {
         "article": "661-21579",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1180,37 +1180,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 299.0,
-      "rear_camera": 199.0,
-      "front_camera": 119.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 299,
+      "rear_camera": 199,
+      "front_camera": 119,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-18254",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-18255",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-18256",
         "description": "Rear Camera System",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "front_camera": {
         "article": "661-18257",
         "description": "TrueDepth Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "speaker": {
         "article": "661-18258",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1251,37 +1251,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 199.0,
-      "front_camera": 119.0,
-      "speaker": 40.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 199,
+      "front_camera": 119,
+      "speaker": 40
     },
     "service_parts": {
       "battery": {
         "article": "661-18259",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-18260",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-18261",
         "description": "Rear Camera System",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "front_camera": {
         "article": "661-18262",
         "description": "TrueDepth Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "speaker": {
         "article": "661-18263",
         "description": "Speaker Module",
-        "price_usd": 40.0
+        "price_usd": 40
       }
     },
     "common_issues": [
@@ -1322,37 +1322,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 59.0,
-      "display": 229.0,
-      "rear_camera": 149.0,
-      "front_camera": 109.0,
-      "speaker": 35.0
+      "battery": 59,
+      "display": 229,
+      "rear_camera": 149,
+      "front_camera": 109,
+      "speaker": 35
     },
     "service_parts": {
       "battery": {
         "article": "661-18269",
         "description": "Battery",
-        "price_usd": 59.0
+        "price_usd": 59
       },
       "display": {
         "article": "661-18270",
         "description": "Display Assembly",
-        "price_usd": 229.0
+        "price_usd": 229
       },
       "rear_camera": {
         "article": "661-18271",
         "description": "Dual Camera System",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "front_camera": {
         "article": "661-18272",
         "description": "TrueDepth Camera",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "speaker": {
         "article": "661-18273",
         "description": "Speaker Module",
-        "price_usd": 35.0
+        "price_usd": 35
       }
     },
     "common_issues": [
@@ -1392,37 +1392,37 @@
       "designation": "Tristar U3300"
     },
     "official_service_prices": {
-      "battery": 65.0,
-      "display": 259.0,
-      "rear_camera": 149.0,
-      "front_camera": 109.0,
-      "speaker": 35.0
+      "battery": 65,
+      "display": 259,
+      "rear_camera": 149,
+      "front_camera": 109,
+      "speaker": 35
     },
     "service_parts": {
       "battery": {
         "article": "661-18264",
         "description": "Battery",
-        "price_usd": 65.0
+        "price_usd": 65
       },
       "display": {
         "article": "661-18265",
         "description": "Display Assembly",
-        "price_usd": 259.0
+        "price_usd": 259
       },
       "rear_camera": {
         "article": "661-18266",
         "description": "Dual Camera System",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "front_camera": {
         "article": "661-18267",
         "description": "TrueDepth Camera",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "speaker": {
         "article": "661-18268",
         "description": "Speaker Module",
-        "price_usd": 35.0
+        "price_usd": 35
       }
     },
     "common_issues": [
@@ -1462,31 +1462,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 189.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 189,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-14633",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-14634",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-14635",
         "description": "Rear Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-14636",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1526,31 +1526,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 259.0,
-      "rear_camera": 189.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 259,
+      "rear_camera": 189,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-14637",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-14638",
         "description": "Display Assembly",
-        "price_usd": 259.0
+        "price_usd": 259
       },
       "rear_camera": {
         "article": "661-14639",
         "description": "Rear Camera System",
-        "price_usd": 189.0
+        "price_usd": 189
       },
       "front_camera": {
         "article": "661-14640",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1590,31 +1590,31 @@
       "designation": "Tigris"
     },
     "official_service_prices": {
-      "battery": 55.0,
-      "display": 199.0,
-      "rear_camera": 129.0,
-      "front_camera": 89.0
+      "battery": 55,
+      "display": 199,
+      "rear_camera": 129,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-14641",
         "description": "Battery",
-        "price_usd": 55.0
+        "price_usd": 55
       },
       "display": {
         "article": "661-14642",
         "description": "Display Assembly",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "rear_camera": {
         "article": "661-14643",
         "description": "Dual Camera System",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "front_camera": {
         "article": "661-14644",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -1654,31 +1654,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 329.0,
-      "rear_camera": 179.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 329,
+      "rear_camera": 179,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-11076",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-11077",
         "description": "Display Assembly",
-        "price_usd": 329.0
+        "price_usd": 329
       },
       "rear_camera": {
         "article": "661-11078",
         "description": "Rear Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-11079",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1718,31 +1718,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 299.0,
-      "rear_camera": 179.0,
-      "front_camera": 99.0
+      "battery": 69,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 99
     },
     "service_parts": {
       "battery": {
         "article": "661-11080",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-11081",
         "description": "Display Assembly",
-        "price_usd": 299.0
+        "price_usd": 299
       },
       "rear_camera": {
         "article": "661-11082",
         "description": "Rear Camera System",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "front_camera": {
         "article": "661-11083",
         "description": "TrueDepth Camera",
-        "price_usd": 99.0
+        "price_usd": 99
       }
     },
     "common_issues": [
@@ -1782,31 +1782,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 199.0,
-      "rear_camera": 119.0,
-      "front_camera": 89.0
+      "battery": 49,
+      "display": 199,
+      "rear_camera": 119,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-11084",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-11085",
         "description": "Display Assembly",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "rear_camera": {
         "article": "661-11086",
         "description": "Rear Camera",
-        "price_usd": 119.0
+        "price_usd": 119
       },
       "front_camera": {
         "article": "661-11087",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -1846,31 +1846,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 69.0,
-      "display": 279.0,
-      "rear_camera": 169.0,
-      "front_camera": 89.0
+      "battery": 69,
+      "display": 279,
+      "rear_camera": 169,
+      "front_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-09565",
         "description": "Battery",
-        "price_usd": 69.0
+        "price_usd": 69
       },
       "display": {
         "article": "661-09566",
         "description": "Display Assembly",
-        "price_usd": 279.0
+        "price_usd": 279
       },
       "rear_camera": {
         "article": "661-09567",
         "description": "Rear Camera System",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "front_camera": {
         "article": "661-09568",
         "description": "TrueDepth Camera",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -1909,31 +1909,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 169.0,
-      "rear_camera": 99.0,
-      "front_camera": 49.0
+      "battery": 49,
+      "display": 169,
+      "rear_camera": 99,
+      "front_camera": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-08926",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-08927",
         "description": "Display Assembly",
-        "price_usd": 169.0
+        "price_usd": 169
       },
       "rear_camera": {
         "article": "661-08928",
         "description": "Rear Camera System",
-        "price_usd": 99.0
+        "price_usd": 99
       },
       "front_camera": {
         "article": "661-08929",
         "description": "Front Camera",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -1972,31 +1972,31 @@
       "designation": "Hydra U3300"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 149.0,
-      "rear_camera": 79.0,
-      "front_camera": 49.0
+      "battery": 49,
+      "display": 149,
+      "rear_camera": 79,
+      "front_camera": 49
     },
     "service_parts": {
       "battery": {
         "article": "661-08930",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-08931",
         "description": "Display Assembly",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "rear_camera": {
         "article": "661-08932",
         "description": "Rear Camera",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "front_camera": {
         "article": "661-08933",
         "description": "Front Camera",
-        "price_usd": 49.0
+        "price_usd": 49
       }
     },
     "common_issues": [
@@ -2035,25 +2035,25 @@
       "designation": "Hydra"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 149.0,
-      "rear_camera": 89.0
+      "battery": 49,
+      "display": 149,
+      "rear_camera": 89
     },
     "service_parts": {
       "battery": {
         "article": "661-04749",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-04750",
         "description": "Display Assembly",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "rear_camera": {
         "article": "661-04751",
         "description": "Rear Camera System",
-        "price_usd": 89.0
+        "price_usd": 89
       }
     },
     "common_issues": [
@@ -2093,25 +2093,25 @@
       "designation": "Hydra"
     },
     "official_service_prices": {
-      "battery": 49.0,
-      "display": 129.0,
-      "rear_camera": 69.0
+      "battery": 49,
+      "display": 129,
+      "rear_camera": 69
     },
     "service_parts": {
       "battery": {
         "article": "661-04752",
         "description": "Battery",
-        "price_usd": 49.0
+        "price_usd": 49
       },
       "display": {
         "article": "661-04753",
         "description": "Display Assembly",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "rear_camera": {
         "article": "661-04754",
         "description": "Rear Camera",
-        "price_usd": 69.0
+        "price_usd": 69
       }
     },
     "common_issues": [
@@ -2151,19 +2151,19 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {
-      "battery": 39.0,
-      "display": 129.0
+      "battery": 39,
+      "display": 129
     },
     "service_parts": {
       "battery": {
         "article": "661-03275",
         "description": "Battery",
-        "price_usd": 39.0
+        "price_usd": 39
       },
       "display": {
         "article": "661-03276",
         "description": "Display Assembly",
-        "price_usd": 129.0
+        "price_usd": 129
       }
     },
     "common_issues": [
@@ -2202,19 +2202,19 @@
       "designation": "Tristar U2"
     },
     "official_service_prices": {
-      "battery": 39.0,
-      "display": 109.0
+      "battery": 39,
+      "display": 109
     },
     "service_parts": {
       "battery": {
         "article": "661-03277",
         "description": "Battery",
-        "price_usd": 39.0
+        "price_usd": 39
       },
       "display": {
         "article": "661-03278",
         "description": "Display Assembly",
-        "price_usd": 109.0
+        "price_usd": 109
       }
     },
     "common_issues": [
@@ -2423,7 +2423,7 @@
     "board_numbers": [
       "820-3910"
     ],
-    "processor": "",
+    "processor": "A8X",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2456,7 +2456,7 @@
     "board_numbers": [
       "820-4213"
     ],
-    "processor": "",
+    "processor": "A9X",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2497,7 +2497,7 @@
     "board_numbers": [
       "820-4388"
     ],
-    "processor": "",
+    "processor": "A9X",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2531,7 +2531,7 @@
     "board_numbers": [
       "820-00703"
     ],
-    "processor": "",
+    "processor": "A9",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2569,7 +2569,7 @@
     "board_numbers": [
       "820-00632"
     ],
-    "processor": "",
+    "processor": "A10X Fusion",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2610,7 +2610,7 @@
     "board_numbers": [
       "820-00633"
     ],
-    "processor": "",
+    "processor": "A10X Fusion",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2644,7 +2644,7 @@
     "board_numbers": [
       "820-01020"
     ],
-    "processor": "",
+    "processor": "A10 Fusion",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2677,7 +2677,7 @@
     "board_numbers": [
       "820-01252"
     ],
-    "processor": "",
+    "processor": "A12X Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -2711,7 +2711,7 @@
     "board_numbers": [
       "820-01253"
     ],
-    "processor": "",
+    "processor": "A12X Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -2752,7 +2752,7 @@
     "board_numbers": [
       "820-01573"
     ],
-    "processor": "",
+    "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2792,7 +2792,7 @@
     "board_numbers": [
       "820-01574"
     ],
-    "processor": "",
+    "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2830,7 +2830,7 @@
     "board_numbers": [
       "820-01670"
     ],
-    "processor": "",
+    "processor": "A10 Fusion",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2863,7 +2863,7 @@
     "board_numbers": [
       "820-01835"
     ],
-    "processor": "",
+    "processor": "A12Z Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -2897,7 +2897,7 @@
     "board_numbers": [
       "820-01836"
     ],
-    "processor": "",
+    "processor": "A12Z Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -2938,7 +2938,7 @@
     "board_numbers": [
       "820-01898"
     ],
-    "processor": "",
+    "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -2971,7 +2971,7 @@
     "board_numbers": [
       "820-01956"
     ],
-    "processor": "",
+    "processor": "A14 Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3004,7 +3004,7 @@
     "board_numbers": [
       "820-02135"
     ],
-    "processor": "",
+    "processor": "Apple M1",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3045,7 +3045,7 @@
     "board_numbers": [
       "820-02136"
     ],
-    "processor": "",
+    "processor": "Apple M1",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3086,7 +3086,7 @@
     "board_numbers": [
       "820-02243"
     ],
-    "processor": "",
+    "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -3126,7 +3126,7 @@
     "board_numbers": [
       "820-02239"
     ],
-    "processor": "",
+    "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3159,7 +3159,7 @@
     "board_numbers": [
       "820-02411"
     ],
-    "processor": "",
+    "processor": "Apple M1",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3197,7 +3197,7 @@
     "board_numbers": [
       "820-02563"
     ],
-    "processor": "",
+    "processor": "A14 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
       "designation": "Tristar"
@@ -3230,7 +3230,7 @@
     "board_numbers": [
       "820-02649"
     ],
-    "processor": "",
+    "processor": "Apple M2",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3264,7 +3264,7 @@
     "board_numbers": [
       "820-02650"
     ],
-    "processor": "",
+    "processor": "Apple M2",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3305,7 +3305,7 @@
     "board_numbers": [
       "820-02789"
     ],
-    "processor": "",
+    "processor": "Apple M2",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3338,7 +3338,7 @@
     "board_numbers": [
       "820-02790"
     ],
-    "processor": "",
+    "processor": "Apple M2",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
@@ -3371,25 +3371,25 @@
     "board_numbers": [
       "820-02825"
     ],
-    "processor": "",
+    "processor": "Apple M4",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 159.0,
-      "display": 499.0
+      "battery": 159,
+      "display": 499
     },
     "service_parts": {
       "battery": {
         "article": "661-61003",
         "description": "Battery",
-        "price_usd": 159.0
+        "price_usd": 159
       },
       "display": {
         "article": "661-61004",
         "description": "Display Assembly",
-        "price_usd": 499.0
+        "price_usd": 499
       }
     },
     "common_issues": [
@@ -3413,25 +3413,25 @@
     "board_numbers": [
       "820-02826"
     ],
-    "processor": "",
+    "processor": "Apple M4",
     "charging_ic": {
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {
-      "battery": 179.0,
-      "display": 599.0
+      "battery": 179,
+      "display": 599
     },
     "service_parts": {
       "battery": {
         "article": "661-61001",
         "description": "Battery",
-        "price_usd": 179.0
+        "price_usd": 179
       },
       "display": {
         "article": "661-61002",
         "description": "Display Assembly",
-        "price_usd": 599.0
+        "price_usd": 599
       }
     },
     "common_issues": [
@@ -3449,7 +3449,7 @@
   },
   {
     "name": "MacBook Air 11\" Early 2014",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1465",
     "emc": "EMC 2631",
     "year": 2014,
@@ -3499,7 +3499,7 @@
   },
   {
     "name": "MacBook Air 11\" Early 2015",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1465",
     "emc": "EMC 2924",
     "year": 2015,
@@ -3549,7 +3549,7 @@
   },
   {
     "name": "MacBook Air 13\" Early 2014",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1466",
     "emc": "EMC 2632",
     "year": 2014,
@@ -3591,7 +3591,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3611,7 +3611,7 @@
   },
   {
     "name": "MacBook Air 13\" Early 2015",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1466",
     "emc": "EMC 2925",
     "year": 2015,
@@ -3653,7 +3653,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3673,7 +3673,7 @@
   },
   {
     "name": "MacBook Air 13\" 2017",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1466",
     "emc": "EMC 3178",
     "year": 2017,
@@ -3715,7 +3715,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3736,7 +3736,7 @@
   },
   {
     "name": "MacBook Air 13\" 2018 Retina",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1932",
     "emc": "EMC 3184",
     "year": 2018,
@@ -3778,7 +3778,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3800,7 +3800,7 @@
   },
   {
     "name": "MacBook Air 13\" 2019 Retina",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1932",
     "emc": "EMC 3184",
     "year": 2019,
@@ -3842,7 +3842,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3864,7 +3864,7 @@
   },
   {
     "name": "MacBook Air 13\" 2020 Intel",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2179",
     "emc": "EMC 3302",
     "year": 2020,
@@ -3906,7 +3906,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3926,7 +3926,7 @@
   },
   {
     "name": "MacBook Air 13\" M1 2020",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2337",
     "emc": "EMC 3598",
     "year": 2020,
@@ -3968,7 +3968,7 @@
       "charging_port": {
         "article": "923-02813",
         "description": "I/O Board - MacBook Air (Retina, 13-inch, 2018)",
-        "price_uah": 692.0,
+        "price_uah": 692,
         "price_usd": 16.61
       }
     },
@@ -3986,7 +3986,7 @@
   },
   {
     "name": "MacBook Air 13\" M2 2022",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2681",
     "emc": "EMC 4074",
     "year": 2022,
@@ -4000,25 +4000,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 129.0,
-      "display": 549.0,
-      "keyboard": 399.0
+      "battery": 129,
+      "display": 549,
+      "keyboard": 399
     },
     "service_parts": {
       "battery": {
         "article": "661-28601",
         "description": "Battery",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "display": {
         "article": "661-28602",
         "description": "Display Assembly",
-        "price_usd": 549.0
+        "price_usd": 549
       },
       "keyboard": {
         "article": "661-28603",
         "description": "Top Case with Keyboard",
-        "price_usd": 399.0
+        "price_usd": 399
       }
     },
     "common_issues": [
@@ -4035,7 +4035,7 @@
   },
   {
     "name": "MacBook Air 15\" M2 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2941",
     "emc": "EMC 4262",
     "year": 2023,
@@ -4083,7 +4083,7 @@
   },
   {
     "name": "MacBook Air 13\" M3 2024",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A3113",
     "emc": "EMC 4381",
     "year": 2024,
@@ -4097,25 +4097,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 129.0,
-      "display": 549.0,
-      "keyboard": 399.0
+      "battery": 129,
+      "display": 549,
+      "keyboard": 399
     },
     "service_parts": {
       "battery": {
         "article": "661-60845",
         "description": "Battery",
-        "price_usd": 129.0
+        "price_usd": 129
       },
       "display": {
         "article": "661-60846",
         "description": "Display Assembly",
-        "price_usd": 549.0
+        "price_usd": 549
       },
       "keyboard": {
         "article": "661-60847",
         "description": "Top Case with Keyboard",
-        "price_usd": 399.0
+        "price_usd": 399
       }
     },
     "common_issues": [
@@ -4132,7 +4132,7 @@
   },
   {
     "name": "MacBook Air 15\" M3 2024",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A3114",
     "emc": "EMC 4382",
     "year": 2024,
@@ -4146,25 +4146,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 149.0,
-      "display": 599.0,
-      "keyboard": 449.0
+      "battery": 149,
+      "display": 599,
+      "keyboard": 449
     },
     "service_parts": {
       "battery": {
         "article": "661-60848",
         "description": "Battery",
-        "price_usd": 149.0
+        "price_usd": 149
       },
       "display": {
         "article": "661-60849",
         "description": "Display Assembly",
-        "price_usd": 599.0
+        "price_usd": 599
       },
       "keyboard": {
         "article": "661-60850",
         "description": "Top Case with Keyboard",
-        "price_usd": 449.0
+        "price_usd": 449
       }
     },
     "common_issues": [
@@ -4181,7 +4181,7 @@
   },
   {
     "name": "MacBook Pro 13\" Late 2013",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1502",
     "emc": "EMC 2678",
     "year": 2013,
@@ -4243,7 +4243,7 @@
   },
   {
     "name": "MacBook Pro 13\" Mid 2014",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1502",
     "emc": "EMC 2875",
     "year": 2014,
@@ -4305,7 +4305,7 @@
   },
   {
     "name": "MacBook Pro 13\" Early 2015",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1502",
     "emc": "EMC 2835",
     "year": 2015,
@@ -4367,7 +4367,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1708",
     "emc": "EMC 2978",
     "year": 2016,
@@ -4430,7 +4430,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1706",
     "emc": "EMC 3071",
     "year": 2016,
@@ -4493,7 +4493,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1708",
     "emc": "EMC 3164",
     "year": 2017,
@@ -4556,7 +4556,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1706",
     "emc": "EMC 3163",
     "year": 2017,
@@ -4619,7 +4619,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1989",
     "emc": "EMC 3214",
     "year": 2018,
@@ -4683,7 +4683,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2159",
     "emc": "EMC 3301",
     "year": 2019,
@@ -4747,7 +4747,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1989",
     "emc": "EMC 3358",
     "year": 2019,
@@ -4811,7 +4811,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2289",
     "emc": "EMC 3456",
     "year": 2020,
@@ -4871,7 +4871,7 @@
   },
   {
     "name": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2251",
     "emc": "EMC 3348",
     "year": 2020,
@@ -4931,7 +4931,7 @@
   },
   {
     "name": "MacBook Pro 13\" M1 2020",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2338",
     "emc": "EMC 3578",
     "year": 2020,
@@ -4991,7 +4991,7 @@
   },
   {
     "name": "MacBook Pro 13\" M2 2022",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2689",
     "emc": "EMC 4152",
     "year": 2022,
@@ -5051,7 +5051,7 @@
   },
   {
     "name": "MacBook Pro 14\" M1 Pro 2021",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2442",
     "emc": "EMC 3650",
     "year": 2021,
@@ -5105,7 +5105,7 @@
   },
   {
     "name": "MacBook Pro 16\" M1 Pro 2021",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2485",
     "emc": "EMC 3651",
     "year": 2021,
@@ -5159,7 +5159,7 @@
   },
   {
     "name": "MacBook Pro 14\" M2 Pro 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2779",
     "emc": "EMC 4223",
     "year": 2023,
@@ -5213,7 +5213,7 @@
   },
   {
     "name": "MacBook Pro 16\" M2 Pro 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2780",
     "emc": "EMC 4222",
     "year": 2023,
@@ -5267,7 +5267,7 @@
   },
   {
     "name": "MacBook Pro 14\" M3 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2918",
     "emc": "EMC 4351",
     "year": 2023,
@@ -5281,25 +5281,25 @@
     },
     "connector_type": "USB-C",
     "official_service_prices": {
-      "battery": 199.0,
-      "display": 749.0,
-      "keyboard": 549.0
+      "battery": 199,
+      "display": 749,
+      "keyboard": 549
     },
     "service_parts": {
       "battery": {
         "article": "661-56890",
         "description": "Battery",
-        "price_usd": 199.0
+        "price_usd": 199
       },
       "display": {
         "article": "661-56891",
         "description": "Display Assembly",
-        "price_usd": 749.0
+        "price_usd": 749
       },
       "keyboard": {
         "article": "661-56892",
         "description": "Top Case with Keyboard",
-        "price_usd": 549.0
+        "price_usd": 549
       }
     },
     "common_issues": [
@@ -5316,7 +5316,7 @@
   },
   {
     "name": "MacBook Pro 14\" M3 Pro 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2992",
     "emc": "EMC 4352",
     "year": 2023,
@@ -5370,7 +5370,7 @@
   },
   {
     "name": "MacBook Pro 16\" M3 Pro 2023",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2991",
     "emc": "EMC 4353",
     "year": 2023,
@@ -5424,7 +5424,7 @@
   },
   {
     "name": "MacBook Pro 15\" Late 2013",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1398",
     "emc": "EMC 2674",
     "year": 2013,
@@ -5486,7 +5486,7 @@
   },
   {
     "name": "MacBook Pro 15\" Mid 2014",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1398",
     "emc": "EMC 2876",
     "year": 2014,
@@ -5548,7 +5548,7 @@
   },
   {
     "name": "MacBook Pro 15\" Mid 2015",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1398",
     "emc": "EMC 2909",
     "year": 2015,
@@ -5610,7 +5610,7 @@
   },
   {
     "name": "MacBook Pro 15\" 2016",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1707",
     "emc": "EMC 3072",
     "year": 2016,
@@ -5673,7 +5673,7 @@
   },
   {
     "name": "MacBook Pro 15\" 2017",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1707",
     "emc": "EMC 3162",
     "year": 2017,
@@ -5736,7 +5736,7 @@
   },
   {
     "name": "MacBook Pro 15\" 2018",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1990",
     "emc": "EMC 3215",
     "year": 2018,
@@ -5800,7 +5800,7 @@
   },
   {
     "name": "MacBook Pro 15\" 2019",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A1990",
     "emc": "EMC 3359",
     "year": 2019,
@@ -5864,7 +5864,7 @@
   },
   {
     "name": "MacBook Pro 16\" 2019",
-    "category": "Mac",
+    "category": "MacBook",
     "model": "A2141",
     "emc": "EMC 3347",
     "year": 2019,
@@ -5955,38 +5955,48 @@
       "battery": {
         "article": "661-56049",
         "description": "Battery",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "display": {
         "article": "661-56050",
         "description": "Display",
-        "price_usd": 459.0
+        "price_usd": 459
       },
       "rear_camera": {
         "article": "661-56052",
         "description": "Rear Camera",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "front_camera": {
         "article": "661-56051",
         "description": "Front Camera",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "speaker": {
         "article": "923-13581",
         "description": "Speaker",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "taptic_engine": {
         "article": "923-13583",
         "description": "Taptic Engine",
-        "price_usd": 79.0
+        "price_usd": 79
       }
     },
     "charging_ic": {
       "main": "SN2900",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "common_issues": [
+      "Разбитый экран",
+      "Не заряжается",
+      "Быстро разряжается батарея",
+      "Не работает Face ID",
+      "Проблемы с камерой",
+      "USB-C порт повреждён",
+      "Не работает динамик",
+      "Проблемы с 5G/6G модемом"
+    ]
   },
   {
     "name": "iPhone 17 Pro",
@@ -6022,38 +6032,48 @@
       "battery": {
         "article": "661-56121",
         "description": "Battery",
-        "price_usd": 109.0
+        "price_usd": 109
       },
       "display": {
         "article": "661-56125",
         "description": "Display",
-        "price_usd": 409.0
+        "price_usd": 409
       },
       "rear_camera": {
         "article": "661-56127",
         "description": "Rear Camera",
-        "price_usd": 269.0
+        "price_usd": 269
       },
       "front_camera": {
         "article": "661-56126",
         "description": "Front Camera",
-        "price_usd": 219.0
+        "price_usd": 219
       },
       "speaker": {
         "article": "923-13631",
         "description": "Speaker",
-        "price_usd": 79.0
+        "price_usd": 79
       },
       "taptic_engine": {
         "article": "923-13625",
         "description": "Taptic Engine",
-        "price_usd": 79.0
+        "price_usd": 79
       }
     },
     "charging_ic": {
       "main": "SN2900",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "common_issues": [
+      "Разбитый экран",
+      "Не заряжается",
+      "Быстро разряжается батарея",
+      "Не работает Face ID",
+      "Проблемы с камерой",
+      "USB-C порт повреждён",
+      "Не работает динамик",
+      "Проблемы с 5G/6G модемом"
+    ]
   },
   {
     "name": "iPhone 17",
@@ -6118,7 +6138,17 @@
     "charging_ic": {
       "main": "SN2900",
       "designation": "USB-C Controller"
-    }
+    },
+    "common_issues": [
+      "Разбитый экран",
+      "Не заряжается",
+      "Быстро разряжается батарея",
+      "Не работает Face ID",
+      "Проблемы с камерой",
+      "USB-C порт повреждён",
+      "Не работает динамик",
+      "Проблемы с 5G/6G модемом"
+    ]
   },
   {
     "name": "iPhone Air",
@@ -6183,7 +6213,17 @@
     "charging_ic": {
       "main": "SN2900",
       "designation": "USB-C Controller"
-    }
+    },
+    "common_issues": [
+      "Разбитый экран",
+      "Не заряжается",
+      "Быстро разряжается батарея",
+      "Не работает Face ID",
+      "Проблемы с камерой",
+      "USB-C порт повреждён",
+      "Не работает динамик",
+      "Проблемы с 5G/6G модемом"
+    ]
   },
   {
     "name": "MacBook Air 13-inch M4 2025",
