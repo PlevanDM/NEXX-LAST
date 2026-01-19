@@ -13,6 +13,7 @@ export const PriceTable: React.FC<PriceTableProps> = ({ items, onSelectItem, onC
   const [searchTerm, setSearchTerm] = React.useState('');
   const [category, setCategory] = React.useState('all');
   const [sortBy, setSortBy] = React.useState<'name' | 'priceAsc' | 'priceDesc'>('name');
+  const [currency, setCurrency] = React.useState<'UAH' | 'USD'>('UAH'); // NEW: Currency toggle
 
   const filteredItems = React.useMemo(() => {
     return items
@@ -50,6 +51,31 @@ export const PriceTable: React.FC<PriceTableProps> = ({ items, onSelectItem, onC
 
       {/* Controls */}
       <div className="p-4 space-y-3 bg-white">
+        {/* Currency toggle */}
+        <div className="flex items-center gap-2 justify-end">
+          <span className="text-xs text-slate-500">Валюта:</span>
+          <button
+            onClick={() => setCurrency('UAH')}
+            className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+              currency === 'UAH' 
+                ? 'bg-green-600 text-white' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+          >
+            ₴ UAH
+          </button>
+          <button
+            onClick={() => setCurrency('USD')}
+            className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+              currency === 'USD' 
+                ? 'bg-green-600 text-white' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+          >
+            $ USD
+          </button>
+        </div>
+
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <Icons.Search />
@@ -86,12 +112,11 @@ export const PriceTable: React.FC<PriceTableProps> = ({ items, onSelectItem, onC
         <div className="col-span-2">Артикул</div>
         <div className="col-span-6">Описание</div>
         <div 
-          className="col-span-2 text-right cursor-pointer hover:text-green-600"
+          className="col-span-4 text-right cursor-pointer hover:text-green-600"
           onClick={() => setSortBy(sortBy === 'priceAsc' ? 'priceDesc' : 'priceAsc')}
         >
-          Цена (UAH) ↕
+          Цена ({currency}) ↕
         </div>
-        <div className="col-span-2 text-right text-slate-400">USD</div>
       </div>
 
       {/* List */}
@@ -109,11 +134,17 @@ export const PriceTable: React.FC<PriceTableProps> = ({ items, onSelectItem, onC
               <div className="col-span-6 text-sm text-slate-800 font-medium truncate">
                 {item.description}
               </div>
-              <div className="col-span-2 text-right font-bold text-slate-900 group-hover:text-green-700">
-                {formatPrice(item.price_uah, 'UAH')}
-              </div>
-              <div className="col-span-2 text-right text-xs text-slate-400 font-mono">
-                {formatPrice(convertPrice(item.price_uah, 'UAH', 'USD'), 'USD')}
+              <div className="col-span-4 text-right">
+                <div className="font-bold text-slate-900 group-hover:text-green-700">
+                  {currency === 'UAH' 
+                    ? formatPrice(item.price_uah, 'UAH')
+                    : formatPrice(convertPrice(item.price_uah, 'UAH', 'USD'), 'USD')}
+                </div>
+                <div className="text-xs text-slate-400 font-mono">
+                  ({currency === 'UAH' 
+                    ? formatPrice(convertPrice(item.price_uah, 'UAH', 'USD'), 'USD')
+                    : formatPrice(item.price_uah, 'UAH')})
+                </div>
               </div>
             </div>
           ))

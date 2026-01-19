@@ -13,6 +13,7 @@ import { DeviceDetailModal } from './components/DeviceDetailModal';
 import { MacBoardList } from './components/MacBoardList';
 import { KnowledgeBase } from './components/KnowledgeBase';
 import { ServicePriceList } from './components/ServicePriceList'; // NEW
+import { KeyCombinations } from './components/KeyCombinations'; // NEW: DFU/Recovery
 import { Device, PriceData, ErrorDetail, ICComponent, OfficialServiceData, MacBoard, SchematicResource, RepairGuide, ConnectorPinout, LogicBoard, BootSequence, DiodeMeasurement, ExchangePrice, ServicePrices } from './types';
 import { convertPrice, formatPrice } from './utils';
 
@@ -53,6 +54,7 @@ export const App = () => {
   const [showMacBoards, setShowMacBoards] = React.useState(false);
   const [showKnowledge, setShowKnowledge] = React.useState(false);
   const [showServicePrices, setShowServicePrices] = React.useState(false);
+  const [showKeyCombo, setShowKeyCombo] = React.useState(false); // NEW: DFU/Recovery
   
   // Новое состояние
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -81,6 +83,7 @@ export const App = () => {
         setShowMacBoards(false);
         setShowKnowledge(false);
         setShowServicePrices(false);
+        setShowKeyCombo(false); // NEW
         setShowMobileMenu(false);
         setSelectedDevice(null);
         setSelectedIC(null);
@@ -194,7 +197,8 @@ export const App = () => {
   // Блокировка скролла body при открытии модальных окон
   React.useEffect(() => {
     const isAnyModalOpen = showPriceTable || showErrors || showICs || showCalculator || 
-                           showMacBoards || showKnowledge || showServicePrices || selectedDevice || selectedIC || selectedPart;
+                           showMacBoards || showKnowledge || showServicePrices || showKeyCombo || 
+                           selectedDevice || selectedIC || selectedPart;
     
     if (isAnyModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -205,7 +209,7 @@ export const App = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, selectedDevice, selectedIC, selectedPart]);
+  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, showKeyCombo, selectedDevice, selectedIC, selectedPart]);
   
   // Глобальный поиск
   const globalSearchResults = React.useMemo(() => {
@@ -374,6 +378,14 @@ export const App = () => {
               </button>
 
               <button 
+                onClick={() => { setShowKeyCombo(true); setActiveSection('keycombo'); }}
+                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+              >
+                <span className="text-purple-400">⌨️</span>
+                <span>DFU</span>
+              </button>
+
+              <button 
                 onClick={() => { setShowICs(true); setActiveSection('ics'); }}
                 className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
               >
@@ -454,6 +466,13 @@ export const App = () => {
                 <span className="flex items-center gap-3">
                   <Icons.Book />
                   <span>База знаний</span>
+                </span>
+              </button>
+              
+              <button onClick={() => { setShowKeyCombo(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  ⌨️
+                  <span>DFU/Recovery</span>
                 </span>
               </button>
               
@@ -666,6 +685,17 @@ export const App = () => {
                devices={devices}
                rates={rates}
                onClose={() => setShowCalculator(false)} 
+             />
+          </div>
+        </div>
+      )}
+
+      {/* Key Combinations Modal (DFU/Recovery) */}
+      {showKeyCombo && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
+             <KeyCombinations 
+               onClose={() => setShowKeyCombo(false)} 
              />
           </div>
         </div>
