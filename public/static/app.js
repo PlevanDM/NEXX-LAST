@@ -1393,11 +1393,14 @@ const KnowledgeBasePanel = ({ knowledgeData, onClose }) => {
   );
 };
 
-// ===== DEVICE CARD (ENHANCED v6.5) =====
+// ===== DEVICE CARD (ENHANCED v6.9.2 - with Device Icons) =====
 const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   const icon = getCategoryIcon(device.category);
   const hasServiceParts = device.service_parts && Object.keys(device.service_parts).length > 0;
   const partsCount = hasServiceParts ? Object.keys(device.service_parts).length : 0;
+  
+  // Check if device has a custom icon image
+  const hasDeviceIcon = device.device_icon || device.device_icon_small;
   
   // Check if we have real prices
   const hasRealPrices = useMemo(() => {
@@ -1420,6 +1423,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   // Determine device generation/era for styling
   const getGenerationColor = () => {
     if (!device.year) return 'from-slate-50 to-slate-100';
+    if (device.year >= 2025) return 'from-fuchsia-50 to-pink-100';   // 2025+
     if (device.year >= 2024) return 'from-violet-50 to-purple-100'; // Latest
     if (device.year >= 2021) return 'from-blue-50 to-indigo-100';   // Modern
     if (device.year >= 2018) return 'from-emerald-50 to-teal-100';  // Recent
@@ -1438,6 +1442,9 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   
   const repairInfo = getRepairIndicator();
   
+  // Image loading error handler - fall back to emoji icon
+  const [imageError, setImageError] = useState(false);
+  
   return h('div', {
     onClick: () => onSelect(device),
     className: `bg-gradient-to-br ${getGenerationColor()} rounded-2xl border border-slate-200 p-4 hover:border-indigo-400 hover:shadow-xl cursor-pointer transition-all duration-200 group relative overflow-hidden`
@@ -1451,6 +1458,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
         h('div', { className: 'flex flex-wrap gap-1.5 mb-2' },
           h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-bold bg-white/80 text-indigo-700 shadow-sm' }, device.category),
           device.year && h('span', { className: cn('px-2 py-0.5 rounded-full text-xs font-bold shadow-sm',
+            device.year >= 2025 ? 'bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white' :
             device.year >= 2024 ? 'bg-violet-500 text-white' : 
             device.year >= 2021 ? 'bg-blue-500 text-white' : 'bg-white/80 text-slate-700'
           ) }, device.year),
@@ -1461,8 +1469,24 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
         h('h3', { className: 'font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2' }, device.name),
         device.model && h('p', { className: 'text-xs text-slate-500 mt-1 font-mono truncate' }, device.model.split('/')[0])
       ),
+      // Device Icon - Show image if available, otherwise emoji
       h('div', { className: 'flex flex-col items-center' },
-        h('span', { className: 'text-4xl drop-shadow-md group-hover:scale-110 transition-transform' }, icon),
+        (hasDeviceIcon && !imageError) 
+          ? h('div', { className: 'relative w-16 h-16 group-hover:scale-110 transition-transform' },
+              h('img', {
+                src: device.device_icon_small || device.device_icon,
+                alt: device.name,
+                className: 'w-full h-full object-contain drop-shadow-md rounded-lg',
+                loading: 'lazy',
+                onError: () => setImageError(true)
+              }),
+              // Source indicator
+              device.icon_source && h('span', { 
+                className: 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full text-[8px] flex items-center justify-center bg-white shadow border border-slate-200',
+                title: `Source: ${device.icon_source}`
+              }, device.icon_source === 'ifixit' ? '🔧' : device.icon_source === 'pngimg' ? '🖼️' : '📱')
+            )
+          : h('span', { className: 'text-4xl drop-shadow-md group-hover:scale-110 transition-transform' }, icon),
         repairInfo && h('span', { className: `text-xs font-semibold ${repairInfo.color} mt-1` }, repairInfo.icon)
       )
     ),

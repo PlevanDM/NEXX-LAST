@@ -125,7 +125,10 @@
     "flash_driver": "LM3567A1",
     "nfc_ic": "30V4E0",
     "ram": "8GB LPDDR5X",
-    "nand": "256GB/512GB/1TB Kioxia"
+    "nand": "256GB/512GB/1TB Kioxia",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/5uhh2Qp5dYqSBm2d.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/5uhh2Qp5dYqSBm2d.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 16 Pro",
@@ -238,7 +241,10 @@
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
-    "nfc_ic": "30V4E0"
+    "nfc_ic": "30V4E0",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/3rLXoQgLO25fHH5P.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/3rLXoQgLO25fHH5P.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 16 Plus",
@@ -327,7 +333,10 @@
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
-    "nfc_ic": "30V4E0"
+    "nfc_ic": "30V4E0",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/WfgqE2kGDQCPfEJH.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/WfgqE2kGDQCPfEJH.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 16",
@@ -416,7 +425,10 @@
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
-    "nfc_ic": "30V4E0"
+    "nfc_ic": "30V4E0",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/OUWr5rrLVD1gJy5f.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/OUWr5rrLVD1gJy5f.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 15 Pro Max",
@@ -493,7 +505,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/oKbWAIV6jKAOD4Dy.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/oKbWAIV6jKAOD4Dy.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 15 Pro",
@@ -564,7 +579,10 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/OZAuiJJCvGWhVJBP.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/OZAuiJJCvGWhVJBP.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 15 Plus",
@@ -634,7 +652,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/xnYTKxpP6qLHYwH5.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/xnYTKxpP6qLHYwH5.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 15",
@@ -704,7 +725,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/S1F1CYHYMEXCiIwC.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/S1F1CYHYMEXCiIwC.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 14 Pro Max",
@@ -781,7 +805,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/RPSMFRwOchxFIQHb.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/RPSMFRwOchxFIQHb.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 14 Pro",
@@ -852,7 +879,10 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/XuWIJ1bLBGLjJJRN.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/XuWIJ1bLBGLjJJRN.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 14 Plus",
@@ -922,7 +952,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/IYnAGuwJQNJj3Rbe.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/IYnAGuwJQNJj3Rbe.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 14",
@@ -992,7 +1025,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/sndX3ydWPVj5MF6Y.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/sndX3ydWPVj5MF6Y.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 13 Pro Max",
@@ -1063,7 +1099,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/BpVJnY5KvIOUoEQb.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/BpVJnY5KvIOUoEQb.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 13 Pro",
@@ -1134,7 +1173,10 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/4NMJMYkVKE4ATSdh.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/4NMJMYkVKE4ATSdh.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 13 mini",
@@ -1204,7 +1246,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/cRwAEQVwOe1uowIS.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cRwAEQVwOe1uowIS.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 13",
@@ -1274,7 +1319,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2pNQwF5ohjKfvEJl.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2pNQwF5ohjKfvEJl.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 12 Pro Max",
@@ -1345,7 +1393,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/EMPKaRSMhh24yKc2.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/EMPKaRSMhh24yKc2.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 12 Pro",
@@ -1416,7 +1467,10 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2H6axVGsWKHl2Kcg.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2H6axVGsWKHl2Kcg.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 12 mini",
@@ -1486,7 +1540,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/BSlCLRqCFLLQXPfL.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/BSlCLRqCFLLQXPfL.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 12",
@@ -1556,7 +1613,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/lRF6SAE2QrPNFkJF.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/lRF6SAE2QrPNFkJF.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 11 Pro Max",
@@ -1620,7 +1680,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/r3KAFdMKJnZ2bJTx.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/r3KAFdMKJnZ2bJTx.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 11 Pro",
@@ -1684,7 +1747,10 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/1i4m4cO5hJ2VcGEd.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/1i4m4cO5hJ2VcGEd.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 11",
@@ -1747,7 +1813,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/nS5v1wNJuZG4caTY.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/nS5v1wNJuZG4caTY.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone XS Max",
@@ -1811,7 +1880,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/yScnpP6G4AUZQTJY.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/yScnpP6G4AUZQTJY.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone XS",
@@ -1875,7 +1947,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/bJ3TGKJlj3OHZ4q4.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/bJ3TGKJlj3OHZ4q4.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone XR",
@@ -1939,7 +2014,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/G6sAoOhB2hPJmFjE.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/G6sAoOhB2hPJmFjE.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone X",
@@ -2003,7 +2081,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/HANmw1D3YxFKUdXE.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/HANmw1D3YxFKUdXE.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 8 Plus",
@@ -2066,7 +2147,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/c3a3wHYMWFHaCaR2.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/c3a3wHYMWFHaCaR2.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 8",
@@ -2129,7 +2213,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/DKWYwPvxvJCAdUX2.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/DKWYwPvxvJCAdUX2.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 7 Plus",
@@ -2187,7 +2274,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6JMT1kL4y4UXIckH.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6JMT1kL4y4UXIckH.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 7",
@@ -2245,7 +2335,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/aRlMQ3QJ2Xqw3q1u.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/aRlMQ3QJ2Xqw3q1u.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 6s Plus",
@@ -2296,7 +2389,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/h5FmgLAQPRsEBH6T.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/h5FmgLAQPRsEBH6T.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 6s",
@@ -2347,7 +2443,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/iSAVMIsFr4tRq6le.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/iSAVMIsFr4tRq6le.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 6 Plus",
@@ -2405,7 +2504,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/TiIVkrSr6TSjqRPO.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/TiIVkrSr6TSjqRPO.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 6",
@@ -2463,7 +2565,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/XVqoKBHIPBTIdGy6.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/XVqoKBHIPBTIdGy6.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone SE",
@@ -2532,7 +2637,10 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Air 2",
@@ -2565,7 +2673,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/eMq4DZHxChQAGJLM.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/eMq4DZHxChQAGJLM.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 12.9\" 1st Gen",
@@ -2606,7 +2717,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/QUfGXvHoNxWUt5x1.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/QUfGXvHoNxWUt5x1.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 9.7\"",
@@ -2640,7 +2754,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/uXJCVVXAOZgHYXRT.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/uXJCVVXAOZgHYXRT.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad 5th Gen",
@@ -2678,7 +2795,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 12.9\" 2nd Gen",
@@ -2719,7 +2839,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/EnFLdxGCWqwG5QjX.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/EnFLdxGCWqwG5QjX.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 10.5\"",
@@ -2753,7 +2876,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/sD2PVlVVJTPcORJA.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/sD2PVlVVJTPcORJA.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad 6th Gen",
@@ -2786,7 +2912,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 11\" 1st Gen",
@@ -2820,7 +2949,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/1ouvElJHJEtQqIVs.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/1ouvElJHJEtQqIVs.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 12.9\" 3rd Gen",
@@ -2861,7 +2993,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/1ouvElJHJEtQqIVs.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/1ouvElJHJEtQqIVs.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Air 3rd Gen",
@@ -2901,7 +3036,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad mini 5th Gen",
@@ -2939,7 +3077,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad-mini.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad-mini.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad 7th Gen",
@@ -2972,7 +3113,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 11\" 2nd Gen",
@@ -3006,7 +3150,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2PflrNxqUJhYXdvF.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2PflrNxqUJhYXdvF.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 12.9\" 4th Gen",
@@ -3047,7 +3194,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2PflrNxqUJhYXdvF.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2PflrNxqUJhYXdvF.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad 8th Gen",
@@ -3080,7 +3230,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Air 4th Gen",
@@ -3113,7 +3266,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 11\" 3rd Gen M1",
@@ -3154,7 +3310,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6BXQANIKoRa6CHWG.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6BXQANIKoRa6CHWG.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 12.9\" 5th Gen M1",
@@ -3195,7 +3354,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6BXQANIKoRa6CHWG.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6BXQANIKoRa6CHWG.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad 9th Gen",
@@ -3235,7 +3397,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "Lightning",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad mini 6th Gen",
@@ -3268,7 +3433,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://img.icons8.com/color/480/ipad-mini.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad-mini.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Air 5th Gen M1",
@@ -3306,7 +3474,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad 10th Gen",
@@ -3340,7 +3511,10 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "connector_type": "USB-C",
-    "ram": "4GB LPDDR4X"
+    "ram": "4GB LPDDR4X",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 11\" 4th Gen M2",
@@ -3375,7 +3549,10 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "connector_type": "USB-C / Thunderbolt",
-    "ram": "8GB LPDDR5"
+    "ram": "8GB LPDDR5",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/ePdFYsKWVCYIxoOw.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/ePdFYsKWVCYIxoOw.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 12.9\" 6th Gen M2",
@@ -3417,7 +3594,10 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
     "connector_type": "USB-C / Thunderbolt",
-    "ram": "8GB/16GB LPDDR5"
+    "ram": "8GB/16GB LPDDR5",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/ePdFYsKWVCYIxoOw.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/ePdFYsKWVCYIxoOw.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Air 6th Gen M2 11\"",
@@ -3458,7 +3638,10 @@
         "Bluetooth 5.3"
       ]
     },
-    "ram": "8GB LPDDR5"
+    "ram": "8GB LPDDR5",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Air 6th Gen M2 13\"",
@@ -3499,7 +3682,10 @@
         "Bluetooth 5.3"
       ]
     },
-    "ram": "8GB LPDDR5"
+    "ram": "8GB LPDDR5",
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad Pro 11\" M4",
@@ -3595,7 +3781,10 @@
     ],
     "flash_driver": "LM3567A1 (Texas Instruments)",
     "ram": "8GB LPDDR5X",
-    "fast_charging": "35W (USB-C PD)"
+    "fast_charging": "35W (USB-C PD)",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6SZ5GwSVbGYCTRJ6.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6SZ5GwSVbGYCTRJ6.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad Pro 13\" M4",
@@ -3702,7 +3891,10 @@
     ],
     "flash_driver": "LM3567A1 (Texas Instruments)",
     "ram": "8GB/16GB LPDDR5X",
-    "fast_charging": "35W (USB-C PD)"
+    "fast_charging": "35W (USB-C PD)",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6SZ5GwSVbGYCTRJ6.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6SZ5GwSVbGYCTRJ6.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 11\" Early 2014",
@@ -3753,7 +3945,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 11\" Early 2015",
@@ -3804,7 +3999,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 5th Gen"
+    "architecture": "Intel Core 5th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" Early 2014",
@@ -3867,7 +4065,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" Early 2015",
@@ -3930,7 +4131,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 5th Gen"
+    "architecture": "Intel Core 5th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" 2017",
@@ -3994,7 +4198,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 5th Gen"
+    "architecture": "Intel Core 5th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" 2018 Retina",
@@ -4059,7 +4266,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" 2019 Retina",
@@ -4124,7 +4334,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" 2020 Intel",
@@ -4188,7 +4401,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 10th Gen"
+    "architecture": "T2 + Intel 10th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Air 13\" M1 2020",
@@ -4249,7 +4465,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M1"
+    "architecture": "Apple Silicon M1",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/Rns2KUYuqJTGfLkN.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/Rns2KUYuqJTGfLkN.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" M2 2022",
@@ -4299,7 +4518,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M2"
+    "architecture": "Apple Silicon M2",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/RPNaLPbA3rqXNmHQ.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/RPNaLPbA3rqXNmHQ.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 15\" M2 2023",
@@ -4348,7 +4570,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M2"
+    "architecture": "Apple Silicon M2",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/IZjF5tSfBP3Plfnj.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/IZjF5tSfBP3Plfnj.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" M3 2024",
@@ -4398,7 +4623,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M3"
+    "architecture": "Apple Silicon M3",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Air 15\" M3 2024",
@@ -4448,7 +4676,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M3"
+    "architecture": "Apple Silicon M3",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 13\" Late 2013",
@@ -4512,7 +4743,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" Mid 2014",
@@ -4575,7 +4809,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" Early 2015",
@@ -4638,7 +4875,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 5th Gen"
+    "architecture": "Intel Core 5th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
@@ -4702,7 +4942,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 6th Gen"
+    "architecture": "Intel Core 6th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
@@ -4766,7 +5009,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 6th Gen"
+    "architecture": "Intel Core 6th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
@@ -4830,7 +5076,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 7th Gen"
+    "architecture": "Intel Core 7th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
@@ -4894,7 +5143,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 7th Gen"
+    "architecture": "Intel Core 7th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
@@ -4959,7 +5211,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
@@ -5024,7 +5279,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
@@ -5089,7 +5347,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
@@ -5150,7 +5411,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
@@ -5211,7 +5475,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 10th Gen"
+    "architecture": "T2 + Intel 10th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 13\" M1 2020",
@@ -5272,7 +5539,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M1"
+    "architecture": "Apple Silicon M1",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/6QxbVPrInkUOILLX.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/6QxbVPrInkUOILLX.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" M2 2022",
@@ -5333,7 +5603,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M2"
+    "architecture": "Apple Silicon M2",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/FgxLMR4R1VfXd5Bc.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/FgxLMR4R1VfXd5Bc.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 14\" M1 Pro 2021",
@@ -5389,7 +5662,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M1 Pro/Max"
+    "architecture": "Apple Silicon M1 Pro/Max",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 16\" M1 Pro 2021",
@@ -5445,7 +5721,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M1 Pro/Max"
+    "architecture": "Apple Silicon M1 Pro/Max",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 14\" M2 Pro 2023",
@@ -5501,7 +5780,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M2 Pro/Max"
+    "architecture": "Apple Silicon M2 Pro/Max",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 16\" M2 Pro 2023",
@@ -5557,7 +5839,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M2 Pro/Max"
+    "architecture": "Apple Silicon M2 Pro/Max",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 14\" M3 2023",
@@ -5607,7 +5892,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M3"
+    "architecture": "Apple Silicon M3",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 14\" M3 Pro 2023",
@@ -5662,7 +5950,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M3 Pro/Max"
+    "architecture": "Apple Silicon M3 Pro/Max",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 16\" M3 Pro 2023",
@@ -5717,7 +6008,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Apple Silicon M3 Pro/Max"
+    "architecture": "Apple Silicon M3 Pro/Max",
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" Late 2013",
@@ -5781,7 +6075,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" Mid 2014",
@@ -5844,7 +6141,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" Mid 2015",
@@ -5909,7 +6209,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 4th Gen"
+    "architecture": "Intel Core 4th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" 2016",
@@ -5973,7 +6276,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 6th Gen"
+    "architecture": "Intel Core 6th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" 2017",
@@ -6037,7 +6343,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "Intel Core 7th Gen"
+    "architecture": "Intel Core 7th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" 2018",
@@ -6103,7 +6412,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 8th Gen"
+    "architecture": "T2 + Intel 8th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 15\" 2019",
@@ -6169,7 +6481,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 9th Gen"
+    "architecture": "T2 + Intel 9th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 16\" 2019",
@@ -6228,7 +6543,10 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
-    "architecture": "T2 + Intel 9th Gen"
+    "architecture": "T2 + Intel 9th Gen",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "iPhone 17 Pro Max",
@@ -6308,7 +6626,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00826",
-    "baseband": "Qualcomm X80"
+    "baseband": "Qualcomm X80",
+    "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG42.png",
+    "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG42.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "iPhone 17 Pro",
@@ -6387,7 +6708,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00826",
-    "baseband": "Qualcomm X80"
+    "baseband": "Qualcomm X80",
+    "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG41.png",
+    "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG41.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "iPhone 17",
@@ -6464,7 +6788,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00805",
-    "baseband": "Qualcomm X80"
+    "baseband": "Qualcomm X80",
+    "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG34.png",
+    "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG34.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "iPhone Air",
@@ -6542,7 +6869,10 @@
     ],
     "power_ic": "343S00805",
     "baseband": "Apple C1X",
-    "wifi_chip": "Apple N1"
+    "wifi_chip": "Apple N1",
+    "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG40.png",
+    "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG40.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Air 13-inch M4 2025",
@@ -6590,7 +6920,10 @@
       "main": "CD3217",
       "designation": "USB-C PD Controller"
     },
-    "architecture": "Apple Silicon M4"
+    "architecture": "Apple Silicon M4",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Air 15-inch M4 2025",
@@ -6638,7 +6971,10 @@
       "main": "CD3217",
       "designation": "USB-C PD Controller"
     },
-    "architecture": "Apple Silicon M4"
+    "architecture": "Apple Silicon M4",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101755.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101755.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 14-inch M5 2025",
@@ -6685,7 +7021,10 @@
       "main": "CD3217",
       "designation": "USB-C PD Controller"
     },
-    "architecture": "Apple Silicon M5"
+    "architecture": "Apple Silicon M5",
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "iPhone 5s",
@@ -6708,7 +7047,10 @@
     "official_service_prices": {
       "battery": 49,
       "display": 129
-    }
+    },
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/FLYVBuMcFMeL4f3p.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/FLYVBuMcFMeL4f3p.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone SE 1st Gen",
@@ -6730,7 +7072,10 @@
     "official_service_prices": {
       "battery": 49,
       "display": 129
-    }
+    },
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/GtMwWlkdR6L4FMem.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/GtMwWlkdR6L4FMem.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone SE 2nd Gen",
@@ -6752,7 +7097,10 @@
     "official_service_prices": {
       "battery": 49,
       "display": 149
-    }
+    },
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/FsK5C5a4DXfHWBjU.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone SE 3rd Gen",
@@ -6774,7 +7122,10 @@
     "official_service_prices": {
       "battery": 49,
       "display": 179
-    }
+    },
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/nIcnRhh4Z2qCIYpB.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/nIcnRhh4Z2qCIYpB.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPad mini 7th Gen",
@@ -6805,7 +7156,10 @@
       ]
     },
     "connector_type": "USB-C",
-    "ram": "8GB LPDDR5X"
+    "ram": "8GB LPDDR5X",
+    "device_icon": "https://img.icons8.com/color/480/ipad-mini.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad-mini.png",
+    "icon_source": "icons8"
   },
   {
     "name": "iPad 11th Gen",
@@ -6822,7 +7176,10 @@
     "official_service_prices": {
       "battery": 99,
       "display": 249
-    }
+    },
+    "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
+    "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
+    "icon_source": "icons8"
   },
   {
     "name": "MacBook Pro 14\" M4 2024",
@@ -6848,7 +7205,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 16\" M4 2024",
@@ -6874,7 +7234,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "icon_source": "default"
   },
   {
     "name": "MacBook Pro 14\" M4 Pro 2024",
@@ -6899,7 +7262,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 16\" M4 Pro 2024",
@@ -6924,7 +7290,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 16\" M5 2025",
@@ -6949,7 +7318,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 14\" M5 Pro 2025",
@@ -6974,7 +7346,10 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   },
   {
     "name": "MacBook Pro 16\" M5 Pro 2025",
@@ -6999,6 +7374,9 @@
     "charging_ic": {
       "main": "CD3217",
       "designation": "USB-C PD Controller"
-    }
+    },
+    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
+    "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
+    "icon_source": "pngimg"
   }
 ]
