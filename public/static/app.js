@@ -1680,27 +1680,43 @@ const RepairTool = () => {
     );
   }
 
-  return h('div', { className: 'min-h-screen bg-gray-100' },
-    h('div', { className: 'bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white py-8 px-4' },
-      h('div', { className: 'max-w-6xl mx-auto text-center space-y-3' },
-        h('div', { className: 'flex items-center justify-center gap-4 mb-3' },
-          h('img', { 
-            src: '/static/nexx-logo.png', 
-            alt: 'NEXX Logo',
-            className: 'h-12 md:h-16 object-contain'
-          }),
-          h('h1', { className: 'text-2xl md:text-4xl font-bold' }, 'NEXX Database')
-        ),
-        h('p', { className: 'text-indigo-100 text-sm' }, 'База данных для ремонта устройств Apple'),
-        h('div', { className: 'flex flex-wrap gap-2 justify-center text-xs' },
-          h('span', { className: 'px-2 py-1 rounded-full bg-white/15' }, `${stats.total} устройств`),
-          h('span', { className: 'px-2 py-1 rounded-full bg-green-500/30' }, `${stats.articles} артикулов`),
-          h('span', { className: 'px-2 py-1 rounded-full bg-blue-500/30' }, `${stats.logicBoards} плат`)
+  return h('div', { className: 'min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50/30 to-purple-50/20' },
+    h('div', { className: 'bg-white border-b border-gray-100 shadow-sm' },
+      h('div', { className: 'max-w-6xl mx-auto px-4 py-4' },
+        h('div', { className: 'flex items-center justify-between flex-wrap gap-4' },
+          // Logo and Title
+          h('div', { className: 'flex items-center gap-3' },
+            h('div', { className: 'bg-white rounded-xl p-2 shadow-sm border border-gray-100' },
+              h('img', { 
+                src: '/static/nexx-logo.png', 
+                alt: 'NEXX Logo',
+                className: 'h-10 md:h-12 object-contain'
+              })
+            ),
+            h('div', { className: 'flex flex-col' },
+              h('h1', { className: 'text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent' }, 
+                'NEXX Database'
+              ),
+              h('p', { className: 'text-sm text-gray-500 font-medium' }, 'База данных для ремонта устройств Apple')
+            )
+          ),
+          // Stats
+          h('div', { className: 'flex flex-wrap gap-2 text-xs' },
+            h('span', { className: 'px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 font-semibold border border-indigo-100' }, 
+              `📱 ${stats.total} устройств`
+            ),
+            h('span', { className: 'px-3 py-1.5 rounded-full bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 font-semibold border border-green-100' }, 
+              `🔖 ${stats.articles} артикулов`
+            ),
+            h('span', { className: 'px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 font-semibold border border-blue-100' }, 
+              `🖥️ ${stats.logicBoards} плат`
+            )
+          )
         )
       )
     ),
 
-    h('div', { className: 'max-w-6xl mx-auto px-4 -mt-4 pb-16' },
+    h('div', { className: 'max-w-6xl mx-auto px-4 py-6' },
       h(Surface, { className: 'mb-4 p-2' },
         h('div', { className: 'relative' },
           h('input', {
