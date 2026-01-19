@@ -9,6 +9,59 @@ interface DeviceListProps {
   isLoading?: boolean;
 }
 
+// Компонент изображения устройства с улучшенным fallback
+const DeviceImage: React.FC<{ device: Device }> = ({ device }) => {
+  const [imageState, setImageState] = React.useState<'icon' | 'ifixit' | 'fallback'>(
+    device.icon_url ? 'icon' : device.ifixit_image ? 'ifixit' : 'fallback'
+  );
+
+  const handleImageError = () => {
+    if (imageState === 'icon' && device.ifixit_image) {
+      setImageState('ifixit');
+    } else {
+      setImageState('fallback');
+    }
+  };
+
+  const getCategoryEmoji = (category?: string) => {
+    const cat = category?.toLowerCase() || '';
+    if (cat.includes('iphone')) return '📱';
+    if (cat.includes('ipad')) return '📟';
+    if (cat.includes('macbook')) return '💻';
+    if (cat.includes('mac')) return '🖥️';
+    if (cat.includes('watch')) return '⌚';
+    if (cat.includes('airpods')) return '🎧';
+    return '🔧';
+  };
+
+  if (imageState === 'fallback') {
+    return (
+      <div className="h-32 flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 border-b border-slate-200">
+        <div className="text-6xl opacity-30">{getCategoryEmoji(device.category)}</div>
+      </div>
+    );
+  }
+
+  const currentImage = imageState === 'icon' ? device.icon_url : device.ifixit_image;
+  const bgClass = imageState === 'icon' 
+    ? 'bg-white' 
+    : 'bg-gradient-to-br from-slate-50 to-slate-100';
+
+  return (
+    <div className={`h-32 flex items-center justify-center ${bgClass} border-b border-slate-200 overflow-hidden`}>
+      <img
+        src={currentImage}
+        alt={device.name}
+        loading="lazy"
+        className={`max-h-28 object-contain transition-transform duration-300 group-hover:scale-105 ${
+          imageState === 'icon' ? 'drop-shadow-sm' : 'opacity-90'
+        }`}
+        onError={handleImageError}
+      />
+    </div>
+  );
+};
+
 export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoading = false }) => {
   const [search, setSearch] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
@@ -39,12 +92,27 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {[...Array(12)].map((_, i) => (
-          <div key={i} className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 h-48 animate-pulse">
-            <div className="h-5 bg-slate-200 rounded w-1/2 mb-4"></div>
-            <div className="h-8 bg-slate-200 rounded w-3/4 mb-4"></div>
-            <div className="space-y-2">
-              <div className="h-4 bg-slate-200 rounded w-full"></div>
-              <div className="h-4 bg-slate-200 rounded w-2/3"></div>
+          <div key={i} className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-full animate-pulse">
+            {/* Image skeleton */}
+            <div className="h-32 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            
+            {/* Header skeleton */}
+            <div className="p-3 bg-slate-50 border-b border-slate-200">
+              <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+              <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+            </div>
+            
+            {/* Content skeleton */}
+            <div className="p-3">
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="h-16 bg-slate-100 rounded"></div>
+                <div className="h-16 bg-slate-100 rounded"></div>
+              </div>
+              <div className="space-y-2">
+                <div className="h-3 bg-slate-200 rounded"></div>
+                <div className="h-3 bg-slate-200 rounded w-4/5"></div>
+                <div className="h-3 bg-slate-200 rounded w-3/5"></div>
+              </div>
             </div>
           </div>
         ))}
@@ -107,50 +175,7 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
               className="bg-white rounded-lg border border-slate-300 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col h-full group"
             >
               {/* Device Image */}
-              {device.icon_url ? (
-                <div className="h-32 flex items-center justify-center bg-white border-b border-slate-200 overflow-hidden">
-                  <img
-                    src={device.icon_url}
-                    alt={device.name}
-                    loading="lazy"
-                    className="max-h-28 object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      // Попробовать fallback на ifixit_image
-                      if (device.ifixit_image) {
-                        target.src = device.ifixit_image;
-                        target.style.display = 'block';
-                        target.style.opacity = '0.9';
-                      }
-                    }}
-                  />
-                </div>
-              ) : device.ifixit_image ? (
-                <div className="h-32 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200 overflow-hidden">
-                  <img
-                    src={device.ifixit_image}
-                    alt={device.name}
-                    loading="lazy"
-                    className="max-h-28 object-contain opacity-90 transition-transform duration-300 group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
-                  />
-                </div>
-              ) : (
-                <div className="h-32 flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 border-b border-slate-200">
-                  <div className="text-6xl opacity-30">
-                    {device.category?.toLowerCase().includes('iphone') ? '📱' : 
-                     device.category?.toLowerCase().includes('ipad') ? '📟' : 
-                     device.category?.toLowerCase().includes('macbook') ? '💻' : 
-                     device.category?.toLowerCase().includes('mac') ? '🖥️' : 
-                     device.category?.toLowerCase().includes('watch') ? '⌚' : 
-                     device.category?.toLowerCase().includes('airpods') ? '🎧' : '🔧'}
-                  </div>
-                </div>
-              )}
+              <DeviceImage device={device} />
 
               {/* Header: Name & Year */}
               <div className="p-3 bg-slate-50 border-b border-slate-200 flex justify-between items-start">

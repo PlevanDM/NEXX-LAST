@@ -52,7 +52,12 @@ export const App = () => {
   const [showCalculator, setShowCalculator] = React.useState(false);
   const [showMacBoards, setShowMacBoards] = React.useState(false);
   const [showKnowledge, setShowKnowledge] = React.useState(false);
-  const [showServicePrices, setShowServicePrices] = React.useState(false); // NEW
+  const [showServicePrices, setShowServicePrices] = React.useState(false);
+  
+  // Новое состояние
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const [globalSearch, setGlobalSearch] = React.useState('');
+  const [activeSection, setActiveSection] = React.useState<string>('devices');
 
   React.useEffect(() => {
     loadData();
@@ -108,76 +113,328 @@ export const App = () => {
   const priceListArray = React.useMemo(() => {
     return Object.values(prices);
   }, [prices]);
+  
+  // Блокировка скролла body при открытии модальных окон
+  React.useEffect(() => {
+    const isAnyModalOpen = showPriceTable || showErrors || showICs || showCalculator || 
+                           showMacBoards || showKnowledge || showServicePrices || selectedDevice || selectedIC || selectedPart;
+    
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, selectedDevice, selectedIC, selectedPart]);
+  
+  // Глобальный поиск
+  const globalSearchResults = React.useMemo(() => {
+    if (!globalSearch || globalSearch.length < 2) return null;
+    
+    const query = globalSearch.toLowerCase();
+    const results: any = {
+      devices: [] as Device[],
+      ics: [] as ICComponent[],
+      errors: [] as ErrorDetail[]
+    };
+    
+    // Поиск устройств
+    results.devices = devices.filter(d => 
+      d.name.toLowerCase().includes(query) ||
+      d.model_number?.toLowerCase().includes(query) ||
+      d.board_number?.toLowerCase().includes(query) ||
+      (d.board_numbers || []).some(bn => bn.toLowerCase().includes(query))
+    ).slice(0, 5);
+    
+    // Поиск IC
+    results.ics = Object.values(ics).filter(ic => 
+      ic.name?.toLowerCase().includes(query) ||
+      ic.marking?.toLowerCase().includes(query) ||
+      ic.function?.toLowerCase().includes(query)
+    ).slice(0, 5);
+    
+    // Поиск ошибок
+    results.errors = Object.values(errors).filter(err => 
+      err.code?.toLowerCase().includes(query) ||
+      err.description?.toLowerCase().includes(query)
+    ).slice(0, 5);
+    
+    return results;
+  }, [globalSearch, devices, ics, errors]);
+  
+  // Счетчики для навигации
+  const counts = React.useMemo(() => ({
+    devices: devices.length,
+    ics: Object.keys(ics).length,
+    errors: Object.keys(errors).length,
+    boards: macBoards.length
+  }), [devices, ics, errors, macBoards]);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       {/* Navbar */}
       <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-3">
+          <div className="flex justify-between h-16 items-center gap-4">
+            {/* Logo */}
+            <div className="flex items-center gap-3 flex-shrink-0">
               <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-xl">
                 N
               </div>
-              <span className="font-bold text-xl tracking-tight hidden sm:block">NEXX Database</span>
-              <span className="font-bold text-xl tracking-tight sm:hidden">NEXX</span>
+              <span className="font-bold text-xl tracking-tight hidden lg:block">NEXX Database</span>
+              <span className="font-bold text-xl tracking-tight lg:hidden">NEXX</span>
             </div>
             
-            <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto">
+            {/* Глобальный поиск */}
+            <div className="relative flex-1 max-w-md hidden md:block">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Icons.Search />
+              </div>
+              <input
+                type="text"
+                placeholder="Поиск по всей базе..."
+                value={globalSearch}
+                onChange={(e) => setGlobalSearch(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-400 text-sm"
+              />
+              
+              {/* Результаты глобального поиска */}
+              {globalSearchResults && globalSearch.length >= 2 && (
+                <div className="absolute top-full mt-2 w-full bg-slate-800 border border-slate-700 rounded-lg shadow-2xl max-h-96 overflow-auto z-50">
+                  {globalSearchResults.devices.length > 0 && (
+                    <div className="p-3 border-b border-slate-700">
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Устройства ({globalSearchResults.devices.length})</div>
+                      {globalSearchResults.devices.map((device: Device) => (
+                        <div key={device.name} 
+                             onClick={() => { setSelectedDevice(device); setGlobalSearch(''); }}
+                             className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
+                          <div className="font-medium">{device.name}</div>
+                          <div className="text-xs text-slate-400">{device.model_number}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {globalSearchResults.ics.length > 0 && (
+                    <div className="p-3 border-b border-slate-700">
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Микросхемы ({globalSearchResults.ics.length})</div>
+                      {globalSearchResults.ics.map((ic: ICComponent) => (
+                        <div key={ic.name} 
+                             onClick={() => { setSelectedIC(ic); setGlobalSearch(''); }}
+                             className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
+                          <div className="font-medium">{ic.name}</div>
+                          <div className="text-xs text-slate-400">{ic.marking}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {globalSearchResults.errors.length > 0 && (
+                    <div className="p-3">
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Ошибки ({globalSearchResults.errors.length})</div>
+                      {globalSearchResults.errors.map((error: ErrorDetail) => (
+                        <div key={error.code} className="p-2 hover:bg-slate-700 rounded text-sm">
+                          <div className="font-medium">{error.code}</div>
+                          <div className="text-xs text-slate-400 truncate">{error.description}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {globalSearchResults.devices.length === 0 && globalSearchResults.ics.length === 0 && globalSearchResults.errors.length === 0 && (
+                    <div className="p-4 text-center text-slate-400 text-sm">
+                      Ничего не найдено
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-2">
               <button 
-                onClick={() => setShowCalculator(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors text-sm font-medium whitespace-nowrap shadow-lg shadow-blue-900/50 border border-blue-500"
+                onClick={() => { setShowCalculator(true); setActiveSection('calculator'); }}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
+                  activeSection === 'calculator' 
+                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500' 
+                    : 'bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/50 border border-blue-500'
+                }`}
               >
-                <span className="text-white"><Icons.Calculator /></span>
-                <span className="hidden sm:inline text-white">Калькулятор</span>
+                <Icons.Calculator />
+                <span>Калькулятор</span>
               </button>
 
               <button 
-                onClick={() => setShowServicePrices(true)}
+                onClick={() => { setShowServicePrices(true); setActiveSection('services'); }}
                 className="flex items-center gap-2 px-3 py-1.5 bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors text-sm font-medium whitespace-nowrap shadow-lg shadow-orange-900/50 border border-orange-500"
               >
-                <span className="text-white"><Icons.Price /></span>
-                <span className="hidden sm:inline text-white">Услуги</span>
+                <Icons.Price />
+                <span>Услуги</span>
               </button>
 
               <button 
-                onClick={() => setShowMacBoards(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={() => { setShowMacBoards(true); setActiveSection('boards'); }}
+                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
               >
                 <span className="text-blue-400"><Icons.Board /></span>
-                <span className="hidden sm:inline">MacBook</span>
+                <span>MacBook</span>
+                {counts.boards > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {counts.boards}
+                  </span>
+                )}
               </button>
 
               <button 
-                onClick={() => setShowKnowledge(true)}
+                onClick={() => { setShowKnowledge(true); setActiveSection('knowledge'); }}
                 className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
               >
                 <span className="text-indigo-400"><Icons.Book /></span>
-                <span className="hidden sm:inline">Инфо</span>
+                <span>Инфо</span>
               </button>
 
               <button 
-                onClick={() => setShowICs(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={() => { setShowICs(true); setActiveSection('ics'); }}
+                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
               >
                 <span className="text-violet-400"><Icons.Chip /></span>
-                <span className="hidden sm:inline">IC</span>
+                <span>IC</span>
+                {counts.ics > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-violet-500 text-white text-xs rounded-full px-1.5 py-0.5 text-[10px] font-bold">
+                    {counts.ics}
+                  </span>
+                )}
               </button>
 
               <button 
-                onClick={() => setShowErrors(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={() => { setShowErrors(true); setActiveSection('errors'); }}
+                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
               >
                 <span className="text-red-400"><Icons.Error /></span>
-                <span className="hidden sm:inline">Ошибки</span>
+                <span>Ошибки</span>
+                {counts.errors > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 text-[10px] font-bold">
+                    {counts.errors}
+                  </span>
+                )}
+              </button>
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="lg:hidden flex items-center justify-center w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+            >
+              {showMobileMenu ? <Icons.Close /> : '☰'}
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu */}
+        {showMobileMenu && (
+          <div className="lg:hidden bg-slate-800 border-t border-slate-700">
+            <div className="px-4 py-3 space-y-2">
+              {/* Mobile Search */}
+              <div className="relative mb-3">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Icons.Search />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Поиск..."
+                  value={globalSearch}
+                  onChange={(e) => setGlobalSearch(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-400 text-sm"
+                />
+              </div>
+              
+              <button onClick={() => { setShowCalculator(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Calculator />
+                  <span>Калькулятор</span>
+                </span>
+              </button>
+              
+              <button onClick={() => { setShowServicePrices(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-orange-600 hover:bg-orange-500 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Price />
+                  <span>Услуги</span>
+                </span>
+              </button>
+              
+              <button onClick={() => { setShowMacBoards(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Board />
+                  <span>MacBook платы</span>
+                </span>
+                {counts.boards > 0 && <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-1">{counts.boards}</span>}
+              </button>
+              
+              <button onClick={() => { setShowKnowledge(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Book />
+                  <span>База знаний</span>
+                </span>
+              </button>
+              
+              <button onClick={() => { setShowICs(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Chip />
+                  <span>Микросхемы</span>
+                </span>
+                {counts.ics > 0 && <span className="bg-violet-500 text-white text-xs rounded-full px-2 py-1">{counts.ics}</span>}
+              </button>
+              
+              <button onClick={() => { setShowErrors(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Error />
+                  <span>Коды ошибок</span>
+                </span>
+                {counts.errors > 0 && <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1">{counts.errors}</span>}
               </button>
             </div>
           </div>
-        </div>
+        )}
       </nav>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Breadcrumbs & Stats */}
+        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex items-center gap-2 text-sm text-slate-600">
+            <span className="font-bold text-slate-900">Главная</span>
+            <span>›</span>
+            <span>Устройства</span>
+            {selectedDevice && (
+              <>
+                <span>›</span>
+                <span className="font-medium text-blue-600">{selectedDevice.name}</span>
+              </>
+            )}
+          </div>
+          
+          <div className="flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-200">
+              <Icons.Phone />
+              <span className="font-bold">{counts.devices}</span>
+              <span className="hidden sm:inline">устройств</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-violet-50 text-violet-700 rounded-lg border border-violet-200">
+              <Icons.Chip />
+              <span className="font-bold">{counts.ics}</span>
+              <span className="hidden sm:inline">IC</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-700 rounded-lg border border-red-200">
+              <Icons.Error />
+              <span className="font-bold">{counts.errors}</span>
+              <span className="hidden sm:inline">ошибок</span>
+            </div>
+          </div>
+        </div>
+        
         <DeviceList 
           devices={devices} 
           isLoading={loading} 
