@@ -899,6 +899,13 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
   const [category, setCategory] = useState('all');
   const [sortBy, setSortBy] = useState('name');
   
+  // Safety check
+  if (!ukrainePrices) {
+    return h(Modal, { title: '💰 Цены Украина', onClose, color: 'green' },
+      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка цен...')
+    );
+  }
+  
   // Build unified price list from ukraine_prices.json
   const priceList = useMemo(() => {
     if (!ukrainePrices) return [];
@@ -1040,6 +1047,13 @@ const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClos
   const [searchTerm, setSearchTerm] = useState('');
   const [showType, setShowType] = useState('all');
   
+  // Safety check
+  if (!logicBoards && !logicBoardsSpecs) {
+    return h(Modal, { title: '🖥️ База плат', onClose, color: 'violet' },
+      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка данных...')
+    );
+  }
+  
   // Merge comprehensive boards with specs (which have prices)
   const allBoards = useMemo(() => {
     const boards = [];
@@ -1179,6 +1193,13 @@ const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClos
 const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('charging');
+  
+  // Safety check
+  if (!icData) {
+    return h(Modal, { title: '🔌 База микросхем', onClose, color: 'violet' },
+      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка данных...')
+    );
+  }
   
   const categories = {
     charging: { name: '⚡ Зарядка', data: icData?.charging_ics || [] },
@@ -1373,6 +1394,13 @@ const ArticleSearchPanel = ({ articleData, ukrainePrices, onClose, onSelectItem 
 const ErrorCodesPanel = ({ errorData, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('itunes');
+  
+  // Safety check
+  if (!errorData) {
+    return h(Modal, { title: '⚠️ Коды ошибок', onClose, color: 'red' },
+      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка кодов ошибок...')
+    );
+  }
   
   const itunesErrors = errorData?.itunes_restore_errors || [];
   const macErrors = errorData?.mac_diagnostics || [];
@@ -2044,6 +2072,13 @@ const KeyCombinationsPanel = ({ onClose }) => {
 // ===== KNOWLEDGE BASE PANEL =====
 const KnowledgeBasePanel = ({ knowledgeData, onClose }) => {
   const [topic, setTopic] = useState('tristar_hydra');
+  
+  // Safety check
+  if (!knowledgeData) {
+    return h(Modal, { title: '📚 База знаний', onClose, color: 'blue' },
+      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка базы знаний...')
+    );
+  }
   
   const topics = {
     tristar_hydra: { name: '⚡ Tristar/Hydra', key: 'tristar_hydra' },
@@ -3584,38 +3619,68 @@ const App = () => {
       )
     ),
     
-    // Panels
-    showPrices && h(PricesPanel, { 
+    // Panels (with null checks)
+    showPrices && ukrainePrices && h(PricesPanel, { 
       ukrainePrices, 
       logicBoardsSpecs,
       onClose: () => setShowPrices(false),
       onSelectItem: handleSelectItem
     }),
-    showBoards && h(LogicBoardsPanel, { 
+    showPrices && !ukrainePrices && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
+      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
+        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка цен...'),
+        h('button', { onClick: () => setShowPrices(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
+      )
+    ),
+    showBoards && (logicBoards || logicBoardsSpecs) && h(LogicBoardsPanel, { 
       logicBoards, 
       logicBoardsSpecs,
       ukrainePrices,
       onClose: () => setShowBoards(false),
       onSelectItem: handleSelectItem
     }),
-    showErrors && h(ErrorCodesPanel, { 
+    showBoards && !logicBoards && !logicBoardsSpecs && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
+      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
+        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка данных плат...'),
+        h('button', { onClick: () => setShowBoards(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
+      )
+    ),
+    showErrors && errorData && h(ErrorCodesPanel, { 
       errorData, 
       onClose: () => setShowErrors(false) 
     }),
+    showErrors && !errorData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
+      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
+        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка кодов ошибок...'),
+        h('button', { onClick: () => setShowErrors(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
+      )
+    ),
     showCalculator && h(RepairCalculatorPanel, { 
       devices, 
       ukrainePrices,
       onClose: () => setShowCalculator(false) 
     }),
-    showKnowledge && h(KnowledgeBasePanel, { 
+    showKnowledge && knowledgeData && h(KnowledgeBasePanel, { 
       knowledgeData, 
       onClose: () => setShowKnowledge(false) 
     }),
-    showICs && h(ICDatabasePanel, { 
+    showKnowledge && !knowledgeData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
+      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
+        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка базы знаний...'),
+        h('button', { onClick: () => setShowKnowledge(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
+      )
+    ),
+    showICs && icData && h(ICDatabasePanel, { 
       icData, 
       onClose: () => setShowICs(false),
       onSelectItem: handleSelectItem
     }),
+    showICs && !icData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
+      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
+        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка данных IC...'),
+        h('button', { onClick: () => setShowICs(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
+      )
+    ),
     showKeyCombos && h(KeyCombinationsPanel, { 
       onClose: () => setShowKeyCombos(false) 
     }),
