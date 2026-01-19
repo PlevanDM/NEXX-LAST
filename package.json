@@ -5,7 +5,9 @@
     "dev": "vite",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
     "build": "vite build --config vite.client.config.ts && vite build && npm run postbuild",
-    "postbuild": "cp -r public/images dist/ && cp -r public/data dist/ && echo 'Copied public assets to dist'",
+    "postbuild": "npm run copy-assets && npm run use-minified",
+    "copy-assets": "cp -r public/images dist/ && cp -r public/data dist/ && echo 'Copied assets'",
+    "use-minified": "for f in public/static/*.min.js; do [ -f \"$f\" ] && cp \"$f\" dist/static/$(basename \"${f%.min.js}.js\"); done && echo 'Using minified JS'",
     "preview": "wrangler pages dev dist",
     "deploy": "npm run build && wrangler pages deploy dist",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
@@ -28,6 +30,7 @@
     "@hono/vite-dev-server": "^0.18.2",
     "@vitejs/plugin-react": "^5.1.2",
     "puppeteer": "^24.35.0",
+    "terser": "^5.46.0",
     "vite": "^6.3.5",
     "wrangler": "^4.4.0"
   }

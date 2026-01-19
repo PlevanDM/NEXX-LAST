@@ -7,6 +7,28 @@ const app = new Hono()
 // Enable CORS
 app.use('/api/*', cors())
 
+// Cache control for static files
+app.use('/static/*', async (c, next) => {
+  await next()
+  if (c.res.status === 200) {
+    c.res.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  }
+})
+
+app.use('/images/*', async (c, next) => {
+  await next()
+  if (c.res.status === 200) {
+    c.res.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  }
+})
+
+app.use('/data/*', async (c, next) => {
+  await next()
+  if (c.res.status === 200) {
+    c.res.headers.set('Cache-Control', 'public, max-age=86400')
+  }
+})
+
 // Serve static files
 app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/data/*', serveStatic({ root: './public' }))
