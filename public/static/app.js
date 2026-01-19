@@ -1514,14 +1514,33 @@ const KeyCombinationsPanel = ({ onClose }) => {
           )
         ),
         
-        // Error codes
+        // Error code categories legend
+        diagData.error_code_categories && h('div', { className: 'mt-4 p-3 bg-slate-100 rounded-xl' },
+          h('h4', { className: 'font-semibold text-slate-700 mb-2 text-sm' }, '📋 Категории кодов:'),
+          h('div', { className: 'flex flex-wrap gap-2' },
+            ...Object.entries(diagData.error_code_categories).slice(0, 10).map(([prefix, info]) =>
+              h('span', { 
+                key: prefix, 
+                className: `px-2 py-1 rounded text-xs font-mono ${
+                  info.severity === 'critical' ? 'bg-red-200 text-red-800' :
+                  info.severity === 'high' ? 'bg-orange-200 text-orange-800' :
+                  'bg-yellow-200 text-yellow-800'
+                }`
+              }, `${prefix}: ${info.category}`)
+            )
+          )
+        ),
+        
+        // Error codes with scrollable container
         diagData.error_codes && h('div', { className: 'mt-4' },
-          h('h4', { className: 'font-bold text-red-800 mb-3' }, '🚨 Коды ошибок диагностики'),
-          h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
-            ...Object.entries(diagData.error_codes).map(([code, desc]) =>
-              h('div', { key: code, className: 'p-2 bg-red-50 rounded-lg' },
-                h('p', { className: 'font-mono font-bold text-red-600' }, code),
-                h('p', { className: 'text-xs text-slate-600' }, desc)
+          h('h4', { className: 'font-bold text-red-800 mb-3' }, `🚨 Коды ошибок диагностики (${Object.keys(diagData.error_codes).length})`),
+          h('div', { className: 'max-h-80 overflow-y-auto p-2 bg-slate-50 rounded-xl' },
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
+              ...Object.entries(diagData.error_codes).map(([code, desc]) =>
+                h('div', { key: code, className: 'p-2 bg-red-50 rounded-lg hover:bg-red-100 transition-colors' },
+                  h('p', { className: 'font-mono font-bold text-red-600 text-sm' }, code),
+                  h('p', { className: 'text-xs text-slate-600 line-clamp-2' }, desc)
+                )
               )
             )
           )
