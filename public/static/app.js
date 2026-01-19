@@ -1684,20 +1684,15 @@ const RepairTool = () => {
     h('div', { className: 'bg-white border-b border-gray-100 shadow-sm' },
       h('div', { className: 'max-w-6xl mx-auto px-4 py-4' },
         h('div', { className: 'flex items-center justify-between flex-wrap gap-4' },
-          // Logo and Title
-          h('div', { className: 'flex items-center gap-3' },
-            h('div', { className: 'bg-white rounded-xl p-2 shadow-sm border border-gray-100' },
-              h('img', { 
-                src: '/static/nexx-logo.png', 
-                alt: 'NEXX Logo',
-                className: 'h-10 md:h-12 object-contain'
-              })
-            ),
-            h('div', { className: 'flex flex-col' },
-              h('h1', { className: 'text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent' }, 
-                'NEXX Database'
-              ),
-              h('p', { className: 'text-sm text-gray-500 font-medium' }, 'База данных для ремонта устройств Apple')
+          // Logo
+          h('div', { className: 'flex items-center gap-4' },
+            h('img', { 
+              src: '/static/nexx-logo.png', 
+              alt: 'NEXX Database - База данных для ремонта устройств Apple',
+              className: 'h-12 md:h-16 object-contain'
+            }),
+            h('p', { className: 'text-sm text-gray-600 font-medium hidden sm:block' }, 
+              'База данных для ремонта устройств Apple'
             )
           ),
           // Stats
