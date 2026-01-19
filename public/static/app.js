@@ -528,7 +528,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
             )
           ),
           h('tbody', null,
-            ...filtered.flatMap(([model, info]) => {
+            filtered.flatMap(([model, info]) => {
               const parts = [
                 { key: 'battery', label: '🔋 Батарея', data: info.battery },
                 { key: 'display', label: '📱 Дисплей', data: info.display },
@@ -538,22 +538,15 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
                 { key: 'taptic_engine', label: '📳 Taptic Engine', data: info.taptic_engine }
               ].filter(p => p.data?.price_usd);
               
+              if (parts.length === 0) return [];
+              
               return parts.map((part, idx) => {
                 const euPrice = part.data.price_usd;
                 const uaPrice = findUkrainePrice(part.data.article);
                 const savings = uaPrice ? Math.round((euPrice - uaPrice) * 100) / 100 : null;
                 const savingsPercent = savings && euPrice ? Math.round((savings / euPrice) * 100) : 0;
                 
-                return h('tr', { 
-                  key: `${model}-${part.key}`, 
-                  className: 'border-b hover:bg-slate-50'
-                },
-                  idx === 0 
-                    ? h('td', { 
-                        className: 'p-4 font-medium border-r', 
-                        rowSpan: parts.length 
-                      }, model)
-                    : null,
+                const cells = [
                   h('td', { className: 'p-4' }, part.label),
                   h('td', { className: 'p-4 text-center font-bold text-blue-600 bg-blue-50' }, 
                     `€${euPrice.toFixed(2)}`
@@ -573,7 +566,19 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
                         ? h('span', { className: 'text-red-600 font-bold' }, `+€${Math.abs(savings).toFixed(2)}`)
                         : h('span', { className: 'text-gray-400' }, '—')
                   )
-                );
+                ];
+                
+                if (idx === 0) {
+                  cells.unshift(h('td', { 
+                    className: 'p-4 font-medium border-r', 
+                    rowSpan: parts.length 
+                  }, model));
+                }
+                
+                return h('tr', { 
+                  key: `${model}-${part.key}`, 
+                  className: 'border-b hover:bg-slate-50'
+                }, cells);
               });
             })
           )
