@@ -1490,6 +1490,273 @@ const DeviceDetailsView = ({ device, icData, measurementsData, onBack }) => {
   );
 };
 
+// ===== REPAIR KNOWLEDGE PANEL =====
+const RepairKnowledgePanel = ({ data, onClose }) => {
+  const [activeTab, setActiveTab] = useState('tristar');
+  
+  if (!data) return null;
+  
+  const tabs = [
+    { key: 'tristar', name: '⚡ Tristar/Hydra', icon: '⚡' },
+    { key: 'smc', name: '💻 SMC MacBook', icon: '💻' },
+    { key: 'touch', name: '👆 Touch IC iPad', icon: '👆' },
+    { key: 'baseband', name: '📶 Baseband', icon: '📶' },
+    { key: 'common', name: '🔧 Частые ремонты', icon: '🔧' }
+  ];
+  
+  const renderTristarContent = () => {
+    const tristar = data.tristar_hydra?.tristar_hydra_diagnosis;
+    if (!tristar) return null;
+    
+    return h('div', { className: 'space-y-6' },
+      h(Surface, { className: 'p-6 border border-indigo-100/60 bg-gradient-to-br from-white via-indigo-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '🔌 Симптомы Tristar/Hydra проблем'),
+        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4' },
+          h('div', { className: 'space-y-2' },
+            h('p', { className: cn(design.sectionTitle) }, 'Основные симптомы'),
+            h('ul', { className: 'space-y-1' },
+              ...tristar.symptoms.common.map((symptom, idx) =>
+                h('li', { key: idx, className: 'flex items-start gap-2 text-sm text-slate-700' },
+                  h('span', { className: 'text-red-500 mt-0.5' }, '•'),
+                  symptom
+                )
+              )
+            )
+          ),
+          h('div', { className: 'space-y-2' },
+            h('p', { className: cn(design.sectionTitle) }, 'Причины поломки'),
+            h('ul', { className: 'space-y-1' },
+              ...tristar.causes.map((cause, idx) =>
+                h('li', { key: idx, className: 'flex items-start gap-2 text-sm text-slate-700' },
+                  h('span', { className: 'text-amber-500 mt-0.5' }, '⚠'),
+                  cause
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      h(Surface, { className: 'p-6 border border-purple-100/60 bg-gradient-to-br from-white via-purple-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '🔍 Диагностические шаги'),
+        h('ol', { className: 'space-y-2' },
+          ...tristar.symptoms.diagnostic_steps.map((step, idx) =>
+            h('li', { key: idx, className: 'flex items-start gap-3' },
+              h('span', { className: 'w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0' }, idx + 1),
+              h('span', { className: 'text-sm text-slate-700' }, step)
+            )
+          )
+        )
+      ),
+      
+      h(Surface, { className: 'p-6 border border-emerald-100/60 bg-gradient-to-br from-white via-emerald-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '🔧 Советы по ремонту'),
+        h('div', { className: 'space-y-3' },
+          ...tristar.repair_tips.map((tip, idx) =>
+            h('div', { key: idx, className: 'flex items-start gap-3 p-3 rounded-xl bg-white/80 border border-emerald-100/60' },
+              h('span', { className: 'text-emerald-500 text-lg' }, '💡'),
+              h('span', { className: 'text-sm text-slate-700' }, tip)
+            )
+          )
+        )
+      ),
+      
+      tristar.compatible_donors && h(Surface, { className: 'p-6 border border-indigo-100/60 bg-gradient-to-br from-white via-indigo-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '📱 Совместимые доноры'),
+        h('div', { className: 'space-y-2' },
+          ...Object.entries(tristar.compatible_donors).map(([model, donors]) =>
+            h('div', { key: model, className: 'p-3 rounded-xl bg-white/80 border border-indigo-100/60' },
+              h('p', { className: 'text-sm font-semibold text-indigo-700 mb-1' }, model.replace('_', ' ')),
+              h('p', { className: 'text-xs text-slate-600' }, donors.join(' • '))
+            )
+          )
+        )
+      )
+    );
+  };
+  
+  const renderSMCContent = () => {
+    const smc = data.smc_failures?.smc_failures;
+    if (!smc) return null;
+    
+    return h('div', { className: 'space-y-6' },
+      h(Surface, { className: 'p-6 border border-red-100/60 bg-gradient-to-br from-white via-red-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '⚠️ Симптомы SMC проблем'),
+        h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
+          ...smc.primary_symptoms.map((symptom, idx) =>
+            h('div', { key: idx, className: 'p-3 rounded-xl bg-white/80 border border-red-100/60 text-sm text-slate-700' },
+              h('span', { className: 'text-red-500 mr-2' }, '⚡'),
+              symptom
+            )
+          )
+        )
+      ),
+      
+      h(Surface, { className: 'p-6 border border-blue-100/60 bg-gradient-to-br from-white via-blue-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '📊 Диагностический подход'),
+        h('div', { className: 'space-y-3' },
+          ...Object.entries(smc.diagnostic_approach).map(([key, value]) =>
+            h('div', { key, className: 'p-4 rounded-xl bg-white/80 border border-blue-100/60' },
+              h('p', { className: 'text-sm font-semibold text-blue-700 mb-1' }, key.toUpperCase().replace(/_/g, ' ')),
+              h('p', { className: 'text-sm text-slate-600 font-mono' }, value)
+            )
+          )
+        )
+      )
+    );
+  };
+  
+  const renderTouchContent = () => {
+    const touch = data.touch_ic?.ipad_touch_problems;
+    if (!touch) return null;
+    
+    return h('div', { className: 'space-y-6' },
+      h(Surface, { className: 'p-6 border border-purple-100/60 bg-gradient-to-br from-white via-purple-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '📱 Затронутые модели'),
+        h('div', { className: 'space-y-3' },
+          ...Object.entries(touch.affected_models).map(([model, info]) =>
+            h('div', { key: model, className: 'p-4 rounded-xl bg-white/80 border border-purple-100/60' },
+              h('p', { className: 'text-sm font-semibold text-purple-700 mb-2' }, model.replace(/_/g, ' ')),
+              h('p', { className: 'text-xs text-slate-600 mb-1' }, `Touch ICs: ${info.touch_ics.join(', ')}`),
+              h('p', { className: 'text-xs text-slate-500' }, info.common_failure),
+              h('span', { className: cn('inline-block mt-2 px-3 py-1 rounded-full text-xs font-semibold',
+                info.repair_complexity === 'Высокая' ? 'bg-orange-100 text-orange-700' :
+                info.repair_complexity === 'Очень высокая' ? 'bg-red-100 text-red-700' :
+                'bg-yellow-100 text-yellow-700'
+              ) }, `Сложность: ${info.repair_complexity}`)
+            )
+          )
+        )
+      )
+    );
+  };
+  
+  const renderBasebandContent = () => {
+    const baseband = data.baseband?.baseband_failures;
+    if (!baseband) return null;
+    
+    return h('div', { className: 'space-y-6' },
+      h(Surface, { className: 'p-6 border border-orange-100/60 bg-gradient-to-br from-white via-orange-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '📶 Симптомы Baseband проблем'),
+        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4' },
+          h('div', null,
+            h('p', { className: cn(design.sectionTitle, 'mb-2') }, 'No Service'),
+            h('ul', { className: 'space-y-1' },
+              ...baseband.symptoms.no_service.map((symptom, idx) =>
+                h('li', { key: idx, className: 'text-sm text-slate-700' }, `• ${symptom}`)
+              )
+            )
+          ),
+          h('div', null,
+            h('p', { className: cn(design.sectionTitle, 'mb-2') }, 'Частичный сбой'),
+            h('ul', { className: 'space-y-1' },
+              ...baseband.symptoms.partial_failure.map((symptom, idx) =>
+                h('li', { key: idx, className: 'text-sm text-slate-700' }, `• ${symptom}`)
+              )
+            )
+          )
+        )
+      ),
+      
+      baseband.iphone_7_special && h(Surface, { className: 'p-6 border border-blue-100/60 bg-gradient-to-br from-white via-blue-50/30 to-white' },
+        h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, '📱 iPhone 7 особенности'),
+        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4' },
+          h('div', { className: 'p-4 rounded-xl bg-white/80 border border-green-100/60' },
+            h('p', { className: 'text-sm font-semibold text-green-700 mb-2' }, 'Qualcomm версия'),
+            h('p', { className: 'text-xs text-slate-600' }, `Модели: ${baseband.iphone_7_special.qualcomm_version.model}`),
+            h('p', { className: 'text-xs text-slate-600' }, `Baseband: ${baseband.iphone_7_special.qualcomm_version.baseband}`),
+            h('p', { className: 'text-xs text-green-600 font-semibold mt-1' }, '✓ Ремонтопригодно')
+          ),
+          h('div', { className: 'p-4 rounded-xl bg-white/80 border border-red-100/60' },
+            h('p', { className: 'text-sm font-semibold text-red-700 mb-2' }, 'Intel версия'),
+            h('p', { className: 'text-xs text-slate-600' }, `Модели: ${baseband.iphone_7_special.intel_version.model}`),
+            h('p', { className: 'text-xs text-slate-600' }, `Baseband: ${baseband.iphone_7_special.intel_version.baseband}`),
+            h('p', { className: 'text-xs text-red-600 font-semibold mt-1' }, '✗ Сложно ремонтировать')
+          )
+        )
+      )
+    );
+  };
+  
+  const renderCommonRepairs = () => {
+    const repairs = data.common_repairs?.common_repairs_2024;
+    if (!repairs) return null;
+    
+    return h('div', { className: 'space-y-6' },
+      ...Object.entries(repairs).map(([repairType, info]) =>
+        h(Surface, { key: repairType, className: 'p-6 border border-indigo-100/60 bg-gradient-to-br from-white via-indigo-50/30 to-white' },
+          h('h3', { className: 'text-lg font-bold text-slate-800 mb-4' }, 
+            repairType === 'battery_replacement' ? '🔋 Замена батареи' :
+            repairType === 'screen_replacement' ? '📱 Замена экрана' :
+            '🔌 Замена разъема зарядки'
+          ),
+          h('div', { className: 'space-y-3' },
+            ...Object.entries(info).map(([device, details]) =>
+              h('div', { key: device, className: 'p-4 rounded-xl bg-white/80 border border-indigo-100/60' },
+                h('p', { className: 'text-sm font-semibold text-indigo-700 mb-2' }, device.replace(/_/g, ' ')),
+                h('div', { className: 'grid grid-cols-2 gap-2 text-xs' },
+                  h('div', { className: 'text-slate-600' },
+                    h('span', { className: 'font-semibold' }, 'Сложность: '),
+                    details.difficulty
+                  ),
+                  h('div', { className: 'text-slate-600' },
+                    h('span', { className: 'font-semibold' }, 'Время: '),
+                    details.time
+                  )
+                ),
+                details.tips && h('div', { className: 'mt-2' },
+                  h('p', { className: 'text-xs font-semibold text-slate-500 mb-1' }, 'Советы:'),
+                  h('ul', { className: 'space-y-0.5' },
+                    ...details.tips.map((tip, idx) =>
+                      h('li', { key: idx, className: 'text-xs text-slate-600' }, `• ${tip}`)
+                    )
+                  )
+                ),
+                details.warning && h('p', { className: 'text-xs text-red-600 mt-2' }, `⚠️ ${details.warning}`)
+              )
+            )
+          )
+        )
+      )
+    );
+  };
+  
+  return h('div', { className: 'fixed inset-0 bg-black/55 z-50 flex items-center justify-center p-4 backdrop-blur-sm' },
+    h('div', { className: 'rounded-3xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col border border-indigo-100/40 bg-gradient-to-br from-white via-indigo-50/30 to-white shadow-[0_28px_80px_rgba(79,70,229,0.15)] backdrop-blur' },
+      h('div', { className: 'bg-white/85 backdrop-blur-sm p-6 border-b border-white/60 flex items-center justify-between' },
+        h('div', null,
+          h('h2', { className: 'text-2xl font-bold text-slate-800' }, '🎓 База знаний по ремонту'),
+          h('p', { className: 'text-slate-500 text-sm' }, 'Диагностика и решения частых проблем')
+        ),
+        h('button', { onClick: onClose, className: 'w-10 h-10 rounded-full bg-white/70 hover:bg-white text-slate-600 text-xl shadow-sm border border-white/70' }, '×')
+      ),
+      
+      h('div', { className: 'bg-white/80 backdrop-blur-sm px-6 py-3 border-b border-white/60 flex gap-2 overflow-x-auto' },
+        ...tabs.map(tab =>
+          h('button', {
+            key: tab.key,
+            onClick: () => setActiveTab(tab.key),
+            className: cn(
+              'px-4 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap',
+              activeTab === tab.key 
+                ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg' 
+                : 'bg-white/70 text-slate-600 hover:bg-white'
+            )
+          }, tab.name)
+        )
+      ),
+      
+      h('div', { className: 'flex-1 overflow-y-auto p-6' },
+        activeTab === 'tristar' && renderTristarContent(),
+        activeTab === 'smc' && renderSMCContent(),
+        activeTab === 'touch' && renderTouchContent(),
+        activeTab === 'baseband' && renderBasebandContent(),
+        activeTab === 'common' && renderCommonRepairs()
+      )
+    )
+  );
+};
+
 // ===== MAIN APP =====
 const RepairTool = () => {
   const [devices, setDevices] = useState([]);
@@ -1498,6 +1765,7 @@ const RepairTool = () => {
   const [connectorData, setConnectorData] = useState(null);
   const [boardData, setBoardData] = useState(null);
   const [macServiceData, setMacServiceData] = useState(null);
+  const [repairKnowledge, setRepairKnowledge] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [showMeasurements, setShowMeasurements] = useState(false);
@@ -1505,6 +1773,7 @@ const RepairTool = () => {
   const [showBoardPanel, setShowBoardPanel] = useState(false);
   const [showMacServicePanel, setShowMacServicePanel] = useState(false);
   const [showIntakeChecklist, setShowIntakeChecklist] = useState(false);
+  const [showRepairKnowledge, setShowRepairKnowledge] = useState(false);
   const [activeRole, setActiveRole] = useState('manager');
   const [loading, setLoading] = useState(true);
 
@@ -1515,15 +1784,17 @@ const RepairTool = () => {
       fetch('/data/measurements.json').then(res => res.json()),
       fetch('/data/connectors.json').then(res => res.json()),
       fetch('/data/mac_board_reference.json').then(res => res.json()),
-      fetch('/data/mac_service_prices.json').then(res => res.json())
+      fetch('/data/mac_service_prices.json').then(res => res.json()),
+      fetch('/data/repair_knowledge.json').then(res => res.json()).catch(() => null)
     ])
-    .then(([devicesData, icCompatData, measData, connectorsJson, boardsJson, macServiceJson]) => {
+    .then(([devicesData, icCompatData, measData, connectorsJson, boardsJson, macServiceJson, repairKnowledgeJson]) => {
       setDevices(devicesData);
       setIcData(icCompatData);
       setMeasurementsData(measData);
       setConnectorData(connectorsJson);
       setBoardData(boardsJson);
       setMacServiceData(macServiceJson);
+      setRepairKnowledge(repairKnowledgeJson);
       setLoading(false);
     })
     .catch(err => {
@@ -1691,13 +1962,14 @@ const RepairTool = () => {
           badge: 'Цены'
         }),
         h(BentoCard, {
-          name: 'Доноры и аналоги',
-          description: 'Откуда выпаять микросхемы, что подходит по посадке и спецификациям.',
+          name: 'База знаний ремонта',
+          description: 'Tristar/Hydra, SMC, Touch IC, Baseband - диагностика и решения частых проблем.',
           Icon: PhoneIcon,
           background: h(DonorBackground),
-          onClick: () => {},
-          cta: 'Смотрите в карточках устройств',
-          className: 'xl:col-span-1'
+          onClick: () => setShowRepairKnowledge(true),
+          cta: 'Открыть базу знаний',
+          className: 'xl:col-span-1',
+          badge: 'NEW'
         })
       ),
 
@@ -1721,7 +1993,8 @@ const RepairTool = () => {
     showMeasurements && h(MeasurementsPanel, { measurementsData, onClose: () => setShowMeasurements(false) }),
     showConnectorPanel && connectorData && h(ConnectorPanel, { data: connectorData, onClose: () => setShowConnectorPanel(false) }),
     showMacServicePanel && macServiceData && h(MacServicePanel, { data: macServiceData, onClose: () => setShowMacServicePanel(false) }),
-    showBoardPanel && boardData && h(BoardReferencePanel, { data: boardData, onClose: () => setShowBoardPanel(false) })
+    showBoardPanel && boardData && h(BoardReferencePanel, { data: boardData, onClose: () => setShowBoardPanel(false) }),
+    showRepairKnowledge && repairKnowledge && h(RepairKnowledgePanel, { data: repairKnowledge, onClose: () => setShowRepairKnowledge(false) })
   );
 };
 

@@ -9,8 +9,15 @@
         "diode_mode_normal": "0.350 - 0.450",
         "short_threshold": "<0.100",
         "models": "All iPhone",
-        "check_points": ["Battery connector", "C2300 area"],
-        "if_shorted": ["Проверить конденсаторы возле батареи", "Проверить Q2300/Q2301", "Проверить Tigris/Hydra"]
+        "check_points": [
+          "Battery connector",
+          "C2300 area"
+        ],
+        "if_shorted": [
+          "Проверить конденсаторы возле батареи",
+          "Проверить Q2300/Q2301",
+          "Проверить Tigris/Hydra"
+        ]
       },
       "PP_VCC_MAIN": {
         "name": "Main Power Rail",
@@ -19,8 +26,17 @@
         "diode_mode_normal": "0.300 - 0.400",
         "short_threshold": "<0.250",
         "models": "All iPhone",
-        "check_points": ["Near PMIC U1801", "WiFi area", "Baseband area"],
-        "if_shorted": ["Freeze spray на плату", "Проверить WiFi модуль", "Проверить Baseband", "Thermal camera для поиска"]
+        "check_points": [
+          "Near PMIC U1801",
+          "WiFi area",
+          "Baseband area"
+        ],
+        "if_shorted": [
+          "Freeze spray на плату",
+          "Проверить WiFi модуль",
+          "Проверить Baseband",
+          "Thermal camera для поиска"
+        ]
       },
       "PP5V0_USB": {
         "name": "USB 5V Input",
@@ -29,8 +45,14 @@
         "diode_mode_normal": "0.400 - 0.500",
         "short_threshold": "<0.300",
         "models": "All iPhone",
-        "check_points": ["Tristar U6300", "Lightning connector"],
-        "if_shorted": ["Заменить Tristar", "Проверить Lightning connector"]
+        "check_points": [
+          "Tristar U6300",
+          "Lightning connector"
+        ],
+        "if_shorted": [
+          "Заменить Tristar",
+          "Проверить Lightning connector"
+        ]
       },
       "PP1V8_SDRAM": {
         "name": "SDRAM 1.8V",
@@ -39,8 +61,14 @@
         "diode_mode_normal": "0.380 - 0.450",
         "short_threshold": "<0.300",
         "models": "iPhone 6/6s/7/8/X series",
-        "check_points": ["CPU area", "Near PMIC"],
-        "if_shorted": ["CPU reballing", "Замена CPU"]
+        "check_points": [
+          "CPU area",
+          "Near PMIC"
+        ],
+        "if_shorted": [
+          "CPU reballing",
+          "Замена CPU"
+        ]
       },
       "PP_CPU": {
         "name": "CPU Core Voltage",
@@ -49,8 +77,14 @@
         "diode_mode_normal": "0.020 - 0.050",
         "short_threshold": "<0.010",
         "models": "All iPhone",
-        "check_points": ["CPU substrate", "PMIC output"],
-        "if_shorted": ["Замена CPU", "Reballing CPU"]
+        "check_points": [
+          "CPU substrate",
+          "PMIC output"
+        ],
+        "if_shorted": [
+          "Замена CPU",
+          "Reballing CPU"
+        ]
       },
       "PP_GPU": {
         "name": "GPU Core Voltage",
@@ -59,8 +93,14 @@
         "diode_mode_normal": "0.020 - 0.050",
         "short_threshold": "<0.010",
         "models": "All iPhone",
-        "check_points": ["GPU area of CPU", "PMIC output"],
-        "if_shorted": ["Замена CPU", "Reballing CPU"]
+        "check_points": [
+          "GPU area of CPU",
+          "PMIC output"
+        ],
+        "if_shorted": [
+          "Замена CPU",
+          "Reballing CPU"
+        ]
       },
       "PP1V2_SDRAM": {
         "name": "SDRAM 1.2V",
@@ -69,8 +109,12 @@
         "diode_mode_normal": "0.300 - 0.380",
         "short_threshold": "<0.200",
         "models": "iPhone 7 и новее",
-        "check_points": ["Near CPU"],
-        "if_shorted": ["CPU reballing"]
+        "check_points": [
+          "Near CPU"
+        ],
+        "if_shorted": [
+          "CPU reballing"
+        ]
       },
       "PP3V0_NAND": {
         "name": "NAND 3.0V",
@@ -79,8 +123,13 @@
         "diode_mode_normal": "0.450 - 0.550",
         "short_threshold": "<0.350",
         "models": "All iPhone",
-        "check_points": ["NAND flash U1200"],
-        "if_shorted": ["Замена NAND", "Проверить линии данных"]
+        "check_points": [
+          "NAND flash U1200"
+        ],
+        "if_shorted": [
+          "Замена NAND",
+          "Проверить линии данных"
+        ]
       },
       "PP1V8_NAND": {
         "name": "NAND 1.8V IO",
@@ -89,12 +138,15 @@
         "diode_mode_normal": "0.350 - 0.420",
         "short_threshold": "<0.250",
         "models": "All iPhone",
-        "check_points": ["NAND flash U1200"],
-        "if_shorted": ["Замена NAND"]
+        "check_points": [
+          "NAND flash U1200"
+        ],
+        "if_shorted": [
+          "Замена NAND"
+        ]
       }
     }
   },
-  
   "backlight_circuit": {
     "description": "Цепь подсветки дисплея",
     "measurements": {
@@ -105,8 +157,15 @@
         "short_threshold": "<0.400",
         "models": "iPhone 6s/7/8",
         "location": "L3220, D3201, C3210",
-        "symptoms_if_bad": ["Нет подсветки", "Тусклый экран"],
-        "common_faults": ["D3201 backlight diode", "L3220 backlight coil", "U3220 boost IC"]
+        "symptoms_if_bad": [
+          "Нет подсветки",
+          "Тусклый экран"
+        ],
+        "common_faults": [
+          "D3201 backlight diode",
+          "L3220 backlight coil",
+          "U3220 boost IC"
+        ]
       },
       "OLED_AVDD": {
         "name": "OLED Panel Voltage",
@@ -115,38 +174,68 @@
         "short_threshold": "<0.380",
         "models": "iPhone X/XS/11 Pro/12/13/14/15",
         "location": "Display connector J5700",
-        "symptoms_if_bad": ["Нет изображения", "Вертикальные линии"],
-        "common_faults": ["Display connector", "65730 Display PMIC"]
+        "symptoms_if_bad": [
+          "Нет изображения",
+          "Вертикальные линии"
+        ],
+        "common_faults": [
+          "Display connector",
+          "65730 Display PMIC"
+        ]
       }
     }
   },
-
   "charging_circuit": {
     "description": "Цепь зарядки",
     "measurements": {
       "tristar_pins": {
         "name": "Tristar Pin Voltages",
         "normal_values": {
-          "pin1_CC1": {"voltage": "0.2V - 0.3V", "diode": "0.350"},
-          "pin2_CC2": {"voltage": "0.2V - 0.3V", "diode": "0.350"},
-          "pin5_VBUS": {"voltage": "5V (USB)", "diode": "0.500"},
-          "pin_data_p": {"voltage": "2.0V - 2.8V", "diode": "0.700"},
-          "pin_data_n": {"voltage": "2.0V - 2.8V", "diode": "0.700"}
+          "pin1_CC1": {
+            "voltage": "0.2V - 0.3V",
+            "diode": "0.350"
+          },
+          "pin2_CC2": {
+            "voltage": "0.2V - 0.3V",
+            "diode": "0.350"
+          },
+          "pin5_VBUS": {
+            "voltage": "5V (USB)",
+            "diode": "0.500"
+          },
+          "pin_data_p": {
+            "voltage": "2.0V - 2.8V",
+            "diode": "0.700"
+          },
+          "pin_data_n": {
+            "voltage": "2.0V - 2.8V",
+            "diode": "0.700"
+          }
         },
         "models": "iPhone 5-14 (Lightning)",
-        "symptoms_if_bad": ["Не заряжается", "Ошибка аксессуара", "Нет синхронизации"]
+        "symptoms_if_bad": [
+          "Не заряжается",
+          "Ошибка аксессуара",
+          "Нет синхронизации"
+        ]
       },
       "tigris_output": {
         "name": "Tigris/Hydra Output",
         "voltage": "4.2V (charging) / Battery voltage (idle)",
         "diode_mode_normal": "0.350 - 0.420",
         "models": "iPhone 6s и новее",
-        "check_points": ["Q2300", "Battery connector"],
-        "symptoms_if_bad": ["Не заряжается", "Быстрый разряд", "Перегрев"]
+        "check_points": [
+          "Q2300",
+          "Battery connector"
+        ],
+        "symptoms_if_bad": [
+          "Не заряжается",
+          "Быстрый разряд",
+          "Перегрев"
+        ]
       }
     }
   },
-
   "audio_circuit": {
     "description": "Аудио цепь",
     "measurements": {
@@ -157,7 +246,11 @@
         "short_threshold": "<0.350",
         "models": "All iPhone",
         "location": "Near audio codec",
-        "symptoms_if_bad": ["Нет звука", "Тихий звук", "Audio Disease (7/7+)"]
+        "symptoms_if_bad": [
+          "Нет звука",
+          "Тихий звук",
+          "Audio Disease (7/7+)"
+        ]
       },
       "audio_codec_rails": {
         "name": "Audio Codec Power",
@@ -165,11 +258,14 @@
         "diode_mode_normal": "0.380 - 0.420",
         "models": "All iPhone",
         "location": "U3500/U5200",
-        "symptoms_if_bad": ["Нет звука", "Шумы", "Искажения"]
+        "symptoms_if_bad": [
+          "Нет звука",
+          "Шумы",
+          "Искажения"
+        ]
       }
     }
   },
-
   "boot_sequence": {
     "description": "Последовательность загрузки iPhone",
     "steps": [
@@ -178,7 +274,9 @@
         "name": "Battery Connected",
         "current_draw": "0.000A - 0.002A",
         "description": "Батарея подключена, телефон выключен",
-        "rails_active": ["PP_BATT_VCC"],
+        "rails_active": [
+          "PP_BATT_VCC"
+        ],
         "duration": "Idle"
       },
       {
@@ -186,7 +284,10 @@
         "name": "Power Button Pressed",
         "current_draw": "0.015A - 0.025A",
         "description": "PMIC получает сигнал включения",
-        "rails_active": ["PP_BATT_VCC", "PP_VCC_MAIN"],
+        "rails_active": [
+          "PP_BATT_VCC",
+          "PP_VCC_MAIN"
+        ],
         "duration": "~100ms"
       },
       {
@@ -194,7 +295,12 @@
         "name": "PMIC Initialization",
         "current_draw": "0.050A - 0.100A",
         "description": "PMIC запускает основные шины",
-        "rails_active": ["PP_VCC_MAIN", "PP1V8", "PP1V2", "PP_CPU"],
+        "rails_active": [
+          "PP_VCC_MAIN",
+          "PP1V8",
+          "PP1V2",
+          "PP_CPU"
+        ],
         "duration": "~200ms"
       },
       {
@@ -202,7 +308,10 @@
         "name": "CPU Boot ROM",
         "current_draw": "0.100A - 0.200A",
         "description": "CPU загружает Boot ROM",
-        "rails_active": ["All main rails", "PP3V0_NAND"],
+        "rails_active": [
+          "All main rails",
+          "PP3V0_NAND"
+        ],
         "duration": "~500ms"
       },
       {
@@ -210,7 +319,9 @@
         "name": "LLB/iBoot",
         "current_draw": "0.200A - 0.400A",
         "description": "Загрузка LLB из NAND",
-        "rails_active": ["All rails"],
+        "rails_active": [
+          "All rails"
+        ],
         "duration": "~1s"
       },
       {
@@ -218,7 +329,11 @@
         "name": "Kernel Boot",
         "current_draw": "0.400A - 0.700A",
         "description": "iOS kernel загружается",
-        "rails_active": ["All rails", "Display", "Backlight"],
+        "rails_active": [
+          "All rails",
+          "Display",
+          "Backlight"
+        ],
         "duration": "~3s"
       },
       {
@@ -226,42 +341,82 @@
         "name": "SpringBoard",
         "current_draw": "0.150A - 0.250A (idle)",
         "description": "Главный экран, устройство готово",
-        "rails_active": ["All rails"],
+        "rails_active": [
+          "All rails"
+        ],
         "duration": "Continuous"
       }
     ],
     "abnormal_patterns": {
       "stuck_at_0mA": {
         "description": "Нет потребления тока",
-        "possible_causes": ["Короткое на VCC_MAIN", "Мёртвый PMIC", "Повреждённая батарея"]
+        "possible_causes": [
+          "Короткое на VCC_MAIN",
+          "Мёртвый PMIC",
+          "Повреждённая батарея"
+        ]
       },
       "stuck_at_50mA": {
         "description": "Застревает на 50mA",
-        "possible_causes": ["Нет PP1V8", "Проблема CPU", "Проблема NAND"]
+        "possible_causes": [
+          "Нет PP1V8",
+          "Проблема CPU",
+          "Проблема NAND"
+        ]
       },
       "boot_loop_100mA": {
         "description": "Цикл 100mA-400mA",
-        "possible_causes": ["Corrupted NAND", "Baseband issue", "Software issue"]
+        "possible_causes": [
+          "Corrupted NAND",
+          "Baseband issue",
+          "Software issue"
+        ]
       },
       "constant_high_current": {
         "description": "Постоянно высокий ток >1A",
-        "possible_causes": ["Короткое на шинах питания", "Повреждённый CPU/GPU"]
+        "possible_causes": [
+          "Короткое на шинах питания",
+          "Повреждённый CPU/GPU"
+        ]
       }
     }
   },
-
   "connector_pinouts": {
     "lightning_connector": {
       "name": "Lightning Connector",
       "pins": {
-        "1": {"name": "GND", "function": "Ground"},
-        "2": {"name": "L0p", "function": "Lane 0 positive"},
-        "3": {"name": "L0n", "function": "Lane 0 negative"},
-        "4": {"name": "ID0", "function": "Accessory ID"},
-        "5": {"name": "VBUS", "function": "Power 5V"},
-        "6": {"name": "L1n", "function": "Lane 1 negative"},
-        "7": {"name": "L1p", "function": "Lane 1 positive"},
-        "8": {"name": "GND", "function": "Ground"}
+        "1": {
+          "name": "GND",
+          "function": "Ground"
+        },
+        "2": {
+          "name": "L0p",
+          "function": "Lane 0 positive"
+        },
+        "3": {
+          "name": "L0n",
+          "function": "Lane 0 negative"
+        },
+        "4": {
+          "name": "ID0",
+          "function": "Accessory ID"
+        },
+        "5": {
+          "name": "VBUS",
+          "function": "Power 5V"
+        },
+        "6": {
+          "name": "L1n",
+          "function": "Lane 1 negative"
+        },
+        "7": {
+          "name": "L1p",
+          "function": "Lane 1 positive"
+        },
+        "8": {
+          "name": "GND",
+          "function": "Ground"
+        }
       },
       "diode_readings": {
         "pin1_gnd": "0.000",
@@ -277,24 +432,50 @@
     "battery_connector": {
       "name": "Battery Connector",
       "pins": {
-        "BATT+": {"function": "Battery positive", "voltage": "3.7-4.35V"},
-        "BATT-": {"function": "Battery negative / GND", "voltage": "0V"},
-        "SWI": {"function": "Single Wire Interface", "voltage": "1.8V"},
-        "NTC": {"function": "Temperature sensor", "resistance": "10K @ 25°C"}
+        "BATT+": {
+          "function": "Battery positive",
+          "voltage": "3.7-4.35V"
+        },
+        "BATT-": {
+          "function": "Battery negative / GND",
+          "voltage": "0V"
+        },
+        "SWI": {
+          "function": "Single Wire Interface",
+          "voltage": "1.8V"
+        },
+        "NTC": {
+          "function": "Temperature sensor",
+          "resistance": "10K @ 25°C"
+        }
       }
     },
     "display_connector_j5700": {
       "name": "Display Connector (iPhone X+)",
       "critical_pins": {
-        "OLED_AVDD": {"function": "OLED power", "voltage": "5.5-7V"},
-        "OLED_AVEE": {"function": "OLED negative", "voltage": "-5.5V"},
-        "MIPI_CLK": {"function": "Display clock", "voltage": "1.2V"},
-        "MIPI_DATA": {"function": "Display data", "voltage": "1.2V"},
-        "TOUCH_VDD": {"function": "Touch power", "voltage": "3.0V"}
+        "OLED_AVDD": {
+          "function": "OLED power",
+          "voltage": "5.5-7V"
+        },
+        "OLED_AVEE": {
+          "function": "OLED negative",
+          "voltage": "-5.5V"
+        },
+        "MIPI_CLK": {
+          "function": "Display clock",
+          "voltage": "1.2V"
+        },
+        "MIPI_DATA": {
+          "function": "Display data",
+          "voltage": "1.2V"
+        },
+        "TOUCH_VDD": {
+          "function": "Touch power",
+          "voltage": "3.0V"
+        }
       }
     }
   },
-
   "common_fault_signatures": {
     "no_power": {
       "symptom": "Не включается, 0mA",
@@ -355,7 +536,6 @@
       ]
     }
   },
-
   "thermal_camera_signatures": {
     "description": "Что искать тепловизором",
     "normal_temps": {
@@ -372,7 +552,6 @@
       "hot_baseband": "Baseband шунтит"
     }
   },
-
   "diode_mode_technique": {
     "description": "Как правильно измерять в диод-режиме",
     "setup": {
@@ -395,5 +574,35 @@
       "Используйте freeze spray для поиска КЗ",
       "Проверяйте после каждого компонента"
     ]
+  },
+  "advanced_diagnostics": {
+    "tristar_testing": {
+      "tools_needed": [
+        "Мультиметр",
+        "USB Ammeter",
+        "Tristar Tester"
+      ],
+      "test_points": {
+        "iPhone_6_7": {
+          "D+": "PP_USB_D_P",
+          "D-": "PP_USB_D_N",
+          "normal_reading": "0.650V в diode mode",
+          "shorted": "< 0.400V"
+        }
+      }
+    },
+    "smc_testing": {
+      "voltage_rails": {
+        "PPBUS_G3H": {
+          "normal": "12.3V - 12.6V",
+          "low": "< 12.0V = проблема с зарядкой",
+          "high": "> 13.0V = SMC issue"
+        },
+        "PP3V3_S5": {
+          "normal": "3.3V ± 0.1V",
+          "missing": "0V = SMC не создает S5 state"
+        }
+      }
+    }
   }
 }
