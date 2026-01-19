@@ -1,0 +1,68 @@
+{
+  "methods": {
+    "visual_inspection": {
+      "tools": [
+        "Microscope 45X",
+        "Good lighting"
+      ],
+      "look_for": [
+        "Burnt components",
+        "Liquid damage corrosion",
+        "Cracked capacitors",
+        "Blown fuses",
+        "Missing components"
+      ]
+    },
+    "thermal_camera": {
+      "setup": [
+        "Apply 1V at 1-2A to shorted rail",
+        "Wait 30 seconds",
+        "Scan with thermal camera",
+        "Hottest component is likely shorted"
+      ]
+    },
+    "freeze_spray": {
+      "procedure": [
+        "Apply power to short",
+        "Spray freeze spray on suspected area",
+        "Component that thaws first is shorted"
+      ]
+    },
+    "rosin_method": {
+      "procedure": [
+        "Apply rosin flux to board",
+        "Inject voltage to short",
+        "Rosin burns at shorted component"
+      ]
+    }
+  },
+  "common_shorts": {
+    "iPhone": {
+      "PP_VDD_MAIN": [
+        "C1239, C1240 near PMIC",
+        "Caps near CPU",
+        "PMIC itself"
+      ],
+      "PP3V0": [
+        "NAND area caps",
+        "Baseband caps",
+        "Audio IC area"
+      ],
+      "PP1V8": [
+        "CPU underfill caps",
+        "RAM area"
+      ]
+    },
+    "MacBook": {
+      "PPBUS_G3H": [
+        "C7771 on 820-00165",
+        "Tantalum caps",
+        "CD3215 IC"
+      ],
+      "PP3V3_G3H": [
+        "U7800 ISL9239",
+        "Caps near USB-C"
+      ]
+    }
+  }
+}

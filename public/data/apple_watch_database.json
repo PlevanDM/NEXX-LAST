@@ -1,0 +1,86 @@
+{
+  "Series_1": {
+    "model": "Apple Watch Series 1",
+    "year": "2016",
+    "cpu": "S1P dual-core",
+    "board": "N27a",
+    "common_issues": [
+      "Battery swelling",
+      "Screen detachment",
+      "Force Touch failure"
+    ],
+    "chips": {
+      "S1P": "System in Package",
+      "WiFi_BT": "BCM43342",
+      "NFC": "NXP 67V04",
+      "PMIC": "338S00120"
+    }
+  },
+  "Series_3": {
+    "model": "Apple Watch Series 3",
+    "year": "2017",
+    "cpu": "S3 dual-core",
+    "variants": [
+      "GPS",
+      "GPS + Cellular"
+    ],
+    "chips": {
+      "S3": "System in Package",
+      "eSIM": "Embedded SIM (Cellular)",
+      "PMIC": "338S00225"
+    },
+    "common_issues": [
+      "Screen popping off",
+      "Update failures",
+      "GPS issues"
+    ]
+  },
+  "Series_5": {
+    "model": "Apple Watch Series 5",
+    "year": "2019",
+    "cpu": "S5 64-bit dual-core",
+    "features": [
+      "Always-On Display",
+      "Compass"
+    ],
+    "chips": {
+      "S5": "System in Package",
+      "U1": "Ultra Wideband chip",
+      "Display": "LTPO OLED driver"
+    }
+  },
+  "Series_7": {
+    "model": "Apple Watch Series 7",
+    "year": "2021",
+    "cpu": "S7 SiP",
+    "features": [
+      "Larger display",
+      "Fast charging"
+    ],
+    "chips": {
+      "S7": "System in Package",
+      "U1": "Ultra Wideband",
+      "Charging": "USB-C fast charge IC"
+    }
+  },
+  "Ultra": {
+    "model": "Apple Watch Ultra",
+    "year": "2022",
+    "cpu": "S8 SiP",
+    "features": [
+      "Dual frequency GPS",
+      "Depth gauge",
+      "Siren"
+    ],
+    "chips": {
+      "S8": "System in Package",
+      "L1_L5_GPS": "Dual frequency",
+      "Depth_sensor": "Water depth"
+    },
+    "repair_notes": [
+      "Titanium case difficult to open",
+      "Specialized tools required",
+      "Very limited parts availability"
+    ]
+  }
+}

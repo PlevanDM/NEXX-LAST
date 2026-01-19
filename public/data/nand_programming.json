@@ -1,0 +1,159 @@
+{
+  "programmers": {
+    "JC_P13": {
+      "supported": [
+        "iPhone 6-13",
+        "iPad all models"
+      ],
+      "functions": [
+        "Read/Write NAND",
+        "Unbind WiFi",
+        "Expand storage"
+      ],
+      "price": "$89"
+    },
+    "MiJing_Z15": {
+      "supported": [
+        "iPhone 6-12"
+      ],
+      "functions": [
+        "NAND read/write",
+        "Data recovery"
+      ],
+      "price": "$120"
+    },
+    "iPAD_Rehab_Navi_Plus": {
+      "supported": [
+        "iPhone 6-14",
+        "iPad all"
+      ],
+      "functions": [
+        "NAND repair",
+        "Syscfg editing"
+      ],
+      "price": "$450"
+    }
+  },
+  "nand_chips_detailed": {
+    "Toshiba": {
+      "THGBX2G7B2JLA01": {
+        "capacity": "16GB",
+        "devices": [
+          "iPhone 6",
+          "iPhone 6 Plus"
+        ],
+        "package": "BGA-153",
+        "voltage": "3.3V"
+      },
+      "THGBX3G7D2KLA0C": {
+        "capacity": "32GB",
+        "devices": [
+          "iPhone 6",
+          "iPhone 6 Plus"
+        ],
+        "package": "BGA-153"
+      },
+      "THGBX4G6D2HLA0C": {
+        "capacity": "64GB",
+        "devices": [
+          "iPhone 6",
+          "iPhone 6S"
+        ],
+        "package": "BGA-153"
+      },
+      "THGBX5G8D4KLDXG": {
+        "capacity": "128GB",
+        "devices": [
+          "iPhone 6",
+          "iPhone 6S",
+          "iPhone 7"
+        ],
+        "package": "BGA-153"
+      }
+    },
+    "SanDisk": {
+      "SDIN9DW4-32G": {
+        "capacity": "32GB",
+        "devices": [
+          "iPhone 7",
+          "iPhone 8"
+        ],
+        "package": "BGA-153"
+      },
+      "SDINBDG4-64G": {
+        "capacity": "64GB",
+        "devices": [
+          "iPhone X",
+          "iPhone XS"
+        ],
+        "package": "BGA-153"
+      },
+      "SDINBDG4-256G": {
+        "capacity": "256GB",
+        "devices": [
+          "iPhone X",
+          "iPhone 11"
+        ],
+        "package": "BGA-153"
+      }
+    },
+    "Kioxia": {
+      "KICM224AY64B4": {
+        "capacity": "64GB",
+        "devices": [
+          "iPhone 11",
+          "iPhone 12"
+        ],
+        "package": "BGA"
+      },
+      "KICM224BY128B4": {
+        "capacity": "128GB",
+        "devices": [
+          "iPhone 11",
+          "iPhone 12",
+          "iPhone 13"
+        ],
+        "package": "BGA"
+      }
+    }
+  },
+  "syscfg_regions": {
+    "WiFi_Address": {
+      "offset": "0x4000",
+      "size": "6 bytes",
+      "description": "WiFi MAC address"
+    },
+    "Bluetooth_Address": {
+      "offset": "0x4006",
+      "size": "6 bytes",
+      "description": "Bluetooth MAC"
+    },
+    "Serial_Number": {
+      "offset": "0x2000",
+      "size": "12 bytes",
+      "description": "Device serial"
+    },
+    "Color": {
+      "offset": "0x3000",
+      "size": "4 bytes",
+      "values": {
+        "0x00": "Space Gray",
+        "0x01": "Silver",
+        "0x02": "Gold",
+        "0x03": "Rose Gold",
+        "0x04": "Jet Black",
+        "0x05": "Matte Black",
+        "0x06": "Red",
+        "0x07": "Blue",
+        "0x08": "Yellow",
+        "0x09": "Coral",
+        "0x0A": "White",
+        "0x0B": "Purple",
+        "0x0C": "Green",
+        "0x0D": "Black",
+        "0x0E": "Pacific Blue",
+        "0x0F": "Graphite"
+      }
+    }
+  }
+}

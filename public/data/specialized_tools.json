@@ -1,0 +1,76 @@
+{
+  "programmers": {
+    "JC_V1SE": {
+      "functions": [
+        "True Tone repair",
+        "Battery health reset",
+        "Screen color restoration",
+        "Ambient light repair"
+      ],
+      "supported": "iPhone 7-14",
+      "price": "$45"
+    },
+    "Qianli_iCopy_Plus_2.2": {
+      "functions": [
+        "Screen True Tone",
+        "Battery data",
+        "Vibrator",
+        "Home button (restore function, not Touch ID)"
+      ],
+      "price": "$159"
+    },
+    "JC_P13": {
+      "functions": [
+        "NAND upgrade",
+        "Unbind WiFi",
+        "Syscfg editing"
+      ],
+      "supported": "iPhone 6-13",
+      "price": "$89"
+    }
+  },
+  "diagnostic_tools": {
+    "3uTools": {
+      "platform": "Windows",
+      "functions": [
+        "Battery health",
+        "Component verification",
+        "Activation status",
+        "Flash/JB"
+      ],
+      "free": true
+    },
+    "iMazing": {
+      "platform": "Mac/Windows",
+      "functions": [
+        "Diagnostics",
+        "Backup management",
+        "Crash logs"
+      ],
+      "price": "$44.99"
+    },
+    "Apple_Configurator_2": {
+      "platform": "Mac only",
+      "functions": [
+        "DFU restore",
+        "Revive device",
+        "Configure profiles"
+      ],
+      "free": true
+    }
+  },
+  "microscope_cameras": {
+    "Andonstar_AD407": {
+      "resolution": "1080P",
+      "magnification": "270X",
+      "screen": "7 inch",
+      "price": "$200"
+    },
+    "HAYEAR_4K": {
+      "resolution": "4K",
+      "interface": "HDMI/USB",
+      "magnification": "180X",
+      "price": "$350"
+    }
+  }
+}

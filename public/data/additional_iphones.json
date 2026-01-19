@@ -1,0 +1,60 @@
+{
+  "iPhone_SE_1st": {
+    "model": "iPhone SE (1st gen)",
+    "board": "N69",
+    "year": "2016",
+    "chips": {
+      "CPU": "A9 APL0898",
+      "PMIC": "338S00120",
+      "Audio": "338S1285",
+      "WiFi": "339S00043",
+      "Touch_ID": "Encrypted to board"
+    },
+    "common_issues": [
+      "Battery issues",
+      "Home button failure",
+      "Camera issues"
+    ]
+  },
+  "iPhone_SE_2nd": {
+    "model": "iPhone SE (2020)",
+    "board": "D79",
+    "year": "2020",
+    "chips": {
+      "CPU": "A13 Bionic",
+      "PMIC": "338S00509",
+      "Audio": "338S00537",
+      "WiFi": "339S00647",
+      "Haptic": "338S00450"
+    }
+  },
+  "iPhone_SE_3rd": {
+    "model": "iPhone SE (2022)",
+    "board": "D49",
+    "year": "2022",
+    "chips": {
+      "CPU": "A15 Bionic",
+      "PMIC": "338S00770",
+      "5G_Modem": "Qualcomm X57",
+      "Audio": "338S00773"
+    }
+  },
+  "iPhone_15": {
+    "model": "iPhone 15",
+    "board": "D37/D38",
+    "year": "2023",
+    "chips": {
+      "CPU": "A16 Bionic (iPhone 15/15 Plus) / A17 Pro (15 Pro)",
+      "PMIC": "338S00905",
+      "USB-C": "Retimer IC",
+      "5G": "Qualcomm X70",
+      "Display": "Dynamic Island controller"
+    },
+    "new_features": [
+      "USB-C port",
+      "Dynamic Island all models",
+      "Action button (Pro)",
+      "Titanium (Pro)"
+    ]
+  }
+}

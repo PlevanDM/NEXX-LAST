@@ -2394,5 +2394,105 @@
     "tools": "Термофен, программатор JC Pro1000S",
     "difficulty": "Средняя",
     "time": "30-40 минут"
+  },
+  "343S0694": {
+    "name": "Cumulus Touch IC",
+    "type": "Touch Controller",
+    "devices": [
+      "iPad Air 2",
+      "iPhone 6 Plus"
+    ],
+    "location": "U2402",
+    "symptoms": [
+      "No touch response",
+      "Ghost touch",
+      "Touch works intermittently"
+    ],
+    "test_points": {
+      "RESET_CONN_L": "1.8V",
+      "AP_TO_TOUCH_CLK": "Check continuity",
+      "TOUCH_TO_AP_INT": "1.8V"
+    },
+    "procedure": [
+      "1. Check all touch connections to board",
+      "2. Verify 5.1V and 5.7V boost circuits",
+      "3. Reball or replace IC",
+      "4. May require jumper wires for broken traces"
+    ],
+    "donor_boards": [
+      "iPad Air 2 any capacity",
+      "iPhone 6 Plus logic board"
+    ],
+    "tools": "Hot air station 370°C, 0.02mm jumper wire",
+    "difficulty": "Very High",
+    "time": "60-90 minutes"
+  },
+  "343S00154": {
+    "name": "Orion Touch IC",
+    "type": "Touch Controller",
+    "devices": [
+      "iPad Pro 10.5",
+      "iPad Pro 12.9 Gen 2"
+    ],
+    "location": "U4000",
+    "symptoms": [
+      "No touch after screen replacement",
+      "Touch stops working randomly",
+      "Requires hard reset to restore touch"
+    ],
+    "test_points": {
+      "SAGE_TO_ORION_CLK": "Check signal",
+      "RESET_L": "1.8V when active"
+    }
+  },
+  "338S00267": {
+    "name": "Sage Display Timing Controller",
+    "type": "Display Controller",
+    "devices": [
+      "iPad Pro 10.5",
+      "iPad Pro 12.9"
+    ],
+    "location": "U5600",
+    "symptoms": [
+      "No image but backlight works",
+      "Image flickering",
+      "Half screen display"
+    ],
+    "procedure": [
+      "1. Check MIPI lanes continuity",
+      "2. Verify timing controller voltages",
+      "3. Replace if thermal damage visible"
+    ]
+  },
+  "CD3217B12": {
+    "name": "USB-C Controller",
+    "type": "USB-C PD Controller",
+    "devices": [
+      "iPad Pro 2018",
+      "MacBook Air M1"
+    ],
+    "location": "U3100",
+    "symptoms": [
+      "Not charging",
+      "USB-C accessories not recognized",
+      "Charging only one orientation"
+    ],
+    "test_points": {
+      "CC1": "Check for shorts",
+      "CC2": "Check for shorts",
+      "VBUS": "5-20V depending on charger"
+    },
+    "procedure": [
+      "1. Check USB-C port for damage",
+      "2. Test CC pins resistance",
+      "3. Replace CD3217 if shorted",
+      "4. Verify with USB-C tester"
+    ],
+    "donor_boards": [
+      "Any iPad Pro 2018+",
+      "MacBook with same IC"
+    ],
+    "difficulty": "High",
+    "time": "45-60 minutes"
   }
 }

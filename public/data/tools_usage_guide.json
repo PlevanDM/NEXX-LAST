@@ -1,0 +1,94 @@
+{
+  "microscopes": {
+    "Amscope_SM745": {
+      "magnification": "7X-45X",
+      "use": "SMD soldering",
+      "price": "$350"
+    },
+    "Andonstar_AD407": {
+      "magnification": "270X digital",
+      "use": "Inspection",
+      "price": "$200"
+    }
+  },
+  "soldering_stations": {
+    "Quick_861DW": {
+      "temp": "100-500°C",
+      "use": "Hot air rework",
+      "nozzles": [
+        "3mm",
+        "5mm",
+        "7mm",
+        "10mm"
+      ]
+    },
+    "ATTEN_ST-862D": {
+      "temp": "100-500°C",
+      "airflow": "Adjustable",
+      "price": "$150"
+    },
+    "JBC_CD-2SQE": {
+      "use": "Precision micro soldering",
+      "tips": [
+        "C210-001",
+        "C210-002",
+        "C210-018"
+      ],
+      "price": "$600"
+    }
+  },
+  "BGA_equipment": {
+    "ACHI_IR6500": {
+      "use": "iPhone X sandwich board",
+      "profiles": "Customizable",
+      "price": "$2000"
+    },
+    "Jovy_RE8500": {
+      "use": "Professional BGA",
+      "zones": "3 heating zones",
+      "price": "$3500"
+    }
+  },
+  "test_equipment": {
+    "DC_Power": {
+      "model": "Kaisi 3005D",
+      "specs": "30V 5A",
+      "use": "Short circuit finding",
+      "price": "$80"
+    },
+    "USB_Tester": {
+      "model": "Power-Z KT002",
+      "use": "USB-PD testing",
+      "measures": [
+        "Voltage",
+        "Current",
+        "PD negotiation"
+      ],
+      "price": "$40"
+    },
+    "Thermal_Camera": {
+      "model": "FLIR ONE Pro",
+      "use": "Finding shorts",
+      "resolution": "160x120",
+      "price": "$400"
+    }
+  },
+  "consumables": {
+    "flux": {
+      "Amtech_559": "General use",
+      "Amtech_NC223": "BGA work",
+      "Kingbo_RMA218": "Lead-free",
+      "MG_8341": "No-clean"
+    },
+    "solder": {
+      "63/37": "Leaded, 183°C",
+      "SAC305": "Lead-free, 217°C",
+      "Low_melt": "138°C for shields"
+    },
+    "wick": {
+      "Goot_CP-2015": "1.5mm precision",
+      "MG_426": "2.0mm general",
+      "Chemtronics": "2.5mm heavy duty"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "iPad_Air_2": {
+    "model": "iPad Air 2",
+    "board": "J81AP / J82AP",
+    "year": "2014",
+    "chips": {
+      "CPU": {
+        "marking": "APL1012 / A8X",
+        "location": "U0201",
+        "package": "PoP with 2GB RAM"
+      },
+      "PMIC": {
+        "marking": "343S0583",
+        "location": "U8100",
+        "type": "Main Power Management"
+      },
+      "Touch_IC": {
+        "marking": "343S0694 (Cumulus)",
+        "location": "U2402",
+        "type": "Touch Controller",
+        "common_issue": "No touch after drop"
+      },
+      "Audio_Codec": {
+        "marking": "338S1213",
+        "location": "U3800",
+        "type": "Cirrus Logic"
+      },
+      "WiFi_BT": {
+        "marking": "339S0213",
+        "location": "U6800",
+        "type": "BCM4354"
+      },
+      "Backlight": {
+        "marking": "LP8550",
+        "location": "U8200",
+        "type": "Backlight Driver"
+      },
+      "NAND": {
+        "marking": "Various",
+        "sizes": [
+          "16GB",
+          "32GB",
+          "64GB",
+          "128GB"
+        ]
+      }
+    },
+    "test_points": {
+      "PP_VDD_MAIN": "4.3V",
+      "PP5V0_USB": "5V",
+      "PP3V3_ACC": "3.3V",
+      "PP1V8": "1.8V"
+    },
+    "common_failures": [
+      "Touch IC failure - no touch",
+      "Backlight failure after water damage",
+      "Charging port failure"
+    ]
+  },
+  "iPad_Pro_10.5": {
+    "model": "iPad Pro 10.5",
+    "board": "J207AP / J208AP",
+    "year": "2017",
+    "chips": {
+      "CPU": {
+        "marking": "APL1071 / A10X Fusion",
+        "location": "U1000",
+        "package": "PoP with 4GB RAM"
+      },
+      "PMIC": {
+        "marking": "343S00203",
+        "location": "U8000",
+        "type": "Power Management"
+      },
+      "Touch_IC": {
+        "marking": "343S00154 (Orion)",
+        "location": "U4000",
+        "type": "Touch Controller"
+      },
+      "Display_Timing": {
+        "marking": "338S00267 (Sage)",
+        "location": "U5600",
+        "type": "Display Timing Controller"
+      },
+      "ProMotion": {
+        "marking": "Custom Apple",
+        "type": "120Hz Display Controller"
+      }
+    },
+    "test_points": {
+      "PP_BATT_VCC": "3.8V",
+      "PP_VDD_MAIN": "4.35V",
+      "PP3V0": "3.0V"
+    },
+    "common_failures": [
+      "White spot on LCD",
+      "Touch IC failure",
+      "Charging IC failure"
+    ]
+  },
+  "iPad_Pro_11_2018": {
+    "model": "iPad Pro 11 (2018)",
+    "board": "J317AP / J318AP",
+    "year": "2018",
+    "chips": {
+      "CPU": {
+        "marking": "APL1083 / A12X Bionic",
+        "location": "Main Board",
+        "package": "PoP with 4/6GB RAM"
+      },
+      "PMIC": {
+        "marking": "338S00456",
+        "location": "Power Board",
+        "type": "Power Management"
+      },
+      "Touch_IC": {
+        "marking": "343S00250 (Theia)",
+        "location": "Touch Board",
+        "type": "Touch Controller"
+      },
+      "USB-C": {
+        "marking": "CD3217B12",
+        "location": "U3100",
+        "type": "USB-C Controller"
+      },
+      "Face_ID": {
+        "marking": "Secure Enclave",
+        "type": "Face ID Module"
+      }
+    },
+    "test_points": {
+      "PPVBAT": "3.8V",
+      "PP5V_USB": "5-20V USB-C",
+      "PP3V3": "3.3V"
+    }
+  },
+  "iPad_Pro_12.9_M1": {
+    "model": "iPad Pro 12.9 (2021)",
+    "board": "J517AP / J518AP",
+    "year": "2021",
+    "chips": {
+      "CPU": {
+        "marking": "APL1103 / M1",
+        "location": "Main SoC",
+        "package": "Unified Memory Architecture"
+      },
+      "PMIC": {
+        "marking": "338S00647",
+        "location": "Power Management",
+        "type": "Apple Custom PMIC"
+      },
+      "Thunderbolt": {
+        "marking": "JHL8040R",
+        "location": "U7700",
+        "type": "Thunderbolt 3 Controller"
+      },
+      "miniLED": {
+        "marking": "Custom Driver",
+        "type": "miniLED Backlight Array"
+      }
+    },
+    "test_points": {
+      "PP_AON": "Always On Power",
+      "PP_CPU": "Dynamic",
+      "PP_GPU": "Dynamic"
+    }
+  }
+}

@@ -9527,5 +9527,138 @@
       "boardview": "820-00840 (ZXW/Boardviewer)",
       "schematics": "Wistron 051-00840"
     }
+  },
+  {
+    "id": 1000,
+    "name": "iPad Air 2",
+    "model": "iPad Air 2 (A1566/A1567)",
+    "year": "2014",
+    "category": "iPad",
+    "processor": "A8X",
+    "board_numbers": [
+      "J81AP",
+      "J82AP"
+    ],
+    "common_issues": [
+      "Touch IC failure (Cumulus)",
+      "Backlight IC failure",
+      "Charging port damage"
+    ]
+  },
+  {
+    "id": 1001,
+    "name": "iPad Pro 10.5",
+    "model": "iPad Pro 10.5 (A1701/A1709)",
+    "year": "2017",
+    "category": "iPad",
+    "processor": "A10X Fusion",
+    "board_numbers": [
+      "J207AP",
+      "J208AP"
+    ],
+    "common_issues": [
+      "White spot on LCD",
+      "Touch IC (Orion) failure",
+      "Light spots on display"
+    ]
+  },
+  {
+    "id": 1002,
+    "name": "iPad Pro 11 2018",
+    "model": "iPad Pro 11 2018 (A1980/A2013)",
+    "year": "2018",
+    "category": "iPad",
+    "processor": "A12X Bionic",
+    "board_numbers": [
+      "J317AP",
+      "J318AP"
+    ],
+    "common_issues": [
+      "Bend damage",
+      "USB-C port failure",
+      "Face ID module damage"
+    ]
+  },
+  {
+    "id": 1003,
+    "name": "iPad Pro 12.9 M1",
+    "model": "iPad Pro 12.9 2021 (A2378/A2461)",
+    "year": "2021",
+    "category": "iPad",
+    "processor": "M1",
+    "board_numbers": [
+      "J517AP",
+      "J518AP"
+    ],
+    "common_issues": [
+      "Mini-LED blooming",
+      "Thunderbolt port issues",
+      "Liquid damage to USB-C"
+    ]
+  },
+  {
+    "id": 2001,
+    "name": "iPhone SE (2016)",
+    "model": "iPhone SE (A1662/A1723)",
+    "year": "2016",
+    "category": "iPhone",
+    "processor": "A9",
+    "board_numbers": [
+      "N69"
+    ]
+  },
+  {
+    "id": 2002,
+    "name": "iPhone SE (2020)",
+    "model": "iPhone SE 2nd Gen (A2275/A2296)",
+    "year": "2020",
+    "category": "iPhone",
+    "processor": "A13 Bionic",
+    "board_numbers": [
+      "D79"
+    ]
+  },
+  {
+    "id": 2003,
+    "name": "iPhone SE (2022)",
+    "model": "iPhone SE 3rd Gen (A2595/A2782)",
+    "year": "2022",
+    "category": "iPhone",
+    "processor": "A15 Bionic",
+    "board_numbers": [
+      "D49"
+    ]
+  },
+  {
+    "id": 2004,
+    "name": "iPhone 15",
+    "model": "iPhone 15 (A2846/A3089)",
+    "year": "2023",
+    "category": "iPhone",
+    "processor": "A16 Bionic",
+    "board_numbers": [
+      "D37"
+    ],
+    "common_issues": [
+      "USB-C port issues",
+      "Dynamic Island software bugs",
+      "Overheating with iOS 17"
+    ]
+  },
+  {
+    "id": 2005,
+    "name": "iPhone 15 Pro",
+    "model": "iPhone 15 Pro (A2848/A3101)",
+    "year": "2023",
+    "category": "iPhone",
+    "processor": "A17 Pro",
+    "board_numbers": [
+      "D38"
+    ],
+    "common_issues": [
+      "Titanium frame scratches",
+      "Action button failures",
+      "Thermal throttling"
+    ]
   }
 ]
