@@ -34,76 +34,6 @@ app.get('/api/settings', (c) => {
 // Favicon
 app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
 
-// Test page (for debugging)
-app.get('/test.html', (c) => {
-  return c.html(`<!DOCTYPE html>
-<html>
-<head>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-</head>
-<body class="p-4 bg-gray-100">
-<div id="root"></div>
-<script>
-const { useState, createElement: h } = React;
-
-const testDevice = {
-  name: "Test iPhone",
-  category: "iPhone",
-  model: "A1234/A5678",
-  year: 2024,
-  processor: "A17 Pro",
-  board_numbers: ["820-12345"],
-  charging_ic: { main: "SN2012027", designation: "USB-C" },
-  service_parts: {
-    battery: { article: "661-123", price_usd: 99 }
-  },
-  common_issues: ["Screen crack", "Battery drain"]
-};
-
-const SimpleDetails = ({ device }) => {
-  console.log('SimpleDetails rendering with:', device);
-  return h('div', { className: 'bg-white p-6 rounded-xl shadow' },
-    h('h1', { className: 'text-2xl font-bold mb-4' }, device.name),
-    h('p', null, 'Model: ' + (device.model || 'N/A')),
-    h('p', null, 'Year: ' + (device.year || 'N/A')),
-    h('p', null, 'Processor: ' + (device.processor || 'N/A')),
-    h('div', { className: 'mt-4 p-4 bg-green-100 rounded' }, '✅ Rendering works!')
-  );
-};
-
-const App = () => {
-  const [selected, setSelected] = useState(null);
-  
-  if (selected) {
-    return h('div', null,
-      h('button', { 
-        onClick: () => setSelected(null),
-        className: 'mb-4 px-4 py-2 bg-blue-500 text-white rounded'
-      }, '← Back'),
-      h(SimpleDetails, { device: selected })
-    );
-  }
-  
-  return h('div', null,
-    h('h1', { className: 'text-xl font-bold mb-4' }, 'Click Test'),
-    h('button', {
-      onClick: () => {
-        console.log('Setting device:', testDevice);
-        setSelected(testDevice);
-      },
-      className: 'px-6 py-3 bg-indigo-500 text-white rounded-lg'
-    }, 'Select Test Device')
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(h(App));
-</script>
-</body>
-</html>`);
-})
-
 // Main page
 app.get('/', (c) => {
   return c.html(`
@@ -117,9 +47,9 @@ app.get('/', (c) => {
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         
-        <!-- React from CDN (development for error details) -->
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- React from CDN -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
