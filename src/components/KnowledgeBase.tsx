@@ -9,125 +9,131 @@ interface KnowledgeBaseProps {
   onClose: () => void;
 }
 
-type TabType = 'schematics' | 'guides' | 'pinouts' | 'tristar' | 'hydra' | 'baseband' | 'touch' | 'liquid' | 'nand' | 'tools';
+type TabType = 'schematics' | 'guides' | 'pinouts' | 'tristar' | 'baseband' | 'touch' | 'liquid' | 'nand' | 'tools';
 
 export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({ schematics, guides, pinouts, onClose }) => {
   const [activeTab, setActiveTab] = React.useState<TabType>('schematics');
   const [search, setSearch] = React.useState('');
 
   const renderContent = () => {
-    // TRISTAR вкладка
+    // TRISTAR/HYDRA вкладка (об'єднана)
     if (activeTab === 'tristar') {
       return (
         <div className="space-y-4">
-          <div className="bg-white p-4 rounded-lg border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-800 mb-3">⚡ Tristar (U2/U4900) - Контроллер зарядки</h3>
+          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-xl border-2 border-yellow-300 shadow-md">
+            <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              ⚡ Tristar/Hydra (U2/U4900) - Контроллер зарядки
+            </h3>
             
+            <p className="text-sm text-slate-600 mb-4 bg-white/60 p-3 rounded-lg">
+              Диагностика и ремонт Tristar/Hydra/U2 IC - контроллера зарядки iPhone. 
+              Отвечает за управление зарядкой, USB данные, распознавание аксессуаров.
+            </p>
+
             <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Симптомы:</h4>
-              <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                <li>Устройство не заряжается или заряжается медленно</li>
-                <li>Нестабильная зарядка (периодически отключается)</li>
-                <li>Не распознает кабель/адаптер</li>
-                <li>Нагрев в области U2/U4900</li>
-                <li>Сообщение "Аксессуар не поддерживается"</li>
+              <h4 className="font-bold text-red-600 mb-3 flex items-center gap-2 text-lg">
+                ❌ Симптомы
+              </h4>
+              <ul className="list-disc list-inside text-sm text-slate-700 space-y-2 bg-white p-4 rounded-lg">
+                <li>Не заряжается</li>
+                <li>"Accessory not supported" / "Аксессуар не поддерживается"</li>
+                <li>Заряжается только от компьютера</li>
+                <li>Не определяется в iTunes/Finder</li>
+                <li>Перегрев около порта зарядки</li>
+                <li>Boot loop после залития</li>
                 <li>Зарядка работает только с определенными кабелями</li>
+                <li>Нестабильная зарядка (периодически отключается)</li>
               </ul>
             </div>
 
             <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Диагностика:</h4>
-              <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                <li>Проверить PPVBUS_MAIN (должно быть 5V при подключении зарядки)</li>
-                <li>Измерить сопротивление на пинах Tristar (см. схему)</li>
-                <li>Проверить короткое замыкание на SDA/SCL линиях I2C</li>
-                <li>Проверить наличие напряжения на VDD_MAIN</li>
-                <li>В 3uTools проверить логи зарядки</li>
+              <h4 className="font-bold text-blue-600 mb-3 flex items-center gap-2 text-lg">
+                🔍 Диагностика
+              </h4>
+              <ul className="list-disc list-inside text-sm text-slate-700 space-y-2 bg-white p-4 rounded-lg">
+                <li><strong>D+ и D-:</strong> Проверить диодный режим (норма 0.450-0.650V)</li>
+                <li><strong>PP5V0_USB:</strong> Должно быть 5V при подключении зарядки</li>
+                <li><strong>Ток потребления:</strong> Измерить (норма 0.05-0.15A в покое)</li>
+                <li><strong>USB данные:</strong> Проверить наличие в диагностике</li>
+                <li><strong>Короткое замыкание:</strong> Проверить линии данных</li>
+                <li><strong>PPVBUS_MAIN:</strong> Должно быть 5V при подключении</li>
+                <li><strong>I2C линии:</strong> Проверить SDA/SCL на короткое замыкание</li>
+                <li><strong>3uTools:</strong> Проверить логи зарядки</li>
               </ul>
             </div>
 
             <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Решения:</h4>
-              <div className="space-y-2 text-sm">
-                <div className="p-2 bg-blue-50 rounded border-l-4 border-blue-400">
-                  <strong>Метод 1:</strong> Ребол Tristar (U2/U4900) с очисткой контактных площадок
+              <h4 className="font-bold text-green-600 mb-3 flex items-center gap-2 text-lg">
+                ✅ Решение
+              </h4>
+              <div className="space-y-3">
+                <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                  <strong className="text-blue-800">Метод 1:</strong> 
+                  <span className="text-slate-700"> Замена Tristar/Hydra IC (требует BGA паяльной станции)</span>
                 </div>
-                <div className="p-2 bg-green-50 rounded border-l-4 border-green-400">
-                  <strong>Метод 2:</strong> Замена Tristar на новую микросхему (требуется BGA станция)
+                <div className="p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border-l-4 border-green-500 shadow-sm">
+                  <strong className="text-green-800">Метод 2:</strong> 
+                  <span className="text-slate-700"> Ребол Tristar с очисткой контактных площадок</span>
                 </div>
-                <div className="p-2 bg-purple-50 rounded border-l-4 border-purple-400">
-                  <strong>Метод 3:</strong> Проверка и замена компонентов зарядки (фильтры, резисторы)
+                <div className="p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                  <strong className="text-purple-800">Метод 3:</strong> 
+                  <span className="text-slate-700"> Проверка и замена компонентов зарядки (фильтры, резисторы)</span>
                 </div>
+                
+                <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mt-3">
+                  <p className="text-sm text-slate-700">
+                    <strong>⚠️ Важно:</strong> Нужен preheater для прогрева платы. 
+                    После замены требуется калибровка батареи. Очистить контактные площадки флюсом. 
+                    Использовать качественный шаблон для реболла.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <h4 className="font-bold text-indigo-600 mb-3 text-lg">
+                🔧 Необходимые инструменты
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-4 py-2 bg-indigo-100 text-indigo-800 text-sm rounded-full font-medium shadow-sm">BGA станция</span>
+                <span className="px-4 py-2 bg-blue-100 text-blue-800 text-sm rounded-full font-medium shadow-sm">Паяльная станция</span>
+                <span className="px-4 py-2 bg-purple-100 text-purple-800 text-sm rounded-full font-medium shadow-sm">BGA ребол станция</span>
+                <span className="px-4 py-2 bg-green-100 text-green-800 text-sm rounded-full font-medium shadow-sm">Мультиметр</span>
+                <span className="px-4 py-2 bg-yellow-100 text-yellow-800 text-sm rounded-full font-medium shadow-sm">DC Power Supply</span>
+                <span className="px-4 py-2 bg-red-100 text-red-800 text-sm rounded-full font-medium shadow-sm">Микроскоп</span>
+                <span className="px-4 py-2 bg-pink-100 text-pink-800 text-sm rounded-full font-medium shadow-sm">Флюс Amtech NC-559-V2-TF</span>
               </div>
             </div>
 
             <div>
-              <h4 className="font-semibold text-slate-700 mb-2">Необходимые инструменты:</h4>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">BGA станция</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Мультиметр</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">DC Power Supply</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Микроскоп</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Схема платы</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    // HYDRA вкладка
-    if (activeTab === 'hydra') {
-      return (
-        <div className="space-y-4">
-          <div className="bg-white p-4 rounded-lg border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-800 mb-3">🔋 Hydra (U3300) - Контроллер питания USB-C</h3>
-            
-            <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Симптомы:</h4>
-              <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                <li>USB-C порт не работает (не заряжает, не передает данные)</li>
-                <li>Устройство не распознается в iTunes/Finder</li>
-                <li>Нагрев в области U3300</li>
-                <li>Короткое замыкание на USB-C порту</li>
-                <li>Зарядка работает, но данные не передаются (или наоборот)</li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Диагностика:</h4>
-              <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                <li>Проверить PPVBUS_MAIN на коротко замыкание</li>
-                <li>Измерить сопротивление CC1/CC2 линий</li>
-                <li>Проверить I2C связь с Hydra (SDA/SCL)</li>
-                <li>Визуально осмотреть USB-C порт на коррозию/повреждения</li>
-                <li>Тестировать с известным рабочим кабелем USB-C</li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 mb-2">Решения:</h4>
-              <div className="space-y-2 text-sm">
-                <div className="p-2 bg-blue-50 rounded border-l-4 border-blue-400">
-                  <strong>Метод 1:</strong> Замена USB-C порта (если проблема в механическом повреждении)
+              <h4 className="font-bold text-slate-700 mb-3 text-lg">
+                📋 Модели микросхем по iPhone
+              </h4>
+              <div className="bg-white rounded-lg p-4 space-y-2 text-sm border border-slate-200">
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone 5/5s/SE:</span>
+                  <span className="text-slate-600">U2 (1610A1, 1610A2, 1610A3)</span>
                 </div>
-                <div className="p-2 bg-green-50 rounded border-l-4 border-green-400">
-                  <strong>Метод 2:</strong> Ребол или замена Hydra U3300
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone 6/6 Plus:</span>
+                  <span className="text-slate-600">U2 (1610A2)</span>
                 </div>
-                <div className="p-2 bg-purple-50 rounded border-l-4 border-purple-400">
-                  <strong>Метод 3:</strong> Проверка и замена фильтров USB-C линий
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone 6s/SE:</span>
+                  <span className="text-slate-600">Tristar 2 (1612A1)</span>
                 </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-slate-700 mb-2">Необходимые инструменты:</h4>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">BGA станция</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Мультиметр</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Микроскоп</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">USB-C тестер</span>
-                <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">Паяльник</span>
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone 7/8 series:</span>
+                  <span className="text-slate-600">Tristar 3 (SN2501)</span>
+                </div>
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone X/XS/11:</span>
+                  <span className="text-slate-600">Hydra (SN2600B1, SN2611D0)</span>
+                </div>
+                <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                  <span className="font-mono font-bold text-slate-700">iPhone 12 и новее:</span>
+                  <span className="text-slate-600">SN2800, SN2501</span>
+                </div>
               </div>
             </div>
           </div>
@@ -588,8 +594,7 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({ schematics, guides
           { id: 'schematics', label: '📋 Схемы' },
           { id: 'guides', label: '📖 Гайды' },
           { id: 'pinouts', label: '🔌 Распиновки' },
-          { id: 'tristar', label: '⚡ Tristar' },
-          { id: 'hydra', label: '🔋 Hydra' },
+          { id: 'tristar', label: '⚡ Tristar/Hydra' },
           { id: 'baseband', label: '📶 Baseband' },
           { id: 'touch', label: '👆 Touch IC' },
           { id: 'liquid', label: '💧 Залитие' },
