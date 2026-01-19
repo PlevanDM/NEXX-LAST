@@ -1181,6 +1181,7 @@ const RepairTool = () => {
       fetch('/data/repair_knowledge.json').then(r => r.json()).catch(() => null),
     ])
     .then(([devicesData, logicData, articleData, pricesData, errorsData, icData, knowledgeData]) => {
+      
       setDevices(Array.isArray(devicesData) ? devicesData : []);
       setLogicBoardsData(logicData);
       setArticleSearchData(articleData);
@@ -1235,11 +1236,23 @@ const RepairTool = () => {
     );
   }
 
+  // Рендер панелей (должны быть доступны всегда, вне зависимости от selectedDevice)
+  const renderPanels = () => h(React.Fragment, null,
+    showArticleSearch && h(ArticleSearchPanel, { data: articleSearchData, onClose: () => setShowArticleSearch(false) }),
+    showLogicBoards && h(LogicBoardsPanel, { data: logicBoardsData, onClose: () => setShowLogicBoards(false) }),
+    showOfficialPrices && h(OfficialPricesPanel, { data: officialPricesData, onClose: () => setShowOfficialPrices(false) }),
+    showErrorCodes && h(ErrorCodesPanel, { data: errorCodesData, onClose: () => setShowErrorCodes(false) }),
+    showCalculator && h(RepairCalculatorPanel, { devices, onClose: () => setShowCalculator(false) }),
+    showICDatabase && h(ICDatabasePanel, { data: icDatabaseData, onClose: () => setShowICDatabase(false) }),
+    showKnowledgeBase && h(KnowledgeBasePanel, { data: repairKnowledgeData, onClose: () => setShowKnowledgeBase(false) })
+  );
+
   if (selectedDevice) {
     return h('div', { className: 'min-h-screen bg-gray-100 p-4' },
       h('div', { className: 'max-w-4xl mx-auto' },
         h(DeviceDetailsView, { device: selectedDevice, onBack: () => setSelectedDevice(null) })
-      )
+      ),
+      renderPanels()
     );
   }
 
@@ -1354,14 +1367,7 @@ const RepairTool = () => {
         )
       )
     ),
-
-    showArticleSearch && h(ArticleSearchPanel, { data: articleSearchData, onClose: () => setShowArticleSearch(false) }),
-    showLogicBoards && h(LogicBoardsPanel, { data: logicBoardsData, onClose: () => setShowLogicBoards(false) }),
-    showOfficialPrices && h(OfficialPricesPanel, { data: officialPricesData, onClose: () => setShowOfficialPrices(false) }),
-    showErrorCodes && h(ErrorCodesPanel, { data: errorCodesData, onClose: () => setShowErrorCodes(false) }),
-    showCalculator && h(RepairCalculatorPanel, { devices, onClose: () => setShowCalculator(false) }),
-    showICDatabase && h(ICDatabasePanel, { data: icDatabaseData, onClose: () => setShowICDatabase(false) }),
-    showKnowledgeBase && h(KnowledgeBasePanel, { data: repairKnowledgeData, onClose: () => setShowKnowledgeBase(false) })
+    renderPanels()
   );
 };
 
