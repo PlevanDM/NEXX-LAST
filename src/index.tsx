@@ -47,15 +47,15 @@ app.get('/', (c) => {
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         
-        <!-- Vite Entry Point -->
-        ${import.meta.env.PROD ? `
-          <script type="module" src="/static/client-v2.js"></script>
-        ` : `
-          <script type="module" src="/src/client.tsx"></script>
-        `}
+        <!-- React from CDN -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
+        
+        <!-- Main App Script (complete, full-featured v6.0) -->
+        <script src="/static/app.js"></script>
     </body>
     </html>
   `)

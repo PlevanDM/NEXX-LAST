@@ -20,10 +20,14 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
 
   const filteredDevices = React.useMemo(() => {
     return devices.filter(device => {
+      const searchLower = search.toLowerCase();
       const matchesSearch = 
-        device.name.toLowerCase().includes(search.toLowerCase()) || 
-        device.model_number?.toLowerCase().includes(search.toLowerCase()) ||
-        device.board_number?.toLowerCase().includes(search.toLowerCase()) ||
+        device.name.toLowerCase().includes(searchLower) || 
+        device.model_number?.toLowerCase().includes(searchLower) ||
+        device.model?.toLowerCase().includes(searchLower) ||
+        (device.board_numbers || []).some(bn => bn.toLowerCase().includes(searchLower)) ||
+        device.board_number?.toLowerCase().includes(searchLower) ||
+        device.processor?.toLowerCase().includes(searchLower) ||
         device.year?.toString().includes(search);
         
       const matchesCategory = selectedCategory ? device.category === selectedCategory : true;
@@ -130,7 +134,7 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
                   <div className="bg-purple-50 p-2 rounded border border-purple-100">
                     <div className="text-[10px] text-purple-500 uppercase font-bold tracking-wider">Board ID</div>
                     <div className="font-mono text-base font-bold text-purple-900 leading-none mt-1">
-                      {device.board_number || '-'}
+                      {device.board_numbers?.[0] || device.board_number || '-'}
                     </div>
                   </div>
                 </div>
@@ -146,6 +150,14 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
               {/* Technical Specs (Compact) */}
               <div className="p-3 flex-1">
                 <div className="space-y-2 text-xs">
+                  {device.processor && (
+                    <div className="flex justify-between border-b border-slate-100 pb-1">
+                      <span className="text-slate-500">CPU:</span>
+                      <span className="font-bold text-blue-700">
+                        {device.processor}
+                      </span>
+                    </div>
+                  )}
                   {device.charging_ic && (
                     <div className="flex justify-between border-b border-slate-100 pb-1">
                       <span className="text-slate-500">U2/USB:</span>

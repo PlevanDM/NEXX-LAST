@@ -6,6 +6,18 @@ export interface PriceData {
   price_eur?: number;
   category?: string;
   model?: string;
+  discount?: number;
+}
+
+export interface ServicePart {
+  article: string;
+  description: string;
+  price_usd?: number;
+}
+
+export interface ChargingIC {
+  main: string;
+  designation?: string;
 }
 
 export interface DeviceSpecs {
@@ -16,17 +28,46 @@ export interface DeviceSpecs {
 
 export interface Device {
   name: string;
+  category?: string;
+  model?: string;
   model_number?: string;
-  board_number?: string;
-  year?: string;
+  year?: number | string;
+  processor?: string;
+  
+  // Board и EMC
+  board_numbers?: string[];
+  board_number?: string; // legacy support
   emc?: string;
   architecture?: string;
+  
+  // IC и компоненты
+  charging_ic?: ChargingIC | string;
+  power_ic?: { main: string };
+  audio_codec?: { main: string };
+  
+  // Ремонт
+  common_issues?: string[];
+  repair_difficulty?: string;
+  repair_time?: string;
+  connector_type?: string;
+  
+  // Цены и запчасти
+  service_parts?: Record<string, ServicePart>;
+  official_service_prices?: Record<string, number>;
+  
+  // iFixit
+  ifixit_url?: string;
+  ifixit_image?: string;
+  repairability?: number | null;
+  guides_count?: number;
+  available_repairs?: string[];
+  
+  // Устаревшие поля (для совместимости)
   description?: string;
   specs?: DeviceSpecs;
   price_uah?: number;
   price_usd?: number;
   article?: string;
-  category?: string;
 }
 
 export interface OfficialPart {
@@ -128,7 +169,6 @@ export interface OfficialServiceData {
   models: OfficialModel[];
 }
 
-
 export interface ICComponent {
   name: string;
   designation?: string;
@@ -143,4 +183,14 @@ export interface ICComponent {
   };
   symptoms_when_faulty?: string[];
   compatible_devices?: string[];
+}
+
+export interface ErrorDetail {
+  code: string | number;
+  description: string;
+  cause?: string;
+  solution?: string;
+  hardware?: boolean;
+  severity?: string;
+  component?: string;
 }
