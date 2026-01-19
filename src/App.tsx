@@ -58,6 +58,83 @@ export const App = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [globalSearch, setGlobalSearch] = React.useState('');
   const [activeSection, setActiveSection] = React.useState<string>('devices');
+  const [recentDevices, setRecentDevices] = React.useState<Device[]>([]);
+  
+  // Клавиатурные шорткаты
+  React.useEffect(() => {
+    const handleKeyboard = (e: KeyboardEvent) => {
+      // Ctrl+K или Cmd+K - фокус на поиск
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }
+      
+      // Esc - закрыть все модалки
+      if (e.key === 'Escape') {
+        setShowPriceTable(false);
+        setShowErrors(false);
+        setShowICs(false);
+        setShowCalculator(false);
+        setShowMacBoards(false);
+        setShowKnowledge(false);
+        setShowServicePrices(false);
+        setShowMobileMenu(false);
+        setSelectedDevice(null);
+        setSelectedIC(null);
+        setSelectedPart(null);
+      }
+      
+      // Ctrl+1-6 - быстрое переключение разделов
+      if (e.ctrlKey && e.key >= '1' && e.key <= '6') {
+        e.preventDefault();
+        const sections = [
+          () => setShowCalculator(true),
+          () => setShowServicePrices(true),
+          () => setShowMacBoards(true),
+          () => setShowKnowledge(true),
+          () => setShowICs(true),
+          () => setShowErrors(true)
+        ];
+        sections[parseInt(e.key) - 1]?.();
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyboard);
+    return () => window.removeEventListener('keydown', handleKeyboard);
+  }, []);
+  
+  // История просмотра устройств (localStorage)
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem('recentDevices');
+      if (saved) {
+        setRecentDevices(JSON.parse(saved));
+      }
+    } catch (err) {
+      console.error('Error loading recent devices:', err);
+    }
+  }, []);
+  
+  const addToRecent = React.useCallback((device: Device) => {
+    setRecentDevices(prev => {
+      const filtered = prev.filter(d => d.name !== device.name);
+      const updated = [device, ...filtered].slice(0, 5);
+      try {
+        localStorage.setItem('recentDevices', JSON.stringify(updated));
+      } catch (err) {
+        console.error('Error saving recent devices:', err);
+      }
+      return updated;
+    });
+  }, []);
+  
+  const handleDeviceSelect = React.useCallback((device: Device) => {
+    addToRecent(device);
+    setSelectedDevice(device);
+  }, [addToRecent]);
 
   React.useEffect(() => {
     loadData();
@@ -209,7 +286,7 @@ export const App = () => {
                       <div className="text-xs text-slate-400 mb-2 font-bold">Устройства ({globalSearchResults.devices.length})</div>
                       {globalSearchResults.devices.map((device: Device) => (
                         <div key={device.name} 
-                             onClick={() => { setSelectedDevice(device); setGlobalSearch(''); }}
+                             onClick={() => { handleDeviceSelect(device); setGlobalSearch(''); }}
                              className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{device.name}</div>
                           <div className="text-xs text-slate-400">{device.model_number}</div>
@@ -435,10 +512,40 @@ export const App = () => {
           </div>
         </div>
         
+        {/* Recent Devices */}
+        {recentDevices.length > 0 && !selectedDevice && (
+          <div className="mb-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Icons.Info />
+              <h3 className="text-sm font-bold text-slate-700">Недавно просмотренные</h3>
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+              {recentDevices.map((device) => (
+                <button
+                  key={device.name}
+                  onClick={() => handleDeviceSelect(device)}
+                  className="flex-shrink-0 px-4 py-2 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all text-sm"
+                >
+                  <div className="font-medium text-slate-800">{device.name}</div>
+                  <div className="text-xs text-slate-500">{device.model_number}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {/* Keyboard Shortcuts Hint */}
+        <div className="mb-4 p-3 bg-slate-100 rounded-lg border border-slate-200 text-xs text-slate-600 hidden md:block">
+          <span className="font-bold">Шорткаты:</span>
+          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Ctrl+K</kbd> Поиск</span>
+          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Esc</kbd> Закрыть</span>
+          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Ctrl+1-6</kbd> Разделы</span>
+        </div>
+        
         <DeviceList 
           devices={devices} 
           isLoading={loading} 
-          onSelect={setSelectedDevice} 
+          onSelect={handleDeviceSelect} 
         />
       </main>
 
