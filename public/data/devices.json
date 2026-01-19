@@ -3946,9 +3946,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/bZDAmTZvYoRXvALa.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/bZDAmTZvYoRXvALa.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 11\" Early 2015",
@@ -4000,9 +4000,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 5th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/bZDAmTZvYoRXvALa.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/bZDAmTZvYoRXvALa.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" Early 2014",
@@ -4066,9 +4066,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" Early 2015",
@@ -4132,9 +4132,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 5th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" 2017",
@@ -4199,9 +4199,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 5th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/DOZsadVUcgjmCPRE.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" 2018 Retina",
@@ -4267,9 +4267,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" 2019 Retina",
@@ -4335,9 +4335,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" 2020 Intel",
@@ -4402,9 +4402,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 10th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/4EWKwBOlLn6Kk4tf.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Air 13\" M1 2020",
@@ -4744,9 +4744,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" Mid 2014",
@@ -4810,9 +4810,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" Early 2015",
@@ -4876,9 +4876,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 5th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/QHTtNV6HsrUuPEgr.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
@@ -4943,9 +4943,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 6th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/MSGSZZPrMJQa1Fh5.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/MSGSZZPrMJQa1Fh5.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
@@ -5010,9 +5010,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 6th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
@@ -5077,9 +5077,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 7th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/MSGSZZPrMJQa1Fh5.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/MSGSZZPrMJQa1Fh5.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
@@ -5144,9 +5144,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 7th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
@@ -5212,9 +5212,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
@@ -5280,9 +5280,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQvFJiXxgP23axvj.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQvFJiXxgP23axvj.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
@@ -5348,9 +5348,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
@@ -5412,9 +5412,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQvFJiXxgP23axvj.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQvFJiXxgP23axvj.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
@@ -5476,9 +5476,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 10th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2MQwwBpJRdGQ4LAV.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 13\" M1 2020",
@@ -5781,9 +5781,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Apple Silicon M2 Pro/Max",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 16\" M2 Pro 2023",
@@ -5840,9 +5840,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Apple Silicon M2 Pro/Max",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LQmFBGBScQQYwJmm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 14\" M3 2023",
@@ -6076,9 +6076,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" Mid 2014",
@@ -6142,9 +6142,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" Mid 2015",
@@ -6210,9 +6210,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 4th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/2jMLH1Y2w4SXJYxo.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" 2016",
@@ -6277,9 +6277,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 6th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" 2017",
@@ -6344,9 +6344,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "Intel Core 7th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" 2018",
@@ -6413,9 +6413,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 8th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 15\" 2019",
@@ -6482,9 +6482,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 9th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/LRx35uqNpNZH6w4E.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 16\" 2019",
@@ -6544,9 +6544,9 @@
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов",
     "architecture": "T2 + Intel 9th Gen",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/fgqVMq2PSZJRbWai.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/fgqVMq2PSZJRbWai.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 17 Pro Max",
@@ -7111,9 +7111,9 @@
       "designation": "USB-C PD Controller"
     },
     "architecture": "Apple Silicon M5",
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "iPhone 5s",
@@ -7324,9 +7324,9 @@
       "main": "CD3217",
       "designation": "USB-C PD Controller"
     },
-    "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "device_icon_small": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
-    "icon_source": "default"
+    "device_icon": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.standard",
+    "device_icon_small": "https://guide-images.cdn.ifixit.com/igi/cBXYN4cDDdMwWcFm.mini",
+    "icon_source": "ifixit"
   },
   {
     "name": "MacBook Pro 14\" M4 Pro 2024",
