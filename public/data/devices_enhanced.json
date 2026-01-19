@@ -8211,71 +8211,638 @@
   {
     "name": "iPhone 17",
     "category": "iPhone",
+    "model": "iphone-17-2025",
+    "model_number": "iphone-17-2025",
     "year": 2025,
-    "processor": "Apple A19",
-    "display": "6.3-inch Super Retina XDR OLED",
-    "storage": [
-      "256GB",
-      "512GB"
-    ],
-    "connectivity": [
-      "5G",
-      "WiFi 7",
-      "Bluetooth 6.0",
-      "USB-C"
-    ],
-    "features": [
-      "ProMotion 120Hz",
-      "Dynamic Island",
-      "Apple Intelligence",
-      "Center Stage Front Camera"
-    ],
-    "model_numbers": [
-      "A3520"
-    ],
+    "released": "2025-09-19",
+    "announced": "2025-09-09",
     "board_numbers": [
-      "820-03520"
+      "820-03152"
     ],
-    "service_parts": {
-      "battery": {
-        "article": "661-56064",
-        "description": "Battery",
-        "price_usd": 99
+    "board_number": "820-03152",
+    "emc": null,
+    "identifier": "iphone-17-2025",
+    "architecture": "ARMv9.2-A",
+    "processor": "Apple A19 (T8150a)",
+    "cpu": "2P+4E cores @ 4.26 GHz",
+    "gpu": "5-core GPU @ 1620 MHz",
+    "neural_engine": "16-core Neural Engine",
+    "ram": "8 GB",
+    "ram_type": "LPDDR5X-8533",
+    "storage": "256 GB, 512 GB",
+    "display_size": "6.3 inches",
+    "display_resolution": "2868 x 1320",
+    "display_type": "Super Retina XDR OLED",
+    "refresh_rate": "1-120 Hz",
+    "promotion": true,
+    "charging_ic": "CBTL1701B0",
+    "power_ic": "339S00980",
+    "audio_codec": "338S00411",
+    "port": "USB-C (USB 3.0)",
+    "wifi": "Wi-Fi 7 (802.11be)",
+    "bluetooth": "6.0",
+    "cellular": "Qualcomm Snapdragon 5G",
+    "nfc_chip": "NXP SN300",
+    "uwb_chip": "Apple U2",
+    "battery_capacity": "3600 mAh",
+    "charging_wired": "35W USB-C PD",
+    "charging_wireless": "25W MagSafe 3",
+    "camera_main": "48MP",
+    "camera_front": "18MP",
+    "common_issues": [
+      {
+        "id": "broken_display",
+        "name": "Разбитый экран",
+        "category": "display",
+        "severity": "high",
+        "symptoms": [
+          "Трещины на экране",
+          "Не реагирует на касания в зоне повреждения",
+          "Пятна или полосы на дисплее"
+        ],
+        "diagnostics": [
+          "Визуальный осмотр повреждений",
+          "Тест Multi-Touch в Диагностике",
+          "Проверка 3D Touch/Haptic Touch"
+        ],
+        "solutions": [
+          {
+            "method": "Замена дисплейного модуля в сборе",
+            "difficulty": "medium",
+            "time_estimate": "45-60 min",
+            "parts_needed": [
+              "Display Assembly"
+            ],
+            "tools_needed": [
+              "Pentalobe 0.8mm",
+              "Y000 Tri-point",
+              "Suction cup",
+              "Heat gun"
+            ],
+            "calibration_required": true,
+            "repair_assistant_pairing": true
+          }
+        ],
+        "prevention": [
+          "Использование защитного стекла",
+          "Чехол с поднятыми краями",
+          "AppleCare+ покрытие"
+        ],
+        "board_number": "820-03152"
+      },
+      {
+        "id": "not_charging",
+        "name": "Не заряжается",
+        "category": "charging",
+        "severity": "critical",
+        "symptoms": [
+          "Не реагирует на подключение зарядки",
+          "Медленная зарядка (<5W)",
+          "Перегрев в области USB-C порта",
+          "Ошибка 'Accessory not supported'"
+        ],
+        "diagnostics": [
+          "Проверка USB-C порта на загрязнения/повреждения",
+          "Тест с другим кабелем USB-C (сертифицированным)",
+          "Проверка напряжения на VBUS (должно быть 5V)",
+          "Диодный режим на D+/D- линиях (0.45-0.65V)",
+          "Проверка CBTL1701B0 IC на перегрев"
+        ],
+        "solutions": [
+          {
+            "method": "Чистка USB-C порта",
+            "difficulty": "easy",
+            "time_estimate": "5-10 min",
+            "parts_needed": [],
+            "tools_needed": [
+              "Brush",
+              "Isopropyl alcohol",
+              "Compressed air"
+            ]
+          },
+          {
+            "method": "Замена USB-C порта",
+            "difficulty": "hard",
+            "time_estimate": "60-90 min",
+            "parts_needed": [
+              "USB-C port flex cable"
+            ],
+            "tools_needed": [
+              "Soldering station",
+              "Microscope",
+              "Flux"
+            ]
+          },
+          {
+            "method": "Замена CBTL1701B0 IC",
+            "difficulty": "expert",
+            "time_estimate": "90-120 min",
+            "parts_needed": [
+              "CBTL1701B0 chip"
+            ],
+            "tools_needed": [
+              "BGA rework station",
+              "Preheater",
+              "Microscope",
+              "Stencils"
+            ]
+          }
+        ],
+        "related_ics": [
+          "CBTL1701B0",
+          "339S00980 PMU"
+        ],
+        "board_zones": [
+          "Charging circuitry near J4700 connector"
+        ],
+        "board_number": "820-03152"
+      },
+      {
+        "id": "battery_drain",
+        "name": "Быстро разряжается батарея",
+        "category": "battery",
+        "severity": "medium",
+        "symptoms": [
+          "Заряд падает >30% за час при минимальном использовании",
+          "Батарея нагревается в режиме ожидания",
+          "Внезапные отключения при 20-40% заряда",
+          "Battery Health <80% за короткий срок"
+        ],
+        "diagnostics": [
+          "Проверка Battery Health в Settings > Battery",
+          "Анализ Battery Usage по приложениям",
+          "Измерение потребления в режиме ожидания (<50mA норма)",
+          "Thermal imaging для поиска горячих зон на плате",
+          "Проверка циклов зарядки (номинал 500-800 циклов)"
+        ],
+        "solutions": [
+          {
+            "method": "Калибровка батареи",
+            "difficulty": "easy",
+            "time_estimate": "4-6 hours",
+            "steps": [
+              "Разрядить до полного выключения",
+              "Заряжать выключенным до 100%",
+              "Держать на зарядке еще 2 часа",
+              "Повторить цикл 2-3 раза"
+            ]
+          },
+          {
+            "method": "Замена батареи",
+            "difficulty": "medium",
+            "time_estimate": "30-45 min",
+            "parts_needed": [
+              "Battery 3600mAh"
+            ],
+            "tools_needed": [
+              "9V battery с зажимами для извлечения",
+              "Adhesive strips"
+            ],
+            "calibration_required": true,
+            "apple_genuine_required": true,
+            "notes": "Требуется Repair Assistant для калибровки Battery Health"
+          },
+          {
+            "method": "Диагностика платы на короткие замыкания",
+            "difficulty": "expert",
+            "requires": "Multimeter, Thermal camera, Schematic knowledge"
+          }
+        ],
+        "prevention": [
+          "Избегать экстремальных температур (-10°C до 45°C)",
+          "Оптимизированная зарядка (iOS feature)",
+          "Не держать на 100% заряде постоянно"
+        ],
+        "board_number": "820-03152"
+      },
+      {
+        "id": "face_id_not_working",
+        "name": "Не работает Face ID",
+        "category": "biometrics",
+        "severity": "high",
+        "symptoms": [
+          "Ошибка 'Face ID is not available'",
+          "Не распознает лицо даже после reset",
+          "Dot Projector не светит (проверка камерой)",
+          "Flood Illuminator не работает"
+        ],
+        "diagnostics": [
+          "Проверка Dot Projector через камеру другого телефона",
+          "Settings > Face ID & Passcode > Reset Face ID",
+          "Проверка шлейфа TrueDepth на повреждения",
+          "Voltage test на Face ID connectors (3.3V должно быть)"
+        ],
+        "solutions": [
+          {
+            "method": "Переподключение Face ID модуля",
+            "difficulty": "medium",
+            "time_estimate": "20 min",
+            "requires": "Разборка дисплея, чистка контактов"
+          },
+          {
+            "method": "Замена Face ID модуля",
+            "difficulty": "expert",
+            "warning": "⚠️ Face ID модуль привязан к логик борду! После замены Face ID НЕ БУДЕТ работать даже с оригинальной запчастью от другого устройства. Только Apple может перепарить модуль.",
+            "alternative": "Обращение в Apple Authorized Service Provider"
+          }
+        ],
+        "important_notes": [
+          "Face ID модуль криптографически привязан к Secure Enclave на A19 чипе",
+          "Невозможно заменить сторонним сервисом с сохранением функции",
+          "Требуется Apple System Configuration для переспаривания"
+        ],
+        "board_number": "820-03152"
+      }
+    ],
+    "icon_url": "https://img.appledb.dev/device@256/iPhone18,3/Silver.png",
+    "ifixit_image": null,
+    "source": "user_provided_2026_01_19",
+    "verified": true,
+    "detailed_specs": {
+      "id": "iphone-17-2025",
+      "model": "iPhone 17",
+      "marketing_name": "iPhone 17",
+      "year": 2025,
+      "release_date": "2025-09-19",
+      "announced_date": "2025-09-09",
+      "processor": {
+        "name": "Apple A19",
+        "codename": "T8150a",
+        "part_numbers": [
+          "APL1V09",
+          "339S01805"
+        ],
+        "architecture": "ARMv9.2-A",
+        "process_node": "3nm (TSMC N3P)",
+        "transistor_count": null,
+        "cpu": {
+          "cores": 6,
+          "performance_cores": {
+            "count": 2,
+            "frequency_max": "4.26 GHz"
+          },
+          "efficiency_cores": {
+            "count": 4,
+            "frequency_max": "2.60 GHz"
+          }
+        },
+        "gpu": {
+          "cores": 5,
+          "architecture": "Apple10",
+          "execution_units": 80,
+          "alus": 640,
+          "clock_speed": "1620 MHz",
+          "performance_fp32": "2.074 TFLOPS",
+          "features": [
+            "Hardware Ray Tracing",
+            "Mesh Shading"
+          ]
+        },
+        "neural_engine": {
+          "cores": 16,
+          "performance": "35 trillion operations/sec"
+        }
+      },
+      "memory": {
+        "ram": {
+          "capacity": "8 GB",
+          "type": "LPDDR5X-8533",
+          "speed": "4266 MHz",
+          "bus_width": "64-bit",
+          "channels": 4
+        },
+        "storage_options": [
+          "256 GB",
+          "512 GB"
+        ]
+      },
+      "board_numbers": {
+        "main": [
+          "820-03152"
+        ],
+        "variants": [],
+        "source": "verified_2026_01"
       },
       "display": {
-        "article": "661-56065",
-        "description": "Display",
-        "price_usd": 359
+        "size": "6.3 inches",
+        "resolution": "2868 x 1320",
+        "technology": "Super Retina XDR OLED",
+        "refresh_rate": "1-120 Hz",
+        "promotion": true,
+        "peak_brightness": "2000 nits",
+        "hdr_peak": "2000 nits",
+        "protection": "Ceramic Shield Gen 2"
       },
-      "rear_camera": {
-        "article": "661-56067",
-        "description": "Rear Camera",
-        "price_usd": 219
+      "cameras": {
+        "rear": {
+          "main": {
+            "megapixels": 48,
+            "sensor_size": "1/1.3 inch",
+            "pixel_size": "1.0 µm",
+            "aperture": "f/1.6",
+            "features": [
+              "Sensor-shift OIS",
+              "Focus Pixels",
+              "Photonic Engine"
+            ]
+          },
+          "ultra_wide": {
+            "megapixels": 48,
+            "aperture": "f/2.2",
+            "field_of_view": "120°"
+          }
+        },
+        "front": {
+          "megapixels": 18,
+          "aperture": "f/1.9",
+          "features": [
+            "Center Stage",
+            "Autofocus",
+            "Photonic Engine"
+          ]
+        }
       },
-      "front_camera": {
-        "article": "661-56066",
-        "description": "Front Camera",
-        "price_usd": 169
+      "connectivity": {
+        "cellular": {
+          "5g": true,
+          "6g": false,
+          "modem": "Qualcomm Snapdragon 5G",
+          "bands": [
+            "mmWave",
+            "Sub-6GHz"
+          ]
+        },
+        "wifi": {
+          "standard": "Wi-Fi 7 (802.11be)",
+          "chip": "Apple N1",
+          "mimo": "4x4 MIMO"
+        },
+        "bluetooth": "6.0",
+        "nfc": {
+          "chip": "NXP SN300",
+          "features": [
+            "eSIM",
+            "Secure Element"
+          ]
+        },
+        "uwb": {
+          "chip": "Apple U2",
+          "module": "USI 339M00386"
+        },
+        "port": "USB-C (USB 3.0)"
       },
-      "speaker": {
-        "article": "661-56068",
-        "description": "Speaker",
-        "price_usd": 69
+      "power": {
+        "battery_capacity": "3600 mAh",
+        "charging_ic": {
+          "primary": "CBTL1701B0",
+          "manufacturer": "Cypress/Infineon",
+          "type": "USB-C PD Controller"
+        },
+        "charging": {
+          "wired_max": "35W USB-C PD",
+          "magsafe": "25W MagSafe 3",
+          "qi_wireless": "15W Qi2"
+        },
+        "battery_life": {
+          "video_playback": "27 hours",
+          "streaming": "20 hours",
+          "audio": "85 hours"
+        }
       },
-      "taptic_engine": {
-        "article": "661-56069",
-        "description": "Taptic Engine",
-        "price_usd": 69
-      }
-    },
-    "technical_specs": {},
-    "documentation_links": {
-      "ifixit": "https://www.ifixit.com/Device/iPhone_17",
-      "apple_support": "https://support.apple.com/",
-      "boardview": "Проверить в базе boardview",
-      "schematics": "Проверить в базе схем"
-    },
-    "icon_url": "https://img.appledb.dev/device@256/iPhone18,3/Silver.png"
+      "critical_ics": {
+        "pmu": {
+          "name": "Power Management Unit",
+          "part_number": "339S00980",
+          "manufacturer": "Apple/Dialog"
+        },
+        "audio_codec": {
+          "name": "Audio Codec",
+          "part_number": "338S00411",
+          "manufacturer": "Cirrus Logic"
+        },
+        "display_pmu": {
+          "name": "Display Power Supply",
+          "part_number": "TPS65658A0",
+          "manufacturer": "Texas Instruments"
+        },
+        "envelope_tracker": {
+          "name": "Wideband Envelope Tracker",
+          "part_number": "QET7100A-002",
+          "manufacturer": "Qualcomm"
+        },
+        "front_end_modules": [
+          {
+            "part_number": "AFEM-8267",
+            "manufacturer": "Broadcom"
+          },
+          {
+            "part_number": "QM76308",
+            "manufacturer": "Qorvo"
+          }
+        ]
+      },
+      "common_issues": [
+        {
+          "id": "broken_display",
+          "name": "Разбитый экран",
+          "category": "display",
+          "severity": "high",
+          "symptoms": [
+            "Трещины на экране",
+            "Не реагирует на касания в зоне повреждения",
+            "Пятна или полосы на дисплее"
+          ],
+          "diagnostics": [
+            "Визуальный осмотр повреждений",
+            "Тест Multi-Touch в Диагностике",
+            "Проверка 3D Touch/Haptic Touch"
+          ],
+          "solutions": [
+            {
+              "method": "Замена дисплейного модуля в сборе",
+              "difficulty": "medium",
+              "time_estimate": "45-60 min",
+              "parts_needed": [
+                "Display Assembly"
+              ],
+              "tools_needed": [
+                "Pentalobe 0.8mm",
+                "Y000 Tri-point",
+                "Suction cup",
+                "Heat gun"
+              ],
+              "calibration_required": true,
+              "repair_assistant_pairing": true
+            }
+          ],
+          "prevention": [
+            "Использование защитного стекла",
+            "Чехол с поднятыми краями",
+            "AppleCare+ покрытие"
+          ]
+        },
+        {
+          "id": "not_charging",
+          "name": "Не заряжается",
+          "category": "charging",
+          "severity": "critical",
+          "symptoms": [
+            "Не реагирует на подключение зарядки",
+            "Медленная зарядка (<5W)",
+            "Перегрев в области USB-C порта",
+            "Ошибка 'Accessory not supported'"
+          ],
+          "diagnostics": [
+            "Проверка USB-C порта на загрязнения/повреждения",
+            "Тест с другим кабелем USB-C (сертифицированным)",
+            "Проверка напряжения на VBUS (должно быть 5V)",
+            "Диодный режим на D+/D- линиях (0.45-0.65V)",
+            "Проверка CBTL1701B0 IC на перегрев"
+          ],
+          "solutions": [
+            {
+              "method": "Чистка USB-C порта",
+              "difficulty": "easy",
+              "time_estimate": "5-10 min",
+              "parts_needed": [],
+              "tools_needed": [
+                "Brush",
+                "Isopropyl alcohol",
+                "Compressed air"
+              ]
+            },
+            {
+              "method": "Замена USB-C порта",
+              "difficulty": "hard",
+              "time_estimate": "60-90 min",
+              "parts_needed": [
+                "USB-C port flex cable"
+              ],
+              "tools_needed": [
+                "Soldering station",
+                "Microscope",
+                "Flux"
+              ]
+            },
+            {
+              "method": "Замена CBTL1701B0 IC",
+              "difficulty": "expert",
+              "time_estimate": "90-120 min",
+              "parts_needed": [
+                "CBTL1701B0 chip"
+              ],
+              "tools_needed": [
+                "BGA rework station",
+                "Preheater",
+                "Microscope",
+                "Stencils"
+              ]
+            }
+          ],
+          "related_ics": [
+            "CBTL1701B0",
+            "339S00980 PMU"
+          ],
+          "board_zones": [
+            "Charging circuitry near J4700 connector"
+          ]
+        },
+        {
+          "id": "battery_drain",
+          "name": "Быстро разряжается батарея",
+          "category": "battery",
+          "severity": "medium",
+          "symptoms": [
+            "Заряд падает >30% за час при минимальном использовании",
+            "Батарея нагревается в режиме ожидания",
+            "Внезапные отключения при 20-40% заряда",
+            "Battery Health <80% за короткий срок"
+          ],
+          "diagnostics": [
+            "Проверка Battery Health в Settings > Battery",
+            "Анализ Battery Usage по приложениям",
+            "Измерение потребления в режиме ожидания (<50mA норма)",
+            "Thermal imaging для поиска горячих зон на плате",
+            "Проверка циклов зарядки (номинал 500-800 циклов)"
+          ],
+          "solutions": [
+            {
+              "method": "Калибровка батареи",
+              "difficulty": "easy",
+              "time_estimate": "4-6 hours",
+              "steps": [
+                "Разрядить до полного выключения",
+                "Заряжать выключенным до 100%",
+                "Держать на зарядке еще 2 часа",
+                "Повторить цикл 2-3 раза"
+              ]
+            },
+            {
+              "method": "Замена батареи",
+              "difficulty": "medium",
+              "time_estimate": "30-45 min",
+              "parts_needed": [
+                "Battery 3600mAh"
+              ],
+              "tools_needed": [
+                "9V battery с зажимами для извлечения",
+                "Adhesive strips"
+              ],
+              "calibration_required": true,
+              "apple_genuine_required": true,
+              "notes": "Требуется Repair Assistant для калибровки Battery Health"
+            },
+            {
+              "method": "Диагностика платы на короткие замыкания",
+              "difficulty": "expert",
+              "requires": "Multimeter, Thermal camera, Schematic knowledge"
+            }
+          ],
+          "prevention": [
+            "Избегать экстремальных температур (-10°C до 45°C)",
+            "Оптимизированная зарядка (iOS feature)",
+            "Не держать на 100% заряде постоянно"
+          ]
+        },
+        {
+          "id": "face_id_not_working",
+          "name": "Не работает Face ID",
+          "category": "biometrics",
+          "severity": "high",
+          "symptoms": [
+            "Ошибка 'Face ID is not available'",
+            "Не распознает лицо даже после reset",
+            "Dot Projector не светит (проверка камерой)",
+            "Flood Illuminator не работает"
+          ],
+          "diagnostics": [
+            "Проверка Dot Projector через камеру другого телефона",
+            "Settings > Face ID & Passcode > Reset Face ID",
+            "Проверка шлейфа TrueDepth на повреждения",
+            "Voltage test на Face ID connectors (3.3V должно быть)"
+          ],
+          "solutions": [
+            {
+              "method": "Переподключение Face ID модуля",
+              "difficulty": "medium",
+              "time_estimate": "20 min",
+              "requires": "Разборка дисплея, чистка контактов"
+            },
+            {
+              "method": "Замена Face ID модуля",
+              "difficulty": "expert",
+              "warning": "⚠️ Face ID модуль привязан к логик борду! После замены Face ID НЕ БУДЕТ работать даже с оригинальной запчастью от другого устройства. Только Apple может перепарить модуль.",
+              "alternative": "Обращение в Apple Authorized Service Provider"
+            }
+          ],
+          "important_notes": [
+            "Face ID модуль криптографически привязан к Secure Enclave на A19 чипе",
+            "Невозможно заменить сторонним сервисом с сохранением функции",
+            "Требуется Apple System Configuration для переспаривания"
+          ]
+        }
+      ]
+    }
   },
   {
     "name": "iPhone Air",
