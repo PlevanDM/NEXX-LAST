@@ -339,8 +339,10 @@ const DeviceCard = ({ device, onSelect }) => {
     ),
     
     hasOfficialPrices && h('div', { className: 'flex flex-wrap gap-2 pt-2 border-t border-slate-100' },
-      device.official_service_prices.display && h('span', { className: 'text-xs text-slate-600' }, `📱 ${formatPrice(device.official_service_prices.display)}`),
-      device.official_service_prices.battery && h('span', { className: 'text-xs text-slate-600' }, `🔋 ${formatPrice(device.official_service_prices.battery)}`)
+      device.official_service_prices.display && h('span', { className: 'text-xs text-slate-600' }, 
+        `📱 ${formatPrice(typeof device.official_service_prices.display === 'object' ? device.official_service_prices.display.price_usd : device.official_service_prices.display)}`),
+      device.official_service_prices.battery && h('span', { className: 'text-xs text-slate-600' }, 
+        `🔋 ${formatPrice(typeof device.official_service_prices.battery === 'object' ? device.official_service_prices.battery.price_usd : device.official_service_prices.battery)}`)
     ),
     
     h('div', { className: 'flex items-center justify-end text-indigo-600 text-sm font-medium' },
@@ -615,29 +617,47 @@ const DeviceDetailsView = ({ device, onBack }) => {
 
     // Tab content
     activeTab === 'info' && h('div', { className: 'space-y-4' },
-      // Official prices
+      // Official prices - support both direct numbers and objects with price_usd
       hasOfficialPrices && h('div', { className: 'bg-white rounded-2xl shadow-lg p-6' },
         h('h2', { className: 'text-lg font-bold text-gray-800 mb-4' }, '💰 Официальные цены AASP'),
         h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-4' },
           officialPrices.battery && h('div', { className: 'p-4 bg-green-50 rounded-xl text-center' },
             h('p', { className: 'text-2xl mb-1' }, '🔋'),
             h('p', { className: 'text-xs text-slate-500' }, 'Батарея'),
-            h('p', { className: 'text-xl font-bold text-green-600' }, formatPrice(officialPrices.battery))
+            h('p', { className: 'text-xl font-bold text-green-600' }, 
+              formatPrice(typeof officialPrices.battery === 'object' ? officialPrices.battery.price_usd : officialPrices.battery))
           ),
           officialPrices.display && h('div', { className: 'p-4 bg-blue-50 rounded-xl text-center' },
             h('p', { className: 'text-2xl mb-1' }, '📱'),
             h('p', { className: 'text-xs text-slate-500' }, 'Дисплей'),
-            h('p', { className: 'text-xl font-bold text-blue-600' }, formatPrice(officialPrices.display))
+            h('p', { className: 'text-xl font-bold text-blue-600' }, 
+              formatPrice(typeof officialPrices.display === 'object' ? officialPrices.display.price_usd : officialPrices.display))
           ),
           officialPrices.rear_camera && h('div', { className: 'p-4 bg-purple-50 rounded-xl text-center' },
             h('p', { className: 'text-2xl mb-1' }, '📷'),
             h('p', { className: 'text-xs text-slate-500' }, 'Камера'),
-            h('p', { className: 'text-xl font-bold text-purple-600' }, formatPrice(officialPrices.rear_camera))
+            h('p', { className: 'text-xl font-bold text-purple-600' }, 
+              formatPrice(typeof officialPrices.rear_camera === 'object' ? officialPrices.rear_camera.price_usd : officialPrices.rear_camera))
           ),
-          officialPrices.face_id && h('div', { className: 'p-4 bg-orange-50 rounded-xl text-center' },
-            h('p', { className: 'text-2xl mb-1' }, '🔐'),
-            h('p', { className: 'text-xs text-slate-500' }, 'Face ID'),
-            h('p', { className: 'text-xl font-bold text-orange-600' }, formatPrice(officialPrices.face_id))
+          (officialPrices.face_id || officialPrices.front_camera) && h('div', { className: 'p-4 bg-orange-50 rounded-xl text-center' },
+            h('p', { className: 'text-2xl mb-1' }, officialPrices.face_id ? '🔐' : '🤳'),
+            h('p', { className: 'text-xs text-slate-500' }, officialPrices.face_id ? 'Face ID' : 'Фронт камера'),
+            h('p', { className: 'text-xl font-bold text-orange-600' }, 
+              formatPrice(typeof (officialPrices.face_id || officialPrices.front_camera) === 'object' 
+                ? (officialPrices.face_id || officialPrices.front_camera).price_usd 
+                : (officialPrices.face_id || officialPrices.front_camera)))
+          ),
+          officialPrices.speaker && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
+            h('p', { className: 'text-2xl mb-1' }, '🔊'),
+            h('p', { className: 'text-xs text-slate-500' }, 'Динамик'),
+            h('p', { className: 'text-xl font-bold text-slate-600' }, 
+              formatPrice(typeof officialPrices.speaker === 'object' ? officialPrices.speaker.price_usd : officialPrices.speaker))
+          ),
+          officialPrices.taptic_engine && h('div', { className: 'p-4 bg-pink-50 rounded-xl text-center' },
+            h('p', { className: 'text-2xl mb-1' }, '📳'),
+            h('p', { className: 'text-xs text-slate-500' }, 'Taptic Engine'),
+            h('p', { className: 'text-xl font-bold text-pink-600' }, 
+              formatPrice(typeof officialPrices.taptic_engine === 'object' ? officialPrices.taptic_engine.price_usd : officialPrices.taptic_engine))
           )
         )
       ),

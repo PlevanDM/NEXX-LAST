@@ -11,6 +11,9 @@ app.use('/api/*', cors())
 app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/data/*', serveStatic({ root: './public' }))
 
+// Favicon
+app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
+
 // Main page
 app.get('/', (c) => {
   return c.html(`
@@ -39,7 +42,7 @@ app.get('/', (c) => {
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
-        <script src="/static/app.js?v=3.4"></script>
+        <script src="/static/app.js?v=3.5"></script>
     </body>
     </html>
   `)
