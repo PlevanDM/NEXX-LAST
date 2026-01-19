@@ -61,6 +61,7 @@ export const App = () => {
   const [globalSearch, setGlobalSearch] = React.useState('');
   const [activeSection, setActiveSection] = React.useState<string>('devices');
   const [recentDevices, setRecentDevices] = React.useState<Device[]>([]);
+  const [navigationHistory, setNavigationHistory] = React.useState<string[]>(['devices']);
   
   // Клавиатурные шорткаты
   React.useEffect(() => {
@@ -76,18 +77,7 @@ export const App = () => {
       
       // Esc - закрыть все модалки
       if (e.key === 'Escape') {
-        setShowPriceTable(false);
-        setShowErrors(false);
-        setShowICs(false);
-        setShowCalculator(false);
-        setShowMacBoards(false);
-        setShowKnowledge(false);
-        setShowServicePrices(false);
-        setShowKeyCombo(false); // NEW
-        setShowMobileMenu(false);
-        setSelectedDevice(null);
-        setSelectedIC(null);
-        setSelectedPart(null);
+        closeAllModals();
       }
       
       // Ctrl+1-6 - быстрое переключение разделов
@@ -137,7 +127,61 @@ export const App = () => {
   const handleDeviceSelect = React.useCallback((device: Device) => {
     addToRecent(device);
     setSelectedDevice(device);
+    setActiveSection('device-detail');
+    setNavigationHistory(prev => [...prev, 'device-detail']);
   }, [addToRecent]);
+
+  // Функция для закрытия всех модальных окон
+  const closeAllModals = () => {
+    setShowPriceTable(false);
+    setShowErrors(false);
+    setShowICs(false);
+    setShowCalculator(false);
+    setShowMacBoards(false);
+    setShowKnowledge(false);
+    setShowServicePrices(false);
+    setShowKeyCombo(false);
+    setShowMobileMenu(false);
+    setSelectedDevice(null);
+    setSelectedIC(null);
+    setSelectedPart(null);
+    setActiveSection('devices');
+  };
+
+  // Функция для открытия модального окна с учетом истории
+  const openModal = (modalSetter: (value: boolean) => void, sectionName: string) => {
+    closeAllModals();
+    modalSetter(true);
+    setActiveSection(sectionName);
+    setNavigationHistory(prev => [...prev, sectionName]);
+  };
+
+  // Функция навигации назад
+  const navigateBack = () => {
+    if (navigationHistory.length > 1) {
+      const newHistory = [...navigationHistory];
+      newHistory.pop(); // Удаляем текущий
+      const previousSection = newHistory[newHistory.length - 1];
+      setNavigationHistory(newHistory);
+      
+      // Открываем предыдущий раздел
+      closeAllModals();
+      setActiveSection(previousSection);
+      switch(previousSection) {
+        case 'calculator': setShowCalculator(true); break;
+        case 'services': setShowServicePrices(true); break;
+        case 'boards': setShowMacBoards(true); break;
+        case 'knowledge': setShowKnowledge(true); break;
+        case 'keycombo': setShowKeyCombo(true); break;
+        case 'ics': setShowICs(true); break;
+        case 'errors': setShowErrors(true); break;
+        case 'prices': setShowPriceTable(true); break;
+        default: break;
+      }
+    } else {
+      closeAllModals();
+    }
+  };
 
   React.useEffect(() => {
     loadData();
@@ -219,7 +263,8 @@ export const App = () => {
     const results: any = {
       devices: [] as Device[],
       ics: [] as ICComponent[],
-      errors: [] as ErrorDetail[]
+      errors: [] as ErrorDetail[],
+      prices: [] as PriceData[]
     };
     
     // Поиск устройств
@@ -243,8 +288,14 @@ export const App = () => {
       err.description?.toLowerCase().includes(query)
     ).slice(0, 5);
     
+    // Поиск по ценам
+    results.prices = Object.values(prices).filter(price => 
+      price.article?.toLowerCase().includes(query) ||
+      price.description?.toLowerCase().includes(query)
+    ).slice(0, 5);
+    
     return results;
-  }, [globalSearch, devices, ics, errors]);
+  }, [globalSearch, devices, ics, errors, prices]);
   
   // Счетчики для навигации
   const counts = React.useMemo(() => ({
@@ -314,7 +365,7 @@ export const App = () => {
                   )}
                   
                   {globalSearchResults.errors.length > 0 && (
-                    <div className="p-3">
+                    <div className="p-3 border-b border-slate-700">
                       <div className="text-xs text-slate-400 mb-2 font-bold">Ошибки ({globalSearchResults.errors.length})</div>
                       {globalSearchResults.errors.map((error: ErrorDetail) => (
                         <div key={error.code} className="p-2 hover:bg-slate-700 rounded text-sm">
@@ -325,7 +376,24 @@ export const App = () => {
                     </div>
                   )}
                   
-                  {globalSearchResults.devices.length === 0 && globalSearchResults.ics.length === 0 && globalSearchResults.errors.length === 0 && (
+                  {globalSearchResults.prices.length > 0 && (
+                    <div className="p-3 border-b border-slate-700">
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Цены ({globalSearchResults.prices.length})</div>
+                      {globalSearchResults.prices.map((price: PriceData) => (
+                        <div 
+                          key={price.article} 
+                          onClick={() => { setSelectedPart(price); setGlobalSearch(''); }}
+                          className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm"
+                        >
+                          <div className="font-medium">{price.article}</div>
+                          <div className="text-xs text-slate-400 truncate">{price.description}</div>
+                          <div className="text-xs text-green-400 font-bold mt-1">{price.price_uah} ₴</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {globalSearchResults.devices.length === 0 && globalSearchResults.ics.length === 0 && globalSearchResults.errors.length === 0 && globalSearchResults.prices.length === 0 && (
                     <div className="p-4 text-center text-slate-400 text-sm">
                       Ничего не найдено
                     </div>
@@ -337,10 +405,10 @@ export const App = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-2">
               <button 
-                onClick={() => { setShowCalculator(true); setActiveSection('calculator'); }}
+                onClick={() => openModal(setShowCalculator, 'calculator')}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
                   activeSection === 'calculator' 
-                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500' 
+                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500 ring-2 ring-blue-400' 
                     : 'bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/50 border border-blue-500'
                 }`}
               >
@@ -349,16 +417,24 @@ export const App = () => {
               </button>
 
               <button 
-                onClick={() => { setShowServicePrices(true); setActiveSection('services'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors text-sm font-medium whitespace-nowrap shadow-lg shadow-orange-900/50 border border-orange-500"
+                onClick={() => openModal(setShowServicePrices, 'services')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap shadow-lg shadow-orange-900/50 border border-orange-500 ${
+                  activeSection === 'services'
+                    ? 'bg-orange-600 ring-2 ring-orange-400'
+                    : 'bg-orange-600 hover:bg-orange-500'
+                }`}
               >
                 <Icons.Price />
                 <span>Услуги</span>
               </button>
 
               <button 
-                onClick={() => { setShowMacBoards(true); setActiveSection('boards'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
+                onClick={() => openModal(setShowMacBoards, 'boards')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
+                  activeSection === 'boards'
+                    ? 'bg-slate-700 ring-2 ring-blue-400'
+                    : 'bg-slate-800 hover:bg-slate-700'
+                }`}
               >
                 <span className="text-blue-400"><Icons.Board /></span>
                 <span>MacBook</span>
@@ -370,24 +446,36 @@ export const App = () => {
               </button>
 
               <button 
-                onClick={() => { setShowKnowledge(true); setActiveSection('knowledge'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={() => openModal(setShowKnowledge, 'knowledge')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
+                  activeSection === 'knowledge'
+                    ? 'bg-slate-700 ring-2 ring-indigo-400'
+                    : 'bg-slate-800 hover:bg-slate-700'
+                }`}
               >
                 <span className="text-indigo-400"><Icons.Book /></span>
                 <span>Инфо</span>
               </button>
 
               <button 
-                onClick={() => { setShowKeyCombo(true); setActiveSection('keycombo'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={() => openModal(setShowKeyCombo, 'keycombo')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
+                  activeSection === 'keycombo'
+                    ? 'bg-slate-700 ring-2 ring-purple-400'
+                    : 'bg-slate-800 hover:bg-slate-700'
+                }`}
               >
                 <span className="text-purple-400">⌨️</span>
                 <span>DFU</span>
               </button>
 
               <button 
-                onClick={() => { setShowICs(true); setActiveSection('ics'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
+                onClick={() => openModal(setShowICs, 'ics')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
+                  activeSection === 'ics'
+                    ? 'bg-slate-700 ring-2 ring-violet-400'
+                    : 'bg-slate-800 hover:bg-slate-700'
+                }`}
               >
                 <span className="text-violet-400"><Icons.Chip /></span>
                 <span>IC</span>
@@ -399,8 +487,12 @@ export const App = () => {
               </button>
 
               <button 
-                onClick={() => { setShowErrors(true); setActiveSection('errors'); }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative"
+                onClick={() => openModal(setShowErrors, 'errors')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
+                  activeSection === 'errors'
+                    ? 'bg-slate-700 ring-2 ring-red-400'
+                    : 'bg-slate-800 hover:bg-slate-700'
+                }`}
               >
                 <span className="text-red-400"><Icons.Error /></span>
                 <span>Ошибки</span>
@@ -440,21 +532,21 @@ export const App = () => {
                 />
               </div>
               
-              <button onClick={() => { setShowCalculator(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowCalculator, 'calculator'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Calculator />
                   <span>Калькулятор</span>
                 </span>
               </button>
               
-              <button onClick={() => { setShowServicePrices(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-orange-600 hover:bg-orange-500 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowServicePrices, 'services'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-orange-600 hover:bg-orange-500 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Price />
                   <span>Услуги</span>
                 </span>
               </button>
               
-              <button onClick={() => { setShowMacBoards(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowMacBoards, 'boards'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Board />
                   <span>MacBook платы</span>
@@ -462,21 +554,21 @@ export const App = () => {
                 {counts.boards > 0 && <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-1">{counts.boards}</span>}
               </button>
               
-              <button onClick={() => { setShowKnowledge(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowKnowledge, 'knowledge'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Book />
                   <span>База знаний</span>
                 </span>
               </button>
               
-              <button onClick={() => { setShowKeyCombo(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowKeyCombo, 'keycombo'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   ⌨️
                   <span>DFU/Recovery</span>
                 </span>
               </button>
               
-              <button onClick={() => { setShowICs(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowICs, 'ics'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Chip />
                   <span>Микросхемы</span>
@@ -484,7 +576,7 @@ export const App = () => {
                 {counts.ics > 0 && <span className="bg-violet-500 text-white text-xs rounded-full px-2 py-1">{counts.ics}</span>}
               </button>
               
-              <button onClick={() => { setShowErrors(true); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
+              <button onClick={() => { openModal(setShowErrors, 'errors'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
                 <span className="flex items-center gap-3">
                   <Icons.Error />
                   <span>Коды ошибок</span>
@@ -501,9 +593,31 @@ export const App = () => {
         {/* Breadcrumbs & Stats */}
         <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-2 text-sm text-slate-600">
+            {navigationHistory.length > 1 && (
+              <button 
+                onClick={navigateBack}
+                className="flex items-center gap-1 px-2 py-1 bg-slate-200 hover:bg-slate-300 rounded transition-colors text-slate-700 font-medium"
+              >
+                ← Назад
+              </button>
+            )}
             <span className="font-bold text-slate-900">Главная</span>
-            <span>›</span>
-            <span>Устройства</span>
+            {activeSection !== 'devices' && (
+              <>
+                <span>›</span>
+                <span className="capitalize">
+                  {activeSection === 'calculator' && 'Калькулятор'}
+                  {activeSection === 'services' && 'Услуги'}
+                  {activeSection === 'boards' && 'MacBook платы'}
+                  {activeSection === 'knowledge' && 'База знаний'}
+                  {activeSection === 'keycombo' && 'DFU/Recovery'}
+                  {activeSection === 'ics' && 'Микросхемы'}
+                  {activeSection === 'errors' && 'Коды ошибок'}
+                  {activeSection === 'prices' && 'Прайс-лист'}
+                  {activeSection === 'device-detail' && 'Устройство'}
+                </span>
+              </>
+            )}
             {selectedDevice && (
               <>
                 <span>›</span>
@@ -560,6 +674,59 @@ export const App = () => {
           <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Esc</kbd> Закрыть</span>
           <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Ctrl+1-6</kbd> Разделы</span>
         </div>
+        
+        {/* Quick Actions - показываем только на главной странице */}
+        {activeSection === 'devices' && !selectedDevice && (
+          <div className="mb-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <button 
+              onClick={() => openModal(setShowPriceTable, 'prices')}
+              className="p-4 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-2xl">💰</span>
+                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">4846</span>
+              </div>
+              <div className="font-bold text-sm">Прайс-лист</div>
+              <div className="text-xs opacity-80">Все цены</div>
+            </button>
+            
+            <button 
+              onClick={() => openModal(setShowCalculator, 'calculator')}
+              className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Icons.Calculator />
+                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">NEW</span>
+              </div>
+              <div className="font-bold text-sm">Калькулятор</div>
+              <div className="text-xs opacity-80">Стоимость ремонта</div>
+            </button>
+            
+            <button 
+              onClick={() => openModal(setShowKnowledge, 'knowledge')}
+              className="p-4 bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Icons.Book />
+                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">10</span>
+              </div>
+              <div className="font-bold text-sm">База знаний</div>
+              <div className="text-xs opacity-80">Гайды и схемы</div>
+            </button>
+            
+            <button 
+              onClick={() => openModal(setShowKeyCombo, 'keycombo')}
+              className="p-4 bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-2xl">⌨️</span>
+                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">DFU</span>
+              </div>
+              <div className="font-bold text-sm">DFU/Recovery</div>
+              <div className="text-xs opacity-80">Комбинации клавиш</div>
+            </button>
+          </div>
+        )}
         
         <DeviceList 
           devices={devices} 
