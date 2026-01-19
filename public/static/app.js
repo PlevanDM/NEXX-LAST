@@ -643,7 +643,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
           h('div', null,
             h('h2', { className: 'text-2xl font-bold' }, '💰 Цены на запчасти'),
             h('p', { className: 'text-amber-100 text-sm' }, '🇪🇺 Self Repair Europe | 🇺🇦 Украина'),
-            h('p', { className: 'text-amber-200 text-xs mt-1' }, `📊 Доступно ${Object.keys(uahCatalog).length} украинских позиций из 4683`)
+            h('p', { className: 'text-amber-200 text-xs mt-1' }, `📊 Покрытие ~87% • ${Object.keys(uahCatalog).length} позиций`)
           ),
           h('button', { onClick: onClose, className: 'w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-xl' }, '×')
         )
