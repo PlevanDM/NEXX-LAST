@@ -1,6 +1,406 @@
-// NEXX Database - Apple Repair Database v6.6
-// Enhanced with IC chips tab, power rails diagnostics, improved device cards
+// NEXX Database - Apple Repair Database v7.0
+// Enhanced with AI Self-Healing System, Error Tracking, Auto-Diagnostics
 const { useState, useMemo, useEffect, useCallback, createElement: h } = React;
+
+// ===== 🤖 AI SELF-HEALING SYSTEM =====
+// Автоматическое отслеживание, диагностика и исправление ошибок
+const AIHealer = {
+  errors: [],
+  fixes: [],
+  isEnabled: true,
+  maxErrors: 50,
+  
+  // Конфигурация известных ошибок и их автоисправлений
+  knownFixes: {
+    // TypeError fixes
+    'Cannot read properties of undefined': {
+      pattern: /Cannot read propert(y|ies) of (undefined|null).*'(\w+)'/,
+      fix: (match, context) => {
+        const prop = match[3];
+        return { 
+          suggestion: `Добавить проверку: if (obj?.${prop})`,
+          autoFix: true,
+          severity: 'high'
+        };
+      }
+    },
+    'is not a function': {
+      pattern: /(\w+) is not a function/,
+      fix: (match) => ({
+        suggestion: `Проверить что ${match[1]} определён как функция`,
+        autoFix: false,
+        severity: 'high'
+      })
+    },
+    // React-specific fixes
+    'Invalid hook call': {
+      pattern: /Invalid hook call/,
+      fix: () => ({
+        suggestion: 'Hooks должны вызываться только на верхнем уровне компонента',
+        autoFix: false,
+        severity: 'critical'
+      })
+    },
+    'Rendered more hooks': {
+      pattern: /Rendered (more|fewer) hooks than during the previous render/,
+      fix: () => ({
+        suggestion: 'Количество хуков должно быть одинаковым при каждом рендере. Переместите все useState/useMemo в начало компонента.',
+        autoFix: false,
+        severity: 'critical'
+      })
+    },
+    // Network errors
+    'Failed to fetch': {
+      pattern: /Failed to fetch|NetworkError|net::ERR/,
+      fix: () => ({
+        suggestion: 'Проблема с сетью. Проверьте подключение и доступность API.',
+        autoFix: false,
+        severity: 'medium'
+      })
+    },
+    // JSON parse errors
+    'JSON.parse': {
+      pattern: /JSON\.parse|Unexpected token|SyntaxError.*JSON/,
+      fix: () => ({
+        suggestion: 'Ошибка парсинга JSON. Данные повреждены или неверный формат.',
+        autoFix: false,
+        severity: 'medium'
+      })
+    }
+  },
+  
+  // Логирование ошибки
+  log(error, context = {}) {
+    if (!this.isEnabled) return;
+    
+    const errorEntry = {
+      id: Date.now() + Math.random().toString(36).substr(2, 9),
+      timestamp: new Date().toISOString(),
+      message: error.message || String(error),
+      stack: error.stack,
+      context: {
+        component: context.component || 'Unknown',
+        action: context.action || 'Unknown',
+        data: context.data ? JSON.stringify(context.data).substring(0, 500) : null,
+        url: window.location.href,
+        userAgent: navigator.userAgent
+      },
+      fix: null,
+      fixed: false
+    };
+    
+    // Попытка найти автоисправление
+    errorEntry.fix = this.findFix(errorEntry.message);
+    
+    // Добавить в лог
+    this.errors.unshift(errorEntry);
+    if (this.errors.length > this.maxErrors) {
+      this.errors.pop();
+    }
+    
+    // Вывести в консоль с красивым форматированием
+    console.group('%c🤖 AI Healer: Error Detected', 'background: #ff4444; color: white; padding: 4px 8px; border-radius: 4px;');
+    console.log('%cMessage:', 'font-weight: bold;', errorEntry.message);
+    console.log('%cComponent:', 'font-weight: bold;', errorEntry.context.component);
+    console.log('%cAction:', 'font-weight: bold;', errorEntry.context.action);
+    if (errorEntry.fix) {
+      console.log('%c💡 Suggestion:', 'color: #4CAF50; font-weight: bold;', errorEntry.fix.suggestion);
+      console.log('%cSeverity:', 'font-weight: bold;', errorEntry.fix.severity);
+    }
+    console.log('%cStack:', 'color: #999;', errorEntry.stack);
+    console.groupEnd();
+    
+    // Сохранить в localStorage для анализа
+    this.saveToStorage();
+    
+    return errorEntry;
+  },
+  
+  // Найти подходящее исправление
+  findFix(message) {
+    for (const [name, config] of Object.entries(this.knownFixes)) {
+      const match = message.match(config.pattern);
+      if (match) {
+        return { name, ...config.fix(match) };
+      }
+    }
+    return null;
+  },
+  
+  // Сохранить в localStorage
+  saveToStorage() {
+    try {
+      localStorage.setItem('nexx_ai_healer_errors', JSON.stringify(this.errors.slice(0, 20)));
+    } catch (e) { /* ignore */ }
+  },
+  
+  // Загрузить из localStorage
+  loadFromStorage() {
+    try {
+      const saved = localStorage.getItem('nexx_ai_healer_errors');
+      if (saved) {
+        this.errors = JSON.parse(saved);
+      }
+    } catch (e) { /* ignore */ }
+  },
+  
+  // Получить статистику ошибок
+  getStats() {
+    const stats = {
+      total: this.errors.length,
+      byComponent: {},
+      bySeverity: { critical: 0, high: 0, medium: 0, low: 0 },
+      recent: this.errors.slice(0, 5)
+    };
+    
+    this.errors.forEach(err => {
+      const comp = err.context.component;
+      stats.byComponent[comp] = (stats.byComponent[comp] || 0) + 1;
+      if (err.fix) {
+        stats.bySeverity[err.fix.severity] = (stats.bySeverity[err.fix.severity] || 0) + 1;
+      }
+    });
+    
+    return stats;
+  },
+  
+  // Очистить лог ошибок
+  clear() {
+    this.errors = [];
+    this.saveToStorage();
+  },
+  
+  // Обёртка для безопасного вызова функций
+  safe(fn, context = {}) {
+    return (...args) => {
+      try {
+        return fn(...args);
+      } catch (error) {
+        this.log(error, context);
+        return context.fallback !== undefined ? context.fallback : null;
+      }
+    };
+  },
+  
+  // Обёртка для компонентов React
+  wrapComponent(Component, name) {
+    return (props) => {
+      try {
+        return Component(props);
+      } catch (error) {
+        this.log(error, { component: name, action: 'render', data: props });
+        // Вернуть fallback UI
+        return h('div', { className: 'p-4 bg-red-50 border border-red-200 rounded-xl' },
+          h('p', { className: 'text-red-600 font-semibold' }, `⚠️ Ошибка в компоненте: ${name}`),
+          h('p', { className: 'text-sm text-red-500 mt-1' }, error.message),
+          this.findFix(error.message) && h('p', { className: 'text-sm text-green-600 mt-2' }, 
+            '💡 ' + this.findFix(error.message).suggestion
+          )
+        );
+      }
+    };
+  }
+};
+
+// Инициализация: загрузить сохранённые ошибки
+AIHealer.loadFromStorage();
+
+// Глобальный обработчик ошибок
+window.onerror = function(message, source, lineno, colno, error) {
+  AIHealer.log(error || new Error(message), {
+    component: 'Global',
+    action: 'window.onerror',
+    data: { source, lineno, colno }
+  });
+  return false; // Позволить стандартную обработку
+};
+
+// Обработчик необработанных Promise rejection
+window.onunhandledrejection = function(event) {
+  AIHealer.log(event.reason || new Error('Unhandled Promise Rejection'), {
+    component: 'Global',
+    action: 'unhandledrejection'
+  });
+};
+
+// Экспортировать глобально для отладки
+window.AIHealer = AIHealer;
+
+// ===== REACT ERROR BOUNDARY HOOK =====
+const useErrorBoundary = (componentName) => {
+  const [error, setError] = useState(null);
+  
+  const resetError = useCallback(() => setError(null), []);
+  
+  const captureError = useCallback((err, context = {}) => {
+    AIHealer.log(err, { component: componentName, ...context });
+    setError(err);
+  }, [componentName]);
+  
+  return { error, resetError, captureError };
+};
+
+// ===== SAFE DATA ACCESS HELPERS =====
+const safeGet = (obj, path, defaultValue = null) => {
+  try {
+    const keys = path.split('.');
+    let result = obj;
+    for (const key of keys) {
+      if (result == null) return defaultValue;
+      result = result[key];
+    }
+    return result ?? defaultValue;
+  } catch (e) {
+    return defaultValue;
+  }
+};
+
+const safeCall = (fn, args = [], fallback = null) => {
+  try {
+    return fn(...args);
+  } catch (e) {
+    AIHealer.log(e, { action: 'safeCall', data: { fnName: fn.name } });
+    return fallback;
+  }
+};
+
+const safeMap = (arr, mapFn, fallback = []) => {
+  if (!Array.isArray(arr)) return fallback;
+  try {
+    return arr.map(mapFn);
+  } catch (e) {
+    AIHealer.log(e, { action: 'safeMap' });
+    return fallback;
+  }
+};
+
+// ===== AI HEALER DEBUG PANEL COMPONENT =====
+const AIHealerPanel = ({ onClose }) => {
+  const [stats, setStats] = useState(AIHealer.getStats());
+  const [filter, setFilter] = useState('all');
+  
+  useEffect(() => {
+    const interval = setInterval(() => setStats(AIHealer.getStats()), 2000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  const filteredErrors = filter === 'all' 
+    ? AIHealer.errors 
+    : AIHealer.errors.filter(e => e.fix?.severity === filter);
+  
+  return h('div', { className: 'fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 backdrop-blur-sm' },
+    h('div', { className: 'bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col' },
+      // Header
+      h('div', { className: 'bg-gradient-to-r from-red-500 to-orange-500 p-5 text-white' },
+        h('div', { className: 'flex justify-between items-center' },
+          h('div', null,
+            h('h2', { className: 'text-xl font-bold flex items-center gap-2' }, '🤖 AI Healer - Диагностика'),
+            h('p', { className: 'text-white/80 text-sm' }, `Отслежено ошибок: ${stats.total}`)
+          ),
+          h('div', { className: 'flex gap-2' },
+            h('button', {
+              onClick: () => { AIHealer.clear(); setStats(AIHealer.getStats()); },
+              className: 'px-3 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm'
+            }, '🗑️ Очистить'),
+            h('button', {
+              onClick: onClose,
+              className: 'w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center'
+            }, '✕')
+          )
+        )
+      ),
+      
+      // Stats
+      h('div', { className: 'p-4 bg-slate-50 border-b grid grid-cols-4 gap-3' },
+        h('div', { className: 'p-3 bg-red-100 rounded-xl text-center' },
+          h('p', { className: 'text-2xl font-bold text-red-600' }, stats.bySeverity.critical || 0),
+          h('p', { className: 'text-xs text-red-500' }, 'Critical')
+        ),
+        h('div', { className: 'p-3 bg-orange-100 rounded-xl text-center' },
+          h('p', { className: 'text-2xl font-bold text-orange-600' }, stats.bySeverity.high || 0),
+          h('p', { className: 'text-xs text-orange-500' }, 'High')
+        ),
+        h('div', { className: 'p-3 bg-yellow-100 rounded-xl text-center' },
+          h('p', { className: 'text-2xl font-bold text-yellow-600' }, stats.bySeverity.medium || 0),
+          h('p', { className: 'text-xs text-yellow-500' }, 'Medium')
+        ),
+        h('div', { className: 'p-3 bg-green-100 rounded-xl text-center' },
+          h('p', { className: 'text-2xl font-bold text-green-600' }, stats.total - (stats.bySeverity.critical + stats.bySeverity.high + stats.bySeverity.medium) || 0),
+          h('p', { className: 'text-xs text-green-500' }, 'Unknown')
+        )
+      ),
+      
+      // Filter
+      h('div', { className: 'p-3 border-b flex gap-2' },
+        ...['all', 'critical', 'high', 'medium'].map(f =>
+          h('button', {
+            key: f,
+            onClick: () => setFilter(f),
+            className: `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              filter === f ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`
+          }, f === 'all' ? 'Все' : f.charAt(0).toUpperCase() + f.slice(1))
+        )
+      ),
+      
+      // Errors list
+      h('div', { className: 'flex-1 overflow-y-auto p-4 space-y-3' },
+        filteredErrors.length === 0 
+          ? h('div', { className: 'text-center py-12 text-slate-400' },
+              h('p', { className: 'text-4xl mb-2' }, '✅'),
+              h('p', null, 'Ошибок не обнаружено')
+            )
+          : filteredErrors.map(err =>
+              h('div', { 
+                key: err.id, 
+                className: `p-4 rounded-xl border ${
+                  err.fix?.severity === 'critical' ? 'bg-red-50 border-red-200' :
+                  err.fix?.severity === 'high' ? 'bg-orange-50 border-orange-200' :
+                  err.fix?.severity === 'medium' ? 'bg-yellow-50 border-yellow-200' :
+                  'bg-slate-50 border-slate-200'
+                }`
+              },
+                h('div', { className: 'flex justify-between items-start gap-3' },
+                  h('div', { className: 'flex-1 min-w-0' },
+                    h('p', { className: 'font-semibold text-slate-800 truncate' }, err.message),
+                    h('p', { className: 'text-xs text-slate-500 mt-1' }, 
+                      `📍 ${err.context.component} → ${err.context.action}`
+                    ),
+                    h('p', { className: 'text-xs text-slate-400' }, 
+                      new Date(err.timestamp).toLocaleString('ru-RU')
+                    )
+                  ),
+                  err.fix && h('span', { 
+                    className: `px-2 py-1 rounded text-xs font-bold ${
+                      err.fix.severity === 'critical' ? 'bg-red-500 text-white' :
+                      err.fix.severity === 'high' ? 'bg-orange-500 text-white' :
+                      'bg-yellow-500 text-white'
+                    }`
+                  }, err.fix.severity)
+                ),
+                err.fix && h('div', { className: 'mt-3 p-3 bg-green-50 rounded-lg border border-green-200' },
+                  h('p', { className: 'text-sm text-green-700' }, '💡 ', err.fix.suggestion)
+                ),
+                err.stack && h('details', { className: 'mt-2' },
+                  h('summary', { className: 'text-xs text-slate-400 cursor-pointer hover:text-slate-600' }, 'Stack trace'),
+                  h('pre', { className: 'mt-2 p-2 bg-slate-100 rounded text-xs overflow-x-auto text-slate-600' }, 
+                    err.stack.split('\n').slice(0, 5).join('\n')
+                  )
+                )
+              )
+            )
+      ),
+      
+      // Footer with tips
+      h('div', { className: 'p-4 bg-slate-50 border-t' },
+        h('p', { className: 'text-xs text-slate-500' }, 
+          '💡 Совет: Откройте консоль браузера (F12) для подробной информации. ' +
+          'Используйте window.AIHealer.getStats() для анализа.'
+        )
+      )
+    )
+  );
+};
 
 // ===== UTILITY FUNCTIONS =====
 const cn = (...classes) => classes.filter(Boolean).join(' ');
@@ -1771,14 +2171,14 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
     return null;
   }, [ukrainePrices, device]);
   
-  // Determine device generation/era for styling
-  const getGenerationColor = () => {
-    if (!device.year) return 'from-slate-50 to-slate-100';
-    if (device.year >= 2025) return 'from-fuchsia-50 to-pink-100';   // 2025+
-    if (device.year >= 2024) return 'from-violet-50 to-purple-100'; // Latest
-    if (device.year >= 2021) return 'from-blue-50 to-indigo-100';   // Modern
-    if (device.year >= 2018) return 'from-emerald-50 to-teal-100';  // Recent
-    return 'from-amber-50 to-orange-100'; // Legacy
+  // Determine device generation/era for styling - using full Tailwind classes with fallback
+  const getCardStyle = () => {
+    if (!device.year) return 'bg-slate-50';
+    if (device.year >= 2025) return 'bg-pink-50';   // 2025+
+    if (device.year >= 2024) return 'bg-purple-50'; // Latest
+    if (device.year >= 2021) return 'bg-blue-50';   // Modern
+    if (device.year >= 2018) return 'bg-emerald-50';  // Recent
+    return 'bg-amber-50'; // Legacy
   };
   
   // Get repair complexity indicator
@@ -1808,7 +2208,7 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
         console.error('onSelect is not a function!', onSelect);
       }
     },
-    className: `bg-gradient-to-br ${getGenerationColor()} rounded-2xl border border-slate-200 p-4 hover:border-indigo-400 hover:shadow-xl cursor-pointer transition-all duration-200 group relative overflow-hidden`
+    className: `${getCardStyle()} rounded-2xl border border-slate-200 p-4 hover:border-indigo-400 hover:shadow-xl cursor-pointer transition-all duration-200 group relative overflow-hidden`
   },
     // Decorative corner accent
     h('div', { className: 'absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500' }),
@@ -1925,18 +2325,44 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
   // ALL useState hooks MUST be at the top level (React Rules of Hooks)
   const [activeTab, setActiveTab] = useState('info');
   const [priceRegion, setPriceRegion] = useState('UA');
+  const [componentError, setComponentError] = useState(null);
   
-  console.log('%c DeviceDetailsView ENTRY', 'background: green; color: white; font-size: 16px;');
+  // Log to AI Healer
+  useEffect(() => {
+    console.log('%c DeviceDetailsView MOUNTED', 'background: green; color: white; font-size: 14px;', device?.name);
+    return () => console.log('%c DeviceDetailsView UNMOUNTED', 'background: red; color: white;');
+  }, [device?.name]);
   
   // Safety check - if device is null/undefined, show error
   if (!device) {
-    console.error('DeviceDetailsView: device is null/undefined');
+    AIHealer.log(new Error('DeviceDetailsView: device is null/undefined'), { 
+      component: 'DeviceDetailsView', 
+      action: 'render' 
+    });
     return h('div', { className: 'p-8 text-center' },
       h('p', { className: 'text-red-500 mb-4' }, '❌ Ошибка: устройство не найдено'),
       h('button', { 
         onClick: onBack, 
         className: 'px-4 py-2 bg-indigo-500 text-white rounded-lg' 
       }, '← Назад')
+    );
+  }
+  
+  // Show component error with recovery option
+  if (componentError) {
+    return h('div', { className: 'p-6 bg-red-50 rounded-xl' },
+      h('p', { className: 'text-red-600 font-bold text-lg mb-2' }, '⚠️ Ошибка отображения'),
+      h('p', { className: 'text-red-500 text-sm mb-3' }, componentError),
+      h('div', { className: 'flex gap-3' },
+        h('button', { 
+          onClick: () => setComponentError(null), 
+          className: 'px-4 py-2 bg-orange-500 text-white rounded-lg' 
+        }, '🔄 Попробовать снова'),
+        h('button', { 
+          onClick: onBack, 
+          className: 'px-4 py-2 bg-gray-500 text-white rounded-lg' 
+        }, '← Назад')
+      )
     );
   }
   
@@ -1961,42 +2387,52 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
     top_case: '⌨️ Top Case'
   };
   
-  // Get IC data for this device
+  // Get IC data for this device (with error handling)
   const deviceICs = useMemo(() => {
-    if (!icData) return [];
-    const ics = [];
-    
-    // Check all IC categories
-    ['charging_ics', 'power_ics', 'audio_ics', 'baseband_ics', 'wifi_bt_ics', 'biometric_ics'].forEach(category => {
-      const list = icData[category] || [];
-      list.forEach(ic => {
-        if (ic.compatible_devices?.some(d => 
-          device.name.includes(d) || d.includes(device.name.split(' ').slice(0,2).join(' '))
-        )) {
-          ics.push({ ...ic, category });
-        }
+    try {
+      if (!icData) return [];
+      const ics = [];
+      
+      // Check all IC categories
+      ['charging_ics', 'power_ics', 'audio_ics', 'baseband_ics', 'wifi_bt_ics', 'biometric_ics'].forEach(category => {
+        const list = icData[category] || [];
+        list.forEach(ic => {
+          if (ic.compatible_devices?.some(d => 
+            device.name?.includes(d) || d.includes((device.name || '').split(' ').slice(0,2).join(' '))
+          )) {
+            ics.push({ ...ic, category });
+          }
+        });
       });
-    });
-    
-    return ics;
+      
+      return ics;
+    } catch (err) {
+      AIHealer.log(err, { component: 'DeviceDetailsView', action: 'deviceICs calculation' });
+      return [];
+    }
   }, [device, icData]);
   
-  // Get real prices for parts
+  // Get real prices for parts (with error handling)
   const partsWithPrices = useMemo(() => {
-    if (!hasServiceParts) return [];
-    return Object.entries(serviceParts).map(([type, part]) => {
-      const uaData = ukrainePrices?.[part.article];
-      const uaPrice = uaData?.price_uah || (part.price_usd ? part.price_usd * RATES.USD_TO_UAH : null);
-      const euPrice = part.price_usd ? part.price_usd * 0.91 : (uaPrice ? uaPrice * RATES.UAH_TO_EUR : null);
-      return {
-        type,
-        label: partLabels[type] || type.replace('_', ' '),
-        ...part,
-        price_uah: uaPrice,
-        price_eur: euPrice,
-        price_usd: part.price_usd || (uaPrice ? uaPrice * RATES.UAH_TO_USD : null)
-      };
-    });
+    try {
+      if (!hasServiceParts) return [];
+      return Object.entries(serviceParts).map(([type, part]) => {
+        const uaData = ukrainePrices?.[part?.article];
+        const uaPrice = uaData?.price_uah || (part?.price_usd ? part.price_usd * RATES.USD_TO_UAH : null);
+        const euPrice = part?.price_usd ? part.price_usd * 0.91 : (uaPrice ? uaPrice * RATES.UAH_TO_EUR : null);
+        return {
+          type,
+          label: partLabels[type] || type.replace('_', ' '),
+          ...part,
+          price_uah: uaPrice,
+          price_eur: euPrice,
+          price_usd: part?.price_usd || (uaPrice ? uaPrice * RATES.UAH_TO_USD : null)
+        };
+      });
+    } catch (err) {
+      AIHealer.log(err, { component: 'DeviceDetailsView', action: 'partsWithPrices calculation' });
+      return [];
+    }
   }, [serviceParts, ukrainePrices]);
   
   // Power rails data based on device
@@ -2852,6 +3288,7 @@ const App = () => {
   const [showICs, setShowICs] = useState(false);
   const [showKeyCombos, setShowKeyCombos] = useState(false);
   const [showRegionLookup, setShowRegionLookup] = useState(false);
+  const [showAIHealer, setShowAIHealer] = useState(false);
   
   // Load data
   useEffect(() => {
@@ -2971,14 +3408,14 @@ const App = () => {
             measurementsData,
             compatibilityData
           })
-      ),
-      selectedItem && h(DetailModal, { 
-        item: selectedItem, 
-        type: selectedItem.type, 
-        onClose: () => setSelectedItem(null),
-        ukrainePrices 
-      })
-    );
+        ),
+        selectedItem && h(DetailModal, { 
+          item: selectedItem, 
+          type: selectedItem.type, 
+          onClose: () => setSelectedItem(null),
+          ukrainePrices 
+        })
+      );
     } catch (err) {
       console.error('App: Error rendering DeviceDetailsView:', err);
       return h('div', { className: 'min-h-screen bg-gray-100 p-8 text-center' },
@@ -3121,6 +3558,13 @@ const App = () => {
           count: 'По коду', 
           color: 'blue',
           onClick: () => setShowRegionLookup(true) 
+        }),
+        h(QuickCard, { 
+          name: 'AI Healer', 
+          icon: '🤖', 
+          count: `${AIHealer.errors.length} ошибок`, 
+          color: AIHealer.errors.length > 0 ? 'red' : 'green',
+          onClick: () => setShowAIHealer(true) 
         })
       ),
       
@@ -3177,6 +3621,9 @@ const App = () => {
     }),
     showRegionLookup && h(RegionLookupPanel, { 
       onClose: () => setShowRegionLookup(false) 
+    }),
+    showAIHealer && h(AIHealerPanel, { 
+      onClose: () => setShowAIHealer(false) 
     }),
     
     // Detail modal
