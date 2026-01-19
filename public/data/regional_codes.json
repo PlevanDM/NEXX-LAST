@@ -1,0 +1,570 @@
+{
+  "source": "The Apple Wiki, repair community",
+  "updated_at": "2026-01-19",
+  "description": "Региональные коды Apple устройств (суффиксы модельных номеров)",
+  "format_example": "MC605LL/A - где LL = региональный код",
+  "regional_codes": {
+    "A": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "AB": {
+      "region": "Middle East",
+      "countries": ["Egypt", "Jordan", "Saudi Arabia", "United Arab Emirates"],
+      "facetime": "carrier_dependent",
+      "dual_sim": false,
+      "notes": "FaceTime может требовать активации оператором"
+    },
+    "AE": {
+      "region": "Gulf States",
+      "countries": ["Bahrain", "Kuwait", "Qatar", "Saudi Arabia", "United Arab Emirates"],
+      "facetime": "carrier_dependent",
+      "dual_sim": false,
+      "notes": "FaceTime может требовать активации оператором"
+    },
+    "AH": {
+      "region": "Gulf States",
+      "countries": ["Bahrain", "Kuwait"],
+      "facetime": "carrier_dependent",
+      "dual_sim": false,
+      "notes": null
+    },
+    "AM": {
+      "region": "USA (Vietnam Assembly)",
+      "countries": ["United States"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Собрано во Вьетнаме"
+    },
+    "B": {
+      "region": "UK/Ireland",
+      "countries": ["United Kingdom", "Ireland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Также используется для некоторых replacement units"
+    },
+    "BR": {
+      "region": "Brazil (Local Assembly)",
+      "countries": ["Brazil"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Собрано в Бразилии"
+    },
+    "BZ": {
+      "region": "Brazil (China Assembly)",
+      "countries": ["Brazil"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Собрано в Китае для Бразилии"
+    },
+    "C": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "CH": {
+      "region": "China",
+      "countries": ["China"],
+      "facetime": false,
+      "dual_sim": true,
+      "notes": "Dual physical SIM, FaceTime отключен, некоторые сервисы недоступны"
+    },
+    "CL": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "CN": {
+      "region": "Slovakia",
+      "countries": ["Slovakia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "CZ": {
+      "region": "Czech Republic",
+      "countries": ["Czech Republic"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "D": {
+      "region": "Germany",
+      "countries": ["Germany"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "DN": {
+      "region": "DACH Region",
+      "countries": ["Austria", "Germany", "Netherlands"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "E": {
+      "region": "Mexico",
+      "countries": ["Mexico"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "EE": {
+      "region": "Estonia",
+      "countries": ["Estonia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "F": {
+      "region": "France",
+      "countries": ["France"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "FB": {
+      "region": "France/Benelux",
+      "countries": ["France", "Luxembourg"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "FD": {
+      "region": "DACH",
+      "countries": ["Austria", "Liechtenstein", "Switzerland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "FS": {
+      "region": "Finland",
+      "countries": ["Finland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "GR": {
+      "region": "Greece",
+      "countries": ["Greece"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "HB": {
+      "region": "Israel",
+      "countries": ["Israel"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "HN": {
+      "region": "India",
+      "countries": ["India"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Dual physical SIM для некоторых моделей"
+    },
+    "HU": {
+      "region": "Ukraine",
+      "countries": ["Ukraine"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "IP": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "J": {
+      "region": "Japan",
+      "countries": ["Japan"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Звук камеры нельзя отключить (закон), Suica требует JP модель"
+    },
+    "KH": {
+      "region": "Korea/China",
+      "countries": ["China", "South Korea"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "KN": {
+      "region": "Nordic",
+      "countries": ["Denmark", "Norway"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "KS": {
+      "region": "Nordic",
+      "countries": ["Finland", "Sweden"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LA": {
+      "region": "Latin America",
+      "countries": ["Colombia", "Ecuador", "El Salvador", "Guatemala", "Honduras", "Peru"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LE": {
+      "region": "Argentina",
+      "countries": ["Argentina"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LL": {
+      "region": "USA/Americas",
+      "countries": ["United States", "Canada"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "iPhone 12+ имеют mmWave 5G, также используется для replacement units"
+    },
+    "LP": {
+      "region": "Poland",
+      "countries": ["Poland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LT": {
+      "region": "Lithuania",
+      "countries": ["Lithuania"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LV": {
+      "region": "Latvia",
+      "countries": ["Latvia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "LW": {
+      "region": "USA (Limited)",
+      "countries": ["United States"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Apple Watch без Blood Oxygen (после Jan 18, 2024)"
+    },
+    "LZ": {
+      "region": "South America",
+      "countries": ["Chile", "Paraguay", "Uruguay"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "MG": {
+      "region": "Hungary",
+      "countries": ["Hungary"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "MO": {
+      "region": "Macau/Hong Kong",
+      "countries": ["Macau", "Hong Kong"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Dual physical SIM"
+    },
+    "MY": {
+      "region": "Malaysia",
+      "countries": ["Malaysia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "NF": {
+      "region": "Benelux/France",
+      "countries": ["Belgium", "France", "Luxembourg"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "PK": {
+      "region": "Finland/Poland",
+      "countries": ["Finland", "Poland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "PL": {
+      "region": "Poland",
+      "countries": ["Poland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "PM": {
+      "region": "Poland",
+      "countries": ["Poland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "PO": {
+      "region": "Portugal",
+      "countries": ["Portugal"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "PP": {
+      "region": "Philippines",
+      "countries": ["Philippines"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "QL": {
+      "region": "Southern Europe",
+      "countries": ["Italy", "Spain", "Portugal"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "QN": {
+      "region": "Nordic",
+      "countries": ["Denmark", "Norway", "Sweden", "Iceland"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RK": {
+      "region": "Kazakhstan",
+      "countries": ["Kazakhstan"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RM": {
+      "region": "Russia/Kazakhstan",
+      "countries": ["Russia", "Kazakhstan"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RO": {
+      "region": "Romania",
+      "countries": ["Romania"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RP": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RR": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RS": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "RU": {
+      "region": "Russia",
+      "countries": ["Russia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "SA": {
+      "region": "Vietnam",
+      "countries": ["Vietnam"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": "Используется в основном для iPad и Mac"
+    },
+    "SE": {
+      "region": "Serbia",
+      "countries": ["Serbia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "SL": {
+      "region": "Slovakia",
+      "countries": ["Slovakia"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "SO": {
+      "region": "South Africa",
+      "countries": ["South Africa"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "SU": {
+      "region": "Ukraine",
+      "countries": ["Ukraine"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "T": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "TA": {
+      "region": "Taiwan",
+      "countries": ["Taiwan"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "TH": {
+      "region": "Thailand",
+      "countries": ["Thailand"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "TU": {
+      "region": "Turkey",
+      "countries": ["Turkey"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "TY": {
+      "region": "Italy",
+      "countries": ["Italy"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "UA": {
+      "region": "Ukraine",
+      "countries": ["Ukraine"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "VC": {
+      "region": "Canada",
+      "countries": ["Canada"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "VN": {
+      "region": "Vietnam",
+      "countries": ["Vietnam"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "X": {
+      "region": "Australia/New Zealand",
+      "countries": ["Australia", "New Zealand"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "Y": {
+      "region": "Spain",
+      "countries": ["Spain"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "ZA": {
+      "region": "Singapore",
+      "countries": ["Singapore"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "ZD": {
+      "region": "Western Europe",
+      "countries": ["Germany", "Belgium", "Luxembourg", "Netherlands", "Austria", "France", "Switzerland", "Monaco"],
+      "facetime": true,
+      "dual_sim": false,
+      "notes": null
+    },
+    "ZP": {
+      "region": "Hong Kong/Macau",
+      "countries": ["Hong Kong", "Macau"],
+      "facetime": true,
+      "dual_sim": true,
+      "notes": "Dual physical SIM для iPhone XS Max и новее"
+    }
+  },
+  "special_features": {
+    "dual_physical_sim": {
+      "description": "Устройства с двумя физическими SIM-слотами (вместо eSIM + nano-SIM)",
+      "regions": ["CH", "HN", "MO", "ZP"],
+      "models": ["iPhone XS Max и новее"]
+    },
+    "mmwave_5g": {
+      "description": "mmWave 5G антенна для высокоскоростного 5G",
+      "regions": ["LL", "AM", "LW"],
+      "models": ["iPhone 12 и новее (только США)"]
+    },
+    "no_facetime": {
+      "description": "FaceTime полностью отключен",
+      "regions": ["CH"],
+      "reason": "Законодательные ограничения"
+    },
+    "facetime_carrier_dependent": {
+      "description": "FaceTime требует активации оператором",
+      "regions": ["AB", "AE", "AH"],
+      "reason": "Региональные ограничения"
+    },
+    "camera_shutter_sound": {
+      "description": "Звук затвора камеры нельзя отключить",
+      "regions": ["J"],
+      "reason": "Законодательство Японии"
+    },
+    "blood_oxygen_disabled": {
+      "description": "Blood Oxygen отключён из-за патентного спора",
+      "regions": ["LW"],
+      "devices": ["Apple Watch Series 9", "Apple Watch Ultra 2"],
+      "date_after": "2024-01-18"
+    }
+  },
+  "recommendations": {
+    "ukraine": {
+      "best_codes": ["HU", "SU", "UA", "LL", "ZD", "B"],
+      "description": "Для Украины лучше всего подходят: HU/SU/UA (украинские), LL (США), ZD (Европа), B (UK)"
+    },
+    "features_check": [
+      "Проверьте поддержку FaceTime",
+      "Проверьте 5G диапазоны для вашего оператора",
+      "Dual SIM: CH, ZP, HN имеют два физических слота"
+    ]
+  }
+}
