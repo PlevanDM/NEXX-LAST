@@ -1810,6 +1810,15 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
       )
     ),
     
+    // Model numbers (LL/A, ZA/A, etc.) - extracted from device.model
+    device.model && h('div', { className: 'mb-3' },
+      h('div', { className: 'flex flex-wrap gap-1.5' },
+        ...device.model.split('/').map((m, i) => 
+          h('span', { key: i, className: 'px-2 py-1 bg-slate-100/90 text-slate-700 rounded-lg text-xs font-mono font-semibold border border-slate-200' }, m.trim())
+        )
+      )
+    ),
+    
     // Board numbers (if available)
     (device.board_numbers?.length > 0) && h('div', { className: 'mb-3' },
       h('div', { className: 'flex flex-wrap gap-1.5' },
@@ -2526,7 +2535,6 @@ const App = () => {
   // Panel states
   const [showPrices, setShowPrices] = useState(false);
   const [showBoards, setShowBoards] = useState(false);
-  const [showArticles, setShowArticles] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [showKnowledge, setShowKnowledge] = useState(false);
@@ -2615,10 +2623,9 @@ const App = () => {
     devices: devices.length,
     prices: ukrainePrices ? Object.keys(ukrainePrices).length : 0,
     boards: logicBoardsSpecs?.total || (logicBoards ? (logicBoards.m_series_boards?.length || 0) + (logicBoards.intel_boards?.length || 0) : 0),
-    articles: articleData?.total || 0,
     errors: errorData ? (errorData.itunes_restore_errors?.length || 0) + (errorData.mac_diagnostics?.length || 0) : 0,
     ics: icData ? Object.values(icData).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0) : 0
-  }), [devices, ukrainePrices, logicBoards, logicBoardsSpecs, articleData, errorData, icData]);
+  }), [devices, ukrainePrices, logicBoards, logicBoardsSpecs, errorData, icData]);
   
   // Handle item selection
   const handleSelectItem = useCallback((item) => {
@@ -2730,7 +2737,7 @@ const App = () => {
         )
       ),
       
-      // Quick actions
+      // Quick actions (removed Артикулы card per user request)
       h('div', { className: 'grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6' },
         h(QuickCard, { 
           name: 'Цены', 
@@ -2745,13 +2752,6 @@ const App = () => {
           count: `${stats.boards} плат`, 
           color: 'violet',
           onClick: () => setShowBoards(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Артикулы', 
-          icon: '🔍', 
-          count: `${stats.articles} артикулов`, 
-          color: 'green',
-          onClick: () => setShowArticles(true) 
         }),
         h(QuickCard, { 
           name: 'Ошибки', 
@@ -2818,12 +2818,6 @@ const App = () => {
       logicBoardsSpecs,
       ukrainePrices,
       onClose: () => setShowBoards(false),
-      onSelectItem: handleSelectItem
-    }),
-    showArticles && h(ArticleSearchPanel, { 
-      articleData, 
-      ukrainePrices,
-      onClose: () => setShowArticles(false),
       onSelectItem: handleSelectItem
     }),
     showErrors && h(ErrorCodesPanel, { 
