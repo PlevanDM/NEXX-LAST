@@ -1,0 +1,1742 @@
+{
+  "source": "GitHub Open Source",
+  "sources": [
+    "kyle-seongwoo-jun/apple-device-identifiers",
+    "pbakondy/ios-device-list",
+    "adamawolf/apple-machine-identifiers"
+  ],
+  "collected_at": "2026-01-19 08:05:10",
+  "devices": {
+    "iphones": [
+      {
+        "identifier": "iPhone1,1",
+        "name": "iPhone",
+        "anumber": "A1203",
+        "fccid": "BCGA1203",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone1,2",
+        "name": "iPhone 3G",
+        "anumber": "A1241, A1324",
+        "fccid": "BCGA1241",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone2,1",
+        "name": "iPhone 3GS",
+        "anumber": "A1303, A1325",
+        "fccid": "BCGA1303A, BCGA1303B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone3,1",
+        "name": "iPhone 4",
+        "anumber": "A1332",
+        "fccid": "BCG‑E2380A, BCG‑E2380B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone3,2",
+        "name": "iPhone 4",
+        "anumber": "A1332",
+        "fccid": "BCG‑E2380A, BCG‑E2380B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone3,3",
+        "name": "iPhone 4",
+        "anumber": "A1349",
+        "fccid": "BCG‑E2422A, BCG‑E2422B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone4,1",
+        "name": "iPhone 4S",
+        "anumber": "A1387, A1431",
+        "fccid": "BCG‑E2430A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone5,1",
+        "name": "iPhone 5",
+        "anumber": "A1428",
+        "fccid": "BCG‑E2599A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone5,2",
+        "name": "iPhone 5",
+        "anumber": "A1429, A1442",
+        "fccid": "BCG‑E2599A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone5,3",
+        "name": "iPhone 5c",
+        "anumber": "A1456, A1532",
+        "fccid": "BCG‑E2644A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone5,4",
+        "name": "iPhone 5c",
+        "anumber": "A1507, A1516, A1526, A1529",
+        "fccid": "BCG‑E2694A, BCG‑E2694B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone6,1",
+        "name": "iPhone 5s",
+        "anumber": "A1453, A1533",
+        "fccid": "BCG‑E2642A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone6,2",
+        "name": "iPhone 5s",
+        "anumber": "A1457, A1518, A1528, A1530",
+        "fccid": "BCG‑E2643A, BCG‑E2643B",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone8,4",
+        "name": "iPhone SE (1st generation)",
+        "anumber": "A1662, A1723, A1724",
+        "fccid": "BCG‑E2945A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone7,2",
+        "name": "iPhone 6",
+        "anumber": "A1549, A1586, A1589",
+        "fccid": "BCG‑E2816A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone7,1",
+        "name": "iPhone 6 Plus",
+        "anumber": "A1522, A1524, A1593",
+        "fccid": "BCG‑E2817A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone8,1",
+        "name": "iPhone 6s",
+        "anumber": "A1633, A1688, A1691, A1700",
+        "fccid": "BCG-E2946A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone8,2",
+        "name": "iPhone 6s Plus",
+        "anumber": "A1634, A1687, A1690, A1699",
+        "fccid": "BCG-E2944A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone9,1",
+        "name": "iPhone 7",
+        "anumber": "A1660, A1779, A1780",
+        "fccid": "BCG‑E3085A, BCG‑E3086A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone9,3",
+        "name": "iPhone 7",
+        "anumber": "A1778",
+        "fccid": "BCG‑E3091A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone9,2",
+        "name": "iPhone 7 Plus",
+        "anumber": "A1661, A1785, A1786",
+        "fccid": "BCG‑E3087A, BCG‑E3088A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone9,4",
+        "name": "iPhone 7 Plus",
+        "anumber": "A1784",
+        "fccid": "BCG‑E3092A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,1",
+        "name": "iPhone 8",
+        "anumber": "A1863, A1906, A1907",
+        "fccid": "BCG-E3159A, BCG-E3171A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,4",
+        "name": "iPhone 8",
+        "anumber": "A1905",
+        "fccid": "BCG-E3172A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,2",
+        "name": "iPhone 8 Plus",
+        "anumber": "A1864, A1898, A1899",
+        "fccid": "BCG-E3160A, BCG-E3173A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,5",
+        "name": "iPhone 8 Plus",
+        "anumber": "A1897",
+        "fccid": "BCG-E3174A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,3",
+        "name": "iPhone X",
+        "anumber": "A1865, A1902",
+        "fccid": "BCG-E3161A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone10,6",
+        "name": "iPhone X",
+        "anumber": "A1901",
+        "fccid": "BCG-E3175A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone11,8",
+        "name": "iPhone XR",
+        "anumber": "A2108",
+        "fccid": "BCG-E3220A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone11,2",
+        "name": "iPhone XS",
+        "anumber": "A2100",
+        "fccid": "BCG-E3218A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone11,6",
+        "name": "iPhone XS Max",
+        "anumber": "A2104",
+        "fccid": "BCG-E3219A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone11,4",
+        "name": "iPhone XS Max",
+        "anumber": "A2103",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone12,1",
+        "name": "iPhone 11",
+        "anumber": "A2223",
+        "fccid": "BCG-E3309A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone12,3",
+        "name": "iPhone 11 Pro",
+        "anumber": "A2217",
+        "fccid": "BCG-E3309A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone12,5",
+        "name": "iPhone 11 Pro Max",
+        "anumber": "A2218",
+        "fccid": "BCG-E3309A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone12,8",
+        "name": "iPhone SE (2nd generation)",
+        "anumber": "A2275, A2296, A2298",
+        "fccid": "E3500A, E3501A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone13,1",
+        "name": "iPhone 12 mini",
+        "anumber": "A2176, A2398, A2400, A2399",
+        "fccid": "BCG-E3539A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone13,2",
+        "name": "iPhone 12",
+        "anumber": "A2172, A2402, A2404, A2403",
+        "fccid": "BCG-E3542A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone13,3",
+        "name": "iPhone 12 Pro",
+        "anumber": "A2341, A2406, A2407, A2408",
+        "fccid": "BCG-E3545A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone13,4",
+        "name": "iPhone 12 Pro Max",
+        "anumber": "A2342, A2410, A2411, A2412",
+        "fccid": "BCG-E3548A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,4",
+        "name": "iPhone 13 mini",
+        "anumber": "A2481, A2626, A2629, A2630, A2628",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,5",
+        "name": "iPhone 13",
+        "anumber": "A2482, A2631, A2634, A2635, A2633",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,2",
+        "name": "iPhone 13 Pro",
+        "anumber": "A2483, A2636, A2639, A2640, A2638",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,3",
+        "name": "iPhone 13 Pro Max",
+        "anumber": "A2484, A2641, A2644, A2645, A2643",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,6",
+        "name": "iPhone SE (3rd generation)",
+        "anumber": "A2595, A2782, A2783, A2784, A2785",
+        "fccid": "BCG-E4082A, BCG-E8064A, BCG-E4083A, BCG-E8076A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,7",
+        "name": "iPhone 14",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone14,8",
+        "name": "iPhone 14 Plus",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone15,2",
+        "name": "iPhone 14 Pro",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPhone15,3",
+        "name": "iPhone 14 Pro Max",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      }
+    ],
+    "ipads": [
+      {
+        "identifier": "iPad1,1",
+        "name": "iPad",
+        "anumber": "A1337",
+        "fccid": "BCG‑E2328A",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,1",
+        "name": "iPad 2",
+        "anumber": "A1395",
+        "fccid": "BCGA1395",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,2",
+        "name": "iPad 2",
+        "anumber": "A1396",
+        "fccid": "BCGA1396",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,3",
+        "name": "iPad 2",
+        "anumber": "A1397",
+        "fccid": "BCGA1397",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,4",
+        "name": "iPad 2",
+        "anumber": "A1395",
+        "fccid": "BCGA1395",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,1",
+        "name": "iPad (3rd generation)",
+        "anumber": "A1416",
+        "fccid": "BCGA1416",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,2",
+        "name": "iPad (3rd generation)",
+        "anumber": "A1403",
+        "fccid": "BCGA1403",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,3",
+        "name": "iPad (3rd generation)",
+        "anumber": "A1430",
+        "fccid": "BCGA1430",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,4",
+        "name": "iPad (4th generation)",
+        "anumber": "A1458",
+        "fccid": "BCGA1458",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,5",
+        "name": "iPad (4th generation)",
+        "anumber": "A1459",
+        "fccid": "BCGA1459",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad3,6",
+        "name": "iPad (4th generation)",
+        "anumber": "A1460",
+        "fccid": "BCGA1460",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,11",
+        "name": "iPad (5th generation)",
+        "anumber": "A1822",
+        "fccid": "BCGA1822",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,12",
+        "name": "iPad (5th generation)",
+        "anumber": "A1823",
+        "fccid": "BCGA1823",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,5",
+        "name": "iPad (6th generation)",
+        "anumber": "A1893",
+        "fccid": "BCGA1893",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,6",
+        "name": "iPad (6th generation)",
+        "anumber": "A1954",
+        "fccid": "BCGA1954",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,11",
+        "name": "iPad (7th generation)",
+        "anumber": "A2197",
+        "fccid": "BCGA2197",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,12",
+        "name": "iPad (7th generation)",
+        "anumber": "A2198, A2200",
+        "fccid": "BCGA2198, BCGA2200",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,6",
+        "name": "iPad (8th generation)",
+        "anumber": "A2270",
+        "fccid": "BCGA2270",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,7",
+        "name": "iPad (8th generation)",
+        "anumber": "A2428, A2429, A2430",
+        "fccid": "BCGA2428, BCGA2429",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad12,1",
+        "name": "iPad (9th generation)",
+        "anumber": "A2602",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad12,2",
+        "name": "iPad (9th generation)",
+        "anumber": "A2603, A2604, A2605",
+        "fccid": "BCGA2603, BCGA2604, BCGA2605",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,1",
+        "name": "iPad Air",
+        "anumber": "A1474",
+        "fccid": "BCGA1474",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,2",
+        "name": "iPad Air",
+        "anumber": "A1475",
+        "fccid": "BCGA1475",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,3",
+        "name": "iPad Air",
+        "anumber": "A1476",
+        "fccid": "BCGA1476",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad5,3",
+        "name": "iPad Air 2",
+        "anumber": "A1566",
+        "fccid": "BCGA1566",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad5,4",
+        "name": "iPad Air 2",
+        "anumber": "A1567",
+        "fccid": "BCGA1567",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,3",
+        "name": "iPad Air (3rd generation)",
+        "anumber": "A2152",
+        "fccid": "BCGA2152",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,4",
+        "name": "iPad Air (3rd generation)",
+        "anumber": "A2123, A2153, A2154",
+        "fccid": "BCGA2123, BCGA2153",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,1",
+        "name": "iPad Air (4th generation)",
+        "anumber": "A2316",
+        "fccid": "BCGA2316",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,2",
+        "name": "iPad Air (4th generation)",
+        "anumber": "A2324, A2325, A2072",
+        "fccid": "BCGA2324, BCGA2072",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,16",
+        "name": "iPad Air (5th generation)",
+        "anumber": "A2588",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,17",
+        "name": "iPad Air (5th generation)",
+        "anumber": "A2589, A2591",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,7",
+        "name": "iPad Pro (12.9-inch)",
+        "anumber": "A1584",
+        "fccid": "BCGA1584",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,8",
+        "name": "iPad Pro (12.9-inch)",
+        "anumber": "A1652",
+        "fccid": "BCGA1652",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,3",
+        "name": "iPad Pro (9.7-inch)",
+        "anumber": "A1673",
+        "fccid": "BCGA1673",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad6,4",
+        "name": "iPad Pro (9.7-inch)",
+        "anumber": "A1674, A1675",
+        "fccid": "BCGA1674",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,1",
+        "name": "iPad Pro (12.9-inch, 2nd generation)",
+        "anumber": "A1670",
+        "fccid": "BCGA1670",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,2",
+        "name": "iPad Pro (12.9-inch, 2nd generation)",
+        "anumber": "A1671, A1821",
+        "fccid": "BCGA1671",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,3",
+        "name": "iPad Pro (10.5-inch)",
+        "anumber": "A1701",
+        "fccid": "BCGA1701",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad7,4",
+        "name": "iPad Pro (10.5-inch)",
+        "anumber": "A1709",
+        "fccid": "BCGA1709",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,1",
+        "name": "iPad Pro (11-inch)",
+        "anumber": "A1980",
+        "fccid": "BCGA1980",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,2",
+        "name": "iPad Pro (11-inch)",
+        "anumber": "A1980",
+        "fccid": "BCGA1980",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,3",
+        "name": "iPad Pro (11-inch)",
+        "anumber": "A2013",
+        "fccid": "BCGA2013",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,4",
+        "name": "iPad Pro (11-inch)",
+        "anumber": "A2013",
+        "fccid": "BCGA2013",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,5",
+        "name": "iPad Pro (12.9-inch) (3rd generation)",
+        "anumber": "A1876",
+        "fccid": "BCGA1876",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,6",
+        "name": "iPad Pro (12.9-inch) (3rd generation)",
+        "anumber": "A1876",
+        "fccid": "BCGA1876",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,7",
+        "name": "iPad Pro (12.9-inch) (3rd generation)",
+        "anumber": "A2014",
+        "fccid": "BCGA2014",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,8",
+        "name": "iPad Pro (12.9-inch) (3rd generation)",
+        "anumber": "A2014",
+        "fccid": "BCGA2014",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,9",
+        "name": "iPad Pro (11-inch) (2nd generation)",
+        "anumber": "A2228",
+        "fccid": "BCGA2228",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,10",
+        "name": "iPad Pro (11-inch) (2nd generation)",
+        "anumber": "A2068, A2230, A2231",
+        "fccid": "BCGA2068, BCGA2230",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,11",
+        "name": "iPad Pro (12.9-inch) (4th generation)",
+        "anumber": "A2229",
+        "fccid": "BCGA2229",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad8,12",
+        "name": "iPad Pro (12.9-inch) (4th generation)",
+        "anumber": "A2069, A2232, A2233",
+        "fccid": "BCGA2069, BCGA2232",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,4",
+        "name": "iPad Pro (11-inch) (3rd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,5",
+        "name": "iPad Pro (11-inch) (3rd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,6",
+        "name": "iPad Pro (11-inch) (3rd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,7",
+        "name": "iPad Pro (11-inch) (3rd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,8",
+        "name": "iPad Pro (12.9-inch) (5th generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,9",
+        "name": "iPad Pro (12.9-inch) (5th generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,10",
+        "name": "iPad Pro (12.9-inch) (5th generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad13,11",
+        "name": "iPad Pro (12.9-inch) (5th generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,5",
+        "name": "iPad mini",
+        "anumber": "A1432",
+        "fccid": "BCGA1432",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,6",
+        "name": "iPad mini",
+        "anumber": "A1454",
+        "fccid": "BCGA1454",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad2,7",
+        "name": "iPad mini",
+        "anumber": "A1455",
+        "fccid": "BCGA1455",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,4",
+        "name": "iPad mini 2",
+        "anumber": "A1489",
+        "fccid": "BCGA1489",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,5",
+        "name": "iPad mini 2",
+        "anumber": "A1490",
+        "fccid": "BCGA1490",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,6",
+        "name": "iPad mini 2",
+        "anumber": "A1491",
+        "fccid": "BCGA1491",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,7",
+        "name": "iPad mini 3",
+        "anumber": "A1599",
+        "fccid": "BCGA1599",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,8",
+        "name": "iPad mini 3",
+        "anumber": "A1600",
+        "fccid": "BCGA1600",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad4,9",
+        "name": "iPad mini 3",
+        "anumber": "A1601",
+        "fccid": "BCGA1601",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad5,1",
+        "name": "iPad mini 4",
+        "anumber": "A1538",
+        "fccid": "BCGA1538",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad5,2",
+        "name": "iPad mini 4",
+        "anumber": "A1550",
+        "fccid": "BCGA1550",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,1",
+        "name": "iPad mini (5th generation)",
+        "anumber": "A2133",
+        "fccid": "BCGA2133",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad11,2",
+        "name": "iPad mini (5th generation)",
+        "anumber": "A2124, A2125, A2126",
+        "fccid": "BCGA2124, BCGA2126",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad14,1",
+        "name": "iPad mini (6th generation)",
+        "anumber": "A2567",
+        "fccid": "BCGA2567",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPad14,2",
+        "name": "iPad mini (6th generation)",
+        "anumber": "A2568, A2569",
+        "fccid": "BCGA2568, BCGA2569",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      }
+    ],
+    "macs": [],
+    "watches": [
+      {
+        "identifier": "Watch1,1",
+        "name": "Apple Watch (1st generation)",
+        "anumber": "A1553",
+        "fccid": "BCG-E2870",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch1,2",
+        "name": "Apple Watch (1st generation)",
+        "anumber": "A1554, A1638",
+        "fccid": "BCG-E2871",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch2,6",
+        "name": "Apple Watch Series 1",
+        "anumber": "A1802",
+        "fccid": "BCG‑E3102",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch2,7",
+        "name": "Apple Watch Series 1",
+        "anumber": "A1803",
+        "fccid": "BCG‑E3103",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch2,3",
+        "name": "Apple Watch Series 2",
+        "anumber": "A1757, A1816",
+        "fccid": "BCG‑E3104",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch2,4",
+        "name": "Apple Watch Series 2",
+        "anumber": "A1758, A1817",
+        "fccid": "BCG‑E3105",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch3,1",
+        "name": "Apple Watch Series 3",
+        "anumber": "A1860, A1889, A1890",
+        "fccid": "BCG-A1860, BCG-A1889, BCG-A1890",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch3,2",
+        "name": "Apple Watch Series 3",
+        "anumber": "A1861, A1891, A1892",
+        "fccid": "BCG-A1861, BCG-A1891, BCG-A1892",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch3,3",
+        "name": "Apple Watch Series 3",
+        "anumber": "A1858",
+        "fccid": "BCG-A1858",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch3,4",
+        "name": "Apple Watch Series 3",
+        "anumber": "A1859",
+        "fccid": "BCG-A1859",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch4,1",
+        "name": "Apple Watch Series 4",
+        "anumber": "A1977",
+        "fccid": "BCG-A1977",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch4,2",
+        "name": "Apple Watch Series 4",
+        "anumber": "A1978",
+        "fccid": "BCG-A1978",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch4,3",
+        "name": "Apple Watch Series 4",
+        "anumber": "A1975, A2007",
+        "fccid": "BCG-A1975, BCG-A2007",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch4,4",
+        "name": "Apple Watch Series 4",
+        "anumber": "A1976, A2008",
+        "fccid": "BCG‑A1976, BCG-A2008",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,1",
+        "name": "Apple Watch Series 5",
+        "anumber": "A2092",
+        "fccid": "BCG-A2092",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,2",
+        "name": "Apple Watch Series 5",
+        "anumber": "A2093",
+        "fccid": "BCG-A2093",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,3",
+        "name": "Apple Watch Series 5",
+        "anumber": "A2094, A2156",
+        "fccid": "BCG-A2094, BCG-A2156",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,4",
+        "name": "Apple Watch Series 5",
+        "anumber": "A2095, A2157",
+        "fccid": "BCG-A2095, BCG-A2157",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,9",
+        "name": "Apple Watch SE",
+        "anumber": "A2351",
+        "fccid": "BCG-A2351",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,10",
+        "name": "Apple Watch SE",
+        "anumber": "A2352",
+        "fccid": "BCG-A2352",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,11",
+        "name": "Apple Watch SE",
+        "anumber": "A2353, A2355",
+        "fccid": "BCG-A2353, BCG-A2355",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch5,12",
+        "name": "Apple Watch SE",
+        "anumber": "A2354, A2356",
+        "fccid": "BCG-A2354, BCG-A2355",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,1",
+        "name": "Apple Watch Series 6",
+        "anumber": "A2291",
+        "fccid": "BCG-A2291",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,2",
+        "name": "Apple Watch Series 6",
+        "anumber": "A2292",
+        "fccid": "BCG-A2292",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,3",
+        "name": "Apple Watch Series 6",
+        "anumber": "A2293, A2375",
+        "fccid": "BCG-A2293, BCG-A2375",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,4",
+        "name": "Apple Watch Series 6",
+        "anumber": "A2294, A2376",
+        "fccid": "BCG-A2294, BCG-A2376",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,6",
+        "name": "Apple Watch Series 7",
+        "anumber": "A2473",
+        "fccid": "BCG-A2473",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,7",
+        "name": "Apple Watch Series 7",
+        "anumber": "A2474",
+        "fccid": "BCG-A2474",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,8",
+        "name": "Apple Watch Series 7",
+        "anumber": "A2475, A2476",
+        "fccid": "BCG-A2475, BCG-A2476",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,9",
+        "name": "Apple Watch Series 7",
+        "anumber": "A2477, A2478",
+        "fccid": "BCG-A2477, BCG-A2478",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,10",
+        "name": "Apple Watch SE (2nd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,11",
+        "name": "Apple Watch SE (2nd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,12",
+        "name": "Apple Watch SE (2nd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,13",
+        "name": "Apple Watch SE (2nd generation)",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,14",
+        "name": "Apple Watch Series 8",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,15",
+        "name": "Apple Watch Series 8",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,16",
+        "name": "Apple Watch Series 8",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,17",
+        "name": "Apple Watch Series 8",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Watch6,18",
+        "name": "Apple Watch Ultra",
+        "anumber": "",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      }
+    ],
+    "airpods": [
+      {
+        "identifier": "AirPods1,1",
+        "name": "AirPods (1st generation)",
+        "anumber": "A1523, A1722, A1602",
+        "fccid": "BCG-A1523, BCG-A1722",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPods2,1",
+        "name": "AirPods (2nd generation)",
+        "anumber": "A2031, A2032, A1938",
+        "fccid": "BCG-A2031, BCG-A2032",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPods1,3",
+        "name": "AirPods (3rd generation)",
+        "anumber": "A2564, A2565, A2566",
+        "fccid": "BCG-A2564, BCG-A2565",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "Audio2,1",
+        "name": "AirPods (3rd generation)",
+        "anumber": "A2564, A2565, A2566",
+        "fccid": "BCG-A2564, BCG-A2565",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPods2,2",
+        "name": "AirPods Pro",
+        "anumber": "A2083, A2084, A2190",
+        "fccid": "BCG-A2083, BCG-A2084",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPodsPro1,1",
+        "name": "AirPods Pro",
+        "anumber": "A2083, A2084, A2190",
+        "fccid": "BCG-A2083, BCG-A2084",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPodsPro1,2",
+        "name": "AirPods Pro (2nd generation)",
+        "anumber": "A2699, A2698, A2700",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirPodsMax1,1",
+        "name": "AirPods Max",
+        "anumber": "A2096",
+        "fccid": "BCG-A2096",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AudioAccessory1,1",
+        "name": "HomePod",
+        "anumber": "A1639",
+        "fccid": "BCG-A1639",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AudioAccessory1,2",
+        "name": "HomePod",
+        "anumber": "Unknown",
+        "fccid": "Unknown",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AudioAccessory5,1",
+        "name": "HomePod mini",
+        "anumber": "A2374",
+        "fccid": "BCG-A2374",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod1,1",
+        "name": "iPod touch",
+        "anumber": "A1213",
+        "fccid": "BCGA1213",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod2,1",
+        "name": "iPod touch (2nd generation)",
+        "anumber": "A1288, A1319",
+        "fccid": "BCGA1288",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod3,1",
+        "name": "iPod touch (3rd generation)",
+        "anumber": "A1318",
+        "fccid": "BCG‑2310",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod4,1",
+        "name": "iPod touch (4th generation)",
+        "anumber": "A1367",
+        "fccid": "BCG‑E2407",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod5,1",
+        "name": "iPod touch (5th generation)",
+        "anumber": "A1509",
+        "fccid": "BCG‑A1421",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod7,1",
+        "name": "iPod touch (6th generation)",
+        "anumber": "A1574",
+        "fccid": "BCGA1574",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iPod9,1",
+        "name": "iPod touch (7th generation)",
+        "anumber": "A2178",
+        "fccid": "BCGA2178",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      }
+    ],
+    "others": [
+      {
+        "identifier": "iProd8,1",
+        "name": "AirPods Pro",
+        "anumber": "A2083, A2084, A2190",
+        "fccid": "BCG-A2083, BCG-A2084",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "iProd8,6",
+        "name": "AirPods Max",
+        "anumber": "A2096",
+        "fccid": "BCG-A2096",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AirTag1,1",
+        "name": "AirTag",
+        "anumber": "A2187",
+        "fccid": "BCGA2187",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV1,1",
+        "name": "Apple TV (1st generation)",
+        "anumber": "A1218",
+        "fccid": "",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV2,1",
+        "name": "Apple TV (2nd generation)",
+        "anumber": "A1378",
+        "fccid": "BCGA1378",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV3,1",
+        "name": "Apple TV (3rd generation)",
+        "anumber": "A1427",
+        "fccid": "BCGA1427",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV3,2",
+        "name": "Apple TV (3rd generation)",
+        "anumber": "A1469",
+        "fccid": "BCGA1469",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV5,3",
+        "name": "Apple TV (4th generation)",
+        "anumber": "A1625",
+        "fccid": "BCGA1625",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV6,2",
+        "name": "Apple TV 4K",
+        "anumber": "A1842",
+        "fccid": "BCGA1842",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      },
+      {
+        "identifier": "AppleTV11,1",
+        "name": "Apple TV 4K (2nd generation)",
+        "anumber": "A2169",
+        "fccid": "BCGA2169",
+        "internal_name": "",
+        "bootrom": "",
+        "soc": ""
+      }
+    ],
+    "total": 191
+  }
+}

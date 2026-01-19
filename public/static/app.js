@@ -326,15 +326,17 @@ const ArticleSearchPanel = ({ data, onClose }) => {
   
   if (!data) return null;
   
-  const articles = data.articles || {};
-  const types = ['all', 'display', 'battery', 'logic_board', 'rear', 'front'];
+  const articles = data.articles || [];
+  const types = ['all', 'display', 'battery', 'rear_camera', 'front_camera', 'speaker'];
   
   const filtered = useMemo(() => {
     const term = searchTerm.toLowerCase();
-    return Object.entries(articles).filter(([article, info]) => {
-      if (selectedType !== 'all' && info.type !== selectedType) return false;
+    return articles.filter(art => {
+      if (selectedType !== 'all' && art.part_type !== selectedType) return false;
       if (!term) return true;
-      return article.toLowerCase().includes(term) || (info.description || '').toLowerCase().includes(term);
+      return (art.article || '').toLowerCase().includes(term) || 
+             (art.description || '').toLowerCase().includes(term) ||
+             (art.model || '').toLowerCase().includes(term);
     }).slice(0, 100);
   }, [articles, searchTerm, selectedType]);
   
@@ -366,23 +368,24 @@ const ArticleSearchPanel = ({ data, onClose }) => {
               selectedType === type ? 'bg-emerald-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'
             )
           }, type === 'all' ? 'Все' : type === 'display' ? 'Дисплеи' : type === 'battery' ? 'Батареи' : 
-             type === 'logic_board' ? 'Платы' : type === 'rear' ? 'Задние' : 'Фронт'))
+             type === 'rear_camera' ? 'Задние камеры' : type === 'front_camera' ? 'Фронт камеры' : 'Динамики'))
         )
       ),
       
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-2' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...filtered.map(([article, info]) => 
-            h('div', { key: article, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-emerald-300' },
+          ...filtered.map((art, idx) => 
+            h('div', { key: art.article || idx, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-emerald-300' },
               h('div', { className: 'flex justify-between items-start gap-4' },
                 h('div', { className: 'flex-1' },
-                  h('p', { className: 'font-mono font-bold text-emerald-600' }, article),
-                  h('p', { className: 'text-sm text-slate-700 mt-1' }, info.description || ''),
-                  h('span', { className: 'inline-block mt-2 px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-500' }, info.type || '')
+                  h('p', { className: 'font-mono font-bold text-emerald-600' }, art.article),
+                  h('p', { className: 'text-sm text-slate-700 mt-1' }, art.description || ''),
+                  h('p', { className: 'text-xs text-slate-500 mt-1' }, art.model || ''),
+                  h('span', { className: 'inline-block mt-2 px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-500' }, art.part_type || '')
                 ),
-                info.price_usd && h('div', { className: 'text-right' },
-                  h('p', { className: 'text-lg font-bold text-emerald-600' }, formatPrice(info.price_usd))
+                art.price_usd && h('div', { className: 'text-right' },
+                  h('p', { className: 'text-lg font-bold text-emerald-600' }, formatPrice(art.price_usd))
                 )
               )
             )
@@ -400,17 +403,18 @@ const LogicBoardsPanel = ({ data, onClose }) => {
   
   if (!data) return null;
   
-  const mSeries = data.m_series || [];
-  const intel = data.intel || [];
+  const mSeries = data.m_series_boards || [];
+  const intel = data.intel_boards || [];
   const boards = showMSeries ? mSeries : intel;
   
   const filtered = useMemo(() => {
     const term = searchTerm.toLowerCase();
     return boards.filter(board => {
       if (!term) return true;
-      return board.article?.toLowerCase().includes(term) ||
-             board.description?.toLowerCase().includes(term) ||
-             board.chip?.toLowerCase().includes(term);
+      return (board.board_number || '').toLowerCase().includes(term) ||
+             (board.model || '').toLowerCase().includes(term) ||
+             (board.model_number || '').toLowerCase().includes(term) ||
+             (board.architecture || '').toLowerCase().includes(term);
     }).slice(0, 50);
   }, [boards, searchTerm]);
   
@@ -451,15 +455,15 @@ const LogicBoardsPanel = ({ data, onClose }) => {
           ...filtered.map((board, i) => 
             h('div', { key: i, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-purple-300' },
               h('div', { className: 'flex justify-between items-start mb-2' },
-                h('span', { className: 'font-mono font-bold text-purple-600' }, board.article),
-                h('span', { className: 'text-lg font-bold text-green-600' }, formatPrice(board.price_usd))
+                h('span', { className: 'font-mono font-bold text-purple-600' }, board.board_number),
+                board.year && h('span', { className: 'text-sm text-slate-500' }, board.year)
               ),
+              h('p', { className: 'text-sm text-slate-700 mb-2' }, board.model),
               h('div', { className: 'flex gap-2 flex-wrap mb-2' },
-                board.chip && h('span', { className: 'px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-semibold' }, board.chip),
-                board.cpu_cores && h('span', { className: 'px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs' }, `${board.cpu_cores}CPU`),
-                board.ram_gb && h('span', { className: 'px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs' }, `${board.ram_gb}GB`)
-              ),
-              h('p', { className: 'text-xs text-slate-500 line-clamp-2' }, board.description)
+                board.model_number && h('span', { className: 'px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-semibold' }, board.model_number),
+                board.emc && h('span', { className: 'px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs' }, board.emc),
+                board.architecture && h('span', { className: 'px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs' }, board.architecture)
+              )
             )
           )
         )
@@ -469,25 +473,34 @@ const LogicBoardsPanel = ({ data, onClose }) => {
 };
 
 // ===== OFFICIAL PRICES PANEL =====
-const OfficialPricesPanel = ({ data, onClose }) => {
+const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   
   if (!data) return null;
   
   const prices = data.prices || {};
+  const uahCatalog = ukraineData || {};
+  const eurUahRate = 45.0; // 1 EUR = 45 UAH
   
   const filtered = useMemo(() => {
     const term = searchTerm.toLowerCase();
     return Object.entries(prices).filter(([model]) => !term || model.toLowerCase().includes(term));
   }, [prices, searchTerm]);
   
+  // Функция для поиска украинской цены по артикулу
+  const findUkrainePrice = (article) => {
+    if (!article || !uahCatalog[article]) return null;
+    const uahPrice = uahCatalog[article].price_uah;
+    return Math.round(uahPrice / eurUahRate * 100) / 100; // Конвертация в EUR
+  };
+  
   return h('div', { className: 'fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm' },
     h('div', { className: 'bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col' },
       h('div', { className: 'bg-gradient-to-r from-amber-500 to-orange-600 p-6 text-white' },
         h('div', { className: 'flex justify-between items-start' },
           h('div', null,
-            h('h2', { className: 'text-2xl font-bold' }, '💰 Официальные цены Apple'),
-            h('p', { className: 'text-amber-100 text-sm' }, `Курс: 1 USD = ${data.currency?.rate_usd || 41.5} UAH`)
+            h('h2', { className: 'text-2xl font-bold' }, '💰 Цены на запчасти'),
+            h('p', { className: 'text-amber-100 text-sm' }, '🇪🇺 Self Repair Europe | 🇺🇦 Украина')
           ),
           h('button', { onClick: onClose, className: 'w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-xl' }, '×')
         )
@@ -508,22 +521,61 @@ const OfficialPricesPanel = ({ data, onClose }) => {
           h('thead', { className: 'bg-slate-100 sticky top-0' },
             h('tr', null,
               h('th', { className: 'text-left p-4 font-semibold' }, 'Модель'),
-              h('th', { className: 'text-center p-4' }, '🔋'),
-              h('th', { className: 'text-center p-4' }, '📱'),
-              h('th', { className: 'text-center p-4' }, '📷'),
-              h('th', { className: 'text-center p-4' }, '🤳')
+              h('th', { className: 'text-center p-4 font-semibold' }, 'Деталь'),
+              h('th', { className: 'text-center p-4 font-semibold bg-blue-50' }, '🇪🇺 Self Repair'),
+              h('th', { className: 'text-center p-4 font-semibold bg-yellow-50' }, '🇺🇦 Украина'),
+              h('th', { className: 'text-center p-4 font-semibold' }, 'Экономия')
             )
           ),
           h('tbody', null,
-            ...filtered.map(([model, info]) => 
-              h('tr', { key: model, className: 'border-b hover:bg-amber-50' },
-                h('td', { className: 'p-4 font-medium' }, model),
-                h('td', { className: 'p-4 text-center text-green-600 font-bold' }, info.battery?.price_usd ? formatPrice(info.battery.price_usd) : '—'),
-                h('td', { className: 'p-4 text-center text-blue-600 font-bold' }, info.display?.price_usd ? formatPrice(info.display.price_usd) : '—'),
-                h('td', { className: 'p-4 text-center text-purple-600 font-bold' }, info.rear_camera?.price_usd ? formatPrice(info.rear_camera.price_usd) : '—'),
-                h('td', { className: 'p-4 text-center text-orange-600 font-bold' }, info.front_camera?.price_usd ? formatPrice(info.front_camera.price_usd) : '—')
-              )
-            )
+            ...filtered.flatMap(([model, info]) => {
+              const parts = [
+                { key: 'battery', label: '🔋 Батарея', data: info.battery },
+                { key: 'display', label: '📱 Дисплей', data: info.display },
+                { key: 'rear_camera', label: '📷 Задняя камера', data: info.rear_camera },
+                { key: 'front_camera', label: '🤳 Фронтальная камера', data: info.front_camera },
+                { key: 'speaker', label: '🔊 Динамик', data: info.speaker },
+                { key: 'taptic_engine', label: '📳 Taptic Engine', data: info.taptic_engine }
+              ].filter(p => p.data?.price_usd);
+              
+              return parts.map((part, idx) => {
+                const euPrice = part.data.price_usd;
+                const uaPrice = findUkrainePrice(part.data.article);
+                const savings = uaPrice ? Math.round((euPrice - uaPrice) * 100) / 100 : null;
+                const savingsPercent = savings && euPrice ? Math.round((savings / euPrice) * 100) : 0;
+                
+                return h('tr', { 
+                  key: `${model}-${part.key}`, 
+                  className: 'border-b hover:bg-slate-50'
+                },
+                  idx === 0 
+                    ? h('td', { 
+                        className: 'p-4 font-medium border-r', 
+                        rowSpan: parts.length 
+                      }, model)
+                    : null,
+                  h('td', { className: 'p-4' }, part.label),
+                  h('td', { className: 'p-4 text-center font-bold text-blue-600 bg-blue-50' }, 
+                    `€${euPrice.toFixed(2)}`
+                  ),
+                  h('td', { className: 'p-4 text-center font-bold bg-yellow-50' }, 
+                    uaPrice 
+                      ? h('span', { className: 'text-green-600' }, `€${uaPrice.toFixed(2)}`)
+                      : h('span', { className: 'text-gray-400' }, '—')
+                  ),
+                  h('td', { className: 'p-4 text-center' },
+                    savings && savings > 0
+                      ? h('div', { className: 'flex flex-col items-center' },
+                          h('span', { className: 'text-green-600 font-bold' }, `−€${savings.toFixed(2)}`),
+                          h('span', { className: 'text-xs text-green-500' }, `(${savingsPercent}%)`)
+                        )
+                      : savings && savings < 0
+                        ? h('span', { className: 'text-red-600 font-bold' }, `+€${Math.abs(savings).toFixed(2)}`)
+                        : h('span', { className: 'text-gray-400' }, '—')
+                  )
+                );
+              });
+            })
           )
         )
       )
@@ -538,19 +590,20 @@ const ErrorCodesPanel = ({ data, onClose }) => {
   
   if (!data) return null;
   
-  const itunesErrors = data.itunes_restore_errors || {};
-  const macErrors = data.mac_diagnostics || {};
+  const itunesErrors = data.itunes_restore_errors || [];
+  const macErrors = data.mac_diagnostics || [];
   
   const currentErrors = category === 'itunes' ? itunesErrors : macErrors;
   
   const filtered = useMemo(() => {
     const term = searchTerm.toLowerCase();
-    if (!term) return Object.entries(currentErrors);
-    return Object.entries(currentErrors).filter(([code, info]) => 
-      code.toLowerCase().includes(term) || 
-      (info.description || '').toLowerCase().includes(term) ||
-      (info.cause || '').toLowerCase().includes(term)
-    );
+    // Data is now an array of objects with 'code' field
+    return currentErrors.filter(err => {
+      if (!term) return true;
+      return String(err.code).toLowerCase().includes(term) || 
+             (err.description || '').toLowerCase().includes(term) ||
+             (err.cause || '').toLowerCase().includes(term);
+    });
   }, [currentErrors, searchTerm]);
   
   return h('div', { className: 'fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm' },
@@ -570,11 +623,11 @@ const ErrorCodesPanel = ({ data, onClose }) => {
           h('button', {
             onClick: () => setCategory('itunes'),
             className: cn('px-4 py-2 rounded-xl font-medium', category === 'itunes' ? 'bg-red-500 text-white' : 'bg-white text-slate-600')
-          }, `iTunes/Finder (${Object.keys(itunesErrors).length})`),
+          }, `iTunes/Finder (${itunesErrors.length})`),
           h('button', {
             onClick: () => setCategory('mac'),
             className: cn('px-4 py-2 rounded-xl font-medium', category === 'mac' ? 'bg-blue-500 text-white' : 'bg-white text-slate-600')
-          }, `Mac Diagnostics (${Object.keys(macErrors).length})`)
+          }, `Mac Diagnostics (${macErrors.length})`)
         ),
         h('input', {
           type: 'text',
@@ -588,19 +641,28 @@ const ErrorCodesPanel = ({ data, onClose }) => {
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ошибка не найдена'),
-          ...filtered.map(([code, info]) => 
-            h('div', { key: code, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-red-300' },
+          ...filtered.map((err, idx) => 
+            h('div', { key: err.code || idx, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-red-300' },
               h('div', { className: 'flex items-start gap-4' },
                 h('div', { className: 'w-20 h-20 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0' },
-                  h('span', { className: 'text-2xl font-bold text-red-600' }, code)
+                  h('span', { className: 'text-2xl font-bold text-red-600' }, err.code)
                 ),
                 h('div', { className: 'flex-1' },
-                  h('p', { className: 'font-semibold text-slate-800 mb-1' }, info.description || 'Описание отсутствует'),
-                  info.cause && h('p', { className: 'text-sm text-slate-600 mb-2' }, `⚠️ Причина: ${info.cause}`),
-                  info.solution && h('div', { className: 'p-3 bg-green-50 rounded-lg' },
-                    h('p', { className: 'text-sm text-green-800' }, `✅ Решение: ${info.solution}`)
+                  h('p', { className: 'font-semibold text-slate-800 mb-1' }, err.description || 'Описание отсутствует'),
+                  err.cause && h('p', { className: 'text-sm text-slate-600 mb-2' }, `⚠️ Причина: ${err.cause}`),
+                  err.solution && h('div', { className: 'p-3 bg-green-50 rounded-lg' },
+                    h('p', { className: 'text-sm text-green-800' }, `✅ Решение: ${err.solution}`)
                   ),
-                  info.hardware && h('span', { className: 'inline-block mt-2 px-2 py-1 bg-red-100 text-red-700 rounded text-xs' }, '🔧 Аппаратная проблема')
+                  h('div', { className: 'flex gap-2 mt-2' },
+                    err.hardware && h('span', { className: 'px-2 py-1 bg-red-100 text-red-700 rounded text-xs' }, '🔧 Hardware'),
+                    err.severity && h('span', { className: cn('px-2 py-1 rounded text-xs', 
+                      err.severity === 'critical' ? 'bg-red-100 text-red-700' :
+                      err.severity === 'high' ? 'bg-orange-100 text-orange-700' :
+                      err.severity === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+                      'bg-green-100 text-green-700'
+                    ) }, err.severity),
+                    err.component && h('span', { className: 'px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs' }, err.component)
+                  )
                 )
               )
             )
@@ -667,16 +729,18 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
         h('div', null,
           h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Выберите устройство'),
           h('select', {
-            value: selectedDevice?.id || '',
+            value: selectedDevice?.name || '',
             onChange: e => {
-              const device = deviceOptions.find(d => d.id === e.target.value);
+              const device = deviceOptions.find(d => d.name === e.target.value);
+              console.log('Selected device:', device);
+              console.log('Device prices:', device?.official_service_prices);
               setSelectedDevice(device);
               setSelectedRepairs([]);
             },
             className: 'w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
           },
             h('option', { value: '' }, '-- Выберите --'),
-            ...deviceOptions.map(d => h('option', { key: d.id, value: d.id }, d.name))
+            ...deviceOptions.map(d => h('option', { key: d.name, value: d.name }, d.name))
           )
         ),
         
@@ -778,22 +842,25 @@ const ICDatabasePanel = ({ data, onClose }) => {
   if (!data) return null;
   
   const categories = {
-    charging: { name: 'Зарядка', data: data.charging_ics || {} },
-    power: { name: 'Питание', data: data.power_ics || {} },
-    audio: { name: 'Аудио', data: data.audio_ics || {} },
-    baseband: { name: 'Baseband', data: data.baseband_ics || {} },
-    nand: { name: 'NAND', data: data.nand_ics || {} },
+    charging: { name: 'Зарядка', data: data.charging_ics || [] },
+    power: { name: 'Питание', data: data.power_ics || [] },
+    audio: { name: 'Аудио', data: data.audio_ics || [] },
+    baseband: { name: 'Baseband', data: data.baseband_ics || [] },
+    nand: { name: 'NAND', data: data.nand_ics || [] },
+    wifi_bt: { name: 'WiFi/BT', data: data.wifi_bt_ics || [] },
+    biometric: { name: 'Биометрия', data: data.biometric_ics || [] },
   };
   
-  const currentData = categories[category]?.data || {};
+  const currentData = categories[category]?.data || [];
   
   const filtered = useMemo(() => {
     const term = searchTerm.toLowerCase();
-    return Object.entries(currentData).filter(([name, info]) => {
+    // Data is now an array, not an object
+    return currentData.filter(ic => {
       if (!term) return true;
-      return name.toLowerCase().includes(term) || 
-             (info.description || '').toLowerCase().includes(term) ||
-             (info.models || []).some(m => m.toLowerCase().includes(term));
+      return (ic.name || '').toLowerCase().includes(term) || 
+             (ic.designation || '').toLowerCase().includes(term) ||
+             (ic.compatible_devices || []).some(m => m.toLowerCase().includes(term));
     });
   }, [currentData, searchTerm]);
   
@@ -832,18 +899,33 @@ const ICDatabasePanel = ({ data, onClose }) => {
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...filtered.map(([name, info]) => 
-            h('div', { key: name, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-violet-300' },
+          ...filtered.map((ic, idx) => 
+            h('div', { key: ic.name || idx, className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-violet-300' },
               h('div', { className: 'flex items-start justify-between mb-2' },
-                h('h3', { className: 'font-bold text-violet-600 font-mono' }, name),
-                info.price_range && h('span', { className: 'px-2 py-1 bg-green-100 text-green-700 rounded text-xs' }, info.price_range)
+                h('div', null,
+                  h('h3', { className: 'font-bold text-violet-600 font-mono' }, ic.name),
+                  ic.designation && h('p', { className: 'text-xs text-slate-500' }, ic.designation)
+                ),
+                ic.price_range && h('span', { className: 'px-2 py-1 bg-green-100 text-green-700 rounded text-xs' }, ic.price_range)
               ),
-              h('p', { className: 'text-sm text-slate-700 mb-2' }, info.description || info.function),
-              info.models && h('div', { className: 'flex flex-wrap gap-1 mb-2' },
-                ...info.models.slice(0, 5).map((m, i) => h('span', { key: i, className: 'px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-600' }, m)),
-                info.models.length > 5 && h('span', { className: 'text-xs text-slate-400' }, `+${info.models.length - 5}`)
+              ic.functions && h('div', { className: 'text-sm text-slate-700 mb-2' },
+                h('span', { className: 'font-medium' }, 'Функции: '),
+                ic.functions.slice(0, 3).join(', ')
               ),
-              info.repair_notes && h('p', { className: 'text-xs text-amber-700 bg-amber-50 p-2 rounded' }, `💡 ${info.repair_notes}`)
+              ic.compatible_devices && h('div', { className: 'mb-2' },
+                h('p', { className: 'text-xs font-medium text-slate-500 mb-1' }, 'Совместимые устройства:'),
+                h('div', { className: 'flex flex-wrap gap-1' },
+                  ...ic.compatible_devices.slice(0, 6).map((m, i) => h('span', { key: i, className: 'px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-600' }, m)),
+                  ic.compatible_devices.length > 6 && h('span', { className: 'text-xs text-slate-400' }, `+${ic.compatible_devices.length - 6}`)
+                )
+              ),
+              ic.symptoms_when_faulty && h('div', { className: 'mb-2' },
+                h('p', { className: 'text-xs font-medium text-red-500 mb-1' }, '⚠️ Симптомы неисправности:'),
+                h('ul', { className: 'text-xs text-slate-600 list-disc pl-4' },
+                  ...ic.symptoms_when_faulty.slice(0, 4).map((s, i) => h('li', { key: i }, s))
+                )
+              ),
+              ic.difficulty && h('span', { className: 'inline-block mt-2 px-2 py-1 bg-amber-100 text-amber-700 rounded text-xs' }, `🔧 ${ic.difficulty}`)
             )
           )
         )
@@ -1152,6 +1234,7 @@ const RepairTool = () => {
   const [logicBoardsData, setLogicBoardsData] = useState(null);
   const [articleSearchData, setArticleSearchData] = useState(null);
   const [officialPricesData, setOfficialPricesData] = useState(null);
+  const [ukrainePricesData, setUkrainePricesData] = useState(null);
   const [errorCodesData, setErrorCodesData] = useState(null);
   const [icDatabaseData, setICDatabaseData] = useState(null);
   const [repairKnowledgeData, setRepairKnowledgeData] = useState(null);
@@ -1176,16 +1259,18 @@ const RepairTool = () => {
       fetch('/data/logic_boards_comprehensive.json').then(r => r.json()).catch(() => null),
       fetch('/data/article_search_index.json').then(r => r.json()).catch(() => null),
       fetch('/data/official_service_prices.json').then(r => r.json()).catch(() => null),
+      fetch('/data/ukraine_prices.json').then(r => r.json()).catch(() => null),
       fetch('/data/error_codes.json').then(r => r.json()).catch(() => null),
       fetch('/data/ic_compatibility.json').then(r => r.json()).catch(() => null),
       fetch('/data/repair_knowledge.json').then(r => r.json()).catch(() => null),
     ])
-    .then(([devicesData, logicData, articleData, pricesData, errorsData, icData, knowledgeData]) => {
+    .then(([devicesData, logicData, articleData, pricesData, ukrainePrices, errorsData, icData, knowledgeData]) => {
       
       setDevices(Array.isArray(devicesData) ? devicesData : []);
       setLogicBoardsData(logicData);
       setArticleSearchData(articleData);
       setOfficialPricesData(pricesData);
+      setUkrainePricesData(ukrainePrices);
       setErrorCodesData(errorsData);
       setICDatabaseData(icData);
       setRepairKnowledgeData(knowledgeData);
@@ -1223,7 +1308,7 @@ const RepairTool = () => {
     total: devices.length,
     withPrices: devices.filter(d => d.official_service_prices && Object.keys(d.official_service_prices).length > 0).length,
     articles: articleSearchData?.total || 0,
-    logicBoards: (logicBoardsData?.m_series_count || 0) + (logicBoardsData?.intel_count || 0),
+    logicBoards: (logicBoardsData?.m_series_boards?.length || 0) + (logicBoardsData?.intel_boards?.length || 0),
     errorCodes: errorCodesData ? Object.keys(errorCodesData.itunes_restore_errors || {}).length : 0
   }), [devices, articleSearchData, logicBoardsData, errorCodesData]);
 
@@ -1240,7 +1325,7 @@ const RepairTool = () => {
   const renderPanels = () => h(React.Fragment, null,
     showArticleSearch && h(ArticleSearchPanel, { data: articleSearchData, onClose: () => setShowArticleSearch(false) }),
     showLogicBoards && h(LogicBoardsPanel, { data: logicBoardsData, onClose: () => setShowLogicBoards(false) }),
-    showOfficialPrices && h(OfficialPricesPanel, { data: officialPricesData, onClose: () => setShowOfficialPrices(false) }),
+    showOfficialPrices && h(OfficialPricesPanel, { data: officialPricesData, ukraineData: ukrainePricesData, onClose: () => setShowOfficialPrices(false) }),
     showErrorCodes && h(ErrorCodesPanel, { data: errorCodesData, onClose: () => setShowErrorCodes(false) }),
     showCalculator && h(RepairCalculatorPanel, { devices, onClose: () => setShowCalculator(false) }),
     showICDatabase && h(ICDatabasePanel, { data: icDatabaseData, onClose: () => setShowICDatabase(false) }),

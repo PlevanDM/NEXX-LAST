@@ -1,1129 +1,1081 @@
 {
-  "generated_at": "2024-01-19T03:00:00Z",
-  "version": "1.0",
+  "generated_at": "2026-01-19T08:09:17.412663",
+  "version": "2.0",
   "tristar_hydra": {
-    "tristar_hydra_diagnosis": {
-      "description": "Диагностика и ремонт Tristar/Hydra/U2 IC - контроллер зарядки USB",
-      "symptoms": {
-        "common": [
-          "Не заряжается вообще",
-          "Accessory not supported при подключении оригинального кабеля",
-          "Заряжается только от компьютера, но не от зарядки",
-          "Батарея быстро разряжается",
-          "Устройство не определяется в iTunes",
-          "Перезагружается при подключении зарядки",
-          "Греется при зарядке в районе разъема"
+    "description": "Диагностика и ремонт Tristar/Hydra/U2 IC - контроллера зарядки iPhone",
+    "symptoms": [
+      "Не заряжается",
+      "Accessory not supported",
+      "Заряжается только от компьютера",
+      "Не определяется в iTunes/Finder",
+      "Перегрев около порта зарядки",
+      "Boot loop после залития"
+    ],
+    "diagnosis": [
+      "Проверить диодный режим на D+ и D- (норма 0.450-0.650V)",
+      "Проверить наличие PP5V0_USB (5V при подключении)",
+      "Измерить потребление тока (норма 0.05-0.15A в покое)",
+      "Проверить наличие USB данных в диагностике"
+    ],
+    "solution": [
+      "Замена Tristar/Hydra IC требует BGA паяльной станции",
+      "Нужен preheater для прогрева платы",
+      "После замены требуется калибровка батареи"
+    ],
+    "tools": [
+      "Паяльная станция с горячим воздухом",
+      "BGA ребол станция",
+      "Мультиметр",
+      "DC Power Supply с измерением тока"
+    ],
+    "ic_by_model": {
+      "iPhone 5c": {
+        "ic_name": "1610A1",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges from PC/slow charger",
+          "Not detected in iTunes",
+          "Boot loop after water damage"
         ],
-        "diagnostic_steps": [
-          "Проверить ток потребления - если 0.00A или 0.003A = вероятно Tristar",
-          "Проверить diode mode на линиях D+ D- (должно быть 0.650V)",
-          "Использовать Tristar Tester от iPad Rehab",
-          "Проверить напряжение на конденсаторах вокруг Tristar",
-          "Если батарея полностью разряжена - попробовать внешнюю зарядку батареи"
-        ]
-      },
-      "causes": [
-        "Использование некачественных кабелей (главная причина)",
-        "Скачки напряжения при зарядке",
-        "Попадание влаги на разъем",
-        "Механические повреждения разъема",
-        "Использование автомобильных зарядок низкого качества"
-      ],
-      "repair_tips": [
-        "Tristar нельзя просто перепаять - нужна замена на новый",
-        "После замены может потребоваться восстановление через iTunes",
-        "Проверить все компоненты вокруг Tristar перед заменой",
-        "Использовать флюс Amtech 559 для качественной пайки",
-        "Температура фена 380-400°C для демонтажа"
-      ],
-      "compatible_donors": {
-        "iPhone_6": [
-          "iPhone 6",
-          "iPhone 6 Plus - U1700 (1610A1)"
-        ],
-        "iPhone_7": [
-          "iPhone 7 Qualcomm - U4001 (1612A1)",
-          "iPhone 7 Intel - другая версия"
-        ],
-        "iPhone_8_X": [
-          "iPhone 8/8+/X - Hydra U6300 (338S00248)"
-        ],
-        "iPhone_11_12": [
-          "iPhone 11/12/13 - используют новые версии Hydra"
-        ]
-      },
-      "testing_after_repair": [
-        "Проверить зарядку от разных источников",
-        "Проверить определение в iTunes",
-        "Проверить работу аксессуаров",
-        "Мониторить температуру при зарядке",
-        "Проверить ток зарядки (должен быть 0.8-1.0A)"
-      ]
-    }
-  },
-  "smc_failures": {
-    "smc_failures": {
-      "description": "System Management Controller - управление питанием и термоконтролем",
-      "primary_symptoms": [
-        "MacBook не включается вообще",
-        "Внезапные выключения и перезагрузки",
-        "Вентиляторы работают на максимальной скорости",
-        "Не заряжается батарея",
-        "Неправильное отображение заряда батареи",
-        "USB порты не работают",
-        "Подсветка клавиатуры не работает",
-        "Трекпад не реагирует"
-      ],
-      "diagnostic_approach": {
-        "ppbus_voltage": "Проверить PPBUS_G3H - должно быть 12.56V (±0.5V)",
-        "pp3v3_s5": "Проверить PP3V3_S5 - должно быть 3.3V",
-        "smc_reset_test": "Попробовать SMC reset - если помогает временно = SMC проблема",
-        "current_sensing": "Проверить ток на PPBUS - если скачет = SMC issue",
-        "check_u4900": "На многих моделях это чип U4900 - проверить на короткое"
-      },
-      "common_failing_components": {
-        "MacBook_Air_2013_2017": {
-          "smc_chip": "U4900",
-          "common_issues": [
-            "Сгоревшие конденсаторы C4900, C4901"
-          ],
-          "repair_difficulty": "Средняя"
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.420-0.580V",
+            "D-": "0.420-0.580V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.15A idle"
         },
-        "MacBook_Pro_2016_2017": {
-          "smc_chip": "U7800",
-          "common_issues": [
-            "CD3215 (U3100/U3200) вызывает сбой SMC"
-          ],
-          "repair_difficulty": "Высокая"
-        },
-        "MacBook_Pro_2018_2020": {
-          "smc_chip": "T2 chip integrated",
-          "common_issues": [
-            "Требуется работа с T2"
-          ],
-          "repair_difficulty": "Очень высокая"
-        }
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
       },
-      "repair_notes": [
-        "SMC чип часто BGA - требует профессионального оборудования",
-        "После замены SMC может потребоваться программирование",
-        "Проверить все power rails перед заменой SMC",
-        "Использовать донорскую плату той же модели и года",
-        "Температурный профиль: преднагрев 150°C, пайка 380-400°C"
-      ]
-    }
-  },
-  "touch_ic": {
-    "ipad_touch_problems": {
-      "description": "Проблемы с тачскрином iPad из-за сбоя Touch IC",
-      "affected_models": {
-        "iPad_Air_2": {
-          "touch_ics": [
-            "Cumulus",
-            "Meson"
-          ],
-          "common_failure": "Meson IC отваливается из-за изгибов",
-          "repair_complexity": "Высокая"
-        },
-        "iPad_Pro_10.5": {
-          "touch_ics": [
-            "Orion",
-            "Theia"
-          ],
-          "common_failure": "Проблема после замены экрана",
-          "repair_complexity": "Очень высокая"
-        },
-        "iPad_Pro_11_12.9": {
-          "touch_ics": [
-            "Integrated in main SOC"
-          ],
-          "common_failure": "Повреждение FPC коннектора",
-          "repair_complexity": "Средняя если коннектор, высокая если IC"
-        }
-      },
-      "diagnostic_steps": [
-        "Проверить FPC коннекторы на окисление",
-        "Измерить diode mode на touch коннекторе",
-        "Проверить наличие всех Touch IC на плате",
-        "Тест с другим экраном для исключения проблемы дисплея",
-        "Проверить напряжения питания touch: 1.8V, 3.0V"
-      ],
-      "repair_process": {
-        "preparation": [
-          "Снять щиты над Touch IC",
-          "Очистить область от underfill",
-          "Подготовить stencil для reballing"
+      "iPhone 5s": {
+        "ic_name": "1610A1",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges from PC/slow charger",
+          "Not detected in iTunes",
+          "Boot loop after water damage"
         ],
-        "replacement": [
-          "Температура демонтажа: 380-400°C",
-          "Использовать флюс высокого качества",
-          "Reballing обязателен - не пытаться reflow",
-          "Проверить pads на повреждения"
-        ],
-        "testing": [
-          "Проверить touch по всей площади экрана",
-          "Тест multitouch (10 пальцев)",
-          "Проверить работу после нагрева устройства"
-        ]
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.420-0.580V",
+            "D-": "0.420-0.580V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.15A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
       },
-      "donor_compatibility": {
-        "rule": "Touch IC привязаны к экрану на новых моделях",
-        "iPad_6_7_8": "Можно использовать доноры между поколениями",
-        "iPad_Pro": "Строго та же модель и размер экрана",
-        "warning": "На Pro моделях может требоваться программирование"
+      "iPad Air": {
+        "ic_name": "1610A1",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges from PC/slow charger",
+          "Not detected in iTunes",
+          "Boot loop after water damage"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.420-0.580V",
+            "D-": "0.420-0.580V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.15A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPad mini 2": {
+        "ic_name": "1610A1",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges from PC/slow charger",
+          "Not detected in iTunes",
+          "Boot loop after water damage"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.420-0.580V",
+            "D-": "0.420-0.580V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.15A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPad mini 3": {
+        "ic_name": "1610A1",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges from PC/slow charger",
+          "Not detected in iTunes",
+          "Boot loop after water damage"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.420-0.580V",
+            "D-": "0.420-0.580V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.15A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPhone 6": {
+        "ic_name": "1610A2",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges when off",
+          "Fake charging (percentage not increasing)",
+          "Random reboots"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.600V",
+            "D-": "0.450-0.600V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.20A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPhone 6 Plus": {
+        "ic_name": "1610A2",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges when off",
+          "Fake charging (percentage not increasing)",
+          "Random reboots"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.600V",
+            "D-": "0.450-0.600V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.20A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPad Air 2": {
+        "ic_name": "1610A2",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "Only charges when off",
+          "Fake charging (percentage not increasing)",
+          "Random reboots"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.600V",
+            "D-": "0.450-0.600V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.20A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$2-5"
+      },
+      "iPhone 6s": {
+        "ic_name": "1610A3",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Overheating near charging port",
+          "No response when plugged in"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.650V",
+            "D-": "0.450-0.650V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.25A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$3-6"
+      },
+      "iPhone 6s Plus": {
+        "ic_name": "1610A3",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Overheating near charging port",
+          "No response when plugged in"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.650V",
+            "D-": "0.450-0.650V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.25A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$3-6"
+      },
+      "iPhone SE (1st Gen)": {
+        "ic_name": "1610A3",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Overheating near charging port",
+          "No response when plugged in"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.650V",
+            "D-": "0.450-0.650V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.25A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$3-6"
+      },
+      "iPad Pro 9.7\"": {
+        "ic_name": "1610A3",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Overheating near charging port",
+          "No response when plugged in"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.650V",
+            "D-": "0.450-0.650V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.25A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$3-6"
+      },
+      "iPad Pro 12.9\" (1st Gen)": {
+        "ic_name": "1610A3",
+        "designation": "U2 / Tristar",
+        "symptoms": [
+          "Not charging",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Overheating near charging port",
+          "No response when plugged in"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.450-0.650V",
+            "D-": "0.450-0.650V"
+          },
+          "pp5v0_usb": "5.0V when connected",
+          "current_draw": "Normal: 0.05-0.25A idle"
+        },
+        "difficulty": "Advanced",
+        "price_range": "$3-6"
+      },
+      "iPhone 7": {
+        "ic_name": "1612A1 (Hydra)",
+        "designation": "U3300 / Hydra",
+        "symptoms": [
+          "Not charging",
+          "No audio through Lightning accessories",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Audio IC related failures (loop disease)"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.480-0.680V",
+            "D-": "0.480-0.680V"
+          },
+          "pp_vdd_main": "Check voltage rails",
+          "current_draw": "Normal: 0.08-0.30A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$8-15"
+      },
+      "iPhone 7 Plus": {
+        "ic_name": "1612A1 (Hydra)",
+        "designation": "U3300 / Hydra",
+        "symptoms": [
+          "Not charging",
+          "No audio through Lightning accessories",
+          "Accessory not supported",
+          "iTunes not detecting device",
+          "Audio IC related failures (loop disease)"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "D+": "0.480-0.680V",
+            "D-": "0.480-0.680V"
+          },
+          "pp_vdd_main": "Check voltage rails",
+          "current_draw": "Normal: 0.08-0.30A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$8-15"
+      },
+      "iPhone 8": {
+        "ic_name": "SN2501",
+        "designation": "U3300 / Hydra",
+        "symptoms": [
+          "Not charging",
+          "No fast charging",
+          "Audio issues with Lightning headphones",
+          "Accessory not supported",
+          "Device not detected"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.350-0.500V",
+            "CC2": "0.350-0.500V"
+          },
+          "usb_pd": "Check PD negotiation",
+          "current_draw": "Normal: 0.10-0.40A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$10-20"
+      },
+      "iPhone 8 Plus": {
+        "ic_name": "SN2501",
+        "designation": "U3300 / Hydra",
+        "symptoms": [
+          "Not charging",
+          "No fast charging",
+          "Audio issues with Lightning headphones",
+          "Accessory not supported",
+          "Device not detected"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.350-0.500V",
+            "CC2": "0.350-0.500V"
+          },
+          "usb_pd": "Check PD negotiation",
+          "current_draw": "Normal: 0.10-0.40A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$10-20"
+      },
+      "iPhone X": {
+        "ic_name": "SN2501",
+        "designation": "U3300 / Hydra",
+        "symptoms": [
+          "Not charging",
+          "No fast charging",
+          "Audio issues with Lightning headphones",
+          "Accessory not supported",
+          "Device not detected"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.350-0.500V",
+            "CC2": "0.350-0.500V"
+          },
+          "usb_pd": "Check PD negotiation",
+          "current_draw": "Normal: 0.10-0.40A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$10-20"
+      },
+      "iPhone XR": {
+        "ic_name": "SN2600B1/B2",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging",
+          "No fast charging (stuck at 5W)",
+          "Fake charging",
+          "iTunes not detecting device"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.380-0.520V",
+            "CC2": "0.380-0.520V"
+          },
+          "pp_vdd_main": "1.8V",
+          "current_draw": "Normal: 0.12-0.50A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$12-25"
+      },
+      "iPhone XS": {
+        "ic_name": "SN2600B1/B2",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging",
+          "No fast charging (stuck at 5W)",
+          "Fake charging",
+          "iTunes not detecting device"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.380-0.520V",
+            "CC2": "0.380-0.520V"
+          },
+          "pp_vdd_main": "1.8V",
+          "current_draw": "Normal: 0.12-0.50A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$12-25"
+      },
+      "iPhone XS Max": {
+        "ic_name": "SN2600B1/B2",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging",
+          "No fast charging (stuck at 5W)",
+          "Fake charging",
+          "iTunes not detecting device"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.380-0.520V",
+            "CC2": "0.380-0.520V"
+          },
+          "pp_vdd_main": "1.8V",
+          "current_draw": "Normal: 0.12-0.50A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$12-25"
+      },
+      "iPhone 11": {
+        "ic_name": "SN2611A0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging wired",
+          "No fast charging",
+          "Wireless charging still works (separate IC)",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.400-0.550V",
+            "CC2": "0.400-0.550V"
+          },
+          "current_draw": "Normal: 0.15-0.60A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$15-30"
+      },
+      "iPhone 11 Pro": {
+        "ic_name": "SN2611A0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging wired",
+          "No fast charging",
+          "Wireless charging still works (separate IC)",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.400-0.550V",
+            "CC2": "0.400-0.550V"
+          },
+          "current_draw": "Normal: 0.15-0.60A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$15-30"
+      },
+      "iPhone 11 Pro Max": {
+        "ic_name": "SN2611A0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging wired",
+          "No fast charging",
+          "Wireless charging still works (separate IC)",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.400-0.550V",
+            "CC2": "0.400-0.550V"
+          },
+          "current_draw": "Normal: 0.15-0.60A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$15-30"
+      },
+      "iPhone SE (2nd Gen)": {
+        "ic_name": "SN2611A0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging wired",
+          "No fast charging",
+          "Wireless charging still works (separate IC)",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.400-0.550V",
+            "CC2": "0.400-0.550V"
+          },
+          "current_draw": "Normal: 0.15-0.60A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$15-30"
+      },
+      "iPhone 12 mini": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 12": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 12 Pro": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 12 Pro Max": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 13 mini": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 13": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 13 Pro": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 13 Pro Max": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 14": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 14 Plus": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone SE (3rd Gen)": {
+        "ic_name": "SN2611D0",
+        "designation": "U3300 / Tigris",
+        "symptoms": [
+          "Not charging via Lightning",
+          "No fast charging",
+          "MagSafe may still work",
+          "Device not detected in Finder"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.420-0.580V",
+            "CC2": "0.420-0.580V"
+          },
+          "current_draw": "Normal: 0.18-0.70A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$18-35"
+      },
+      "iPhone 14 Pro": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 14 Pro Max": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 15": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 15 Plus": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 15 Pro": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 15 Pro Max": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 16": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 16 Plus": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 16 Pro": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
+      },
+      "iPhone 16 Pro Max": {
+        "ic_name": "SN2800",
+        "designation": "USB-C Controller",
+        "symptoms": [
+          "Not charging via USB-C",
+          "No data transfer",
+          "No video output",
+          "Accessory not supported"
+        ],
+        "diagnostics": {
+          "diode_mode": {
+            "CC1": "0.450-0.600V",
+            "CC2": "0.450-0.600V"
+          },
+          "usb_pd": "Check PD negotiation up to 9V/3A",
+          "current_draw": "Normal: 0.20-0.80A idle"
+        },
+        "difficulty": "Expert",
+        "price_range": "$25-50"
       }
     }
   },
   "baseband": {
-    "baseband_failures": {
-      "description": "Baseband CPU/PMU отвечает за сотовую связь",
-      "symptoms": {
-        "no_service": [
-          "Постоянно Searching... или No Service",
-          "IMEI отсутствует или показывает Unknown",
-          "Modem Firmware отсутствует в настройках",
-          "Не активируется после восстановления",
-          "*#06# не показывает IMEI"
-        ],
-        "partial_failure": [
-          "Слабый сигнал даже в зоне покрытия",
-          "Работает только 3G, но не LTE",
-          "СИМ-карта не определяется периодически"
-        ]
-      },
-      "iphone_7_special": {
-        "qualcomm_version": {
-          "model": "A1660, A1661",
-          "baseband": "MDM9645M",
-          "pmu": "PMB9943",
-          "repair_possible": "Да, можно заменить BB_CPU и BB_PMU"
-        },
-        "intel_version": {
-          "model": "A1778, A1784",
-          "baseband": "PMB9948 (XMM7480)",
-          "repair_possible": "Сложнее, часто не ремонтопригодно"
-        },
-        "diagnostic": [
-          "Проверить напряжения BB_PMU",
-          "Искать короткие на BB power rails",
-          "Проверить BB_EEPROM"
-        ]
-      },
-      "repair_limitations": [
-        "Baseband CPU привязан к main CPU - нельзя просто заменить",
-        "Требуется специальное оборудование для reballing",
-        "На iPhone 8 и новее - практически не ремонтируется",
-        "Intel baseband сложнее в ремонте чем Qualcomm"
-      ],
-      "workarounds": [
-        "Попробовать прошивку через 3uTools",
-        "Восстановление модема через команды AT",
-        "Использование как iPod Touch (без сотовой связи)",
-        "Замена всей платы (дорого)"
-      ]
-    }
+    "description": "Диагностика baseband/модема - нет сети, нет IMEI",
+    "symptoms": [
+      "No Service / Searching...",
+      "Нет IMEI (Settings -> About)",
+      "Ошибка -1 или 1 при восстановлении",
+      "Нет сотовых данных"
+    ],
+    "diagnosis": [
+      "Проверить IMEI в настройках",
+      "Проверить антенный коннектор",
+      "Измерить напряжение питания baseband",
+      "Проверить наличие baseband в диагностике"
+    ],
+    "solution": [
+      "Проверить и переустановить антенные коннекторы",
+      "Ребол baseband IC (сложно, PoP корпус)",
+      "Замена baseband IC требует переноса NVRAM"
+    ],
+    "tools": [
+      "BGA станция с точным контролем температуры",
+      "Программатор для NVRAM backup",
+      "Hot air station"
+    ]
   },
-  "common_repairs": {
-    "common_repairs_2024": {
-      "battery_replacement": {
-        "iPhone_11_15": {
-          "difficulty": "Легкая",
-          "time": "30-45 минут",
-          "tools": [
-            "Pentalobe P2",
-            "Y000",
-            "Присоска",
-            "Пластиковые лопатки"
-          ],
-          "tips": [
-            "Использовать pull-tabs аккуратно",
-            "Прогреть для легкого снятия экрана"
-          ]
-        },
-        "MacBook_Air_M1_M2": {
-          "difficulty": "Средняя",
-          "time": "1-2 часа",
-          "tools": [
-            "P5 Pentalobe",
-            "T5 Torx",
-            "Антистатический браслет"
-          ],
-          "tips": [
-            "Отключить батарею перед работой",
-            "Следить за винтами разной длины"
-          ]
-        }
-      },
-      "screen_replacement": {
-        "iPhone_with_FaceID": {
-          "difficulty": "Высокая",
-          "time": "1-2 часа",
-          "warning": "True Tone потеряется без программатора",
-          "tips": [
-            "Перенести flood illuminator аккуратно",
-            "Не повредить Face ID компоненты"
-          ]
-        },
-        "iPad_laminated": {
-          "difficulty": "Очень высокая",
-          "time": "2-3 часа",
-          "tools": [
-            "Термофен",
-            "Изопропанол",
-            "Струна для разделения"
-          ],
-          "tips": [
-            "Температура не выше 80°C",
-            "Медленно и аккуратно"
-          ]
-        }
-      },
-      "charging_port": {
-        "iPhone_Lightning": {
-          "difficulty": "Средняя",
-          "time": "45-60 минут",
-          "common_issue": "Пины загрязнены или погнуты",
-          "tips": [
-            "Сначала попробовать чистку",
-            "Проверить на Tristar damage"
-          ]
-        },
-        "USB_C_devices": {
-          "difficulty": "Высокая",
-          "time": "1-1.5 часа",
-          "tips": [
-            "24 пина - проверить все",
-            "Часто проблема в CC пинах"
-          ]
-        }
-      }
-    }
-  },
-  "temperature_profiles": {
-    "standard_bga": {
-      "preheating": {
-        "bottom": "150-180°C",
-        "duration": "60-90 секунд",
-        "purpose": "Равномерный прогрев платы"
-      },
-      "removal": {
-        "top": "380-400°C",
-        "bottom": "180-200°C",
-        "duration": "20-30 секунд",
-        "flux": "Обильно Amtech 559 или аналог"
-      },
-      "installation": {
-        "top": "360-380°C",
-        "bottom": "180-200°C",
-        "duration": "30-40 секунд",
-        "note": "Следить за выравниванием чипа"
-      }
-    },
-    "cpu_reballing": {
-      "warning": "Только для опытных мастеров!",
-      "preheating": {
-        "bottom": "200°C",
-        "duration": "120 секунд"
-      },
-      "removal": {
-        "top": "400-420°C",
-        "spiral_motion": "Да",
-        "duration": "40-60 секунд"
-      },
-      "reballing": {
-        "stencil": "Обязательно оригинальный",
-        "balls": "Leaded 0.35-0.4mm",
-        "temperature": "180-200°C для припоя"
-      }
-    },
-    "underfill_chips": {
-      "note": "Для чипов с underfill (compound)",
-      "removal": {
-        "top": "420-450°C",
-        "duration": "60-90 секунд",
-        "technique": "Покачивание пинцетом"
-      },
-      "cleaning": {
-        "tool": "Ультразвук или механически",
-        "solution": "Изопропанол 99%"
-      }
-    }
-  },
-  "face_id_touch_id": {
-    "face_id": {
-      "title": "Восстановление Face ID - Dot Projector",
-      "symptoms": [
-        "Face ID недоступен",
-        "Не работает Animoji",
-        "Портретный режим без размытия"
-      ],
-      "diagnosis": [
-        "Проверить целостность шлейфа",
-        "3uTools тест Dot Projector",
-        "Проверка flood illuminator"
-      ],
-      "repair_limitations": [
-        "Dot Projector привязан к плате криптографически",
-        "Замена только в паре с платой",
-        "Возможна только пересадка с донора вместе с платой"
-      ]
-    },
-    "touch_id": {
-      "title": "Восстановление Touch ID",
-      "iphone_7_8": [
-        "Home button привязан к плате",
-        "Замена только оригинальной парой",
-        "Возможен ремонт шлейфа"
-      ],
-      "repair_options": [
-        "Восстановление дорожек шлейфа",
-        "Замена только механики кнопки",
-        "JC programmer для копирования данных"
-      ]
-    }
-  },
-  "diagnostic_flowcharts": {
-    "no_power": {
-      "title": "Телефон не включается",
-      "steps": [
-        {
-          "check": "Подключить к ЗУ, проверить ток",
-          "if_yes": "Ток 0.00A -> проверить PMIC",
-          "if_no": "Ток есть -> проверить батарею"
-        },
-        {
-          "check": "PP_VDD_MAIN присутствует?",
-          "if_yes": "Проверить PP_CPU",
-          "if_no": "Заменить PMIC"
-        },
-        {
-          "check": "Короткое замыкание на VDD_MAIN?",
-          "if_yes": "Искать КЗ конденсаторы",
-          "if_no": "Проверить NAND"
-        }
-      ]
-    },
-    "no_image": {
-      "title": "Нет изображения",
-      "steps": [
-        {
-          "check": "Подсветка работает?",
-          "if_yes": "Проблема LCD или драйвер",
-          "if_no": "Проверить backlight IC"
-        },
-        {
-          "check": "Изображение видно на свету?",
-          "if_yes": "Заменить backlight IC/диоды",
-          "if_no": "Проверить шлейф/LCD"
-        }
-      ]
-    },
-    "no_charge": {
-      "title": "Не заряжается",
-      "steps": [
-        {
-          "check": "Проверить разъем на окисление",
-          "if_yes": "Чистка/замена разъема",
-          "if_no": "Проверить Tristar"
-        },
-        {
-          "check": "PP5V0_USB присутствует?",
-          "if_yes": "Проверить Tigris",
-          "if_no": "Заменить Tristar"
-        },
-        {
-          "check": "Ток зарядки присутствует?",
-          "if_yes": "Проверить батарею/Gas gauge",
-          "if_no": "Проверить PMIC"
-        }
-      ]
-    }
-  },
-  "error_codes": {
-    "iphone_errors": {
-      "9": "Ошибка прошивки - проверить NAND",
-      "14": "Проблема с baseband или NAND",
-      "21": "Baseband или батарея",
-      "35": "Отсутствует память NAND",
-      "40": "Проблема с NAND или CPU",
-      "53": "Touch ID не соответствует плате",
-      "56": "NFC или baseband проблема",
-      "1669": "Compass IC проблема",
-      "2009": "Проблема с памятью",
-      "3503": "Проблема с датчиками",
-      "4005": "Критическая ошибка прошивки",
-      "4013": "Отвал NAND или проблема с кабелем",
-      "4014": "Плохое соединение или отвал CPU"
-    },
-    "panic_codes": {
-      "panic-full": "Переполнение логов kernel panic",
-      "watchdog timeout": "Зависание процесса",
-      "i2c0 bus error": "Проблема с датчиками",
-      "thermalmonitord": "Перегрев",
-      "missing sensor": "Отсутствует датчик",
-      "smc failure": "Проблема с SMC (MacBook)"
-    }
+  "touch_ic": {
+    "description": "Проблемы Touch IC на iPad и старых iPhone",
+    "symptoms": [
+      "Touch не работает полностью или частично",
+      "Мерцание серой полосы вверху экрана (iPad)",
+      "Touch работает после нажатия на экран"
+    ],
+    "diagnosis": [
+      "Проверить flex cable дисплея",
+      "Проверить пайку Touch IC",
+      "Тест с новым дисплеем"
+    ],
+    "solution": [
+      "Jumper wire на отваливающиеся пады",
+      "Ребол Touch IC",
+      "Установка дополнительного шунта под разъём"
+    ]
   },
   "water_damage": {
     "immediate_actions": [
-      "НЕ ВКЛЮЧАТЬ устройство",
-      "Извлечь батарею если возможно",
-      "Слить видимую жидкость",
-      "Не использовать фен или рис"
+      "НЕ включать устройство!",
+      "НЕ ставить на зарядку!",
+      "Извлечь SIM и лоток",
+      "Разобрать как можно быстрее",
+      "Отключить батарею в первую очередь"
     ],
     "professional_repair": [
-      "1. Разборка в течение 24 часов",
-      "2. Промывка платы изопропиловым спиртом 99%",
-      "3. Ультразвуковая ванна 5-10 минут",
-      "4. Проверка под микроскопом на коррозию",
-      "5. Замена корродированных компонентов",
-      "6. Проверка всех разъемов и шлейфов",
-      "7. Сушка платы 60°C в течение 2 часов",
-      "8. Проверка изоляции всех цепей питания"
+      "Ультразвуковая очистка в изопропиловом спирте",
+      "Осмотр под микроскопом на коррозию",
+      "Проверка всех коннекторов",
+      "Проверка после очистки перед сборкой"
     ],
     "common_failures_after_water": [
-      "Backlight IC - сразу или через время",
-      "Touch IC - потеря тача",
-      "Audio IC - проблемы со звуком",
-      "Charging IC - не заряжается",
-      "Коррозия под BGA микросхемами"
+      "Tristar/Hydra IC",
+      "Audio IC",
+      "Baseband IC",
+      "Backlight IC",
+      "Батарея"
+    ]
+  },
+  "nand_programming": {
+    "description": "NAND программирование и перенос данных",
+    "programmers": [
+      "JC P7 / P8 / Pro1000S",
+      "Magico NAND Box",
+      "PCIE NAND Programmer"
     ],
-    "inspection_points": [
-      "Индикаторы влаги (LCI)",
-      "Разъемы (особенно Lightning/USB-C)",
-      "Под экранирующими крышками",
-      "Возле батарейного коннектора",
-      "Power Management IC область"
+    "use_cases": [
+      "Ошибки 4013, 4014, 9",
+      "Расширение памяти (upgrade)",
+      "Перенос данных с неисправной платы",
+      "Замена NAND после физ. повреждения"
+    ],
+    "important_notes": [
+      "SN и ECID должны совпадать с оригиналом",
+      "SysCfg должен быть скопирован",
+      "На новых устройствах NAND привязан к CPU"
     ]
   },
   "tools_supplies": {
-    "essential_tools": {
-      "Микроскоп": "Минимум 45X для SMD работы",
-      "Паяльная станция": "Quick 861DW или Accta 301",
-      "Паяльник": "TS100/TS80 с жалами B2, D24",
-      "Мультиметр": "Fluke 15B+ или UNI-T UT61E",
-      "Осциллограф": "Rigol DS1054Z для диагностики",
-      "USB тестер": "Power-Z для проверки зарядки",
-      "Термопистолет": "Quick 857DW+ или Yihua 8786D"
-    },
-    "supplies": {
-      "Флюс": "Amtech 559, NC-223, Kingbo RMA-218",
-      "Припой": "Sn63/Pb37 0.6mm, низкотемпературный 138°C",
-      "BGA шары": "0.2mm, 0.25mm, 0.3mm, 0.35mm leaded",
-      "Медная оплетка": "2.0mm, 2.5mm, 3.0mm",
-      "Изопропанол": "99% для промывки",
-      "Каптон лента": "Для защиты компонентов",
-      "УФ маска": "MECHANIC LY-UVH900 для дорожек",
-      "Джамперы": "0.02mm эмалированный провод"
-    },
-    "bga_rework": {
-      "Трафареты": "iPhone 6-14 набор, MacBook набор",
-      "BGA станция": "Achi IR-6500 или Jovy RE-8500",
-      "Держатели плат": "Универсальные с регулировкой",
-      "Reballing kit": "Набор для реболлинга"
-    }
-  },
-  "macbook_boards": {
-    "820-00165": {
-      "model": "MacBook Pro 13\" 2016-2017",
-      "cpu": "Intel Core i5-6360U",
-      "gpu": "Intel Iris 540",
-      "ram": "LPDDR3 on board",
-      "common_issues": [
-        "CD3215 failure - не заряжается",
-        "Вздутие батареи",
-        "Flexgate - проблема шлейфа дисплея",
-        "Отвал Touch Bar контроллера"
-      ],
-      "test_points": {
-        "PPBUS_G3H": "12.6V главная шина",
-        "PP3V3_G3H": "3.3V standby",
-        "PP5V_G3S": "5V system",
-        "PP3V3_S5": "3.3V system"
+    "essential_tools": [
+      {
+        "name": "Hot Air Station",
+        "examples": "Quick 861DW, Atten ST-862D"
       },
-      "repair_notes": "Часто проблема с CD3215, проверить оба порта USB-C"
-    },
-    "820-01987": {
-      "model": "MacBook Pro 16\" 2019",
-      "cpu": "Intel Core i7-9750H",
-      "gpu": "AMD Radeon Pro 5300M",
-      "ram": "DDR4 on board",
-      "common_issues": [
-        "Перегрев VRM",
-        "Kernel panic от T2",
-        "Проблемы с дискретной графикой",
-        "Отказ порта Thunderbolt 3"
-      ],
-      "test_points": {
-        "PPVCORE_GPU": "GPU core напряжение",
-        "PP1V8_S0": "1.8V для периферии",
-        "PP0V9_S0": "0.9V CPU core"
+      {
+        "name": "Soldering Station",
+        "examples": "JBC, Hakko FX-951"
       },
-      "repair_notes": "T2 chip может блокировать загрузку после ремонта"
-    },
-    "820-01700": {
-      "model": "MacBook Air M1 2020",
-      "cpu": "Apple M1",
-      "gpu": "Apple M1 integrated",
-      "ram": "Unified memory",
-      "common_issues": [
-        "Нет изображения после падения",
-        "Жидкость на плате",
-        "USB-C порт не работает",
-        "Восстановление после DFU"
-      ],
-      "test_points": {
-        "PP3V3_AON": "Always-on 3.3V",
-        "PP1V8_AON": "Always-on 1.8V",
-        "PPVBAT_G3H_CHGR": "Напряжение батареи"
+      {
+        "name": "Microscope",
+        "examples": "AmScope, Trinocular 7-45x"
       },
-      "repair_notes": "M1 требует специальные инструменты Apple Configurator"
-    }
-  },
-  "quick_tests": {
-    "battery_test": {
-      "tools": "3uTools, CoconutBattery",
-      "check": [
-        "Количество циклов < 500",
-        "Capacity > 80%",
-        "Voltage 3.7-4.2V",
-        "No Service Needed - статус"
-      ]
-    },
-    "display_test": {
-      "check": [
-        "3D Touch давление",
-        "True Tone работает",
-        "Яркость на максимум",
-        "Проверка битых пикселей"
-      ]
-    },
-    "camera_test": {
-      "check": [
-        "OIS стабилизация",
-        "Автофокус скорость",
-        "Вспышка яркость",
-        "Portrait mode blur"
-      ]
-    }
-  },
-  "nand_programming": {
-    "programmers": {
-      "JC_P13": {
-        "supported": [
-          "iPhone 6-13",
-          "iPad all models"
-        ],
-        "functions": [
-          "Read/Write NAND",
-          "Unbind WiFi",
-          "Expand storage"
-        ],
-        "price": "$89"
+      {
+        "name": "DC Power Supply",
+        "examples": "Mechanic P30, Sunshine P-3005DA"
       },
-      "MiJing_Z15": {
-        "supported": [
-          "iPhone 6-12"
-        ],
-        "functions": [
-          "NAND read/write",
-          "Data recovery"
-        ],
-        "price": "$120"
+      {
+        "name": "Multimeter",
+        "examples": "Fluke 15B+, UNI-T UT61E"
       },
-      "iPAD_Rehab_Navi_Plus": {
-        "supported": [
-          "iPhone 6-14",
-          "iPad all"
-        ],
-        "functions": [
-          "NAND repair",
-          "Syscfg editing"
-        ],
-        "price": "$450"
+      {
+        "name": "Ultrasonic Cleaner",
+        "examples": "Vevor 6L, GT Sonic"
+      },
+      {
+        "name": "Preheater",
+        "examples": "UYUE 946S-II"
       }
-    },
-    "nand_chips_detailed": {
-      "Toshiba": {
-        "THGBX2G7B2JLA01": {
-          "capacity": "16GB",
-          "devices": [
-            "iPhone 6",
-            "iPhone 6 Plus"
-          ],
-          "package": "BGA-153",
-          "voltage": "3.3V"
-        },
-        "THGBX3G7D2KLA0C": {
-          "capacity": "32GB",
-          "devices": [
-            "iPhone 6",
-            "iPhone 6 Plus"
-          ],
-          "package": "BGA-153"
-        },
-        "THGBX4G6D2HLA0C": {
-          "capacity": "64GB",
-          "devices": [
-            "iPhone 6",
-            "iPhone 6S"
-          ],
-          "package": "BGA-153"
-        },
-        "THGBX5G8D4KLDXG": {
-          "capacity": "128GB",
-          "devices": [
-            "iPhone 6",
-            "iPhone 6S",
-            "iPhone 7"
-          ],
-          "package": "BGA-153"
-        }
-      },
-      "SanDisk": {
-        "SDIN9DW4-32G": {
-          "capacity": "32GB",
-          "devices": [
-            "iPhone 7",
-            "iPhone 8"
-          ],
-          "package": "BGA-153"
-        },
-        "SDINBDG4-64G": {
-          "capacity": "64GB",
-          "devices": [
-            "iPhone X",
-            "iPhone XS"
-          ],
-          "package": "BGA-153"
-        },
-        "SDINBDG4-256G": {
-          "capacity": "256GB",
-          "devices": [
-            "iPhone X",
-            "iPhone 11"
-          ],
-          "package": "BGA-153"
-        }
-      },
-      "Kioxia": {
-        "KICM224AY64B4": {
-          "capacity": "64GB",
-          "devices": [
-            "iPhone 11",
-            "iPhone 12"
-          ],
-          "package": "BGA"
-        },
-        "KICM224BY128B4": {
-          "capacity": "128GB",
-          "devices": [
-            "iPhone 11",
-            "iPhone 12",
-            "iPhone 13"
-          ],
-          "package": "BGA"
-        }
-      }
-    },
-    "syscfg_regions": {
-      "WiFi_Address": {
-        "offset": "0x4000",
-        "size": "6 bytes",
-        "description": "WiFi MAC address"
-      },
-      "Bluetooth_Address": {
-        "offset": "0x4006",
-        "size": "6 bytes",
-        "description": "Bluetooth MAC"
-      },
-      "Serial_Number": {
-        "offset": "0x2000",
-        "size": "12 bytes",
-        "description": "Device serial"
-      },
-      "Color": {
-        "offset": "0x3000",
-        "size": "4 bytes",
-        "values": {
-          "0x00": "Space Gray",
-          "0x01": "Silver",
-          "0x02": "Gold",
-          "0x03": "Rose Gold",
-          "0x04": "Jet Black",
-          "0x05": "Matte Black",
-          "0x06": "Red",
-          "0x07": "Blue",
-          "0x08": "Yellow",
-          "0x09": "Coral",
-          "0x0A": "White",
-          "0x0B": "Purple",
-          "0x0C": "Green",
-          "0x0D": "Black",
-          "0x0E": "Pacific Blue",
-          "0x0F": "Graphite"
-        }
-      }
-    }
-  },
-  "advanced_ic_database": {
-    "Tristar_Hydra_evolution": {
-      "1608A1": {
-        "name": "Tristar 1608A1",
-        "devices": [
-          "iPhone 5",
-          "iPhone 5C",
-          "iPhone 5S"
-        ],
-        "marking": "1608A1",
-        "location": "U2",
-        "package": "BGA-25",
-        "voltage_test": {
-          "PP5V0_USB": "5V when charging",
-          "USB_D+": "0V-3.3V data",
-          "USB_D-": "0V-3.3V data"
-        }
-      },
-      "1610A1": {
-        "name": "Tristar 1610A1",
-        "devices": [
-          "iPhone 5S"
-        ],
-        "marking": "1610A1",
-        "location": "U2"
-      },
-      "1610A2": {
-        "name": "Tristar 1610A2",
-        "devices": [
-          "iPhone 6",
-          "iPhone 6 Plus"
-        ],
-        "marking": "1610A2",
-        "location": "U2",
-        "common_failure": "Not charging with original cable"
-      },
-      "1610A3": {
-        "name": "Tristar 1610A3",
-        "devices": [
-          "iPhone 6S",
-          "iPhone 6S Plus",
-          "iPhone SE",
-          "iPhone 7",
-          "iPhone 7 Plus"
-        ],
-        "marking": "1610A3B",
-        "location": "U4500/U2"
-      },
-      "1612A1": {
-        "name": "Hydra 1612A1",
-        "devices": [
-          "iPhone 8",
-          "iPhone 8 Plus",
-          "iPhone X"
-        ],
-        "marking": "U6300",
-        "location": "U6300",
-        "features": [
-          "USB-PD support",
-          "Fast charging"
-        ]
-      },
-      "1614A1": {
-        "name": "Hydra U2 IC",
-        "devices": [
-          "iPhone XS",
-          "iPhone 11",
-          "iPhone 12"
-        ],
-        "marking": "U6300",
-        "features": [
-          "USB-C PD",
-          "20W fast charging"
-        ]
-      }
-    },
-    "Power_Management_detailed": {
-      "338S1251-AZ": {
-        "name": "PMIC iPhone 6",
-        "location": "U1202",
-        "outputs": {
-          "BUCK0": "PP_CPU",
-          "BUCK1": "PP_SOC",
-          "BUCK2": "PP_GPU",
-          "BUCK3": "PP_DRAM",
-          "LDO1": "PP1V8",
-          "LDO2": "PP3V0",
-          "LDO3": "PP1V2"
-        }
-      },
-      "338S00122": {
-        "name": "PMIC iPhone 6S",
-        "location": "U2700",
-        "thermal_limit": "125°C",
-        "package": "CSP-180"
-      }
-    },
-    "Display_ICs": {
-      "Chestnut": {
-        "marking": "65730",
-        "devices": [
-          "iPhone 5S",
-          "iPhone 6"
-        ],
-        "location": "U1501",
-        "function": "Display power and timing"
-      },
-      "Sage": {
-        "marking": "338S00267",
-        "devices": [
-          "iPad Pro"
-        ],
-        "function": "ProMotion 120Hz controller"
-      },
-      "LM3600": {
-        "marking": "LM36001",
-        "devices": [
-          "iPhone 7",
-          "iPhone 8"
-        ],
-        "location": "U3701",
-        "function": "LED backlight driver",
-        "test": "6V on inductor, 20V LED+"
-      }
-    }
-  },
-  "measurement_procedures": {
-    "diode_mode_testing": {
-      "iPhone_main_rails": {
-        "PP_VDD_MAIN": {
-          "red_probe": "Ground",
-          "black_probe": "PP_VDD_MAIN cap",
-          "normal": "0.400-0.450",
-          "shorted": "<0.050",
-          "open": "OL"
-        },
-        "PP_BATT_VCC": {
-          "red_probe": "Ground",
-          "black_probe": "Battery terminal",
-          "normal": "0.400-0.500"
-        },
-        "PP3V0": {
-          "red_probe": "Ground",
-          "black_probe": "PP3V0 cap",
-          "normal": "0.350-0.400"
-        },
-        "PP1V8": {
-          "red_probe": "Ground",
-          "black_probe": "PP1V8 cap",
-          "normal": "0.250-0.350"
-        },
-        "PP_CPU": {
-          "red_probe": "Ground",
-          "black_probe": "CPU cap",
-          "normal": "0.020-0.050",
-          "note": "Very low due to CPU"
-        }
-      },
-      "MacBook_rails": {
-        "PPBUS_G3H": {
-          "resistance": "7-8 KΩ",
-          "diode": "0.120-0.200"
-        },
-        "PP3V3_G3H": {
-          "resistance": "180-220 Ω",
-          "diode": "0.400-0.500"
-        }
-      }
-    },
-    "resistance_testing": {
-      "procedure": [
-        "1. Device completely OFF",
-        "2. Battery disconnected",
-        "3. Measure in Ohms mode",
-        "4. Red probe on ground",
-        "5. Black probe on test point",
-        "6. Wait for reading to stabilize"
-      ],
-      "interpretation": {
-        "0 Ω": "Dead short to ground",
-        "1-10 Ω": "Partial short, check caps",
-        "Expected value": "Normal",
-        "OL/infinite": "Open circuit"
-      }
-    },
-    "voltage_injection": {
-      "WARNING": "ONLY for experienced technicians",
-      "equipment": "DC power supply 30V 5A",
-      "procedure": [
-        "1. Set current limit to 100mA",
-        "2. Set voltage to rail voltage",
-        "3. Connect to shorted rail",
-        "4. Slowly increase current",
-        "5. Feel/thermal cam for hot component",
-        "6. Replace hot component"
-      ]
-    }
-  },
-  "tools_usage": {
-    "microscopes": {
-      "Amscope_SM745": {
-        "magnification": "7X-45X",
-        "use": "SMD soldering",
-        "price": "$350"
-      },
-      "Andonstar_AD407": {
-        "magnification": "270X digital",
-        "use": "Inspection",
-        "price": "$200"
-      }
-    },
-    "soldering_stations": {
-      "Quick_861DW": {
-        "temp": "100-500°C",
-        "use": "Hot air rework",
-        "nozzles": [
-          "3mm",
-          "5mm",
-          "7mm",
-          "10mm"
-        ]
-      },
-      "ATTEN_ST-862D": {
-        "temp": "100-500°C",
-        "airflow": "Adjustable",
-        "price": "$150"
-      },
-      "JBC_CD-2SQE": {
-        "use": "Precision micro soldering",
-        "tips": [
-          "C210-001",
-          "C210-002",
-          "C210-018"
-        ],
-        "price": "$600"
-      }
-    },
-    "BGA_equipment": {
-      "ACHI_IR6500": {
-        "use": "iPhone X sandwich board",
-        "profiles": "Customizable",
-        "price": "$2000"
-      },
-      "Jovy_RE8500": {
-        "use": "Professional BGA",
-        "zones": "3 heating zones",
-        "price": "$3500"
-      }
-    },
-    "test_equipment": {
-      "DC_Power": {
-        "model": "Kaisi 3005D",
-        "specs": "30V 5A",
-        "use": "Short circuit finding",
-        "price": "$80"
-      },
-      "USB_Tester": {
-        "model": "Power-Z KT002",
-        "use": "USB-PD testing",
-        "measures": [
-          "Voltage",
-          "Current",
-          "PD negotiation"
-        ],
-        "price": "$40"
-      },
-      "Thermal_Camera": {
-        "model": "FLIR ONE Pro",
-        "use": "Finding shorts",
-        "resolution": "160x120",
-        "price": "$400"
-      }
-    },
-    "consumables": {
-      "flux": {
-        "Amtech_559": "General use",
-        "Amtech_NC223": "BGA work",
-        "Kingbo_RMA218": "Lead-free",
-        "MG_8341": "No-clean"
-      },
-      "solder": {
-        "63/37": "Leaded, 183°C",
-        "SAC305": "Lead-free, 217°C",
-        "Low_melt": "138°C for shields"
-      },
-      "wick": {
-        "Goot_CP-2015": "1.5mm precision",
-        "MG_426": "2.0mm general",
-        "Chemtronics": "2.5mm heavy duty"
-      }
-    }
-  },
-  "short_finding": {
-    "methods": {
-      "visual_inspection": {
-        "tools": [
-          "Microscope 45X",
-          "Good lighting"
-        ],
-        "look_for": [
-          "Burnt components",
-          "Liquid damage corrosion",
-          "Cracked capacitors",
-          "Blown fuses",
-          "Missing components"
-        ]
-      },
-      "thermal_camera": {
-        "setup": [
-          "Apply 1V at 1-2A to shorted rail",
-          "Wait 30 seconds",
-          "Scan with thermal camera",
-          "Hottest component is likely shorted"
-        ]
-      },
-      "freeze_spray": {
-        "procedure": [
-          "Apply power to short",
-          "Spray freeze spray on suspected area",
-          "Component that thaws first is shorted"
-        ]
-      },
-      "rosin_method": {
-        "procedure": [
-          "Apply rosin flux to board",
-          "Inject voltage to short",
-          "Rosin burns at shorted component"
-        ]
-      }
-    },
-    "common_shorts": {
-      "iPhone": {
-        "PP_VDD_MAIN": [
-          "C1239, C1240 near PMIC",
-          "Caps near CPU",
-          "PMIC itself"
-        ],
-        "PP3V0": [
-          "NAND area caps",
-          "Baseband caps",
-          "Audio IC area"
-        ],
-        "PP1V8": [
-          "CPU underfill caps",
-          "RAM area"
-        ]
-      },
-      "MacBook": {
-        "PPBUS_G3H": [
-          "C7771 on 820-00165",
-          "Tantalum caps",
-          "CD3215 IC"
-        ],
-        "PP3V3_G3H": [
-          "U7800 ISL9239",
-          "Caps near USB-C"
-        ]
-      }
-    }
+    ],
+    "supplies": [
+      "Изопропиловый спирт 99%",
+      "Flux (паяльная паста)",
+      "Solder paste",
+      "BGA шарики разных размеров",
+      "Kapton tape",
+      "Термопаста"
+    ]
   }
 }

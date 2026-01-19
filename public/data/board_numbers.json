@@ -1,347 +1,345 @@
 {
-  "source": "repair.wiki + community",
-  "generated_at": "2026-01-19T08:09:17.403575",
-  "m_series_boards": [
+  "source": "repair.wiki + collected data",
+  "collected_at": "2026-01-19 08:04:27",
+  "macbooks": [
     {
-      "model": "MacBook Air 13\" M1 2020",
-      "model_number": "A2337",
-      "emc": "EMC 3598",
-      "board_number": "820-02016",
-      "year": 2020,
-      "architecture": "Apple M1"
-    },
-    {
-      "model": "MacBook Air 13\" M2 2022",
-      "model_number": "A2681",
-      "emc": "EMC 4074",
-      "board_number": "820-02642",
-      "year": 2022,
-      "architecture": "Apple M2"
-    },
-    {
-      "model": "MacBook Air 15\" M2 2023",
-      "model_number": "A2941",
-      "emc": "EMC 4262",
-      "board_number": "820-02700",
-      "year": 2023,
-      "architecture": "Apple M2"
-    },
-    {
-      "model": "MacBook Air 13\" M3 2024",
-      "model_number": "A3113",
-      "emc": "EMC 4381",
-      "board_number": "820-02835",
-      "year": 2024,
-      "architecture": "Apple M3"
-    },
-    {
-      "model": "MacBook Air 15\" M3 2024",
-      "model_number": "A3114",
-      "emc": "EMC 4382",
-      "board_number": "820-02836",
-      "year": 2024,
-      "architecture": "Apple M3"
-    },
-    {
-      "model": "MacBook Pro 13\" M1 2020",
-      "model_number": "A2338",
-      "emc": "EMC 3578",
-      "board_number": "820-02020",
-      "year": 2020,
-      "architecture": "Apple M1"
-    },
-    {
-      "model": "MacBook Pro 13\" M2 2022",
-      "model_number": "A2689",
-      "emc": "EMC 4152",
-      "board_number": "820-02646",
-      "year": 2022,
-      "architecture": "Apple M2"
-    },
-    {
-      "model": "MacBook Pro 14\" M1 Pro 2021",
-      "model_number": "A2442",
-      "emc": "EMC 3650",
-      "board_number": "820-02100",
-      "year": 2021,
-      "architecture": "Apple M1 Pro/Max"
-    },
-    {
-      "model": "MacBook Pro 16\" M1 Pro 2021",
-      "model_number": "A2485",
-      "emc": "EMC 3651",
-      "board_number": "820-02134",
-      "year": 2021,
-      "architecture": "Apple M1 Pro/Max"
-    },
-    {
-      "model": "MacBook Pro 14\" M2 Pro 2023",
-      "model_number": "A2779",
-      "emc": "EMC 4223",
-      "board_number": "820-02694",
-      "year": 2023,
-      "architecture": "Apple M2 Pro/Max"
-    },
-    {
-      "model": "MacBook Pro 16\" M2 Pro 2023",
-      "model_number": "A2780",
-      "emc": "EMC 4222",
-      "board_number": "820-02695",
-      "year": 2023,
-      "architecture": "Apple M2 Pro/Max"
-    },
-    {
-      "model": "MacBook Pro 14\" M3 2023",
-      "model_number": "A2918",
-      "emc": "EMC 4351",
-      "board_number": "820-02771",
-      "year": 2023,
-      "architecture": "Apple M3"
-    },
-    {
-      "model": "MacBook Pro 14\" M3 Pro 2023",
-      "model_number": "A2992",
-      "emc": "EMC 4352",
-      "board_number": "820-02772",
-      "year": 2023,
-      "architecture": "Apple M3 Pro/Max"
-    },
-    {
-      "model": "MacBook Pro 16\" M3 Pro 2023",
-      "model_number": "A2991",
-      "emc": "EMC 4353",
-      "board_number": "820-02773",
-      "year": 2023,
-      "architecture": "Apple M3 Pro/Max"
-    }
-  ],
-  "intel_boards": [
-    {
-      "model": "MacBook Air 11\" Early 2014",
-      "model_number": "A1465",
+      "name": "MacBook Air 11\" Early 2014",
+      "model": "A1465",
       "emc": "EMC 2631",
-      "board_number": "820-3435",
+      "board": "820-3435",
       "year": 2014,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Air 11\" Early 2015",
-      "model_number": "A1465",
+      "name": "MacBook Air 11\" Early 2015",
+      "model": "A1465",
       "emc": "EMC 2924",
-      "board_number": "820-00164",
+      "board": "820-00164",
       "year": 2015,
-      "architecture": "Intel Core 5th Gen"
+      "arch": "Intel Core 5th Gen"
     },
     {
-      "model": "MacBook Air 13\" Early 2014",
-      "model_number": "A1466",
+      "name": "MacBook Air 13\" Early 2014",
+      "model": "A1466",
       "emc": "EMC 2632",
-      "board_number": "820-3437",
+      "board": "820-3437",
       "year": 2014,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Air 13\" Early 2015",
-      "model_number": "A1466",
+      "name": "MacBook Air 13\" Early 2015",
+      "model": "A1466",
       "emc": "EMC 2925",
-      "board_number": "820-00165",
+      "board": "820-00165",
       "year": 2015,
-      "architecture": "Intel Core 5th Gen"
+      "arch": "Intel Core 5th Gen"
     },
     {
-      "model": "MacBook Air 13\" 2017",
-      "model_number": "A1466",
+      "name": "MacBook Air 13\" 2017",
+      "model": "A1466",
       "emc": "EMC 3178",
-      "board_number": "820-00165",
+      "board": "820-00165",
       "year": 2017,
-      "architecture": "Intel Core 5th Gen"
+      "arch": "Intel Core 5th Gen"
     },
     {
-      "model": "MacBook Air 13\" 2018 Retina",
-      "model_number": "A1932",
+      "name": "MacBook Air 13\" 2018 Retina",
+      "model": "A1932",
       "emc": "EMC 3184",
-      "board_number": "820-01521",
+      "board": "820-01521",
       "year": 2018,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Air 13\" 2019 Retina",
-      "model_number": "A1932",
+      "name": "MacBook Air 13\" 2019 Retina",
+      "model": "A1932",
       "emc": "EMC 3184",
-      "board_number": "820-01521",
+      "board": "820-01521",
       "year": 2019,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Air 13\" 2020 Intel",
-      "model_number": "A2179",
+      "name": "MacBook Air 13\" 2020 Intel",
+      "model": "A2179",
       "emc": "EMC 3302",
-      "board_number": "820-01958",
+      "board": "820-01958",
       "year": 2020,
-      "architecture": "Intel Core 10th Gen + T2"
+      "arch": "Intel Core 10th Gen + T2"
     },
     {
-      "model": "MacBook Pro 13\" Late 2013",
-      "model_number": "A1502",
+      "name": "MacBook Air 13\" M1 2020",
+      "model": "A2337",
+      "emc": "EMC 3598",
+      "board": "820-02016",
+      "year": 2020,
+      "arch": "Apple M1"
+    },
+    {
+      "name": "MacBook Air 13\" M2 2022",
+      "model": "A2681",
+      "emc": "EMC 4074",
+      "board": "820-02642",
+      "year": 2022,
+      "arch": "Apple M2"
+    },
+    {
+      "name": "MacBook Air 15\" M2 2023",
+      "model": "A2941",
+      "emc": "EMC 4262",
+      "board": "820-02700",
+      "year": 2023,
+      "arch": "Apple M2"
+    },
+    {
+      "name": "MacBook Air 13\" M3 2024",
+      "model": "A3113",
+      "emc": "EMC 4381",
+      "board": "820-02835",
+      "year": 2024,
+      "arch": "Apple M3"
+    },
+    {
+      "name": "MacBook Air 15\" M3 2024",
+      "model": "A3114",
+      "emc": "EMC 4382",
+      "board": "820-02836",
+      "year": 2024,
+      "arch": "Apple M3"
+    },
+    {
+      "name": "MacBook Pro 13\" Late 2013",
+      "model": "A1502",
       "emc": "EMC 2678",
-      "board_number": "820-3476",
+      "board": "820-3476",
       "year": 2013,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Pro 13\" Mid 2014",
-      "model_number": "A1502",
+      "name": "MacBook Pro 13\" Mid 2014",
+      "model": "A1502",
       "emc": "EMC 2875",
-      "board_number": "820-3536",
+      "board": "820-3536",
       "year": 2014,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Pro 13\" Early 2015",
-      "model_number": "A1502",
+      "name": "MacBook Pro 13\" Early 2015",
+      "model": "A1502",
       "emc": "EMC 2835",
-      "board_number": "820-4924",
+      "board": "820-4924",
       "year": 2015,
-      "architecture": "Intel Core 5th Gen"
+      "arch": "Intel Core 5th Gen"
     },
     {
-      "model": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
-      "model_number": "A1708",
+      "name": "MacBook Pro 13\" 2016 Two Thunderbolt 3",
+      "model": "A1708",
       "emc": "EMC 2978",
-      "board_number": "820-00840",
+      "board": "820-00840",
       "year": 2016,
-      "architecture": "Intel Core 6th Gen"
+      "arch": "Intel Core 6th Gen"
     },
     {
-      "model": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
-      "model_number": "A1706",
+      "name": "MacBook Pro 13\" 2016 Four Thunderbolt 3",
+      "model": "A1706",
       "emc": "EMC 3071",
-      "board_number": "820-00239",
+      "board": "820-00239",
       "year": 2016,
-      "architecture": "Intel Core 6th Gen"
+      "arch": "Intel Core 6th Gen"
     },
     {
-      "model": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
-      "model_number": "A1708",
+      "name": "MacBook Pro 13\" 2017 Two Thunderbolt 3",
+      "model": "A1708",
       "emc": "EMC 3164",
-      "board_number": "820-00840",
+      "board": "820-00840",
       "year": 2017,
-      "architecture": "Intel Core 7th Gen"
+      "arch": "Intel Core 7th Gen"
     },
     {
-      "model": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
-      "model_number": "A1706",
+      "name": "MacBook Pro 13\" 2017 Four Thunderbolt 3",
+      "model": "A1706",
       "emc": "EMC 3163",
-      "board_number": "820-00239",
+      "board": "820-00239",
       "year": 2017,
-      "architecture": "Intel Core 7th Gen"
+      "arch": "Intel Core 7th Gen"
     },
     {
-      "model": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
-      "model_number": "A1989",
+      "name": "MacBook Pro 13\" 2018 Four Thunderbolt 3",
+      "model": "A1989",
       "emc": "EMC 3214",
-      "board_number": "820-01041",
+      "board": "820-01041",
       "year": 2018,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
-      "model_number": "A2159",
+      "name": "MacBook Pro 13\" 2019 Two Thunderbolt 3",
+      "model": "A2159",
       "emc": "EMC 3301",
-      "board_number": "820-01598",
+      "board": "820-01598",
       "year": 2019,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
-      "model_number": "A1989",
+      "name": "MacBook Pro 13\" 2019 Four Thunderbolt 3",
+      "model": "A1989",
       "emc": "EMC 3358",
-      "board_number": "820-01041",
+      "board": "820-01041",
       "year": 2019,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
-      "model_number": "A2289",
+      "name": "MacBook Pro 13\" 2020 Two Thunderbolt 3",
+      "model": "A2289",
       "emc": "EMC 3456",
-      "board_number": "820-01987",
+      "board": "820-01987",
       "year": 2020,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
-      "model_number": "A2251",
+      "name": "MacBook Pro 13\" 2020 Four Thunderbolt 3",
+      "model": "A2251",
       "emc": "EMC 3348",
-      "board_number": "820-01949",
+      "board": "820-01949",
       "year": 2020,
-      "architecture": "Intel Core 10th Gen + T2"
+      "arch": "Intel Core 10th Gen + T2"
     },
     {
-      "model": "MacBook Pro 15\" Late 2013",
-      "model_number": "A1398",
+      "name": "MacBook Pro 13\" M1 2020",
+      "model": "A2338",
+      "emc": "EMC 3578",
+      "board": "820-02020",
+      "year": 2020,
+      "arch": "Apple M1"
+    },
+    {
+      "name": "MacBook Pro 13\" M2 2022",
+      "model": "A2689",
+      "emc": "EMC 4152",
+      "board": "820-02646",
+      "year": 2022,
+      "arch": "Apple M2"
+    },
+    {
+      "name": "MacBook Pro 14\" M1 Pro 2021",
+      "model": "A2442",
+      "emc": "EMC 3650",
+      "board": "820-02100",
+      "year": 2021,
+      "arch": "Apple M1 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 16\" M1 Pro 2021",
+      "model": "A2485",
+      "emc": "EMC 3651",
+      "board": "820-02134",
+      "year": 2021,
+      "arch": "Apple M1 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 14\" M2 Pro 2023",
+      "model": "A2779",
+      "emc": "EMC 4223",
+      "board": "820-02694",
+      "year": 2023,
+      "arch": "Apple M2 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 16\" M2 Pro 2023",
+      "model": "A2780",
+      "emc": "EMC 4222",
+      "board": "820-02695",
+      "year": 2023,
+      "arch": "Apple M2 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 14\" M3 2023",
+      "model": "A2918",
+      "emc": "EMC 4351",
+      "board": "820-02771",
+      "year": 2023,
+      "arch": "Apple M3"
+    },
+    {
+      "name": "MacBook Pro 14\" M3 Pro 2023",
+      "model": "A2992",
+      "emc": "EMC 4352",
+      "board": "820-02772",
+      "year": 2023,
+      "arch": "Apple M3 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 16\" M3 Pro 2023",
+      "model": "A2991",
+      "emc": "EMC 4353",
+      "board": "820-02773",
+      "year": 2023,
+      "arch": "Apple M3 Pro/Max"
+    },
+    {
+      "name": "MacBook Pro 15\" Late 2013",
+      "model": "A1398",
       "emc": "EMC 2674",
-      "board_number": "820-3662",
+      "board": "820-3662",
       "year": 2013,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Pro 15\" Mid 2014",
-      "model_number": "A1398",
+      "name": "MacBook Pro 15\" Mid 2014",
+      "model": "A1398",
       "emc": "EMC 2876",
-      "board_number": "820-3787",
+      "board": "820-3787",
       "year": 2014,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Pro 15\" Mid 2015",
-      "model_number": "A1398",
+      "name": "MacBook Pro 15\" Mid 2015",
+      "model": "A1398",
       "emc": "EMC 2909",
-      "board_number": "820-00138",
+      "board": "820-00138",
       "year": 2015,
-      "architecture": "Intel Core 4th Gen"
+      "arch": "Intel Core 4th Gen"
     },
     {
-      "model": "MacBook Pro 15\" 2016",
-      "model_number": "A1707",
+      "name": "MacBook Pro 15\" 2016",
+      "model": "A1707",
       "emc": "EMC 3072",
-      "board_number": "820-00281",
+      "board": "820-00281",
       "year": 2016,
-      "architecture": "Intel Core 6th Gen"
+      "arch": "Intel Core 6th Gen"
     },
     {
-      "model": "MacBook Pro 15\" 2017",
-      "model_number": "A1707",
+      "name": "MacBook Pro 15\" 2017",
+      "model": "A1707",
       "emc": "EMC 3162",
-      "board_number": "820-00281",
+      "board": "820-00281",
       "year": 2017,
-      "architecture": "Intel Core 7th Gen"
+      "arch": "Intel Core 7th Gen"
     },
     {
-      "model": "MacBook Pro 15\" 2018",
-      "model_number": "A1990",
+      "name": "MacBook Pro 15\" 2018",
+      "model": "A1990",
       "emc": "EMC 3215",
-      "board_number": "820-01041",
+      "board": "820-01041",
       "year": 2018,
-      "architecture": "Intel Core 8th Gen + T2"
+      "arch": "Intel Core 8th Gen + T2"
     },
     {
-      "model": "MacBook Pro 15\" 2019",
-      "model_number": "A1990",
+      "name": "MacBook Pro 15\" 2019",
+      "model": "A1990",
       "emc": "EMC 3359",
-      "board_number": "820-01814",
+      "board": "820-01814",
       "year": 2019,
-      "architecture": "Intel Core 9th Gen + T2"
+      "arch": "Intel Core 9th Gen + T2"
     },
     {
-      "model": "MacBook Pro 16\" 2019",
-      "model_number": "A2141",
+      "name": "MacBook Pro 16\" 2019",
+      "model": "A2141",
       "emc": "EMC 3347",
-      "board_number": "820-01700",
+      "board": "820-01700",
       "year": 2019,
-      "architecture": "Intel Core 9th Gen + T2"
+      "arch": "Intel Core 9th Gen + T2"
     }
   ],
-  "iphone_boards": [
+  "iphones": [
     {
       "name": "iPhone 6",
       "model": "A1549/A1586",
@@ -568,7 +566,7 @@
       "year": 2024
     }
   ],
-  "ipad_boards": [
+  "ipads": [
     {
       "name": "iPad Air 2",
       "model": "A1566/A1567",
@@ -737,5 +735,11 @@
       "board": "820-02826",
       "year": 2024
     }
-  ]
+  ],
+  "stats": {
+    "macbooks": 42,
+    "iphones": 37,
+    "ipads": 28,
+    "total": 107
+  }
 }
