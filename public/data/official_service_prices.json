@@ -2,8 +2,61 @@
   "title": "Apple Official Service Prices",
   "source": "Apple Self Service Repair",
   "date": "2026-01-19",
+  "note": "iPhone 17 prices are based on Ukraine price data converted to USD at 1 EUR = 1.1 USD, 1 EUR = 45 UAH",
   "currency": "USD",
   "prices": {
+    "iPhone 17 Pro Max": {
+      "battery": {
+        "price_usd": 109.0,
+        "article": "661-56049"
+      },
+      "display": {
+        "price_usd": 459.0,
+        "article": "661-56050"
+      },
+      "rear_camera": {
+        "price_usd": 269.0,
+        "article": "661-56052"
+      },
+      "front_camera": {
+        "price_usd": 219.0,
+        "article": "661-56051"
+      },
+      "speaker": {
+        "price_usd": 79.0,
+        "article": "923-13581"
+      },
+      "taptic_engine": {
+        "price_usd": 79.0,
+        "article": "923-13583"
+      }
+    },
+    "iPhone 17 Pro": {
+      "battery": {
+        "price_usd": 109.0,
+        "article": "661-56121"
+      },
+      "display": {
+        "price_usd": 409.0,
+        "article": "661-56125"
+      },
+      "rear_camera": {
+        "price_usd": 269.0,
+        "article": "661-56127"
+      },
+      "front_camera": {
+        "price_usd": 219.0,
+        "article": "661-56126"
+      },
+      "speaker": {
+        "price_usd": 79.0,
+        "article": "923-13631"
+      },
+      "taptic_engine": {
+        "price_usd": 79.0,
+        "article": "923-13625"
+      }
+    },
     "iPhone 16 Pro Max": {
       "battery": {
         "price_usd": 99.0,

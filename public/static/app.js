@@ -536,9 +536,13 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
     const yearMatch = modelName.match(/\b(20\d{2})\b/);
     if (yearMatch) keywords.push(yearMatch[1]);
     
-    // Номер модели для iPhone
+    // Номер модели для iPhone (точное совпадение)
     const iphoneMatch = modelName.match(/iPhone\s+(\d+)/i);
-    if (iphoneMatch) keywords.push(iphoneMatch[1]);
+    if (iphoneMatch) {
+      const num = iphoneMatch[1];
+      keywords.push('iphone ' + num); // Добавляем как фразу для точного поиска
+      keywords.push(num);
+    }
     
     // Plus/Pro Max
     if (lower.includes('pro max')) keywords.push('pro', 'max');
