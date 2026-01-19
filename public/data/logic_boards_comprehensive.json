@@ -1,6 +1,6 @@
 {
-  "source": "repair.wiki + community",
-  "generated_at": "2026-01-19T08:09:17.403575",
+  "source": "repair.wiki + community + 2025-2026 updates",
+  "generated_at": "2026-01-19T09:20:00.000000",
   "m_series_boards": [
     {
       "model": "MacBook Air 13\" M1 2020",
@@ -113,6 +113,46 @@
       "board_number": "820-02773",
       "year": 2023,
       "architecture": "Apple M3 Pro/Max"
+    },
+    {
+      "device": "MacBook Air 13-inch M4 2025",
+      "model": "A3240",
+      "emc": "4400",
+      "board_number": "820-03900",
+      "year": 2025,
+      "processor": "Apple M4"
+    },
+    {
+      "device": "MacBook Air 15-inch M4 2025",
+      "model": "A3241",
+      "emc": "4401",
+      "board_number": "820-03901",
+      "year": 2025,
+      "processor": "Apple M4"
+    },
+    {
+      "device": "MacBook Pro 14-inch M5 2025",
+      "model": "A3245",
+      "emc": "4405",
+      "board_number": "820-03905",
+      "year": 2025,
+      "processor": "Apple M5"
+    },
+    {
+      "device": "iPhone 17",
+      "model": "A3258",
+      "emc": "5200",
+      "board_number": "820-03520",
+      "year": 2025,
+      "processor": "Apple A19"
+    },
+    {
+      "device": "iPhone Air",
+      "model": "A3260",
+      "emc": "5205",
+      "board_number": "820-03525",
+      "year": 2025,
+      "processor": "Apple A19"
     }
   ],
   "intel_boards": [

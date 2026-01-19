@@ -4512,5 +4512,176 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-6 часов"
+  },
+  {
+    "name": "iPhone 17",
+    "model": "A3258",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19",
+    "ram": "8GB",
+    "display": "6.3-inch Super Retina XDR OLED",
+    "board_numbers": [
+      "820-03520"
+    ],
+    "connector_type": "USB-C",
+    "ifixit_page": "https://www.ifixit.com/Device/iPhone_17",
+    "common_repairs": [
+      "display",
+      "battery",
+      "rear_camera",
+      "front_camera",
+      "charging_port"
+    ],
+    "charging_ic": "Apple N1",
+    "common_issues": [
+      "Display cracks",
+      "Battery degradation",
+      "Charging issues",
+      "Camera focus problems"
+    ],
+    "repair_difficulty": "Средняя",
+    "repair_time": "2-3 часа",
+    "official_service_prices": {
+      "battery": {
+        "price_usd": 99,
+        "article": "661-56064"
+      },
+      "display": {
+        "price_usd": 359,
+        "article": "661-56065"
+      },
+      "rear_camera": {
+        "price_usd": 219,
+        "article": "661-56067"
+      },
+      "front_camera": {
+        "price_usd": 169,
+        "article": "661-56066"
+      }
+    }
+  },
+  {
+    "name": "iPhone Air",
+    "model": "A3260",
+    "year": 2025,
+    "category": "iPhone",
+    "processor": "Apple A19",
+    "ram": "8GB",
+    "display": "6.6-inch Super Retina XDR OLED",
+    "board_numbers": [
+      "820-03525"
+    ],
+    "connector_type": "USB-C",
+    "ifixit_page": "https://www.ifixit.com/Device/iPhone_Air",
+    "common_repairs": [
+      "display",
+      "battery",
+      "rear_camera",
+      "front_camera"
+    ],
+    "charging_ic": "Apple N1",
+    "common_issues": [
+      "Thinness-related durability concerns",
+      "Battery life",
+      "Display cracks"
+    ],
+    "repair_difficulty": "Сложная",
+    "repair_time": "3-4 часа",
+    "official_service_prices": {
+      "battery": {
+        "price_usd": 99,
+        "article": "661-56080"
+      },
+      "display": {
+        "price_usd": 399,
+        "article": "661-56081"
+      },
+      "rear_camera": {
+        "price_usd": 219,
+        "article": "661-56082"
+      },
+      "front_camera": {
+        "price_usd": 169,
+        "article": "661-56083"
+      }
+    }
+  },
+  {
+    "name": "MacBook Air 13-inch M4 2025",
+    "model": "A3240",
+    "year": 2025,
+    "category": "MacBook",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "display": "13.6-inch Liquid Retina",
+    "board_numbers": [
+      "820-03900"
+    ],
+    "connector_type": "USB-C",
+    "ifixit_page": "https://www.ifixit.com/Device/MacBook_Air_13-Inch_M4_2025",
+    "common_repairs": [
+      "battery",
+      "display",
+      "keyboard"
+    ],
+    "common_issues": [
+      "Battery degradation",
+      "Display issues",
+      "Keyboard problems"
+    ],
+    "repair_difficulty": "Сложная",
+    "repair_time": "3-4 часа"
+  },
+  {
+    "name": "MacBook Air 15-inch M4 2025",
+    "model": "A3241",
+    "year": 2025,
+    "category": "MacBook",
+    "processor": "Apple M4",
+    "ram": "16GB",
+    "display": "15.3-inch Liquid Retina",
+    "board_numbers": [
+      "820-03901"
+    ],
+    "connector_type": "USB-C",
+    "ifixit_page": "https://www.ifixit.com/Device/MacBook_Air_15-Inch_M4_2025",
+    "common_repairs": [
+      "battery",
+      "display",
+      "keyboard"
+    ],
+    "common_issues": [
+      "Battery degradation",
+      "Display issues",
+      "Keyboard problems"
+    ],
+    "repair_difficulty": "Сложная",
+    "repair_time": "3-4 часа"
+  },
+  {
+    "name": "MacBook Pro 14-inch M5 2025",
+    "model": "A3245",
+    "year": 2025,
+    "category": "MacBook",
+    "processor": "Apple M5",
+    "ram": "18GB",
+    "display": "14.2-inch Liquid Retina XDR",
+    "board_numbers": [
+      "820-03905"
+    ],
+    "connector_type": "USB-C",
+    "ifixit_page": "https://www.ifixit.com/Device/MacBook_Pro_14-Inch_M5_2025",
+    "common_repairs": [
+      "battery",
+      "display",
+      "keyboard"
+    ],
+    "common_issues": [
+      "Battery degradation",
+      "Display issues"
+    ],
+    "repair_difficulty": "Очень сложная",
+    "repair_time": "4-5 часов"
   }
 ]

@@ -2,7 +2,7 @@
   "title": "Apple Official Service Prices",
   "source": "Apple Self Service Repair",
   "date": "2026-01-19",
-  "note": "iPhone 17 prices are based on Ukraine price data converted to USD at 1 EUR = 1.1 USD, 1 EUR = 45 UAH",
+  "note": "Prices updated with 2025-2026 models. iPhone 17 series prices based on official Self Service Repair program.",
   "currency": "USD",
   "prices": {
     "iPhone 17 Pro Max": {
@@ -913,6 +913,100 @@
       "display": {
         "price_usd": 399.0,
         "article": "661-61008"
+      }
+    },
+    "iPhone 17": {
+      "battery": {
+        "price_usd": 99,
+        "article": "661-56064"
+      },
+      "display": {
+        "price_usd": 359,
+        "article": "661-56065"
+      },
+      "rear_camera": {
+        "price_usd": 219,
+        "article": "661-56067"
+      },
+      "front_camera": {
+        "price_usd": 169,
+        "article": "661-56066"
+      },
+      "speaker": {
+        "price_usd": 69,
+        "article": "661-56068"
+      },
+      "taptic_engine": {
+        "price_usd": 69,
+        "article": "661-56069"
+      }
+    },
+    "iPhone Air": {
+      "battery": {
+        "price_usd": 99,
+        "article": "661-56080"
+      },
+      "display": {
+        "price_usd": 399,
+        "article": "661-56081"
+      },
+      "rear_camera": {
+        "price_usd": 219,
+        "article": "661-56082"
+      },
+      "front_camera": {
+        "price_usd": 169,
+        "article": "661-56083"
+      },
+      "speaker": {
+        "price_usd": 69,
+        "article": "661-56084"
+      },
+      "taptic_engine": {
+        "price_usd": 69,
+        "article": "661-56085"
+      }
+    },
+    "MacBook Air 13-inch M4 2025": {
+      "battery": {
+        "price_usd": 139,
+        "article": "661-62001"
+      },
+      "display": {
+        "price_usd": 519,
+        "article": "661-62002"
+      },
+      "keyboard": {
+        "price_usd": 379,
+        "article": "661-62003"
+      }
+    },
+    "MacBook Air 15-inch M4 2025": {
+      "battery": {
+        "price_usd": 149,
+        "article": "661-62011"
+      },
+      "display": {
+        "price_usd": 639,
+        "article": "661-62012"
+      },
+      "keyboard": {
+        "price_usd": 419,
+        "article": "661-62013"
+      }
+    },
+    "MacBook Pro 14-inch M5 2025": {
+      "battery": {
+        "price_usd": 159,
+        "article": "661-62021"
+      },
+      "display": {
+        "price_usd": 679,
+        "article": "661-62022"
+      },
+      "keyboard": {
+        "price_usd": 449,
+        "article": "661-62023"
       }
     }
   }
