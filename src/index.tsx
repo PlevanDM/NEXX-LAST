@@ -282,16 +282,16 @@ app.post('/api/booking', async (c) => {
   }
 });
 
-// Calculator page
-app.get('/calculator', (c) => {
-  return c.html(`
+// Helper function to generate page template
+const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white') => {
+  return `
     <!DOCTYPE html>
     <html lang="uk">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Калькулятор вартості ремонту - NEXX</title>
-        <meta name="description" content="Розрахуйте вартість ремонту вашого пристрою онлайн. iPhone, Android, MacBook, iPad, Apple Watch.">
+        <title>${title}</title>
+        <meta name="description" content="${description}">
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
@@ -301,144 +301,84 @@ app.get('/calculator', (c) => {
           html { scroll-behavior: smooth; }
         </style>
     </head>
-    <body class="bg-slate-50">
+    <body class="${bodyClass}">
+        <div id="header"></div>
         <div id="app"></div>
-        <script src="/static/calculator.js"></script>
+        <div id="footer"></div>
+        
+        <!-- Shared Components (Header + Footer) -->
+        <script src="/static/shared-components.js"></script>
+        <script>
+          // Render Header
+          const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
+          headerRoot.render(React.createElement(window.NEXXShared.Header));
+          
+          // Render Footer
+          const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
+          footerRoot.render(React.createElement(window.NEXXShared.Footer));
+        </script>
+        
+        <!-- Page-specific content -->
+        <script src="/static/${scriptFile}"></script>
     </body>
     </html>
-  `)
+  `;
+};
+
+// Calculator page
+app.get('/calculator', (c) => {
+  return c.html(createPageTemplate(
+    'Калькулятор вартості ремонту - NEXX',
+    'Розрахуйте вартість ремонту вашого пристрою онлайн. iPhone, Android, MacBook, iPad, Apple Watch.',
+    'calculator.js',
+    'bg-slate-50'
+  ));
 })
 
 // About page
 app.get('/about', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Про нас - NEXX Service Center</title>
-        <meta name="description" content="Історія NEXX - професійного сервісного центру Apple техніки в Києві. Наша команда, цінності та досвід.">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
-    </head>
-    <body class="bg-white">
-        <div id="app"></div>
-        <script src="/static/about.js"></script>
-    </body>
-    </html>
-  `)
+  return c.html(createPageTemplate(
+    'Про нас - NEXX Service Center',
+    'Історія NEXX - професійного сервісного центру Apple техніки в Києві. Наша команда, цінності та досвід.',
+    'about.js'
+  ));
 })
 
 // FAQ page
 app.get('/faq', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Поширені питання (FAQ) - NEXX</title>
-        <meta name="description" content="Відповіді на найчастіші питання про ремонт Apple техніки: гарантія, термін, оплата, доставка.">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
-    </head>
-    <body class="bg-slate-50">
-        <div id="app"></div>
-        <script src="/static/faq.js"></script>
-    </body>
-    </html>
-  `)
+  return c.html(createPageTemplate(
+    'Поширені питання (FAQ) - NEXX',
+    'Відповіді на найчастіші питання про ремонт Apple техніки: гарантія, термін, оплата, доставка.',
+    'faq.js',
+    'bg-slate-50'
+  ));
 })
 
 // Privacy page
 app.get('/privacy', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Політика конфіденційності - NEXX</title>
-        <meta name="description" content="Політика конфіденційності NEXX Service Center. Захист персональних даних згідно з GDPR.">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
-    </head>
-    <body class="bg-white">
-        <div id="app"></div>
-        <script src="/static/privacy.js"></script>
-    </body>
-    </html>
-  `)
+  return c.html(createPageTemplate(
+    'Політика конфіденційності - NEXX',
+    'Політика конфіденційності NEXX Service Center. Захист персональних даних згідно з GDPR.',
+    'privacy.js'
+  ));
 })
 
 // Terms page
 app.get('/terms', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Умови використання - NEXX</title>
-        <meta name="description" content="Умови надання послуг NEXX Service Center. Правила та умови ремонту Apple техніки.">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
-    </head>
-    <body class="bg-white">
-        <div id="app"></div>
-        <script src="/static/terms.js"></script>
-    </body>
-    </html>
-  `)
+  return c.html(createPageTemplate(
+    'Умови використання - NEXX',
+    'Умови надання послуг NEXX Service Center. Правила та умови ремонту Apple техніки.',
+    'terms.js'
+  ));
 })
 
 // Main page - Service Center Landing with React
 app.get('/', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NEXX - Професійний ремонт Apple техніки в Києві</title>
-        <meta name="description" content="Професійний ремонт Apple техніки в Києві. iPhone, iPad, MacBook, Apple Watch. Швидко, якісно, з гарантією 30 днів. Записатися онлайн.">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        
-        <!-- React from CDN -->
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-        
-        <!-- Custom Tailwind Config -->
-        <style>
-          html {
-            scroll-behavior: smooth;
-          }
-        </style>
-    </head>
-    <body class="bg-white">
-        <!-- React App Root -->
-        <div id="app"></div>
-        
-        <!-- React Homepage Component -->
-        <script src="/static/homepage.js"></script>
-    </body>
-    </html>
-  `)
+  return c.html(createPageTemplate(
+    'NEXX - Професійний ремонт Apple техніки в Києві',
+    'Професійний ремонт Apple техніки в Києві. iPhone, iPad, MacBook, Apple Watch. Швидко, якісно, з гарантією 30 днів. Записатися онлайн.',
+    'homepage.js'
+  ));
 })
 
 export default app
