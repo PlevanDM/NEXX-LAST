@@ -1723,9 +1723,19 @@ const KnowledgeBasePanel = ({ knowledgeData, onClose }) => {
   );
 };
 
-// ===== DEVICE CARD (ENHANCED v6.9.2 - with Device Icons) =====
-const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
+// ===== DEVICE CARD (ENHANCED v6.9.6 - with Regional Codes) =====
+const DeviceCard = ({ device, onSelect, ukrainePrices, regionalCodes }) => {
   const icon = getCategoryIcon(device.category);
+  
+  // Get popular regional codes to display (top 5 most common)
+  const popularRegionalCodes = useMemo(() => {
+    if (!regionalCodes) return [];
+    const popular = ['LL', 'ZA', 'X', 'KH', 'CH', 'J', 'B', 'AB', 'MY', 'RU'];
+    return popular.filter(code => regionalCodes[code]).slice(0, 4).map(code => ({
+      code: code + '/A',
+      region: regionalCodes[code]?.region?.split('/')[0] || regionalCodes[code]?.region || code
+    }));
+  }, [regionalCodes]);
   const hasServiceParts = device.service_parts && Object.keys(device.service_parts).length > 0;
   const partsCount = hasServiceParts ? Object.keys(device.service_parts).length : 0;
   
@@ -1749,6 +1759,27 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
     });
     return sum > 0 ? sum : null;
   }, [device, ukrainePrices, hasRealPrices]);
+  
+  // Get logic board info from prices
+  const boardInfo = useMemo(() => {
+    if (!ukrainePrices || !device.name) return null;
+    const deviceNameLower = device.name.toLowerCase();
+    // Find logic board for this device in prices
+    const boardEntry = Object.entries(ukrainePrices).find(([_, data]) => {
+      const desc = (data.description || '').toLowerCase();
+      return desc.includes('logic board') && 
+             (desc.includes(deviceNameLower) || 
+              (device.category === 'iPhone' && desc.includes('iphone') && deviceNameLower.includes(desc.match(/iphone\s*\d+/)?.[0] || 'xxx')));
+    });
+    if (boardEntry) {
+      return { 
+        article: boardEntry[0], 
+        price: boardEntry[1].price_uah,
+        desc: boardEntry[1].description
+      };
+    }
+    return null;
+  }, [ukrainePrices, device]);
   
   // Determine device generation/era for styling
   const getGenerationColor = () => {
@@ -1776,7 +1807,17 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
   const [imageError, setImageError] = useState(false);
   
   return h('div', {
-    onClick: () => onSelect(device),
+    onClick: (e) => {
+      e.stopPropagation();
+      console.log('%c DeviceCard clicked: ' + device.name, 'background: green; color: white; font-size: 14px;');
+      console.log('Device data:', JSON.stringify(device, null, 2).substring(0, 500));
+      if (typeof onSelect === 'function') {
+        onSelect(device);
+        console.log('%c onSelect called successfully', 'background: blue; color: white;');
+      } else {
+        console.error('onSelect is not a function!', onSelect);
+      }
+    },
     className: `bg-gradient-to-br ${getGenerationColor()} rounded-2xl border border-slate-200 p-4 hover:border-indigo-400 hover:shadow-xl cursor-pointer transition-all duration-200 group relative overflow-hidden`
   },
     // Decorative corner accent
@@ -1829,22 +1870,45 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
       )
     ),
     
-    // Model numbers (LL/A, ZA/A, etc.) - extracted from device.model
-    device.model && h('div', { className: 'mb-3' },
-      h('div', { className: 'flex flex-wrap gap-1.5' },
-        ...device.model.split('/').map((m, i) => 
-          h('span', { key: i, className: 'px-2 py-1 bg-slate-100/90 text-slate-700 rounded-lg text-xs font-mono font-semibold border border-slate-200' }, m.trim())
+    // Model numbers (A1234, A5678, etc.)
+    device.model && h('div', { className: 'mb-2' },
+      h('div', { className: 'flex flex-wrap gap-1' },
+        ...(device.model || '').split('/').filter(Boolean).map((m, i) => 
+          h('span', { key: i, className: 'px-2 py-0.5 bg-slate-100/90 text-slate-600 rounded text-xs font-mono' }, m.trim())
         )
       )
     ),
     
-    // Board numbers (if available)
-    (device.board_numbers?.length > 0) && h('div', { className: 'mb-3' },
-      h('div', { className: 'flex flex-wrap gap-1.5' },
-        ...device.board_numbers.slice(0, 2).map((bn, i) => 
-          h('span', { key: i, className: 'px-2 py-1 bg-white/80 text-purple-700 rounded-lg text-xs font-mono font-semibold shadow-sm border border-purple-200' }, bn)
+    // Regional codes (LL/A, ZA/A, etc.)
+    (device.category === 'iPhone' && popularRegionalCodes.length > 0) && h('div', { className: 'mb-2' },
+      h('div', { className: 'flex flex-wrap gap-1' },
+        ...popularRegionalCodes.map((rc, i) => 
+          h('span', { 
+            key: i, 
+            className: 'px-1.5 py-0.5 bg-blue-50 text-blue-700 rounded text-xs font-mono border border-blue-200',
+            title: rc.region
+          }, rc.code)
         ),
-        device.board_numbers.length > 2 && h('span', { className: 'px-2 py-1 text-xs text-slate-500 bg-white/50 rounded-lg' }, `+${device.board_numbers.length - 2}`)
+        h('span', { className: 'text-xs text-slate-400' }, '...')
+      )
+    ),
+    
+    // Board numbers (if available)
+    (device.board_numbers?.length > 0) && h('div', { className: 'mb-2' },
+      h('div', { className: 'flex flex-wrap gap-1' },
+        h('span', { className: 'text-xs text-purple-500' }, '🖥️'),
+        ...device.board_numbers.slice(0, 2).map((bn, i) => 
+          h('span', { key: i, className: 'px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded text-xs font-mono border border-purple-200' }, bn)
+        ),
+        device.board_numbers.length > 2 && h('span', { className: 'px-1.5 py-0.5 text-xs text-slate-400 bg-white/50 rounded' }, `+${device.board_numbers.length - 2}`)
+      )
+    ),
+    
+    // Board price from price list
+    boardInfo && h('div', { className: 'mb-2 p-1.5 bg-green-50 rounded-lg border border-green-200' },
+      h('div', { className: 'flex items-center justify-between text-xs' },
+        h('span', { className: 'text-green-700' }, '💰 Плата:'),
+        h('span', { className: 'font-bold text-green-800' }, formatPrice(boardInfo.price, 'UAH'))
       )
     ),
     
@@ -1882,10 +1946,28 @@ const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
 
 // ===== DEVICE DETAILS VIEW (ENHANCED v6.5) =====
 const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData, measurementsData, compatibilityData }) => {
+  // ALL useState hooks MUST be at the top level (React Rules of Hooks)
   const [activeTab, setActiveTab] = useState('info');
   const [priceRegion, setPriceRegion] = useState('UA');
   
+  console.log('%c DeviceDetailsView ENTRY', 'background: green; color: white; font-size: 16px;');
+  
+  // Safety check - if device is null/undefined, show error
+  if (!device) {
+    console.error('DeviceDetailsView: device is null/undefined');
+    return h('div', { className: 'p-8 text-center' },
+      h('p', { className: 'text-red-500 mb-4' }, '❌ Ошибка: устройство не найдено'),
+      h('button', { 
+        onClick: onBack, 
+        className: 'px-4 py-2 bg-indigo-500 text-white rounded-lg' 
+      }, '← Назад')
+    );
+  }
+  
+  console.log('%c DeviceDetailsView rendering:', 'background: purple; color: white;', device.name);
+  
   const serviceParts = device.service_parts || {};
+  console.log('serviceParts keys:', Object.keys(serviceParts));
   const hasServiceParts = Object.keys(serviceParts).length > 0;
   
   // Part type labels
@@ -2518,7 +2600,10 @@ const QuickCard = ({ name, icon, count, color, onClick }) => {
   };
   
   return h('button', {
-    onClick,
+    onClick: (e) => {
+      console.log('QuickCard clicked:', name);
+      onClick && onClick(e);
+    },
     className: 'bg-white rounded-2xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all text-left'
   },
     h('div', { className: `w-10 h-10 rounded-xl bg-gradient-to-br ${colors[color]} flex items-center justify-center text-white mb-3` },
@@ -2531,6 +2616,33 @@ const QuickCard = ({ name, icon, count, color, onClick }) => {
 
 // ===== MAIN APP =====
 const App = () => {
+  // Add global error state for debugging
+  const [renderError, setRenderError] = useState(null);
+  
+  // Global error boundary effect
+  useEffect(() => {
+    const errorHandler = (event) => {
+      console.error('Global error caught:', event.error);
+      setRenderError(event.error?.message || String(event.error));
+    };
+    window.addEventListener('error', errorHandler);
+    return () => window.removeEventListener('error', errorHandler);
+  }, []);
+  
+  // Show error if caught
+  if (renderError) {
+    return h('div', { className: 'min-h-screen bg-red-50 p-8 flex items-center justify-center' },
+      h('div', { className: 'bg-white rounded-xl p-8 shadow-xl max-w-2xl' },
+        h('h1', { className: 'text-2xl font-bold text-red-600 mb-4' }, '❌ Произошла ошибка'),
+        h('pre', { className: 'bg-gray-100 p-4 rounded text-sm overflow-auto' }, renderError),
+        h('button', {
+          onClick: () => { setRenderError(null); window.location.reload(); },
+          className: 'mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg'
+        }, '🔄 Перезагрузить')
+      )
+    );
+  }
+  
   // Data states
   const [devices, setDevices] = useState([]);
   const [ukrainePrices, setUkrainePrices] = useState(null);
@@ -2542,6 +2654,7 @@ const App = () => {
   const [knowledgeData, setKnowledgeData] = useState(null);
   const [measurementsData, setMeasurementsData] = useState(null);
   const [compatibilityData, setCompatibilityData] = useState(null);
+  const [regionalCodes, setRegionalCodes] = useState(null);
   
   // UI states
   const [loading, setLoading] = useState(true);
@@ -2573,8 +2686,9 @@ const App = () => {
       fetch('/data/repair_knowledge.json').then(r => r.json()).catch(() => null),
       fetch('/data/measurements.json').then(r => r.json()).catch(() => null),
       fetch('/data/camera_compatibility.json').then(r => r.json()).catch(() => null),
+      fetch('/data/regional_codes.json').then(r => r.json()).catch(() => null),
     ])
-    .then(([devicesData, ukraine, boards, boardsSpecs, articles, errors, ic, knowledge, measurements, compatibility]) => {
+    .then(([devicesData, ukraine, boards, boardsSpecs, articles, errors, ic, knowledge, measurements, compatibility, regions]) => {
       setDevices(Array.isArray(devicesData) ? devicesData : []);
       setUkrainePrices(ukraine);
       setLogicBoards(boards);
@@ -2585,6 +2699,7 @@ const App = () => {
       setKnowledgeData(knowledge);
       setMeasurementsData(measurements);
       setCompatibilityData(compatibility);
+      setRegionalCodes(regions?.regional_codes || null);
       setLoading(false);
     })
     .catch(err => {
@@ -2663,17 +2778,19 @@ const App = () => {
   
   // Device details view
   if (selectedDevice) {
-    return h('div', { className: 'min-h-screen bg-gray-100 p-4' },
-      h('div', { className: 'max-w-4xl mx-auto' },
-        h(DeviceDetailsView, { 
-          device: selectedDevice, 
-          onBack: () => setSelectedDevice(null),
-          ukrainePrices,
-          onSelectItem: handleSelectItem,
-          icData,
-          measurementsData,
-          compatibilityData
-        })
+    console.log('App: Rendering DeviceDetailsView for:', selectedDevice?.name);
+    try {
+      return h('div', { className: 'min-h-screen bg-gray-100 p-4' },
+        h('div', { className: 'max-w-4xl mx-auto' },
+          h(DeviceDetailsView, { 
+            device: selectedDevice, 
+            onBack: () => setSelectedDevice(null),
+            ukrainePrices,
+            onSelectItem: handleSelectItem,
+            icData,
+            measurementsData,
+            compatibilityData
+          })
       ),
       selectedItem && h(DetailModal, { 
         item: selectedItem, 
@@ -2682,6 +2799,17 @@ const App = () => {
         ukrainePrices 
       })
     );
+    } catch (err) {
+      console.error('App: Error rendering DeviceDetailsView:', err);
+      return h('div', { className: 'min-h-screen bg-gray-100 p-8 text-center' },
+        h('p', { className: 'text-red-500 text-xl mb-4' }, '❌ Ошибка рендеринга'),
+        h('p', { className: 'text-gray-600 mb-4' }, String(err)),
+        h('button', { 
+          onClick: () => setSelectedDevice(null), 
+          className: 'px-4 py-2 bg-indigo-500 text-white rounded-lg' 
+        }, '← Назад к списку')
+      );
+    }
   }
   
   // Main view
@@ -2819,7 +2947,8 @@ const App = () => {
             key: device.name, 
             device, 
             onSelect: setSelectedDevice,
-            ukrainePrices 
+            ukrainePrices,
+            regionalCodes
           })
         )
       )
