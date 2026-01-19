@@ -683,5 +683,340 @@
     "wifi_bt": 2,
     "biometric": 2,
     "total": 25
+  },
+  "iPhone 17": {
+    "processor": {
+      "name": "Apple A19",
+      "part_number": "APL1M01",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U0100",
+      "compatibility": [
+        "iPhone 17 только"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00616",
+      "part_number": "338S00616",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC",
+      "location": "PMU",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    },
+    "charging_ic": {
+      "name": "Apple N1 Wireless Chip",
+      "part_number": "SN2800",
+      "manufacturer": "Apple",
+      "function": "USB-C Power Delivery + Wireless Charging",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max"
+      ],
+      "features": [
+        "USB-C PD 3.2",
+        "AVS Protocol",
+        "40W Fast Charging",
+        "25W MagSafe",
+        "Qi2"
+      ]
+    },
+    "audio_codec": {
+      "name": "Cirrus Logic 338S01148",
+      "part_number": "338S01148",
+      "manufacturer": "Apple/Cirrus Logic",
+      "function": "Audio Amplifier",
+      "location": "U3600",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    },
+    "wireless_ic": {
+      "name": "Apple N1",
+      "part_number": "APL1W02",
+      "manufacturer": "Apple",
+      "function": "WiFi 7 + Bluetooth 6 + Thread + UWB",
+      "location": "WiFi Module",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air",
+        "MacBook M4/M5 2025"
+      ],
+      "features": [
+        "WiFi 7 (802.11be)",
+        "Bluetooth 6.0",
+        "Thread",
+        "UWB Gen 2"
+      ]
+    },
+    "modem": {
+      "name": "Apple C1X",
+      "part_number": "APL1C01",
+      "manufacturer": "Apple",
+      "function": "5G Modem",
+      "location": "U_BB",
+      "compatibility": [
+        "iPhone 17 всех моделей"
+      ],
+      "features": [
+        "5G Sub-6 + mmWave",
+        "WiFi calling",
+        "eSIM"
+      ]
+    },
+    "nfc": {
+      "name": "NXP SN200",
+      "part_number": "SN200",
+      "manufacturer": "NXP",
+      "function": "NFC Controller",
+      "location": "U1800",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    }
+  },
+  "iPhone 17 Pro/Pro Max": {
+    "processor": {
+      "name": "Apple A19 Pro",
+      "part_number": "APL1M02",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U0100",
+      "features": [
+        "6-core GPU",
+        "Neural Accelerators in GPU",
+        "ProRAW",
+        "ProRes"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00618",
+      "part_number": "338S00618",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC (Enhanced)",
+      "location": "PMU",
+      "features": [
+        "Adaptive power scaling",
+        "ProMotion support"
+      ]
+    },
+    "camera_ic": {
+      "name": "Sony IMX903",
+      "part_number": "IMX903",
+      "manufacturer": "Sony",
+      "function": "48MP Fusion Main Camera Sensor",
+      "location": "Camera Module",
+      "features": [
+        "Quad Bayer",
+        "2µm pixels",
+        "8K video"
+      ]
+    },
+    "lidar": {
+      "name": "Sony dToF Gen 3",
+      "part_number": "dToF3",
+      "manufacturer": "Sony",
+      "function": "LiDAR Scanner",
+      "location": "Rear Module",
+      "compatibility": [
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max только"
+      ]
+    }
+  },
+  "iPhone Air": {
+    "power_management": {
+      "name": "STMicroelectronics STPMIA3A",
+      "part_number": "STPMIA3A",
+      "manufacturer": "STMicroelectronics",
+      "function": "Secondary Power Management",
+      "location": "PMU2"
+    },
+    "power_management_2": {
+      "name": "STMicroelectronics STB605A11",
+      "part_number": "STB605A11",
+      "manufacturer": "STMicroelectronics",
+      "function": "Power Management (Likely)",
+      "location": "PMU3"
+    }
+  },
+  "MacBook Air M4 2025": {
+    "processor": {
+      "name": "Apple M4",
+      "part_number": "APL1M04",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3E",
+      "function": "Main SoC",
+      "location": "U1",
+      "features": [
+        "10-core CPU",
+        "8/10-core GPU",
+        "16-core Neural Engine",
+        "120GB/s bandwidth"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00700",
+      "part_number": "338S00700",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC",
+      "location": "PMU"
+    },
+    "thunderbolt": {
+      "name": "Intel JHL9580",
+      "part_number": "JHL9580",
+      "manufacturer": "Intel",
+      "function": "Thunderbolt 4 Controller",
+      "location": "TB Controller",
+      "features": [
+        "40Gbps",
+        "Dual display support"
+      ]
+    },
+    "wifi": {
+      "name": "Apple N1",
+      "part_number": "APL1W02",
+      "manufacturer": "Apple",
+      "function": "WiFi 7 + Bluetooth 6",
+      "location": "WiFi Module"
+    }
+  },
+  "MacBook Pro M5 2025": {
+    "processor": {
+      "name": "Apple M5",
+      "part_number": "APL1M05",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U1",
+      "features": [
+        "10-core CPU",
+        "10-core GPU",
+        "16-core Neural Engine",
+        "153GB/s bandwidth",
+        "30% faster GPU"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00710",
+      "part_number": "338S00710",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC (Enhanced)",
+      "location": "PMU",
+      "features": [
+        "Dynamic voltage scaling",
+        "ProMotion support"
+      ]
+    },
+    "display_controller": {
+      "name": "Apple Timing Controller",
+      "part_number": "TCON-M5",
+      "manufacturer": "Apple",
+      "function": "Display Timing Controller",
+      "location": "Display Module",
+      "features": [
+        "120Hz ProMotion",
+        "XDR support"
+      ]
+    }
+  },
+  "iPhone 16 Series": {
+    "charging_ic": {
+      "name": "Texas Instruments SN2700",
+      "part_number": "SN2700",
+      "manufacturer": "Texas Instruments/Apple",
+      "function": "USB-C Charging IC",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ]
+    }
+  },
+  "iPhone 15 Series": {
+    "charging_ic": {
+      "name": "Texas Instruments SN2600",
+      "part_number": "SN2600",
+      "manufacturer": "Texas Instruments/Apple",
+      "function": "USB-C Charging IC",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max"
+      ]
+    }
+  },
+  "iPhone 12-14 Series": {
+    "charging_ic": {
+      "name": "NXP Tristar 1614A1",
+      "part_number": "1614A1",
+      "manufacturer": "NXP/Apple",
+      "function": "Lightning Charging IC",
+      "location": "U2",
+      "compatibility": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13 series",
+        "iPhone 14 series"
+      ]
+    }
+  },
+  "iPhone X-11 Series": {
+    "charging_ic": {
+      "name": "NXP Tristar 1612A1",
+      "part_number": "1612A1",
+      "manufacturer": "NXP",
+      "function": "Lightning Charging IC",
+      "location": "U2",
+      "compatibility": [
+        "iPhone X",
+        "iPhone XS",
+        "iPhone XR",
+        "iPhone 11",
+        "iPhone 11 Pro"
+      ]
+    }
+  },
+  "Universal Audio": {
+    "audio_codec": {
+      "name": "Cirrus Logic CS42L84",
+      "part_number": "CS42L84",
+      "manufacturer": "Cirrus Logic",
+      "function": "Audio Codec",
+      "compatibility": [
+        "Most MacBook models",
+        "iPad Pro"
+      ]
+    }
+  },
+  "_metadata": {
+    "title": "Apple IC Compatibility Database",
+    "description": "Comprehensive database of integrated circuits used in Apple devices",
+    "version": "2.0",
+    "last_updated": "2026-01-19",
+    "total_devices": 20,
+    "coverage": "iPhone 17 series, MacBook M4/M5, Legacy models",
+    "sources": [
+      "iFixit teardowns",
+      "TechInsights analysis",
+      "Apple specifications",
+      "LogiWiki community",
+      "iPad Rehab database"
+    ]
   }
 }
