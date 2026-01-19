@@ -5977,7 +5977,7 @@
     "name": "iPhone 17 Pro Max",
     "category": "iPhone",
     "year": 2025,
-    "processor": "A19 Pro",
+    "processor": "Apple A19 Pro (N3E 2nm)",
     "display": "6.9-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6002,7 +6002,7 @@
       "A3258"
     ],
     "board_numbers": [
-      "820-03258"
+      "820-03150"
     ],
     "service_parts": {
       "battery": {
@@ -6037,8 +6037,8 @@
       }
     },
     "charging_ic": {
-      "main": "SN2900",
-      "designation": "USB-C PD Controller"
+      "main": "CBTL1701B0",
+      "designation": "U2 USB-C Controller"
     },
     "common_issues": [
       "Разбитый экран",
@@ -6049,13 +6049,15 @@
       "USB-C порт повреждён",
       "Не работает динамик",
       "Проблемы с 5G/6G модемом"
-    ]
+    ],
+    "power_ic": "343S00826",
+    "baseband": "Qualcomm X80"
   },
   {
     "name": "iPhone 17 Pro",
     "category": "iPhone",
     "year": 2025,
-    "processor": "A19 Pro",
+    "processor": "Apple A19 Pro (N3E 2nm)",
     "display": "6.3-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6079,7 +6081,7 @@
       "A3257"
     ],
     "board_numbers": [
-      "820-03257"
+      "820-03151"
     ],
     "service_parts": {
       "battery": {
@@ -6114,8 +6116,8 @@
       }
     },
     "charging_ic": {
-      "main": "SN2900",
-      "designation": "USB-C PD Controller"
+      "main": "CBTL1701B0",
+      "designation": "U2 USB-C Controller"
     },
     "common_issues": [
       "Разбитый экран",
@@ -6126,13 +6128,15 @@
       "USB-C порт повреждён",
       "Не работает динамик",
       "Проблемы с 5G/6G модемом"
-    ]
+    ],
+    "power_ic": "343S00826",
+    "baseband": "Qualcomm X80"
   },
   {
     "name": "iPhone 17",
     "category": "iPhone",
     "year": 2025,
-    "processor": "A19",
+    "processor": "Apple A19 (N3E 2nm)",
     "display": "6.3-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6154,7 +6158,7 @@
       "A3520"
     ],
     "board_numbers": [
-      "820-03520"
+      "820-03152"
     ],
     "service_parts": {
       "battery": {
@@ -6189,8 +6193,8 @@
       }
     },
     "charging_ic": {
-      "main": "SN2900",
-      "designation": "USB-C Controller"
+      "main": "CBTL1701B0",
+      "designation": "U2 USB-C Controller"
     },
     "common_issues": [
       "Разбитый экран",
@@ -6201,13 +6205,15 @@
       "USB-C порт повреждён",
       "Не работает динамик",
       "Проблемы с 5G/6G модемом"
-    ]
+    ],
+    "power_ic": "343S00805",
+    "baseband": "Qualcomm X80"
   },
   {
     "name": "iPhone Air",
     "category": "iPhone",
     "year": 2025,
-    "processor": "A19",
+    "processor": "Apple A19 Pro (N3E 2nm)",
     "display": "6.6-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6229,7 +6235,7 @@
       "A3260"
     ],
     "board_numbers": [
-      "820-03525"
+      "820-03160"
     ],
     "service_parts": {
       "battery": {
@@ -6264,8 +6270,8 @@
       }
     },
     "charging_ic": {
-      "main": "SN2900",
-      "designation": "USB-C Controller"
+      "main": "CBTL1701B0",
+      "designation": "U2 USB-C Controller"
     },
     "common_issues": [
       "Разбитый экран",
@@ -6276,7 +6282,10 @@
       "USB-C порт повреждён",
       "Не работает динамик",
       "Проблемы с 5G/6G модемом"
-    ]
+    ],
+    "power_ic": "343S00805",
+    "baseband": "Apple C1X",
+    "wifi_chip": "Apple N1"
   },
   {
     "name": "MacBook Air 13-inch M4 2025",

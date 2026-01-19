@@ -1,6 +1,6 @@
 {
   "source": "Compiled from repair community knowledge, iFixit, Rossmann Group, repair.wiki",
-  "collected_at": "2026-01-19 13:30:00",
+  "collected_at": "2026-01-19 13:35:39",
   "charging_ics": [
     {
       "name": "1610A1",
@@ -346,6 +346,43 @@
       },
       "price_range": "$18-25",
       "difficulty": "Expert"
+    },
+    {
+      "name": "CBTL1701B0",
+      "designation": "U2 USB-C Controller",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17",
+        "iPhone Air"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 3.1 negotiation",
+        "Fast charging up to 45W",
+        "Data transfer",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No fast charging",
+        "USB-C not recognized",
+        "Data transfer fails",
+        "Accessory not supported"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.400-0.550V",
+          "CC2": "0.400-0.550V"
+        },
+        "usb_pd": "Check PD negotiation to 20V/45W",
+        "current_draw": {
+          "idle": "0.15-0.60A"
+        }
+      },
+      "price_range": "$15-30",
+      "difficulty": "Expert"
     }
   ],
   "power_ics": [
@@ -551,6 +588,52 @@
         "Random shutdowns"
       ],
       "price_range": "$40-80",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "343S00826",
+      "designation": "PMIC Pro",
+      "package": "PoP (на CPU)",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control",
+        "Thermal management"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Overheating",
+        "Battery drain",
+        "Random shutdowns"
+      ],
+      "price_range": "$25-50",
+      "difficulty": "Expert",
+      "notes": "Расположен на обратной стороне A19 Pro CPU, требует осторожного reballing"
+    },
+    {
+      "name": "343S00805",
+      "designation": "PMIC Standard",
+      "package": "PoP (на CPU)",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone Air"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Battery issues"
+      ],
+      "price_range": "$20-40",
       "difficulty": "Expert"
     }
   ],
@@ -1038,6 +1121,65 @@
       ],
       "price_range": "$25-50",
       "difficulty": "Expert"
+    },
+    {
+      "name": "Apple C1X",
+      "designation": "Apple 5G Modem",
+      "package": "Custom SiP",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 16e"
+      ],
+      "functions": [
+        "5G NR Sub-6GHz",
+        "4G LTE",
+        "3G WCDMA",
+        "GPS/GNSS"
+      ],
+      "limitations": [
+        "Нет mmWave 5G",
+        "Только Sub-6GHz"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Searching...",
+        "No service"
+      ],
+      "price_range": "N/A (интегрировано)",
+      "difficulty": "Not repairable",
+      "notes": "Первый 5G модем Apple. Не поддерживает mmWave (планируется в C2 2026)"
+    },
+    {
+      "name": "Qualcomm X80",
+      "designation": "Snapdragon X80 5G Modem",
+      "package": "SiP",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17"
+      ],
+      "functions": [
+        "5G NR mmWave",
+        "5G NR Sub-6GHz",
+        "4G LTE-Advanced Pro",
+        "Wi-Fi 7 offload",
+        "GPS/GNSS"
+      ],
+      "features": [
+        "6x carrier aggregation",
+        "AI-enhanced signal",
+        "10Gbps peak download"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Weak signal",
+        "5G not working"
+      ],
+      "price_range": "$80-150",
+      "difficulty": "Expert",
+      "notes": "Флагманский модем Qualcomm 2025, поддерживает mmWave"
     }
   ],
   "nand_ics": [
@@ -1266,6 +1408,37 @@
         "Check all antenna connections",
         "May need Apple calibration for full functionality"
       ]
+    },
+    {
+      "name": "Apple N1",
+      "designation": "Apple WiFi/BT Controller",
+      "package": "Custom",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17"
+      ],
+      "functions": [
+        "Wi-Fi 7 (802.11be)",
+        "Bluetooth 6.0",
+        "Thread",
+        "Ultra Wideband"
+      ],
+      "features": [
+        "320MHz channels",
+        "4K QAM",
+        "Multi-link operation"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "No Bluetooth",
+        "WiFi drops",
+        "Slow speeds"
+      ],
+      "price_range": "N/A (интегрировано)",
+      "difficulty": "Not repairable",
+      "notes": "Первый WiFi чип Apple, заменяет Broadcom"
     }
   ],
   "biometric_ics": [
@@ -1782,6 +1955,66 @@
       ],
       "price_range": "$5-12",
       "difficulty": "Advanced"
+    },
+    {
+      "name": "CD3215",
+      "designation": "USB-C PD Controller (1st Gen)",
+      "package": "BGA",
+      "compatible_devices": [
+        "MacBook Pro 13\" 2016",
+        "MacBook Pro 15\" 2016",
+        "MacBook Pro 13\" 2017",
+        "MacBook Pro 15\" 2017"
+      ],
+      "functions": [
+        "USB-C PD",
+        "Power negotiation",
+        "Data mux"
+      ],
+      "symptoms_when_faulty": [
+        "Stuck at 5V",
+        "No 20V charging",
+        "USB-C port dead"
+      ],
+      "diagnostics": {
+        "voltage_check": "Should negotiate to 20V 3A",
+        "diode_mode": "0.450-0.600V"
+      },
+      "price_range": "$10-25",
+      "difficulty": "Advanced",
+      "notes": "Первое поколение USB-C контроллера в MacBook"
+    },
+    {
+      "name": "ISL6259AHRTZ",
+      "designation": "MagSafe Charger IC / PPBUS Controller",
+      "package": "QFN-28",
+      "board_position": "U7000 / U7100",
+      "compatible_devices": [
+        "MacBook Air 11\" 2013-2017",
+        "MacBook Air 13\" 2013-2017",
+        "MacBook Pro 13\" 2013-2015",
+        "MacBook Pro 15\" 2013-2015"
+      ],
+      "functions": [
+        "PPBUS_G3H generation",
+        "MagSafe charging control",
+        "Battery charging",
+        "SMC communication"
+      ],
+      "symptoms_when_faulty": [
+        "No green/amber light",
+        "Not charging",
+        "No PPBUS_G3H",
+        "SMC issues"
+      ],
+      "diagnostics": {
+        "ppbus_g3h": "12.6V (от MagSafe)",
+        "diode_mode": "0.350-0.450V",
+        "short_threshold": "<0.100V"
+      },
+      "price_range": "$5-15",
+      "difficulty": "Advanced",
+      "notes": "Основной контроллер питания для MagSafe MacBook. Проверяйте PPBUS_G3H первым делом!"
     }
   ]
 }
