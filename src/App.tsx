@@ -11,7 +11,6 @@ import { PartDetailModal } from './components/PartDetailModal';
 import { ICDetailModal } from './components/ICDetailModal';
 import { DeviceDetailModal } from './components/DeviceDetailModal';
 import { MacBoardList } from './components/MacBoardList';
-import { KnowledgeBase } from './components/KnowledgeBase';
 import { ServicePriceList } from './components/ServicePriceList'; // NEW
 import { KeyCombinations } from './components/KeyCombinations'; // NEW: DFU/Recovery
 import { Device, PriceData, ErrorDetail, ICComponent, OfficialServiceData, MacBoard, SchematicResource, RepairGuide, ConnectorPinout, LogicBoard, BootSequence, DiodeMeasurement, ExchangePrice, ServicePrices } from './types';
@@ -810,20 +809,6 @@ export const App = () => {
                boards={macBoards} 
                logicBoards={logicBoards}
                onClose={() => setShowMacBoards(false)} 
-             />
-          </div>
-        </div>
-      )}
-
-      {/* Knowledge Base Modal */}
-      {showKnowledge && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
-             <KnowledgeBase 
-               schematics={schematics}
-               guides={guides}
-               pinouts={pinouts}
-               onClose={() => setShowKnowledge(false)} 
              />
           </div>
         </div>

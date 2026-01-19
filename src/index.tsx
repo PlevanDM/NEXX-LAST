@@ -165,8 +165,8 @@ app.get('/', (c) => {
     <body class="bg-gray-50">
         <div id="app"></div>
         
-        <!-- Main App Script (React + TypeScript compiled bundle) -->
-        <script type="module" src="/static/client-v2.js"></script>
+        <!-- Main App Script (complete, full-featured v6.0) -->
+        <script src="/static/app.js"></script>
     </body>
     </html>
   `)
