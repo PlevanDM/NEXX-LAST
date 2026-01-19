@@ -282,6 +282,129 @@ app.post('/api/booking', async (c) => {
   }
 });
 
+// Calculator page
+app.get('/calculator', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Калькулятор вартості ремонту - NEXX</title>
+        <meta name="description" content="Розрахуйте вартість ремонту вашого пристрою онлайн. iPhone, Android, MacBook, iPad, Apple Watch.">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+        <style>
+          html { scroll-behavior: smooth; }
+        </style>
+    </head>
+    <body class="bg-slate-50">
+        <div id="app"></div>
+        <script src="/static/calculator.js"></script>
+    </body>
+    </html>
+  `)
+})
+
+// About page
+app.get('/about', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Про нас - NEXX Service Center</title>
+        <meta name="description" content="Історія NEXX - професійного сервісного центру Apple техніки в Києві. Наша команда, цінності та досвід.">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+    </head>
+    <body class="bg-white">
+        <div id="app"></div>
+        <script src="/static/about.js"></script>
+    </body>
+    </html>
+  `)
+})
+
+// FAQ page
+app.get('/faq', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Поширені питання (FAQ) - NEXX</title>
+        <meta name="description" content="Відповіді на найчастіші питання про ремонт Apple техніки: гарантія, термін, оплата, доставка.">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+    </head>
+    <body class="bg-slate-50">
+        <div id="app"></div>
+        <script src="/static/faq.js"></script>
+    </body>
+    </html>
+  `)
+})
+
+// Privacy page
+app.get('/privacy', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Політика конфіденційності - NEXX</title>
+        <meta name="description" content="Політика конфіденційності NEXX Service Center. Захист персональних даних згідно з GDPR.">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+    </head>
+    <body class="bg-white">
+        <div id="app"></div>
+        <script src="/static/privacy.js"></script>
+    </body>
+    </html>
+  `)
+})
+
+// Terms page
+app.get('/terms', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Умови використання - NEXX</title>
+        <meta name="description" content="Умови надання послуг NEXX Service Center. Правила та умови ремонту Apple техніки.">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.development.js"></script>
+    </head>
+    <body class="bg-white">
+        <div id="app"></div>
+        <script src="/static/terms.js"></script>
+    </body>
+    </html>
+  `)
+})
+
 // Main page - Service Center Landing with React
 app.get('/', (c) => {
   return c.html(`
