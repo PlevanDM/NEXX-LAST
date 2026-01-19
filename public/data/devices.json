@@ -6552,7 +6552,7 @@
     "name": "iPhone 17 Pro Max",
     "category": "iPhone",
     "year": 2025,
-    "processor": "Apple A19 Pro (N3E 2nm)",
+    "processor": "Apple A19 Pro (APL1V12/339S01839)",
     "display": "6.9-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6626,7 +6626,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00826",
-    "baseband": "Qualcomm X80",
+    "baseband": {
+      "modem": "Qualcomm SDX80 (X80)",
+      "pmic": "PMX80"
+    },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG42.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG42.png",
     "icon_source": "pngimg"
@@ -6635,7 +6638,7 @@
     "name": "iPhone 17 Pro",
     "category": "iPhone",
     "year": 2025,
-    "processor": "Apple A19 Pro (N3E 2nm)",
+    "processor": "Apple A19 Pro (APL1V12/339S01839)",
     "display": "6.3-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6708,7 +6711,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00826",
-    "baseband": "Qualcomm X80",
+    "baseband": {
+      "modem": "Qualcomm SDX80 (X80)",
+      "pmic": "PMX80"
+    },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG41.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG41.png",
     "icon_source": "pngimg"
@@ -6717,7 +6723,7 @@
     "name": "iPhone 17",
     "category": "iPhone",
     "year": 2025,
-    "processor": "Apple A19 (N3E 2nm)",
+    "processor": "Apple A19 (APL1V09/339S01805)",
     "display": "6.3-inch Super Retina XDR OLED",
     "storage": [
       "256GB",
@@ -6788,7 +6794,10 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00805",
-    "baseband": "Qualcomm X80",
+    "baseband": {
+      "modem": "Qualcomm SDX80 (X80)",
+      "pmic": "PMX80"
+    },
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG34.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG34.png",
     "icon_source": "pngimg"
@@ -6797,8 +6806,15 @@
     "name": "iPhone Air",
     "category": "iPhone",
     "year": 2025,
-    "processor": "Apple A19 Pro (N3E 2nm)",
-    "display": "6.6-inch Super Retina XDR OLED",
+    "processor": "Apple A19 Pro (APL1V12/339S01839)",
+    "display": {
+      "type": "Super Retina XDR OLED",
+      "size": "6.5\"",
+      "resolution": "2736x1260",
+      "ppi": 460,
+      "refresh_rate": "120Hz ProMotion",
+      "brightness": "3000 nits peak (outdoor)"
+    },
     "storage": [
       "256GB",
       "512GB"
@@ -6855,7 +6871,8 @@
     },
     "charging_ic": {
       "main": "CBTL1701B0",
-      "designation": "U2 USB-C Controller"
+      "designation": "USB Type-C Port Controller (NXP)",
+      "secondary": "CP3200C1H3 (TI Battery Charger)"
     },
     "common_issues": [
       "Разбитый экран",
@@ -6868,11 +6885,83 @@
       "Проблемы с 5G/6G модемом"
     ],
     "power_ic": "343S00805",
-    "baseband": "Apple C1X",
+    "baseband": {
+      "modem": "Apple C1X (APL1114/337S01030)",
+      "rf_transceiver": "APL1088/338S01150",
+      "pmic": null
+    },
     "wifi_chip": "Apple N1",
     "device_icon": "https://pngimg.com/uploads/iphone17/iphone17_PNG40.png",
     "device_icon_small": "https://pngimg.com/uploads/iphone17/small/iphone17_PNG40.png",
-    "icon_source": "pngimg"
+    "icon_source": "pngimg",
+    "processor_details": "6-core CPU (2P+4E), 5-core GPU, 16-core Neural Engine",
+    "process_node": "3nm 2nd gen",
+    "power_ics": [
+      {
+        "name": "APL1064/338S01279",
+        "function": "Main PMIC"
+      },
+      {
+        "name": "STPMIA3A",
+        "function": "Secondary PMIC"
+      },
+      {
+        "name": "STB605A11",
+        "function": "Auxiliary PMIC"
+      },
+      {
+        "name": "MAX20348P",
+        "function": "DC-DC Converter"
+      },
+      {
+        "name": "338S00616",
+        "function": "DC-DC Converter"
+      }
+    ],
+    "audio_ics": [
+      {
+        "name": "338S00967",
+        "function": "Audio Codec"
+      },
+      {
+        "name": "338S01148",
+        "function": "Audio Amplifier (x2)"
+      }
+    ],
+    "wifi_bt_ic": {
+      "name": "USI 339M00400 (Apple N1)",
+      "features": [
+        "WiFi 7 (802.11be)",
+        "Bluetooth 6",
+        "Thread",
+        "2x2 MIMO"
+      ]
+    },
+    "uwb_ic": "USI 339M00384 (Apple U2)",
+    "display_ic": {
+      "pmic": "TPS65658A0",
+      "adc": "MAX11390A"
+    },
+    "nfc_ic": "NXP SN300 (w/ eSIM & Secure Element)",
+    "wireless_charging_ic": "BCM59367A1IUBG",
+    "flash_driver": "CP5100A0",
+    "rf_modules": [
+      "Skyworks SKY58452-14",
+      "Broadcom AFEM-8254",
+      "Broadcom AFEM-8255",
+      "Broadcom AFEM-8277",
+      "Skyworks SKY53921-16",
+      "Qorvo QM81026H (Envelope Tracker)"
+    ],
+    "nand": "256GB/512GB/1TB Kioxia K8A7RJ5126",
+    "ram": "12GB LPDDR5X (Samsung K3KLMLM0FM)",
+    "thickness": "5.6mm",
+    "colors": [
+      "Space Black",
+      "Cloud White",
+      "Light Gold",
+      "Sky Blue"
+    ]
   },
   {
     "name": "MacBook Air 13-inch M4 2025",
