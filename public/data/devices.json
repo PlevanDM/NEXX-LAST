@@ -16,10 +16,11 @@
     "board_numbers": [
       "820-02850"
     ],
-    "processor": "A18 Pro",
+    "processor": "Apple A18 Pro (APL1V07/339S01527)",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN2012027",
+      "designation": "USB Type-C Controller",
+      "secondary": "CP3200B1G0 (Battery Charger)"
     },
     "official_service_prices": {
       "battery": 99,
@@ -80,7 +81,51 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-3 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "processor_details": "6-core CPU (2P + 4E), 6-core GPU, 16-core Neural Engine",
+    "process_node": "3nm N3E",
+    "power_ics": [
+      {
+        "name": "APL109A/338S01119",
+        "function": "Main PMIC"
+      },
+      {
+        "name": "STPMIA3C",
+        "function": "Secondary PMIC"
+      }
+    ],
+    "audio_ics": [
+      {
+        "name": "338S00967",
+        "function": "Audio Codec"
+      },
+      {
+        "name": "338S01087",
+        "function": "Audio Amplifier"
+      }
+    ],
+    "wifi_bt_ic": {
+      "name": "339S01464",
+      "features": [
+        "WiFi 7",
+        "Bluetooth 5.3",
+        "UWB 2",
+        "Thread"
+      ]
+    },
+    "baseband": {
+      "modem": "Qualcomm SDX71M (X70)",
+      "pmic": "PMX75"
+    },
+    "display_ic": {
+      "pmic": "TPS65657B0",
+      "controller": "338S00843"
+    },
+    "wireless_charging_ic": "BCM59367A1",
+    "flash_driver": "LM3567A1",
+    "nfc_ic": "30V4E0",
+    "ram": "8GB LPDDR5X",
+    "nand": "256GB/512GB/1TB Kioxia"
   },
   {
     "name": "iPhone 16 Pro",
@@ -99,10 +144,11 @@
     "board_numbers": [
       "820-02850"
     ],
-    "processor": "A18 Pro",
+    "processor": "Apple A18 Pro",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN2012027",
+      "designation": "USB Type-C Controller",
+      "secondary": "CP3200B1G0"
     },
     "official_service_prices": {
       "battery": 99,
@@ -157,7 +203,42 @@
     ],
     "repair_difficulty": "Средняя-Сложная",
     "repair_time": "1.5-2.5 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "power_ics": [
+      {
+        "name": "APL109A/338S01119",
+        "function": "Main PMIC"
+      },
+      {
+        "name": "STPMIA3C",
+        "function": "Secondary PMIC"
+      }
+    ],
+    "audio_ics": [
+      {
+        "name": "338S00967",
+        "function": "Audio Codec"
+      },
+      {
+        "name": "338S01087",
+        "function": "Audio Amplifier"
+      }
+    ],
+    "wifi_bt_ic": {
+      "name": "339S01464",
+      "features": [
+        "WiFi 7",
+        "Bluetooth 5.3",
+        "UWB 2"
+      ]
+    },
+    "baseband": {
+      "modem": "Qualcomm X70",
+      "pmic": "PMX75"
+    },
+    "display_ic": "TPS65657B0",
+    "wireless_charging_ic": "BCM59367A1",
+    "nfc_ic": "30V4E0"
   },
   {
     "name": "iPhone 16 Plus",
@@ -176,10 +257,10 @@
     "board_numbers": [
       "820-02850"
     ],
-    "processor": "A18",
+    "processor": "Apple A18",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN2012027",
+      "designation": "USB Type-C Controller"
     },
     "official_service_prices": {
       "battery": 79,
@@ -227,7 +308,26 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "audio_ic": {
+      "name": "338S00967",
+      "function": "Audio Codec"
+    },
+    "wifi_bt_ic": {
+      "name": "339S00912",
+      "features": [
+        "WiFi 7",
+        "Bluetooth 5.3",
+        "UWB 2"
+      ]
+    },
+    "baseband": {
+      "modem": "Qualcomm X70",
+      "pmic": "PMX75"
+    },
+    "display_ic": "TPS65657B0",
+    "wireless_charging_ic": "BCM59367A1",
+    "nfc_ic": "30V4E0"
   },
   {
     "name": "iPhone 16",
@@ -246,10 +346,10 @@
     "board_numbers": [
       "820-02850"
     ],
-    "processor": "A18",
+    "processor": "Apple A18",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN2012027",
+      "designation": "USB Type-C Controller"
     },
     "official_service_prices": {
       "battery": 79,
@@ -297,7 +397,26 @@
     ],
     "repair_difficulty": "Средняя",
     "repair_time": "1-2 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "audio_ic": {
+      "name": "338S00967",
+      "function": "Audio Codec"
+    },
+    "wifi_bt_ic": {
+      "name": "339S00912",
+      "features": [
+        "WiFi 7",
+        "Bluetooth 5.3",
+        "UWB 2"
+      ]
+    },
+    "baseband": {
+      "modem": "Qualcomm X70",
+      "pmic": "PMX75"
+    },
+    "display_ic": "TPS65657B0",
+    "wireless_charging_ic": "BCM59367A1",
+    "nfc_ic": "30V4E0"
   },
   {
     "name": "iPhone 15 Pro Max",
@@ -3197,10 +3316,10 @@
     "board_numbers": [
       "820-02563"
     ],
-    "processor": "A14 Bionic",
+    "processor": "Apple A14 Bionic",
     "charging_ic": {
-      "main": "SN2611D0",
-      "designation": "Tristar"
+      "main": "SN2611A0",
+      "designation": "USB-C Controller"
     },
     "official_service_prices": {},
     "service_parts": {
@@ -3220,7 +3339,8 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "Lightning"
+    "connector_type": "USB-C",
+    "ram": "4GB LPDDR4X"
   },
   {
     "name": "iPad Pro 11\" 4th Gen M2",
@@ -3232,7 +3352,7 @@
     ],
     "processor": "Apple M2",
     "charging_ic": {
-      "main": "SN2800",
+      "main": "SN2501",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
@@ -3254,7 +3374,8 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C / Thunderbolt",
+    "ram": "8GB LPDDR5"
   },
   {
     "name": "iPad Pro 12.9\" 6th Gen M2",
@@ -3266,7 +3387,7 @@
     ],
     "processor": "Apple M2",
     "charging_ic": {
-      "main": "SN2800",
+      "main": "SN2501",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
@@ -3295,7 +3416,8 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C / Thunderbolt",
+    "ram": "8GB/16GB LPDDR5"
   },
   {
     "name": "iPad Air 6th Gen M2 11\"",
@@ -3307,7 +3429,7 @@
     ],
     "processor": "Apple M2",
     "charging_ic": {
-      "main": "SN2800",
+      "main": "SN2501",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
@@ -3328,7 +3450,15 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "wifi_bt_ic": {
+      "name": "339S00833",
+      "features": [
+        "WiFi 6E",
+        "Bluetooth 5.3"
+      ]
+    },
+    "ram": "8GB LPDDR5"
   },
   {
     "name": "iPad Air 6th Gen M2 13\"",
@@ -3340,7 +3470,7 @@
     ],
     "processor": "Apple M2",
     "charging_ic": {
-      "main": "SN2800",
+      "main": "SN2501",
       "designation": "USB-C Controller"
     },
     "official_service_prices": {},
@@ -3361,7 +3491,15 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C",
+    "wifi_bt_ic": {
+      "name": "339S00833",
+      "features": [
+        "WiFi 6E",
+        "Bluetooth 5.3"
+      ]
+    },
+    "ram": "8GB LPDDR5"
   },
   {
     "name": "iPad Pro 11\" M4",
@@ -3371,10 +3509,11 @@
     "board_numbers": [
       "820-02825"
     ],
-    "processor": "Apple M4",
+    "processor": "Apple M4 (APL1206)",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN25A23",
+      "designation": "USB Type-C Controller",
+      "manufacturer": "Texas Instruments"
     },
     "official_service_prices": {
       "battery": 159,
@@ -3403,7 +3542,60 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C / Thunderbolt 3",
+    "processor_details": "10-core CPU (4P + 6E), 10-core GPU, 16-core Neural Engine",
+    "process_node": "3nm N3E",
+    "power_ics": [
+      {
+        "name": "APL1066/343S00682",
+        "function": "Main PMIC"
+      },
+      {
+        "name": "APL1067/343S00683",
+        "function": "Secondary PMIC"
+      },
+      {
+        "name": "338S00990-A1",
+        "function": "Camera/Sensor PMIC"
+      },
+      {
+        "name": "343S00613-A0",
+        "function": "Power Management"
+      },
+      {
+        "name": "343S00377",
+        "function": "Power Distribution"
+      }
+    ],
+    "audio_ic": {
+      "name": "MAX98709B",
+      "designation": "Audio Amplifier",
+      "manufacturer": "Analog Devices"
+    },
+    "wifi_bt_ic": {
+      "name": "339S01360",
+      "designation": "WiFi/BT Module",
+      "features": [
+        "WiFi 6E",
+        "Bluetooth 5.3",
+        "Ultra Wideband"
+      ]
+    },
+    "touch_controllers": [
+      {
+        "name": "BCM15900B0",
+        "function": "Main Touch Controller",
+        "manufacturer": "Broadcom"
+      },
+      {
+        "name": "BCM15957A0",
+        "function": "Apple Pencil/Hover Controller",
+        "manufacturer": "Broadcom"
+      }
+    ],
+    "flash_driver": "LM3567A1 (Texas Instruments)",
+    "ram": "8GB LPDDR5X",
+    "fast_charging": "35W (USB-C PD)"
   },
   {
     "name": "iPad Pro 13\" M4",
@@ -3413,10 +3605,11 @@
     "board_numbers": [
       "820-02826"
     ],
-    "processor": "Apple M4",
+    "processor": "Apple M4 (APL1206)",
     "charging_ic": {
-      "main": "SN2800",
-      "designation": "USB-C Controller"
+      "main": "SN25A23",
+      "designation": "USB Type-C Controller",
+      "manufacturer": "Texas Instruments"
     },
     "official_service_prices": {
       "battery": 179,
@@ -3445,7 +3638,71 @@
     ],
     "repair_difficulty": "Сложная",
     "repair_time": "2-4 часа",
-    "connector_type": "USB-C"
+    "connector_type": "USB-C / Thunderbolt 3",
+    "processor_details": "10-core CPU (4P + 6E), 10-core GPU, 16-core Neural Engine",
+    "process_node": "3nm N3E",
+    "power_ics": [
+      {
+        "name": "APL1066/343S00682",
+        "function": "Main PMIC"
+      },
+      {
+        "name": "APL1067/343S00683",
+        "function": "Secondary PMIC"
+      },
+      {
+        "name": "338S00990-A1",
+        "function": "Camera/Sensor PMIC"
+      },
+      {
+        "name": "343S00613-A0",
+        "function": "Power Management"
+      },
+      {
+        "name": "343S00377",
+        "function": "Power Distribution"
+      }
+    ],
+    "audio_ic": {
+      "name": "MAX98709B",
+      "designation": "Audio Amplifier",
+      "manufacturer": "Analog Devices"
+    },
+    "wifi_bt_ic": {
+      "name": "339S01360",
+      "designation": "WiFi/BT Module",
+      "features": [
+        "WiFi 6E",
+        "Bluetooth 5.3",
+        "Ultra Wideband"
+      ]
+    },
+    "modem": {
+      "name": "SDX71M-000",
+      "designation": "Snapdragon X70 Modem (Cellular models)",
+      "manufacturer": "Qualcomm",
+      "features": [
+        "5G Sub-6",
+        "5G mmWave",
+        "LTE-Advanced Pro"
+      ]
+    },
+    "rf_transceiver": "SDR735-001 (Qualcomm)",
+    "touch_controllers": [
+      {
+        "name": "BCM15900B0",
+        "function": "Main Touch Controller",
+        "manufacturer": "Broadcom"
+      },
+      {
+        "name": "BCM15957A0",
+        "function": "Apple Pencil/Hover Controller",
+        "manufacturer": "Broadcom"
+      }
+    ],
+    "flash_driver": "LM3567A1 (Texas Instruments)",
+    "ram": "8GB/16GB LPDDR5X",
+    "fast_charging": "35W (USB-C PD)"
   },
   {
     "name": "MacBook Air 11\" Early 2014",
@@ -6524,7 +6781,7 @@
     "category": "iPad",
     "model": "A2993/A2995",
     "year": 2024,
-    "processor": "A17 Pro",
+    "processor": "Apple A17 Pro",
     "board_numbers": [
       "820-02680"
     ],
@@ -6535,7 +6792,20 @@
     "official_service_prices": {
       "battery": 99,
       "display": 349
-    }
+    },
+    "charging_ic": {
+      "main": "SN2800",
+      "designation": "USB-C Controller"
+    },
+    "wifi_bt_ic": {
+      "name": "339S00883",
+      "features": [
+        "WiFi 6E",
+        "Bluetooth 5.3"
+      ]
+    },
+    "connector_type": "USB-C",
+    "ram": "8GB LPDDR5X"
   },
   {
     "name": "iPad 11th Gen",
