@@ -39,7 +39,7 @@ app.get('/', (c) => {
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
-        <script src="/static/app.js?v=2.3"></script>
+        <script src="/static/app.js?v=3.2"></script>
     </body>
     </html>
   `)
