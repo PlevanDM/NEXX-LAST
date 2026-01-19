@@ -225,6 +225,7 @@ const BoardBackground = () => h('div', { className: 'absolute inset-0 bg-gradien
 const ErrorBackground = () => h('div', { className: 'absolute inset-0 bg-gradient-to-br from-red-50 to-rose-100' });
 const CalcBackground = () => h('div', { className: 'absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-100' });
 const KnowledgeBackground = () => h('div', { className: 'absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-100' });
+const ChipBackground = () => h('div', { className: 'absolute inset-0 bg-gradient-to-br from-violet-50 to-purple-100' });
 
 // ===== BENTO CARD =====
 const BentoCard = ({ name, className, background, Icon, description, onClick, cta, badge }) => {
@@ -1278,8 +1279,8 @@ const RepairTool = () => {
         }, cat === 'all' ? 'Все' : cat))
       ),
 
-      // Quick access - 2 rows of cards
-      h('div', { className: 'grid grid-cols-3 md:grid-cols-6 gap-3 mb-6' },
+      // Quick access cards
+      h('div', { className: 'grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6' },
         h(BentoCard, {
           name: 'Артикулы',
           description: `${stats.articles}`,
@@ -1333,6 +1334,15 @@ const RepairTool = () => {
           onClick: () => setShowKnowledgeBase(true),
           cta: 'Читать',
           badge: '📚'
+        }),
+        h(BentoCard, {
+          name: 'Микросхемы',
+          description: 'IC справочник',
+          Icon: ChipIcon,
+          background: h(ChipBackground),
+          onClick: () => setShowICDatabase(true),
+          cta: 'Открыть',
+          badge: '🔌'
         })
       ),
 

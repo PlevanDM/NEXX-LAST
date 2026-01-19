@@ -1,131 +1,236 @@
 {
   "itunes_restore_errors": {
-    "error_9": {
-      "code": 9,
-      "meaning": "Device disconnected during restore",
-      "hardware_causes": [
-        "Неисправный USB кабель/порт",
-        "Tristar/Hydra IC поврежден",
-        "NAND flash failure",
-        "Baseband CPU issue"
-      ],
-      "software_causes": [
-        "Timeout при записи firmware",
-        "Антивирус блокирует iTunes"
-      ],
-      "diagnosis": [
-        "Попробовать другой кабель/порт/компьютер",
-        "Восстановить без экрана (отключить дисплей)",
-        "Проверить NAND на программаторе"
-      ]
+    "1": {
+      "description": "Ошибка при загрузке прошивки",
+      "cause": "Проблема с подключением к серверам Apple или повреждённая прошивка",
+      "solution": "Проверьте интернет, отключите VPN/Firewall, попробуйте другой USB порт",
+      "hardware": false
     },
-    "error_14": {
-      "code": 14,
-      "meaning": "USB disconnect or firmware mismatch",
-      "hardware_causes": [
-        "NAND flash ошибка чтения/записи",
-        "USB IC (Tristar) повреждение"
-      ],
-      "diagnosis": [
-        "Аналогично error 9"
-      ]
+    "3": {
+      "description": "Не удаётся связаться с сервером обновлений",
+      "cause": "Проблемы сети или устаревшая версия iTunes",
+      "solution": "Обновите iTunes, проверьте файл hosts, отключите антивирус",
+      "hardware": false
     },
-    "error_4005": {
-      "code": 4005,
-      "meaning": "Device timeout during restore",
-      "hardware_causes": [
-        "NAND timing issue",
-        "Memory controller failure",
-        "Logic board damage"
-      ]
+    "9": {
+      "description": "Устройство отключилось во время восстановления",
+      "cause": "Проблема с USB, кабелем, батареей или NAND",
+      "solution": "Замените кабель, проверьте USB порт, проверьте батарею",
+      "hardware": true
     },
-    "error_4013": {
-      "code": 4013,
-      "meaning": "Device disconnected",
-      "hardware_causes": [
-        "NAND flash failure (80% случаев)",
-        "Tristar IC damage",
-        "Board-level short circuit",
-        "Water damage корозия"
-      ],
-      "repair_approach": [
-        "1. Попробовать restore без дисплея",
-        "2. Проверить NAND через программатор JCID",
-        "3. Reballing NAND",
-        "4. Замена NAND (потеря данных)",
-        "5. Проверить baseband PMIC"
-      ]
+    "14": {
+      "description": "Ошибка проверки прошивки",
+      "cause": "Повреждённый файл прошивки или проблема с NAND",
+      "solution": "Скачайте IPSW заново, проверьте NAND память",
+      "hardware": true
     },
-    "error_4014": {
-      "code": 4014,
-      "meaning": "Device timeout (similar to 4013)",
-      "hardware_causes": [
-        "NAND flash failure",
-        "Memory controller",
-        "Baseband issues"
-      ],
-      "notes": "Часто связано с sandwich board issues на iPhone X+"
+    "21": {
+      "description": "Устройство не входит в DFU режим",
+      "cause": "Проблема с батареей или кнопками",
+      "solution": "Зарядите батарею минимум до 20%, проверьте кнопки",
+      "hardware": true
     },
-    "error_2001_2011": {
-      "codes": "2001-2011",
-      "meaning": "USB communication errors",
-      "causes": [
-        "Tristar IC failure",
-        "USB port damage",
-        "Lightning connector damage"
-      ]
+    "27": {
+      "description": "Ошибка таймаута при обновлении baseband",
+      "cause": "Проблема с baseband чипом",
+      "solution": "Проверьте baseband IC, возможно требуется замена",
+      "hardware": true
     },
-    "error_40_53_56": {
-      "codes": "40, 53, 56",
-      "meaning": "Security / Hardware mismatch",
-      "causes": [
-        "Error 40: Заменен Audio IC без reballing (iPhone 7)",
-        "Error 53: Touch ID mismatch (replaced home button)",
-        "Error 56: NFC chip issue"
-      ]
+    "29": {
+      "description": "Аппаратная ошибка",
+      "cause": "Неисправность батареи или контроллера питания",
+      "solution": "Замените батарею, проверьте газовый счётчик",
+      "hardware": true
     },
-    "error_1": {
-      "code": 1,
-      "meaning": "Hardware incompatible with firmware",
-      "causes": [
-        "Wrong firmware for device",
-        "Modded firmware",
-        "Baseband mismatch"
-      ]
+    "40": {
+      "description": "Ошибка аппаратного обеспечения",
+      "cause": "Проблема с датчиками, камерой или другим модулем",
+      "solution": "Отключите периферию, проверьте шлейфы",
+      "hardware": true
     },
-    "error_(-1)": {
-      "code": -1,
-      "meaning": "Baseband update failure",
-      "causes": [
-        "Baseband CPU/PMIC failure",
-        "RF section damage",
-        "Antenna disconnected"
-      ],
-      "diagnosis": [
-        "Проверить наличие IMEI (*#06#)",
-        "Проверить Modem Firmware в настройках",
-        "Если пусто - baseband hardware failure"
-      ]
+    "53": {
+      "description": "Ошибка Touch ID",
+      "cause": "Touch ID модуль не соответствует плате или повреждён",
+      "solution": "Используйте оригинальный Touch ID или восстановите связь",
+      "hardware": true
+    },
+    "56": {
+      "description": "Ошибка NFC/Apple Pay",
+      "cause": "Проблема с NFC модулем или Secure Element",
+      "solution": "Проверьте NFC антенну и модуль",
+      "hardware": true
+    },
+    "1110": {
+      "description": "Не хватает места на устройстве",
+      "cause": "Недостаточно памяти для обновления",
+      "solution": "Освободите место или восстановите через компьютер",
+      "hardware": false
+    },
+    "2001": {
+      "description": "Проблема с драйвером USB",
+      "cause": "Конфликт драйверов или USB контроллера",
+      "solution": "Переустановите драйверы Apple Mobile Device",
+      "hardware": false
+    },
+    "2002": {
+      "description": "Устройство занято другим процессом",
+      "cause": "Антивирус или другая программа блокирует устройство",
+      "solution": "Закройте все программы, отключите антивирус",
+      "hardware": false
+    },
+    "2005": {
+      "description": "Ошибка USB подключения",
+      "cause": "Плохой кабель или USB порт",
+      "solution": "Используйте оригинальный кабель, попробуйте другой порт",
+      "hardware": false
+    },
+    "2006": {
+      "description": "Ошибка образа прошивки",
+      "cause": "Повреждённый IPSW файл",
+      "solution": "Скачайте IPSW заново с ipsw.me",
+      "hardware": false
+    },
+    "3194": {
+      "description": "Сервер не выдаёт SHSH",
+      "cause": "Apple не подписывает эту версию iOS",
+      "solution": "Обновитесь на подписанную версию iOS",
+      "hardware": false
+    },
+    "4005": {
+      "description": "Таймаут при восстановлении",
+      "cause": "Медленное USB или проблема с NAND",
+      "solution": "Попробуйте USB 2.0, проверьте NAND",
+      "hardware": true
+    },
+    "4013": {
+      "description": "Устройство отключилось во время обновления",
+      "cause": "Проблема с NAND, CPU или памятью",
+      "solution": "Прогрев CPU, реболл NAND, проверка питания",
+      "hardware": true
+    },
+    "4014": {
+      "description": "Критическая ошибка обновления",
+      "cause": "Повреждение NAND или проблема с CPU",
+      "solution": "Реболл/замена NAND, прогрев CPU",
+      "hardware": true
+    },
+    "(-1)": {
+      "description": "Неизвестная ошибка",
+      "cause": "Baseband или модем не отвечает",
+      "solution": "Проверьте baseband IC, возможно требуется реболл",
+      "hardware": true
+    },
+    "9006": {
+      "description": "Ошибка загрузки прошивки",
+      "cause": "Проблемы с интернет соединением",
+      "solution": "Проверьте интернет, отключите VPN",
+      "hardware": false
+    },
+    "17": {
+      "description": "Устройство в неправильном режиме",
+      "cause": "Устройство не в DFU/Recovery режиме",
+      "solution": "Введите устройство в DFU режим правильно",
+      "hardware": false
+    },
+    "23": {
+      "description": "Ошибка чтения IMEI/Serial",
+      "cause": "Проблема с baseband или NAND",
+      "solution": "Проверьте baseband, восстановите NVRAM",
+      "hardware": true
+    },
+    "50": {
+      "description": "Проблема с датой/временем",
+      "cause": "Неправильная дата на компьютере",
+      "solution": "Установите правильную дату и время",
+      "hardware": false
     }
   },
   "mac_diagnostics": {
-    "ADP000": "No issues found - все OK",
-    "CNW001-CNW006": "WiFi/Bluetooth hardware issue",
-    "CNB001-CNB004": "Bluetooth issue",
-    "NDC001-NDC006": "Camera issue",
-    "NDD001": "USB hardware issue",
-    "NNN001": "Serial number not found",
-    "PFM001-PFM007": "System Management Controller issue",
-    "PFR001": "System firmware issue",
-    "PPF001-PPF004": "Fan issue",
-    "PPM001-PPM015": "Memory issue",
-    "PPP001-PPP007": "Power adapter issue",
-    "PPR001": "CPU issue",
-    "PPT001-PPT007": "Battery issue",
-    "VDC001-VDC007": "Graphics/display issue",
-    "VFD001-VFD007": "Display issue",
-    "VFF001": "Audio hardware issue",
-    "SDC001": "SD Card reader issue"
+    "ADP000": {
+      "description": "Нет проблем",
+      "cause": "Диагностика не выявила ошибок",
+      "solution": "Устройство в норме"
+    },
+    "CNW001": {
+      "description": "Проблема с Wi-Fi модулем",
+      "cause": "Неисправность Wi-Fi/Bluetooth чипа",
+      "solution": "Замена Wi-Fi модуля"
+    },
+    "CNW004": {
+      "description": "Wi-Fi модуль не обнаружен",
+      "cause": "Модуль отключён или неисправен",
+      "solution": "Проверьте подключение модуля"
+    },
+    "CNB001": {
+      "description": "Проблема с Bluetooth",
+      "cause": "Неисправность Bluetooth части модуля",
+      "solution": "Замена Wi-Fi/BT модуля"
+    },
+    "NDC001": {
+      "description": "Камера не обнаружена",
+      "cause": "Проблема с FaceTime камерой",
+      "solution": "Проверьте шлейф камеры"
+    },
+    "NDD001": {
+      "description": "Проблема с дисплеем",
+      "cause": "Неисправность дисплея или шлейфа",
+      "solution": "Проверьте LVDS кабель"
+    },
+    "PFM001": {
+      "description": "Проблема с вентилятором",
+      "cause": "Вентилятор не работает или заблокирован",
+      "solution": "Проверьте вентилятор, очистите от пыли"
+    },
+    "PFM006": {
+      "description": "Проблема с охлаждением",
+      "cause": "Перегрев системы",
+      "solution": "Замените термопасту, проверьте вентилятор"
+    },
+    "PPF001": {
+      "description": "Проблема с питанием",
+      "cause": "Неисправность блока питания",
+      "solution": "Проверьте адаптер питания"
+    },
+    "PPM001": {
+      "description": "Проблема с памятью",
+      "cause": "Неисправность RAM",
+      "solution": "Переустановите или замените RAM"
+    },
+    "PPP001": {
+      "description": "Проблема с процессором",
+      "cause": "Неисправность CPU",
+      "solution": "Замена логической платы"
+    },
+    "PPT001": {
+      "description": "Проблема с батареей",
+      "cause": "Батарея требует обслуживания",
+      "solution": "Замените батарею"
+    },
+    "PPT003": {
+      "description": "Батарея не заряжается",
+      "cause": "Проблема с зарядкой или батареей",
+      "solution": "Проверьте адаптер и порт зарядки"
+    },
+    "VDC001": {
+      "description": "Проблема с видео",
+      "cause": "Неисправность GPU или дисплея",
+      "solution": "Проверьте GPU, замените дисплей"
+    },
+    "VDC006": {
+      "description": "Артефакты на экране",
+      "cause": "Проблема с GPU или VRAM",
+      "solution": "Реболл GPU или замена платы"
+    },
+    "VFD001": {
+      "description": "Проблема с FaceTime HD",
+      "cause": "Камера неисправна",
+      "solution": "Замените камеру"
+    },
+    "SDC001": {
+      "description": "Проблема с SSD/HDD",
+      "cause": "Накопитель неисправен или не обнаружен",
+      "solution": "Проверьте накопитель, замените при необходимости"
+    }
   },
-  "updated": "2026-01-19T05:31:23.001031"
+  "updated": "2026-01-19"
 }
