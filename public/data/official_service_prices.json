@@ -1,1013 +1,1622 @@
 {
-  "title": "Apple Official Service Prices",
-  "source": "Apple Self Service Repair",
-  "date": "2026-01-19",
-  "note": "Prices updated with 2025-2026 models. iPhone 17 series prices based on official Self Service Repair program.",
-  "currency": "USD",
-  "prices": {
-    "iPhone 17 Pro Max": {
-      "battery": {
-        "price_usd": 109.0,
-        "article": "661-56049"
-      },
-      "display": {
-        "price_usd": 459.0,
-        "article": "661-56050"
-      },
-      "rear_camera": {
-        "price_usd": 269.0,
-        "article": "661-56052"
-      },
-      "front_camera": {
-        "price_usd": 219.0,
-        "article": "661-56051"
-      },
-      "speaker": {
-        "price_usd": 79.0,
-        "article": "923-13581"
-      },
-      "taptic_engine": {
-        "price_usd": 79.0,
-        "article": "923-13583"
-      }
+  "updated_date": "2026-01-19",
+  "currency": "EUR",
+  "conversion_rate": 1.1,
+  "note": "Prices converted from USD to EUR (1 USD = 0.91 EUR). Updated with 2025-2026 models.",
+  "models": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56049",
+          "price_eur": 99.09,
+          "price_usd": 109.0
+        },
+        {
+          "part": "display",
+          "article": "661-56050",
+          "price_eur": 417.27,
+          "price_usd": 459.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56052",
+          "price_eur": 244.55,
+          "price_usd": 269.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56051",
+          "price_eur": 199.09,
+          "price_usd": 219.0
+        },
+        {
+          "part": "speaker",
+          "article": "923-13581",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "923-13583",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        }
+      ]
     },
-    "iPhone 17 Pro": {
-      "battery": {
-        "price_usd": 109.0,
-        "article": "661-56121"
-      },
-      "display": {
-        "price_usd": 409.0,
-        "article": "661-56125"
-      },
-      "rear_camera": {
-        "price_usd": 269.0,
-        "article": "661-56127"
-      },
-      "front_camera": {
-        "price_usd": 219.0,
-        "article": "661-56126"
-      },
-      "speaker": {
-        "price_usd": 79.0,
-        "article": "923-13631"
-      },
-      "taptic_engine": {
-        "price_usd": 79.0,
-        "article": "923-13625"
-      }
+    {
+      "device": "iPhone 17 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56121",
+          "price_eur": 99.09,
+          "price_usd": 109.0
+        },
+        {
+          "part": "display",
+          "article": "661-56125",
+          "price_eur": 371.82,
+          "price_usd": 409.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56127",
+          "price_eur": 244.55,
+          "price_usd": 269.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56126",
+          "price_eur": 199.09,
+          "price_usd": 219.0
+        },
+        {
+          "part": "speaker",
+          "article": "923-13631",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "923-13625",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        }
+      ]
     },
-    "iPhone 16 Pro Max": {
-      "battery": {
-        "price_usd": 99.0,
-        "article": "661-56049"
-      },
-      "display": {
-        "price_usd": 399.0,
-        "article": "661-56050"
-      },
-      "rear_camera": {
-        "price_usd": 249.0,
-        "article": "661-56051"
-      },
-      "front_camera": {
-        "price_usd": 169.0,
-        "article": "661-56052"
-      },
-      "speaker": {
-        "price_usd": 59.0,
-        "article": "661-56053"
-      },
-      "taptic_engine": {
-        "price_usd": 49.0,
-        "article": "661-56054"
-      },
-      "logic_board": {
-        "price_usd": 599.0,
-        "article": "661-56055"
-      }
+    {
+      "device": "iPhone 16 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56049",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        },
+        {
+          "part": "display",
+          "article": "661-56050",
+          "price_eur": 362.73,
+          "price_usd": 399.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56051",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56052",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-56053",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-56054",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "logic_board",
+          "article": "661-56055",
+          "price_eur": 544.55,
+          "price_usd": 599.0
+        }
+      ]
     },
-    "iPhone 16 Pro": {
-      "battery": {
-        "price_usd": 99.0,
-        "article": "661-56121"
-      },
-      "display": {
-        "price_usd": 379.0,
-        "article": "661-56122"
-      },
-      "rear_camera": {
-        "price_usd": 249.0,
-        "article": "661-56123"
-      },
-      "front_camera": {
-        "price_usd": 169.0,
-        "article": "661-56124"
-      },
-      "speaker": {
-        "price_usd": 59.0,
-        "article": "661-56125"
-      },
-      "taptic_engine": {
-        "price_usd": 49.0,
-        "article": "661-56126"
-      }
+    {
+      "device": "iPhone 16 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56121",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        },
+        {
+          "part": "display",
+          "article": "661-56122",
+          "price_eur": 344.55,
+          "price_usd": 379.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56123",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56124",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-56125",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-56126",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        }
+      ]
     },
-    "iPhone 16 Plus": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-56064"
-      },
-      "display": {
-        "price_usd": 329.0,
-        "article": "661-56065"
-      },
-      "rear_camera": {
-        "price_usd": 189.0,
-        "article": "661-56066"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-56067"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-56068"
-      }
+    {
+      "device": "iPhone 16 Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56064",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-56065",
+          "price_eur": 299.09,
+          "price_usd": 329.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56066",
+          "price_eur": 171.82,
+          "price_usd": 189.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56067",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-56068",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        }
+      ]
     },
-    "iPhone 16": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-56070"
-      },
-      "display": {
-        "price_usd": 299.0,
-        "article": "661-56071"
-      },
-      "rear_camera": {
-        "price_usd": 189.0,
-        "article": "661-56072"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-56073"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-56074"
-      }
+    {
+      "device": "iPhone 16",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56070",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-56071",
+          "price_eur": 271.82,
+          "price_usd": 299.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56072",
+          "price_eur": 171.82,
+          "price_usd": 189.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56073",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-56074",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        }
+      ]
     },
-    "iPhone 15 Pro Max": {
-      "battery": {
-        "price_usd": 99.0,
-        "article": "661-53781"
-      },
-      "display": {
-        "price_usd": 379.0,
-        "article": "661-53782"
-      },
-      "rear_camera": {
-        "price_usd": 249.0,
-        "article": "661-53783"
-      },
-      "front_camera": {
-        "price_usd": 169.0,
-        "article": "661-53784"
-      },
-      "speaker": {
-        "price_usd": 59.0,
-        "article": "661-53785"
-      },
-      "taptic_engine": {
-        "price_usd": 49.0,
-        "article": "661-53786"
-      }
+    {
+      "device": "iPhone 15 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-53781",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        },
+        {
+          "part": "display",
+          "article": "661-53782",
+          "price_eur": 344.55,
+          "price_usd": 379.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-53783",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-53784",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-53785",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-53786",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        }
+      ]
     },
-    "iPhone 15 Pro": {
-      "battery": {
-        "price_usd": 99.0,
-        "article": "661-53787"
-      },
-      "display": {
-        "price_usd": 359.0,
-        "article": "661-53788"
-      },
-      "rear_camera": {
-        "price_usd": 249.0,
-        "article": "661-53789"
-      },
-      "front_camera": {
-        "price_usd": 169.0,
-        "article": "661-53790"
-      },
-      "speaker": {
-        "price_usd": 59.0,
-        "article": "661-53791"
-      }
+    {
+      "device": "iPhone 15 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-53787",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        },
+        {
+          "part": "display",
+          "article": "661-53788",
+          "price_eur": 326.36,
+          "price_usd": 359.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-53789",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-53790",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-53791",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        }
+      ]
     },
-    "iPhone 15 Plus": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-53792"
-      },
-      "display": {
-        "price_usd": 299.0,
-        "article": "661-53793"
-      },
-      "rear_camera": {
-        "price_usd": 179.0,
-        "article": "661-53794"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-53795"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-53796"
-      }
+    {
+      "device": "iPhone 15 Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-53792",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-53793",
+          "price_eur": 271.82,
+          "price_usd": 299.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-53794",
+          "price_eur": 162.73,
+          "price_usd": 179.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-53795",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-53796",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        }
+      ]
     },
-    "iPhone 15": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-53797"
-      },
-      "display": {
-        "price_usd": 279.0,
-        "article": "661-53798"
-      },
-      "rear_camera": {
-        "price_usd": 179.0,
-        "article": "661-53799"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-53800"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-53801"
-      }
+    {
+      "device": "iPhone 15",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-53797",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-53798",
+          "price_eur": 253.64,
+          "price_usd": 279.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-53799",
+          "price_eur": 162.73,
+          "price_usd": 179.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-53800",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-53801",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        }
+      ]
     },
-    "iPhone 14 Pro Max": {
-      "battery": {
-        "price_usd": 89.0,
-        "article": "661-31048"
-      },
-      "display": {
-        "price_usd": 369.0,
-        "article": "661-31049"
-      },
-      "rear_camera": {
-        "price_usd": 239.0,
-        "article": "661-31050"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-31051"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-31052"
-      },
-      "taptic_engine": {
-        "price_usd": 45.0,
-        "article": "661-31053"
-      }
+    {
+      "device": "iPhone 14 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-31048",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        },
+        {
+          "part": "display",
+          "article": "661-31049",
+          "price_eur": 335.45,
+          "price_usd": 369.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-31050",
+          "price_eur": 217.27,
+          "price_usd": 239.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-31051",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-31052",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-31053",
+          "price_eur": 40.91,
+          "price_usd": 45.0
+        }
+      ]
     },
-    "iPhone 14 Pro": {
-      "battery": {
-        "price_usd": 89.0,
-        "article": "661-31054"
-      },
-      "display": {
-        "price_usd": 349.0,
-        "article": "661-31055"
-      },
-      "rear_camera": {
-        "price_usd": 239.0,
-        "article": "661-31056"
-      },
-      "front_camera": {
-        "price_usd": 159.0,
-        "article": "661-31057"
-      },
-      "speaker": {
-        "price_usd": 55.0,
-        "article": "661-31058"
-      }
+    {
+      "device": "iPhone 14 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-31054",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        },
+        {
+          "part": "display",
+          "article": "661-31055",
+          "price_eur": 317.27,
+          "price_usd": 349.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-31056",
+          "price_eur": 217.27,
+          "price_usd": 239.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-31057",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-31058",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        }
+      ]
     },
-    "iPhone 14 Plus": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-31059"
-      },
-      "display": {
-        "price_usd": 299.0,
-        "article": "661-31060"
-      },
-      "rear_camera": {
-        "price_usd": 169.0,
-        "article": "661-31061"
-      },
-      "front_camera": {
-        "price_usd": 149.0,
-        "article": "661-31062"
-      },
-      "speaker": {
-        "price_usd": 50.0,
-        "article": "661-31063"
-      }
+    {
+      "device": "iPhone 14 Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-31059",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-31060",
+          "price_eur": 271.82,
+          "price_usd": 299.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-31061",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-31062",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-31063",
+          "price_eur": 45.45,
+          "price_usd": 50.0
+        }
+      ]
     },
-    "iPhone 14": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-31064"
-      },
-      "display": {
-        "price_usd": 279.0,
-        "article": "661-31065"
-      },
-      "rear_camera": {
-        "price_usd": 169.0,
-        "article": "661-31066"
-      },
-      "front_camera": {
-        "price_usd": 149.0,
-        "article": "661-31067"
-      },
-      "speaker": {
-        "price_usd": 50.0,
-        "article": "661-31068"
-      }
+    {
+      "device": "iPhone 14",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-31064",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-31065",
+          "price_eur": 253.64,
+          "price_usd": 279.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-31066",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-31067",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-31068",
+          "price_eur": 45.45,
+          "price_usd": 50.0
+        }
+      ]
     },
-    "iPhone 13 Pro Max": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-21565"
-      },
-      "display": {
-        "price_usd": 329.0,
-        "article": "661-21566"
-      },
-      "rear_camera": {
-        "price_usd": 219.0,
-        "article": "661-21567"
-      },
-      "front_camera": {
-        "price_usd": 139.0,
-        "article": "661-21568"
-      },
-      "speaker": {
-        "price_usd": 45.0,
-        "article": "661-21569"
-      }
+    {
+      "device": "iPhone 13 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-21565",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-21566",
+          "price_eur": 299.09,
+          "price_usd": 329.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-21567",
+          "price_eur": 199.09,
+          "price_usd": 219.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-21568",
+          "price_eur": 126.36,
+          "price_usd": 139.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-21569",
+          "price_eur": 40.91,
+          "price_usd": 45.0
+        }
+      ]
     },
-    "iPhone 13 Pro": {
-      "battery": {
-        "price_usd": 79.0,
-        "article": "661-21570"
-      },
-      "display": {
-        "price_usd": 309.0,
-        "article": "661-21571"
-      },
-      "rear_camera": {
-        "price_usd": 219.0,
-        "article": "661-21572"
-      },
-      "front_camera": {
-        "price_usd": 139.0,
-        "article": "661-21573"
-      },
-      "speaker": {
-        "price_usd": 45.0,
-        "article": "661-21574"
-      }
+    {
+      "device": "iPhone 13 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-21570",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "display",
+          "article": "661-21571",
+          "price_eur": 280.91,
+          "price_usd": 309.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-21572",
+          "price_eur": 199.09,
+          "price_usd": 219.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-21573",
+          "price_eur": 126.36,
+          "price_usd": 139.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-21574",
+          "price_eur": 40.91,
+          "price_usd": 45.0
+        }
+      ]
     },
-    "iPhone 13": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-21575"
-      },
-      "display": {
-        "price_usd": 269.0,
-        "article": "661-21576"
-      },
-      "rear_camera": {
-        "price_usd": 159.0,
-        "article": "661-21577"
-      },
-      "front_camera": {
-        "price_usd": 129.0,
-        "article": "661-21578"
-      },
-      "speaker": {
-        "price_usd": 40.0,
-        "article": "661-21579"
-      }
+    {
+      "device": "iPhone 13",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-21575",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-21576",
+          "price_eur": 244.55,
+          "price_usd": 269.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-21577",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-21578",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-21579",
+          "price_eur": 36.36,
+          "price_usd": 40.0
+        }
+      ]
     },
-    "iPhone 13 mini": {
-      "battery": {
-        "price_usd": 65.0,
-        "article": "661-21580"
-      },
-      "display": {
-        "price_usd": 249.0,
-        "article": "661-21581"
-      },
-      "rear_camera": {
-        "price_usd": 159.0,
-        "article": "661-21582"
-      },
-      "front_camera": {
-        "price_usd": 129.0,
-        "article": "661-21583"
-      },
-      "speaker": {
-        "price_usd": 40.0,
-        "article": "661-21584"
-      }
+    {
+      "device": "iPhone 13 mini",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-21580",
+          "price_eur": 59.09,
+          "price_usd": 65.0
+        },
+        {
+          "part": "display",
+          "article": "661-21581",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-21582",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-21583",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-21584",
+          "price_eur": 36.36,
+          "price_usd": 40.0
+        }
+      ]
     },
-    "iPhone 12 Pro Max": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-18254"
-      },
-      "display": {
-        "price_usd": 299.0,
-        "article": "661-18255"
-      },
-      "rear_camera": {
-        "price_usd": 199.0,
-        "article": "661-18256"
-      },
-      "front_camera": {
-        "price_usd": 119.0,
-        "article": "661-18257"
-      },
-      "speaker": {
-        "price_usd": 40.0,
-        "article": "661-18258"
-      }
+    {
+      "device": "iPhone 12 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-18254",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-18255",
+          "price_eur": 271.82,
+          "price_usd": 299.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-18256",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-18257",
+          "price_eur": 108.18,
+          "price_usd": 119.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-18258",
+          "price_eur": 36.36,
+          "price_usd": 40.0
+        }
+      ]
     },
-    "iPhone 12 Pro": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-18259"
-      },
-      "display": {
-        "price_usd": 279.0,
-        "article": "661-18260"
-      },
-      "rear_camera": {
-        "price_usd": 199.0,
-        "article": "661-18261"
-      },
-      "front_camera": {
-        "price_usd": 119.0,
-        "article": "661-18262"
-      },
-      "speaker": {
-        "price_usd": 40.0,
-        "article": "661-18263"
-      }
+    {
+      "device": "iPhone 12 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-18259",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-18260",
+          "price_eur": 253.64,
+          "price_usd": 279.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-18261",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-18262",
+          "price_eur": 108.18,
+          "price_usd": 119.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-18263",
+          "price_eur": 36.36,
+          "price_usd": 40.0
+        }
+      ]
     },
-    "iPhone 12": {
-      "battery": {
-        "price_usd": 65.0,
-        "article": "661-18264"
-      },
-      "display": {
-        "price_usd": 259.0,
-        "article": "661-18265"
-      },
-      "rear_camera": {
-        "price_usd": 149.0,
-        "article": "661-18266"
-      },
-      "front_camera": {
-        "price_usd": 109.0,
-        "article": "661-18267"
-      },
-      "speaker": {
-        "price_usd": 35.0,
-        "article": "661-18268"
-      }
+    {
+      "device": "iPhone 12",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-18264",
+          "price_eur": 59.09,
+          "price_usd": 65.0
+        },
+        {
+          "part": "display",
+          "article": "661-18265",
+          "price_eur": 235.45,
+          "price_usd": 259.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-18266",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-18267",
+          "price_eur": 99.09,
+          "price_usd": 109.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-18268",
+          "price_eur": 31.82,
+          "price_usd": 35.0
+        }
+      ]
     },
-    "iPhone 12 mini": {
-      "battery": {
-        "price_usd": 59.0,
-        "article": "661-18269"
-      },
-      "display": {
-        "price_usd": 229.0,
-        "article": "661-18270"
-      },
-      "rear_camera": {
-        "price_usd": 149.0,
-        "article": "661-18271"
-      },
-      "front_camera": {
-        "price_usd": 109.0,
-        "article": "661-18272"
-      },
-      "speaker": {
-        "price_usd": 35.0,
-        "article": "661-18273"
-      }
+    {
+      "device": "iPhone 12 mini",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-18269",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        },
+        {
+          "part": "display",
+          "article": "661-18270",
+          "price_eur": 208.18,
+          "price_usd": 229.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-18271",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-18272",
+          "price_eur": 99.09,
+          "price_usd": 109.0
+        },
+        {
+          "part": "speaker",
+          "article": "661-18273",
+          "price_eur": 31.82,
+          "price_usd": 35.0
+        }
+      ]
     },
-    "iPhone 11 Pro Max": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-14633"
-      },
-      "display": {
-        "price_usd": 279.0,
-        "article": "661-14634"
-      },
-      "rear_camera": {
-        "price_usd": 189.0,
-        "article": "661-14635"
-      },
-      "front_camera": {
-        "price_usd": 99.0,
-        "article": "661-14636"
-      }
+    {
+      "device": "iPhone 11 Pro Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-14633",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-14634",
+          "price_eur": 253.64,
+          "price_usd": 279.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-14635",
+          "price_eur": 171.82,
+          "price_usd": 189.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-14636",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        }
+      ]
     },
-    "iPhone 11 Pro": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-14637"
-      },
-      "display": {
-        "price_usd": 259.0,
-        "article": "661-14638"
-      },
-      "rear_camera": {
-        "price_usd": 189.0,
-        "article": "661-14639"
-      },
-      "front_camera": {
-        "price_usd": 99.0,
-        "article": "661-14640"
-      }
+    {
+      "device": "iPhone 11 Pro",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-14637",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-14638",
+          "price_eur": 235.45,
+          "price_usd": 259.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-14639",
+          "price_eur": 171.82,
+          "price_usd": 189.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-14640",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        }
+      ]
     },
-    "iPhone 11": {
-      "battery": {
-        "price_usd": 55.0,
-        "article": "661-14641"
-      },
-      "display": {
-        "price_usd": 199.0,
-        "article": "661-14642"
-      },
-      "rear_camera": {
-        "price_usd": 129.0,
-        "article": "661-14643"
-      },
-      "front_camera": {
-        "price_usd": 89.0,
-        "article": "661-14644"
-      }
+    {
+      "device": "iPhone 11",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-14641",
+          "price_eur": 50.0,
+          "price_usd": 55.0
+        },
+        {
+          "part": "display",
+          "article": "661-14642",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-14643",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-14644",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        }
+      ]
     },
-    "iPhone SE 3rd Gen": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-24581"
-      },
-      "display": {
-        "price_usd": 149.0,
-        "article": "661-24582"
-      },
-      "rear_camera": {
-        "price_usd": 89.0,
-        "article": "661-24583"
-      },
-      "front_camera": {
-        "price_usd": 59.0,
-        "article": "661-24584"
-      }
+    {
+      "device": "iPhone SE 3rd Gen",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-24581",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-24582",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-24583",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-24584",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        }
+      ]
     },
-    "iPhone SE 2nd Gen": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-16367"
-      },
-      "display": {
-        "price_usd": 149.0,
-        "article": "661-16368"
-      },
-      "rear_camera": {
-        "price_usd": 89.0,
-        "article": "661-16369"
-      },
-      "front_camera": {
-        "price_usd": 59.0,
-        "article": "661-16370"
-      }
+    {
+      "device": "iPhone SE 2nd Gen",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-16367",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-16368",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-16369",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-16370",
+          "price_eur": 53.64,
+          "price_usd": 59.0
+        }
+      ]
     },
-    "iPhone XS Max": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-11076"
-      },
-      "display": {
-        "price_usd": 329.0,
-        "article": "661-11077"
-      },
-      "rear_camera": {
-        "price_usd": 179.0,
-        "article": "661-11078"
-      },
-      "front_camera": {
-        "price_usd": 99.0,
-        "article": "661-11079"
-      }
+    {
+      "device": "iPhone XS Max",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-11076",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-11077",
+          "price_eur": 299.09,
+          "price_usd": 329.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-11078",
+          "price_eur": 162.73,
+          "price_usd": 179.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-11079",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        }
+      ]
     },
-    "iPhone XS": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-11080"
-      },
-      "display": {
-        "price_usd": 299.0,
-        "article": "661-11081"
-      },
-      "rear_camera": {
-        "price_usd": 179.0,
-        "article": "661-11082"
-      },
-      "front_camera": {
-        "price_usd": 99.0,
-        "article": "661-11083"
-      }
+    {
+      "device": "iPhone XS",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-11080",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-11081",
+          "price_eur": 271.82,
+          "price_usd": 299.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-11082",
+          "price_eur": 162.73,
+          "price_usd": 179.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-11083",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        }
+      ]
     },
-    "iPhone XR": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-11084"
-      },
-      "display": {
-        "price_usd": 199.0,
-        "article": "661-11085"
-      },
-      "rear_camera": {
-        "price_usd": 119.0,
-        "article": "661-11086"
-      },
-      "front_camera": {
-        "price_usd": 89.0,
-        "article": "661-11087"
-      }
+    {
+      "device": "iPhone XR",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-11084",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-11085",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-11086",
+          "price_eur": 108.18,
+          "price_usd": 119.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-11087",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        }
+      ]
     },
-    "iPhone X": {
-      "battery": {
-        "price_usd": 69.0,
-        "article": "661-09565"
-      },
-      "display": {
-        "price_usd": 279.0,
-        "article": "661-09566"
-      },
-      "rear_camera": {
-        "price_usd": 169.0,
-        "article": "661-09567"
-      },
-      "front_camera": {
-        "price_usd": 89.0,
-        "article": "661-09568"
-      }
+    {
+      "device": "iPhone X",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-09565",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        },
+        {
+          "part": "display",
+          "article": "661-09566",
+          "price_eur": 253.64,
+          "price_usd": 279.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-09567",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-09568",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        }
+      ]
     },
-    "iPhone 8 Plus": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-08926"
-      },
-      "display": {
-        "price_usd": 169.0,
-        "article": "661-08927"
-      },
-      "rear_camera": {
-        "price_usd": 99.0,
-        "article": "661-08928"
-      },
-      "front_camera": {
-        "price_usd": 49.0,
-        "article": "661-08929"
-      }
+    {
+      "device": "iPhone 8 Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-08926",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-08927",
+          "price_eur": 153.64,
+          "price_usd": 169.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-08928",
+          "price_eur": 90.0,
+          "price_usd": 99.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-08929",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        }
+      ]
     },
-    "iPhone 8": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-08930"
-      },
-      "display": {
-        "price_usd": 149.0,
-        "article": "661-08931"
-      },
-      "rear_camera": {
-        "price_usd": 79.0,
-        "article": "661-08932"
-      },
-      "front_camera": {
-        "price_usd": 49.0,
-        "article": "661-08933"
-      }
+    {
+      "device": "iPhone 8",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-08930",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-08931",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-08932",
+          "price_eur": 71.82,
+          "price_usd": 79.0
+        },
+        {
+          "part": "front_camera",
+          "article": "661-08933",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        }
+      ]
     },
-    "iPhone 7 Plus": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-04749"
-      },
-      "display": {
-        "price_usd": 149.0,
-        "article": "661-04750"
-      },
-      "rear_camera": {
-        "price_usd": 89.0,
-        "article": "661-04751"
-      }
+    {
+      "device": "iPhone 7 Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-04749",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-04750",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-04751",
+          "price_eur": 80.91,
+          "price_usd": 89.0
+        }
+      ]
     },
-    "iPhone 7": {
-      "battery": {
-        "price_usd": 49.0,
-        "article": "661-04752"
-      },
-      "display": {
-        "price_usd": 129.0,
-        "article": "661-04753"
-      },
-      "rear_camera": {
-        "price_usd": 69.0,
-        "article": "661-04754"
-      }
+    {
+      "device": "iPhone 7",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-04752",
+          "price_eur": 44.55,
+          "price_usd": 49.0
+        },
+        {
+          "part": "display",
+          "article": "661-04753",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-04754",
+          "price_eur": 62.73,
+          "price_usd": 69.0
+        }
+      ]
     },
-    "iPhone 6s Plus": {
-      "battery": {
-        "price_usd": 39.0,
-        "article": "661-03275"
-      },
-      "display": {
-        "price_usd": 129.0,
-        "article": "661-03276"
-      }
+    {
+      "device": "iPhone 6s Plus",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-03275",
+          "price_eur": 35.45,
+          "price_usd": 39.0
+        },
+        {
+          "part": "display",
+          "article": "661-03276",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        }
+      ]
     },
-    "iPhone 6s": {
-      "battery": {
-        "price_usd": 39.0,
-        "article": "661-03277"
-      },
-      "display": {
-        "price_usd": 109.0,
-        "article": "661-03278"
-      }
+    {
+      "device": "iPhone 6s",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-03277",
+          "price_eur": 35.45,
+          "price_usd": 39.0
+        },
+        {
+          "part": "display",
+          "article": "661-03278",
+          "price_eur": 99.09,
+          "price_usd": 109.0
+        }
+      ]
     },
-    "MacBook Air 13\" M3 2024": {
-      "battery": {
-        "price_usd": 129.0,
-        "article": "661-60845"
-      },
-      "display": {
-        "price_usd": 549.0,
-        "article": "661-60846"
-      },
-      "keyboard": {
-        "price_usd": 399.0,
-        "article": "661-60847"
-      }
+    {
+      "device": "MacBook Air 13\" M3 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-60845",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "display",
+          "article": "661-60846",
+          "price_eur": 499.09,
+          "price_usd": 549.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-60847",
+          "price_eur": 362.73,
+          "price_usd": 399.0
+        }
+      ]
     },
-    "MacBook Air 15\" M3 2024": {
-      "battery": {
-        "price_usd": 149.0,
-        "article": "661-60848"
-      },
-      "display": {
-        "price_usd": 599.0,
-        "article": "661-60849"
-      },
-      "keyboard": {
-        "price_usd": 449.0,
-        "article": "661-60850"
-      }
+    {
+      "device": "MacBook Air 15\" M3 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-60848",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "display",
+          "article": "661-60849",
+          "price_eur": 544.55,
+          "price_usd": 599.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-60850",
+          "price_eur": 408.18,
+          "price_usd": 449.0
+        }
+      ]
     },
-    "MacBook Air 13\" M2 2022": {
-      "battery": {
-        "price_usd": 129.0,
-        "article": "661-28601"
-      },
-      "display": {
-        "price_usd": 549.0,
-        "article": "661-28602"
-      },
-      "keyboard": {
-        "price_usd": 399.0,
-        "article": "661-28603"
-      }
+    {
+      "device": "MacBook Air 13\" M2 2022",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-28601",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "display",
+          "article": "661-28602",
+          "price_eur": 499.09,
+          "price_usd": 549.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-28603",
+          "price_eur": 362.73,
+          "price_usd": 399.0
+        }
+      ]
     },
-    "MacBook Air M1 2020": {
-      "battery": {
-        "price_usd": 129.0,
-        "article": "661-17577"
-      },
-      "display": {
-        "price_usd": 449.0,
-        "article": "661-17578"
-      },
-      "keyboard": {
-        "price_usd": 349.0,
-        "article": "661-17579"
-      }
+    {
+      "device": "MacBook Air M1 2020",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-17577",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "display",
+          "article": "661-17578",
+          "price_eur": 408.18,
+          "price_usd": 449.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-17579",
+          "price_eur": 317.27,
+          "price_usd": 349.0
+        }
+      ]
     },
-    "MacBook Pro 14\" M3 2023": {
-      "battery": {
-        "price_usd": 199.0,
-        "article": "661-56890"
-      },
-      "display": {
-        "price_usd": 749.0,
-        "article": "661-56891"
-      },
-      "keyboard": {
-        "price_usd": 549.0,
-        "article": "661-56892"
-      }
+    {
+      "device": "MacBook Pro 14\" M3 2023",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56890",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "display",
+          "article": "661-56891",
+          "price_eur": 680.91,
+          "price_usd": 749.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-56892",
+          "price_eur": 499.09,
+          "price_usd": 549.0
+        }
+      ]
     },
-    "MacBook Pro 16\" M3 2023": {
-      "battery": {
-        "price_usd": 249.0,
-        "article": "661-56893"
-      },
-      "display": {
-        "price_usd": 849.0,
-        "article": "661-56894"
-      },
-      "keyboard": {
-        "price_usd": 599.0,
-        "article": "661-56895"
-      }
+    {
+      "device": "MacBook Pro 16\" M3 2023",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56893",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "display",
+          "article": "661-56894",
+          "price_eur": 771.82,
+          "price_usd": 849.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-56895",
+          "price_eur": 544.55,
+          "price_usd": 599.0
+        }
+      ]
     },
-    "MacBook Pro 14\" M1 2021": {
-      "battery": {
-        "price_usd": 199.0,
-        "article": "661-20771"
-      },
-      "display": {
-        "price_usd": 699.0,
-        "article": "661-20772"
-      },
-      "keyboard": {
-        "price_usd": 499.0,
-        "article": "661-20773"
-      }
+    {
+      "device": "MacBook Pro 14\" M1 2021",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-20771",
+          "price_eur": 180.91,
+          "price_usd": 199.0
+        },
+        {
+          "part": "display",
+          "article": "661-20772",
+          "price_eur": 635.45,
+          "price_usd": 699.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-20773",
+          "price_eur": 453.64,
+          "price_usd": 499.0
+        }
+      ]
     },
-    "MacBook Pro 16\" M1 2021": {
-      "battery": {
-        "price_usd": 249.0,
-        "article": "661-20774"
-      },
-      "display": {
-        "price_usd": 799.0,
-        "article": "661-20775"
-      },
-      "keyboard": {
-        "price_usd": 549.0,
-        "article": "661-20776"
-      }
+    {
+      "device": "MacBook Pro 16\" M1 2021",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-20774",
+          "price_eur": 226.36,
+          "price_usd": 249.0
+        },
+        {
+          "part": "display",
+          "article": "661-20775",
+          "price_eur": 726.36,
+          "price_usd": 799.0
+        },
+        {
+          "part": "keyboard",
+          "article": "661-20776",
+          "price_eur": 499.09,
+          "price_usd": 549.0
+        }
+      ]
     },
-    "iPad Pro 13\" M4 2024": {
-      "battery": {
-        "price_usd": 179.0,
-        "article": "661-61001"
-      },
-      "display": {
-        "price_usd": 599.0,
-        "article": "661-61002"
-      }
+    {
+      "device": "iPad Pro 13\" M4 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-61001",
+          "price_eur": 162.73,
+          "price_usd": 179.0
+        },
+        {
+          "part": "display",
+          "article": "661-61002",
+          "price_eur": 544.55,
+          "price_usd": 599.0
+        }
+      ]
     },
-    "iPad Pro 11\" M4 2024": {
-      "battery": {
-        "price_usd": 159.0,
-        "article": "661-61003"
-      },
-      "display": {
-        "price_usd": 499.0,
-        "article": "661-61004"
-      }
+    {
+      "device": "iPad Pro 11\" M4 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-61003",
+          "price_eur": 144.55,
+          "price_usd": 159.0
+        },
+        {
+          "part": "display",
+          "article": "661-61004",
+          "price_eur": 453.64,
+          "price_usd": 499.0
+        }
+      ]
     },
-    "iPad Air 13\" M2 2024": {
-      "battery": {
-        "price_usd": 149.0,
-        "article": "661-61005"
-      },
-      "display": {
-        "price_usd": 449.0,
-        "article": "661-61006"
-      }
+    {
+      "device": "iPad Air 13\" M2 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-61005",
+          "price_eur": 135.45,
+          "price_usd": 149.0
+        },
+        {
+          "part": "display",
+          "article": "661-61006",
+          "price_eur": 408.18,
+          "price_usd": 449.0
+        }
+      ]
     },
-    "iPad Air 11\" M2 2024": {
-      "battery": {
-        "price_usd": 129.0,
-        "article": "661-61007"
-      },
-      "display": {
-        "price_usd": 399.0,
-        "article": "661-61008"
-      }
+    {
+      "device": "iPad Air 11\" M2 2024",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-61007",
+          "price_eur": 117.27,
+          "price_usd": 129.0
+        },
+        {
+          "part": "display",
+          "article": "661-61008",
+          "price_eur": 362.73,
+          "price_usd": 399.0
+        }
+      ]
     },
-    "iPhone 17": {
-      "battery": {
-        "price_usd": 99,
-        "article": "661-56064"
-      },
-      "display": {
-        "price_usd": 359,
-        "article": "661-56065"
-      },
-      "rear_camera": {
-        "price_usd": 219,
-        "article": "661-56067"
-      },
-      "front_camera": {
-        "price_usd": 169,
-        "article": "661-56066"
-      },
-      "speaker": {
-        "price_usd": 69,
-        "article": "661-56068"
-      },
-      "taptic_engine": {
-        "price_usd": 69,
-        "article": "661-56069"
-      }
+    {
+      "device": "iPhone 17",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56064",
+          "price_eur": 90.0,
+          "price_usd": 99
+        },
+        {
+          "part": "display",
+          "article": "661-56065",
+          "price_eur": 326.36,
+          "price_usd": 359
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56067",
+          "price_eur": 199.09,
+          "price_usd": 219
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56066",
+          "price_eur": 153.64,
+          "price_usd": 169
+        },
+        {
+          "part": "speaker",
+          "article": "661-56068",
+          "price_eur": 62.73,
+          "price_usd": 69
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-56069",
+          "price_eur": 62.73,
+          "price_usd": 69
+        }
+      ]
     },
-    "iPhone Air": {
-      "battery": {
-        "price_usd": 99,
-        "article": "661-56080"
-      },
-      "display": {
-        "price_usd": 399,
-        "article": "661-56081"
-      },
-      "rear_camera": {
-        "price_usd": 219,
-        "article": "661-56082"
-      },
-      "front_camera": {
-        "price_usd": 169,
-        "article": "661-56083"
-      },
-      "speaker": {
-        "price_usd": 69,
-        "article": "661-56084"
-      },
-      "taptic_engine": {
-        "price_usd": 69,
-        "article": "661-56085"
-      }
+    {
+      "device": "iPhone Air",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-56080",
+          "price_eur": 90.0,
+          "price_usd": 99
+        },
+        {
+          "part": "display",
+          "article": "661-56081",
+          "price_eur": 362.73,
+          "price_usd": 399
+        },
+        {
+          "part": "rear_camera",
+          "article": "661-56082",
+          "price_eur": 199.09,
+          "price_usd": 219
+        },
+        {
+          "part": "front_camera",
+          "article": "661-56083",
+          "price_eur": 153.64,
+          "price_usd": 169
+        },
+        {
+          "part": "speaker",
+          "article": "661-56084",
+          "price_eur": 62.73,
+          "price_usd": 69
+        },
+        {
+          "part": "taptic_engine",
+          "article": "661-56085",
+          "price_eur": 62.73,
+          "price_usd": 69
+        }
+      ]
     },
-    "MacBook Air 13-inch M4 2025": {
-      "battery": {
-        "price_usd": 139,
-        "article": "661-62001"
-      },
-      "display": {
-        "price_usd": 519,
-        "article": "661-62002"
-      },
-      "keyboard": {
-        "price_usd": 379,
-        "article": "661-62003"
-      }
+    {
+      "device": "MacBook Air 13-inch M4 2025",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-62001",
+          "price_eur": 126.36,
+          "price_usd": 139
+        },
+        {
+          "part": "display",
+          "article": "661-62002",
+          "price_eur": 471.82,
+          "price_usd": 519
+        },
+        {
+          "part": "keyboard",
+          "article": "661-62003",
+          "price_eur": 344.55,
+          "price_usd": 379
+        }
+      ]
     },
-    "MacBook Air 15-inch M4 2025": {
-      "battery": {
-        "price_usd": 149,
-        "article": "661-62011"
-      },
-      "display": {
-        "price_usd": 639,
-        "article": "661-62012"
-      },
-      "keyboard": {
-        "price_usd": 419,
-        "article": "661-62013"
-      }
+    {
+      "device": "MacBook Air 15-inch M4 2025",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-62011",
+          "price_eur": 135.45,
+          "price_usd": 149
+        },
+        {
+          "part": "display",
+          "article": "661-62012",
+          "price_eur": 580.91,
+          "price_usd": 639
+        },
+        {
+          "part": "keyboard",
+          "article": "661-62013",
+          "price_eur": 380.91,
+          "price_usd": 419
+        }
+      ]
     },
-    "MacBook Pro 14-inch M5 2025": {
-      "battery": {
-        "price_usd": 159,
-        "article": "661-62021"
-      },
-      "display": {
-        "price_usd": 679,
-        "article": "661-62022"
-      },
-      "keyboard": {
-        "price_usd": 449,
-        "article": "661-62023"
-      }
+    {
+      "device": "MacBook Pro 14-inch M5 2025",
+      "parts": [
+        {
+          "part": "battery",
+          "article": "661-62021",
+          "price_eur": 144.55,
+          "price_usd": 159
+        },
+        {
+          "part": "display",
+          "article": "661-62022",
+          "price_eur": 617.27,
+          "price_usd": 679
+        },
+        {
+          "part": "keyboard",
+          "article": "661-62023",
+          "price_eur": 408.18,
+          "price_usd": 449
+        }
+      ]
     }
-  }
+  ]
 }
