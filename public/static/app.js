@@ -1,5 +1,6 @@
-// NEXX Database - Apple Repair Database v7.5
+// NEXX Database - Apple Repair Database v7.6.1
 // Enhanced with AI Self-Healing System v2.0, Error Tracking, Auto-Diagnostics, Smart Suggestions
+// Build: 2026-01-19-v2 (Cache Busted)
 const { useState, useMemo, useEffect, useCallback, createElement: h } = React;
 
 // ===== 🤖 AI SELF-HEALING SYSTEM V2.0 =====
