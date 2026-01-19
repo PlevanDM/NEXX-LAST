@@ -835,6 +835,8 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
   const [selectedRepairs, setSelectedRepairs] = useState([]);
   const [laborCost, setLaborCost] = useState(20);
   const [margin, setMargin] = useState(30);
+  const [deviceType, setDeviceType] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
   
   const repairTypes = [
     { id: 'battery', name: 'Замена батареи', icon: '🔋' },
@@ -842,21 +844,68 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
     { id: 'rear_camera', name: 'Замена задней камеры', icon: '📷' },
     { id: 'front_camera', name: 'Замена фронтальной камеры', icon: '🤳' },
     { id: 'speaker', name: 'Замена динамика', icon: '🔊' },
+    { id: 'taptic_engine', name: 'Замена Taptic Engine', icon: '📳' },
+    { id: 'logic_board', name: 'Замена логической платы', icon: '💾' },
+    { id: 'keyboard', name: 'Замена клавиатуры (MacBook)', icon: '⌨️' },
     { id: 'charging', name: 'Ремонт зарядки', icon: '⚡' },
   ];
   
-  const deviceOptions = devices.filter(d => d.official_service_prices && Object.keys(d.official_service_prices).length > 0);
+  // Группируем устройства по типам
+  const groupedDevices = useMemo(() => {
+    const groups = {
+      iphone: { name: '📱 iPhone', devices: [] },
+      ipad: { name: '📱 iPad', devices: [] },
+      macbook: { name: '💻 MacBook', devices: [] },
+      mac: { name: '🖥️ Mac', devices: [] },
+    };
+    
+    devices.forEach(device => {
+      const name = device.name.toLowerCase();
+      if (name.includes('iphone')) {
+        groups.iphone.devices.push(device);
+      } else if (name.includes('ipad')) {
+        groups.ipad.devices.push(device);
+      } else if (name.includes('macbook')) {
+        groups.macbook.devices.push(device);
+      } else if (name.includes('mac')) {
+        groups.mac.devices.push(device);
+      }
+    });
+    
+    return groups;
+  }, [devices]);
+  
+  // Фильтруем устройства
+  const deviceOptions = useMemo(() => {
+    let filtered = devices;
+    
+    // Фильтр по типу устройства
+    if (deviceType !== 'all') {
+      filtered = groupedDevices[deviceType]?.devices || [];
+    }
+    
+    // Фильтр по поисковому запросу
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(d => d.name.toLowerCase().includes(term));
+    }
+    
+    // Сортируем по году (новые первые)
+    return filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
+  }, [devices, deviceType, searchTerm, groupedDevices]);
   
   const calculations = useMemo(() => {
     if (!selectedDevice) return null;
     
-    const prices = selectedDevice.official_service_prices || {};
+    // Получаем цены из базы official_service_prices через API
     let partsCost = 0;
     
     selectedRepairs.forEach(repairId => {
-      const price = prices[repairId];
+      // Пытаемся найти цену в данных устройства
+      const price = selectedDevice.official_service_prices?.[repairId];
       if (price) {
-        partsCost += typeof price === 'object' ? price.price_usd : price;
+        const priceValue = typeof price === 'object' ? (price.price_eur || price.price_usd || 0) : price;
+        partsCost += priceValue;
       }
     });
     
@@ -881,32 +930,105 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
       ),
       
       h('div', { className: 'flex-1 overflow-y-auto p-6 space-y-6' },
+        // Filters
+        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4' },
+          // Device type filter
+          h('div', null,
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Тип устройства'),
+            h('div', { className: 'flex gap-2 flex-wrap' },
+              h('button', {
+                onClick: () => setDeviceType('all'),
+                className: cn(
+                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                  deviceType === 'all' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                )
+              }, 'Все'),
+              h('button', {
+                onClick: () => setDeviceType('iphone'),
+                className: cn(
+                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                  deviceType === 'iphone' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                )
+              }, '📱 iPhone'),
+              h('button', {
+                onClick: () => setDeviceType('ipad'),
+                className: cn(
+                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                  deviceType === 'ipad' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                )
+              }, '📱 iPad'),
+              h('button', {
+                onClick: () => setDeviceType('macbook'),
+                className: cn(
+                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                  deviceType === 'macbook' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                )
+              }, '💻 MacBook'),
+              h('button', {
+                onClick: () => setDeviceType('mac'),
+                className: cn(
+                  'px-4 py-2 rounded-lg text-sm font-medium transition-all',
+                  deviceType === 'mac' 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                )
+              }, '🖥️ Mac')
+            )
+          ),
+          // Search
+          h('div', null,
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Поиск модели'),
+            h('input', {
+              type: 'text',
+              value: searchTerm,
+              onChange: e => setSearchTerm(e.target.value),
+              placeholder: 'Например: iPhone 17, MacBook Pro M5...',
+              className: 'w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-blue-500 focus:outline-none'
+            })
+          )
+        ),
+        
         // Device selector
         h('div', null,
-          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Выберите устройство'),
+          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 
+            `Выберите устройство (${deviceOptions.length} моделей)`
+          ),
           h('select', {
             value: selectedDevice?.name || '',
             onChange: e => {
               const device = deviceOptions.find(d => d.name === e.target.value);
-              console.log('Selected device:', device);
-              console.log('Device prices:', device?.official_service_prices);
               setSelectedDevice(device);
               setSelectedRepairs([]);
             },
-            className: 'w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
+            size: 8,
+            className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
           },
-            h('option', { value: '' }, '-- Выберите --'),
-            ...deviceOptions.map(d => h('option', { key: d.name, value: d.name }, d.name))
+            h('option', { value: '', disabled: true }, '-- Выберите модель --'),
+            ...deviceOptions.map(d => {
+              const year = d.year ? ` (${d.year})` : '';
+              const processor = d.processor ? ` - ${d.processor}` : '';
+              return h('option', { key: d.name, value: d.name }, `${d.name}${year}${processor}`);
+            })
           )
         ),
         
         // Repair types
         selectedDevice && h('div', null,
-          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Виды работ'),
+          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 
+            `Виды работ для ${selectedDevice.name}`
+          ),
           h('div', { className: 'grid grid-cols-2 gap-2' },
             ...repairTypes.map(repair => {
               const price = selectedDevice.official_service_prices?.[repair.id];
-              const priceVal = price ? (typeof price === 'object' ? price.price_usd : price) : null;
+              const priceVal = price ? (typeof price === 'object' ? (price.price_eur || price.price_usd || 0) : price) : null;
               const isSelected = selectedRepairs.includes(repair.id);
               
               return h('button', {
@@ -929,18 +1051,36 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
                   h('span', { className: 'text-xl' }, repair.icon),
                   h('div', null,
                     h('p', { className: 'font-medium text-sm' }, repair.name),
-                    h('p', { className: 'text-xs text-slate-500' }, priceVal ? formatPrice(priceVal) : 'Нет данных')
+                    h('p', { className: 'text-xs text-slate-500' }, priceVal ? `€${priceVal.toFixed(2)}` : 'Нет данных')
                   )
                 )
               );
             })
+          ),
+          
+          // Info about device
+          h('div', { className: 'mt-4 p-3 bg-blue-50 rounded-lg' },
+            h('div', { className: 'text-sm space-y-1' },
+              h('p', null,
+                h('span', { className: 'text-slate-600' }, '📱 Модель: '),
+                h('span', { className: 'font-medium' }, selectedDevice.name)
+              ),
+              selectedDevice.year && h('p', null,
+                h('span', { className: 'text-slate-600' }, '📅 Год: '),
+                h('span', { className: 'font-medium' }, selectedDevice.year)
+              ),
+              selectedDevice.processor && h('p', null,
+                h('span', { className: 'text-slate-600' }, '🔧 Процессор: '),
+                h('span', { className: 'font-medium' }, selectedDevice.processor)
+              )
+            )
           )
         ),
         
         // Settings
         selectedDevice && h('div', { className: 'grid grid-cols-2 gap-4' },
           h('div', null,
-            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Работа за услугу ($)'),
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Работа за услугу (€)'),
             h('input', {
               type: 'number',
               value: laborCost,
@@ -960,28 +1100,50 @@ const RepairCalculatorPanel = ({ devices, onClose }) => {
         ),
         
         // Results
-        calculations && selectedRepairs.length > 0 && h('div', { className: 'p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl' },
-          h('h3', { className: 'font-bold text-slate-800 mb-3' }, '📊 Расчёт'),
-          h('div', { className: 'space-y-2 text-sm' },
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, 'Запчасти:'),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.partsCost))
+        calculations && selectedRepairs.length > 0 && h('div', { className: 'p-5 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200' },
+          h('h3', { className: 'font-bold text-slate-800 mb-4 text-lg flex items-center gap-2' }, 
+            h('span', null, '📊'),
+            'Итоговый расчёт'
+          ),
+          
+          // Selected repairs list
+          h('div', { className: 'mb-4 p-3 bg-white rounded-lg' },
+            h('p', { className: 'text-sm font-medium text-slate-700 mb-2' }, 'Выбранные работы:'),
+            h('div', { className: 'space-y-1' },
+              ...selectedRepairs.map(repairId => {
+                const repair = repairTypes.find(r => r.id === repairId);
+                const price = selectedDevice.official_service_prices?.[repairId];
+                const priceVal = price ? (typeof price === 'object' ? (price.price_eur || price.price_usd || 0) : price) : 0;
+                
+                return h('div', { key: repairId, className: 'flex justify-between items-center text-sm' },
+                  h('span', { className: 'text-slate-600' }, `${repair?.icon} ${repair?.name}`),
+                  h('span', { className: 'font-medium text-blue-600' }, `€${priceVal.toFixed(2)}`)
+                );
+              })
+            )
+          ),
+          
+          // Calculation details
+          h('div', { className: 'space-y-3 text-sm' },
+            h('div', { className: 'flex justify-between items-center p-2 bg-white rounded' },
+              h('span', { className: 'text-slate-600' }, '💰 Запчасти:'),
+              h('span', { className: 'font-medium text-slate-800' }, `€${calculations.partsCost.toFixed(2)}`)
             ),
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, `Работа (${selectedRepairs.length}x):`),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.labor))
+            h('div', { className: 'flex justify-between items-center p-2 bg-white rounded' },
+              h('span', { className: 'text-slate-600' }, `🔧 Работа (${selectedRepairs.length}x€${laborCost}):`),
+              h('span', { className: 'font-medium text-slate-800' }, `€${calculations.labor.toFixed(2)}`)
             ),
-            h('div', { className: 'flex justify-between border-t pt-2' },
-              h('span', { className: 'text-slate-600' }, 'Подитог:'),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.subtotal))
+            h('div', { className: 'flex justify-between items-center p-2 bg-white rounded border-t-2 border-slate-200' },
+              h('span', { className: 'text-slate-600 font-medium' }, '📝 Подитог:'),
+              h('span', { className: 'font-semibold text-slate-800' }, `€${calculations.subtotal.toFixed(2)}`)
             ),
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, `Наценка ${margin}%:`),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.marginAmount))
+            h('div', { className: 'flex justify-between items-center p-2 bg-white rounded' },
+              h('span', { className: 'text-slate-600' }, `📈 Наценка ${margin}%:`),
+              h('span', { className: 'font-medium text-green-600' }, `+€${calculations.marginAmount.toFixed(2)}`)
             ),
-            h('div', { className: 'flex justify-between border-t pt-2 text-lg' },
-              h('span', { className: 'font-bold text-slate-800' }, 'ИТОГО:'),
-              h('span', { className: 'font-bold text-blue-600' }, formatPrice(calculations.total))
+            h('div', { className: 'flex justify-between items-center p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg text-white mt-2' },
+              h('span', { className: 'font-bold text-lg' }, '💵 ИТОГО:'),
+              h('span', { className: 'font-bold text-2xl' }, `€${calculations.total.toFixed(2)}`)
             )
           )
         )
@@ -1422,7 +1584,28 @@ const RepairTool = () => {
     ])
     .then(([devicesData, logicData, articleData, pricesData, ukrainePrices, errorsData, icData, knowledgeData]) => {
       
-      setDevices(Array.isArray(devicesData) ? devicesData : []);
+      // Обогащаем устройства ценами из official_service_prices
+      const enrichedDevices = Array.isArray(devicesData) ? devicesData.map(device => {
+        // Ищем цены для этого устройства
+        if (pricesData && pricesData.models) {
+          const priceModel = pricesData.models.find(m => m.device === device.name);
+          if (priceModel && priceModel.parts) {
+            // Преобразуем массив parts в объект для удобства
+            const pricesObj = {};
+            priceModel.parts.forEach(part => {
+              pricesObj[part.part] = {
+                price_eur: part.price_eur,
+                price_usd: part.price_usd,
+                article: part.article
+              };
+            });
+            return { ...device, official_service_prices: pricesObj };
+          }
+        }
+        return device;
+      }) : [];
+      
+      setDevices(enrichedDevices);
       setLogicBoardsData(logicData);
       setArticleSearchData(articleData);
       setOfficialPricesData(pricesData);
