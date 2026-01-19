@@ -496,12 +496,56 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
   // Маппинг типов запчастей для поиска
   const partKeywords = {
     'battery': ['battery', 'батарея', 'аккумулятор'],
-    'display': ['display', 'дисплей', 'экран', 'lcd', 'screen'],
+    'display': ['display', 'дисплей', 'экран', 'lcd', 'screen', 'retina'],
     'rear_camera': ['rear camera', 'back camera', 'задняя камера', 'camera', 'камера'],
-    'front_camera': ['front camera', 'truedepth', 'фронтальная камера', 'передняя камера'],
+    'front_camera': ['front camera', 'truedepth', 'фронтальная камера', 'передняя камера', 'facetime'],
     'speaker': ['speaker', 'динамик'],
     'taptic_engine': ['taptic', 'вибромотор', 'haptic'],
-    'logic_board': ['logic board', 'материнская плата', 'плата']
+    'logic_board': ['logic board', 'материнская плата', 'плата', 'motherboard'],
+    'top_case': ['top case', 'верхняя крышка', 'keyboard', 'клавиатура'],
+    'bottom_case': ['bottom case', 'нижняя крышка', 'housing'],
+    'trackpad': ['trackpad', 'трекпад', 'touchpad']
+  };
+  
+  // Функция для извлечения ключевых слов из названия модели
+  const extractModelKeywords = (modelName) => {
+    const lower = modelName.toLowerCase();
+    const keywords = [];
+    
+    // Тип устройства
+    if (lower.includes('iphone')) keywords.push('iphone');
+    if (lower.includes('macbook air')) keywords.push('macbook', 'air');
+    else if (lower.includes('macbook pro')) keywords.push('macbook', 'pro');
+    else if (lower.includes('macbook')) keywords.push('macbook');
+    if (lower.includes('ipad pro')) keywords.push('ipad', 'pro');
+    else if (lower.includes('ipad air')) keywords.push('ipad', 'air');
+    else if (lower.includes('ipad')) keywords.push('ipad');
+    
+    // Размер экрана
+    const sizeMatch = modelName.match(/(\d+)["'']/);
+    if (sizeMatch) keywords.push(sizeMatch[1]);
+    
+    // Процессор
+    if (lower.includes('m1')) keywords.push('m1');
+    if (lower.includes('m2')) keywords.push('m2');
+    if (lower.includes('m3')) keywords.push('m3');
+    if (lower.includes('m4')) keywords.push('m4');
+    
+    // Год
+    const yearMatch = modelName.match(/\b(20\d{2})\b/);
+    if (yearMatch) keywords.push(yearMatch[1]);
+    
+    // Номер модели для iPhone
+    const iphoneMatch = modelName.match(/iPhone\s+(\d+)/i);
+    if (iphoneMatch) keywords.push(iphoneMatch[1]);
+    
+    // Plus/Pro Max
+    if (lower.includes('pro max')) keywords.push('pro', 'max');
+    else if (lower.includes('plus')) keywords.push('plus');
+    else if (lower.includes('pro')) keywords.push('pro');
+    if (lower.includes('mini')) keywords.push('mini');
+    
+    return keywords;
   };
   
   // Функция для поиска украинской цены по артикулу или названию
@@ -513,7 +557,7 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
     }
     
     // Затем ищем по названию модели и типа запчасти
-    const modelLower = modelName.toLowerCase();
+    const modelKeywords = extractModelKeywords(modelName);
     const partKeys = partKeywords[partType] || [partType.toLowerCase()];
     
     let bestMatch = null;
@@ -523,23 +567,32 @@ const OfficialPricesPanel = ({ data, ukraineData, onClose }) => {
       const descLower = item.description.toLowerCase();
       let score = 0;
       
-      // Проверяем совпадение модели (ищем ключевые части названия)
-      const modelParts = modelLower.split(' ').filter(p => p.length > 2);
+      // Проверяем совпадение модели по ключевым словам
       let modelMatches = 0;
-      for (const part of modelParts) {
-        if (descLower.includes(part)) modelMatches++;
+      for (const keyword of modelKeywords) {
+        if (descLower.includes(keyword.toLowerCase())) {
+          modelMatches++;
+          score += 3;
+        }
       }
-      if (modelMatches >= 2) score += 10; // Минимум 2 совпадения для модели
+      
+      // Требуем минимум 2 совпадения для модели
+      if (modelMatches < 2) continue;
       
       // Проверяем совпадение типа запчасти
+      let partMatch = false;
       for (const key of partKeys) {
-        if (descLower.includes(key)) {
+        if (descLower.includes(key.toLowerCase())) {
           score += 5;
+          partMatch = true;
           break;
         }
       }
       
-      if (score > bestScore && score >= 10) {
+      // Требуем совпадение типа запчасти
+      if (!partMatch) continue;
+      
+      if (score > bestScore) {
         bestScore = score;
         bestMatch = item;
       }
