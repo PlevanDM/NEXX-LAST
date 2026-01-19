@@ -928,6 +928,7 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
   }, [priceList]);
   
   const filtered = useMemo(() => {
+    if (!priceList || !Array.isArray(priceList)) return [];
     let result = priceList;
     
     if (category !== 'all') {
@@ -937,16 +938,16 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       result = result.filter(p => 
-        p.article.toLowerCase().includes(term) ||
-        p.description.toLowerCase().includes(term)
+        (p.article || '').toLowerCase().includes(term) ||
+        (p.description || '').toLowerCase().includes(term)
       );
     }
     
     // Sort
     result = [...result].sort((a, b) => {
-      if (sortBy === 'price_asc') return a.price_uah - b.price_uah;
-      if (sortBy === 'price_desc') return b.price_uah - a.price_uah;
-      return a.description.localeCompare(b.description);
+      if (sortBy === 'price_asc') return (a.price_uah || 0) - (b.price_uah || 0);
+      if (sortBy === 'price_desc') return (b.price_uah || 0) - (a.price_uah || 0);
+      return (a.description || '').localeCompare(b.description || '');
     });
     
     return result.slice(0, 200);
@@ -993,7 +994,7 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-2' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...filtered.map(item => 
+          ...(filtered || []).map(item => 
             h('div', { 
               key: item.article, 
               onClick: () => onSelectItem({ ...item, type: 'article' }),
@@ -1091,6 +1092,7 @@ const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClos
   }, [logicBoards, logicBoardsSpecs]);
   
   const filtered = useMemo(() => {
+    if (!allBoards || !Array.isArray(allBoards)) return [];
     let result = allBoards;
     
     if (showType !== 'all') {
@@ -1111,12 +1113,15 @@ const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClos
     return result.slice(0, 100);
   }, [allBoards, searchTerm, showType]);
   
-  const stats = useMemo(() => ({
-    total: allBoards.length,
-    mSeries: allBoards.filter(b => b.type === 'M-series').length,
-    intel: allBoards.filter(b => b.type === 'Intel').length,
-    withPrices: allBoards.filter(b => b.hasPrice || b.price_uah || b.price_usd).length
-  }), [allBoards]);
+  const stats = useMemo(() => {
+    if (!allBoards || !Array.isArray(allBoards)) return { total: 0, mSeries: 0, intel: 0, withPrices: 0 };
+    return {
+      total: allBoards.length,
+      mSeries: allBoards.filter(b => b.type === 'M-series').length,
+      intel: allBoards.filter(b => b.type === 'Intel').length,
+      withPrices: allBoards.filter(b => b.hasPrice || b.price_uah || b.price_usd).length
+    };
+  }, [allBoards]);
   
   return h(Modal, { 
     title: '🖥️ Logic Boards', 
@@ -1147,7 +1152,7 @@ const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClos
       
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          ...filtered.map((board, i) => {
+          ...(filtered || []).map((board, i) => {
             const uaPrice = ukrainePrices?.[board.article];
             const hasAnyPrice = board.price_uah || board.price_usd || uaPrice;
             
@@ -1214,6 +1219,7 @@ const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
   const currentData = categories[category]?.data || [];
   
   const filtered = useMemo(() => {
+    if (!currentData || !Array.isArray(currentData)) return [];
     if (!searchTerm) return currentData;
     const term = searchTerm.toLowerCase();
     return currentData.filter(ic => 
@@ -1223,7 +1229,7 @@ const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
     );
   }, [currentData, searchTerm]);
   
-  const totalICs = Object.values(categories).reduce((sum, cat) => sum + cat.data.length, 0);
+  const totalICs = Object.values(categories || {}).reduce((sum, cat) => sum + (cat?.data?.length || 0), 0);
   
   return h(Modal, { 
     title: '🔌 База микросхем', 
@@ -1255,7 +1261,7 @@ const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...filtered.map((ic, i) => 
+          ...(filtered || []).map((ic, i) => 
             h('div', { 
               key: ic.name || i,
               onClick: () => onSelectItem({ ...ic, type: 'ic' }),
@@ -1306,6 +1312,7 @@ const ArticleSearchPanel = ({ articleData, ukrainePrices, onClose, onSelectItem 
   const partTypes = ['all', 'display', 'battery', 'rear_camera', 'front_camera', 'speaker', 'logic_board'];
   
   const filtered = useMemo(() => {
+    if (!articles || !Array.isArray(articles)) return [];
     let result = articles;
     
     if (partType !== 'all') {
@@ -1360,7 +1367,7 @@ const ArticleSearchPanel = ({ articleData, ukrainePrices, onClose, onSelectItem 
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-2' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...filtered.map((art, i) => {
+          ...(filtered || []).map((art, i) => {
             const uaPrice = ukrainePrices?.[art.article];
             return h('div', { 
               key: art.article || i,
@@ -1407,6 +1414,7 @@ const ErrorCodesPanel = ({ errorData, onClose }) => {
   const currentErrors = category === 'itunes' ? itunesErrors : macErrors;
   
   const filtered = useMemo(() => {
+    if (!currentErrors || !Array.isArray(currentErrors)) return [];
     if (!searchTerm) return currentErrors;
     const term = searchTerm.toLowerCase();
     return currentErrors.filter(err => 
@@ -1448,7 +1456,7 @@ const ErrorCodesPanel = ({ errorData, onClose }) => {
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
           filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ошибка не найдена'),
-          ...filtered.map((err, i) => 
+          ...(filtered || []).map((err, i) => 
             h('div', { key: err.code || i, className: 'p-4 bg-white rounded-xl border border-slate-200' },
               h('div', { className: 'flex items-start gap-4' },
                 h('div', { className: 'w-16 h-16 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0' },
