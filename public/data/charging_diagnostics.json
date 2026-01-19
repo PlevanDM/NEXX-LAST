@@ -1,0 +1,259 @@
+{
+  "title": "iPhone Charging Circuit Diagnostics Guide",
+  "source": "repair.wiki + дополнительные источники",
+  "last_updated": "2026-01-19",
+  "usb_controllers": {
+    "tristar": {
+      "part_numbers": ["1610A2", "1610A3", "1610A3B"],
+      "models": ["iPhone 6", "iPhone 6 Plus", "iPhone 6s", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus"],
+      "expected_voltages": {
+        "PP_5V0_USB": "5V",
+        "PP_TRISTAR_PIN": "5V"
+      },
+      "common_faults": [
+        "Аксессуар не поддерживается",
+        "Нет зарядки кабелем (беспроводная работает)",
+        "Не определяется в iTunes",
+        "Boot loop при подключении"
+      ]
+    },
+    "hydra": {
+      "part_numbers": ["1612A1"],
+      "models": ["iPhone 8", "iPhone 8 Plus", "iPhone X", "iPhone XR", "iPhone XS", "iPhone XS Max", "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone SE 2020"],
+      "expected_voltages": {
+        "PP_VBUS1_E75": "5V"
+      },
+      "common_faults": [
+        "No charge via cable",
+        "Wireless charging works but cable doesn't",
+        "iTunes error 4013",
+        "Device restarts when plugged in"
+      ]
+    },
+    "kraken": {
+      "part_numbers": ["1614A1", "1616A0", "1618A0"],
+      "models": {
+        "1614A1": ["iPhone 12", "iPhone 12 mini", "iPhone 12 Pro", "iPhone 12 Pro Max"],
+        "1616A0": ["iPhone 13", "iPhone 13 mini", "iPhone 13 Pro", "iPhone 13 Pro Max"],
+        "1618A0": ["iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max"]
+      },
+      "expected_voltages": {
+        "PP_VBUS1_E75": "5V"
+      },
+      "common_faults": [
+        "USB-C accessory not recognized",
+        "Slow charging only",
+        "No fast charge support",
+        "Data transfer fails"
+      ]
+    },
+    "usb_c_controller": {
+      "part_numbers": ["CD3217B12", "SN2012017", "SN2012027"],
+      "models": ["iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max", "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max"],
+      "expected_voltages": {
+        "VBUS": "5V-20V (USB PD)",
+        "CC1/CC2": "1.6V-3.3V"
+      },
+      "common_faults": [
+        "No USB PD negotiation",
+        "Stuck at 5V charging",
+        "No data transfer",
+        "Baseband failure (связано с CD3217)"
+      ]
+    }
+  },
+  "diagnostic_steps": [
+    {
+      "step": 1,
+      "title": "Проверка 5V перед Charging IC",
+      "description": "Измерить 5V на конденсаторе перед charging IC",
+      "expected": "5V",
+      "if_no_voltage": "Проблема с USB входом / контроллером",
+      "if_voltage_present": "Перейти к шагу 2"
+    },
+    {
+      "step": 2,
+      "title": "Понимание логики USB верификации",
+      "description": "Charging IC НЕ знает, хороший ли кабель. Валидация кабеля выполняется USB контроллером (Tristar/Hydra/Kraken)",
+      "note": "Если USB IC не может верифицировать кабель - устройство не будет заряжаться по кабелю, но беспроводная зарядка может работать"
+    },
+    {
+      "step": 3,
+      "title": "Проверка линии USB верификации",
+      "description": "Если 5V отсутствует на USB контроллере, проверить PP_VAR_USB_RVP_TIGRIS_R (также PP_VAR_USB_RVP)",
+      "note": "Эта линия необходима для валидации USB кабеля"
+    },
+    {
+      "step": 4,
+      "title": "Проверка RVP резистора 10Ω",
+      "applicable_to": ["iPhone 8", "iPhone X", "iPhone 13", "iPhone 14"],
+      "procedure": [
+        "Найти резистор 10Ω на линии VAR_USB_RVP",
+        "Измерить напряжение на обеих pad",
+        "Обе стороны должны показывать ~5V"
+      ],
+      "interpretation": {
+        "one_side_only": "Открытый резистор или проблема downstream",
+        "no_voltage_both": "Проблема с USB IC upstream"
+      }
+    },
+    {
+      "step": 5,
+      "title": "Проверка PWR_GATE_EN_VBUS_1_VALID",
+      "description": "Измерить напряжение в тестовой точке PWR_GATE_EN_VBUS_1_VALID",
+      "expected": "3.7V - 5V (любое напряжение выше 0V)",
+      "interpretation": {
+        "voltage_present": "USB IC работает",
+        "zero_voltage": "USB IC неисправен или не запитан"
+      }
+    },
+    {
+      "step": 6,
+      "title": "Проверка беспроводной зарядки",
+      "description": "Беспроводная зарядка НЕ требует USB верификации",
+      "note": "Если беспроводная зарядка работает, а кабельная нет - вероятно проблема с USB контроллером или RVP линией"
+    },
+    {
+      "step": 7,
+      "title": "Charging IC Power Conversion",
+      "description": "Charging IC преобразует 5V → ~3.7V для батареи",
+      "note": "Если 5V присутствует, но батарея не заряжается - подозревать charging IC или его выходной каскад"
+    },
+    {
+      "step": 8,
+      "title": "Проверка CHG_BOOT линии (Diode Mode)",
+      "description": "Найти конденсатор на CHG_BOOT, измерить в режиме диода",
+      "expected_readings": {
+        "from_tigris_side": "~9V",
+        "from_chg_lx_side": "~4V"
+      },
+      "fault_indication": "Одинаковые показания с обеих сторон = неисправность"
+    }
+  ],
+  "tigris_charging_ic": {
+    "generations": {
+      "SN2400BO": {
+        "designation": "U4500",
+        "models": ["iPhone 6s", "iPhone 6s Plus", "iPhone SE 1st"],
+        "package": "BGA 25-ball",
+        "features": ["5V/9V", "2.4A max"],
+        "test_points": ["PP_5V0_USB", "PP_VCC_MAIN"],
+        "common_faults": ["No charge", "Accessory not supported"]
+      },
+      "SN2501": {
+        "designation": "U3300",
+        "models": ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
+        "package": "BGA 36-ball",
+        "features": ["USB PD", "OVP protection", "Fast charging"],
+        "test_points": ["PP_VBUS1", "PP_VCC_BATT"],
+        "common_faults": ["No charge", "Overheating", "Boot loop"]
+      },
+      "SN2611A0": {
+        "designation": "U3300",
+        "models": ["iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone SE 2020"],
+        "package": "BGA 49-ball",
+        "features": ["USB PD 3.0", "20W fast charging", "Power Path", "OVP/OCP"],
+        "test_points": ["PP_VBUS1_E75", "PP_VCC_MAIN", "PP_BATT_VCC"],
+        "common_faults": ["No charge", "Stuck at 5V", "Wireless works but cable doesn't"]
+      },
+      "SN2611E0": {
+        "designation": "U3300",
+        "models": ["iPhone 12", "iPhone 12 Pro", "iPhone 12 Pro Max", "iPhone 12 mini"],
+        "package": "BGA 49-ball",
+        "features": ["USB PD 3.0", "20W+", "MagSafe control"],
+        "common_faults": ["MagSafe issues", "No fast charge", "Overheating"]
+      },
+      "SN2611E1": {
+        "designation": "U3300",
+        "models": ["iPhone 13", "iPhone 13 Pro", "iPhone 13 Pro Max", "iPhone 13 mini", "iPhone 14", "iPhone 14 Plus"],
+        "package": "BGA 49-ball",
+        "features": ["USB PD 3.0", "25W+", "Improved MagSafe"],
+        "common_faults": ["Battery health drop", "Slow charging"]
+      }
+    }
+  },
+  "usb_c_diagnostics": {
+    "title": "USB-C диагностика для iPhone 15/16",
+    "controller": "CD3217B12 / SN2012017 / SN2012027",
+    "diagnostic_steps": [
+      {
+        "step": 1,
+        "check": "Напряжение VBUS",
+        "expected": "5V минимум, до 20V при USB PD",
+        "tool": "USB-C тестер или мультиметр"
+      },
+      {
+        "step": 2,
+        "check": "CC линии",
+        "expected": "1.6V-3.3V в зависимости от режима",
+        "note": "Неправильное напряжение CC = проблема с USB PD negotiation"
+      },
+      {
+        "step": 3,
+        "check": "Data линии (D+/D-)",
+        "expected": "Переключение между режимами",
+        "note": "Отсутствие данных при зарядке = возможно ROM pairing issue"
+      },
+      {
+        "step": 4,
+        "check": "ROM чип (8Nxxxx)",
+        "note": "CD3217 требует paired ROM чип. При замене CD3217 необходимо также перенести ROM с донора"
+      }
+    ],
+    "common_issues": [
+      {
+        "symptom": "Застревает на 5V зарядке",
+        "cause": "CD3217 failure или ROM corruption",
+        "solution": "Замена CD3217 + ROM с одного донора"
+      },
+      {
+        "symptom": "Нет данных через USB-C",
+        "cause": "USB контроллер или connector damage",
+        "solution": "Проверить порт, затем диагностика CD3217"
+      },
+      {
+        "symptom": "Baseband failure после падения",
+        "cause": "CD3217 связан с baseband на iPhone 15/16",
+        "solution": "Диагностика baseband PMIC, проверка CD3217"
+      }
+    ]
+  },
+  "ipad_cd3217_repair": {
+    "title": "iPad Pro CD3217 Repair Guide",
+    "source": "repair.wiki",
+    "applicable_models": [
+      "iPad Pro 11\" (2018-2024)",
+      "iPad Pro 12.9\" (2018-2024)",
+      "iPad Air (2020+)",
+      "iPad 10th Gen (2022)"
+    ],
+    "symptoms": [
+      "iPad не заряжается",
+      "Нет индикатора зарядки",
+      "USB метр показывает 5V 0.620A (застрял на 5V)",
+      "Должно быть 15V при нормальной зарядке"
+    ],
+    "diagnostic_steps": [
+      "Исключить проблему питания (использовать заряженную батарею или БП)",
+      "Проверить порт зарядки известной рабочей деталью",
+      "Diode mode вокруг CD3217 на наличие КЗ",
+      "Особое внимание на 3 больших конденсатора: PP_LDO_CORE, PP3V3_ACE_LDO (типично КЗ), PP3V3_S2_ACE"
+    ],
+    "repair_procedure": [
+      "Снять неисправный CD3217",
+      "Проверить область на КЗ после снятия чипа",
+      "Если КЗ устранены - найти донора",
+      "Перенести CD3217 + ROM чип (U3890 / 8Nxxxx) с одного донора",
+      "ROM должен быть с той же платы что и CD3217!"
+    ],
+    "tools_required": [
+      "Паяльная станция с термоконтролем",
+      "Hot Air Station (350-380°C)",
+      "Микроскоп 25-40x",
+      "Мультиметр (diode mode)",
+      "BGA стенсил для CD3217",
+      "Flux и изопропил 99%"
+    ],
+    "difficulty": "Hard (◉◉◉◌)"
+  }
+}

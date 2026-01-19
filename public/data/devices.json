@@ -5519,7 +5519,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Air 11\" (Early 2015) (2015) с процессором Intel Core i5 1.6 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -5541,7 +5547,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00164"
+    ],
+    "model_number": "A1465"
   },
   {
     "id": 75,
@@ -5579,7 +5589,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Air 13\" (Early 2015) (2015) с процессором Intel Core i5 1.6 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -5601,7 +5617,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00165"
+    ],
+    "model_number": "A1466"
   },
   {
     "id": 76,
@@ -5639,7 +5659,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 13\" Retina (Early 2015) (2015) с процессором Intel Core i5 2.7 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -5661,7 +5687,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-4924"
+    ],
+    "model_number": "A1502"
   },
   {
     "id": 77,
@@ -5698,7 +5728,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 15\" Retina (Mid-2015) (2015) с процессором Intel Core i7 2.2 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -5720,7 +5756,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00138"
+    ],
+    "model_number": "A1398"
   },
   {
     "id": 78,
@@ -5991,7 +6031,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 13\" (Late 2016) (2016) с процессором Intel Core i5 2.0 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -6013,7 +6059,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00875"
+    ],
+    "model_number": "A1708"
   },
   {
     "id": 83,
@@ -6050,7 +6100,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 15\" (Late 2016) (2016) с процессором Intel Core i7 2.6 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -6072,7 +6128,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00281"
+    ],
+    "model_number": "A1707"
   },
   {
     "id": 84,
@@ -6230,7 +6290,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "BridgeOS не загружается",
+      "SSD не определяется",
+      "No POST (DFU режим)",
+      "Kernel panic при загрузке",
+      "Touch ID не работает",
+      "T2 chip failure (коды ADP)"
     ],
     "repair_notes": "MacBook Air 13\" (2018) (2018) с процессором Intel Core i5 1.6 GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -6252,7 +6318,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01521"
+    ],
+    "model_number": "A1932"
   },
   {
     "id": 87,
@@ -6410,7 +6480,13 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12 failure)",
+      "PPBUS_AON short",
+      "USB-C ports not working",
+      "Display backlight failure",
+      "SSD controller failure",
+      "Liquid damage corrosion"
     ],
     "repair_notes": "MacBook Air 13\" M1 (2020) с процессором Apple M1. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6434,7 +6510,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02016"
+    ],
+    "model_number": "A2337"
   },
   {
     "id": 90,
@@ -6472,7 +6552,13 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12 failure)",
+      "PPBUS_AON short",
+      "USB-C ports not working",
+      "Display backlight failure",
+      "SSD controller failure",
+      "Liquid damage corrosion"
     ],
     "repair_notes": "MacBook Pro 13\" M1 (2020) с процессором Apple M1. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6496,7 +6582,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02020"
+    ],
+    "model_number": "A2338"
   },
   {
     "id": 91,
@@ -6658,7 +6748,13 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12 failure)",
+      "PPBUS_AON short",
+      "USB-C ports not working",
+      "Display backlight failure",
+      "SSD controller failure",
+      "Liquid damage corrosion"
     ],
     "repair_notes": "MacBook Pro 14\" M1 Pro (2021) с процессором Apple M1 Pro 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6682,7 +6778,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02098",
+      "820-02443"
+    ],
+    "model_number": "A2442"
   },
   {
     "id": 94,
@@ -6719,7 +6820,13 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12 failure)",
+      "PPBUS_AON short",
+      "USB-C ports not working",
+      "Display backlight failure",
+      "SSD controller failure",
+      "Liquid damage corrosion"
     ],
     "repair_notes": "MacBook Pro 16\" M1 Max (2021) с процессором Apple M1 Max 10-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6743,7 +6850,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02100",
+      "820-02382"
+    ],
+    "model_number": "A2485"
   },
   {
     "id": 95,
@@ -6781,7 +6893,12 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12)",
+      "PP5V_S2 short",
+      "G3H power rail short",
+      "USB-C controller failure",
+      "Display connector damage"
     ],
     "repair_notes": "MacBook Air 13\" M2 (2022) с процессором Apple M2 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6805,7 +6922,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02536"
+    ],
+    "model_number": "A2681"
   },
   {
     "id": 96,
@@ -6843,7 +6964,12 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12)",
+      "PP5V_S2 short",
+      "G3H power rail short",
+      "USB-C controller failure",
+      "Display connector damage"
     ],
     "repair_notes": "MacBook Pro 13\" M2 (2022) с процессором Apple M2 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -6867,7 +6993,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02773"
+    ],
+    "model_number": "A2338"
   },
   {
     "id": 97,
@@ -7029,7 +7159,12 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12)",
+      "PP5V_S2 short",
+      "G3H power rail short",
+      "USB-C controller failure",
+      "Display connector damage"
     ],
     "repair_notes": "MacBook Pro 14\" M2 Pro (2023) с процессором Apple M2 Pro 10-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7055,7 +7190,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02655",
+      "820-02841"
+    ],
+    "model_number": "A2779"
   },
   {
     "id": 100,
@@ -7092,7 +7232,12 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12)",
+      "PP5V_S2 short",
+      "G3H power rail short",
+      "USB-C controller failure",
+      "Display connector damage"
     ],
     "repair_notes": "MacBook Pro 16\" M2 Max (2023) с процессором Apple M2 Max 12-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7118,7 +7263,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02652",
+      "820-02890"
+    ],
+    "model_number": "A2780"
   },
   {
     "id": 101,
@@ -7348,7 +7498,12 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12)",
+      "PP5V_S2 short",
+      "G3H power rail short",
+      "USB-C controller failure",
+      "Display connector damage"
     ],
     "repair_notes": "MacBook Air 15\" M2 (2023) с процессором Apple M2 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7374,7 +7529,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02537"
+    ],
+    "model_number": "A2941"
   },
   {
     "id": 105,
@@ -7476,7 +7635,11 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "USB-C charging issues",
+      "Display backlight problems",
+      "Power button issues",
+      "SSD not detected"
     ],
     "repair_notes": "MacBook Air 13\" M3 (2024) с процессором Apple M3 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7502,7 +7665,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03285"
+    ],
+    "model_number": "A3113"
   },
   {
     "id": 107,
@@ -7540,7 +7707,11 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "USB-C charging issues",
+      "Display backlight problems",
+      "Power button issues",
+      "SSD not detected"
     ],
     "repair_notes": "MacBook Air 15\" M3 (2024) с процессором Apple M3 8-core. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7566,7 +7737,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03286"
+    ],
+    "model_number": "A3114"
   },
   {
     "id": 108,
@@ -7604,7 +7779,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 14\" M4 (2024) с процессором Apple M4 10-core. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7630,7 +7807,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03129"
+    ],
+    "model_number": "A3112"
   },
   {
     "id": 109,
@@ -7667,7 +7848,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 16\" M4 Max (2024) с процессором Apple M4 Max 14-core. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -7693,7 +7876,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03401"
+    ],
+    "model_number": "A3185"
   },
   {
     "id": 110,
@@ -7919,7 +8106,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Air 11\" Early 2015 (2015) с процессором Intel Core i5 1.6GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -7941,7 +8134,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00164"
+    ],
+    "model_number": "A1465"
   },
   {
     "id": 114,
@@ -7978,7 +8175,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 15\" Touch Late 2016 (i7 2.6GHz) (2016) с процессором Intel Core i7 2.6GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8000,7 +8203,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00281"
+    ],
+    "model_number": "A1707"
   },
   {
     "id": 115,
@@ -8037,7 +8244,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 15\" Touch Late 2016 (i7 2.7GHz) (2016) с процессором Intel Core i7 2.7GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8059,7 +8272,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00281"
+    ],
+    "model_number": "A1707"
   },
   {
     "id": 116,
@@ -8276,7 +8493,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Air 13\" Mid-2017 (2017) с процессором Intel Core i5 1.8GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8298,7 +8521,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00165"
+    ],
+    "model_number": "A1466"
   },
   {
     "id": 120,
@@ -8335,7 +8562,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "MacBook Pro 15\" Touch Mid-2017 (i7 2.9GHz) (2017) с процессором Intel Core i7 2.9GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8357,7 +8590,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-00928"
+    ],
+    "model_number": "A1707"
   },
   {
     "id": 121,
@@ -8394,7 +8631,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "BridgeOS не загружается",
+      "SSD не определяется",
+      "No POST (DFU режим)",
+      "Kernel panic при загрузке",
+      "Touch ID не работает",
+      "T2 chip failure (коды ADP)"
     ],
     "repair_notes": "MacBook Pro 15\" Touch 2018 (i9 2.9GHz) (2018) с процессором Intel Core i9 2.9GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8416,7 +8659,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01041",
+      "820-01326"
+    ],
+    "model_number": "A1990"
   },
   {
     "id": 122,
@@ -8573,7 +8821,13 @@
       "Не включается",
       "Нет звука",
       "Нет изображения",
-      "Проблемы с клавиатурой"
+      "Проблемы с клавиатурой",
+      "BridgeOS не загружается",
+      "SSD не определяется",
+      "No POST (DFU режим)",
+      "Kernel panic при загрузке",
+      "Touch ID не работает",
+      "T2 chip failure (коды ADP)"
     ],
     "repair_notes": "MacBook Pro 16\" 2019 (i9 2.3GHz) (2019) с процессором Intel Core i9 2.3GHz. Проверить ISL9239/ISL95870, PMIC и конденсаторы питания.",
     "repair_difficulty": "Средняя",
@@ -8595,7 +8849,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-01700"
+    ],
+    "model_number": "A2141"
   },
   {
     "id": 125,
@@ -8815,7 +9073,13 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "No power (CD3217B12 failure)",
+      "PPBUS_AON short",
+      "USB-C ports not working",
+      "Display backlight failure",
+      "SSD controller failure",
+      "Liquid damage corrosion"
     ],
     "repair_notes": "MacBook Pro 16\" Late 2021 (M1 Max) (2021) с процессором Apple M1 Max. Apple Silicon - проприетарные компоненты. Проверить ISL9241, PMIC и конденсаторы питания.",
     "repair_difficulty": "Очень сложная",
@@ -8839,7 +9103,12 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-02100",
+      "820-02382"
+    ],
+    "model_number": "A2485"
   },
   {
     "id": 129,
@@ -9065,7 +9334,11 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "USB-C charging issues",
+      "Display backlight problems",
+      "Power button issues",
+      "SSD not detected"
     ],
     "repair_notes": "MacBook Air 13\" M3 2024 (2024) с процессором Apple M3. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9091,7 +9364,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03285"
+    ],
+    "model_number": "A3113"
   },
   {
     "id": 133,
@@ -9129,7 +9406,11 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "USB-C charging issues",
+      "Display backlight problems",
+      "Power button issues",
+      "SSD not detected"
     ],
     "repair_notes": "MacBook Air 15\" M3 2024 (2024) с процессором Apple M3. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9155,7 +9436,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03286"
+    ],
+    "model_number": "A3114"
   },
   {
     "id": 134,
@@ -9193,7 +9478,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 14\" M4 2024 (2024) с процессором Apple M4. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9219,7 +9506,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03129"
+    ],
+    "model_number": "A3112"
   },
   {
     "id": 135,
@@ -9257,7 +9548,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 14\" M4 Pro 2024 (2024) с процессором Apple M4 Pro. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9283,7 +9576,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03129"
+    ],
+    "model_number": "A3112"
   },
   {
     "id": 136,
@@ -9321,7 +9618,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 14\" M4 Max 2024 (2024) с процессором Apple M4 Max. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9347,7 +9646,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03129"
+    ],
+    "model_number": "A3112"
   },
   {
     "id": 137,
@@ -9384,7 +9687,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 16\" M4 Pro 2024 (2024) с процессором Apple M4 Pro. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9410,7 +9715,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03401"
+    ],
+    "model_number": "A3185"
   },
   {
     "id": 138,
@@ -9447,7 +9756,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Pro 16\" M4 Max 2024 (2024) с процессором Apple M4 Max. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9473,7 +9784,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03401"
+    ],
+    "model_number": "A3185"
   },
   {
     "id": 139,
@@ -9703,7 +10018,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Air 13\" M4 2025 (2025) с процессором Apple M4. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9729,7 +10046,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03597-A"
+    ],
+    "model_number": "A3240"
   },
   {
     "id": 143,
@@ -9767,7 +10088,9 @@
       "Не включается",
       "Перегрев",
       "Нет изображения",
-      "Kernel panic"
+      "Kernel panic",
+      "Early production issues",
+      "USB-C charging problems"
     ],
     "repair_notes": "MacBook Air 15\" M4 2025 (2025) с процессором Apple M4. Apple Silicon - проприетарные компоненты. Проверить ISL9242, PMIC и конденсаторы питания.",
     "repair_difficulty": "Экстремально сложная",
@@ -9793,7 +10116,11 @@
       "apple_support": "https://support.apple.com/",
       "boardview": "Проверить в базе boardview",
       "schematics": "Проверить в базе схем"
-    }
+    },
+    "board_numbers": [
+      "820-03681"
+    ],
+    "model_number": "A3241"
   },
   {
     "id": 144,
@@ -9843,7 +10170,13 @@
       "Kernel panic из-за проблем с CD3215/CD3217",
       "Нет звука (CS8409)",
       "Резкая потеря емкости батареи",
-      "Не включается после залития"
+      "Не включается после залития",
+      "GPU failure (Radeon)",
+      "Flexgate (display cable)",
+      "Keyboard butterfly issues",
+      "Battery swelling",
+      "SMC reset required",
+      "PRAM/NVRAM corruption"
     ],
     "repair_notes": "Проверьте USB-C контроллеры CD3215/3217, сопротивление на PPBUS_G3H, наличие 3.42V_S5. Часто помогает перекатка ISL9239 и чистка под SMC.",
     "repair_difficulty": "Сложная",
@@ -9873,7 +10206,8 @@
       "apple_support": "https://support.apple.com/en-us/HT207267",
       "boardview": "820-00840 (ZXW/Boardviewer)",
       "schematics": "Wistron 051-00840"
-    }
+    },
+    "model_number": "A1708"
   },
   {
     "id": 1000,
