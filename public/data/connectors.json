@@ -27,56 +27,80 @@
     "pinout": [
       {
         "index": 1,
-        "contacts": ["A1", "B1"],
+        "contacts": [
+          "A1",
+          "B1"
+        ],
         "name": "GND",
         "description": "Экран и общая земля",
         "notes": "При любой ориентации кабеля остаётся на земле"
       },
       {
         "index": 2,
-        "contacts": ["A2", "B2"],
+        "contacts": [
+          "A2",
+          "B2"
+        ],
         "name": "L0p / USB_DP",
         "description": "Высокоскоростная линия (дифференциальный положительный провод)",
         "notes": "Используется как USB D+ либо DisplayPort AUX в некоторых аксессуарах"
       },
       {
         "index": 3,
-        "contacts": ["A3", "B3"],
+        "contacts": [
+          "A3",
+          "B3"
+        ],
         "name": "L0n / USB_DN",
         "description": "Высокоскоростная линия (дифференциальный отрицательный провод)",
         "notes": "USB D- / DisplayPort AUX-"
       },
       {
         "index": 4,
-        "contacts": ["A4", "B4"],
+        "contacts": [
+          "A4",
+          "B4"
+        ],
         "name": "ID0",
         "description": "IDBUS (SDQ) линия идентификации аксессуаров",
         "notes": "Читает/пишет HiFive ответ"
       },
       {
         "index": 5,
-        "contacts": ["A5", "B5"],
+        "contacts": [
+          "A5",
+          "B5"
+        ],
         "name": "VBUS",
         "description": "Питание 5 В (до 2.4 А без PD)",
         "notes": "Hydra поддерживает до 20 В при USB-PD через аксессуары"
       },
       {
         "index": 6,
-        "contacts": ["A6", "B6"],
+        "contacts": [
+          "A6",
+          "B6"
+        ],
         "name": "L1n / AUX1",
         "description": "Дополнительная высокоскоростная линия",
         "notes": "Используется для UART/SWD в сервисных аксессуарах"
       },
       {
         "index": 7,
-        "contacts": ["A7", "B7"],
+        "contacts": [
+          "A7",
+          "B7"
+        ],
         "name": "L1p / AUX2",
         "description": "Дополнительная высокоскоростная линия",
         "notes": "Маршрутизируется Tristar к HDMI/DisplayPort"
       },
       {
         "index": 8,
-        "contacts": ["A8", "B8"],
+        "contacts": [
+          "A8",
+          "B8"
+        ],
         "name": "ID1",
         "description": "IDBUS зеркальная линия",
         "notes": "Используется для аксессуаров с обратной ориентацией"
@@ -86,28 +110,42 @@
       {
         "code": "TI THS7383",
         "nickname": "Tristar 1G",
-        "devices": ["iPad mini (1st gen)", "iPad 4"],
+        "devices": [
+          "iPad mini (1st gen)",
+          "iPad 4"
+        ],
         "wireless_charging": false,
         "notes": "Первая ревизия, без поддержки MagSafe/Qi"
       },
       {
         "code": "NXP CBTL1608A1",
         "nickname": "Tristar iPhone 5",
-        "devices": ["iPhone 5", "iPod touch 5"],
+        "devices": [
+          "iPhone 5",
+          "iPod touch 5"
+        ],
         "wireless_charging": false,
         "notes": "Вводит полноценный IDBUS для аксессуаров"
       },
       {
         "code": "NXP CBTL1610A(x)",
         "nickname": "Tristar 2G",
-        "devices": ["iPhone 5c/5s", "iPhone 6/6s", "iPhone 7"],
+        "devices": [
+          "iPhone 5c/5s",
+          "iPhone 6/6s",
+          "iPhone 7"
+        ],
         "wireless_charging": false,
         "notes": "Самая массовая ревизия, код x — номер поколения"
       },
       {
         "code": "NXP CBTL1612A(x)",
         "nickname": "Hydra",
-        "devices": ["iPhone 8", "iPhone X", "iPhone 14"],
+        "devices": [
+          "iPhone 8",
+          "iPhone X",
+          "iPhone 14"
+        ],
         "wireless_charging": true,
         "notes": "Поддерживает магнитную и беспроводную зарядку"
       }
@@ -174,14 +212,46 @@
         }
       ],
       "accessory_ids": [
-        {"accessory": "DCSD", "hostid": 1, "id": "20 00 00 00 00 00"},
-        {"accessory": "Kong SWD (idle)", "hostid": 1, "id": "20 02 00 00 00 00"},
-        {"accessory": "Kong SWD (Astris active)", "hostid": 1, "id": "A0 00 00 00 00 00"},
-        {"accessory": "Kanzi SWD (idle)", "hostid": 1, "id": "20 0E 00 00 00 00"},
-        {"accessory": "Kanzi SWD (Astris active)", "hostid": 1, "id": "A0 0C 00 00 00 00"},
-        {"accessory": "Haywire HDMI", "hostid": 1, "id": "0B F0 00 00 00 00"},
-        {"accessory": "UART Charge", "hostid": 1, "id": "20 00 10 00 00 00"},
-        {"accessory": "Lightning to 3.5 mm / EarPods", "hostid": 1, "id": "04 F1 00 00 00 00"}
+        {
+          "accessory": "DCSD",
+          "hostid": 1,
+          "id": "20 00 00 00 00 00"
+        },
+        {
+          "accessory": "Kong SWD (idle)",
+          "hostid": 1,
+          "id": "20 02 00 00 00 00"
+        },
+        {
+          "accessory": "Kong SWD (Astris active)",
+          "hostid": 1,
+          "id": "A0 00 00 00 00 00"
+        },
+        {
+          "accessory": "Kanzi SWD (idle)",
+          "hostid": 1,
+          "id": "20 0E 00 00 00 00"
+        },
+        {
+          "accessory": "Kanzi SWD (Astris active)",
+          "hostid": 1,
+          "id": "A0 0C 00 00 00 00"
+        },
+        {
+          "accessory": "Haywire HDMI",
+          "hostid": 1,
+          "id": "0B F0 00 00 00 00"
+        },
+        {
+          "accessory": "UART Charge",
+          "hostid": 1,
+          "id": "20 00 10 00 00 00"
+        },
+        {
+          "accessory": "Lightning to 3.5 mm / EarPods",
+          "hostid": 1,
+          "id": "04 F1 00 00 00 00"
+        }
       ],
       "power_handshake": [
         {
@@ -223,27 +293,50 @@
     "overview": "USB-C стандартизирован USB-IF. На устройствах с iPhone 15/16 линии CC определяют роль (DFP/UFP), VBUS 5 В по умолчанию, PD расширяет диапазон до 20 В.",
     "pinout_summary": [
       {
-        "pins": ["A1", "A12", "B1", "B12"],
+        "pins": [
+          "A1",
+          "A12",
+          "B1",
+          "B12"
+        ],
         "name": "GND",
         "notes": "Общий экран"
       },
       {
-        "pins": ["A4", "A9", "B4", "B9"],
+        "pins": [
+          "A4",
+          "A9",
+          "B4",
+          "B9"
+        ],
         "name": "VBUS",
         "notes": "Питание, до 5 А при e-marker"
       },
       {
-        "pins": ["A5", "B5"],
+        "pins": [
+          "A5",
+          "B5"
+        ],
         "name": "CC1/CC2",
         "notes": "Определение ориентации и ролей, резисторы Rd/Rp/Ra"
       },
       {
-        "pins": ["A6", "A7", "B6", "B7"],
+        "pins": [
+          "A6",
+          "A7",
+          "B6",
+          "B7"
+        ],
         "name": "USB SuperSpeed lanes",
         "notes": "TX/RX пары, используются для USB 3.x и DisplayPort"
       },
       {
-        "pins": ["A2", "A3", "B10", "B11"],
+        "pins": [
+          "A2",
+          "A3",
+          "B10",
+          "B11"
+        ],
         "name": "SBU1/SBU2",
         "notes": "Auxiliary; в аксессуарах Apple часто занято под UART/SWD"
       }
@@ -277,7 +370,7 @@
     "diagnostic_notes": [
       "Проверяйте сопротивление CC → GND (~5.1 кΩ) и SBU → GND (должно быть > 1 MΩ).",
       "При отсутствии идентификации кабеля USB-PD контроллер не подаст >5 В — полезно для проверки Tristar/Hydra после замены.",
-      "Для теста e-marker используйте USB-C тестер или кабель с видимым EEPROM." 
+      "Для теста e-marker используйте USB-C тестер или кабель с видимым EEPROM."
     ]
   }
 }

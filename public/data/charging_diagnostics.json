@@ -4,8 +4,19 @@
   "last_updated": "2026-01-19",
   "usb_controllers": {
     "tristar": {
-      "part_numbers": ["1610A2", "1610A3", "1610A3B"],
-      "models": ["iPhone 6", "iPhone 6 Plus", "iPhone 6s", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus"],
+      "part_numbers": [
+        "1610A2",
+        "1610A3",
+        "1610A3B"
+      ],
+      "models": [
+        "iPhone 6",
+        "iPhone 6 Plus",
+        "iPhone 6s",
+        "iPhone 6s Plus",
+        "iPhone 7",
+        "iPhone 7 Plus"
+      ],
       "expected_voltages": {
         "PP_5V0_USB": "5V",
         "PP_TRISTAR_PIN": "5V"
@@ -18,8 +29,21 @@
       ]
     },
     "hydra": {
-      "part_numbers": ["1612A1"],
-      "models": ["iPhone 8", "iPhone 8 Plus", "iPhone X", "iPhone XR", "iPhone XS", "iPhone XS Max", "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone SE 2020"],
+      "part_numbers": [
+        "1612A1"
+      ],
+      "models": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X",
+        "iPhone XR",
+        "iPhone XS",
+        "iPhone XS Max",
+        "iPhone 11",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max",
+        "iPhone SE 2020"
+      ],
       "expected_voltages": {
         "PP_VBUS1_E75": "5V"
       },
@@ -31,11 +55,30 @@
       ]
     },
     "kraken": {
-      "part_numbers": ["1614A1", "1616A0", "1618A0"],
+      "part_numbers": [
+        "1614A1",
+        "1616A0",
+        "1618A0"
+      ],
       "models": {
-        "1614A1": ["iPhone 12", "iPhone 12 mini", "iPhone 12 Pro", "iPhone 12 Pro Max"],
-        "1616A0": ["iPhone 13", "iPhone 13 mini", "iPhone 13 Pro", "iPhone 13 Pro Max"],
-        "1618A0": ["iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max"]
+        "1614A1": [
+          "iPhone 12",
+          "iPhone 12 mini",
+          "iPhone 12 Pro",
+          "iPhone 12 Pro Max"
+        ],
+        "1616A0": [
+          "iPhone 13",
+          "iPhone 13 mini",
+          "iPhone 13 Pro",
+          "iPhone 13 Pro Max"
+        ],
+        "1618A0": [
+          "iPhone 14",
+          "iPhone 14 Plus",
+          "iPhone 14 Pro",
+          "iPhone 14 Pro Max"
+        ]
       },
       "expected_voltages": {
         "PP_VBUS1_E75": "5V"
@@ -48,8 +91,21 @@
       ]
     },
     "usb_c_controller": {
-      "part_numbers": ["CD3217B12", "SN2012017", "SN2012027"],
-      "models": ["iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max", "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max"],
+      "part_numbers": [
+        "CD3217B12",
+        "SN2012017",
+        "SN2012027"
+      ],
+      "models": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
       "expected_voltages": {
         "VBUS": "5V-20V (USB PD)",
         "CC1/CC2": "1.6V-3.3V"
@@ -86,7 +142,12 @@
     {
       "step": 4,
       "title": "Проверка RVP резистора 10Ω",
-      "applicable_to": ["iPhone 8", "iPhone X", "iPhone 13", "iPhone 14"],
+      "applicable_to": [
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 13",
+        "iPhone 14"
+      ],
       "procedure": [
         "Найти резистор 10Ω на линии VAR_USB_RVP",
         "Измерить напряжение на обеих pad",
@@ -134,41 +195,114 @@
     "generations": {
       "SN2400BO": {
         "designation": "U4500",
-        "models": ["iPhone 6s", "iPhone 6s Plus", "iPhone SE 1st"],
+        "models": [
+          "iPhone 6s",
+          "iPhone 6s Plus",
+          "iPhone SE 1st"
+        ],
         "package": "BGA 25-ball",
-        "features": ["5V/9V", "2.4A max"],
-        "test_points": ["PP_5V0_USB", "PP_VCC_MAIN"],
-        "common_faults": ["No charge", "Accessory not supported"]
+        "features": [
+          "5V/9V",
+          "2.4A max"
+        ],
+        "test_points": [
+          "PP_5V0_USB",
+          "PP_VCC_MAIN"
+        ],
+        "common_faults": [
+          "No charge",
+          "Accessory not supported"
+        ]
       },
       "SN2501": {
         "designation": "U3300",
-        "models": ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
+        "models": [
+          "iPhone 8",
+          "iPhone 8 Plus",
+          "iPhone X"
+        ],
         "package": "BGA 36-ball",
-        "features": ["USB PD", "OVP protection", "Fast charging"],
-        "test_points": ["PP_VBUS1", "PP_VCC_BATT"],
-        "common_faults": ["No charge", "Overheating", "Boot loop"]
+        "features": [
+          "USB PD",
+          "OVP protection",
+          "Fast charging"
+        ],
+        "test_points": [
+          "PP_VBUS1",
+          "PP_VCC_BATT"
+        ],
+        "common_faults": [
+          "No charge",
+          "Overheating",
+          "Boot loop"
+        ]
       },
       "SN2611A0": {
         "designation": "U3300",
-        "models": ["iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone SE 2020"],
+        "models": [
+          "iPhone 11",
+          "iPhone 11 Pro",
+          "iPhone 11 Pro Max",
+          "iPhone SE 2020"
+        ],
         "package": "BGA 49-ball",
-        "features": ["USB PD 3.0", "20W fast charging", "Power Path", "OVP/OCP"],
-        "test_points": ["PP_VBUS1_E75", "PP_VCC_MAIN", "PP_BATT_VCC"],
-        "common_faults": ["No charge", "Stuck at 5V", "Wireless works but cable doesn't"]
+        "features": [
+          "USB PD 3.0",
+          "20W fast charging",
+          "Power Path",
+          "OVP/OCP"
+        ],
+        "test_points": [
+          "PP_VBUS1_E75",
+          "PP_VCC_MAIN",
+          "PP_BATT_VCC"
+        ],
+        "common_faults": [
+          "No charge",
+          "Stuck at 5V",
+          "Wireless works but cable doesn't"
+        ]
       },
       "SN2611E0": {
         "designation": "U3300",
-        "models": ["iPhone 12", "iPhone 12 Pro", "iPhone 12 Pro Max", "iPhone 12 mini"],
+        "models": [
+          "iPhone 12",
+          "iPhone 12 Pro",
+          "iPhone 12 Pro Max",
+          "iPhone 12 mini"
+        ],
         "package": "BGA 49-ball",
-        "features": ["USB PD 3.0", "20W+", "MagSafe control"],
-        "common_faults": ["MagSafe issues", "No fast charge", "Overheating"]
+        "features": [
+          "USB PD 3.0",
+          "20W+",
+          "MagSafe control"
+        ],
+        "common_faults": [
+          "MagSafe issues",
+          "No fast charge",
+          "Overheating"
+        ]
       },
       "SN2611E1": {
         "designation": "U3300",
-        "models": ["iPhone 13", "iPhone 13 Pro", "iPhone 13 Pro Max", "iPhone 13 mini", "iPhone 14", "iPhone 14 Plus"],
+        "models": [
+          "iPhone 13",
+          "iPhone 13 Pro",
+          "iPhone 13 Pro Max",
+          "iPhone 13 mini",
+          "iPhone 14",
+          "iPhone 14 Plus"
+        ],
         "package": "BGA 49-ball",
-        "features": ["USB PD 3.0", "25W+", "Improved MagSafe"],
-        "common_faults": ["Battery health drop", "Slow charging"]
+        "features": [
+          "USB PD 3.0",
+          "25W+",
+          "Improved MagSafe"
+        ],
+        "common_faults": [
+          "Battery health drop",
+          "Slow charging"
+        ]
       }
     }
   },

@@ -1074,13 +1074,7 @@ const DeviceDetailsView = ({ device, measurementsData, onBack }) => {
         device.charging_ic.location && h('div', { className: 'p-4 bg-slate-50 rounded-xl col-span-full' },
           h('p', { className: 'text-xs text-slate-500 font-semibold mb-1' }, 'Расположение'),
           h('p', { className: 'text-sm text-slate-700' }, device.charging_ic.location)
-        ),
-        device.charging_ic.aliexpress && h('a', {
-          href: device.charging_ic.aliexpress,
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          className: 'p-3 bg-orange-500 text-white rounded-xl text-center font-semibold hover:bg-orange-600 transition-colors'
-        }, '🛒 Купить на AliExpress')
+        )
       )
     ),
 
