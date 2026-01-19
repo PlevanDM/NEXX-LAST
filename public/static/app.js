@@ -1,14 +1,16 @@
-// NEXX Database - Apple Repair Database v7.0
-// Enhanced with AI Self-Healing System, Error Tracking, Auto-Diagnostics
+// NEXX Database - Apple Repair Database v7.5
+// Enhanced with AI Self-Healing System v2.0, Error Tracking, Auto-Diagnostics, Smart Suggestions
 const { useState, useMemo, useEffect, useCallback, createElement: h } = React;
 
-// ===== 🤖 AI SELF-HEALING SYSTEM =====
+// ===== 🤖 AI SELF-HEALING SYSTEM V2.0 =====
 // Автоматическое отслеживание, диагностика и исправление ошибок
 const AIHealer = {
   errors: [],
   fixes: [],
   isEnabled: true,
-  maxErrors: 50,
+  maxErrors: 100,
+  userActions: [], // Отслеживание действий пользователя
+  performanceMetrics: [], // Метрики производительности
   
   // Конфигурация известных ошибок и их автоисправлений
   knownFixes: {
@@ -66,7 +68,134 @@ const AIHealer = {
         autoFix: false,
         severity: 'medium'
       })
+    },
+    // Data loading errors
+    'Failed to load': {
+      pattern: /Failed to load|404|403|500/,
+      fix: (match) => ({
+        suggestion: 'Не удалось загрузить ресурс. Проверьте доступность файла или API.',
+        autoFix: false,
+        severity: 'high',
+        actions: ['Проверить URL', 'Проверить права доступа', 'Обновить страницу']
+      })
+    },
+    // Memory leaks
+    'Memory leak': {
+      pattern: /Memory.*leak|Too many.*created/,
+      fix: () => ({
+        suggestion: 'Возможна утечка памяти. Проверьте отписки от событий и очистку useEffect.',
+        autoFix: false,
+        severity: 'critical',
+        actions: ['Добавить cleanup функции', 'Проверить useEffect зависимости']
+      })
     }
+  },
+  
+  // Отслеживание действий пользователя для контекстной помощи
+  trackAction(action, data = {}) {
+    const actionEntry = {
+      id: Date.now() + Math.random().toString(36).substr(2, 9),
+      timestamp: new Date().toISOString(),
+      action,
+      data,
+      context: {
+        url: window.location.href,
+        previousAction: this.userActions[0]?.action || 'none'
+      }
+    };
+    
+    this.userActions.unshift(actionEntry);
+    if (this.userActions.length > 50) {
+      this.userActions.pop();
+    }
+  },
+  
+  // Метрики производительности
+  trackPerformance(metric, value) {
+    this.performanceMetrics.unshift({
+      metric,
+      value,
+      timestamp: new Date().toISOString()
+    });
+    if (this.performanceMetrics.length > 100) {
+      this.performanceMetrics.pop();
+    }
+  },
+  
+  // Получить умные рекомендации на основе истории ошибок
+  getSmartSuggestions() {
+    const suggestions = [];
+    
+    // Анализ частых ошибок
+    const errorCounts = {};
+    this.errors.forEach(err => {
+      const key = err.message.substring(0, 50);
+      errorCounts[key] = (errorCounts[key] || 0) + 1;
+    });
+    
+    Object.entries(errorCounts).forEach(([msg, count]) => {
+      if (count >= 3) {
+        suggestions.push({
+          type: 'frequent',
+          severity: 'high',
+          message: `Повторяющаяся ошибка (${count}x): ${msg}`,
+          action: 'Требует немедленного исправления'
+        });
+      }
+    });
+    
+    // Анализ критических ошибок
+    const criticalErrors = this.errors.filter(e => e.fix?.severity === 'critical');
+    if (criticalErrors.length > 0) {
+      suggestions.push({
+        type: 'critical',
+        severity: 'critical',
+        message: `Найдено ${criticalErrors.length} критических ошибок`,
+        action: 'Исправьте критические ошибки в первую очередь'
+      });
+    }
+    
+    // Анализ производительности
+    const slowMetrics = this.performanceMetrics.filter(m => m.value > 3000);
+    if (slowMetrics.length > 5) {
+      suggestions.push({
+        type: 'performance',
+        severity: 'medium',
+        message: 'Обнаружены проблемы с производительностью',
+        action: 'Оптимизируйте медленные операции'
+      });
+    }
+    
+    return suggestions;
+  },
+  
+  // Экспорт отчёта для разработчиков
+  exportReport() {
+    const report = {
+      generatedAt: new Date().toISOString(),
+      appVersion: '7.5',
+      stats: this.getStats(),
+      errors: this.errors.slice(0, 20),
+      userActions: this.userActions.slice(0, 20),
+      performanceMetrics: this.performanceMetrics.slice(0, 20),
+      suggestions: this.getSmartSuggestions(),
+      browser: {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        online: navigator.onLine
+      }
+    };
+    
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `nexx-error-report-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    return report;
   },
   
   // Логирование ошибки
@@ -274,13 +403,18 @@ const safeMap = (arr, mapFn, fallback = []) => {
   }
 };
 
-// ===== AI HEALER DEBUG PANEL COMPONENT =====
+// ===== AI HEALER DEBUG PANEL COMPONENT V2.0 =====
 const AIHealerPanel = ({ onClose }) => {
   const [stats, setStats] = useState(AIHealer.getStats());
   const [filter, setFilter] = useState('all');
+  const [activeTab, setActiveTab] = useState('errors'); // errors, suggestions, performance, actions
+  const [suggestions, setSuggestions] = useState(AIHealer.getSmartSuggestions());
   
   useEffect(() => {
-    const interval = setInterval(() => setStats(AIHealer.getStats()), 2000);
+    const interval = setInterval(() => {
+      setStats(AIHealer.getStats());
+      setSuggestions(AIHealer.getSmartSuggestions());
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
   
@@ -288,114 +422,317 @@ const AIHealerPanel = ({ onClose }) => {
     ? AIHealer.errors 
     : AIHealer.errors.filter(e => e.fix?.severity === filter);
   
+  const handleExport = () => {
+    AIHealer.exportReport();
+  };
+  
   return h('div', { className: 'fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 backdrop-blur-sm' },
-    h('div', { className: 'bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col' },
+    h('div', { className: 'bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col' },
       // Header
-      h('div', { className: 'bg-gradient-to-r from-red-500 to-orange-500 p-5 text-white' },
+      h('div', { className: 'bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 p-5 text-white' },
         h('div', { className: 'flex justify-between items-center' },
           h('div', null,
-            h('h2', { className: 'text-xl font-bold flex items-center gap-2' }, '🤖 AI Healer - Диагностика'),
-            h('p', { className: 'text-white/80 text-sm' }, `Отслежено ошибок: ${stats.total}`)
+            h('h2', { className: 'text-2xl font-bold flex items-center gap-2' }, 
+              '🤖 AI Healer v2.0 - Умная Диагностика'
+            ),
+            h('p', { className: 'text-white/90 text-sm mt-1' }, 
+              `Отслежено: ${stats.total} ошибок • ${AIHealer.userActions.length} действий • ${suggestions.length} рекомендаций`
+            )
           ),
           h('div', { className: 'flex gap-2' },
             h('button', {
+              onClick: handleExport,
+              className: 'px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-all flex items-center gap-2'
+            }, '📥 Экспорт'),
+            h('button', {
               onClick: () => { AIHealer.clear(); setStats(AIHealer.getStats()); },
-              className: 'px-3 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm'
+              className: 'px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium'
             }, '🗑️ Очистить'),
             h('button', {
               onClick: onClose,
-              className: 'w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center'
+              className: 'w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-lg'
             }, '✕')
           )
         )
       ),
       
-      // Stats
-      h('div', { className: 'p-4 bg-slate-50 border-b grid grid-cols-4 gap-3' },
-        h('div', { className: 'p-3 bg-red-100 rounded-xl text-center' },
-          h('p', { className: 'text-2xl font-bold text-red-600' }, stats.bySeverity.critical || 0),
-          h('p', { className: 'text-xs text-red-500' }, 'Critical')
+      // Stats Dashboard
+      h('div', { className: 'p-4 bg-gradient-to-br from-slate-50 to-slate-100 border-b grid grid-cols-2 sm:grid-cols-4 gap-3' },
+        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-red-200 text-center hover:scale-105 transition-transform' },
+          h('p', { className: 'text-3xl font-black text-red-600' }, stats.bySeverity.critical || 0),
+          h('p', { className: 'text-xs font-bold text-red-500 mt-1' }, 'CRITICAL'),
+          h('div', { className: 'mt-2 h-1 bg-red-200 rounded-full overflow-hidden' },
+            h('div', { className: 'h-full bg-red-500', style: { width: `${Math.min((stats.bySeverity.critical / stats.total) * 100, 100)}%` } })
+          )
         ),
-        h('div', { className: 'p-3 bg-orange-100 rounded-xl text-center' },
-          h('p', { className: 'text-2xl font-bold text-orange-600' }, stats.bySeverity.high || 0),
-          h('p', { className: 'text-xs text-orange-500' }, 'High')
+        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-orange-200 text-center hover:scale-105 transition-transform' },
+          h('p', { className: 'text-3xl font-black text-orange-600' }, stats.bySeverity.high || 0),
+          h('p', { className: 'text-xs font-bold text-orange-500 mt-1' }, 'HIGH'),
+          h('div', { className: 'mt-2 h-1 bg-orange-200 rounded-full overflow-hidden' },
+            h('div', { className: 'h-full bg-orange-500', style: { width: `${Math.min((stats.bySeverity.high / stats.total) * 100, 100)}%` } })
+          )
         ),
-        h('div', { className: 'p-3 bg-yellow-100 rounded-xl text-center' },
-          h('p', { className: 'text-2xl font-bold text-yellow-600' }, stats.bySeverity.medium || 0),
-          h('p', { className: 'text-xs text-yellow-500' }, 'Medium')
+        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-yellow-200 text-center hover:scale-105 transition-transform' },
+          h('p', { className: 'text-3xl font-black text-yellow-600' }, stats.bySeverity.medium || 0),
+          h('p', { className: 'text-xs font-bold text-yellow-500 mt-1' }, 'MEDIUM'),
+          h('div', { className: 'mt-2 h-1 bg-yellow-200 rounded-full overflow-hidden' },
+            h('div', { className: 'h-full bg-yellow-500', style: { width: `${Math.min((stats.bySeverity.medium / stats.total) * 100, 100)}%` } })
+          )
         ),
-        h('div', { className: 'p-3 bg-green-100 rounded-xl text-center' },
-          h('p', { className: 'text-2xl font-bold text-green-600' }, stats.total - (stats.bySeverity.critical + stats.bySeverity.high + stats.bySeverity.medium) || 0),
-          h('p', { className: 'text-xs text-green-500' }, 'Unknown')
+        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-green-200 text-center hover:scale-105 transition-transform' },
+          h('p', { className: 'text-3xl font-black text-green-600' }, AIHealer.userActions.length),
+          h('p', { className: 'text-xs font-bold text-green-500 mt-1' }, 'ACTIONS'),
+          h('div', { className: 'mt-2 h-1 bg-green-200 rounded-full' },
+            h('div', { className: 'h-full bg-green-500 animate-pulse', style: { width: '75%' } })
+          )
         )
       ),
       
-      // Filter
-      h('div', { className: 'p-3 border-b flex gap-2' },
-        ...['all', 'critical', 'high', 'medium'].map(f =>
+      // Tabs Navigation
+      h('div', { className: 'flex bg-white border-b overflow-x-auto' },
+        ...['errors', 'suggestions', 'performance', 'actions'].map(tab =>
           h('button', {
-            key: f,
-            onClick: () => setFilter(f),
-            className: `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-              filter === f ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            key: tab,
+            onClick: () => setActiveTab(tab),
+            className: `px-6 py-3 text-sm font-bold transition-all border-b-2 whitespace-nowrap ${
+              activeTab === tab 
+                ? 'text-purple-600 border-purple-600 bg-purple-50' 
+                : 'text-slate-500 border-transparent hover:text-slate-700 hover:bg-slate-50'
             }`
-          }, f === 'all' ? 'Все' : f.charAt(0).toUpperCase() + f.slice(1))
+          }, 
+            tab === 'errors' ? `❌ Ошибки (${stats.total})` :
+            tab === 'suggestions' ? `💡 Рекомендации (${suggestions.length})` :
+            tab === 'performance' ? `⚡ Производительность` :
+            `📊 Действия (${AIHealer.userActions.length})`
+          )
         )
       ),
-      
-      // Errors list
-      h('div', { className: 'flex-1 overflow-y-auto p-4 space-y-3' },
-        filteredErrors.length === 0 
-          ? h('div', { className: 'text-center py-12 text-slate-400' },
-              h('p', { className: 'text-4xl mb-2' }, '✅'),
-              h('p', null, 'Ошибок не обнаружено')
+      // Tab Content
+      h('div', { className: 'flex-1 overflow-y-auto p-4' },
+        // Errors Tab
+        activeTab === 'errors' && h('div', null,
+          // Filter buttons
+          h('div', { className: 'mb-4 flex flex-wrap gap-2' },
+            ...['all', 'critical', 'high', 'medium'].map(f =>
+              h('button', {
+                key: f,
+                onClick: () => setFilter(f),
+                className: `px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
+                  filter === f 
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg' 
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`
+              }, f === 'all' ? '🔍 Все' : 
+                 f === 'critical' ? '🔴 Critical' :
+                 f === 'high' ? '🟠 High' : '🟡 Medium')
             )
-          : filteredErrors.map(err =>
+          ),
+          
+          // Errors list
+          h('div', { className: 'space-y-3' },
+            filteredErrors.length === 0 
+              ? h('div', { className: 'text-center py-16 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl' },
+                  h('p', { className: 'text-6xl mb-4 animate-bounce' }, '✅'),
+                  h('p', { className: 'text-xl font-bold text-green-600' }, 'Отлично!'),
+                  h('p', { className: 'text-slate-500 mt-2' }, 'Ошибок не обнаружено. Приложение работает стабильно.')
+                )
+              : filteredErrors.map(err =>
+                  h('div', { 
+                    key: err.id, 
+                    className: `p-5 rounded-xl border-2 shadow-sm hover:shadow-md transition-all ${
+                      err.fix?.severity === 'critical' ? 'bg-gradient-to-br from-red-50 to-rose-50 border-red-300' :
+                      err.fix?.severity === 'high' ? 'bg-gradient-to-br from-orange-50 to-amber-50 border-orange-300' :
+                      err.fix?.severity === 'medium' ? 'bg-gradient-to-br from-yellow-50 to-lime-50 border-yellow-300' :
+                      'bg-gradient-to-br from-slate-50 to-gray-50 border-slate-300'
+                    }`
+                  },
+                    // Header
+                    h('div', { className: 'flex justify-between items-start gap-3 mb-3' },
+                      h('div', { className: 'flex-1 min-w-0' },
+                        h('p', { className: 'font-bold text-lg text-slate-900 mb-2' }, err.message),
+                        h('div', { className: 'flex items-center gap-3 text-xs' },
+                          h('span', { className: 'px-2 py-1 bg-blue-100 text-blue-700 rounded font-mono' }, 
+                            `📍 ${err.context.component}`
+                          ),
+                          h('span', { className: 'px-2 py-1 bg-indigo-100 text-indigo-700 rounded font-mono' }, 
+                            `⚡ ${err.context.action}`
+                          ),
+                          h('span', { className: 'text-slate-400' }, 
+                            new Date(err.timestamp).toLocaleString('ru-RU')
+                          )
+                        )
+                      ),
+                      err.fix && h('span', { 
+                        className: `px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm ${
+                          err.fix.severity === 'critical' ? 'bg-red-600 text-white' :
+                          err.fix.severity === 'high' ? 'bg-orange-600 text-white' :
+                          'bg-yellow-600 text-white'
+                        }`
+                      }, err.fix.severity)
+                    ),
+                    
+                    // Fix suggestion
+                    err.fix && h('div', { className: 'mt-3 p-4 bg-white rounded-lg border-2 border-green-300 shadow-sm' },
+                      h('p', { className: 'text-sm font-bold text-green-700 mb-2 flex items-center gap-2' }, 
+                        '💡 Рекомендация:'
+                      ),
+                      h('p', { className: 'text-sm text-green-800' }, err.fix.suggestion),
+                      err.fix.actions && h('div', { className: 'mt-3 flex flex-wrap gap-2' },
+                        ...err.fix.actions.map((action, i) =>
+                          h('span', { 
+                            key: i,
+                            className: 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium'
+                          }, `▶ ${action}`)
+                        )
+                      )
+                    ),
+                    
+                    // Stack trace
+                    err.stack && h('details', { className: 'mt-3 group' },
+                      h('summary', { 
+                        className: 'text-xs font-bold text-slate-500 cursor-pointer hover:text-slate-700 p-2 bg-white rounded hover:bg-slate-50 transition-colors'
+                      }, '📜 Stack Trace'),
+                      h('pre', { 
+                        className: 'mt-2 p-3 bg-slate-900 text-green-400 rounded-lg text-xs overflow-x-auto font-mono shadow-inner border border-slate-700' 
+                      }, err.stack.split('\n').slice(0, 8).join('\n'))
+                    )
+                  )
+                )
+          )
+        ),
+        
+        // Suggestions Tab
+        activeTab === 'suggestions' && h('div', { className: 'space-y-4' },
+          suggestions.length === 0 
+            ? h('div', { className: 'text-center py-16 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl' },
+                h('p', { className: 'text-6xl mb-4' }, '🎯'),
+                h('p', { className: 'text-xl font-bold text-blue-600' }, 'Всё в порядке!'),
+                h('p', { className: 'text-slate-500 mt-2' }, 'Умных рекомендаций пока нет.')
+              )
+            : suggestions.map((sugg, i) =>
+                h('div', { 
+                  key: i,
+                  className: `p-5 rounded-xl border-2 shadow-md bg-gradient-to-br ${
+                    sugg.severity === 'critical' ? 'from-red-50 to-rose-100 border-red-400' :
+                    sugg.severity === 'high' ? 'from-orange-50 to-amber-100 border-orange-400' :
+                    'from-blue-50 to-cyan-100 border-blue-400'
+                  }`
+                },
+                  h('div', { className: 'flex items-start gap-4' },
+                    h('div', { 
+                      className: `text-4xl ${
+                        sugg.type === 'frequent' ? '🔄' :
+                        sugg.type === 'critical' ? '🚨' :
+                        sugg.type === 'performance' ? '⚡' : '💡'
+                      }`
+                    }, sugg.type === 'frequent' ? '🔄' :
+                       sugg.type === 'critical' ? '🚨' :
+                       sugg.type === 'performance' ? '⚡' : '💡'),
+                    h('div', { className: 'flex-1' },
+                      h('p', { className: 'font-bold text-lg text-slate-900 mb-2' }, sugg.message),
+                      h('p', { className: 'text-sm text-slate-700 bg-white px-3 py-2 rounded-lg inline-block' }, 
+                        `✓ ${sugg.action}`
+                      )
+                    )
+                  )
+                )
+              )
+        ),
+        
+        // Performance Tab
+        activeTab === 'performance' && h('div', { className: 'space-y-4' },
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-6' },
+            h('div', { className: 'p-5 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl border-2 border-purple-300' },
+              h('p', { className: 'text-sm font-bold text-purple-700 mb-1' }, 'Среднее время отклика'),
+              h('p', { className: 'text-3xl font-black text-purple-900' }, 
+                `${AIHealer.performanceMetrics.length > 0 
+                  ? Math.round(AIHealer.performanceMetrics.reduce((a,b) => a + b.value, 0) / AIHealer.performanceMetrics.length) 
+                  : 0}ms`
+              )
+            ),
+            h('div', { className: 'p-5 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-xl border-2 border-cyan-300' },
+              h('p', { className: 'text-sm font-bold text-cyan-700 mb-1' }, 'Медленных операций'),
+              h('p', { className: 'text-3xl font-black text-cyan-900' }, 
+                AIHealer.performanceMetrics.filter(m => m.value > 3000).length
+              )
+            )
+          ),
+          h('div', { className: 'space-y-2' },
+            AIHealer.performanceMetrics.slice(0, 15).map((metric, i) =>
               h('div', { 
-                key: err.id, 
-                className: `p-4 rounded-xl border ${
-                  err.fix?.severity === 'critical' ? 'bg-red-50 border-red-200' :
-                  err.fix?.severity === 'high' ? 'bg-orange-50 border-orange-200' :
-                  err.fix?.severity === 'medium' ? 'bg-yellow-50 border-yellow-200' :
-                  'bg-slate-50 border-slate-200'
+                key: i,
+                className: `p-3 rounded-lg border ${
+                  metric.value > 3000 ? 'bg-red-50 border-red-200' :
+                  metric.value > 1000 ? 'bg-yellow-50 border-yellow-200' :
+                  'bg-green-50 border-green-200'
                 }`
               },
-                h('div', { className: 'flex justify-between items-start gap-3' },
-                  h('div', { className: 'flex-1 min-w-0' },
-                    h('p', { className: 'font-semibold text-slate-800 truncate' }, err.message),
-                    h('p', { className: 'text-xs text-slate-500 mt-1' }, 
-                      `📍 ${err.context.component} → ${err.context.action}`
-                    ),
-                    h('p', { className: 'text-xs text-slate-400' }, 
-                      new Date(err.timestamp).toLocaleString('ru-RU')
+                h('div', { className: 'flex justify-between items-center' },
+                  h('span', { className: 'font-mono text-sm font-bold' }, metric.metric),
+                  h('div', { className: 'flex items-center gap-2' },
+                    h('span', { 
+                      className: `font-bold ${
+                        metric.value > 3000 ? 'text-red-600' :
+                        metric.value > 1000 ? 'text-yellow-600' :
+                        'text-green-600'
+                      }`
+                    }, `${metric.value}ms`),
+                    h('span', { className: 'text-xs text-slate-400' }, 
+                      new Date(metric.timestamp).toLocaleTimeString('ru-RU')
                     )
-                  ),
-                  err.fix && h('span', { 
-                    className: `px-2 py-1 rounded text-xs font-bold ${
-                      err.fix.severity === 'critical' ? 'bg-red-500 text-white' :
-                      err.fix.severity === 'high' ? 'bg-orange-500 text-white' :
-                      'bg-yellow-500 text-white'
-                    }`
-                  }, err.fix.severity)
-                ),
-                err.fix && h('div', { className: 'mt-3 p-3 bg-green-50 rounded-lg border border-green-200' },
-                  h('p', { className: 'text-sm text-green-700' }, '💡 ', err.fix.suggestion)
-                ),
-                err.stack && h('details', { className: 'mt-2' },
-                  h('summary', { className: 'text-xs text-slate-400 cursor-pointer hover:text-slate-600' }, 'Stack trace'),
-                  h('pre', { className: 'mt-2 p-2 bg-slate-100 rounded text-xs overflow-x-auto text-slate-600' }, 
-                    err.stack.split('\n').slice(0, 5).join('\n')
                   )
                 )
               )
             )
+          )
+        ),
+        
+        // Actions Tab
+        activeTab === 'actions' && h('div', { className: 'space-y-2' },
+          AIHealer.userActions.length === 0 
+            ? h('div', { className: 'text-center py-16 bg-slate-50 rounded-2xl' },
+                h('p', { className: 'text-6xl mb-4' }, '📊'),
+                h('p', { className: 'text-xl font-bold text-slate-600' }, 'Действия не отслеживаются'),
+                h('p', { className: 'text-slate-400 mt-2 text-sm' }, 'Начните использовать приложение')
+              )
+            : AIHealer.userActions.slice(0, 50).map((action, i) =>
+                h('div', { 
+                  key: action.id,
+                  className: 'p-3 bg-white hover:bg-slate-50 rounded-lg border border-slate-200 transition-all'
+                },
+                  h('div', { className: 'flex justify-between items-center' },
+                    h('div', { className: 'flex items-center gap-3' },
+                      h('span', { className: 'text-2xl' }, 
+                        action.action.includes('click') ? '👆' :
+                        action.action.includes('search') ? '🔍' :
+                        action.action.includes('open') ? '📂' :
+                        action.action.includes('close') ? '✕' : '⚡'
+                      ),
+                      h('div', null,
+                        h('p', { className: 'font-mono text-sm font-bold text-slate-700' }, action.action),
+                        h('p', { className: 'text-xs text-slate-400' }, action.context.previousAction)
+                      )
+                    ),
+                    h('span', { className: 'text-xs text-slate-400 font-mono' }, 
+                      new Date(action.timestamp).toLocaleTimeString('ru-RU')
+                    )
+                  )
+                )
+              )
+        )
       ),
       
-      // Footer with tips
-      h('div', { className: 'p-4 bg-slate-50 border-t' },
-        h('p', { className: 'text-xs text-slate-500' }, 
-          '💡 Совет: Откройте консоль браузера (F12) для подробной информации. ' +
-          'Используйте window.AIHealer.getStats() для анализа.'
+      // Footer with enhanced tips
+      h('div', { className: 'p-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white' },
+        h('div', { className: 'flex items-center justify-between text-xs' },
+          h('div', null,
+            h('p', { className: 'font-bold mb-1' }, '💻 Консоль разработчика'),
+            h('p', { className: 'text-slate-300' }, 'Нажмите F12 → Console для детальной информации')
+          ),
+          h('div', { className: 'text-right' },
+            h('p', { className: 'font-bold mb-1' }, '🔧 API для разработчиков'),
+            h('p', { className: 'text-slate-300 font-mono' }, 'window.AIHealer')
+          )
         )
       )
     )
