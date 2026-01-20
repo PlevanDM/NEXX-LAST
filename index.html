@@ -314,6 +314,61 @@
     <script src="/static/ui-components.js"></script>
     <script src="/static/navigation-system.js"></script>
     <script src="/static/analytics.js"></script>
+    <style>
+      :root {
+        --primary: rgb(59, 130, 246);
+        --primary-foreground: rgb(255, 255, 255);
+      }
+      
+      .bg-primary {
+        background: linear-gradient(to bottom right, rgb(59, 130, 246), rgb(147, 51, 234));
+      }
+      
+      .text-primary-foreground {
+        color: rgb(255, 255, 255);
+      }
+      
+      .border-primary {
+        border-color: rgb(59, 130, 246);
+      }
+      
+      .shadow-primary\/50 {
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
+      }
+      
+      .shadow-primary\/20 {
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.4s ease-out;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(31, 41, 55, 0.5);
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(59, 130, 246, 0.5);
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(59, 130, 246, 0.7);
+      }
+    </style>
+    <script src="/static/utils-calculator.js"></script>
     <script src="/static/price-calculator.js"></script>
     
     <script>
@@ -321,11 +376,38 @@
         const { Header, Footer, ToastContainer } = window.NEXXDesign;
         const { QuickActions } = window.NEXXNavigation;
         
-        // Translation helper
+        // Translation helper with fallback
         const t = (key) => {
-            if (!window.i18n) return key;
+            if (!window.i18n) {
+                // Fallback translations
+                const fallbacks = {
+                    'booking.errors.nameRequired': 'Numele este obligatoriu (min. 2 caractere)',
+                    'booking.errors.phoneInvalid': 'Telefonul este invalid',
+                    'booking.errors.deviceRequired': 'Selectați dispozitivul',
+                    'booking.success': 'Mulțumim! Te vom suna în curând'
+                };
+                return fallbacks[key] || key;
+            }
             return window.i18n.t(key);
         };
+        
+        // Safe toast function (works even if ToastContainer not mounted yet)
+        const safeToast = (message, type = 'success', duration = 3000) => {
+            if (window.showToast) {
+                window.showToast(message, type, duration);
+            } else {
+                // Fallback: console log or alert
+                console.log(`[${type.toUpperCase()}] ${message}`);
+                // Store for later display when ToastContainer mounts
+                if (!window._pendingToasts) window._pendingToasts = [];
+                window._pendingToasts.push({ message, type, duration });
+            }
+        };
+        
+        // Initialize showToast if ToastContainer will mount it
+        if (!window.showToast) {
+            window.showToast = safeToast;
+        }
         
         // ============================================
         // HERO - Для клієнтів
@@ -726,23 +808,66 @@
             
             const handleSubmit = async (e) => {
                 e.preventDefault();
+                
+                // Валидация перед отправкой
+                const validationErrors = {};
+                if (!formData.name || formData.name.trim().length < 2) {
+                    validationErrors.name = t('booking.errors.nameRequired') || 'Numele este obligatoriu (min. 2 caractere)';
+                }
+                if (!formData.phone || !validatePhone(formData.phone)) {
+                    validationErrors.phone = t('booking.errors.phoneInvalid') || 'Telefonul este invalid';
+                }
+                if (!formData.device) {
+                    validationErrors.device = t('booking.errors.deviceRequired') || 'Selectați dispozitivul';
+                }
+                
+                if (Object.keys(validationErrors).length > 0) {
+                    setErrors(validationErrors);
+                    if (window.showToast) {
+                        window.showToast('❌ ' + Object.values(validationErrors)[0], 'error', 4000);
+                    }
+                    return;
+                }
+                
                 setStatus('loading');
+                setErrors({});
                 
                 try {
-                    // Реальный API вызов
+                    // Таймаут для запроса (10 секунд)
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000);
+                    
+                    // Реальный API вызов с улучшенной обработкой ошибок
                     const response = await fetch('/api/booking', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            name: formData.name,
-                            phone: formData.phone,
+                            name: formData.name.trim(),
+                            phone: formData.phone.replace(/\D/g, ''), // Очищаем телефон от форматирования
                             device: formData.device,
-                            problem: formData.problem,
-                            _honeypot: '' // Anti-spam honeypot
-                        })
+                            problem: formData.problem.trim() || 'Nu specificat',
+                            _honeypot: '', // Anti-spam honeypot
+                            source: 'website',
+                            timestamp: new Date().toISOString()
+                        }),
+                        signal: controller.signal
                     });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    // Проверяем статус ответа
+                    if (!response.ok) {
+                        let errorMessage = 'Eroare la trimitere';
+                        try {
+                            const errorData = await response.json();
+                            errorMessage = errorData.error || errorData.message || errorMessage;
+                        } catch (e) {
+                            errorMessage = `Eroare ${response.status}: ${response.statusText}`;
+                        }
+                        throw new Error(errorMessage);
+                    }
                     
                     const result = await response.json();
                     
@@ -751,28 +876,61 @@
                         setFormData({ name: '', phone: '', device: '', problem: '' });
                         
                         // Show success toast
-                        if (window.showToast) {
-                            window.showToast('✅ ' + (result.message || t('booking.success')), 'success', 5000);
-                        }
+                        safeToast('✅ ' + (result.message || t('booking.success.message') || t('booking.success')), 'success', 5000);
                         
                         // Track conversion
                         if (window.NEXXAnalytics) {
                             window.NEXXAnalytics.trackEvent('booking_submitted', {
-                                device: formData.device
+                                device: formData.device,
+                                order_id: result.order_id || null
                             });
+                        }
+                        
+                        // Попытка повторной отправки неотправленных лидов из калькулятора
+                        try {
+                            const failedLeads = JSON.parse(localStorage.getItem('nexx_failed_leads') || '[]');
+                            if (failedLeads.length > 0) {
+                                console.log('🔄 Пытаюсь отправить ' + failedLeads.length + ' сохраненных лидов...');
+                                // Фоновая отправка без блокировки UI
+                                Promise.all(failedLeads.map(lead => 
+                                    fetch('/api/remonline?action=create_lead', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify(lead)
+                                    }).catch(() => null)
+                                )).then(() => {
+                                    localStorage.removeItem('nexx_failed_leads');
+                                    console.log('✅ Все сохраненные лиды обработаны');
+                                });
+                            }
+                        } catch (e) {
+                            // Игнорируем ошибки при обработке сохраненных лидов
                         }
                         
                         setTimeout(() => setStatus(null), 3000);
                     } else {
-                        throw new Error(result.error || 'Eroare la trimitere');
+                        throw new Error(result.error || result.message || 'Eroare la trimitere');
                     }
                 } catch (error) {
                     console.error('Booking error:', error);
-                    setStatus(null);
                     
-                    if (window.showToast) {
-                        window.showToast('❌ Eroare la trimitere. Sunați: +40 721 234 567', 'error', 5000);
+                    // Улучшенная обработка разных типов ошибок
+                    let errorMessage = 'Eroare la trimitere. Sunați: +40 721 234 567';
+                    if (error.name === 'AbortError') {
+                        errorMessage = 'Timpul a expirat. Verificați conexiunea la internet și încercați din nou.';
+                    } else if (error.message) {
+                        errorMessage = error.message;
                     }
+                    
+                    setStatus('error');
+                    setErrors({ submit: errorMessage });
+                    safeToast('❌ ' + errorMessage, 'error', 6000);
+                    
+                    // Через 5 секунд сбрасываем статус ошибки
+                    setTimeout(() => {
+                        setStatus(null);
+                        setErrors({});
+                    }, 5000);
                 }
             };
             

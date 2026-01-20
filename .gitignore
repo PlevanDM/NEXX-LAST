@@ -126,3 +126,8 @@ screenshots/
 # Old configuration files
 wrangler.jsonc
 wrangler.toml.backup
+
+# Docker
+# .dockerignore - держим в репозитории
+# Dockerfile* - держим в репозитории
+# docker-compose*.yml - держим в репозитории

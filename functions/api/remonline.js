@@ -29,10 +29,12 @@ export async function onRequestPost(context) {
       });
     }
     
-    // Create Lead (from price calculator)
-    if (action === 'create_lead') {
+    // Create Inquiry/Lead (from price calculator with contact data)
+    if (action === 'create_inquiry' || action === 'create_lead') {
       const leadData = {
         type: 'calculator_lead',
+        name: body.name || '',
+        phone: body.phone || '',
         device: body.device,
         issue: body.issue,
         estimated_price: body.estimated_price,
@@ -44,7 +46,7 @@ export async function onRequestPost(context) {
       // Если Remonline API настроен - отправляем лид
       if (REMONLINE_API_KEY) {
         try {
-          const response = await fetch(`${REMONLINE_BASE_URL}/leads/create`, {
+          const response = await fetch(`${REMONLINE_BASE_URL}/inquiries`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -52,11 +54,13 @@ export async function onRequestPost(context) {
             },
             body: JSON.stringify({
               branch_id: BRANCH_ID,
-              device_info: `${body.device.brand} ${body.device.model}`,
-              issue: body.issue,
-              estimated_price: body.estimated_price,
+              name: body.name || 'Client calculator',
+              phone: body.phone || '',
+              device_info: `${body.device?.brand || ''} ${body.device?.model || ''}`.trim(),
+              issue: body.issue || '',
+              estimated_price: body.estimated_price || '',
               source: 'calculator',
-              notes: `Calculated from website. Device: ${body.device.brand} ${body.device.type} - ${body.device.model}. Issue: ${body.issue}`
+              notes: `Calculator website. Device: ${body.device?.brand || ''} ${body.device?.type || ''} - ${body.device?.model || ''}. Issue: ${body.issue || ''}. Estimated: ${body.estimated_price || ''}`
             })
           });
           
@@ -75,10 +79,22 @@ export async function onRequestPost(context) {
           });
         } catch (remonlineError) {
           console.error('Remonline API error:', remonlineError);
-          // Если Remonline не работает - все равно возвращаем успех
+          
+          // Улучшенная обработка ошибок
+          let errorMessage = 'Remonline API error';
+          if (remonlineError instanceof TypeError && remonlineError.message.includes('fetch')) {
+            errorMessage = 'Network error: Remonline API недоступен';
+          } else if (remonlineError.message) {
+            errorMessage = remonlineError.message;
+          }
+          
+          // Если Remonline не работает - все равно возвращаем успех, но логируем
+          console.warn('⚠️ Remonline недоступен, лид сохранен локально:', errorMessage);
+          
           return new Response(JSON.stringify({
             success: true,
-            message: 'Lead saved (Remonline offline)'
+            message: 'Lead saved (Remonline offline)',
+            warning: errorMessage
           }), {
             status: 200,
             headers: { 

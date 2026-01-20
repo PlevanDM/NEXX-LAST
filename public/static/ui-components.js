@@ -616,13 +616,28 @@
     const [toasts, setToasts] = React.useState([]);
     
     React.useEffect(() => {
+      // Инициализация глобальной функции showToast
       window.showToast = (message, type = 'success', duration = 3000) => {
-        const id = Date.now();
+        const id = Date.now() + Math.random(); // Уникальный ID
         setToasts(prev => [...prev, { id, message, type, duration }]);
+        
+        // Автоматическое удаление после duration
+        setTimeout(() => {
+          setToasts(prev => prev.filter(t => t.id !== id));
+        }, duration);
       };
       
+      // Обработка отложенных toast'ов (если были вызваны до монтирования)
+      if (window._pendingToasts && Array.isArray(window._pendingToasts)) {
+        window._pendingToasts.forEach(toast => {
+          window.showToast(toast.message, toast.type, toast.duration);
+        });
+        window._pendingToasts = [];
+      }
+      
       return () => {
-        delete window.showToast;
+        // Не удаляем showToast при размонтировании, так как он может использоваться другими компонентами
+        // delete window.showToast;
       };
     }, []);
     

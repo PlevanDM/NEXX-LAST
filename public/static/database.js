@@ -91,15 +91,52 @@
     getDevicesByBrand(brand, category = null) {
       if (!this.devices) return [];
       
+      const brandLower = brand.toLowerCase();
+      const categoryLower = category ? category.toLowerCase() : null;
+      
       return this.devices.filter(device => {
-        const matchBrand = device.category?.toLowerCase().includes(brand.toLowerCase()) ||
-                          device.name?.toLowerCase().includes(brand.toLowerCase());
+        const deviceName = (device.name || '').toLowerCase();
+        const deviceCategory = (device.category || '').toLowerCase();
         
-        if (category) {
-          return matchBrand && device.category === category;
+        // Проверка бренда
+        let brandMatch = false;
+        if (brandLower === 'iphone' || brandLower === 'apple') {
+          brandMatch = deviceName.includes('iphone') || deviceName.includes('ipad') || 
+                      deviceName.includes('macbook') || deviceName.includes('imac') ||
+                      deviceCategory.includes('iphone') || deviceCategory.includes('ipad') ||
+                      deviceCategory.includes('macbook');
+        } else if (brandLower === 'samsung') {
+          brandMatch = deviceName.includes('samsung') || deviceName.includes('galaxy') ||
+                      deviceCategory.includes('samsung') || deviceCategory.includes('galaxy');
+        } else if (brandLower === 'xiaomi') {
+          brandMatch = deviceName.includes('xiaomi') || deviceName.includes('redmi') || 
+                      deviceName.includes('poco') || deviceCategory.includes('xiaomi');
+        } else if (brandLower === 'huawei') {
+          brandMatch = deviceName.includes('huawei') || deviceName.includes('honor') ||
+                      deviceCategory.includes('huawei') || deviceCategory.includes('honor');
+        } else {
+          brandMatch = deviceName.includes(brandLower) || deviceCategory.includes(brandLower);
         }
         
-        return matchBrand;
+        if (!brandMatch) return false;
+        
+        // Проверка категории/типа устройства
+        if (categoryLower) {
+          if (categoryLower === 'iphone' || categoryLower === 'phone') {
+            return deviceName.includes('iphone') && !deviceName.includes('ipad') && 
+                   !deviceName.includes('macbook') && !deviceName.includes('watch');
+          } else if (categoryLower === 'ipad' || categoryLower === 'tablet') {
+            return deviceName.includes('ipad') || deviceName.includes('tablet') ||
+                   deviceCategory.includes('ipad') || deviceCategory.includes('tablet');
+          } else if (categoryLower === 'macbook' || categoryLower === 'laptop') {
+            return deviceName.includes('macbook') || deviceName.includes('mac') ||
+                   deviceCategory.includes('macbook') || deviceCategory.includes('laptop');
+          } else if (categoryLower === 'watch') {
+            return deviceName.includes('watch') || deviceCategory.includes('watch');
+          }
+        }
+        
+        return true;
       });
     }
     
@@ -111,6 +148,52 @@
       
       const priceData = this.masterDb.prices?.commonRepairs?.[serviceType]?.[deviceBrand];
       return priceData || null;
+    }
+    
+    /**
+     * Получить цену для конкретного устройства и проблемы
+     * Используется в калькуляторе цен
+     */
+    getDevicePrice(deviceName, issueId) {
+      if (!this.devices || !deviceName || !issueId) return null;
+      
+      try {
+        // Поиск устройства по имени
+        const device = this.devices.find(d => {
+          const name = (d.name || '').toLowerCase();
+          const searchName = (deviceName || '').toLowerCase();
+          return name.includes(searchName) || searchName.includes(name);
+        });
+        
+        if (!device) return null;
+        
+        // Проверяем official_service_prices
+        if (device.official_service_prices && typeof device.official_service_prices === 'object') {
+          const price = device.official_service_prices[issueId];
+          if (typeof price === 'number' && price > 0) {
+            return price;
+          }
+        }
+        
+        // Проверяем masterDb цены
+        if (this.masterDb?.prices?.devices) {
+          const devicePrices = this.masterDb.prices.devices[deviceName];
+          if (devicePrices && devicePrices[issueId]) {
+            return devicePrices[issueId];
+          }
+        }
+        
+        // Проверяем общие цены по категории
+        const category = device.category?.toLowerCase() || 'phone';
+        if (this.masterDb?.prices?.commonRepairs?.[issueId]?.[category]) {
+          return this.masterDb.prices.commonRepairs[issueId][category];
+        }
+        
+        return null;
+      } catch (error) {
+        console.error('Error in getDevicePrice:', error);
+        return null;
+      }
     }
     
     /**

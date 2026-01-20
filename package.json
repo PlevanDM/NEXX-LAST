@@ -52,12 +52,16 @@
     "check": "npm run type-check && npm run validate"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "@tabler/icons-react": "^3.36.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.27.1",
     "hono": "^4.11.4",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260120.0",

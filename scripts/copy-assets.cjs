@@ -83,7 +83,7 @@ if (fs.existsSync(manifestSource)) {
   console.log(`✅ Copied: manifest.json (PWA)\n`);
 }
 
-// Copy HTML pages
+// Copy HTML pages (including main index.html from root)
 const htmlPages = ['nexx.html', 'faq.html', 'about.html', 'privacy.html', 'terms.html'];
 let htmlCopied = 0;
 htmlPages.forEach(page => {
@@ -94,6 +94,16 @@ htmlPages.forEach(page => {
     htmlCopied++;
   }
 });
+
+// Copy main index.html from root
+const indexSource = path.join(__dirname, '..', 'index.html');
+const indexDest = path.join(distDir, 'index.html');
+if (fs.existsSync(indexSource)) {
+  fs.copyFileSync(indexSource, indexDest);
+  htmlCopied++;
+  console.log(`✅ Copied: index.html\n`);
+}
+
 if (htmlCopied > 0) {
   console.log(`✅ Copied ${htmlCopied} HTML pages\n`);
 }

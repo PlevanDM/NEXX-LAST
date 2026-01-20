@@ -168,7 +168,17 @@
           submit: 'Відправити заявку',
           submitting: 'Відправляємо...'
         },
-        success: 'Дякуємо! Ми зателефонуємо найближчим часом',
+        success: {
+          title: 'Заявка відправлена!',
+          message: 'Ми зв\'яжемося з вами найближчим часом',
+          newRequest: 'Нова заявка'
+        },
+        errors: {
+          nameRequired: 'Ім\'я обов\'язкове (мін. 2 символи)',
+          phoneInvalid: 'Телефон недійсний',
+          deviceRequired: 'Виберіть пристрій',
+          submitError: 'Помилка відправки. Спробуйте ще раз або зателефонуйте: +40 721 234 567'
+        }
       },
       
       // Contact
@@ -360,7 +370,17 @@
           submit: 'Trimite cererea',
           submitting: 'Trimitere...'
         },
-        success: 'Mulțumim! Te vom suna în curând',
+        success: {
+          title: 'Cerere trimisă!',
+          message: 'Te vom suna în curând',
+          newRequest: 'Cerere nouă'
+        },
+        errors: {
+          nameRequired: 'Numele este obligatoriu (min. 2 caractere)',
+          phoneInvalid: 'Telefonul este invalid',
+          deviceRequired: 'Selectați dispozitivul',
+          submitError: 'Eroare la trimitere. Încercați din nou sau sunați: +40 721 234 567'
+        }
       },
       
       // Contact
@@ -552,7 +572,17 @@
           submit: 'Send request',
           submitting: 'Sending...'
         },
-        success: 'Thank you! We will call you soon',
+        success: {
+          title: 'Request sent!',
+          message: 'We will call you soon',
+          newRequest: 'New request'
+        },
+        errors: {
+          nameRequired: 'Name is required (min. 2 characters)',
+          phoneInvalid: 'Phone number is invalid',
+          deviceRequired: 'Please select a device',
+          submitError: 'Submission error. Please try again or call: +40 721 234 567'
+        }
       },
       
       // Contact

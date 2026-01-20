@@ -1,5 +1,35 @@
 # 📝 NEXX Service Center - Changelog
 
+## v9.6.0 (2026-01-20) - CALCULATOR & FILTERING FIXES
+
+### 🔧 **Calculator Improvements**
+- ✅ Fixed price calculation for all device types (phone, tablet, laptop, watch)
+- ✅ Added missing prices for watch category (screen, battery, charging, camera, motherboard, keyboard)
+- ✅ Added camera issue for tablet and laptop
+- ✅ Added charging issue for watch
+- ✅ Improved fallback logic for price calculation with extensive logging
+- ✅ Fixed "undefined" in calculator header when model not selected
+
+### 🎯 **Model Filtering Fixes**
+- ✅ Fixed Xiaomi phones showing in laptop category
+- ✅ Added support for Xiaomi laptops (Mi Book, RedmiBook, Mi Notebook)
+- ✅ Improved filtering logic for all brands and device types
+- ✅ Enhanced exclusion logic to prevent cross-category contamination
+- ✅ Fixed Samsung, Xiaomi, Huawei filtering for all device types
+
+### 📊 **Database & Integration**
+- ✅ All device categories now have complete price coverage
+- ✅ All repair types available for all device categories
+- ✅ Improved model filtering with brand-specific logic
+- ✅ Enhanced database access and price retrieval
+
+### 🚀 **Deployment Ready**
+- ✅ Cleaned up temporary test reports
+- ✅ All fixes tested and verified
+- ✅ Ready for production deployment
+
+---
+
 ## v9.5.0 (2026-01-20) - COMPLETE UNIFICATION RELEASE
 
 ### 🎯 **Major Changes**

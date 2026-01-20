@@ -9,13 +9,41 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   
   try {
-    const body = await request.json();
-    
-    // Валидация
-    if (!body.name || !body.phone) {
+    let body;
+    try {
+      body = await request.json();
+    } catch (parseError) {
       return new Response(JSON.stringify({
         success: false,
-        error: 'Nume și telefon sunt obligatorii'
+        error: 'Invalid JSON in request body'
+      }), {
+        status: 400,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+    }
+    
+    // Улучшенная валидация
+    const errors = [];
+    if (!body.name || typeof body.name !== 'string' || body.name.trim().length < 2) {
+      errors.push('Numele este obligatoriu (min. 2 caractere)');
+    }
+    if (!body.phone || typeof body.phone !== 'string') {
+      errors.push('Telefonul este obligatoriu');
+    } else {
+      const cleanedPhone = body.phone.replace(/\D/g, '');
+      if (cleanedPhone.length < 10) {
+        errors.push('Telefonul trebuie să conțină cel puțin 10 cifre');
+      }
+    }
+    
+    if (errors.length > 0) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: errors.join('. '),
+        errors: errors
       }), {
         status: 400,
         headers: { 
