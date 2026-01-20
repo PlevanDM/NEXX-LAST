@@ -195,7 +195,7 @@ app.get('/nexx', (c) => {
         
         <!-- Pincode Protection + NEXX Database App -->
         <script>
-        const { useState, createElement: h } = React;
+        const { useState, useEffect, createElement: h } = React;
         const CORRECT_PIN = '31618585';
         
         const PincodeScreen = ({ onSuccess }) => {
@@ -206,7 +206,7 @@ app.get('/nexx', (c) => {
             e.preventDefault();
             if (pin === CORRECT_PIN) {
               localStorage.setItem('nexx_auth', 'true');
-              onSuccess();
+              window.location.reload(); // Reload to load database app
             } else {
               setError(true);
               setPin('');
@@ -251,34 +251,25 @@ app.get('/nexx', (c) => {
             localStorage.getItem('nexx_auth') === 'true'
           );
           
+          // After authentication, load database app
+          useEffect(() => {
+            if (authenticated) {
+              const script = document.createElement('script');
+              script.src = '/static/app.js';
+              script.async = true;
+              document.body.appendChild(script);
+            }
+          }, [authenticated]);
+          
           if (!authenticated) {
             return h(PincodeScreen, { onSuccess: () => setAuthenticated(true) });
           }
           
-          // Load NEXX Database app
-          return h('div', { id: 'nexx-app' },
-            h('div', { className: 'fixed top-4 right-4 z-50' },
-              h('button', {
-                onClick: () => {
-                  localStorage.removeItem('nexx_auth');
-                  window.location.reload();
-                },
-                className: 'px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg shadow-lg text-sm font-medium transition-all'
-              }, '🔒 Выйти')
-            )
-          );
+          // Return empty div - app.js will render into #app
+          return null;
         };
         
         ReactDOM.createRoot(document.getElementById('app')).render(h(App));
-        </script>
-        
-        <!-- Load NEXX Database after authentication -->
-        <script>
-        if (localStorage.getItem('nexx_auth') === 'true') {
-          const script = document.createElement('script');
-          script.src = '/static/app.js';
-          document.getElementById('nexx-app').appendChild(script);
-        }
         </script>
     </body>
     </html>
