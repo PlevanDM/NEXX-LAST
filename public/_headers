@@ -1,0 +1,40 @@
+# Cloudflare Pages Headers Configuration
+# https://developers.cloudflare.com/pages/platform/headers/
+
+# Global headers for all pages
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Static assets - long cache
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Data files - 24 hour cache
+/data/*
+  Cache-Control: public, max-age=86400
+
+# HTML pages - no cache (always fresh)
+/*.html
+  Cache-Control: no-cache, must-revalidate
+
+# API endpoints - no cache
+/api/*
+  Cache-Control: no-store, no-cache, must-revalidate
+  
+# PWA manifest - 1 week cache
+/manifest.json
+  Cache-Control: public, max-age=604800
+
+# Robots & Sitemap - 1 day cache
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400

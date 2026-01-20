@@ -12,24 +12,39 @@ export const SITE_CONFIG = {
 
   // Contact
   contact: {
-    // Phone (update with real numbers)
-    phoneE164: '+380123456789',
-    phoneDisplay: '+380 12 345 6789',
-    phoneWhatsApp: '380123456789',
+    // Phone Romania
+    phoneE164: '+40721234567',
+    phoneDisplay: '+40 721 234 567',
+    phoneWhatsApp: '40721234567',
     
     // Email
-    email: 'info@nexx.com.ua',
-    supportEmail: 'support@nexx.com.ua',
+    email: 'info@nexx.ro',
+    supportEmail: 'support@nexx.ro',
 
-    // Address
-    addressLine1: 'вул. Хрещатик, 22',
-    addressLine2: 'Київ, Україна 01001',
-    city: 'Київ',
-    country: 'Україна',
+    // Address - Bucharest, Romania
+    addressLine1: 'Str. Victoriei, 15',
+    addressLine2: 'București, România 010062',
+    city: 'București',
+    cityLocal: 'Bucharest',
+    country: 'România',
+    countryCode: 'RO',
     
-    // Map coordinates (Khreshchatyk area example)
-    mapsLat: 50.4501,
-    mapsLng: 30.5234,
+    // Map coordinates (Calea Victoriei, Bucharest)
+    mapsLat: 44.4268,
+    mapsLng: 26.1025,
+  },
+  
+  // Currency (Romanian Leu)
+  currency: {
+    code: 'RON',
+    symbol: 'lei',
+    symbolAfter: true, // "100 lei" не "lei 100"
+    rates: {
+      RON_TO_EUR: 0.20,
+      RON_TO_USD: 0.22,
+      EUR_TO_RON: 5.00,
+      USD_TO_RON: 4.55
+    }
   },
 
   // Working hours

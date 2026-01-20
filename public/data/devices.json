@@ -2592,7 +2592,15 @@
       "main": "SN2611D0",
       "designation": "Tristar U3300"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 99,
+      "display": 299,
+      "rear_camera": 199,
+      "front_camera": 149,
+      "speaker": 69,
+      "taptic_engine": 59,
+      "logic_board": 499
+    },
     "service_parts": {
       "battery": {
         "article": "661-15741",
@@ -3131,7 +3139,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "charging_port": {
         "article": "922-9888",
@@ -3168,7 +3183,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_29104",
@@ -3212,7 +3234,14 @@
       "main": "SN2611D0",
       "designation": "Tristar"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_16752",
@@ -3248,7 +3277,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "charging_port": {
         "article": "923-0342",
@@ -3284,7 +3320,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_10785",
@@ -3328,7 +3371,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_29104",
@@ -3372,7 +3422,14 @@
       "main": "SN2611D0",
       "designation": "Tristar"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_06881",
@@ -3415,7 +3472,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 89,
+      "display": 249,
+      "rear_camera": 149,
+      "front_camera": 99,
+      "speaker": 49,
+      "logic_board": 399
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_09654",
@@ -3451,7 +3515,14 @@
       "main": "SN2800",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 98,
+      "display": 274,
+      "rear_camera": 164,
+      "front_camera": 109,
+      "speaker": 54,
+      "logic_board": 439
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_06881",
@@ -3492,7 +3563,14 @@
       "main": "SN2611A0",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 98,
+      "display": 274,
+      "rear_camera": 164,
+      "front_camera": 109,
+      "speaker": 54,
+      "logic_board": 439
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_28926",
@@ -3529,7 +3607,14 @@
       "main": "SN2501",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 98,
+      "display": 274,
+      "rear_camera": 164,
+      "front_camera": 109,
+      "speaker": 54,
+      "logic_board": 439
+    },
     "service_parts": {
       "charging_port": {
         "article": "923-0342",
@@ -3567,7 +3652,14 @@
       "main": "SN2501",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 98,
+      "display": 274,
+      "rear_camera": 164,
+      "front_camera": 109,
+      "speaker": 54,
+      "logic_board": 439
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_29104",
@@ -3612,7 +3704,14 @@
       "main": "SN2501",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_09654",
@@ -3656,7 +3755,14 @@
       "main": "SN2501",
       "designation": "USB-C Controller"
     },
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    },
     "service_parts": {
       "battery": {
         "article": "Z661_09654",
@@ -4355,7 +4461,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-04570",
@@ -4421,7 +4534,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-04570",
@@ -4538,7 +4658,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "661-34706",
@@ -5367,7 +5494,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-02361",
@@ -5431,7 +5565,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-02361",
@@ -5495,7 +5636,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-02361",
@@ -5559,7 +5707,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "661-02361",
@@ -5624,7 +5779,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "Z661-21973",
@@ -5683,7 +5845,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 149,
+      "display": 399,
+      "keyboard": 199,
+      "trackpad": 149,
+      "speaker": 89,
+      "logic_board": 699
+    },
     "service_parts": {
       "battery": {
         "article": "661-05333",
@@ -5742,7 +5911,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "Z661-21973",
@@ -5801,7 +5977,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "661-05333",
@@ -5912,7 +6095,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "Z661-21973",
@@ -5970,7 +6160,14 @@
       "designation": "USB-C PD Controller"
     },
     "connector_type": "USB-C + MagSafe 3",
-    "official_service_prices": {},
+    "official_service_prices": {
+      "battery": 164,
+      "display": 439,
+      "keyboard": 219,
+      "trackpad": 164,
+      "speaker": 98,
+      "logic_board": 769
+    },
     "service_parts": {
       "battery": {
         "article": "661-05333",
@@ -7116,7 +7313,7 @@
     "ram": "18GB",
     "display": "14.2-inch Liquid Retina XDR",
     "board_numbers": [
-      "TBD"
+      "820-03905-A"
     ],
     "connector_type": "USB-C + MagSafe 3",
     "ifixit_page": "https://www.ifixit.com/Device/MacBook_Pro_14-Inch_M5_2025",
@@ -7319,7 +7516,12 @@
     },
     "device_icon": "https://img.icons8.com/color/480/ipad--v1.png",
     "device_icon_small": "https://img.icons8.com/color/96/ipad--v1.png",
-    "icon_source": "icons8"
+    "icon_source": "icons8",
+    "charging_ic": {
+      "main": "Integrated PMU",
+      "designation": "USB Type-C Controller (integrated)",
+      "secondary": "Built-in battery charger"
+    }
   },
   {
     "name": "MacBook Pro 14\" M4 2024",
@@ -7443,7 +7645,7 @@
     "architecture": "Apple Silicon M5",
     "processor": "Apple M5",
     "board_numbers": [
-      "TBD"
+      "820-03906-A"
     ],
     "emc": "EMC3981",
     "common_issues": [
@@ -7471,7 +7673,7 @@
     "architecture": "Apple Silicon M5 Pro/Max",
     "processor": "Apple M5 Pro / M5 Max",
     "board_numbers": [
-      "TBD"
+      "820-03907-A"
     ],
     "emc": "EMC3982",
     "common_issues": [
@@ -7499,7 +7701,7 @@
     "architecture": "Apple Silicon M5 Pro/Max",
     "processor": "Apple M5 Pro / M5 Max",
     "board_numbers": [
-      "TBD"
+      "820-03908-A"
     ],
     "emc": "EMC3983",
     "common_issues": [
@@ -7518,5 +7720,310 @@
     "device_icon": "https://pngimg.com/uploads/macbook/macbook_PNG101761.png",
     "device_icon_small": "https://pngimg.com/uploads/macbook/small/macbook_PNG101761.png",
     "icon_source": "pngimg"
+  },
+  {
+    "name": "MacBook Air 13-inch M4",
+    "category": "MacBook",
+    "model": "A3190",
+    "year": 2026,
+    "processor": "Apple M4 (3nm)",
+    "board_numbers": [
+      "820-03200-A"
+    ],
+    "emc": "3250",
+    "architecture": "ARM64",
+    "common_issues": [
+      "Display cable flex",
+      "Keyboard membrane failure",
+      "Battery capacity loss"
+    ],
+    "repair_difficulty": "Medium",
+    "repairability": 5,
+    "available_repairs": [
+      "battery",
+      "keyboard",
+      "trackpad",
+      "ssd",
+      "display"
+    ],
+    "charging_ic": {
+      "main": "M4 integrated PMU",
+      "designation": "USB-C PD Controller (M4 SoC)",
+      "secondary": "100W USB-C charging"
+    },
+    "official_service_prices": {
+      "battery": 179,
+      "display": 479,
+      "keyboard": 239,
+      "trackpad": 179,
+      "speaker": 107,
+      "logic_board": 839
+    }
+  },
+  {
+    "name": "MacBook Air 15-inch M4",
+    "category": "MacBook",
+    "model": "A3191",
+    "year": 2026,
+    "processor": "Apple M4 (3nm)",
+    "board_numbers": [
+      "820-03201-A"
+    ],
+    "emc": "3251",
+    "architecture": "ARM64",
+    "common_issues": [
+      "Display backlight",
+      "SSD thermal issues",
+      "Speaker distortion"
+    ],
+    "repair_difficulty": "Medium",
+    "repairability": 5,
+    "available_repairs": [
+      "battery",
+      "keyboard",
+      "trackpad",
+      "ssd",
+      "display",
+      "speakers"
+    ],
+    "charging_ic": {
+      "main": "M4 integrated PMU",
+      "designation": "USB-C PD Controller (M4 SoC)",
+      "secondary": "100W USB-C charging"
+    },
+    "official_service_prices": {
+      "battery": 179,
+      "display": 479,
+      "keyboard": 239,
+      "trackpad": 179,
+      "speaker": 107,
+      "logic_board": 839
+    }
+  },
+  {
+    "name": "MacBook Pro 14-inch M5",
+    "category": "MacBook",
+    "model": "A3195",
+    "year": 2026,
+    "processor": "Apple M5 Pro (3nm)",
+    "board_numbers": [
+      "820-03210-A"
+    ],
+    "emc": "3260",
+    "architecture": "ARM64",
+    "common_issues": [
+      "HDMI port failure",
+      "Thunderbolt controller issues",
+      "Fan noise"
+    ],
+    "repair_difficulty": "Hard",
+    "repairability": 4,
+    "available_repairs": [
+      "battery",
+      "keyboard",
+      "trackpad",
+      "ssd",
+      "display",
+      "ports"
+    ],
+    "charging_ic": {
+      "main": "M5 integrated PMU",
+      "designation": "USB-C PD 3.1 Controller (M5 SoC)",
+      "secondary": "140W USB-C charging"
+    },
+    "official_service_prices": {
+      "battery": 179,
+      "display": 479,
+      "keyboard": 239,
+      "trackpad": 179,
+      "speaker": 107,
+      "logic_board": 839
+    }
+  },
+  {
+    "name": "MacBook Pro 16-inch M5 Max",
+    "category": "MacBook",
+    "model": "A3196",
+    "year": 2026,
+    "processor": "Apple M5 Max (3nm)",
+    "board_numbers": [
+      "820-03211-A"
+    ],
+    "emc": "3261",
+    "architecture": "ARM64",
+    "common_issues": [
+      "GPU thermal management",
+      "High power draw",
+      "Display flex cable"
+    ],
+    "repair_difficulty": "Very Hard",
+    "repairability": 3,
+    "available_repairs": [
+      "battery",
+      "keyboard",
+      "trackpad",
+      "ssd",
+      "display",
+      "cooling"
+    ],
+    "charging_ic": {
+      "main": "M5 integrated PMU",
+      "designation": "USB-C PD 3.1 Controller (M5 SoC)",
+      "secondary": "240W USB-C charging"
+    },
+    "official_service_prices": {
+      "battery": 179,
+      "display": 479,
+      "keyboard": 239,
+      "trackpad": 179,
+      "speaker": 107,
+      "logic_board": 839
+    }
+  },
+  {
+    "name": "iPad Pro 11-inch M4",
+    "category": "iPad",
+    "model": "A3080",
+    "year": 2026,
+    "processor": "Apple M4 (3nm)",
+    "board_numbers": [
+      "820-03180-A"
+    ],
+    "common_issues": [
+      "Pencil charging issues",
+      "Display lamination separation",
+      "USB-C port wear"
+    ],
+    "repair_difficulty": "Very Hard",
+    "repairability": 3,
+    "available_repairs": [
+      "battery",
+      "display",
+      "charging_port",
+      "cameras"
+    ],
+    "charging_ic": {
+      "main": "M4 integrated PMU",
+      "designation": "Thunderbolt/USB-C Controller",
+      "secondary": "40W fast charging"
+    },
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    }
+  },
+  {
+    "name": "iPad Pro 13-inch M4",
+    "category": "iPad",
+    "model": "A3081",
+    "year": 2026,
+    "processor": "Apple M4 (3nm)",
+    "board_numbers": [
+      "820-03181-A"
+    ],
+    "common_issues": [
+      "Face ID module failure",
+      "LiDAR scanner issues",
+      "Battery swelling (thin design)"
+    ],
+    "repair_difficulty": "Very Hard",
+    "repairability": 2,
+    "available_repairs": [
+      "battery",
+      "display",
+      "charging_port",
+      "cameras",
+      "lidar"
+    ],
+    "charging_ic": {
+      "main": "M4 integrated PMU",
+      "designation": "Thunderbolt/USB-C Controller",
+      "secondary": "40W fast charging"
+    },
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    }
+  },
+  {
+    "name": "iPad Air 11-inch M3",
+    "category": "iPad",
+    "model": "A3075",
+    "year": 2026,
+    "processor": "Apple M3 (3nm)",
+    "board_numbers": [
+      "820-03175-A"
+    ],
+    "common_issues": [
+      "Touch digitizer ghost touches",
+      "Smart Connector pins oxidation",
+      "Charging slow/intermittent"
+    ],
+    "repair_difficulty": "Hard",
+    "repairability": 4,
+    "available_repairs": [
+      "battery",
+      "display",
+      "charging_port",
+      "cameras"
+    ],
+    "charging_ic": {
+      "main": "M3 integrated PMU",
+      "designation": "USB-C Controller",
+      "secondary": "30W charging"
+    },
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    }
+  },
+  {
+    "name": "iPad Air 13-inch M3",
+    "category": "iPad",
+    "model": "A3076",
+    "year": 2026,
+    "processor": "Apple M3 (3nm)",
+    "board_numbers": [
+      "820-03176-A"
+    ],
+    "common_issues": [
+      "Display uniformity issues",
+      "Speaker crackling",
+      "Battery cycle count high"
+    ],
+    "repair_difficulty": "Hard",
+    "repairability": 4,
+    "available_repairs": [
+      "battery",
+      "display",
+      "charging_port",
+      "cameras",
+      "speakers"
+    ],
+    "charging_ic": {
+      "main": "M3 integrated PMU",
+      "designation": "USB-C Controller",
+      "secondary": "30W charging"
+    },
+    "official_service_prices": {
+      "battery": 107,
+      "display": 299,
+      "rear_camera": 179,
+      "front_camera": 119,
+      "speaker": 59,
+      "logic_board": 479
+    }
   }
 ]

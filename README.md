@@ -1,412 +1,297 @@
-# 🚀 NEXX Service Center - v9.4 STABLE
+# 🚀 NEXX Service Center v9.5.0
 
-> Професійний сервісний центр з ремонту Apple техніки в Києві
+> Професійний веб-додаток для сервісного центру з ремонту Apple техніки
 
-[![Production](https://img.shields.io/badge/status-production-green)](https://3000-ityb8kprz6pu8mu25elee-5185f4aa.sandbox.novita.ai)
 [![React](https://img.shields.io/badge/React-19.2-blue)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.3-purple)](https://vitejs.dev/)
 [![Hono](https://img.shields.io/badge/Hono-4.11-orange)](https://hono.dev/)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Pages-yellow)](https://pages.cloudflare.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## 📋 Зміст
+## 📋 Про проект
 
-- [Огляд](#-огляд)
-- [Оптимізації v9.3](#-оптимізації-v93)
-- [Функціонал](#-функціонал)
-- [Технології](#-технології)
-- [Структура проєкту](#-структура-проєкту)
-- [Performance](#-performance)
-- [URLs](#-urls)
-- [Швидкий старт](#-швидкий-старт)
+**NEXX** - це комплексне рішення для сервісного центру Apple, що включає:
 
----
+### 🏠 Клієнтський лендінг
+- Простий і зрозумілий інтерфейс для клієнтів
+- Інформація про послуги та ціни
+- Форма онлайн-замовлення
+- Контакти та години роботи
 
-## 🎯 Огляд
-
-**NEXX v9.3** — це повнофункціональний, **оптимізований** веб-сайт для сервісного центру з ремонту Apple техніки. Проєкт розроблено з використанням сучасних технологій та best practices для максимальної швидкості та ефективності.
-
-### Ключові особливості:
-- ⚡ **Ultra Fast** - Minified JS, optimized images, edge caching
-- 🎨 **Modern Design** - TailwindCSS, FontAwesome, градієнти
-- 📱 **Fully Responsive** - Mobile-first підхід
-- 🔍 **SEO Optimized** - Meta tags, structured data
-- 🔒 **Secure** - PIN-protected master database
-- 📦 **Lightweight** - ~40% менше розмір файлів
+### 🔧 База знань для майстрів
+- 134 моделі Apple пристроїв
+- 167 кодів помилок (iTunes + Mac)
+- 115+ IC компонентів з діагностикою
+- 9 детальних гайдів по ремонту
+- 12 профілів діодних вимірювань
 
 ---
 
-## 🚀 Оптимізації v9.4
+## ✨ Основні можливості
 
-### Bug Fixes
-- ✅ **Vite Config Fix** - Замінено `@hono/vite-build` на `@hono/vite-cloudflare-pages`
-  - Виправлено помилку `__STATIC_CONTENT_MANIFEST is not defined`
-  - Правильна конфігурація для Cloudflare Pages deployment
-- ✅ **Database PIN Loader** - Усунуто білий екран при вході в базу даних
-  - Прибрано подвійне монтування React root
-  - PIN-екран тепер плавно підвантажує `/static/app.js`
-- ✅ **Header Branding Refresh** - Додано офіційне лого NEXX GSM у верхній панелі
-  - Логотип завантажується зі статичного `/static/nexx-logo.png`
-  - Анімація наведення замінює текстовий бейдж
-- ✅ **Calculator Header Conflict** - Видалено дублікат компонента Header
-  - Calculator тепер використовує Header з shared-components.js
-  - Виправлено помилку "Identifier 'Header' has already been declared"
-- ✅ **JSX Support** - Додано Babel Standalone для JSX сторінок
-  - About, FAQ, Privacy, Terms тепер працюють коректно з JSX синтаксисом
-  - Виправлено помилку "Unexpected token '<'"
-  - Динамічна транспіляція JSX в браузері для розробки
+### Для клієнтів:
+- ✅ Перегляд послуг та цін
+- ✅ Онлайн-замовлення ремонту
+- ✅ Контактна інформація
+- ✅ Швидкі дії (дзвінок, месенджери)
 
-### Performance
-- ✅ **Favicon** - Редирект /favicon.ico → /static/favicon.ico
-- ✅ **Cache Headers** - HTTP caching для статичних файлів
-- ✅ **All Pages Working** - Всі 7 сторінок без помилок
-
----
-
-## 🎯 Поточний стан
-
-### JavaScript Optimization
-- ✅ **Minification** - Terser з compression
-  - `app.js`: 196K → 124K (-37%)
-  - `homepage.js`: 40K → 24K (-40%)
-  - `calculator.js`: 16K → 12K (-36%)
-  - `shared-components.js`: 9K → 6K (-33%)
-  - **Загальна економія: ~96KB (30%)**
-
-### Data Optimization
-- ✅ **JSON Cleanup** - Архівування невикористовуваних файлів
-  - Було: 63 файли (6.6 MB)
-  - Стало: 13 файлів (1.5 MB)
-  - **Архівовано: 50 файлів (-5.1 MB / -77%)**
-
-### Image Optimization
-- ✅ **PNG Compression** - ImageMagick optimization
-  - Великі фото: ~7.8 MB → 7.6 MB
-  - Оптимізація без втрати якості
-  - WebP conversion ready
-
-### Performance Features
-- ✅ **Cache Headers** - HTTP caching strategy
-  - Static: `max-age=31536000, immutable`
-  - Data: `max-age=86400`
-  - Images: `max-age=31536000, immutable`
-- ✅ **CDN React** - jsDelivr production bundles
-- ✅ **Lazy Loading** - On-demand resource loading
-
----
-
-## ✨ Функціонал
-
-### Публічні сторінки (6)
-
-#### 1. **Головна** (`/`)
-- 🏠 Hero з animated gradient
-- 📊 Live counter (онлайн клієнти)
-- ⭐ Trust badges (швидкість, гарантія)
-- 📈 Статистика (5000+ ремонтів)
-- 🛠️ 7 послуг з іконками
-- 💰 2 тарифи (Базовий, Менеджер)
-- 🎓 6 курсів (Coming Soon)
-- 📞 Контакти + форма заявки
-- 🖼️ Галерея з 4 фото
-
-#### 2. **Про нас** (`/about`)
-- 📖 Історія сервісу
-- 🎯 Місія та цінності
-- 👨‍🔧 Команда професіоналів
-- ⭐ 6 причин обрати нас
-- 📊 Статистика компанії
-
-#### 3. **FAQ** (`/faq`)
-- ❓ 25+ питань у 5 категоріях
-- 📂 Accordion з анімацією
-- 🔍 Швидкий пошук відповідей
-
-#### 4. **Калькулятор** (`/calculator`)
-- 📱 6 типів пристроїв
-- 🔧 40+ послуг ремонту
-- 💰 Динамічний розрахунок вартості
-- 📊 Детальна інформація про послуги
-
-#### 5. **Конфіденційність** (`/privacy`)
-- 🔒 GDPR compliance
-- 📋 8 розділів політики
-- 🛡️ Захист персональних даних
-
-#### 6. **Умови** (`/terms`)
-- 📜 9 розділів умов
-- ⚖️ Правила та умови ремонту
-- 💼 Гарантійні зобов'язання
-
-### База даних для майстрів (1)
-
-#### 7. **NEXX Database** (`/nexx`)
-- 🔐 PIN-захист (31618585)
-- 📱 126 пристроїв Apple
-- 💾 13 JSON баз знань
-- 🔍 Пошук та фільтри
-- 📊 Детальна інформація про чипи
-- 🔧 Схеми підключень
-- 💡 Knowledge base
+### Для майстрів:
+- ✅ База 134 пристроїв з технічними характеристиками
+- ✅ Пошук по моделі, процесору, board number
+- ✅ Фільтри за категорією та роком
+- ✅ IC compatibility база
+- ✅ Коди помилок з рішеннями
+- ✅ Гайди по ремонту (USB-C, M4/M5, батареї)
+- ✅ Діодні вимірювання
+- ✅ AI Self-Healing система
 
 ---
 
 ## 🛠️ Технології
 
 ### Frontend
-- **React 19.2** - UI library (via CDN)
-- **TailwindCSS** - Utility-first CSS
-- **FontAwesome 6.5** - Icon library
-- **JavaScript ES6+** - Modern syntax
+- **React 19.2.3** - UI library
+- **Tailwind CSS** - Utility-first styling
+- **Font Awesome 6.5** - Icons
 
 ### Backend
-- **Hono 4.11** - Lightweight web framework
+- **Hono 4.11** - Web framework для Cloudflare
+- **Vite 7.3.1** - Build tool
 - **TypeScript** - Type safety
-- **Vite 6.3** - Build tool
-- **Wrangler 4.4** - Cloudflare CLI
 
-### Deployment
-- **Cloudflare Pages** - Edge hosting
-- **PM2** - Process management (dev)
-- **Git** - Version control
-
-### Build Tools
-- **Terser** - JS minification
-- **ImageMagick** - Image optimization
-- **PostCSS** - CSS processing
-
----
-
-## 📁 Структура проєкту
-
-```
-webapp/
-├── src/
-│   └── index.tsx              # Hono API + routing (17KB)
-├── public/
-│   ├── static/
-│   │   ├── app.js             # NEXX Database (196K → 124K)
-│   │   ├── homepage.js        # Main page (40K → 24K)
-│   │   ├── about.js           # About page (12K)
-│   │   ├── calculator.js      # Calculator (16K → 12K)
-│   │   ├── faq.js             # FAQ (16K)
-│   │   ├── privacy.js         # Privacy (20K)
-│   │   ├── terms.js           # Terms (24K)
-│   │   └── shared-components.js # Header/Footer (9K → 6K)
-│   ├── images/
-│   │   ├── nexx-logo.png      # Logo (93K, generated)
-│   │   ├── favicon.ico        # Favicon (93K)
-│   │   ├── hero-background.png # Hero BG (79K, generated)
-│   │   ├── services-icons.png # Icons (191K, generated)
-│   │   └── *.png              # Gallery photos (7.6MB, optimized)
-│   └── data/
-│       ├── devices.json       # 126 devices (540KB)
-│       └── archive/           # 50 archived JSON files (5.1MB)
-├── dist/                      # Build output (41MB)
-├── lib/
-│   ├── design-system.ts       # UI components
-│   ├── site-config.ts         # Site settings
-│   └── types.ts               # TypeScript types
-├── package.json               # Dependencies + scripts
-├── wrangler.jsonc             # Cloudflare config
-├── ecosystem.config.cjs       # PM2 config
-└── README.md                  # This file
-```
-
----
-
-## ⚡ Performance
-
-### Load Times
-- **Homepage**: ~9.2s (first load with CDN)
-- **Other pages**: ~300-500ms (cached)
-- **Static assets**: <50ms (edge cache)
-- **API response**: ~100ms
-
-### File Sizes (After Optimization)
-| File | Before | After | Savings |
-|------|--------|-------|---------|
-| app.js | 196KB | 124KB | 37% |
-| homepage.js | 40KB | 24KB | 40% |
-| calculator.js | 16KB | 12KB | 36% |
-| shared-components.js | 9KB | 6KB | 33% |
-| JSON data | 6.6MB | 1.5MB | 77% |
-| **TOTAL** | **7.0MB** | **1.9MB** | **73%** |
-
-### Optimizations Applied
-- ✅ JavaScript minification (Terser)
-- ✅ Image compression (ImageMagick)
-- ✅ JSON data cleanup (50 files archived)
-- ✅ HTTP cache headers (1 year for static)
-- ✅ CDN delivery (jsDelivr for React)
-- ✅ Lazy loading (on-demand resources)
-- ✅ React Production bundles
-
-### Lighthouse Score (Estimated)
-- **Performance**: 85-90
-- **Accessibility**: 95+
-- **Best Practices**: 90+
-- **SEO**: 95+
-
----
-
-## 🌐 URLs
-
-### Production
-- **Live Site**: https://3000-ityb8kprz6pu8mu25elee-5185f4aa.sandbox.novita.ai
-- **All pages return HTTP 200** ✅
-
-### Pages
-- `/` - Homepage
-- `/about` - About us
-- `/faq` - FAQ
-- `/calculator` - Price calculator
-- `/privacy` - Privacy policy
-- `/terms` - Terms of service
-- `/nexx` - Master database (PIN: 31618585)
-
-### API Endpoints
-- `GET /api/settings` - Service settings
-- `POST /api/booking` - Booking form submission
+### Hosting
+- **Cloudflare Pages** - Edge deployment
+- **Wrangler 4.59** - CLI tool
 
 ---
 
 ## 🚀 Швидкий старт
 
-### Prerequisites
-- Node.js 18+
-- npm або yarn
+### Встановлення
 
-### Installation
 ```bash
 # Clone repository
-git clone <repo-url>
-cd webapp
+git clone https://github.com/PlevanDM/nexx-webapp.git
+cd nexx-webapp
 
 # Install dependencies
 npm install
 
-# Build project
+# Start development server
+npm run dev
+
+# Open browser
+# Homepage: http://localhost:5173/
+# Database: http://localhost:5173/nexx.html (PIN: 31618585)
+```
+
+### Production Build
+
+```bash
+# Build for production
 npm run build
 
-# Start development server
-pm2 start ecosystem.config.cjs
+# Preview production build
+npm run preview
 
-# Test
-curl http://localhost:3000
+# Deploy to Cloudflare Pages
+npm run deploy
 ```
 
-### Development Commands
-```bash
-npm run dev          # Vite dev server
-npm run build        # Production build + optimization
-npm run preview      # Preview production build
-npm run clean-port   # Kill port 3000
-npm run test         # Quick HTTP test
-```
+---
 
-### PM2 Commands
-```bash
-pm2 list                    # Show processes
-pm2 logs apple-repair-tool  # View logs
-pm2 restart apple-repair-tool # Restart
-pm2 stop apple-repair-tool  # Stop
+## 📁 Структура проекту
+
+```
+nexx-webapp/
+├── index.html              # Клієнтський лендінг
+├── public/
+│   ├── nexx.html          # База знань (з PIN)
+│   ├── static/
+│   │   ├── ui-components.js       # UI library
+│   │   ├── navigation-system.js   # Navigation system
+│   │   ├── app.js                 # NEXX Database app (124KB)
+│   │   └── ...
+│   ├── data/
+│   │   ├── devices.json           # 134 пристрої
+│   │   ├── ic_compatibility.json  # 115+ IC
+│   │   ├── error_codes.json       # 167 кодів
+│   │   └── ...
+│   ├── images/            # 7 images
+│   ├── robots.txt         # SEO
+│   └── sitemap.xml        # SEO
+├── src/
+│   ├── index.tsx          # Hono API server
+│   ├── App.tsx            # Main React app
+│   ├── client.tsx         # Client entry
+│   └── components/        # 32 React components
+├── lib/
+│   ├── design-system.ts   # Complete design tokens
+│   ├── site-config.ts     # Site configuration
+│   └── types.ts           # TypeScript types
+└── scripts/               # Utility scripts
+    ├── enhance_database_2026.cjs
+    ├── fix_missing_data.cjs
+    ├── copy-assets.cjs
+    └── show_stats.cjs
 ```
 
 ---
 
 ## 🎨 Design System
 
-### Колірна палітра
-- **Primary**: Blue 600-700
-- **Secondary**: Green 500-600 (CTA)
-- **Accent**: Purple 500-600
-- **Neutral**: Slate 50-900
+### Unified Components
+- **Button** - 6 variants, 4 sizes
+- **Modal** - с escape handling
+- **Card** - hover effects
+- **Badge** - 6 colors
+- **Header** - responsive + mobile menu
+- **Footer** - 3 columns
+- **Breadcrumbs** - navigation trail
+- **QuickActions** - floating widget
+- **SearchBar** - global search (Ctrl+K)
 
-### Компоненти
-- Gradient backgrounds
-- Smooth transitions (200ms)
-- Elevation shadows (lg/xl/2xl)
-- Hover effects
-- Mobile-first responsive
+### Color Palette
+- Primary: Blue (#2563eb)
+- Secondary: Purple (#8b5cf6)
+- Success: Green (#22c55e)
+- Danger: Red (#ef4444)
 
----
-
-## 📊 Project Statistics
-
-- **Total Pages**: 7 (6 public + 1 master)
-- **React Components**: 16 (9 shared + 7 sections)
-- **Lines of Code**: 6,282
-- **JS Files**: 8 (329KB → 233KB minified)
-- **Images**: 8 (7.6MB optimized)
-- **JSON Files**: 13 active (50 archived)
-- **Git Commits**: 11
-- **Development Time**: ~6 hours
+### Icons
+40+ категорій уніфікованих іконок (Font Awesome 6.5)
 
 ---
 
-## 🔧 Deployment
+## 🔐 Безпека
 
-### Cloudflare Pages
-```bash
-# Build and deploy
-npm run deploy
+### Захист бази даних
+- PIN-код: `31618585`
+- localStorage auth
+- Тільки для авторизованих майстрів
 
-# Deploy specific project
-wrangler pages deploy dist --project-name nexx
+### Security Headers
+- Content Security Policy (CSP)
+- X-Frame-Options: DENY
+- X-Content-Type-Options: nosniff
+- Strict-Transport-Security (HSTS)
+- CORS configured
+
+---
+
+## 📊 База даних
+
+### Статистика
+```
+Devices:          134 (100% complete)
+  - iPhone:       44 моделей
+  - iPad:         34 моделі
+  - MacBook:      56 моделей
+
+IC Components:    26 категорій, 115+ chips
+Error Codes:      167 (81 iTunes + 86 Mac)
+Knowledge Base:   9 comprehensive guides
+Measurements:     12 device profiles
 ```
 
-### GitHub Integration
+### Нові пристрої 2026
+- iPhone 17 / 17 Pro / 17 Pro Max
+- MacBook Air M4 (13" & 15")
+- MacBook Pro M5 (14" & 16")
+- iPad Pro M4 (11" & 13")
+- iPad Air M3 (11" & 13")
+
+---
+
+## 🌐 URLs
+
+### Development
+- Homepage: `http://localhost:5173/`
+- Database: `http://localhost:5173/nexx.html`
+
+### Production
+- Live site: `https://nexx.com.ua/`
+- Database: `https://nexx.com.ua/nexx` (PIN: 31618585)
+
+---
+
+## 🎯 Команди
+
 ```bash
-# Push to GitHub
-git add .
-git commit -m "your message"
-git push origin main
+# Development
+npm run dev              # Vite dev server (port 5173)
+
+# Build
+npm run build            # Production build
+npm run clean            # Clean dist/
+
+# Deploy
+npm run deploy           # Deploy to Cloudflare Pages
+
+# Utilities
+npm run validate         # Validate database
+npm run type-check       # TypeScript check
 ```
 
 ---
 
-## 📝 Changelog
+## 📈 Performance
 
-### v9.4 (2026-01-20) - BUG FIX & STABILITY RELEASE
-- ✅ Fixed Vite configuration (__STATIC_CONTENT_MANIFEST error)
-- ✅ Fixed Calculator Header duplication conflict
-- ✅ Added Babel Standalone for JSX pages (About, FAQ, Privacy, Terms)
-- ✅ All pages working without console errors
-- ✅ Favicon properly configured
-- ✅ Improved page template system with JSX support
+### Metrics
+- Build time: ~2.5s
+- Client bundle: 275KB (78KB gzipped)
+- Server bundle: 40KB
+- Total assets: ~2MB (optimized)
 
-### v9.3 (2026-01-19) - OPTIMIZATION RELEASE
-- ✅ JavaScript minification (-96KB / 30%)
-- ✅ JSON cleanup (-5.1MB / 77%)
+### Optimizations
+- ✅ JavaScript minification
 - ✅ Image optimization
-- ✅ Cache headers implementation
-- ✅ React CDN optimization
-
-### v9.2 (2026-01-19)
-- ✅ Fixed React CDN CORS issues
-- ✅ Fixed image routing
-- ✅ Removed duplicate code
-- ✅ All pages working
-
-### v9.0 (2026-01-19)
-- ✅ Complete homepage redesign
-- ✅ 6 additional pages
-- ✅ Shared components system
-- ✅ NEXX Database integration
+- ✅ JSON cleanup (-77%)
+- ✅ HTTP caching
+- ✅ CDN delivery
+- ✅ Lazy loading
 
 ---
 
-## 📄 License
+## 🔄 Навігаційна система
 
-MIT License - © 2026 NEXX Service Center
+### Клієнтська навігація
+- Головна
+- Послуги
+- Замовити
+- Контакти
+
+### Сервісна навігація
+- Головна
+- Послуги
+- **База даних** (тільки для майстрів)
+- Контакти
+
+### Додаткові features
+- Breadcrumbs (хлібні крихти)
+- Quick Actions (швидкі дії)
+- Back button (кнопка назад)
+- Global Search (Ctrl+K)
+- Mobile menu
+
+---
+
+## 🤝 Contributing
+
+Проект розробляється та підтримується командою NEXX.
+
+---
+
+## 📝 License
+
+MIT License © 2026 NEXX Service Center
 
 ---
 
 ## 👨‍💻 Автор
 
-**Дима** - Service Center Manager & Developer
+**Dmitry** - Service Center Manager & Developer
 
 ---
 
-**Built with ❤️ using Hono + React + Cloudflare Pages**
+**Built with ❤️ using React + Hono + Cloudflare Pages**

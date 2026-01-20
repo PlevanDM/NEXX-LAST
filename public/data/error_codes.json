@@ -1,6 +1,6 @@
 {
   "source": "Apple Support + Community Knowledge",
-  "collected_at": "2026-01-19 08:04:30",
+  "collected_at": "2026-01-20T07:37:58.828Z",
   "itunes_restore_errors": [
     {
       "code": -1,
@@ -614,6 +614,38 @@
       "hardware": true,
       "severity": "medium",
       "solution": "Reset device, if persists may indicate A-series chip degradation"
+    },
+    {
+      "code": 4050,
+      "description": "USB-C authentication failed",
+      "cause": "SN2015A charging IC failure or cable authentication issue",
+      "solution": "Replace charging IC, use genuine USB-C cable, check CC pins",
+      "hardware": true,
+      "severity": "High"
+    },
+    {
+      "code": 4051,
+      "description": "Face ID depth module error",
+      "cause": "LiDAR or dot projector failure on front camera module",
+      "solution": "Replace Face ID flex cable assembly, recalibrate with Apple service tool",
+      "hardware": true,
+      "severity": "Critical"
+    },
+    {
+      "code": 4052,
+      "description": "M4/M5 secure enclave communication error",
+      "cause": "SEP firmware corruption or main logic board failure",
+      "solution": "DFU restore, if persist - logic board replacement",
+      "hardware": true,
+      "severity": "Critical"
+    },
+    {
+      "code": 9050,
+      "description": "Baseband 5G modem failure",
+      "cause": "5G modem IC or RF chain damage",
+      "solution": "Check baseband PM IC, inspect RF lines, replace modem if needed",
+      "hardware": true,
+      "severity": "High"
     }
   ],
   "mac_diagnostics": [
@@ -1287,6 +1319,22 @@
       "solution": "Проверить охлаждение",
       "component": "Thunderbolt",
       "severity": "medium"
+    },
+    {
+      "code": "VTH001",
+      "description": "Thermal sensor not responding",
+      "cause": "SMC thermal diode failure or logic board issue",
+      "solution": "Reset SMC, check thermal sensors, replace logic board if needed",
+      "hardware": true,
+      "severity": "Medium"
+    },
+    {
+      "code": "VFF010",
+      "description": "Fan control module error",
+      "cause": "Fan connector damage or SMC firmware issue",
+      "solution": "Check fan connectors, replace fan, reset SMC",
+      "hardware": true,
+      "severity": "Low"
     }
   ],
   "stats": {

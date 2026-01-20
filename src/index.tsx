@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import type { Context } from 'hono'
 import { cors } from 'hono/cors'
+import { secureHeaders } from 'hono/secure-headers'
 
 type Bindings = {
   ASSETS: Fetcher
@@ -8,8 +9,50 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
-// Enable CORS
-app.use('/api/*', cors())
+// Security Headers - CSP, HSTS, X-Frame-Options, etc.
+app.use('*', secureHeaders({
+  contentSecurityPolicy: {
+    defaultSrc: ["'self'"],
+    scriptSrc: [
+      "'self'", 
+      "'unsafe-inline'", 
+      "'unsafe-eval'",
+      "https://cdn.tailwindcss.com",
+      "https://cdn.jsdelivr.net",
+      "https://unpkg.com"
+    ],
+    styleSrc: [
+      "'self'", 
+      "'unsafe-inline'",
+      "https://cdn.tailwindcss.com",
+      "https://cdn.jsdelivr.net"
+    ],
+    imgSrc: ["'self'", "data:", "https:", "blob:"],
+    fontSrc: [
+      "'self'", 
+      "https://cdn.jsdelivr.net",
+      "data:"
+    ],
+    connectSrc: ["'self'"],
+    frameSrc: ["'none'"],
+    objectSrc: ["'none'"],
+    baseUri: ["'self'"],
+    formAction: ["'self'"],
+    upgradeInsecureRequests: []
+  },
+  xFrameOptions: 'DENY',
+  xContentTypeOptions: 'nosniff',
+  referrerPolicy: 'strict-origin-when-cross-origin',
+  strictTransportSecurity: 'max-age=31536000; includeSubDomains'
+}))
+
+// Enable CORS for API
+app.use('/api/*', cors({
+  origin: '*',
+  allowMethods: ['GET', 'POST', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 86400
+}))
 
 const serveAsset = (cacheControl?: string) =>
   async (c: Context<{ Bindings: Bindings }>) => {
@@ -72,9 +115,9 @@ app.get('/test-click', (c) => {
         <title>NEXX - Click Test</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <!-- React Production from jsDelivr (better CORS) -->
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+        <!-- React 19 Production -->
+        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-100 p-4">
         <div id="app"></div>
@@ -186,9 +229,9 @@ app.get('/nexx', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         
-        <!-- React Production from jsDelivr (better CORS) -->
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+        <!-- React 19 Production -->
+        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
@@ -346,9 +389,9 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        <!-- React Production from jsDelivr (better CORS) -->
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+        <!-- React 19 Production -->
+        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
         ${useJSX ? '<!-- Babel Standalone for JSX transformation -->\n        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>' : ''}
         <style>
           html { scroll-behavior: smooth; }

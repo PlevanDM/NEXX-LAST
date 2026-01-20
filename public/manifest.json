@@ -1,0 +1,56 @@
+{
+  "name": "NEXX Service Center",
+  "short_name": "NEXX",
+  "description": "Професійний ремонт iPhone, iPad, MacBook в Києві",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/static/nexx-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/nexx-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "utilities"],
+  "lang": "uk-UA",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Замовити ремонт",
+      "short_name": "Замовити",
+      "description": "Швидке замовлення ремонту",
+      "url": "/#booking",
+      "icons": [
+        {
+          "src": "/static/nexx-logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "База даних",
+      "short_name": "База",
+      "description": "База знань для майстрів",
+      "url": "/nexx.html",
+      "icons": [
+        {
+          "src": "/static/nexx-logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

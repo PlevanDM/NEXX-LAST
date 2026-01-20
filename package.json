@@ -1,38 +1,75 @@
 {
-  "name": "webapp",
+  "name": "nexx-service-center",
+  "version": "9.6.0",
+  "description": "NEXX Service Center - Professional Apple Repair Web Application. React 19 + Hono + Cloudflare Pages",
   "type": "module",
+  "author": {
+    "name": "Dmitry",
+    "email": "info@nexx.com.ua"
+  },
+  "license": "MIT",
+  "keywords": [
+    "apple-repair",
+    "service-center",
+    "iphone-repair",
+    "ipad-repair",
+    "macbook-repair",
+    "react",
+    "hono",
+    "cloudflare-pages",
+    "typescript",
+    "vite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PlevanDM/nexx-webapp.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --host",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
     "build": "vite build --config vite.client.config.ts && vite build && npm run postbuild",
-    "postbuild": "npm run copy-assets && npm run use-minified",
-    "copy-assets": "cp -r public/images dist/ && cp -r public/data dist/ && echo 'Copied assets'",
-    "use-minified": "for f in public/static/*.min.js; do [ -f \"$f\" ] && cp \"$f\" dist/static/$(basename \"${f%.min.js}.js\"); done && echo 'Using minified JS'",
+    "build:client": "vite build --config vite.client.config.ts",
+    "build:server": "vite build",
+    "postbuild": "npm run copy-assets",
+    "copy-assets": "node scripts/copy-assets.cjs",
     "preview": "wrangler pages dev dist",
-    "deploy": "npm run build && wrangler pages deploy dist",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name nexx",
+    "deploy:prod": "npm run build && wrangler pages deploy dist --project-name nexx --branch main",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "clean-port": "fuser -k 3000/tcp 2>/dev/null || true",
-    "test": "curl http://localhost:3000",
+    "type-check": "tsc --noEmit",
     "validate": "python3 scripts/validate_database.py",
-    "update-icons": "node scripts/update_device_icons.cjs"
+    "stats": "node scripts/show_stats.cjs",
+    "enhance": "node scripts/enhance_database_2026.cjs",
+    "optimize:images": "node scripts/optimize_images.cjs",
+    "update-icons": "node scripts/update_device_icons.cjs",
+    "clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
+    "clean:all": "npm run clean && node -e \"require('fs').rmSync('node_modules', {recursive: true, force: true})\"",
+    "check": "npm run type-check && npm run validate"
   },
   "dependencies": {
-    "@types/react": "^19.2.8",
-    "@types/react-dom": "^19.2.3",
+    "@tabler/icons-react": "^3.36.1",
+    "framer-motion": "^12.27.1",
     "hono": "^4.11.4",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250705.0",
-    "@hono/vite-build": "^1.2.0",
+    "@cloudflare/workers-types": "^4.20260120.0",
+    "@hono/vite-build": "^1.9.1",
     "@hono/vite-cloudflare-pages": "^0.4.3",
-    "@hono/vite-dev-server": "^0.18.2",
+    "@hono/vite-dev-server": "^0.24.1",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "puppeteer": "^24.35.0",
     "terser": "^5.46.0",
-    "vite": "^6.3.5",
-    "wrangler": "^4.4.0"
+    "typescript": "^5.7.2",
+    "vite": "^7.3.1",
+    "wrangler": "^4.59.2"
   }
 }

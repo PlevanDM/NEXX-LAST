@@ -1,47 +1,84 @@
 /**
- * NEXX Design System v9.0
- * Unified design tokens for consistent UI across all pages
+ * NEXX Design System 2026
+ * Unified design tokens, components, and styles
  */
 
+// ============================================
+// COLORS - Brand Palette
+// ============================================
+
 export const colors = {
-  // Primary (Blue)
+  // Primary - Blue
   primary: {
     50: '#eff6ff',
     100: '#dbeafe',
     200: '#bfdbfe',
     300: '#93c5fd',
     400: '#60a5fa',
-    500: '#3b82f6',  // Main blue
-    600: '#2563eb',
+    500: '#3b82f6',
+    600: '#2563eb',  // Main brand color
     700: '#1d4ed8',
     800: '#1e40af',
-    900: '#1e3a8a',  // Dark blue (Hero background)
+    900: '#1e3a8a',
   },
-
-  // Secondary (Green - CTA)
+  
+  // Secondary - Purple/Indigo
   secondary: {
+    50: '#f5f3ff',
+    100: '#ede9fe',
+    200: '#ddd6fe',
+    300: '#c4b5fd',
+    400: '#a78bfa',
+    500: '#8b5cf6',  // Accent color
+    600: '#7c3aed',
+    700: '#6d28d9',
+    800: '#5b21b6',
+    900: '#4c1d95',
+  },
+  
+  // Success - Green
+  success: {
     50: '#f0fdf4',
     100: '#dcfce7',
     200: '#bbf7d0',
     300: '#86efac',
     400: '#4ade80',
-    500: '#10b981',  // Main green
-    600: '#059669',
-    700: '#047857',
-    800: '#065f46',
-    900: '#064e3b',
+    500: '#22c55e',  // Success actions
+    600: '#16a34a',
+    700: '#15803d',
+    800: '#166534',
+    900: '#14532d',
   },
-
-  // Accent (Purple - Courses)
-  accent: {
-    purple: '#9333ea',
-    purpleLight: '#a855f7',
-    purpleDark: '#7e22ce',
-    yellow: '#fbbf24',
-    orange: '#f97316',
+  
+  // Warning - Orange
+  warning: {
+    50: '#fff7ed',
+    100: '#ffedd5',
+    200: '#fed7aa',
+    300: '#fdba74',
+    400: '#fb923c',
+    500: '#f97316',
+    600: '#ea580c',
+    700: '#c2410c',
+    800: '#9a3412',
+    900: '#7c2d12',
   },
-
-  // Neutral (Slate)
+  
+  // Danger - Red
+  danger: {
+    50: '#fef2f2',
+    100: '#fee2e2',
+    200: '#fecaca',
+    300: '#fca5a5',
+    400: '#f87171',
+    500: '#ef4444',
+    600: '#dc2626',
+    700: '#b91c1c',
+    800: '#991b1b',
+    900: '#7f1d1d',
+  },
+  
+  // Neutral - Slate
   neutral: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -53,23 +90,20 @@ export const colors = {
     700: '#334155',
     800: '#1e293b',
     900: '#0f172a',
-  },
-
-  // Semantic
-  success: '#10b981',
-  warning: '#fbbf24',
-  error: '#ef4444',
-  info: '#3b82f6',
+    950: '#020617',
+  }
 } as const;
 
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
 export const typography = {
-  // Font families
   fontFamily: {
     sans: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    mono: 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace',
+    mono: '"SF Mono", "Fira Code", "Consolas", monospace'
   },
-
-  // Font sizes
+  
   fontSize: {
     xs: '0.75rem',      // 12px
     sm: '0.875rem',     // 14px
@@ -83,29 +117,31 @@ export const typography = {
     '6xl': '3.75rem',   // 60px
     '7xl': '4.5rem',    // 72px
   },
-
-  // Font weights
+  
   fontWeight: {
-    normal: '400',
-    medium: '500',
-    semibold: '600',
-    bold: '700',
-    extrabold: '800',
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
   },
-
-  // Line heights
+  
   lineHeight: {
-    none: '1',
-    tight: '1.25',
-    snug: '1.375',
-    normal: '1.5',
-    relaxed: '1.625',
-    loose: '2',
-  },
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
+  }
 } as const;
 
+// ============================================
+// SPACING
+// ============================================
+
 export const spacing = {
-  // Padding/Margin scale (in rem)
   0: '0',
   1: '0.25rem',   // 4px
   2: '0.5rem',    // 8px
@@ -120,48 +156,41 @@ export const spacing = {
   20: '5rem',     // 80px
   24: '6rem',     // 96px
   32: '8rem',     // 128px
-
-  // Section spacing
-  sectionPaddingY: '5rem',     // py-20
-  sectionPaddingX: '1rem',     // px-4
-  containerMaxWidth: '72rem',  // max-w-6xl (1152px)
-
-  // Gaps
-  gapSmall: '1.5rem',   // gap-6
-  gapMedium: '2rem',    // gap-8
-  gapLarge: '3rem',     // gap-12
 } as const;
 
-export const borderRadius = {
-  none: '0',
-  sm: '0.25rem',    // 4px
-  default: '0.5rem', // 8px (rounded-lg)
-  md: '0.5rem',     // 8px
-  lg: '0.5rem',     // 8px
-  xl: '0.75rem',    // 12px (rounded-xl)
-  '2xl': '1rem',    // 16px (rounded-2xl)
-  '3xl': '1.5rem',  // 24px
-  full: '9999px',   // rounded-full
-} as const;
+// ============================================
+// SHADOWS
+// ============================================
 
 export const shadows = {
   sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-  default: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+  base: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
   md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
   lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
   xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
   '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
   inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-  none: '0 0 #0000',
 } as const;
 
-export const breakpoints = {
-  sm: '640px',   // Mobile landscape
-  md: '768px',   // Tablet
-  lg: '1024px',  // Desktop
-  xl: '1280px',  // Large desktop
-  '2xl': '1536px', // Extra large
+// ============================================
+// BORDER RADIUS
+// ============================================
+
+export const borderRadius = {
+  none: '0',
+  sm: '0.125rem',    // 2px
+  base: '0.25rem',   // 4px
+  md: '0.375rem',    // 6px
+  lg: '0.5rem',      // 8px
+  xl: '0.75rem',     // 12px
+  '2xl': '1rem',     // 16px
+  '3xl': '1.5rem',   // 24px
+  full: '9999px',
 } as const;
+
+// ============================================
+// TRANSITIONS
+// ============================================
 
 export const transitions = {
   fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
@@ -170,65 +199,342 @@ export const transitions = {
   slower: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
 } as const;
 
-export const zIndex = {
-  hide: -1,
-  base: 0,
-  dropdown: 1000,
-  sticky: 1100,
-  fixed: 1200,
-  modalBackdrop: 1300,
-  modal: 1400,
-  popover: 1500,
-  tooltip: 1600,
-} as const;
+// ============================================
+// ICONS - Unified System
+// ============================================
 
-// Animation variants for Framer Motion
-export const animations = {
-  fadeIn: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
+export const icons = {
+  // Device Categories
+  devices: {
+    iphone: 'fa-mobile-screen-button',
+    ipad: 'fa-tablet-screen-button',
+    macbook: 'fa-laptop',
+    mac: 'fa-desktop',
+    watch: 'fa-clock',
+    airpods: 'fa-headphones',
   },
   
-  slideUp: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 20 },
+  // Services
+  services: {
+    repair: 'fa-screwdriver-wrench',
+    diagnostics: 'fa-microscope',
+    cleaning: 'fa-broom',
+    customization: 'fa-wand-magic-sparkles',
+    tradeIn: 'fa-arrows-rotate',
+    accessories: 'fa-bag-shopping',
   },
-
-  slideDown: {
-    initial: { opacity: 0, y: -20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
+  
+  // Actions
+  actions: {
+    search: 'fa-magnifying-glass',
+    filter: 'fa-filter',
+    sort: 'fa-arrow-down-wide-short',
+    edit: 'fa-pen-to-square',
+    delete: 'fa-trash',
+    add: 'fa-plus',
+    close: 'fa-xmark',
+    check: 'fa-check',
+    chevronDown: 'fa-chevron-down',
+    chevronRight: 'fa-chevron-right',
+    external: 'fa-arrow-up-right-from-square',
   },
-
-  scaleIn: {
-    initial: { opacity: 0, scale: 0.9 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.9 },
+  
+  // Status
+  status: {
+    success: 'fa-circle-check',
+    warning: 'fa-triangle-exclamation',
+    error: 'fa-circle-xmark',
+    info: 'fa-circle-info',
+    loading: 'fa-spinner fa-spin',
   },
+  
+  // Navigation
+  navigation: {
+    home: 'fa-house',
+    database: 'fa-database',
+    calculator: 'fa-calculator',
+    settings: 'fa-gear',
+    user: 'fa-user',
+    logout: 'fa-right-from-bracket',
+    menu: 'fa-bars',
+  },
+  
+  // Contact
+  contact: {
+    phone: 'fa-phone',
+    email: 'fa-envelope',
+    location: 'fa-location-dot',
+    clock: 'fa-clock',
+    whatsapp: 'fa-whatsapp',
+    telegram: 'fa-telegram',
+    instagram: 'fa-instagram',
+    facebook: 'fa-facebook',
+  },
+  
+  // Technical
+  technical: {
+    chip: 'fa-microchip',
+    cpu: 'fa-microchip',
+    battery: 'fa-battery-full',
+    display: 'fa-display',
+    camera: 'fa-camera',
+    speaker: 'fa-volume-high',
+    port: 'fa-plug',
+    board: 'fa-memory',
+  }
+} as const;
 
-  slideInRight: {
-    initial: { opacity: 0, x: 20 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 20 },
+// ============================================
+// COMPONENT VARIANTS
+// ============================================
+
+export const buttonVariants = {
+  // Sizes
+  sizes: {
+    sm: 'px-3 py-1.5 text-sm',
+    base: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg',
+    xl: 'px-8 py-4 text-xl',
+  },
+  
+  // Variants
+  variants: {
+    primary: 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl',
+    secondary: 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl',
+    success: 'bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl',
+    danger: 'bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl',
+    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50',
+    ghost: 'text-gray-700 hover:bg-gray-100',
+    link: 'text-blue-600 hover:text-blue-700 underline-offset-4 hover:underline',
+  },
+  
+  // Base classes
+  base: 'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+} as const;
+
+export const cardVariants = {
+  base: 'bg-white rounded-xl shadow-md overflow-hidden',
+  hover: 'hover:shadow-xl transition-shadow duration-300',
+  clickable: 'cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300',
+  bordered: 'border border-gray-200',
+  elevated: 'shadow-lg',
+} as const;
+
+export const modalVariants = {
+  overlay: 'fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center p-4',
+  container: 'bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col',
+  header: 'flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50',
+  body: 'flex-1 overflow-y-auto p-6',
+  footer: 'p-6 border-t border-gray-200 bg-gray-50 flex items-center justify-end gap-3',
+} as const;
+
+export const badgeVariants = {
+  variants: {
+    default: 'bg-gray-100 text-gray-800',
+    primary: 'bg-blue-100 text-blue-800',
+    success: 'bg-green-100 text-green-800',
+    warning: 'bg-orange-100 text-orange-800',
+    danger: 'bg-red-100 text-red-800',
+    info: 'bg-cyan-100 text-cyan-800',
+  },
+  base: 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold',
+} as const;
+
+// ============================================
+// GRADIENTS
+// ============================================
+
+export const gradients = {
+  hero: 'bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800',
+  card: 'bg-gradient-to-br from-blue-50 to-purple-50',
+  button: 'bg-gradient-to-r from-blue-600 to-purple-600',
+  text: 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent',
+  overlay: 'bg-gradient-to-t from-black/50 to-transparent',
+} as const;
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+export const animations = {
+  fadeIn: 'animate-fade-in',
+  slideUp: 'animate-slide-up',
+  slideDown: 'animate-slide-down',
+  scaleIn: 'animate-scale-in',
+  spin: 'animate-spin',
+  pulse: 'animate-pulse',
+  bounce: 'animate-bounce',
+} as const;
+
+// ============================================
+// LAYOUT CONSTANTS
+// ============================================
+
+export const layout = {
+  maxWidth: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1536px',
+    full: '100%',
+  },
+  
+  container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+  section: 'py-16 md:py-20 lg:py-24',
+  
+  header: {
+    height: '64px',
+    heightMobile: '56px',
+  },
+  
+  sidebar: {
+    width: '280px',
+    widthCollapsed: '64px',
   },
 } as const;
 
-// Helper functions
+// ============================================
+// Z-INDEX SCALE
+// ============================================
+
+export const zIndex = {
+  base: 0,
+  dropdown: 10,
+  sticky: 20,
+  fixed: 30,
+  modalOverlay: 40,
+  modal: 50,
+  popover: 60,
+  tooltip: 70,
+  notification: 80,
+  max: 9999,
+} as const;
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+
+export const breakpoints = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+} as const;
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+
 export const cn = (...classes: (string | undefined | null | false)[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
-export default {
+export const getButtonClasses = (
+  variant: keyof typeof buttonVariants.variants = 'primary',
+  size: keyof typeof buttonVariants.sizes = 'base',
+  className?: string
+) => {
+  return cn(
+    buttonVariants.base,
+    buttonVariants.variants[variant],
+    buttonVariants.sizes[size],
+    className
+  );
+};
+
+export const getCardClasses = (
+  hover = false,
+  clickable = false,
+  bordered = false,
+  className?: string
+) => {
+  return cn(
+    cardVariants.base,
+    hover && cardVariants.hover,
+    clickable && cardVariants.clickable,
+    bordered && cardVariants.bordered,
+    className
+  );
+};
+
+export const getBadgeClasses = (
+  variant: keyof typeof badgeVariants.variants = 'default',
+  className?: string
+) => {
+  return cn(
+    badgeVariants.base,
+    badgeVariants.variants[variant],
+    className
+  );
+};
+
+export const getIcon = (category: string, type: string): string => {
+  const iconMap: any = icons;
+  return iconMap[category]?.[type] || 'fa-circle-question';
+};
+
+// ============================================
+// CUSTOM CSS ANIMATIONS
+// ============================================
+
+export const customAnimations = `
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in { animation: fadeIn 0.6s ease-out; }
+.animate-slide-up { animation: slideUp 0.4s ease-out; }
+.animate-slide-down { animation: slideDown 0.4s ease-out; }
+.animate-scale-in { animation: scaleIn 0.3s ease-out; }
+`;
+
+// ============================================
+// EXPORT COMPLETE DESIGN SYSTEM
+// ============================================
+
+export const designSystem = {
   colors,
   typography,
   spacing,
-  borderRadius,
   shadows,
-  breakpoints,
+  borderRadius,
   transitions,
-  zIndex,
+  icons,
+  buttonVariants,
+  cardVariants,
+  modalVariants,
+  badgeVariants,
+  gradients,
   animations,
-  cn,
-};
+  layout,
+  zIndex,
+  breakpoints,
+  helpers: {
+    cn,
+    getButtonClasses,
+    getCardClasses,
+    getBadgeClasses,
+    getIcon,
+  },
+  customAnimations,
+} as const;
+
+export default designSystem;

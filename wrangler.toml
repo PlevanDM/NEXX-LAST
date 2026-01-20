@@ -1,0 +1,33 @@
+# Cloudflare Pages Configuration for NEXX GSM
+# Domain: nexxgsm.com
+# Account ID: ad170d773e79a037e28f4530fd5305a5
+
+name = "nexxgsm"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = "./dist"
+
+[env.production]
+name = "nexxgsm-production"
+route = "nexxgsm.com/*"
+routes = [
+  { pattern = "nexxgsm.com/*", zone_name = "nexxgsm.com" },
+  { pattern = "www.nexxgsm.com/*", zone_name = "nexxgsm.com" }
+]
+
+# Custom build command
+[build]
+command = "npm run build && npm run postbuild"
+cwd = ""
+
+[build.upload]
+format = "service-worker"
+
+# Environment variables (if needed for Remonline integration later)
+[vars]
+ENVIRONMENT = "production"
+SITE_URL = "https://nexxgsm.com"
+
+# Remonline API integration (to be configured)
+# REMONLINE_API_KEY будет добавлен позже через Cloudflare Dashboard Secrets

@@ -1,0 +1,183 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-20",
+  "description": "NEXX GSM - Централизованная база данных для всех компонентов сайта",
+  
+  "config": {
+    "currency": "lei",
+    "defaultLanguage": "ro",
+    "supportedLanguages": ["ro", "uk", "en"],
+    "baseUrl": "https://nexxgsm.com",
+    "remonlineEnabled": false
+  },
+  
+  "devices": {
+    "source": "/data/devices.json",
+    "description": "Полная база устройств с техническими характеристиками",
+    "count": "Загружается динамически из devices.json"
+  },
+  
+  "prices": {
+    "source": "/data/ukraine_prices.json",
+    "description": "Цены на запчасти и услуги",
+    "commonRepairs": {
+      "battery": {
+        "iPhone": { "min": 60, "max": 150, "currency": "lei", "time": "30-60 min" },
+        "Samsung": { "min": 60, "max": 120, "currency": "lei", "time": "30-60 min" },
+        "Xiaomi": { "min": 50, "max": 100, "currency": "lei", "time": "30-60 min" },
+        "MacBook": { "min": 200, "max": 400, "currency": "lei", "time": "1-2 ore" },
+        "Laptop": { "min": 150, "max": 300, "currency": "lei", "time": "1-2 ore" }
+      },
+      "display": {
+        "iPhone": { "min": 100, "max": 400, "currency": "lei", "time": "30-90 min" },
+        "Samsung": { "min": 100, "max": 350, "currency": "lei", "time": "30-90 min" },
+        "Xiaomi": { "min": 80, "max": 250, "currency": "lei", "time": "30-90 min" },
+        "MacBook": { "min": 300, "max": 800, "currency": "lei", "time": "2-4 ore" },
+        "Laptop": { "min": 200, "max": 600, "currency": "lei", "time": "2-4 ore" }
+      },
+      "board": {
+        "iPhone": { "min": 150, "max": 400, "currency": "lei", "time": "2-4 ore" },
+        "Samsung": { "min": 150, "max": 350, "currency": "lei", "time": "2-4 ore" },
+        "MacBook": { "min": 300, "max": 800, "currency": "lei", "time": "4-8 ore" },
+        "Laptop": { "min": 200, "max": 600, "currency": "lei", "time": "4-8 ore" }
+      },
+      "port": {
+        "iPhone": { "min": 50, "max": 100, "currency": "lei", "time": "30-60 min" },
+        "Samsung": { "min": 50, "max": 90, "currency": "lei", "time": "30-60 min" },
+        "Laptop": { "min": 80, "max": 150, "currency": "lei", "time": "1-2 ore" }
+      },
+      "diagnostic": {
+        "all": { "price": 0, "currency": "lei", "time": "15-20 min", "free": true }
+      }
+    }
+  },
+  
+  "brands": {
+    "phone": [
+      { "id": "apple", "name": "Apple", "models": ["iPhone"], "icon": "fa-apple" },
+      { "id": "samsung", "name": "Samsung", "models": ["Galaxy S", "Galaxy A", "Galaxy Note", "Galaxy Z"], "icon": "fa-mobile" },
+      { "id": "xiaomi", "name": "Xiaomi", "models": ["Xiaomi", "Redmi", "Poco"], "icon": "fa-mobile" },
+      { "id": "huawei", "name": "Huawei", "models": ["Huawei", "Honor"], "icon": "fa-mobile" },
+      { "id": "google", "name": "Google", "models": ["Pixel"], "icon": "fa-mobile" },
+      { "id": "oneplus", "name": "OnePlus", "models": ["OnePlus"], "icon": "fa-mobile" },
+      { "id": "oppo", "name": "Oppo", "models": ["Oppo"], "icon": "fa-mobile" },
+      { "id": "vivo", "name": "Vivo", "models": ["Vivo"], "icon": "fa-mobile" },
+      { "id": "realme", "name": "Realme", "models": ["Realme"], "icon": "fa-mobile" },
+      { "id": "motorola", "name": "Motorola", "models": ["Moto"], "icon": "fa-mobile" },
+      { "id": "nokia", "name": "Nokia", "models": ["Nokia"], "icon": "fa-mobile" },
+      { "id": "sony", "name": "Sony", "models": ["Xperia"], "icon": "fa-mobile" }
+    ],
+    "laptop": [
+      { "id": "apple", "name": "Apple", "models": ["MacBook Air", "MacBook Pro"], "icon": "fa-apple" },
+      { "id": "dell", "name": "Dell", "models": ["XPS", "Inspiron", "Latitude"], "icon": "fa-laptop" },
+      { "id": "hp", "name": "HP", "models": ["Pavilion", "Spectre", "EliteBook"], "icon": "fa-laptop" },
+      { "id": "lenovo", "name": "Lenovo", "models": ["ThinkPad", "IdeaPad", "Legion"], "icon": "fa-laptop" },
+      { "id": "asus", "name": "Asus", "models": ["ZenBook", "VivoBook", "ROG"], "icon": "fa-laptop" },
+      { "id": "acer", "name": "Acer", "models": ["Aspire", "Swift", "Predator"], "icon": "fa-laptop" },
+      { "id": "msi", "name": "MSI", "models": ["Gaming", "Prestige"], "icon": "fa-laptop" },
+      { "id": "razer", "name": "Razer", "models": ["Blade"], "icon": "fa-laptop" },
+      { "id": "microsoft", "name": "Microsoft", "models": ["Surface"], "icon": "fa-laptop" }
+    ],
+    "tablet": [
+      { "id": "apple", "name": "Apple", "models": ["iPad", "iPad Pro", "iPad Air", "iPad mini"], "icon": "fa-tablet" },
+      { "id": "samsung", "name": "Samsung", "models": ["Galaxy Tab"], "icon": "fa-tablet" },
+      { "id": "xiaomi", "name": "Xiaomi", "models": ["Pad"], "icon": "fa-tablet" },
+      { "id": "lenovo", "name": "Lenovo", "models": ["Tab"], "icon": "fa-tablet" }
+    ],
+    "watch": [
+      { "id": "apple", "name": "Apple", "models": ["Apple Watch"], "icon": "fa-watch" },
+      { "id": "samsung", "name": "Samsung", "models": ["Galaxy Watch"], "icon": "fa-watch" },
+      { "id": "xiaomi", "name": "Xiaomi", "models": ["Watch"], "icon": "fa-watch" },
+      { "id": "huawei", "name": "Huawei", "models": ["Watch"], "icon": "fa-watch" }
+    ],
+    "audio": [
+      { "id": "apple", "name": "Apple", "models": ["AirPods", "AirPods Pro"], "icon": "fa-headphones" },
+      { "id": "samsung", "name": "Samsung", "models": ["Galaxy Buds"], "icon": "fa-headphones" },
+      { "id": "xiaomi", "name": "Xiaomi", "models": ["Buds"], "icon": "fa-headphones" }
+    ]
+  },
+  
+  "services": {
+    "battery": {
+      "icon": "fa-battery-full",
+      "category": "repair",
+      "duration": { "min": 30, "max": 60, "unit": "minutes" },
+      "warranty": 30,
+      "popular": true
+    },
+    "display": {
+      "icon": "fa-tv",
+      "category": "replacement",
+      "duration": { "min": 30, "max": 90, "unit": "minutes" },
+      "warranty": 30,
+      "popular": true
+    },
+    "board": {
+      "icon": "fa-microchip",
+      "category": "repair",
+      "duration": { "min": 120, "max": 240, "unit": "minutes" },
+      "warranty": 30,
+      "popular": false
+    },
+    "port": {
+      "icon": "fa-plug",
+      "category": "repair",
+      "duration": { "min": 30, "max": 60, "unit": "minutes" },
+      "warranty": 30,
+      "popular": false
+    },
+    "modular": {
+      "icon": "fa-screwdriver-wrench",
+      "category": "replacement",
+      "duration": { "min": 30, "max": 90, "unit": "minutes" },
+      "warranty": 30,
+      "popular": false
+    },
+    "diagnostic": {
+      "icon": "fa-microscope",
+      "category": "service",
+      "duration": { "min": 15, "max": 20, "unit": "minutes" },
+      "price": 0,
+      "free": true,
+      "warranty": 0
+    }
+  },
+  
+  "contact": {
+    "phone": "+40 721 234 567",
+    "email": "info@nexx.ro",
+    "address": {
+      "street": "Str. Victoriei 15",
+      "city": "București",
+      "country": "România",
+      "postalCode": "010063"
+    },
+    "hours": {
+      "weekdays": "10:00-19:00",
+      "saturday": "Closed",
+      "sunday": "Closed"
+    },
+    "social": {
+      "telegram": "https://t.me/nexx_support",
+      "whatsapp": "https://wa.me/40721234567",
+      "instagram": "#",
+      "facebook": "#",
+      "tiktok": "#"
+    }
+  },
+  
+  "seo": {
+    "keywords": [
+      "reparații iPhone București",
+      "service MacBook București",
+      "reparații Samsung București",
+      "service GSM București",
+      "înlocuire baterie iPhone",
+      "reparații ecran iPhone București"
+    ],
+    "localAreas": [
+      "Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5", "Sector 6",
+      "Aviatorilor", "Pipera", "Floreasca", "Obor", "Vitan", "Titan"
+    ]
+  }
+}

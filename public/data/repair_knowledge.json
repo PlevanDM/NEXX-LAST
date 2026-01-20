@@ -1,10 +1,19 @@
 {
-  "generated_at": "2026-01-19T21:10:00.000000",
-  "version": "3.0-enhanced",
+  "generated_at": "2026-01-20T07:37:58.828Z",
+  "version": "2026.1",
   "source": "Open-source repair wikis and community knowledge",
   "tristar_hydra": {
     "description": "Диагностика и ремонт Tristar/Hydra/U2/Kraken IC - контроллера зарядки и USB iPhone. Отвечает за управление зарядкой, USB данные, распознавание аксессуаров и Power Delivery.",
-    "common_names": ["Tristar", "Hydra", "U2", "U3300", "Tigris", "Kraken", "USB IC", "Charging IC"],
+    "common_names": [
+      "Tristar",
+      "Hydra",
+      "U2",
+      "U3300",
+      "Tigris",
+      "Kraken",
+      "USB IC",
+      "Charging IC"
+    ],
     "symptoms": [
       "Не заряжается совсем",
       "\"Accessory not supported\" / \"Аксессуар не поддерживается\"",
@@ -223,7 +232,14 @@
   },
   "baseband": {
     "description": "Диагностика и ремонт baseband/модема iPhone - проблемы с сотовой сетью, нет IMEI, нет сервиса. Baseband IC отвечает за все сотовые коммуникации: звонки, SMS, 4G/5G данные.",
-    "alternative_names": ["Baseband", "Модем", "Modem IC", "RF IC", "Cellular IC", "BB_CPU"],
+    "alternative_names": [
+      "Baseband",
+      "Модем",
+      "Modem IC",
+      "RF IC",
+      "Cellular IC",
+      "BB_CPU"
+    ],
     "symptoms": [
       "No Service / Searching... постоянно",
       "Нет IMEI (Settings → General → About)",
@@ -264,9 +280,9 @@
           "step": "iTunes Diagnostics",
           "method": "Подключить к iTunes, проверить логи",
           "errors": {
-            "-1": "Baseband не отвечает",
             "1": "Baseband firmware не найден",
-            "9": "USB connection или baseband issue"
+            "9": "USB connection или baseband issue",
+            "-1": "Baseband не отвечает"
           }
         },
         {
@@ -461,7 +477,12 @@
   },
   "touch_ic": {
     "description": "iPhone Touch IC Disease - массовая проблема iPhone 6/6+ с сенсорными контроллерами Meson и Cumulus. Причина: отсутствие underfill и bendable корпус привели к трещинам в BGA соединениях.",
-    "alternative_names": ["Touch IC Disease", "Touch Disease", "Gray Bar Disease", "Meson/Cumulus Failure"],
+    "alternative_names": [
+      "Touch IC Disease",
+      "Touch Disease",
+      "Gray Bar Disease",
+      "Meson/Cumulus Failure"
+    ],
     "affected_models_primary": [
       "iPhone 6 (массово)",
       "iPhone 6 Plus (наиболее поражён)",
@@ -766,7 +787,13 @@
   },
   "water_damage": {
     "description": "Профессиональный ремонт iPhone после залития жидкостью. Критично важно: скорость реакции и правильная процедура очистки определяют успех восстановления.",
-    "alternative_names": ["Liquid Damage", "Залитие", "Water Damage", "Коррозия", "Окисление"],
+    "alternative_names": [
+      "Liquid Damage",
+      "Залитие",
+      "Water Damage",
+      "Коррозия",
+      "Окисление"
+    ],
     "critical_time_windows": {
       "0-1_hour": {
         "status": "GOLDEN HOUR - максимальные шансы на полное восстановление",
@@ -1133,10 +1160,16 @@
   },
   "nand_programming": {
     "description": "NAND flash программирование и ремонт iPhone - решение проблем с памятью, ошибок iTunes 4013/4014/9, recovery loops, upgrade памяти.",
-    "alternative_names": ["NAND Repair", "Flash Memory", "HDD IC", "Storage IC", "Memory Upgrade"],
+    "alternative_names": [
+      "NAND Repair",
+      "Flash Memory",
+      "HDD IC",
+      "Storage IC",
+      "Memory Upgrade"
+    ],
     "common_symptoms": [
       "iTunes Error 4013 при восстановлении",
-      "iTunes Error 4014 при обновлении",  
+      "iTunes Error 4014 при обновлении",
       "iTunes Error 9 (USB disconnect during restore)",
       "Error 4005 (NAND not detected)",
       "Boot loop - застрял на Apple logo",
@@ -1190,7 +1223,10 @@
     },
     "nand_types_by_model": {
       "slc_nand": {
-        "models": ["iPhone 4", "iPhone 4S"],
+        "models": [
+          "iPhone 4",
+          "iPhone 4S"
+        ],
         "capacity": "8GB-64GB",
         "technology": "Single-Level Cell",
         "endurance": "100k write cycles",
@@ -1199,7 +1235,14 @@
         "repair_difficulty": "Easy (large chip)"
       },
       "mlc_nand": {
-        "models": ["iPhone 5", "5s", "6", "6 Plus", "6s", "7"],
+        "models": [
+          "iPhone 5",
+          "5s",
+          "6",
+          "6 Plus",
+          "6s",
+          "7"
+        ],
         "capacity": "16GB-256GB",
         "technology": "Multi-Level Cell (2 bits/cell)",
         "endurance": "10k write cycles",
@@ -1208,7 +1251,16 @@
         "repair_difficulty": "Moderate"
       },
       "tlc_nand": {
-        "models": ["iPhone 8", "X", "XR", "XS", "11", "SE 2020", "12", "13"],
+        "models": [
+          "iPhone 8",
+          "X",
+          "XR",
+          "XS",
+          "11",
+          "SE 2020",
+          "12",
+          "13"
+        ],
         "capacity": "64GB-512GB",
         "technology": "Triple-Level Cell (3 bits/cell)",
         "endurance": "3k-5k write cycles",
@@ -1217,7 +1269,11 @@
         "repair_difficulty": "Difficult (smaller, PoP)"
       },
       "3d_nand": {
-        "models": ["iPhone 14", "15", "16"],
+        "models": [
+          "iPhone 14",
+          "15",
+          "16"
+        ],
         "capacity": "128GB-1TB",
         "technology": "3D NAND (vertical stacking)",
         "endurance": "5k-10k write cycles",
@@ -1874,11 +1930,118 @@
       ]
     },
     "recommended_brands": {
-      "stations": ["Hakko", "JBC", "Quick", "Pace"],
-      "microscopes": ["AmScope", "Mantis", "Zeiss", "Nikon"],
-      "meters": ["Fluke", "Brymen", "Keysight"],
-      "programmers": ["JC", "Magico", "Easy-JTAG"],
+      "stations": [
+        "Hakko",
+        "JBC",
+        "Quick",
+        "Pace"
+      ],
+      "microscopes": [
+        "AmScope",
+        "Mantis",
+        "Zeiss",
+        "Nikon"
+      ],
+      "meters": [
+        "Fluke",
+        "Brymen",
+        "Keysight"
+      ],
+      "programmers": [
+        "JC",
+        "Magico",
+        "Easy-JTAG"
+      ],
       "avoid": "No-name Chinese brands на Alibaba (часто ломаются)"
     }
+  },
+  "usbc_repair": {
+    "description": "USB-C Port Repair and Diagnostics (2026)",
+    "difficulty": "Advanced",
+    "tools_required": [
+      "Hot air station (350°C)",
+      "Microscope (20x-40x)",
+      "Multimeter with diode mode",
+      "Kapton tape",
+      "Flux (no-clean)",
+      "Solder paste (Sn42/Bi58)"
+    ],
+    "diagnostic_steps": [
+      "Visual inspection for bent/broken pins",
+      "Check PP5V0_USB rail (should be 5.0V)",
+      "Check PP3V0_USB rail (should be 3.0V)",
+      "Test CC1 and CC2 pins for proper voltage",
+      "Check VBUS for 5V when cable inserted",
+      "Verify SN2015A IC for shorts/damage"
+    ],
+    "repair_steps": [
+      "Remove battery connector first (safety)",
+      "Apply kapton tape around port area",
+      "Heat port with hot air at 350°C",
+      "Remove old port carefully",
+      "Clean pads with solder wick and flux",
+      "Align new port precisely",
+      "Solder with hot air or iron",
+      "Check all pins for proper connection",
+      "Test with known-good cable",
+      "Reassemble and test charging"
+    ],
+    "common_mistakes": [
+      "Overheating nearby components",
+      "Not removing battery first (short risk)",
+      "Using too much solder paste",
+      "Damaging CC pin traces"
+    ],
+    "success_rate": "85%"
+  },
+  "m4_m5_diagnostics": {
+    "description": "M4/M5 MacBook No Boot Diagnostics",
+    "difficulty": "Expert",
+    "tools_required": [
+      "USB-C power meter",
+      "Thermal camera",
+      "Oscilloscope",
+      "Boardview software",
+      "DCPS (DC Power Supply 20V 3A)"
+    ],
+    "diagnostic_steps": [
+      "Connect to DCPS, check current draw",
+      "Normal idle: 0.010-0.050A",
+      "If 0A: Check PP3V3_G3H rail",
+      "If >2A: Short on main power rail",
+      "Use thermal camera to find hot IC",
+      "Check PMC_ONOFF_L signal",
+      "Verify PP3V3_S5 rail presence",
+      "Check CPU VCore rails with scope"
+    ],
+    "common_failures": [
+      "PMU failure (70%)",
+      "Liquid damage to power rails (15%)",
+      "Blown MOSFET on VCore (10%)",
+      "T2/M-series security chip failure (5%)"
+    ]
+  },
+  "battery_health_2026": {
+    "description": "Battery Health Optimization (2026 Models)",
+    "tips": [
+      "Use genuine 30W+ USB-C PD charger",
+      "Avoid charging above 85°F / 29°C ambient",
+      "Enable 'Optimized Battery Charging' in Settings",
+      "Avoid full discharge cycles (<20%)",
+      "Use wireless charging sparingly (generates heat)",
+      "Update to latest iOS/iPadOS for battery algorithms"
+    ],
+    "lifespan_expectations": {
+      "iPhone 17": "500-800 cycles to 80% health",
+      "iPad Pro M4": "800-1000 cycles to 80% health",
+      "MacBook M4/M5": "1000+ cycles to 80% health"
+    },
+    "replacement_criteria": [
+      "Health below 80%",
+      "Unexpected shutdowns",
+      "Physical swelling",
+      "Charging very slow",
+      "Battery drains fast when idle"
+    ]
   }
 }

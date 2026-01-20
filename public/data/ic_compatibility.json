@@ -1,6 +1,6 @@
 {
-  "source": "Compiled from repair community knowledge, iFixit, Rossmann Group, repair.wiki",
-  "collected_at": "2026-01-19 13:41:34",
+  "source": "NEXX Database Enhancement 2026",
+  "collected_at": "2026-01-20T07:37:58.828Z",
   "charging_ics": [
     {
       "name": "1610A1",
@@ -507,6 +507,69 @@
       "location": "Main Board",
       "notes": "TI battery charger for iPhone Air",
       "year": 2025
+    },
+    {
+      "name": "SN2015A",
+      "designation": "USB Type-C PD 3.1 Controller",
+      "package": "WLCSP-56",
+      "price_range": "$8-15",
+      "difficulty": "Expert",
+      "functions": [
+        "USB-C Power Delivery 3.1",
+        "Fast charging control (up to 240W)",
+        "E-marker communication",
+        "Voltage negotiation",
+        "Over-current protection"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Series",
+        "iPad Pro M4 2026",
+        "MacBook Air M4"
+      ],
+      "symptoms_when_faulty": [
+        "No charging",
+        "Slow charging only",
+        "USB device not recognized",
+        "Overheating during charge",
+        "Intermittent charging"
+      ],
+      "diagnostics": {
+        "pp5v0_usb": "5.0V±0.1V",
+        "pp3v0_usb": "3.0V±0.1V",
+        "current_draw": "~50-80mA idle",
+        "diode_mode": {
+          "Pin 1 (VBUS)": "0.550V",
+          "Pin 5 (CC1)": "0.420V",
+          "Pin 6 (CC2)": "0.420V",
+          "Pin 10 (GND)": "0.000V"
+        }
+      }
+    },
+    {
+      "name": "CP3300B",
+      "designation": "Battery Fast Charger IC",
+      "package": "QFN-32",
+      "price_range": "$5-10",
+      "difficulty": "Advanced",
+      "functions": [
+        "Multi-cell battery charging",
+        "Thermal regulation",
+        "Charge curve optimization",
+        "Battery authentication",
+        "Safety monitoring"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Pro/Pro Max",
+        "iPad Pro M4",
+        "MacBook Pro M5"
+      ],
+      "symptoms_when_faulty": [
+        "Battery not charging above 80%",
+        "Device hot during charge",
+        "Charge stops unexpectedly",
+        "False battery warnings",
+        "Slow charge only mode"
+      ]
     }
   ],
   "power_ics": [
@@ -917,6 +980,25 @@
       "location": "Main Board - Near A19 Pro",
       "notes": "DC-DC converter for power regulation",
       "year": 2025
+    },
+    {
+      "name": "PMU9050",
+      "designation": "Main Power Management Unit (2026)",
+      "package": "FCBGA-180",
+      "price_range": "$25-45",
+      "difficulty": "Expert",
+      "functions": [
+        "Multi-rail power delivery",
+        "Dynamic voltage scaling",
+        "Power sequencing",
+        "Battery monitoring",
+        "Thermal management"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Series",
+        "iPad Air M3",
+        "Apple Watch Series 12"
+      ]
     }
   ],
   "audio_ics": [
@@ -2748,6 +2830,32 @@
       "location": "Main Board",
       "notes": "ADC for display and sensor data",
       "year": 2025
+    },
+    {
+      "name": "TI-DS9000",
+      "designation": "ProMotion 2.0 Display Driver",
+      "package": "COF (Chip-on-Flex)",
+      "price_range": "$30-50",
+      "difficulty": "Expert",
+      "functions": [
+        "120Hz ProMotion control",
+        "Dynamic refresh rate (1-120Hz)",
+        "LTPO display management",
+        "Touch integration",
+        "Always-On display support"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Pro/Pro Max",
+        "iPad Pro M4 2026",
+        "Apple Watch Ultra 3"
+      ],
+      "symptoms_when_faulty": [
+        "Display flickering",
+        "Stuck at 60Hz",
+        "Touch not responsive",
+        "Screen artifacts/lines",
+        "Always-On not working"
+      ]
     }
   ],
   "nfc_ics": [

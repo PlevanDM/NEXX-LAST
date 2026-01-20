@@ -1,0 +1,237 @@
+{
+  "timestamp": "2026-01-20T16:14:55.856Z",
+  "totalDevices": 134,
+  "errors": [
+    {
+      "index": 0,
+      "device": "iPhone 16 Pro Max",
+      "deviceYear": 2024,
+      "chipYear": 1527,
+      "processor": "Apple A18 Pro (APL1V07/339S01527)",
+      "issue": "Слишком старый чип (1527) для устройства 2024 года"
+    },
+    {
+      "index": 62,
+      "device": "iPad Pro 11\" M4",
+      "deviceYear": 2024,
+      "chipYear": 1206,
+      "processor": "Apple M4 (APL1206)",
+      "issue": "Слишком старый чип (1206) для устройства 2024 года"
+    },
+    {
+      "index": 63,
+      "device": "iPad Pro 13\" M4",
+      "deviceYear": 2024,
+      "chipYear": 1206,
+      "processor": "Apple M4 (APL1206)",
+      "issue": "Слишком старый чип (1206) для устройства 2024 года"
+    },
+    {
+      "index": 106,
+      "device": "iPhone 17 Pro Max",
+      "deviceYear": 2025,
+      "chipYear": 1839,
+      "processor": "Apple A19 Pro (APL1V12/339S01839)",
+      "issue": "Слишком старый чип (1839) для устройства 2025 года"
+    },
+    {
+      "index": 107,
+      "device": "iPhone 17 Pro",
+      "deviceYear": 2025,
+      "chipYear": 1839,
+      "processor": "Apple A19 Pro (APL1V12/339S01839)",
+      "issue": "Слишком старый чип (1839) для устройства 2025 года"
+    },
+    {
+      "index": 108,
+      "device": "iPhone 17",
+      "deviceYear": 2025,
+      "chipYear": 1805,
+      "processor": "Apple A19 (APL1V09/339S01805)",
+      "issue": "Слишком старый чип (1805) для устройства 2025 года"
+    },
+    {
+      "index": 109,
+      "device": "iPhone Air",
+      "deviceYear": 2025,
+      "chipYear": 1839,
+      "processor": "Apple A19 Pro (APL1V12/339S01839)",
+      "issue": "Слишком старый чип (1839) для устройства 2025 года"
+    },
+    {
+      "index": 35,
+      "device": "iPhone SE",
+      "processor": "A13 Bionic",
+      "expectedDevices": "iPhone 11",
+      "issue": "Процессор \"A13 Bionic\" обычно для: iPhone 11, но найден в \"iPhone SE\""
+    },
+    {
+      "index": 45,
+      "device": "iPad Air 3rd Gen",
+      "processor": "A12 Bionic",
+      "expectedDevices": "iPhone XS, iPhone XR",
+      "issue": "Процессор \"A12 Bionic\" обычно для: iPhone XS, iPhone XR, но найден в \"iPad Air 3rd Gen\""
+    },
+    {
+      "index": 46,
+      "device": "iPad mini 5th Gen",
+      "processor": "A12 Bionic",
+      "expectedDevices": "iPhone XS, iPhone XR",
+      "issue": "Процессор \"A12 Bionic\" обычно для: iPhone XS, iPhone XR, но найден в \"iPad mini 5th Gen\""
+    },
+    {
+      "index": 50,
+      "device": "iPad 8th Gen",
+      "processor": "A12 Bionic",
+      "expectedDevices": "iPhone XS, iPhone XR",
+      "issue": "Процессор \"A12 Bionic\" обычно для: iPhone XS, iPhone XR, но найден в \"iPad 8th Gen\""
+    },
+    {
+      "index": 51,
+      "device": "iPad Air 4th Gen",
+      "processor": "A14 Bionic",
+      "expectedDevices": "iPhone 12",
+      "issue": "Процессор \"A14 Bionic\" обычно для: iPhone 12, но найден в \"iPad Air 4th Gen\""
+    },
+    {
+      "index": 52,
+      "device": "iPad Pro 11\" 3rd Gen M1",
+      "processor": "Apple M1",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M1\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Pro 11\" 3rd Gen M1\""
+    },
+    {
+      "index": 53,
+      "device": "iPad Pro 12.9\" 5th Gen M1",
+      "processor": "Apple M1",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M1\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Pro 12.9\" 5th Gen M1\""
+    },
+    {
+      "index": 54,
+      "device": "iPad 9th Gen",
+      "processor": "A13 Bionic",
+      "expectedDevices": "iPhone 11",
+      "issue": "Процессор \"A13 Bionic\" обычно для: iPhone 11, но найден в \"iPad 9th Gen\""
+    },
+    {
+      "index": 55,
+      "device": "iPad mini 6th Gen",
+      "processor": "A15 Bionic",
+      "expectedDevices": "iPhone 13, iPhone 14, iPhone SE 2022",
+      "issue": "Процессор \"A15 Bionic\" обычно для: iPhone 13, iPhone 14, iPhone SE 2022, но найден в \"iPad mini 6th Gen\""
+    },
+    {
+      "index": 56,
+      "device": "iPad Air 5th Gen M1",
+      "processor": "Apple M1",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M1\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Air 5th Gen M1\""
+    },
+    {
+      "index": 57,
+      "device": "iPad 10th Gen",
+      "processor": "Apple A14 Bionic",
+      "expectedDevices": "iPhone 12",
+      "issue": "Процессор \"A14 Bionic\" обычно для: iPhone 12, но найден в \"iPad 10th Gen\""
+    },
+    {
+      "index": 58,
+      "device": "iPad Pro 11\" 4th Gen M2",
+      "processor": "Apple M2",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M2\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Pro 11\" 4th Gen M2\""
+    },
+    {
+      "index": 59,
+      "device": "iPad Pro 12.9\" 6th Gen M2",
+      "processor": "Apple M2",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M2\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Pro 12.9\" 6th Gen M2\""
+    },
+    {
+      "index": 60,
+      "device": "iPad Air 6th Gen M2 11\"",
+      "processor": "Apple M2",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M2\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Air 6th Gen M2 11\"\""
+    },
+    {
+      "index": 61,
+      "device": "iPad Air 6th Gen M2 13\"",
+      "processor": "Apple M2",
+      "expectedDevices": "MacBook Pro, MacBook Air",
+      "issue": "Процессор \"Apple M2\" обычно для: MacBook Pro, MacBook Air, но найден в \"iPad Air 6th Gen M2 13\"\""
+    },
+    {
+      "index": 115,
+      "device": "iPhone SE 2nd Gen",
+      "processor": "A13 Bionic",
+      "expectedDevices": "iPhone 11",
+      "issue": "Процессор \"A13 Bionic\" обычно для: iPhone 11, но найден в \"iPhone SE 2nd Gen\""
+    },
+    {
+      "index": 116,
+      "device": "iPhone SE 3rd Gen",
+      "processor": "A15 Bionic",
+      "expectedDevices": "iPhone 13, iPhone 14, iPhone SE 2022",
+      "issue": "Процессор \"A15 Bionic\" обычно для: iPhone 13, iPhone 14, iPhone SE 2022, но найден в \"iPhone SE 3rd Gen\""
+    },
+    {
+      "index": 117,
+      "device": "iPad mini 7th Gen",
+      "processor": "Apple A17 Pro",
+      "expectedDevices": "iPhone 15 Pro, iPhone 15 Pro Max",
+      "issue": "Процессор \"A17 Pro\" обычно для: iPhone 15 Pro, iPhone 15 Pro Max, но найден в \"iPad mini 7th Gen\""
+    },
+    {
+      "index": 118,
+      "device": "iPad 11th Gen",
+      "processor": "A16 Bionic",
+      "expectedDevices": "iPhone 14 Pro, iPhone 14 Pro Max, iPhone 15, iPhone 15 Plus",
+      "issue": "Процессор \"A16 Bionic\" обычно для: iPhone 14 Pro, iPhone 14 Pro Max, iPhone 15, iPhone 15 Plus, но найден в \"iPad 11th Gen\""
+    },
+    {
+      "index": 132,
+      "device": "iPad Air 11-inch M3",
+      "processor": "Apple M3 (3nm)",
+      "expectedDevices": "MacBook Pro 14, MacBook Pro 16, MacBook Air 13, MacBook Air 15",
+      "issue": "Процессор \"Apple M3\" обычно для: MacBook Pro 14, MacBook Pro 16, MacBook Air 13, MacBook Air 15, но найден в \"iPad Air 11-inch M3\""
+    },
+    {
+      "index": 133,
+      "device": "iPad Air 13-inch M3",
+      "processor": "Apple M3 (3nm)",
+      "expectedDevices": "MacBook Pro 14, MacBook Pro 16, MacBook Air 13, MacBook Air 15",
+      "issue": "Процессор \"Apple M3\" обычно для: MacBook Pro 14, MacBook Pro 16, MacBook Air 13, MacBook Air 15, но найден в \"iPad Air 13-inch M3\""
+    },
+    {
+      "ic": "SN2800",
+      "devices": "iPhone 15 Pro Max, iPhone 15 Pro, iPhone 15 Plus, iPhone 15, iPad Pro 11\" 1st Gen...",
+      "deviceCount": 14,
+      "yearRange": "2018-2024",
+      "issue": "IC \"SN2800\" используется в 14 устройствах за 6 лет (2018-2024) - подозрительно"
+    },
+    {
+      "ic": "SN2611D0",
+      "devices": "iPhone 14 Pro Max, iPhone 14 Pro, iPhone 14 Plus, iPhone 14, iPhone 13 Pro Max...",
+      "deviceCount": 27,
+      "yearRange": "2014-2022",
+      "issue": "IC \"SN2611D0\" используется в 27 устройствах за 8 лет (2014-2022) - подозрительно"
+    },
+    {
+      "ic": "CD3217",
+      "devices": "MacBook Air 13\" 2018 Retina, MacBook Air 13\" 2019 Retina, MacBook Air 13\" 2020 Intel, MacBook Air 13\" M1 2020, MacBook Air 13\" M2 2022...",
+      "deviceCount": 35,
+      "yearRange": "2018-2025",
+      "issue": "IC \"CD3217\" используется в 35 устройствах за 7 лет (2018-2025) - подозрительно"
+    }
+  ],
+  "summary": {
+    "totalIssues": 31,
+    "chipAnomалies": 7,
+    "processorMismatches": 21,
+    "suspiciousICs": 3,
+    "status": "ISSUES_FOUND"
+  }
+}

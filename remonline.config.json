@@ -1,0 +1,14 @@
+{
+  "apiKey": "49b16db2d181c5a486a181769e2c82d9",
+  "baseUrl": "https://api.remonline.app",
+  "branchId": "1",
+  "testMode": true,
+  "endpoints": {
+    "orders": "/api/orders",
+    "inquiries": "/api/inquiries",
+    "services": "/api/services",
+    "people": "/api/people",
+    "bookings": "/api/bookings",
+    "stock": "/api/stock"
+  }
+}

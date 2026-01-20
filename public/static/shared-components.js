@@ -8,15 +8,15 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navItems = [
-    { href: '/', label: 'Головна', icon: 'fa-home' },
-    { href: '/about', label: 'Про нас', icon: 'fa-info-circle' },
-    { href: '/calculator', label: 'Калькулятор', icon: 'fa-calculator' },
+    { href: '/', label: 'Acasă', icon: 'fa-home' },
+    { href: '/about', label: 'Despre noi', icon: 'fa-info-circle' },
+    { href: '/calculator', label: 'Calculator', icon: 'fa-calculator' },
     { href: '/faq', label: 'FAQ', icon: 'fa-question-circle' }
   ];
 
   const masterItems = [
-    { href: '/nexx', label: 'База даних', icon: 'fa-database' },
-    { href: '/test-click', label: 'Тестування', icon: 'fa-vial' }
+    { href: '/nexx', label: 'Bază de date', icon: 'fa-database' },
+    { href: '/test-click', label: 'Testare', icon: 'fa-vial' }
   ];
 
   return h('header', { className: 'fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm' },
@@ -38,7 +38,7 @@ function Header() {
             h('a', {
               key: item.href,
               href: item.href,
-              className: 'text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 flex items-center gap-2'
+              className: 'text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 flex items-center gap-2'
             },
               h('i', { className: `fas ${item.icon} text-sm` }),
               item.label
@@ -46,9 +46,9 @@ function Header() {
           ),
           // Masters Dropdown
           h('div', { className: 'relative group' },
-            h('button', { className: 'text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 flex items-center gap-2' },
+            h('button', { className: 'text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 flex items-center gap-2' },
               h('i', { className: 'fas fa-tools text-sm' }),
-              'Для майстрів',
+              'Pentru profesioniști',
               h('i', { className: 'fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform duration-300' })
             ),
             h('div', { className: 'absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2' },
@@ -56,7 +56,7 @@ function Header() {
                 h('a', {
                   key: item.href,
                   href: item.href,
-                  className: 'flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200'
+                  className: 'flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200'
                 },
                   h('i', { className: `fas ${item.icon} text-sm` }),
                   item.label
@@ -71,16 +71,16 @@ function Header() {
           // Call Button
           h('a', {
             href: 'tel:+380000000000',
-            className: 'hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-md hover:shadow-lg'
+            className: 'hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white font-semibold rounded-xl hover:bg-black transition-all duration-200 shadow-md hover:shadow-lg'
           },
             h('i', { className: 'fas fa-phone' }),
-            h('span', { className: 'hidden lg:inline' }, 'Зателефонувати')
+            h('span', { className: 'hidden lg:inline' }, 'Sună acum')
           ),
 
           // Mobile Menu Button
           h('button', {
             onClick: () => setMobileMenuOpen(!mobileMenuOpen),
-            className: 'md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors'
+            className: 'md:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors'
           },
             h('i', { className: `fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl` })
           )
@@ -94,19 +94,19 @@ function Header() {
             h('a', {
               key: item.href,
               href: item.href,
-              className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200'
+              className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors duration-200'
             },
               h('i', { className: `fas ${item.icon}` }),
               item.label
             )
           ),
           h('div', { className: 'border-t border-gray-200 mt-2 pt-2' },
-            h('div', { className: 'px-4 py-2 text-xs font-semibold text-gray-500 uppercase' }, 'Для майстрів'),
+            h('div', { className: 'px-4 py-2 text-xs font-semibold text-gray-500 uppercase' }, 'Pentru profesioniști'),
             ...masterItems.map(item =>
               h('a', {
                 key: item.href,
                 href: item.href,
-                className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors duration-200'
+                className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors duration-200'
               },
                 h('i', { className: `fas ${item.icon}` }),
                 item.label
@@ -123,7 +123,7 @@ function Header() {
 function Footer() {
   const footerLinks = {
     'Про нас': [
-      { href: '/about', label: 'Наша історія' },
+      { href: '/about', label: 'Наștoria noastră' },
       { href: '/about#team', label: 'Команда' },
       { href: '/about#values', label: 'Цінності' }
     ],
@@ -157,7 +157,7 @@ function Footer() {
             h('span', { className: 'text-2xl font-bold' }, 'NEXX')
           ),
           h('p', { className: 'text-blue-200 text-sm leading-relaxed mb-4' },
-            'Професійний ремонт Apple техніки з 2019 року. Якість, швидкість, гарантія.'
+            t('footer.tagline')
           ),
           h('div', { className: 'flex gap-3' },
             ...socialLinks.map(social =>
@@ -196,7 +196,7 @@ function Footer() {
       // Bottom Bar
       h('div', { className: 'border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4' },
         h('p', { className: 'text-blue-200 text-sm' },
-          '© 2026 NEXX Service Center. Всі права захищені.'
+          '© 2026 NEXX Service Center. Toate drepturile rezervate.'
         ),
         h('div', { className: 'flex gap-6 text-sm' },
           h('a', { href: '/privacy', className: 'text-blue-200 hover:text-white transition-colors' }, 'Конфіденційність'),

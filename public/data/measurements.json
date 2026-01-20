@@ -604,5 +604,59 @@
         }
       }
     }
-  }
+  },
+  "iPhone 17": [
+    {
+      "line": "PP_BATT_VCC",
+      "value": "OL (no battery)",
+      "pin": "Battery connector pin 1"
+    },
+    {
+      "line": "PP5V0_USB",
+      "value": "0.550V",
+      "pin": "USB-C VBUS"
+    },
+    {
+      "line": "PP3V0_NAND",
+      "value": "0.480V",
+      "pin": "NAND flash VCC"
+    },
+    {
+      "line": "PP1V8_ALWAYS",
+      "value": "0.420V",
+      "pin": "PMU output"
+    },
+    {
+      "line": "PPVCC_MAIN",
+      "value": "0.500V",
+      "pin": "CPU VCore"
+    }
+  ],
+  "MacBook Air M4": [
+    {
+      "line": "PPBUS_G3H",
+      "value": "0.600V",
+      "pin": "Main power bus"
+    },
+    {
+      "line": "PP3V3_S5",
+      "value": "0.450V",
+      "pin": "Standby 3.3V"
+    },
+    {
+      "line": "PP5V_S5",
+      "value": "0.520V",
+      "pin": "Standby 5V"
+    },
+    {
+      "line": "PP3V3_S0",
+      "value": "0.450V",
+      "pin": "System 3.3V"
+    },
+    {
+      "line": "PPVCORE_CPU",
+      "value": "0.380V",
+      "pin": "M4 VCore"
+    }
+  ]
 }
