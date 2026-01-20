@@ -42,6 +42,12 @@
 - ✅ **Vite Config Fix** - Замінено `@hono/vite-build` на `@hono/vite-cloudflare-pages`
   - Виправлено помилку `__STATIC_CONTENT_MANIFEST is not defined`
   - Правильна конфігурація для Cloudflare Pages deployment
+- ✅ **Database PIN Loader** - Усунуто білий екран при вході в базу даних
+  - Прибрано подвійне монтування React root
+  - PIN-екран тепер плавно підвантажує `/static/app.js`
+- ✅ **Header Branding Refresh** - Додано офіційне лого NEXX GSM у верхній панелі
+  - Логотип завантажується зі статичного `/static/nexx-logo.png`
+  - Анімація наведення замінює текстовий бейдж
 - ✅ **Calculator Header Conflict** - Видалено дублікат компонента Header
   - Calculator тепер використовує Header з shared-components.js
   - Виправлено помилку "Identifier 'Header' has already been declared"

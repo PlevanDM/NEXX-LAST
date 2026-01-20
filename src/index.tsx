@@ -195,86 +195,118 @@ app.get('/nexx', (c) => {
         
         <!-- Pincode Protection + NEXX Database App -->
         <script>
-        const { useState, useEffect, createElement: h } = React;
-        const CORRECT_PIN = '31618585';
-        
-        const PincodeScreen = ({ onSuccess }) => {
-          const [pin, setPin] = useState('');
-          const [error, setError] = useState(false);
-          
-          const handleSubmit = (e) => {
-            e.preventDefault();
-            if (pin === CORRECT_PIN) {
-              localStorage.setItem('nexx_auth', 'true');
-              window.location.reload(); // Reload to load database app
+        (() => {
+          const { useState, createElement: h } = React;
+          const { createRoot } = ReactDOM;
+          const CORRECT_PIN = '31618585';
+          const container = document.getElementById('app');
+          let root = null;
+          let isDatabaseLoading = false;
+
+          const setLoader = (message) => {
+            const text = message || 'Загрузка базы данных...';
+            container.innerHTML = '<div class="min-h-screen bg-gray-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-2xl px-8 py-6 text-center"><div class="w-12 h-12 mx-auto mb-4 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div><p class="text-slate-600 font-semibold">' + text + '</p></div></div>';
+          };
+
+          const loadDatabaseApp = () => {
+            if (isDatabaseLoading || document.getElementById('nexx-db-script')) {
+              return;
+            }
+            isDatabaseLoading = true;
+
+            if (root) {
+              root.unmount();
+              root = null;
+            }
+
+            setLoader();
+
+            const script = document.createElement('script');
+            script.id = 'nexx-db-script';
+            script.src = '/static/app.js';
+            script.async = true;
+            script.onload = () => {
+              container.innerHTML = '';
+            };
+            script.onerror = () => {
+              isDatabaseLoading = false;
+              container.innerHTML = '<div class="min-h-screen bg-red-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl px-8 py-6 text-center"><p class="text-red-600 font-semibold mb-3">Не удалось загрузить базу данных</p><button id="retry-load" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">Повторить</button></div></div>';
+              script.remove();
+              const retry = document.getElementById('retry-load');
+              if (retry) {
+                retry.addEventListener('click', () => {
+                  loadDatabaseApp();
+                }, { once: true });
+              }
+            };
+            document.body.appendChild(script);
+          };
+
+          const PincodeScreen = () => {
+            const [pin, setPin] = useState('');
+            const [error, setError] = useState(false);
+
+            const handleSubmit = (event) => {
+              event.preventDefault();
+              if (pin === CORRECT_PIN) {
+                localStorage.setItem('nexx_auth', 'true');
+                loadDatabaseApp();
+              } else {
+                setError(true);
+                setPin('');
+                setTimeout(() => setError(false), 2000);
+              }
+            };
+
+            return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 flex items-center justify-center p-4' },
+              h('div', { className: 'bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md' },
+                h('div', { className: 'text-center mb-8' },
+                  h('div', { className: 'text-6xl mb-4' }, '🔐'),
+                  h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
+                  h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
+                ),
+                h('form', { onSubmit: handleSubmit },
+                  h('input', {
+                    type: 'password',
+                    value: pin,
+                    onChange: (event) => setPin(event.target.value),
+                    placeholder: 'Пинкод',
+                    maxLength: 8,
+                    className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
+                      (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
+                      ' focus:outline-none transition-all',
+                    autoFocus: true
+                  }),
+                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
+                  h('button', {
+                    type: 'submit',
+                    className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
+                  }, 'Войти')
+                ),
+                h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
+                  'Protected access only'
+                )
+              )
+            );
+          };
+
+          const init = () => {
+            if (localStorage.getItem('nexx_auth') === 'true') {
+              loadDatabaseApp();
             } else {
-              setError(true);
-              setPin('');
-              setTimeout(() => setError(false), 2000);
+              root = createRoot(container);
+              root.render(h(PincodeScreen));
             }
           };
-          
-          return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 flex items-center justify-center p-4' },
-            h('div', { className: 'bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md' },
-              h('div', { className: 'text-center mb-8' },
-                h('div', { className: 'text-6xl mb-4' }, '🔐'),
-                h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
-                h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
-              ),
-              h('form', { onSubmit: handleSubmit },
-                h('input', {
-                  type: 'password',
-                  value: pin,
-                  onChange: (e) => setPin(e.target.value),
-                  placeholder: 'Пинкод',
-                  maxLength: 8,
-                  className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
-                    (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
-                    ' focus:outline-none transition-all',
-                  autoFocus: true
-                }),
-                error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
-                h('button', {
-                  type: 'submit',
-                  className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
-                }, 'Войти')
-              ),
-              h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
-                'Protected access only'
-              )
-            )
-          );
-        };
-        
-        const App = () => {
-          const [authenticated, setAuthenticated] = useState(
-            localStorage.getItem('nexx_auth') === 'true'
-          );
-          
-          // After authentication, load database app
-          useEffect(() => {
-            if (authenticated) {
-              const script = document.createElement('script');
-              script.src = '/static/app.js';
-              script.async = true;
-              document.body.appendChild(script);
-            }
-          }, [authenticated]);
-          
-          if (!authenticated) {
-            return h(PincodeScreen, { onSuccess: () => setAuthenticated(true) });
-          }
-          
-          // Return empty div - app.js will render into #app
-          return null;
-        };
-        
-        ReactDOM.createRoot(document.getElementById('app')).render(h(App));
+
+          init();
+        })();
         </script>
     </body>
     </html>
   `)
 })
+
 
 // Booking API endpoint
 app.post('/api/booking', async (c) => {

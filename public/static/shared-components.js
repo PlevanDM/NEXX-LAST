@@ -24,10 +24,12 @@ function Header() {
       h('div', { className: 'flex items-center justify-between h-16' },
         // Logo
         h('a', { href: '/', className: 'flex items-center gap-2 group' },
-          h('div', { className: 'w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300' },
-            h('span', { className: 'text-white font-bold text-xl' }, 'N')
-          ),
-          h('span', { className: 'text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-transparent bg-clip-text' }, 'NEXX')
+          h('img', {
+            src: '/static/nexx-logo.png',
+            alt: 'NEXX GSM',
+            className: 'h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105'
+          }),
+          h('span', { className: 'sr-only' }, 'NEXX GSM')
         ),
 
         // Desktop Navigation
