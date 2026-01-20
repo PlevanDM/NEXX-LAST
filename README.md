@@ -210,8 +210,8 @@ Measurements:     12 device profiles
 - Database: `http://localhost:5173/nexx.html`
 
 ### Production
-- Live site: `https://nexx.com.ua/`
-- Database: `https://nexx.com.ua/nexx` (PIN: 31618585)
+- Live site: `https://nexxgsm.com/`
+- Database: `https://nexxgsm.com/nexx` (PIN: 31618585)
 
 ---
 
@@ -227,6 +227,8 @@ npm run clean            # Clean dist/
 
 # Deploy
 npm run deploy           # Deploy to Cloudflare Pages
+# Or use deploy script:
+.\deploy-simple.ps1      # PowerShell deployment script
 
 # Utilities
 npm run validate         # Validate database

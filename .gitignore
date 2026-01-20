@@ -113,6 +113,16 @@ yarn-error.log*
 *.sqlite3
 backup/
 
+# Validation reports (temporary)
+*-validation-report.json
+*-validation.json
+*-report.json
+missing-data-report.json
+
 # Screenshots (from browser tools)
 screenshots/
 *.png.tmp
+
+# Old configuration files
+wrangler.jsonc
+wrangler.toml.backup
