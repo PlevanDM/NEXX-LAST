@@ -29,3 +29,9 @@ logs/
 
 # Wrangler
 .wrangler/
+
+# Core dumps and temp files
+core
+core.*
+minify-all.js
+minify-all.cjs

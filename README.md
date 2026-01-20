@@ -1,4 +1,4 @@
-# 🚀 NEXX Service Center - v9.3 OPTIMIZED
+# 🚀 NEXX Service Center - v9.4 STABLE
 
 > Професійний сервісний центр з ремонту Apple техніки в Києві
 
@@ -36,7 +36,28 @@
 
 ---
 
-## 🚀 Оптимізації v9.3
+## 🚀 Оптимізації v9.4
+
+### Bug Fixes
+- ✅ **Vite Config Fix** - Замінено `@hono/vite-build` на `@hono/vite-cloudflare-pages`
+  - Виправлено помилку `__STATIC_CONTENT_MANIFEST is not defined`
+  - Правильна конфігурація для Cloudflare Pages deployment
+- ✅ **Calculator Header Conflict** - Видалено дублікат компонента Header
+  - Calculator тепер використовує Header з shared-components.js
+  - Виправлено помилку "Identifier 'Header' has already been declared"
+- ✅ **JSX Support** - Додано Babel Standalone для JSX сторінок
+  - About, FAQ, Privacy, Terms тепер працюють коректно з JSX синтаксисом
+  - Виправлено помилку "Unexpected token '<'"
+  - Динамічна транспіляція JSX в браузері для розробки
+
+### Performance
+- ✅ **Favicon** - Редирект /favicon.ico → /static/favicon.ico
+- ✅ **Cache Headers** - HTTP caching для статичних файлів
+- ✅ **All Pages Working** - Всі 7 сторінок без помилок
+
+---
+
+## 🎯 Поточний стан
 
 ### JavaScript Optimization
 - ✅ **Minification** - Terser з compression
@@ -340,6 +361,14 @@ git push origin main
 ---
 
 ## 📝 Changelog
+
+### v9.4 (2026-01-20) - BUG FIX & STABILITY RELEASE
+- ✅ Fixed Vite configuration (__STATIC_CONTENT_MANIFEST error)
+- ✅ Fixed Calculator Header duplication conflict
+- ✅ Added Babel Standalone for JSX pages (About, FAQ, Privacy, Terms)
+- ✅ All pages working without console errors
+- ✅ Favicon properly configured
+- ✅ Improved page template system with JSX support
 
 ### v9.3 (2026-01-19) - OPTIMIZATION RELEASE
 - ✅ JavaScript minification (-96KB / 30%)

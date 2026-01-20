@@ -1,37 +1,42 @@
 import { Hono } from 'hono'
+import type { Context } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
 
-const app = new Hono()
+type Bindings = {
+  ASSETS: Fetcher
+}
+
+const app = new Hono<{ Bindings: Bindings }>()
 
 // Enable CORS
 app.use('/api/*', cors())
 
-// Cache control for static files
-app.use('/static/*', async (c, next) => {
-  await next()
-  if (c.res.status === 200) {
-    c.res.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-  }
-})
+const serveAsset = (cacheControl?: string) =>
+  async (c: Context<{ Bindings: Bindings }>) => {
+    const assetResponse = await c.env.ASSETS.fetch(c.req.raw)
 
-app.use('/images/*', async (c, next) => {
-  await next()
-  if (c.res.status === 200) {
-    c.res.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-  }
-})
+    if (assetResponse.status === 404) {
+      return assetResponse
+    }
 
-app.use('/data/*', async (c, next) => {
-  await next()
-  if (c.res.status === 200) {
-    c.res.headers.set('Cache-Control', 'public, max-age=86400')
-  }
-})
+    const headers = new Headers(assetResponse.headers)
+    if (cacheControl) {
+      headers.set('Cache-Control', cacheControl)
+    }
 
-// Serve static files
-app.use('/static/*', serveStatic({ root: './public' }))
-app.use('/data/*', serveStatic({ root: './public' }))
+    return new Response(assetResponse.body, {
+      headers,
+      status: assetResponse.status,
+      statusText: assetResponse.statusText
+    })
+  }
+
+const immutableCache = 'public, max-age=31536000, immutable'
+const dataCache = 'public, max-age=86400'
+
+app.on(['GET', 'HEAD'], '/static/*', serveAsset(immutableCache))
+app.on(['GET', 'HEAD'], '/images/*', serveAsset(immutableCache))
+app.on(['GET', 'HEAD'], '/data/*', serveAsset(dataCache))
 
 // API Routes
 app.get('/api/settings', (c) => {
@@ -306,7 +311,7 @@ app.post('/api/booking', async (c) => {
 });
 
 // Helper function to generate page template
-const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white') => {
+const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white', useJSX = false) => {
   return `
     <!DOCTYPE html>
     <html lang="uk">
@@ -321,6 +326,7 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         <!-- React Production from jsDelivr (better CORS) -->
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
         <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+        ${useJSX ? '<!-- Babel Standalone for JSX transformation -->\n        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>' : ''}
         <style>
           html { scroll-behavior: smooth; }
         </style>
@@ -343,7 +349,7 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         </script>
         
         <!-- Page-specific content -->
-        <script src="/static/${scriptFile}"></script>
+        <script ${useJSX ? 'type="text/babel"' : ''} src="/static/${scriptFile}"></script>
     </body>
     </html>
   `;
@@ -364,7 +370,9 @@ app.get('/about', (c) => {
   return c.html(createPageTemplate(
     'Про нас - NEXX Service Center',
     'Історія NEXX - професійного сервісного центру Apple техніки в Києві. Наша команда, цінності та досвід.',
-    'about.js'
+    'about.js',
+    'bg-white',
+    true
   ));
 })
 
@@ -374,7 +382,8 @@ app.get('/faq', (c) => {
     'Поширені питання (FAQ) - NEXX',
     'Відповіді на найчастіші питання про ремонт Apple техніки: гарантія, термін, оплата, доставка.',
     'faq.js',
-    'bg-slate-50'
+    'bg-slate-50',
+    true
   ));
 })
 
@@ -383,7 +392,9 @@ app.get('/privacy', (c) => {
   return c.html(createPageTemplate(
     'Політика конфіденційності - NEXX',
     'Політика конфіденційності NEXX Service Center. Захист персональних даних згідно з GDPR.',
-    'privacy.js'
+    'privacy.js',
+    'bg-white',
+    true
   ));
 })
 
@@ -392,7 +403,9 @@ app.get('/terms', (c) => {
   return c.html(createPageTemplate(
     'Умови використання - NEXX',
     'Умови надання послуг NEXX Service Center. Правила та умови ремонту Apple техніки.',
-    'terms.js'
+    'terms.js',
+    'bg-white',
+    true
   ));
 })
 
