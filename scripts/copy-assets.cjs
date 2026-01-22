@@ -150,30 +150,14 @@ if (logosCopied > 0) {
   console.log(`✅ Copied ${logosCopied} logo file(s)\n`);
 }
 
-// Use minified JS if available
+// Copy all static assets (js, css, icons)
 const staticSource = path.join(publicDir, 'static');
 const staticDest = path.join(distDir, 'static');
 
-if (fs.existsSync(staticSource) && fs.existsSync(staticDest)) {
-  console.log('🗜️  Using minified JS files...');
-  const files = fs.readdirSync(staticSource);
-  const minFiles = files.filter(f => f.endsWith('.min.js'));
-  
-  let minified = 0;
-  for (const minFile of minFiles) {
-    const baseName = minFile.replace('.min.js', '.js');
-    const srcPath = path.join(staticSource, minFile);
-    const destPath = path.join(staticDest, baseName);
-    
-    if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, destPath);
-      minified++;
-    }
-  }
-  
-  if (minified > 0) {
-    console.log(`✅ Copied ${minified} minified JS files\n`);
-  }
+if (fs.existsSync(staticSource)) {
+  console.log('⚡ Copying all static assets...');
+  copyDir(staticSource, staticDest);
+  console.log(`✅ Copied: public/static → dist/static\n`);
 }
 
 console.log('✨ All assets copied successfully!');

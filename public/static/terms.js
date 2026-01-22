@@ -1,4 +1,4 @@
-// Terms of Service Page - NEXX v9.0
+// Terms and Conditions Page - NEXX v9.0
 const { useState } = React;
 
 function TermsPage() {
@@ -12,19 +12,19 @@ function TermsPage() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
               <i className="fas fa-file-contract"></i>
-              <span>Юридична інформація</span>
+              <span>Termeni și condiții</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Умови <span className="text-blue-600">користування</span>
+              Contract de <span className="text-blue-600">servicii</span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Правила та умови надання послуг сервісного центру NEXX
+              Regulile de furnizare a serviciilor în centrul de service NEXX
             </p>
             
             <div className="mt-6 text-sm text-gray-500">
-              Остання редакція: <span className="font-semibold">19 січня 2026</span>
+              Ultima actualizare: <span className="font-semibold">22 ianuarie 2026</span>
             </div>
           </div>
         </div>
@@ -39,26 +39,21 @@ function TermsPage() {
             <div>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-handshake text-white text-xl"></i>
+                  <i className="fas fa-info-circle text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">1. Загальні положення</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">1. Dispoziții generale</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  Ці Умови користування (далі — "Угода") регулюють відносини між сервісним центром 
-                  <strong> NEXX</strong> (далі — "Виконавець") та клієнтом (далі — "Замовник") щодо 
-                  надання послуг з ремонту та обслуговування електронної техніки.
+                  <strong className="text-gray-900">1.1.</strong> Acest Contract este o ofertă publică a centrului
+                  de service NEXX (denumit în continuare „Prestator”) pentru furnizarea de servicii de reparație a tehnicii.
                 </p>
                 <p>
-                  Передаючи пристрій на ремонт або використовуючи наші послуги, Замовник підтверджує, 
-                  що ознайомився з цією Угодою та повністю приймає її умови.
-                </p>
-                <p className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
-                  <i className="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
-                  <strong>Важливо:</strong> Уважно прочитайте ці умови перед використанням наших послуг.
+                  <strong className="text-gray-900">1.2.</strong> Transmiterea dispozitivului pentru reparație înseamnă
+                  acceptarea deplină și necondiționată de către Client a termenilor acestui Contract.
                 </p>
               </div>
             </div>
@@ -67,25 +62,25 @@ function TermsPage() {
             <div>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-clipboard-list text-white text-xl"></i>
+                  <i className="fas fa-clipboard-check text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">2. Послуги Виконавця</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">2. Primirea dispozitivului</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>Виконавець надає наступні послуги:</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Безкоштовна діагностика несправностей пристроїв</li>
-                  <li>Ремонт телефонів, планшетів, ноутбуків та іншої техніки</li>
-                  <li>Заміна компонентів та запчастин</li>
-                  <li>Професійна чистка пристроїв</li>
-                  <li>Апгрейд та модернізація техніки</li>
-                  <li>Консультації щодо експлуатації та обслуговування</li>
-                </ul>
                 <p>
-                  Детальний перелік послуг та їх вартість доступні на сайті або уточнюються при зверненні.
+                  <strong className="text-gray-900">2.1.</strong> La primire, se efectuează o examinare vizuală a
+                  dispozitivului și se înregistrează defectele vizibile.
+                </p>
+                <p>
+                  <strong className="text-gray-900">2.2.</strong> Prestatorul nu este responsabil pentru defectele ascunse
+                  care nu au putut fi detectate în timpul primirii fără demontarea dispozitivului.
+                </p>
+                <p>
+                  <strong className="text-gray-900">2.3.</strong> Clientul este obligat să facă o copie de rezervă a
+                  datelor înainte de a preda dispozitivul. Prestatorul nu este responsabil pentru pierderea datelor.
                 </p>
               </div>
             </div>
@@ -94,41 +89,26 @@ function TermsPage() {
             <div>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-user-shield text-white text-xl"></i>
+                  <i className="fas fa-microscope text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">3. Обов'язки та відповідальність сторін</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">3. Diagnostic și reparație</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p><strong className="text-gray-900">3.1. Виконавець зобов'язується:</strong></p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Провести якісну діагностику та озвучити вартість ремонту</li>
-                  <li>Виконати ремонт у встановлені строки</li>
-                  <li>Використовувати якісні запчастини та комплектуючі</li>
-                  <li>Надати гарантію на виконані роботи (30 днів)</li>
-                  <li>Забезпечити безпеку та конфіденційність даних Замовника</li>
-                  <li>Повідомити про додаткові несправності, виявлені під час ремонту</li>
-                </ul>
-
-                <p className="mt-6"><strong className="text-gray-900">3.2. Замовник зобов'язується:</strong></p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Надати правдиву інформацію про пристрій та обставини поломки</li>
-                  <li>Зробити резервну копію даних перед передачею пристрою на ремонт</li>
-                  <li>Оплатити послуги після завершення ремонту</li>
-                  <li>Забрати пристрій протягом 30 днів після завершення ремонту</li>
-                  <li>Підтвердити, що пристрій не знаходиться в розшуку та є його законним власником</li>
-                </ul>
-
-                <p className="mt-6"><strong className="text-gray-900">3.3. Виконавець НЕ несе відповідальності за:</strong></p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Втрату даних, збережених на пристрої</li>
-                  <li>Несправності, виявлені, але не узгоджені для ремонту</li>
-                  <li>Пошкодження пристрою внаслідок невиконання рекомендацій щодо експлуатації</li>
-                  <li>Несправності, що виникли після закінчення гарантійного терміну</li>
-                  <li>Пошкодження або втрату пристрою внаслідок форс-мажорних обставин</li>
-                </ul>
+                <p>
+                  <strong className="text-gray-900">3.1.</strong> Diagnosticul se efectuează pentru a determina
+                  cauza defecțiunii și costul reparației.
+                </p>
+                <p>
+                  <strong className="text-gray-900">3.2.</strong> Reparația începe numai după acordul Clientului
+                  asupra costului și termenelor de execuție.
+                </p>
+                <p>
+                  <strong className="text-gray-900">3.3.</strong> În procesul de reparație pot fi descoperite defecte
+                  suplimentare. În acest caz, costul final se renegociază cu Clientul.
+                </p>
               </div>
             </div>
 
@@ -139,32 +119,32 @@ function TermsPage() {
                   <i className="fas fa-shield-alt text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">4. Гарантія</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">4. Garanție</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  <strong className="text-gray-900">4.1.</strong> Виконавець надає гарантію 30 днів на виконані 
-                  роботи та встановлені запчастини (якщо інше не узгоджено окремо).
+                  <strong className="text-gray-900">4.1.</strong> Prestatorul oferă o garanție de 30 de zile pentru
+                  serviciile prestate și piesele instalate.
                 </p>
                 <p>
-                  <strong className="text-gray-900">4.2.</strong> Гарантія НЕ поширюється на випадки:
+                  <strong className="text-gray-900">4.2.</strong> Garanția NU se aplică în caz de:
                 </p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Механічних пошкоджень (падіння, удар, потрапляння рідини)</li>
-                  <li>Самостійного ремонту або втручання третіх осіб після нашого ремонту</li>
-                  <li>Порушення правил експлуатації пристрою</li>
-                  <li>Природного зносу компонентів (батарея, роз'єми тощо)</li>
-                  <li>Використання неоригінальних аксесуарів та зарядних пристроїв</li>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>Deteriorări mecanice (cădere, lovire, pătrundere de lichid)</li>
+                  <li>Reparații proprii sau intervenția unor terți după reparația noastră</li>
+                  <li>Încălcarea regulilor de utilizare a dispozitivului</li>
+                  <li>Uzură normală a componentelor (baterie, porturi etc.)</li>
+                  <li>Utilizarea de accesorii și încărcătoare neoriginale</li>
                 </ul>
                 <p>
-                  <strong className="text-gray-900">4.3.</strong> Для використання гарантії необхідно надати 
-                  квитанцію про виконаний ремонт.
+                  <strong className="text-gray-900">4.3.</strong> Pentru a beneficia de garanție, este necesară
+                  prezentarea chitanței de reparație.
                 </p>
                 <p className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
                   <i className="fas fa-info-circle text-blue-600 mr-2"></i>
-                  Гарантійний ремонт виконується безкоштовно протягом 1-3 робочих днів.
+                  Reparația în garanție se efectuează gratuit în termen de 1-3 zile lucrătoare.
                 </p>
               </div>
             </div>
@@ -176,30 +156,26 @@ function TermsPage() {
                   <i className="fas fa-dollar-sign text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">5. Оплата послуг</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">5. Plată</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  <strong className="text-gray-900">5.1.</strong> Оплата послуг здійснюється після завершення 
-                  ремонту та тестування пристрою.
+                  <strong className="text-gray-900">5.1.</strong> Plata serviciilor se face după finalizarea
+                  reparației și testarea dispozitivului.
                 </p>
                 <p>
-                  <strong className="text-gray-900">5.2.</strong> Приймаються наступні способи оплати: готівка, 
-                  банківські картки, безготівковий розрахунок (для юридичних осіб).
+                  <strong className="text-gray-900">5.2.</strong> Sunt acceptate următoarele metode de plată: numerar,
+                  card bancar, transfer bancar (pentru persoane juridice).
                 </p>
                 <p>
-                  <strong className="text-gray-900">5.3.</strong> Якщо Замовник відмовляється від ремонту після 
-                  діагностики — оплачується вартість діагностики (100 грн).
+                  <strong className="text-gray-900">5.3.</strong> Dacă Clientul refuză reparația după diagnostic,
+                  se achită costul diagnosticului (50 RON).
                 </p>
                 <p>
-                  <strong className="text-gray-900">5.4.</strong> У випадку дострокового припинення ремонту за 
-                  ініціативою Замовника — оплачуються фактично виконані роботи та використані запчастини.
-                </p>
-                <p>
-                  <strong className="text-gray-900">5.5.</strong> Вартість ремонту може бути змінена у випадку 
-                  виявлення додаткових несправностей (за згодою Замовника).
+                  <strong className="text-gray-900">5.4.</strong> În cazul încetării anticipate a reparației la
+                  inițiativa Clientului, se achită manopera efectuată și piesele utilizate.
                 </p>
               </div>
             </div>
@@ -211,31 +187,31 @@ function TermsPage() {
                   <i className="fas fa-clock text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">6. Строки виконання та зберігання</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">6. Termene și depozitare</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  <strong className="text-gray-900">6.1.</strong> Орієнтовний термін ремонту — 30-120 хвилин 
-                  для стандартних робіт. Точний термін повідомляється після діагностики.
+                  <strong className="text-gray-900">6.1.</strong> Termenul estimat de reparație este de 30-120 minute
+                  pentru lucrările standard. Termenul exact se comunică după diagnostic.
                 </p>
                 <p>
-                  <strong className="text-gray-900">6.2.</strong> Складні ремонти можуть займати від 1 до 14 робочих днів 
-                  (залежно від наявності запчастин та складності робіт).
+                  <strong className="text-gray-900">6.2.</strong> Reparațiile complexe pot dura între 1 și 14 zile lucrătoare
+                  (în funcție de disponibilitatea pieselor și complexitatea lucrărilor).
                 </p>
                 <p>
-                  <strong className="text-gray-900">6.3.</strong> Пристрій зберігається безкоштовно протягом 
-                  30 календарних днів після завершення ремонту.
+                  <strong className="text-gray-900">6.3.</strong> Dispozitivul este depozitat gratuit timp de
+                  30 de zile calendaristice după finalizarea reparației.
                 </p>
                 <p>
-                  <strong className="text-gray-900">6.4.</strong> Якщо Замовник не забирає пристрій протягом 
-                  30 днів, стягується плата за зберігання 50 грн/добу.
+                  <strong className="text-gray-900">6.4.</strong> Dacă Clientul nu ridică dispozitivul în termen de
+                  30 de zile, se percepe o taxă de depozitare de 10 RON/zi.
                 </p>
                 <p className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
                   <i className="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
-                  <strong>Увага:</strong> Якщо пристрій не буде забрано протягом 90 днів, він може бути 
-                  утилізований або реалізований для покриття витрат на зберігання.
+                  <strong>Atenție:</strong> Dacă dispozitivul nu este ridicat în termen de 90 de zile, acesta poate fi
+                  reciclat sau vândut pentru a acoperi costurile de depozitare.
                 </p>
               </div>
             </div>
@@ -244,70 +220,20 @@ function TermsPage() {
             <div>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-redo text-white text-xl"></i>
+                  <i className="fas fa-gavel text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">7. Відмова від послуг та повернення коштів</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">7. Soluționarea litigiilor</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  <strong className="text-gray-900">7.1.</strong> Замовник може відмовитися від ремонту на 
-                  будь-якому етапі до початку робіт.
+                  <strong className="text-gray-900">7.1.</strong> Toate litigiile se soluționează prin negocieri între părți.
                 </p>
                 <p>
-                  <strong className="text-gray-900">7.2.</strong> Якщо роботи вже розпочато, Замовник оплачує 
-                  фактично виконаний обсяг робіт та використані матеріали.
-                </p>
-                <p>
-                  <strong className="text-gray-900">7.3.</strong> Повернення коштів можливе у випадку неможливості 
-                  виконання ремонту з вини Виконавця (протягом 14 днів).
-                </p>
-              </div>
-            </div>
-
-            {/* Section 8 */}
-            <div>
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-gavel text-white text-xl"></i>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">8. Вирішення спорів</h2>
-                  <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
-                </div>
-              </div>
-              <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>
-                  <strong className="text-gray-900">8.1.</strong> Всі спори вирішуються шляхом переговорів між сторонами.
-                </p>
-                <p>
-                  <strong className="text-gray-900">8.2.</strong> У випадку недосягнення згоди спір передається 
-                  до суду за місцем знаходження Виконавця.
-                </p>
-                <p>
-                  <strong className="text-gray-900">8.3.</strong> Замовник має право звернутися до Держпродспоживслужби 
-                  України для захисту своїх прав як споживача.
-                </p>
-              </div>
-            </div>
-
-            {/* Section 9 */}
-            <div>
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-edit text-white text-xl"></i>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">9. Зміни в Угоді</h2>
-                  <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
-                </div>
-              </div>
-              <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>
-                  Виконавець залишає за собою право вносити зміни до цієї Угоди. Актуальна версія завжди 
-                  доступна на сайті. Продовження використання послуг після внесення змін означає прийняття нових умов.
+                  <strong className="text-gray-900">7.2.</strong> În cazul în care nu se ajunge la un acord, litigiul va fi
+                  transmis instanțelor judecătorești competente din România.
                 </p>
               </div>
             </div>
@@ -319,12 +245,12 @@ function TermsPage() {
                   <i className="fas fa-info-circle text-white text-xl"></i>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Реквізити та контакти</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Date de contact</h3>
                   <div className="space-y-2 text-gray-700">
-                    <p><strong>Найменування:</strong> Сервісний центр NEXX</p>
-                    <p><strong>Адреса:</strong> м. Київ, вул. Прикладна, 1</p>
-                    <p><strong>Телефон:</strong> <a href="tel:+380000000000" className="text-blue-600 hover:underline">+380 00 000 0000</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:info@nexx.ua" className="text-blue-600 hover:underline">info@nexx.ua</a></p>
+                    <p><strong>Denumire:</strong> Centrul de Service NEXX</p>
+                    <p><strong>Adresa:</strong> București, Str. Victoriei 15</p>
+                    <p><strong>Telefon:</strong> <a href="tel:+40721234567" className="text-blue-600 hover:underline">+40 721 234 567</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@nexx.ro" className="text-blue-600 hover:underline">info@nexx.ro</a></p>
                   </div>
                 </div>
               </div>

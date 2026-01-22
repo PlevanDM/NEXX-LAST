@@ -4,7 +4,10 @@ import { cors } from 'hono/cors'
 import { secureHeaders } from 'hono/secure-headers'
 
 type Bindings = {
-  ASSETS: { fetch: (request: Request) => Promise<Response> }
+  ASSETS: { fetch: (request: Request) => Promise<Response> };
+  REMONLINE_API_KEY?: string;
+  REMONLINE_BRANCH_ID?: string;
+  REMONLINE_ORDER_TYPE_ID?: string;
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -107,114 +110,145 @@ app.get('/api/settings', (c) => {
   })
 })
 
-// Callback API - creates order in Remonline CRM
+// Remonline integration core
+const REMONLINE_BASE = 'https://api.remonline.app'
+
+async function createRemonlineOrder(env: Bindings, data: {
+  phone: string;
+  name?: string;
+  device?: string;
+  brand?: string;
+  problem?: string;
+  source: string;
+  estimatedPrice?: string;
+}) {
+  const apiKey = env.REMONLINE_API_KEY || '55f93eacf65e94ef55e6fed9fd41f8c4'
+  const branchId = env.REMONLINE_BRANCH_ID || 218970
+  const orderType = env.REMONLINE_ORDER_TYPE_ID || 334611
+
+  const cleanPhone = data.phone.replace(/[^0-9+]/g, '')
+
+  try {
+    // Get token
+    const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `api_key=${apiKey}`
+    })
+    const tokenJson = await tokenRes.json() as { success: boolean; token?: string }
+    
+    if (!tokenJson.success || !tokenJson.token) return null
+    const token = tokenJson.token
+    
+    // Create client
+    const clientRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: data.name || 'Client Website',
+        phone: [cleanPhone]
+      })
+    })
+    const clientJson = await clientRes.json() as { success?: boolean; data?: { id: number } }
+    
+    let clientId = clientJson.data?.id
+    
+    // If client exists, search for it
+    if (!clientId) {
+      const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(cleanPhone)}`)
+      const searchJson = await searchRes.json() as { data?: Array<{ id: number }> }
+      if (searchJson.data && searchJson.data.length > 0) {
+        clientId = searchJson.data[0].id
+      }
+    }
+    
+    if (!clientId) return null
+
+    // Create order
+    const now = new Date().toLocaleString('ro-RO')
+    const getBrand = (d: string | undefined) => {
+      if (!d) return ''
+      const dl = d.toLowerCase()
+      if (dl.includes('iphone') || dl.includes('macbook') || dl.includes('ipad')) return 'Apple'
+      if (dl.includes('samsung') || dl.includes('galaxy')) return 'Samsung'
+      if (dl.includes('xiaomi') || dl.includes('redmi') || dl.includes('poco')) return 'Xiaomi'
+      if (dl.includes('huawei') || dl.includes('honor')) return 'Huawei'
+      return ''
+    }
+
+    const brand = data.brand || getBrand(data.device)
+    const device = data.device || ''
+    const problem = data.problem || 'Nespecificat'
+    const priceInfo = data.estimatedPrice ? `\n💰 PREȚ ESTIMAT: ${data.estimatedPrice}` : ''
+
+    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        branch_id: branchId,
+        order_type: orderType,
+        client_id: clientId,
+        kindof_good: device?.toLowerCase().includes('macbook') ? 'Laptop' : 'Telefon',
+        brand: brand,
+        model: device,
+        malfunction: problem,
+        manager_notes: `🌐 SURSĂ: ${data.source.toUpperCase()}\n🎁 BONUS: DIAGNOSTIC GRATUIT!\n📱 DISPOZITIV: ${device}${priceInfo}\n📞 CONTACT: ${cleanPhone}\n❓ PROBLEMĂ: ${problem}\n⏰ DATA: ${now}\n\n✅ Comandă online - diagnostic gratuit inclus`
+      })
+    })
+    const orderJson = await orderRes.json() as { success?: boolean; data?: { id: number } }
+
+    return orderJson.success && orderJson.data ? orderJson.data.id : null
+  } catch (e) {
+    console.error('Remonline error:', e)
+    return null
+  }
+}
+
+// Callback API
 app.post('/api/callback', async (c) => {
   try {
     const body = await c.req.json()
-    const { phone, name, device, problem } = body
-    
-    // Validate phone
-    if (!phone || phone.length < 9) {
-      return c.json({ success: false, error: 'Număr de telefon invalid' }, 400)
-    }
-    
-    const cleanPhone = phone.replace(/[^0-9+]/g, '')
-    
-    // Remonline integration
-    const REMONLINE_API_KEY = '55f93eacf65e94ef55e6fed9fd41f8c4'
-    const REMONLINE_BASE = 'https://api.remonline.app'
-    const BRANCH_ID = 218970
-    const ORDER_TYPE = 334611
-    
-    let orderId = null
-    let remonlineSuccess = false
-    
-    try {
-      // Get token
-      const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `api_key=${REMONLINE_API_KEY}`
-      })
-      const tokenJson = await tokenRes.json() as { success: boolean; token?: string }
-      
-      if (tokenJson.success && tokenJson.token) {
-        const token = tokenJson.token
-        
-        // Create client
-        const clientRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name || 'Client Website',
-            phone: [cleanPhone]
-          })
-        })
-        const clientJson = await clientRes.json() as { success?: boolean; data?: { id: number } }
-        
-        let clientId = clientJson.data?.id
-        
-        // If client exists, search for it
-        if (!clientId) {
-          const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(cleanPhone)}`)
-          const searchJson = await searchRes.json() as { data?: Array<{ id: number }> }
-          if (searchJson.data && searchJson.data.length > 0) {
-            clientId = searchJson.data[0].id
-          }
-        }
-        
-        if (clientId) {
-          // Create order
-          const now = new Date().toISOString()
-          const getBrand = (d: string | undefined) => {
-            if (!d) return ''
-            const dl = d.toLowerCase()
-            if (dl.includes('iphone') || dl.includes('macbook') || dl.includes('ipad')) return 'Apple'
-            if (dl.includes('samsung') || dl.includes('galaxy')) return 'Samsung'
-            if (dl.includes('xiaomi') || dl.includes('redmi') || dl.includes('poco')) return 'Xiaomi'
-            if (dl.includes('huawei') || dl.includes('honor')) return 'Huawei'
-            return ''
-          }
-          
-          const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              branch_id: BRANCH_ID,
-              order_type: ORDER_TYPE,
-              client_id: clientId,
-              kindof_good: device?.toLowerCase().includes('macbook') ? 'Laptop' : 'Telefon',
-              brand: getBrand(device),
-              model: device || '',
-              malfunction: problem || 'Callback de pe website',
-              manager_notes: `🌐 CALLBACK WEBSITE\n🎁 BONUS: DIAGNOSTIC GRATUIT!\n📱 ${device || 'N/A'}\n📞 ${cleanPhone}\n❓ ${problem || 'N/A'}\n⏰ ${now}\n\n✅ Comandă online - diagnostic gratuit inclus`
-            })
-          })
-          const orderJson = await orderRes.json() as { success?: boolean; data?: { id: number } }
-          
-          if (orderJson.success && orderJson.data) {
-            orderId = orderJson.data.id
-            remonlineSuccess = true
-          }
-        }
-      }
-    } catch (e) {
-      console.error('Remonline error:', e)
-    }
-    
-    // Always return success to user
+    const orderId = await createRemonlineOrder(c.env, {
+      ...body,
+      source: 'callback'
+    })
+
     return c.json({
       success: true,
       order_id: orderId,
-      message: remonlineSuccess 
+      message: orderId
         ? 'Mulțumim! Vă vom contacta în câteva minute!' 
         : 'Cererea a fost primită! Vă contactăm în curând.'
     })
-    
   } catch (error) {
-    console.error('Callback error:', error)
     return c.json({ success: false, error: 'Eroare server' }, 500)
   }
+})
+
+// Remonline API (used by Calculator)
+app.post('/api/remonline', async (c) => {
+  const action = c.req.query('action')
+
+  if (action === 'create_inquiry') {
+    try {
+      const body = await c.req.json()
+      const orderId = await createRemonlineOrder(c.env, {
+        phone: body.phone,
+        name: body.name,
+        device: body.device?.model || body.device?.type,
+        brand: body.device?.brand,
+        problem: body.issue,
+        estimatedPrice: body.estimated_price,
+        source: 'calculator'
+      })
+
+      return c.json({ success: true, order_id: orderId })
+    } catch (error) {
+      return c.json({ success: false, error: 'Eroare server' }, 500)
+    }
+  }
+
+  return c.json({ success: false, error: 'Acțiune necunoscută' }, 400)
 })
 
 // Favicon
@@ -335,12 +369,11 @@ app.get('/test-click', (c) => {
 app.get('/nexx', (c) => {
   return c.html(`
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NEXX Database - Apple Repair</title>
-        <meta name="description" content="NEXX Database - База данных для ремонта устройств Apple: цены, платы, микросхемы">
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
@@ -348,8 +381,12 @@ app.get('/nexx', (c) => {
         <!-- React 19 Production -->
         <script crossorigin src="/static/vendor/react.production.min.js"></script>
         <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+        <style>
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+          .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        </style>
     </head>
-    <body class="bg-gray-50">
+    <body class="bg-[#020617] text-slate-200">
         <div id="app"></div>
         
         <!-- Pincode Protection + NEXX Database App -->
@@ -363,8 +400,8 @@ app.get('/nexx', (c) => {
           let isDatabaseLoading = false;
 
           const setLoader = (message) => {
-            const text = message || 'Загрузка базы данных...';
-            container.innerHTML = '<div class="min-h-screen bg-gray-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-2xl px-8 py-6 text-center"><div class="w-12 h-12 mx-auto mb-4 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div><p class="text-slate-600 font-semibold">' + text + '</p></div></div>';
+            const text = message || 'Încărcare bază de date...';
+            container.innerHTML = '<div class="min-h-screen flex items-center justify-center p-4 bg-[#020617] text-white"><div class="text-center"><div class="w-12 h-12 mx-auto mb-4 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div><p class="text-slate-400 font-medium">' + text + '</p></div></div>';
           };
 
           const loadDatabaseApp = () => {
@@ -385,7 +422,7 @@ app.get('/nexx', (c) => {
             script.src = '/static/app.js';
             script.async = true;
             script.onload = () => {
-              container.innerHTML = '';
+              console.log('Database script loaded');
             };
             script.onerror = () => {
               isDatabaseLoading = false;
@@ -417,32 +454,32 @@ app.get('/nexx', (c) => {
               }
             };
 
-            return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 flex items-center justify-center p-4' },
-              h('div', { className: 'bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md' },
+            return h('div', { className: 'min-h-screen bg-[#020617] flex items-center justify-center p-4' },
+              h('div', { className: 'bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-8 w-full max-w-md animate-fade-in' },
                 h('div', { className: 'text-center mb-8' },
                   h('div', { className: 'text-6xl mb-4' }, '🔐'),
-                  h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
-                  h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
+                  h('h1', { className: 'text-2xl font-bold text-white mb-2' }, 'NEXX Database'),
+                  h('p', { className: 'text-slate-400' }, 'Introduceți codul PIN pentru acces')
                 ),
                 h('form', { onSubmit: handleSubmit },
                   h('input', {
                     type: 'password',
                     value: pin,
                     onChange: (event) => setPin(event.target.value),
-                    placeholder: 'Пинкод',
+                    placeholder: 'PIN',
                     maxLength: 8,
-                    className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
-                      (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
+                    className: 'w-full px-4 py-3 bg-slate-800 text-center text-2xl tracking-widest rounded-lg border-2 ' +
+                      (error ? 'border-red-500 text-red-200' : 'border-slate-700 text-white focus:border-blue-500') +
                       ' focus:outline-none transition-all',
                     autoFocus: true
                   }),
-                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
+                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Cod PIN incorect'),
                   h('button', {
                     type: 'submit',
-                    className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
-                  }, 'Войти')
+                    className: 'w-full mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
+                  }, 'Accesare')
                 ),
-                h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
+                h('div', { className: 'mt-8 text-center text-xs text-slate-500 uppercase tracking-widest' },
                   'Protected access only'
                 )
               )
@@ -518,16 +555,25 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         <div id="app"></div>
         <div id="footer"></div>
         
-        <!-- Shared Components (Header + Footer) -->
+        <!-- NEXX Design System -->
+        <script src="/static/i18n.js"></script>
+        <script src="/static/ui-components.js"></script>
         <script src="/static/shared-components.js"></script>
+
         <script>
-          // Render Header
-          const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
-          headerRoot.render(React.createElement(window.NEXXShared.Header));
-          
-          // Render Footer
-          const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
-          footerRoot.render(React.createElement(window.NEXXShared.Footer));
+          // Wait for components to load
+          const renderUI = () => {
+            if (window.NEXXDesign && window.NEXXShared) {
+              const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
+              headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: '${scriptFile.replace('.js', '')}' }));
+
+              const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
+              footerRoot.render(React.createElement(window.NEXXDesign.Footer));
+            } else {
+              setTimeout(renderUI, 100);
+            }
+          };
+          renderUI();
         </script>
         
         <!-- Page-specific content -->
@@ -591,23 +637,13 @@ app.get('/terms', (c) => {
   ));
 })
 
-// Main page - serve static index.html (Romanian version with i18n support)
-app.get('/', async (c) => {
-  // Serve the static index.html file
-  const assetResponse = await c.env.ASSETS.fetch(new Request(new URL('/index.html', c.req.url)))
-  if (assetResponse.ok) {
-    return new Response(assetResponse.body, {
-      headers: {
-        'Content-Type': 'text/html; charset=UTF-8',
-        'Cache-Control': 'public, max-age=3600'
-      }
-    })
-  }
-  // Fallback to dynamic generation if static file not found
+// Main page - Dynamic unified template
+app.get('/', (c) => {
   return c.html(createPageTemplate(
     'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐',
-    'Service profesional reparații iPhone, MacBook, Samsung în București ⭐ Garanție 30 zile • Diagnostic gratuit • De la 60 lei',
-    'homepage.js'
+    'Service profesional reparații iPhone, MacBook, Samsung în București ⭐ Garanție 30 zile • Diagnostic gratuit • De la 60 lei • Service rapid 30-60 min',
+    'homepage.js',
+    'bg-slate-950'
   ));
 })
 

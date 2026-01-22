@@ -488,7 +488,7 @@
             
             console.log(`✅ Итого за ${issues.length} дефект(ов): ${totalAvg} lei (${totalMin}-${totalMax})`);
             setResult(resultData);
-            setStep(6);
+            setStep(5);
           } else {
             if (window.showToast) {
               window.showToast('Nu s-a putut calcula prețul. Încercați din nou.', 'error', 4000);
@@ -1151,7 +1151,7 @@
                 errors.phone && h('p', { className: 'text-red-400 text-sm mt-1' }, errors.phone)
               ),
               h('button', {
-                onClick: () => {
+                onClick: async () => {
                   const newErrors = {};
                   if (!data.name || data.name.trim().length < 2) {
                     newErrors.name = 'Numele trebuie să aibă minim 2 caractere';
@@ -1168,8 +1168,9 @@
                     return;
                   }
                   
+                  setLoading(true);
                   // Отправляем лид в Remonline с контактными данными
-                  sendLeadToRemonline({
+                  await sendLeadToRemonline({
                     name: data.name.trim(),
                     phone: data.phone.trim(),
                     brand: data.brand?.name,
@@ -1180,10 +1181,12 @@
                     source: 'price_calculator'
                   });
                   
+                  setLoading(false);
                   // Переходим на шаг с результатом
                   setStep(6);
                 },
-                className: 'w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 mt-6'
+                className: `w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 mt-6 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`,
+                disabled: loading
               },
                 h('i', { className: 'fas fa-calculator text-xl' }),
                 'Obțineți prețul'
@@ -1288,4 +1291,20 @@
   window.PriceCalculator = SafePriceCalculator;
   window.PriceCalculatorRaw = PriceCalculator; // Для отладки
   console.log('✅ Modern Price Calculator v3.1 loaded (with Error Boundary)');
+
+  // Auto-render if #app exists and we are on the calculator page
+  const init = () => {
+    const container = document.getElementById('app');
+    if (container && (window.location.pathname === '/calculator' || window.location.pathname === '/calculator.html')) {
+      const root = ReactDOM.createRoot(container);
+      root.render(h(SafePriceCalculator));
+      console.log('🚀 Calculator auto-rendered into #app');
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

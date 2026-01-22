@@ -12,19 +12,19 @@ function PrivacyPage() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
               <i className="fas fa-shield-alt"></i>
-              <span>Конфіденційність</span>
+              <span>Confidențialitate</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Політика <span className="text-blue-600">конфіденційності</span>
+              Politica de <span className="text-blue-600">confidențialitate</span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Ми цінуємо вашу довіру і гарантуємо повну конфіденційність ваших даних
+              Apreciem încrederea dumneavoastră și garantăm confidențialitatea deplină a datelor dumneavoastră.
             </p>
             
             <div className="mt-6 text-sm text-gray-500">
-              Остання редакція: <span className="font-semibold">19 січня 2026</span>
+              Ultima revizuire: <span className="font-semibold">22 ianuarie 2026</span>
             </div>
           </div>
         </div>
@@ -42,22 +42,22 @@ function PrivacyPage() {
                   <i className="fas fa-info-circle text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">1. Загальні положення</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">1. Dispoziții generale</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  Ця Політика конфіденційності регулює порядок збору, зберігання, використання та захисту 
-                  персональних даних користувачів сервісу NEXX (далі — "Сервіс").
+                  Această Politică de confidențialitate reglementează modul de colectare, stocare, utilizare și protecție
+                  a datelor cu caracter personal ale utilizatorilor serviciului NEXX (denumit în continuare „Serviciul”).
                 </p>
                 <p>
-                  Використовуючи наш веб-сайт або послуги, ви погоджуєтесь з умовами цієї Політики 
-                  конфіденційності та надаєте згоду на обробку ваших персональних даних.
+                  Prin utilizarea site-ului sau serviciilor noastre, sunteți de acord cu termenii acestei Politici
+                  de confidențialitate și vă dați consimțământul pentru prelucrarea datelor dumneavoastră cu caracter personal.
                 </p>
                 <p>
-                  <strong>NEXX</strong> зобов'язується дотримуватися законодавства України про захист 
-                  персональних даних та забезпечувати конфіденційність інформації користувачів.
+                  <strong>NEXX</strong> se angajează să respecte legislația din România privind protecția
+                  datelor cu caracter personal și să asigure confidențialitatea informațiilor utilizatorilor.
                 </p>
               </div>
             </div>
@@ -69,23 +69,23 @@ function PrivacyPage() {
                   <i className="fas fa-database text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">2. Які дані ми збираємо</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">2. Ce date colectăm</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>Ми можемо збирати наступні категорії персональних даних:</p>
+                <p>Putem colecta următoarele categorii de date cu caracter personal:</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li><strong>Контактна інформація:</strong> ім'я, прізвище, номер телефону, email-адреса</li>
-                  <li><strong>Інформація про пристрій:</strong> модель, серійний номер, IMEI, стан пристрою</li>
-                  <li><strong>Історія замовлень:</strong> дата звернення, вид ремонту, вартість, статус</li>
-                  <li><strong>Технічні дані:</strong> IP-адреса, тип браузера, час відвідування сайту</li>
-                  <li><strong>Фото та відео:</strong> фіксація стану пристрою до та після ремонту</li>
+                  <li><strong>Informații de contact:</strong> nume, prenume, număr de telefon, adresă de email</li>
+                  <li><strong>Informații despre dispozitiv:</strong> model, număr de serie, IMEI, starea dispozitivului</li>
+                  <li><strong>Istoricul comenzilor:</strong> data solicitării, tipul reparației, costul, starea</li>
+                  <li><strong>Date tehnice:</strong> adresa IP, tipul browserului, ora vizitei pe site</li>
+                  <li><strong>Foto și video:</strong> înregistrarea stării dispozitivului înainte și după reparație</li>
                 </ul>
                 <p className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
                   <i className="fas fa-info-circle text-blue-600 mr-2"></i>
-                  Ми НЕ збираємо фінансову інформацію (номери карток), паролі від пристроїв та особисті 
-                  файли з вашого телефону або комп'ютера.
+                  NU colectăm informații financiare (numere de card), parole de dispozitiv sau fișiere
+                  personale de pe telefonul sau computerul dumneavoastră.
                 </p>
               </div>
             </div>
@@ -97,20 +97,20 @@ function PrivacyPage() {
                   <i className="fas fa-bullseye text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">3. Для чого ми використовуємо дані</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">3. Scopul utilizării datelor</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>Ваші персональні дані використовуються виключно для:</p>
+                <p>Datele dumneavoastră personale sunt utilizate exclusiv pentru:</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Надання послуг з ремонту та обслуговування техніки</li>
-                  <li>Зв'язку з вами щодо статусу замовлення</li>
-                  <li>Виставлення рахунків та здійснення платежів</li>
-                  <li>Покращення якості сервісу та персоналізації пропозицій</li>
-                  <li>Виконання гарантійних зобов'язань</li>
-                  <li>Розсилки інформаційних повідомлень (за вашою згодою)</li>
-                  <li>Дотримання вимог законодавства України</li>
+                  <li>Furnizarea serviciilor de reparație și întreținere a tehnicii</li>
+                  <li>Contactarea dumneavoastră privind starea comenzii</li>
+                  <li>Facturare și procesarea plăților</li>
+                  <li>Îmbunătățirea calității serviciilor și personalizarea ofertelor</li>
+                  <li>Îndeplinirea obligațiilor de garanție</li>
+                  <li>Trimiterea de mesaje informative (cu acordul dumneavoastră)</li>
+                  <li>Respectarea cerințelor legislației din România</li>
                 </ul>
               </div>
             </div>
@@ -122,19 +122,19 @@ function PrivacyPage() {
                   <i className="fas fa-lock text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">4. Захист даних</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">4. Protecția datelor</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>Ми вживаємо всіх необхідних технічних та організаційних заходів для захисту ваших даних:</p>
+                <p>Luăm toate măsurile tehnice și organizatorice necesare pentru a vă proteja datele:</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Шифрування даних при передачі (SSL/TLS)</li>
-                  <li>Обмеження доступу співробітників до персональних даних</li>
-                  <li>Регулярні резервні копії бази даних</li>
-                  <li>Відеоспостереження у приміщенні сервісного центру</li>
-                  <li>Захищене зберігання паперових документів</li>
-                  <li>Регулярний аудит систем безпеки</li>
+                  <li>Criptarea datelor în timpul transmiterii (SSL/TLS)</li>
+                  <li>Limitarea accesului angajaților la datele cu caracter personal</li>
+                  <li>Copii de rezervă periodice ale bazei de date</li>
+                  <li>Supraveghere video în incinta centrului de service</li>
+                  <li>Stocarea securizată a documentelor pe suport de hârtie</li>
+                  <li>Audituri regulate ale sistemelor de securitate</li>
                 </ul>
               </div>
             </div>
@@ -146,23 +146,23 @@ function PrivacyPage() {
                   <i className="fas fa-share-alt text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">5. Розголошення даних третім особам</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">5. Dezvăluirea datelor către terți</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  Ми НЕ продаємо, не обмінюємо та не передаємо ваші персональні дані третім особам без вашої згоди.
+                  NU vindem, nu schimbăm și nu transferăm datele dumneavoastră personale către terți fără acordul dumneavoastră.
                 </p>
-                <p>Виняток становлять випадки, коли розголошення необхідне для:</p>
+                <p>Excepție fac cazurile în care dezvăluirea este necesară pentru:</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Виконання законних вимог органів державної влади</li>
-                  <li>Захисту наших прав та інтересів</li>
-                  <li>Співпраці з постачальниками запчастин (тільки технічна інформація про пристрій)</li>
+                  <li>Respectarea cerințelor legale ale autorităților publice</li>
+                  <li>Protejarea drepturilor și intereselor noastre</li>
+                  <li>Colaborarea cu furnizorii de piese (doar informații tehnice despre dispozitiv)</li>
                 </ul>
                 <p className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
                   <i className="fas fa-check-circle text-green-600 mr-2"></i>
-                  Всі наші партнери підписують угоди про нерозголошення інформації.
+                  Toți partenerii noștri semnează acorduri de confidențialitate.
                 </p>
               </div>
             </div>
@@ -174,21 +174,21 @@ function PrivacyPage() {
                   <i className="fas fa-user-check text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">6. Ваші права</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">6. Drepturile dumneavoastră</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
-                <p>Згідно з законодавством України, ви маєте право:</p>
+                <p>Conform legislației, aveți dreptul:</p>
                 <ul className="list-disc list-inside space-y-2">
-                  <li>Знати, які дані про вас ми зберігаємо</li>
-                  <li>Вимагати виправлення неточних даних</li>
-                  <li>Вимагати видалення ваших даних (за винятком даних, необхідних для гарантії)</li>
-                  <li>Відкликати згоду на обробку персональних даних</li>
-                  <li>Подати скаргу до Уповноваженого Верховної Ради України з прав людини</li>
+                  <li>Să știți ce date despre dumneavoastră stocăm</li>
+                  <li>Să solicitați corectarea datelor inexacte</li>
+                  <li>Să solicitați ștergerea datelor dumneavoastră (cu excepția datelor necesare pentru garanție)</li>
+                  <li>Să vă retrageți acordul pentru prelucrarea datelor cu caracter personal</li>
+                  <li>Să depuneți o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal</li>
                 </ul>
                 <p>
-                  Для реалізації ваших прав зверніться до нас за контактами, вказаними нижче.
+                  Pentru a vă exercita drepturile, contactați-ne folosind datele de mai jos.
                 </p>
               </div>
             </div>
@@ -200,19 +200,19 @@ function PrivacyPage() {
                   <i className="fas fa-clock text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">7. Строки зберігання даних</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">7. Perioada de păstrare a datelor</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <ul className="list-disc list-inside space-y-2">
-                  <li><strong>Контактні дані:</strong> зберігаються протягом 3 років після останнього звернення</li>
-                  <li><strong>Історія ремонтів:</strong> зберігається 3 роки (для гарантійних випадків)</li>
-                  <li><strong>Фото/відео:</strong> зберігаються протягом гарантійного періоду (30 днів) + 60 днів</li>
-                  <li><strong>Технічні логи:</strong> автоматично видаляються через 6 місяців</li>
+                  <li><strong>Date de contact:</strong> se păstrează timp de 3 ani de la ultima interacțiune</li>
+                  <li><strong>Istoricul reparațiilor:</strong> se păstrează 3 ani (pentru cazurile de garanție)</li>
+                  <li><strong>Foto/video:</strong> se păstrează pe durata perioadei de garanție (30 zile) + 60 de zile</li>
+                  <li><strong>Log-uri tehnice:</strong> se șterg automat după 6 luni</li>
                 </ul>
                 <p>
-                  Після закінчення терміну зберігання дані видаляються або анонімізуються.
+                  După expirarea perioadei de păstrare, datele sunt șterse sau anonimizate.
                 </p>
               </div>
             </div>
@@ -224,17 +224,17 @@ function PrivacyPage() {
                   <i className="fas fa-edit text-white text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">8. Зміни в Політиці</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">8. Modificări ale Politicii</h2>
                   <div className="h-1 w-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
                 </div>
               </div>
               <div className="text-gray-600 leading-relaxed space-y-4 ml-16">
                 <p>
-                  Ми залишаємо за собою право вносити зміни до цієї Політики конфіденційності. 
-                  Всі зміни набувають чинності з моменту їх публікації на цій сторінці.
+                  Ne rezervăm dreptul de a aduce modificări acestei Politici de confidențialitate.
+                  Toate modificările intră în vigoare din momentul publicării pe această pagină.
                 </p>
                 <p>
-                  Рекомендуємо періодично переглядати цю сторінку для ознайомлення з актуальною версією Політики.
+                  Vă recomandăm să consultați periodic această pagină pentru a fi la curent cu versiunea actuală a Politicii.
                 </p>
               </div>
             </div>
@@ -246,14 +246,14 @@ function PrivacyPage() {
                   <i className="fas fa-envelope text-white text-xl"></i>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Контакти</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Contacte</h3>
                   <div className="space-y-2 text-gray-700">
-                    <p><strong>Email:</strong> <a href="mailto:privacy@nexx.ua" className="text-blue-600 hover:underline">privacy@nexx.ua</a></p>
-                    <p><strong>Телефон:</strong> <a href="tel:+380000000000" className="text-blue-600 hover:underline">+380 00 000 0000</a></p>
-                    <p><strong>Адреса:</strong> м. Київ, вул. Прикладна, 1</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@nexx.ro" className="text-blue-600 hover:underline">info@nexx.ro</a></p>
+                    <p><strong>Telefon:</strong> <a href="tel:+40721234567" className="text-blue-600 hover:underline">+40 721 234 567</a></p>
+                    <p><strong>Adresa:</strong> București, Str. Victoriei 15</p>
                   </div>
                   <p className="text-gray-600 mt-4 text-sm">
-                    З питань, пов'язаних із захистом персональних даних, звертайтеся за вказаними контактами.
+                    Pentru întrebări legate de protecția datelor cu caracter personal, vă rugăm să ne contactați folosind datele de mai sus.
                   </p>
                 </div>
               </div>

@@ -32,13 +32,19 @@
   
   const theme = {
     colors: {
-      primary: '#1f2937',        // Dark gray/black
-      secondary: '#6b7280',      // Medium gray
-      success: '#9ca3af',        // Light gray
-      warning: '#4b5563',        // Darker gray
-      danger: '#111827',         // Almost black
-      neutral: '#d1d5db',        // Very light gray / silver accent
-      accent: '#e5e7eb',         // Silver accent for rare highlights
+      primary: '#0f172a',        // slate-900
+      secondary: '#1e293b',      // slate-800
+      accent: '#3b82f6',         // blue-500
+      accentSecondary: '#8b5cf6', // violet-500
+      success: '#10b981',        // emerald-500
+      warning: '#f59e0b',        // amber-500
+      danger: '#ef4444',         // red-500
+      neutral: '#94a3b8',        // slate-400
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+      accent: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+      glow: 'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
     },
     transitions: {
       fast: '150ms ease',
@@ -61,12 +67,13 @@
     ...props 
   }) => {
     const variantClasses = {
-      primary: 'bg-gray-900 hover:bg-black text-white shadow-lg hover:shadow-xl border border-gray-800',
-      secondary: 'bg-gray-700 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl',
-      success: 'bg-gray-600 hover:bg-gray-700 text-white shadow-lg hover:shadow-xl',
-      danger: 'bg-gray-800 hover:bg-black text-white shadow-lg hover:shadow-xl',
-      outline: 'border-2 border-gray-900 text-gray-900 hover:bg-gray-100 bg-white',
-      ghost: 'text-gray-600 hover:bg-gray-200',
+      primary: 'bg-slate-900 hover:bg-black text-white shadow-lg hover:shadow-blue-500/20 border border-slate-800',
+      accent: 'bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white shadow-lg shadow-blue-500/25',
+      secondary: 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-700',
+      success: 'bg-emerald-600 hover:bg-emerald-500 text-white',
+      danger: 'bg-red-600 hover:bg-red-500 text-white',
+      outline: 'border-2 border-slate-700 text-white hover:bg-slate-800',
+      ghost: 'text-slate-400 hover:text-white hover:bg-slate-800/50',
     };
     
     const sizeClasses = {
@@ -76,7 +83,7 @@
       xl: 'px-8 py-4 text-xl',
     };
     
-    const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transform hover:scale-105';
+    const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500/50 active:scale-95';
     
     return h('button', {
       className: `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`,
@@ -120,27 +127,27 @@
     }, [isOpen, onClose]);
     
     return h('div', {
-      className: 'fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center p-4 animate-fade-in',
+      className: 'fixed inset-0 bg-black/70 backdrop-blur-md z-[100] flex items-center justify-center p-4 animate-fade-in',
       onClick: onClose
     },
       h('div', {
-        className: `bg-white rounded-2xl shadow-2xl ${sizeClasses[size]} w-full max-h-[90vh] overflow-hidden flex flex-col animate-scale-in`,
+        className: `bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl ${sizeClasses[size]} w-full max-h-[90vh] overflow-hidden flex flex-col animate-scale-in`,
         onClick: (e) => e.stopPropagation()
       },
         // Header
-        h('div', { className: 'flex items-center justify-between p-6 border-b border-gray-300 bg-gray-50' },
-          h('h2', { className: 'text-2xl font-bold text-gray-900' }, title),
+        h('div', { className: 'flex items-center justify-between p-6 border-b border-slate-800 bg-slate-900/50' },
+          h('h2', { className: 'text-2xl font-bold text-white' }, title),
           h('button', {
             onClick: onClose,
-            className: 'w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/80 transition-colors text-gray-500 hover:text-gray-700'
+            className: 'w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-slate-400 hover:text-white'
           }, h('i', { className: 'fas fa-xmark text-xl' }))
         ),
         
         // Body
-        h('div', { className: 'flex-1 overflow-y-auto p-6' }, children),
+        h('div', { className: 'flex-1 overflow-y-auto p-6 custom-scrollbar' }, children),
         
         // Footer
-        footer && h('div', { className: 'p-6 border-t border-gray-200 bg-gray-50 flex items-center justify-end gap-3' }, footer)
+        footer && h('div', { className: 'p-6 border-t border-slate-800 bg-slate-900/50 flex items-center justify-end gap-3' }, footer)
       )
     );
   };
@@ -217,158 +224,80 @@
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     
-    // Dynamic navigation with translations
-    const getNavLinks = () => {
-      const t = (key) => {
-        // Используем window.t() который правильно привязан в i18n.init()
-        if (window.t && typeof window.t === 'function') {
-          return window.t(key);
-        }
-        // Fallback to Romanian if i18n not ready
-        const fallback = {
-          'nav.home': 'Acasă',
-          'nav.services': 'Servicii',
-          'nav.booking': 'Comandă',
-          'nav.contacts': 'Contacte',
-          'nav.database': 'Bază de date'
-        };
-        return fallback[key] || key;
+    const t = (key) => {
+      if (window.i18n && typeof window.i18n.t === 'function') {
+        return window.i18n.t(key);
+      }
+      const fallback = {
+        'nav.home': 'Acasă', 'nav.services': 'Servicii', 'nav.calculator': 'Calculator',
+        'nav.contacts': 'Contacte', 'nav.database': 'Bază de date'
       };
-      
-      return {
-        client: [
-          { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
-          { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'calculator', label: t('nav.calculator') || 'Calculator', href: '/#calculator', icon: 'fa-calculator' },
-          { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
-        ],
-        service: [
-          { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
-          { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'database', label: t('nav.database'), href: '/nexx.html', icon: 'fa-database' },
-          { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
-        ]
-      };
+      return fallback[key] || key;
     };
     
-    const navLinksData = getNavLinks();
-    const clientNavLinks = navLinksData.client;
-    const serviceNavLinks = navLinksData.service;
+    const navLinks = [
+      { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
+      { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
+      { id: 'calculator', label: t('nav.calculator'), href: '/#calculator', icon: 'fa-calculator' },
+      { id: 'database', label: t('nav.database'), href: '/nexx.html', icon: 'fa-database' },
+    ];
     
-    const navLinks = currentPage === 'database' ? serviceNavLinks : clientNavLinks;
-    
-    const handleLogout = () => {
-      setIsLogoutModalOpen(true);
-    };
-    
+    const handleLogout = () => setIsLogoutModalOpen(true);
     const confirmLogout = () => {
       localStorage.removeItem('nexx_auth');
       window.location.href = '/nexx.html';
     };
     
     const isAuthenticated = localStorage.getItem('nexx_auth') === 'true';
-    
-    const headerBg = isScrolled ? 'bg-white shadow-lg border-b border-gray-200 transition-colors duration-300' : 'bg-transparent transition-colors duration-300';
-    const textColor = isScrolled ? 'text-gray-900' : 'text-white';
-    const iconColor = isScrolled ? 'text-gray-800' : 'text-white';
+    const headerBg = isScrolled ? 'bg-slate-950/80 backdrop-blur-md shadow-lg border-b border-slate-800' : 'bg-transparent';
     
     return h(React.Fragment, null,
-      h('header', { className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg}` },
-      h('div', { className: 'max-w-7xl mx-auto px-4 py-4' },
-        h('div', { className: 'flex items-center justify-between' },
-          // Logo - Animated SVG logo on dark background, PNG on white
-          h('a', { 
-            href: '/', 
-            className: 'flex items-center group transition-all duration-300 hover:scale-105 cursor-pointer flex-shrink-0',
-            'aria-label': 'NEXX GSM Home',
-            title: 'Перейти на головну'
-          },
+      h('header', { className: `fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${headerBg}` },
+        h('div', { className: 'max-w-7xl mx-auto px-4 py-4 flex items-center justify-between' },
+          h('a', { href: '/', className: 'flex items-center gap-2 group transition-transform hover:scale-105' },
             h('img', {
-              src: '/static/nexx-logo-trimmed.png?v=1',
-              alt: 'NEXX GSM',
-              className: 'w-auto transition-all duration-500',
-              style: {
-                width: window.innerWidth < 640 ? '154px' : '243px',
-                height: 'auto',
-                display: 'block',
-                objectFit: 'contain',
-                filter: isScrolled ? 'none' : 'invert(1) drop-shadow(0 0 10px rgba(100, 180, 255, 0.7))',
-                transition: 'filter 0.5s ease'
-              }
+              src: '/static/nexx-logo-white.svg',
+              alt: 'NEXX',
+              className: 'h-8 md:h-10 w-auto filter drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]'
             })
           ),
           
-          // Desktop Navigation
-          h('nav', { className: 'hidden md:flex items-center gap-4' },
+          h('nav', { className: 'hidden md:flex items-center gap-1 bg-slate-900/50 p-1 rounded-2xl border border-slate-800' },
             ...navLinks.map(link => h('a', {
               key: link.id,
               href: link.href,
-              className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${currentPage === link.id ? `font-bold ${isScrolled ? 'bg-gray-100 text-gray-900' : 'bg-white/20 text-white'}` : `${textColor} hover:text-gray-500`}`
-            },
-              h('i', { className: `fas ${link.icon} text-sm` }),
-              link.label
-            )),
-            
-            // Logout Button (only when authenticated in database)
+              className: `px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+                currentPage === link.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`
+            }, h('i', { className: `fas ${link.icon} text-xs` }), link.label))
+          ),
+          
+          h('div', { className: 'flex items-center gap-3' },
             isAuthenticated && currentPage === 'database' && h('button', {
               onClick: handleLogout,
-              className: `flex items-center gap-2 px-3 py-2 ${isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-500/20 hover:bg-gray-500/30 text-white'} rounded-lg transition-all duration-300 font-medium`,
-              title: 'Ieșire з бази даних'
-            },
-              h('i', { className: 'fas fa-right-from-bracket' }),
-              h('span', null, 'Ieșire')
-            )
-          ),
-          
-          // Service Mod Button (PIN protected) - Small, subtle, black/white
-          h('button', {
-            onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
-            className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
-            title: 'Service Mod (PIN)'
-          },
-            h('i', { className: 'fas fa-cog text-xs' }),
-            h('span', null, 'Service')
-          ),
-          
-          // Language Switcher - visible on desktop
-          h('div', { className: 'hidden md:flex items-center' },
-            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled })
-          ),
-          
-          // Mobile: Language + Menu Button
-          h('div', { className: 'flex md:hidden items-center gap-2' },
-            // Language Switcher for mobile
-            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled, compact: true }),
-            // Mobile Menu Button
+              className: 'px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-xl text-sm font-bold transition-all border border-red-500/20 flex items-center gap-2'
+            }, h('i', { className: 'fas fa-right-from-bracket' }), 'Ieșire'),
+
+            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
+
             h('button', {
               onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-              className: `w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`
+              className: 'md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800 text-white'
             }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
           )
         ),
         
-        // Mobile Menu
-        isMobileMenuOpen && h('div', { className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down' },
-          ...navLinks.map(link => h('a', {
-            key: link.id,
-            href: link.href,
-            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition ${currentPage === link.id ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
-            onClick: () => setIsMobileMenuOpen(false)
-          },
-            h('i', { className: `fas ${link.icon} w-5` }),
-            link.label
-          )),
-          // Service Mod link in mobile menu (PIN protected) - Small, subtle
-          h('button', {
-            onClick: () => { setIsMobileMenuOpen(false); window.openServiceModAuth && window.openServiceModAuth(); },
-            className: 'flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition text-xs border-t border-gray-100 mt-2 w-full text-left'
-          },
-            h('i', { className: 'fas fa-cog w-4 text-xs' }),
-            h('span', null, 'Service')
+        isMobileMenuOpen && h('div', { className: 'md:hidden p-4 bg-slate-900 border-b border-slate-800 animate-slide-down' },
+          h('div', { className: 'flex flex-col gap-2' },
+            ...navLinks.map(link => h('a', {
+              key: link.id,
+              href: link.href,
+              className: `flex items-center gap-3 p-4 rounded-xl ${currentPage === link.id ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-300'}`,
+              onClick: () => setIsMobileMenuOpen(false)
+            }, h('i', { className: `fas ${link.icon}` }), link.label))
           )
         )
-      )
-    ),
+      ),
     // Logout Confirmation Modal
     h(Modal, {
       isOpen: isLogoutModalOpen,
@@ -397,113 +326,45 @@
   
   const Footer = () => {
     const currentYear = new Date().getFullYear();
-    
-    // Define t at component level so it's accessible everywhere
     const t = (key) => {
-      // Используем window.t() который правильно привязан в i18n.init()
-      if (window.t && typeof window.t === 'function') {
-        return window.t(key);
-      }
-      // Fallback to Romanian if i18n not ready
-      const fallback = {
-        'footer.company': 'Companie',
-        'footer.about': 'Despre noi',
-        'nav.contacts': 'Contacte',
-        'footer.jobs': 'Joburi',
-        'footer.services': 'Servicii',
-        'footer.servicePhone': 'Reparații telefoane',
-        'footer.serviceLaptop': 'Reparații laptopuri',
-        'calculator.title': 'Calculator preț',
-        'footer.info': 'Informații',
-        'footer.faq': 'FAQ',
-        'footer.privacy': 'Confidențialitate',
-        'footer.terms': 'Termeni',
-        'footer.tagline': 'Service profesional pentru dispozitive Apple'
-      };
-      return fallback[key] || key;
+      if (window.i18n && typeof window.i18n.t === 'function') return window.i18n.t(key);
+      return key.split('.').pop();
     };
     
-    const getFooterLinks = () => {
-      
-      return [
-        { title: t('footer.company'), links: [
-          { label: t('footer.about'), href: '/about.html' },
-          { label: t('nav.contacts'), href: '/#contacts' },
-          { label: t('footer.jobs'), href: '#' },
-        ]},
-        { title: t('footer.services'), links: [
-          { label: t('footer.servicePhone'), href: '/#services' },
-          { label: t('footer.serviceLaptop'), href: '/#services' },
-          { label: t('calculator.title'), href: '/#calculator' },
-        ]},
-        { title: t('footer.info'), links: [
-          { label: t('footer.faq'), href: '/faq.html' },
-          { label: t('footer.privacy'), href: '/privacy.html' },
-          { label: t('footer.terms'), href: '/terms.html' },
-        ]},
-      ];
-    };
-    
-    const footerLinks = getFooterLinks();
-    
-    const socialLinks = [
-      { icon: 'fa-instagram', href: '#', label: 'Instagram' },
-      { icon: 'fa-telegram', href: '#', label: 'Telegram' },
-      { icon: 'fa-facebook', href: '#', label: 'Facebook' },
-      { icon: 'fa-tiktok', href: '#', label: 'TikTok' },
-    ];
-    
-    return h('footer', { className: 'bg-gradient-to-br from-gray-900 to-black text-white' },
-      h('div', { className: 'max-w-7xl mx-auto px-4 py-12' },
-        // Main Footer
-        h('div', { className: 'grid md:grid-cols-3 gap-8 mb-8' },
-          // Brand
+    return h('footer', { className: 'bg-slate-950 border-t border-slate-800 pt-16 pb-8 text-slate-400' },
+      h('div', { className: 'max-w-7xl mx-auto px-4' },
+        h('div', { className: 'grid md:grid-cols-4 gap-12 mb-12' },
+          h('div', { className: 'md:col-span-2' },
+            h('img', { src: '/static/nexx-logo-white.svg', className: 'h-8 mb-6' }),
+            h('p', { className: 'max-w-sm mb-6' }, t('footer.tagline')),
+            h('div', { className: 'flex gap-4' },
+              ['fa-instagram', 'fa-telegram', 'fa-facebook', 'fa-whatsapp'].map(icon => h('a', {
+                key: icon, href: '#', className: 'w-10 h-10 flex items-center justify-center rounded-xl bg-slate-900 hover:bg-slate-800 hover:text-white transition-all'
+              }, h('i', { className: `fab ${icon}` })))
+            )
+          ),
           h('div', null,
-            h('div', { className: 'flex items-center gap-3 mb-4' },
-              h('i', { className: 'fas fa-wrench text-3xl text-gray-400' }),
-              h('span', { className: 'text-2xl font-bold text-white' }, 'NEXX')
-            ),
-            h('p', { className: 'text-gray-400 mb-4' }, t('footer.tagline')),
-            h('div', { className: 'flex gap-3' },
-              ...socialLinks.map(social => h('a', {
-                key: social.icon,
-                href: social.href,
-                className: 'w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition',
-                'aria-label': social.label
-              }, h('i', { className: `fab ${social.icon}` })))
+            h('h4', { className: 'text-white font-bold mb-6' }, t('footer.services')),
+            h('ul', { className: 'space-y-4 text-sm' },
+              h('li', null, h('a', { href: '/#services', className: 'hover:text-white' }, t('footer.servicePhone'))),
+              h('li', null, h('a', { href: '/#services', className: 'hover:text-white' }, t('footer.serviceLaptop'))),
+              h('li', null, h('a', { href: '/#calculator', className: 'hover:text-white font-bold text-blue-400' }, t('calculator.title')))
             )
           ),
-          
-          // Links
-          ...footerLinks.map(section => h('div', { key: section.title },
-            h('h3', { className: 'font-bold text-lg mb-4 text-white' }, section.title),
-            h('ul', { className: 'space-y-2' },
-              ...section.links.map(link => h('li', { key: link.label },
-                link.disabled 
-                  ? h('span', { className: 'text-gray-600 text-sm font-mono' }, link.label)
-                  : h('a', {
-                      href: link.href,
-                      className: `${link.special ? 'text-gray-300 hover:text-white font-medium' : 'text-gray-400 hover:text-gray-200'} transition`
-                    }, link.label)
-              ))
+          h('div', null,
+            h('h4', { className: 'text-white font-bold mb-6' }, t('footer.info')),
+            h('ul', { className: 'space-y-4 text-sm' },
+              h('li', null, h('a', { href: '/faq.html', className: 'hover:text-white' }, t('footer.faq'))),
+              h('li', null, h('a', { href: '/privacy.html', className: 'hover:text-white' }, t('footer.privacy'))),
+              h('li', null, h('a', { href: '/terms.html', className: 'hover:text-white' }, t('footer.terms')))
             )
-          ))
+          )
         ),
-        
-        // Bottom Bar
-        h('div', { className: 'border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4' },
-          h('p', { className: 'text-gray-400 text-sm' },
-            `© ${currentYear} ` + t('footer.copyright')
-          ),
-          h('div', { className: 'flex items-center gap-4 text-sm text-gray-400' },
-            h('span', { className: 'flex items-center gap-2' },
-              h('i', { className: 'fas fa-shield-halved text-gray-500' }),
-              t('footer.security').split(' • ')[0]
-            ),
-            h('span', { className: 'flex items-center gap-2' },
-              h('i', { className: 'fas fa-lock text-gray-500' }),
-              t('footer.security').split(' • ')[1]
-            )
+        h('div', { className: 'pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs' },
+          h('p', null, `© ${currentYear} NEXX GSM. Toate drepturile rezervate.`),
+          h('div', { className: 'flex items-center gap-6' },
+            h('span', { className: 'flex items-center gap-1' }, h('i', { className: 'fas fa-shield-halved' }), 'Protejat GDPR'),
+            h('span', { className: 'flex items-center gap-1' }, h('i', { className: 'fas fa-lock' }), 'Securizat SSL')
           )
         )
       )

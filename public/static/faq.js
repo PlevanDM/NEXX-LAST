@@ -6,113 +6,113 @@ function FAQPage() {
 
   const faqData = [
     {
-      category: 'Загальні питання',
+      category: 'Întrebări generale',
       icon: 'fa-question-circle',
       color: 'blue',
       questions: [
         {
-          q: 'Скільки часу займає ремонт?',
-          a: 'Середній час ремонту становить 30-40 хвилин для стандартних робіт (заміна екрану, батареї тощо). Складні ремонти можуть зайняти до 2-3 годин. Точний час ми повідомляємо після діагностики.'
+          q: 'Cât timp durează reparația?',
+          a: 'Timpul mediu de reparație este de 30-40 de minute pentru lucrările standard (înlocuire ecran, baterie etc.). Reparațiile complexe pot dura până la 2-3 ore. Timpul exact va fi comunicat după diagnostic.'
         },
         {
-          q: 'Чи надаєте ви гарантію на ремонт?',
-          a: 'Так! Ми надаємо офіційну гарантію 30 днів на всі види робіт та встановлені запчастини. Гарантія покриває дефекти роботи та якості компонентів.'
+          q: 'Oferiți garanție pentru reparație?',
+          a: 'Da! Oferim o garanție oficială de 30 de zile pentru toate tipurile de lucrări și piesele instalate. Garanția acoperă defectele de manoperă și calitatea componentelor.'
         },
         {
-          q: 'Які способи оплати ви приймаєте?',
-          a: 'Ми приймаємо готівку, банківські картки (Visa, Mastercard), безготівковий розрахунок для юридичних осіб. Оплата здійснюється після завершення ремонту.'
+          q: 'Ce metode de plată acceptați?',
+          a: 'Acceptăm numerar, carduri bancare (Visa, Mastercard) și transfer bancar pentru persoane juridice. Plata se face după finalizarea reparației.'
         },
         {
-          q: 'Що робити, якщо телефон не вмикається?',
-          a: 'Принесіть пристрій до нашого сервісного центру. Ми проведемо безкоштовну діагностику та визначимо причину поломки. У 70% випадків проблема вирішується заміною батареї або роз\'єму заряджання.'
+          q: 'Ce trebuie să fac dacă telefonul nu pornește?',
+          a: 'Aduceți dispozitivul la centrul nostru de service. Vom efectua un diagnostic gratuit și vom determina cauza defecțiunii. În 70% din cazuri, problema se rezolvă prin înlocuirea bateriei sau a portului de încărcare.'
         }
       ]
     },
     {
-      category: 'Ціни та послуги',
+      category: 'Prețuri și servicii',
       icon: 'fa-dollar-sign',
       color: 'green',
       questions: [
         {
-          q: 'Скільки коштує діагностика?',
-          a: 'Діагностика безкоштовна! Ми перевіримо ваш пристрій, визначимо несправність та озвучимо вартість ремонту. Якщо ви погоджуєтесь на ремонт — діагностика безкоштовна. Якщо відмовляєтесь — 100 грн.'
+          q: 'Cât costă diagnosticul?',
+          a: 'Diagnosticul este gratuit! Vom verifica dispozitivul, vom identifica defecțiunea și vă vom comunica costul reparației. Dacă sunteți de acord cu reparația, diagnosticul este gratuit. Dacă refuzați, acesta costă 50 RON.'
         },
         {
-          q: 'Чи можна дізнатися вартість ремонту заздалегідь?',
-          a: 'Так! Скористайтеся нашим калькулятором на сайті або зателефонуйте нам. Ми озвучимо орієнтовну вартість. Точну ціну ми повідомимо після діагностики пристрою.'
+          q: 'Pot afla costul reparației în avans?',
+          a: 'Da! Utilizați calculatorul nostru de pe site sau sunați-ne. Vă vom oferi un cost aproximativ. Prețul exact va fi comunicat după diagnosticul dispozitivului.'
         },
         {
-          q: 'Чи є знижки для постійних клієнтів?',
-          a: 'Так! Для постійних клієнтів діє накопичувальна система знижок до 15%. Також ми проводимо акції та спеціальні пропозиції — стежте за нашими соціальними мережами.'
+          q: 'Există reduceri pentru clienții fideli?',
+          a: 'Da! Pentru clienții fideli avem un sistem de reduceri de până la 15%. De asemenea, desfășurăm promoții și oferte speciale — urmăriți-ne pe rețelele sociale.'
         },
         {
-          q: 'Що входить у вартість ремонту?',
-          a: 'У вартість входить: робота майстра, встановлені запчастини, діагностика, тестування після ремонту, 30 днів гарантії. Ніяких прихованих платежів!'
+          q: 'Ce este inclus în costul reparației?',
+          a: 'Costul include: manopera tehnicianului, piesele instalate, diagnosticul, testarea după reparație și 30 de zile de garanție. Fără costuri ascunse!'
         }
       ]
     },
     {
-      category: 'Запчастини та якість',
+      category: 'Piese și calitate',
       icon: 'fa-cog',
       color: 'purple',
       questions: [
         {
-          q: 'Які запчастини ви використовуєте?',
-          a: 'Ми використовуємо оригінальні запчастини Apple (коли це можливо) та сертифіковані аналоги преміум-якості. Завжди узгоджуємо з клієнтом тип запчастин перед ремонтом.'
+          q: 'Ce piese folosiți?',
+          a: 'Folosim piese originale Apple (când este posibil) și analogi certificați de calitate premium. Întotdeauna convenim cu clientul tipul de piese înainte de reparație.'
         },
         {
-          q: 'Чи можна принести свої запчастини?',
-          a: 'Так, ви можете принести свої запчастини. Однак у цьому випадку ми надаємо гарантію тільки на роботу майстра (7 днів), а не на запчастини.'
+          q: 'Pot aduce piesele mele?',
+          a: 'Da, puteți aduce piesele dumneavoastră. Totuși, în acest caz, oferim garanție doar pentru manoperă (7 zile), nu și pentru piese.'
         },
         {
-          q: 'Чи втрачу я гарантію Apple після ремонту?',
-          a: 'Якщо ваш пристрій на гарантії Apple — радимо звернутися в офіційний Apple Service. Ремонт у неавторизованому сервісі може призвести до втрати офіційної гарантії.'
+          q: 'Voi pierde garanția Apple după reparație?',
+          a: 'Dacă dispozitivul dumneavoastră este în garanție Apple, vă recomandăm să contactați un service oficial Apple. Reparația într-un service neautorizat poate duce la pierderea garanției oficiale.'
         },
         {
-          q: 'Як ви контролюєте якість ремонту?',
-          a: 'Ми фіксуємо кожен етап ремонту на фото та відео, проводимо багаторівневе тестування після ремонту та надаємо гарантію 30 днів. Якщо виникне проблема — виправимо безкоштовно.'
+          q: 'Cum controlați calitatea reparației?',
+          a: 'Înregistrăm fiecare etapă a reparației prin foto și video, efectuăm testări multi-nivel după reparație și oferim o garanție de 30 de zile. Dacă apare o problemă, o vom remedia gratuit.'
         }
       ]
     },
     {
-      category: 'Процес ремонту',
+      category: 'Procesul de reparație',
       icon: 'fa-tools',
       color: 'blue',
       questions: [
         {
-          q: 'Як проходить процес ремонту?',
-          a: '1) Ви приносите пристрій → 2) Безкоштовна діагностика (15-20 хв) → 3) Узгодження вартості → 4) Ремонт (30-120 хв) → 5) Тестування → 6) Видача з гарантією.'
+          q: 'Cum decurge procesul de reparație?',
+          a: '1) Aduceți dispozitivul → 2) Diagnostic gratuit (15-20 min) → 3) Acord asupra costului → 4) Reparație (30-120 min) → 5) Testare → 6) Ridicare cu garanție.'
         },
         {
-          q: 'Чи можна залишити телефон і забрати пізніше?',
-          a: 'Так, звичайно! Ви можете залишити пристрій у нас та забрати у зручний для вас час. Ми зателефонуємо або напишемо, коли ремонт буде готовий.'
+          q: 'Pot lăsa telefonul și să-l ridic mai târziu?',
+          a: 'Da, desigur! Puteți lăsa dispozitivul la noi și să-l ridicați la o oră convenabilă. Vă vom suna sau vă vom scrie când reparația este gata.'
         },
         {
-          q: 'Чи можна чекати ремонту на місці?',
-          a: 'Так! У нас є комфортна зона очікування з Wi-Fi та напоями. Для стандартних ремонтів (30-40 хв) більшість клієнтів чекають на місці.'
+          q: 'Pot aștepta reparația la fața locului?',
+          a: 'Da! Avem o zonă de așteptare confortabilă cu Wi-Fi și băuturi. Pentru reparațiile standard (30-40 min), majoritatea clienților așteaptă la fața locului.'
         },
         {
-          q: 'Що робити, якщо я не можу приїхати до сервісу?',
-          a: 'Ми можемо організувати кур\'єрську доставку (додатково 100-150 грн в межах міста). Кур\'єр забере ваш пристрій, ми відремонтуємо його та повернемо назад.'
+          q: 'Ce fac dacă nu pot veni la service?',
+          a: 'Putem organiza livrarea prin curier (cost suplimentar 20-30 RON în interiorul orașului). Curierul va ridica dispozitivul, îl vom repara și îl vom returna.'
         }
       ]
     },
     {
-      category: 'Дані та конфіденційність',
+      category: 'Date și confidențialitate',
       icon: 'fa-lock',
       color: 'green',
       questions: [
         {
-          q: 'Чи безпечні мої дані під час ремонту?',
-          a: 'Так! Ми не маємо доступу до ваших особистих даних. Радимо зробити резервну копію перед ремонтом. Всі пристрої зберігаються у захищеній зоні з відеоспостереженням.'
+          q: 'Sunt datele mele în siguranță în timpul reparației?',
+          a: 'Da! Nu avem acces la datele dumneavoastră personale. Vă recomandăm să faceți o copie de rezervă înainte de reparație. Toate dispozitivele sunt păstrate într-o zonă securizată cu supraveghere video.'
         },
         {
-          q: 'Чи видаляються дані при ремонті?',
-          a: 'Ні, дані залишаються на пристрої. Виняток — заміна материнської плати або внутрішньої пам\'яті. У таких випадках ми попереджаємо клієнта заздалегідь.'
+          q: 'Se șterg datele în timpul reparației?',
+          a: 'Nu, datele rămân pe dispozitiv. Excepție face înlocuirea plăcii de bază sau a memoriei interne. În astfel de cazuri, informăm clientul în prealabil.'
         },
         {
-          q: 'Що робити з паролем і Face ID?',
-          a: 'Для деяких видів ремонту (наприклад, тестування екрану) нам потрібен доступ до пристрою. Ви можете встановити тимчасовий простий пароль або бути присутніми під час тестування.'
+          q: 'Cum rămâne cu parola și Face ID?',
+          a: 'Pentru unele tipuri de reparații (de exemplu, testarea ecranului), avem nevoie de acces la dispozitiv. Puteți seta o parolă temporară simplă sau puteți fi prezent în timpul testării.'
         }
       ]
     }
@@ -133,15 +133,15 @@ function FAQPage() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
               <i className="fas fa-question-circle"></i>
-              <span>Часті питання</span>
+              <span>Întrebări frecvente</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Питання та <span className="text-blue-600">відповіді</span>
+              Întrebări și <span className="text-blue-600">răspunsuri</span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Зібрали найпопularніші питання про наші послуги, ціни та процес ремонту
+              Am adunat cele mai populare întrebări despre serviciile, prețurile și procesul nostru de reparație.
             </p>
           </div>
         </div>
@@ -209,27 +209,27 @@ function FAQPage() {
             <div className="max-w-2xl mx-auto">
               <i className="fas fa-headset text-5xl text-white mb-6"></i>
               <h2 className="text-3xl font-bold text-white mb-4">
-                Не знайшли відповідь?
+                Nu ați găsit răspunsul?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Зателефонуйте нам або напишіть — ми з радістю відповімо на всі ваші питання!
+                Sunați-ne sau scrieți-ne — vom fi bucuroși să vă răspundem la toate întrebările!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="tel:+380000000000"
+                  href="tel:+40721234567"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   <i className="fas fa-phone"></i>
-                  <span>Зателефонувати</span>
+                  <span>Sună acum</span>
                 </a>
                 <a 
-                  href="https://t.me/your_telegram"
+                  href="https://t.me/nexx_support"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-500 text-white font-semibold rounded-xl hover:bg-blue-400 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   <i className="fab fa-telegram"></i>
-                  <span>Написати в Telegram</span>
+                  <span>Scrie pe Telegram</span>
                 </a>
               </div>
             </div>
