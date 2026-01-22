@@ -840,7 +840,7 @@
                             { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
                             { name: 'iPad', price: '200-350 lei', time: '1 oră' }
                         ],
-                        specs: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule']
+                        specs: (window.i18n?.t('services.specs.battery') || ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'])
                     },
                     { 
                         icon: 'cpu',
@@ -852,7 +852,7 @@
                             { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
                             { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
                         ],
-                        specs: ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale']
+                        specs: (window.i18n?.t('services.specs.board') || ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'])
                     },
                     { 
                         icon: 'monitor',
@@ -864,7 +864,7 @@
                             { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
                             { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
                         ],
-                        specs: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone']
+                        specs: (window.i18n?.t('services.specs.display') || ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone'])
                     },
                     { 
                         icon: 'plug',
@@ -876,7 +876,7 @@
                             { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
                             { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
                         ],
-                        specs: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni']
+                        specs: (window.i18n?.t('services.specs.port') || ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'])
                     },
                     { 
                         icon: 'wrench',
@@ -888,7 +888,7 @@
                             { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
                             { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
                         ],
-                        specs: ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing']
+                        specs: (window.i18n?.t('services.specs.modular') || ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing'])
                     },
                     { 
                         icon: 'images',

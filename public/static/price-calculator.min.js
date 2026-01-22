@@ -301,7 +301,7 @@
       { id: 'sony', name: 'Sony', svg: '/static/brands/sony.svg', color: 'from-gray-700 to-gray-900', gradient: 'from-gray-600/20 to-black/20' },
       { id: 'asus', name: 'Asus', svg: '/static/brands/asus.svg', color: 'from-purple-600 to-purple-800', gradient: 'from-purple-500/20 to-pink-500/20' },
       { id: 'nothing', name: 'Nothing', svg: '/static/brands/nothing.svg', color: 'from-gray-800 to-black', gradient: 'from-gray-700/20 to-black/20' },
-      { id: 'other', name: 'Alte mărci', svg: '/static/brands/other.svg', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
+      { id: 'other', name: window.i18n?.t('calculator.otherBrands') || 'Alte mărci', svg: '/static/brands/other.svg', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
     ];
     
     const deviceTypes = [
@@ -1021,7 +1021,7 @@
           // Step 4: Issue Selection (множественный выбор)
           step === 4 && !result && h('div', { className: 'space-y-4 ' },
             h('h3', { className: 'text-lg font-bold text-white mb-2 text-center' }, 
-              `${data.brand?.name || ''}${data.model?.name ? ` ${data.model.name}` : ''} - Ce problemă aveți?`
+              `${data.model?.name || data.brand?.name || ''} - ${window.i18n?.t('calculator.selectIssue') || 'Ce problemă aveți?'}`
             ),
             h('p', { className: 'text-zinc-400 text-sm text-center mb-4' },
               `Puteți selecta mai multe probleme (${data.issues?.length || 0} selectate)`
@@ -1275,7 +1275,7 @@
       // Info footer
       step < 6 && h('div', { className: 'text-center mt-4 text-xs text-zinc-500 flex items-center justify-center gap-1' },
         h('i', { className: 'fas fa-circle-info text-[10px]' }),
-        'Prețul final poate varia. Diagnostic gratuit.'
+        window.i18n?.t('calculator.disclaimer') || 'Prețul final poate varia. Diagnostic gratuit.'
       )
     );
   };

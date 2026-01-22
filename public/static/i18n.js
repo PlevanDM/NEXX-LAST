@@ -121,7 +121,34 @@
         free: 'Безкоштовно',
         from: 'від',
         price: 'Ціна',
-        time: 'Час'
+        time: 'Час',
+        specs: {
+          battery: ['Оригінальні батареї', 'Гарантія 12 місяців', 'Тест ємності', 'Калібрування BMS', 'Преміум якість', 'Регенерація елементів'],
+          board: ['Мікроскоп 45x', 'BGA реболінг', 'Пайка IC', 'Діагностика', 'Професійна станція', 'Оригінальні компоненти'],
+          display: ['Оригінальний OLED', 'Преміум LCD', 'Гарантія на битий піксель', 'Сенсорний екран', 'Ламінування', 'Калібрування True Tone'],
+          port: ['Оригінальні роз\'єми', 'Професійна чистка', 'Тест зарядки', 'Ремонт доріжок', 'Новий шлейф', 'Гарантія 6 місяців'],
+          modular: ['Оригінальні модулі', 'Тест HD камери', 'Калібрування аудіо', 'Перевірені сенсори', 'Ремонт Face ID', 'Парінг Touch ID']
+        }
+      },
+      
+      // Gallery
+      gallery: {
+        title: 'Галерея',
+        recentWorks: 'Останні роботи',
+        works: {
+          displayOLED: 'Заміна OLED дисплею',
+          boardWater: 'Ремонт плати - пошкодження водою',
+          reballingDisplay: 'Реболінг CPU + дисплей',
+          batteryPort: 'Заміна батареї + порту',
+          faceIdCamera: 'Face ID + камера'
+        },
+        results: {
+          likeNew: 'Як новий',
+          functional: 'Функціональний 100%',
+          satisfied: 'Клієнт задоволений',
+          warranty: 'Гарантія 12 місяців',
+          repaired: 'Відремонтовано за 2 години'
+        }
       },
       
       // Why Us Section
@@ -170,7 +197,9 @@
         back: 'Назад',
         estimatedPrice: 'Приблизна ціна',
         time: 'Час ремонту',
-        noHiddenFees: 'Без прихованих витрат'
+        noHiddenFees: 'Без прихованих витрат',
+        otherBrands: 'Інші бренди',
+        disclaimer: 'Фінальна ціна може відрізнятись. Безкоштовна діагностика.'
       },
       
       // Booking Form
@@ -355,7 +384,34 @@
         free: 'Gratuit',
         from: 'de la',
         price: 'Preț',
-        time: 'Timp'
+        time: 'Timp',
+        specs: {
+          battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'],
+          board: ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'],
+          display: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone'],
+          port: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'],
+          modular: ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing']
+        }
+      },
+      
+      // Gallery
+      gallery: {
+        title: 'Galerie',
+        recentWorks: 'Lucrări Recente',
+        works: {
+          displayOLED: 'Înlocuire display OLED',
+          boardWater: 'Reparație placă - deteriorare apă',
+          reballingDisplay: 'Reballing CPU + display',
+          batteryPort: 'Înlocuire baterie + port',
+          faceIdCamera: 'Face ID + cameră'
+        },
+        results: {
+          likeNew: 'Ca nou',
+          functional: 'Funcțional 100%',
+          satisfied: 'Client mulțumit',
+          warranty: 'Garanție 12 luni',
+          repaired: 'Reparat în 2 ore'
+        }
       },
       
       // Why Us Section
@@ -404,7 +460,9 @@
         back: 'Înapoi',
         estimatedPrice: 'Preț estimat',
         time: 'Timp reparație',
-        noHiddenFees: 'Fără taxe ascunse'
+        noHiddenFees: 'Fără taxe ascunse',
+        otherBrands: 'Alte mărci',
+        disclaimer: 'Prețul final poate varia. Diagnostic gratuit.'
       },
       
       // Booking Form
@@ -589,7 +647,34 @@
         free: 'Free',
         from: 'from',
         price: 'Price',
-        time: 'Time'
+        time: 'Time',
+        specs: {
+          battery: ['Original batteries', '12-month warranty', 'Capacity test', 'BMS calibration', 'Premium quality', 'Cell regeneration'],
+          board: ['45x microscope', 'BGA reballing', 'IC soldering', 'Diagnostics', 'Professional station', 'Original components'],
+          display: ['Original OLED', 'Premium LCD', 'Dead pixel warranty', 'Touchscreen', 'Lamination', 'True Tone calibration'],
+          port: ['Original connectors', 'Professional cleaning', 'Charging test', 'Track repair', 'New flex cable', '6-month warranty'],
+          modular: ['Original modules', 'HD camera test', 'Audio calibration', 'Verified sensors', 'Face ID repair', 'Touch ID pairing']
+        }
+      },
+      
+      // Gallery
+      gallery: {
+        title: 'Gallery',
+        recentWorks: 'Recent Work',
+        works: {
+          displayOLED: 'OLED display replacement',
+          boardWater: 'Board repair - water damage',
+          reballingDisplay: 'CPU reballing + display',
+          batteryPort: 'Battery + port replacement',
+          faceIdCamera: 'Face ID + camera'
+        },
+        results: {
+          likeNew: 'Like new',
+          functional: '100% functional',
+          satisfied: 'Satisfied customer',
+          warranty: '12-month warranty',
+          repaired: 'Repaired in 2 hours'
+        }
       },
       
       // Why Us Section
@@ -605,8 +690,8 @@
         support: { title: 'Online support', desc: 'Post-repair consultations' }
       },
       
-      // Work Process Gallery
-      gallery: {
+      // Work Process Gallery - kept for compatibility
+      workGallery: {
         title: 'Our Work Process',
         subtitle: 'Professional equipment and certified technicians',
         items: {
@@ -638,7 +723,9 @@
         back: 'Back',
         estimatedPrice: 'Estimated price',
         time: 'Repair time',
-        noHiddenFees: 'No hidden fees'
+        noHiddenFees: 'No hidden fees',
+        otherBrands: 'Other brands',
+        disclaimer: 'Final price may vary. Free diagnosis.'
       },
       
       // Booking Form
