@@ -233,7 +233,7 @@ export async function onRequest(context) {
     
     // Vapi AI Voice Agent
     const VAPI_API_KEY = 'ae7cb2c0-9b24-48cf-9115-fb15f5042d73';
-    const VAPI_PHONE_ID = 'a6714bf1-21e8-44df-921a-6a5235e72f0b';
+    const VAPI_PHONE_ID = 'a725ed7c-0465-4cde-ade7-c346aade9aea'; // Twilio +19789918149
     const VAPI_ASSISTANT_ID = '96cd370d-806f-4cbe-993e-381a5df85d46';
     
     let orderId = null;
@@ -312,10 +312,8 @@ export async function onRequest(context) {
       ? `\n\nESTIMARE PREȚ pentru ${device}:\n- Tip reparație: ${priceEstimate.type}\n- Preț estimat: ${priceEstimate.price} lei\n- Notă: Prețul final se stabilește după diagnostic. Diagnosticul este GRATUIT!`
       : '';
     
-    // Vapi AI Voice Call - TEMPORARILY DISABLED
-    // Reason: Free Vapi number doesn't support outbound calls to Romania (+40)
-    // To enable: Import a Twilio number with Romania support or get Vapi Premium
-    const VAPI_ENABLED = false;
+    // Vapi AI Voice Call - ENABLED with Twilio number
+    const VAPI_ENABLED = true;
     
     if (VAPI_ENABLED) {
     try {
@@ -430,7 +428,7 @@ La final, mulțumește și confirmă că un specialist va contacta pentru progra
       call_id: vapiCallId,
       price_estimate: priceEstimate,
       message: remonlineSuccess 
-        ? 'Mulțumim! Vă vom contacta în câteva minute!' 
+        ? 'Mulțumim! AI-ul nostru vă va suna în câteva secunde!' 
         : 'Cererea a fost primită! Vă contactăm în curând.'
     }), { status: 200, headers: corsHeaders });
     

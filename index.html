@@ -445,7 +445,7 @@
                     
                     if (data.success) {
                         setIsSuccess(true);
-                        window.showToast && window.showToast('Vă vom contacta în câteva minute!', 'success');
+                        window.showToast && window.showToast('🤖 AI-ul nostru vă sună acum!', 'success');
                     } else {
                         throw new Error(data.error || 'Eroare la trimitere');
                     }
@@ -497,7 +497,7 @@
                             h('h3', { className: 'text-2xl font-bold text-white mb-2' }, 'Mulțumim!'),
                             h('div', { className: 'flex items-center justify-center gap-2 mb-2' },
                                 h('div', { className: 'w-3 h-3 bg-green-500 rounded-full animate-pulse' }),
-                                h('p', { className: 'text-green-400 font-semibold' }, 'Vă contactăm în curând!')
+                                h('p', { className: 'text-green-400 font-semibold' }, '📞 AI vă sună acum...')
                             ),
                             h('p', { className: 'text-gray-400 mb-4' }, 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.'),
                             h('div', { className: 'bg-yellow-500/20 border border-yellow-500/30 rounded-xl p-3 mb-4' },
@@ -517,7 +517,7 @@
                                     h('span', { className: 'absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs' }, '🎁')
                                 ),
                                 h('h3', { className: 'text-2xl font-bold text-white mb-1' }, 'Sună-mă înapoi'),
-                                h('p', { className: 'text-gray-400 text-sm' }, 'Vă contactăm în 5 minute!'),
+                                h('p', { className: 'text-gray-400 text-sm' }, '🤖 AI vă sună în 10 secunde!'),
                                 h('div', { className: 'mt-3 px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 rounded-xl' },
                                     h('p', { className: 'text-yellow-400 text-sm font-semibold' }, '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!')
                                 )
