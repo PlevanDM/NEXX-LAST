@@ -105,21 +105,70 @@ export const fetchAppData = async (): Promise<AppData> => {
     }
     
     // IC Components - from knowledge.icCompatibility
-    const icCompatibility = knowledge.icCompatibility || [];
+    // Structure: { charging_ics: [...], power_ics: [...], audio_ics: [...], etc }
+    const icCompatibility = knowledge.icCompatibility || {};
     const ics: Record<string, ICComponent> = {};
-    icCompatibility.forEach((ic: any) => {
-      const name = ic.name || ic.part_number;
-      if (name) {
-        ics[name] = {
-          name: name,
-          type: ic.type || ic.category || 'Unknown',
-          description: ic.description || '',
-          compatible_devices: ic.compatible_devices || ic.devices || [],
-          datasheet_url: ic.datasheet_url || null,
-          package: ic.package || null,
-          voltage: ic.voltage || null,
-          alternatives: ic.alternatives || []
-        };
+    
+    // Extract ICs from all category arrays
+    const icCategories = [
+      'charging_ics', 'power_ics', 'audio_ics', 'display_ics', 
+      'baseband_ics', 'biometric_ics', 'flash_driver_ics', 'nand_ics',
+      'nfc_ics', 'processor_ics', 'rf_fe_modules', 'sensor_ics',
+      'wifi_bt_ics', 'wireless_charging_ics', 'macbook_ics', 'apple_watch_ics'
+    ];
+    
+    icCategories.forEach(category => {
+      const icArray = icCompatibility[category] || [];
+      if (Array.isArray(icArray)) {
+        icArray.forEach((ic: any) => {
+          const name = ic.name || ic.part_number;
+          if (name) {
+            ics[name] = {
+              name: name,
+              type: ic.type || category.replace('_ics', '').replace(/_/g, ' ') || 'Unknown',
+              designation: ic.designation || '',
+              description: ic.description || '',
+              compatible_devices: ic.compatible_devices || ic.devices || [],
+              datasheet_url: ic.datasheet_url || null,
+              package: ic.package || null,
+              voltage: ic.voltage || null,
+              alternatives: ic.alternatives || [],
+              functions: ic.functions || [],
+              symptoms_when_faulty: ic.symptoms_when_faulty || [],
+              diagnostics: ic.diagnostics || null,
+              price_range: ic.price_range || null,
+              difficulty: ic.difficulty || null
+            };
+          }
+        });
+      }
+    });
+    
+    // Also check for device-specific ICs (iPhone X-11 Series, etc)
+    Object.keys(icCompatibility).forEach(key => {
+      if (!key.startsWith('_') && !icCategories.includes(key) && key !== 'source' && key !== 'collected_at' && key !== 'stats') {
+        const deviceIcs = icCompatibility[key];
+        if (deviceIcs && typeof deviceIcs === 'object') {
+          // Could be device-specific ICs
+          Object.entries(deviceIcs).forEach(([icName, icData]: [string, any]) => {
+            if (typeof icData === 'object' && icData !== null) {
+              ics[icName] = {
+                name: icName,
+                type: icData.type || key,
+                designation: icData.designation || '',
+                description: icData.description || icData.function || '',
+                compatible_devices: icData.compatible_devices || [key],
+                datasheet_url: icData.datasheet_url || null,
+                package: icData.package || null,
+                voltage: icData.voltage || null,
+                alternatives: icData.alternatives || [],
+                functions: icData.functions || [],
+                price_range: icData.price_range || null,
+                diagnostics: icData.diagnostics || null
+              };
+            }
+          });
+        }
       }
     });
     
