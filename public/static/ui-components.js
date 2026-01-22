@@ -245,7 +245,6 @@
         service: [
           { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
           { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'database', label: t('nav.database'), href: '/nexx.html', icon: 'fa-database' },
           { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
         ]
       };
