@@ -6,11 +6,11 @@
 /index             /                 301
 /index.html        /                 301
 
-# Database - rewrite to serve database.html
-/nexx              /database.html        200!
-/database.html         /database.html        200!
-/database          /database.html        301
-/db                /database.html        301
+# Database - rewrite to serve nexx.html
+/nexx              /nexx.html        200!
+/nexx.html         /nexx.html        200!
+/database          /nexx.html        301
+/db                /nexx.html        301
 
 # Legacy routes
 /calculator.html   /calculator       301
@@ -26,4 +26,4 @@
 /data/*            /data/:splat      200
 
 # SPA fallback - only for non-existent routes
-# Note: database.html and other HTML files should work directly
+# Note: nexx.html and other HTML files should work directly

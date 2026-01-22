@@ -224,7 +224,7 @@ app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
 app.get('/test-click', (c) => {
   return c.html(`
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="uk">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -335,7 +335,7 @@ app.get('/test-click', (c) => {
 app.get('/nexx', (c) => {
   return c.html(`
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="uk">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -382,7 +382,7 @@ app.get('/nexx', (c) => {
 
             const script = document.createElement('script');
             script.id = 'nexx-db-script';
-            script.src = '/static/app.js';
+            script.src = '/static/client-v2.js?v=2.0.1';
             script.async = true;
             script.onload = () => {
               container.innerHTML = '';
