@@ -314,6 +314,7 @@ export async function onRequest(context) {
     
     // Vapi AI Voice Call - ENABLED with Twilio number
     const VAPI_ENABLED = true;
+    let vapiError = null;
     
     if (VAPI_ENABLED) {
     try {
@@ -338,72 +339,7 @@ export async function onRequest(context) {
               orderId: orderId || 'în procesare',
               priceEstimate: priceEstimate ? `${priceEstimate.type}: ${priceEstimate.price} lei` : 'se va stabili la diagnostic'
             },
-            firstMessage: `Bună ziua${name ? ', ' + name : ''}! Sunt asistentul virtual NEXX GSM. Ați lăsat o cerere pe site-ul nostru pentru ${device || 'reparație'}. ${problem ? 'Am înțeles că aveți problema: ' + problem + '.' : ''} ${priceEstimate ? `Am o estimare de preț pentru dumneavoastră: ${priceEstimate.type} - ${priceEstimate.price} lei.` : ''} Vă sun să confirmăm detaliile. Când vă este convenabil să treceți la service?`,
-            model: {
-              messages: [
-                {
-                  role: 'system',
-                  content: `Ești asistentul vocal AI pentru NEXX GSM - service de reparații telefoane și laptopuri în București.
-
-INFORMAȚII DESPRE CLIENT:
-- Nume: ${name || 'Necunoscut'}
-- Telefon: ${cleanPhone}
-- Dispozitiv: ${device || 'Necunoscut'}
-- Problemă: ${problem || 'Necunoscută'}
-- ID Comandă: ${orderId || 'În procesare'}${priceContext}
-
-OBIECTIVE:
-1. Confirmă detaliile comenzii
-2. Dacă ai estimare de preț, menționeaz-o și explică că prețul final se stabilește după diagnostic
-3. Întreabă când poate veni la service
-4. Menționează bonusul: DIAGNOSTIC GRATUIT pentru comenzile online
-5. Dă adresa: NEXX GSM, București (confirma locația exactă cu ei)
-6. Menționează programul: Luni-Vineri 10:00-19:00, Sâmbătă 10:00-15:00
-
-BAZA DE PREȚURI NEXX GSM (lei):
-📱 iPhone:
-- Display iPhone 16 Pro Max: 1799-2999 lei
-- Display iPhone 15 Pro: 1500-2500 lei
-- Display iPhone 14: 995-1800 lei
-- Display iPhone 13: 895-1650 lei
-- Display iPhone 12: 695-1300 lei
-- Baterie iPhone (toate): 399-899 lei
-- Port încărcare iPhone: 349-799 lei
-
-💻 MacBook:
-- Display MacBook Air: 2299-3749 lei
-- Display MacBook Pro: 2499-5499 lei
-- Baterie MacBook: 849-1600 lei
-- Tastatură MacBook: 749-1199 lei
-- Reparație placă: 1299-1999 lei
-
-📱 Samsung:
-- Display S24 Ultra: 1499-2499 lei
-- Display S23 Ultra: 1299-2199 lei
-- Baterie Samsung: 349-699 lei
-
-📱 iPad:
-- Display iPad Pro: 1499-2999 lei
-- Display iPad Air: 999-1799 lei
-- Baterie iPad: 499-999 lei
-
-STIL:
-- Vorbește în română, prietenos și profesional
-- Răspunsuri scurte și clare (max 2-3 propoziții)
-- Confirmă mereu ce spune clientul
-- Dacă nu înțelegi, cere să repete politicos
-- Folosește „dumneavoastră" nu „tu"
-
-REGULI IMPORTANTE:
-- Diagnosticul este MEREU GRATUIT pentru comenzile online!
-- Prețul final se stabilește doar după diagnostic fizic
-- Nu promite prețuri exacte, doar intervale orientative
-- Dacă clientul întreabă de un dispozitiv care nu e în listă, spune că trebuie verificat la service
-
-La final, mulțumește și confirmă că un specialist va contacta pentru programare exactă.`
-                }
-              ]
-            }
+            firstMessage: `Bună ziua${name ? ', ' + name : ''}! Sunt asistentul virtual NEXX GSM. Ați lăsat o cerere pe site-ul nostru pentru ${device || 'reparație'}. ${problem ? 'Am înțeles că aveți problema: ' + problem + '.' : ''} ${priceEstimate ? `Am o estimare de preț pentru dumneavoastră: ${priceEstimate.type} - aproximativ ${priceEstimate.price} lei.` : ''} Vă sun să confirmăm detaliile și să stabilim când puteți veni la service. Sunteți disponibil să vorbiți acum?`
           }
         })
       });
@@ -413,13 +349,17 @@ La final, mulțumește și confirmă că un specialist va contacta pentru progra
         vapiCallId = vapiJson.id;
         console.log('Vapi call initiated:', vapiCallId);
       } else {
-        const errorText = await vapiRes.text();
-        console.error('Vapi error:', errorText);
+        vapiError = `${vapiRes.status}: ${await vapiRes.text()}`;
+        console.error('Vapi error:', vapiError);
       }
     } catch (e) {
+      vapiError = e.message;
       console.error('Vapi call error:', e.message);
     }
     } // End VAPI_ENABLED block
+    
+    // Debug info (remove in production)
+    // const debugInfo = { vapiEnabled: VAPI_ENABLED, vapiCallId, vapiError, remonlineSuccess, orderId };
     
     // Always return success to user
     return new Response(JSON.stringify({
@@ -427,9 +367,9 @@ La final, mulțumește și confirmă că un specialist va contacta pentru progra
       order_id: orderId,
       call_id: vapiCallId,
       price_estimate: priceEstimate,
-      message: remonlineSuccess 
-        ? 'Mulțumim! AI-ul nostru vă va suna în câteva secunde!' 
-        : 'Cererea a fost primită! Vă contactăm în curând.'
+      message: vapiCallId 
+        ? 'Mulțumim! AI-ul nostru vă sună acum!' 
+        : (remonlineSuccess ? 'Mulțumim! Vă vom contacta în câteva minute!' : 'Cererea a fost primită!')
     }), { status: 200, headers: corsHeaders });
     
   } catch (error) {
