@@ -312,7 +312,12 @@ export async function onRequest(context) {
       ? `\n\nESTIMARE PREȚ pentru ${device}:\n- Tip reparație: ${priceEstimate.type}\n- Preț estimat: ${priceEstimate.price} lei\n- Notă: Prețul final se stabilește după diagnostic. Diagnosticul este GRATUIT!`
       : '';
     
-    // Vapi AI Voice Call - Call customer back with AI
+    // Vapi AI Voice Call - TEMPORARILY DISABLED
+    // Reason: Free Vapi number doesn't support outbound calls to Romania (+40)
+    // To enable: Import a Twilio number with Romania support or get Vapi Premium
+    const VAPI_ENABLED = false;
+    
+    if (VAPI_ENABLED) {
     try {
       const vapiRes = await fetch('https://api.vapi.ai/call/phone', {
         method: 'POST',
@@ -416,6 +421,7 @@ La final, mulțumește și confirmă că un specialist va contacta pentru progra
     } catch (e) {
       console.error('Vapi call error:', e.message);
     }
+    } // End VAPI_ENABLED block
     
     // Always return success to user
     return new Response(JSON.stringify({
@@ -424,7 +430,7 @@ La final, mulțumește și confirmă că un specialist va contacta pentru progra
       call_id: vapiCallId,
       price_estimate: priceEstimate,
       message: remonlineSuccess 
-        ? 'Mulțumim! AI-ul nostru vă va suna în câteva secunde!' 
+        ? 'Mulțumim! Vă vom contacta în câteva minute!' 
         : 'Cererea a fost primită! Vă contactăm în curând.'
     }), { status: 200, headers: corsHeaders });
     
