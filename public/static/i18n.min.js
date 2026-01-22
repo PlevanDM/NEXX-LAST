@@ -21,6 +21,7 @@
       nav: {
         home: 'Головна',
         services: 'Послуги',
+        calculator: 'Калькулятор',
         booking: 'Замовити',
         contacts: 'Контакти',
         serviceMod: 'Service Mod',
@@ -284,6 +285,7 @@
       nav: {
         home: 'Acasă',
         services: 'Servicii',
+        calculator: 'Calculator',
         booking: 'Comandă',
         contacts: 'Contacte',
         serviceMod: 'Service Mod',
@@ -547,6 +549,7 @@
       nav: {
         home: 'Home',
         services: 'Services',
+        calculator: 'Calculator',
         booking: 'Book',
         contacts: 'Contact',
         serviceMod: 'Service Mod',
