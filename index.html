@@ -656,7 +656,7 @@
             const [error, setError] = React.useState('');
             const [isLoading, setIsLoading] = React.useState(false);
             
-            const CORRECT_PIN = '1234'; // TODO: Change to secure PIN
+            const CORRECT_PIN = '31618585';
             
             React.useEffect(() => {
                 window.openServiceModAuth = () => setIsOpen(true);
@@ -672,7 +672,7 @@
                     if (pin === CORRECT_PIN) {
                         localStorage.setItem('nexx_auth', 'true');
                         localStorage.setItem('nexx_auth_time', Date.now().toString());
-                        window.location.href = '/nexx.html';
+                        window.location.href = '/nexx';
                     } else {
                         setError('PIN incorect. Încercați din nou.');
                         setPin('');

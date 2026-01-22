@@ -6,8 +6,9 @@
 /index             /                 301
 /index.html        /                 301
 
-# Database
-/nexx              /nexx.html        200
+# Database - rewrite to serve nexx.html
+/nexx              /nexx.html        200!
+/nexx.html         /nexx.html        200!
 /database          /nexx.html        301
 /db                /nexx.html        301
 
@@ -24,5 +25,5 @@
 /images/*          /images/:splat    200
 /data/*            /data/:splat      200
 
-# 404 fallback
-/*                 /index.html       404
+# SPA fallback - only for non-existent routes
+# Note: nexx.html and other HTML files should work directly
