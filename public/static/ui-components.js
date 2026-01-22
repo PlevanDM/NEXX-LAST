@@ -320,14 +320,14 @@
             )
           ),
           
-          // NEXX Database Button
-          h('a', {
-            href: '/nexx.html',
-            className: `hidden sm:inline-flex items-center gap-2 px-4 py-2 ${isScrolled ? 'bg-gray-900 hover:bg-gray-800 text-white border border-gray-700' : 'bg-white/20 hover:bg-white/30 text-white border border-white/30'} rounded-lg font-medium transition-all duration-300 active:scale-95 focus:outline-none`,
-            title: 'NEXX База Даних'
+          // Service Mod Button (PIN protected)
+          h('button', {
+            onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
+            className: `hidden sm:inline-flex items-center gap-2 px-4 py-2 ${isScrolled ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white' : 'bg-white/20 hover:bg-white/30 text-white border border-white/30'} rounded-lg font-medium transition-all duration-300 active:scale-95 focus:outline-none shadow-lg`,
+            title: 'Service Mod (PIN required)'
           },
-            h('i', { className: 'fas fa-database text-sm' }),
-            h('span', { className: 'hidden lg:inline' }, 'NEXX База')
+            h('i', { className: 'fas fa-tools text-sm' }),
+            h('span', { className: 'hidden lg:inline' }, 'Service Mod')
           ),
           
           // Language Switcher - visible on desktop
@@ -358,14 +358,13 @@
             h('i', { className: `fas ${link.icon} w-5` }),
             link.label
           )),
-          // NEXX Database link in mobile menu
-          h('a', {
-            href: '/nexx.html',
-            className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition border-t border-gray-200 mt-2 pt-3',
-            onClick: () => setIsMobileMenuOpen(false)
+          // Service Mod link in mobile menu (PIN protected)
+          h('button', {
+            onClick: () => { setIsMobileMenuOpen(false); window.openServiceModAuth && window.openServiceModAuth(); },
+            className: 'flex items-center gap-3 px-4 py-3 text-purple-700 hover:bg-purple-50 transition border-t border-gray-200 mt-2 pt-3 w-full text-left'
           },
-            h('i', { className: 'fas fa-database w-5' }),
-            'NEXX База'
+            h('i', { className: 'fas fa-tools w-5' }),
+            'Service Mod'
           )
         )
       )
