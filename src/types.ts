@@ -4,6 +4,7 @@ export interface PriceData {
   price_uah?: number;
   price_usd?: number;
   price_eur?: number;
+  price_ron?: number;
   category?: string;
   model?: string;
   discount?: number;
@@ -18,6 +19,7 @@ export interface ServicePart {
 export interface ChargingIC {
   main: string;
   designation?: string;
+  note?: string;
 }
 
 export interface DeviceSpecs {
@@ -28,6 +30,7 @@ export interface DeviceSpecs {
 
 export interface Device {
   name: string;
+  brand?: string;
   category?: string;
   model?: string;
   model_number?: string;
@@ -50,18 +53,27 @@ export interface Device {
   repair_difficulty?: string;
   repair_time?: string;
   connector_type?: string;
+  tools_needed?: string[];
   
   // Цены и запчасти
   service_parts?: Record<string, ServicePart>;
   official_service_prices?: Record<string, number>;
+  price_ron?: number;
+  price_eur?: number;
   
   // iFixit
   ifixit_url?: string;
   ifixit_image?: string;
+  icon_url?: string;
+  image?: string;
   repairability?: number | null;
   guides_count?: number;
   available_repairs?: string[];
   
+  // DFU/Recovery (Enriched)
+  dfu_mode?: string;
+  recovery_mode?: string;
+
   // Устаревшие поля (для совместимости)
   description?: string;
   specs?: DeviceSpecs;

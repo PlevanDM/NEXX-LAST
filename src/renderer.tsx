@@ -6,7 +6,7 @@ export const renderer = jsxRenderer(({ children }) => {
       <head>
         <link href="/static/style.css" rel="stylesheet" />
       </head>
-      <body>{children}</body>
+      <body>{children as any}</body>
     </html>
   )
 })
