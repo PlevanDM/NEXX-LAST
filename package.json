@@ -40,6 +40,7 @@
     "preview": "wrangler pages dev dist",
     "deploy": "npm run build && wrangler pages deploy dist --project-name nexx",
     "deploy:prod": "npm run build && wrangler pages deploy dist --project-name nexx --branch main",
+    "deploy:api": "powershell -ExecutionPolicy Bypass -File deploy-direct-api.ps1",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "type-check": "tsc --noEmit",
     "validate": "python3 scripts/validate_database.py",
@@ -49,7 +50,14 @@
     "update-icons": "node scripts/update_device_icons.cjs",
     "clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
     "clean:all": "npm run clean && node -e \"require('fs').rmSync('node_modules', {recursive: true, force: true})\"",
-    "check": "npm run type-check && npm run validate"
+    "check": "npm run type-check && npm run validate",
+    "git:status": "git status",
+    "git:pull": "git pull origin main",
+    "git:fetch": "git fetch origin",
+    "git:log": "git log --oneline -10",
+    "test:cf-api": "node test-cloudflare-api.js",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -71,7 +79,9 @@
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
+    "blake2b": "^2.1.4",
     "terser": "^5.46.0",
+    "tweetnacl": "^1.0.3",
     "typescript": "^5.7.2",
     "vite": "^7.3.1",
     "wrangler": "^4.59.2"

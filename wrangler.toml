@@ -1,0 +1,18 @@
+﻿# Cloudflare Pages/Workers Configuration
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "nexx"
+compatibility_date = "2025-01-20"
+compatibility_flags = ["nodejs_compat"]
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+# Account and Zone IDs
+account_id = "ad170d773e79a037e28f4530fd5305a5"
+
+# Environment variables
+[vars]
+PROJECT_NAME = "nexx"
+ENVIRONMENT = "production"
+ZONE_NAME = "nexxgsm.com"
