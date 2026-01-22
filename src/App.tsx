@@ -40,6 +40,7 @@ export const App = () => {
   const [servicePrices, setServicePrices] = React.useState<ServicePrices | null>(null);
   
   const [rates, setRates] = React.useState<any>(null);
+  const [keyCombinations, setKeyCombinations] = React.useState<any>(null);
 
   // Состояние интерфейса
   const [selectedDevice, setSelectedDevice] = React.useState<Device | null>(null);
@@ -208,6 +209,7 @@ export const App = () => {
       setServicePrices(data.servicePrices || null);
       
       setRates(data.rates);
+      setKeyCombinations(data.keyCombinations);
     } catch (err) {
       console.error(err);
       setError('Не удалось загрузить базу данных. Проверьте соединение.');
@@ -277,13 +279,13 @@ export const App = () => {
     // Поиск IC
     results.ics = Object.values(ics).filter(ic => 
       ic.name?.toLowerCase().includes(query) ||
-      ic.marking?.toLowerCase().includes(query) ||
-      ic.function?.toLowerCase().includes(query)
+      ic.designation?.toLowerCase().includes(query) ||
+      (ic.functions || []).some(f => f.toLowerCase().includes(query))
     ).slice(0, 5);
     
     // Поиск ошибок
     results.errors = Object.values(errors).filter(err => 
-      err.code?.toLowerCase().includes(query) ||
+      String(err.code).toLowerCase().includes(query) ||
       err.description?.toLowerCase().includes(query)
     ).slice(0, 5);
     
@@ -357,7 +359,7 @@ export const App = () => {
                              onClick={() => { setSelectedIC(ic); setGlobalSearch(''); }}
                              className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{ic.name}</div>
-                          <div className="text-xs text-slate-400">{ic.marking}</div>
+                          <div className="text-xs text-slate-400">{ic.designation}</div>
                         </div>
                       ))}
                     </div>
@@ -847,6 +849,7 @@ export const App = () => {
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
              <KeyCombinations 
+               data={keyCombinations}
                onClose={() => setShowKeyCombo(false)} 
              />
           </div>

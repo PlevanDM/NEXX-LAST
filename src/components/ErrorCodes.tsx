@@ -13,9 +13,9 @@ export const ErrorCodes: React.FC<ErrorCodesProps> = ({ errors, onClose }) => {
   const filteredErrors = React.useMemo(() => {
     // Превращаем объект в массив и фильтруем
     return Object.entries(errors)
-      .map(([code, detail]) => ({ code, ...detail }))
+      .map(([key, detail]) => ({ ...detail }))
       .filter(err => 
-        err.code.toLowerCase().includes(search.toLowerCase()) ||
+        String(err.code).toLowerCase().includes(search.toLowerCase()) ||
         err.description.toLowerCase().includes(search.toLowerCase()) ||
         (err.solution && err.solution.toLowerCase().includes(search.toLowerCase()))
       );
@@ -55,9 +55,9 @@ export const ErrorCodes: React.FC<ErrorCodesProps> = ({ errors, onClose }) => {
                 <span className="font-mono font-bold text-lg text-red-600 bg-red-50 px-2 py-0.5 rounded">
                   {err.code}
                 </span>
-                {err.category && (
+                {err.component && (
                   <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded-full">
-                    {err.category}
+                    {err.component}
                   </span>
                 )}
               </div>

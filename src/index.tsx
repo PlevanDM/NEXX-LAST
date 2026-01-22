@@ -4,7 +4,7 @@ import { cors } from 'hono/cors'
 import { secureHeaders } from 'hono/secure-headers'
 
 type Bindings = {
-  ASSETS: Fetcher
+  ASSETS: { fetch: (request: Request) => Promise<Response> }
 }
 
 const app = new Hono<{ Bindings: Bindings }>()

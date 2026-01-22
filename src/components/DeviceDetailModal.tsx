@@ -36,7 +36,7 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
   return (
     <Modal 
       title={device.name} 
-      subtitle={device.model_number || device.year}
+      subtitle={device.model_number || String(device.year || '')}
       onClose={onClose}
       color="blue"
     >
@@ -134,10 +134,10 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                   <div className="p-3 bg-white rounded-lg border border-green-100 shadow-sm">
                      <div className="text-xs text-slate-500 mb-1">Рыночная цена (Б/У)</div>
                      <div className="text-2xl font-bold text-slate-800">
-                       {formatPrice(device.price_uah || 0, 'UAH')}
+                       {formatPrice(device.price_ron || 0, 'RON')}
                      </div>
                      <div className="text-sm text-slate-400 font-mono">
-                       {formatPrice(device.price_usd || convertPrice(device.price_uah, 'UAH', 'USD', rates), 'USD')}
+                       {formatPrice(device.price_eur || 0, 'EUR')}
                      </div>
                   </div>
                 </div>
