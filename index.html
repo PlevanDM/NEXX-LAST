@@ -1720,6 +1720,63 @@
                     .catch(err => console.log('Service Worker error:', err));
             });
         }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installBanner = document.createElement('div');
+        installBanner.id = 'pwa-install-banner';
+        installBanner.innerHTML = `
+            <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;padding:16px 24px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.3);display:flex;align-items:center;gap:16px;z-index:9999;max-width:90%;animation:slideUp 0.5s ease-out;">
+                <div style="width:48px;height:48px;background:white;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                    <img src="/static/nexx-logo.png" alt="NEXX" style="width:36px;height:36px;">
+                </div>
+                <div style="flex:1;">
+                    <div style="font-weight:bold;font-size:16px;">Встановити NEXX GSM</div>
+                    <div style="font-size:13px;opacity:0.9;">Швидкий доступ з головного екрану</div>
+                </div>
+                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 20px;border-radius:10px;font-weight:bold;cursor:pointer;white-space:nowrap;">Встановити</button>
+                <button id="pwa-close-btn" style="background:transparent;border:none;color:white;font-size:24px;cursor:pointer;padding:4px;opacity:0.7;">×</button>
+            </div>
+        `;
+        installBanner.style.display = 'none';
+        document.body.appendChild(installBanner);
+        
+        // Add animation
+        const style = document.createElement('style');
+        style.textContent = '@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(100px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}';
+        document.head.appendChild(style);
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install banner after 3 seconds
+            setTimeout(() => {
+                if (!localStorage.getItem('pwa-install-dismissed')) {
+                    installBanner.style.display = 'block';
+                }
+            }, 3000);
+        });
+        
+        document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('PWA install:', outcome);
+                deferredPrompt = null;
+                installBanner.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('pwa-close-btn')?.addEventListener('click', () => {
+            installBanner.style.display = 'none';
+            localStorage.setItem('pwa-install-dismissed', 'true');
+        });
+        
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ PWA installed');
+            installBanner.style.display = 'none';
+            if (window.showToast) window.showToast('🎉 NEXX GSM встановлено!', 'success');
+        });
     </script>
 </body>
 </html>
