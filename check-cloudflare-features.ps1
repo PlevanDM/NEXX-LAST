@@ -135,4 +135,4 @@ Write-Host ""
 Write-Host "💡 To enable full automation, you need:" -ForegroundColor Yellow
 Write-Host "   1. API Token (not Global Key) for Pages deployment" -ForegroundColor White
 Write-Host "   2. Create at: https://dash.cloudflare.com/profile/api-tokens" -ForegroundColor Gray
-Write-Host "   3. Permissions: Cloudflare Pages → Edit" -ForegroundColor Gray
+Write-Host "   3. Permissions: Cloudflare Pages - Edit" -ForegroundColor Gray
