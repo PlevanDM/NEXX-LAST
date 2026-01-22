@@ -422,7 +422,11 @@
                     'booking.errors.nameRequired': 'Numele este obligatoriu (min. 2 caractere)',
                     'booking.errors.phoneInvalid': 'Telefonul este invalid',
                     'booking.errors.deviceRequired': 'Selectați dispozitivul',
-                    'booking.success': 'Mulțumim! Te vom suna în curând'
+                    'booking.success': 'Mulțumim! Te vom suna în curând',
+                    'buttons.freeLabel': '🎁 GRATUIT',
+                    'buttons.callBack': 'Sună-mă înapoi',
+                    'buttons.freeDiagnostic': 'Diagnostic gratuit inclus!',
+                    'buttons.calculate': 'Calculează prețul'
                 };
                 return fallbacks[key] || key;
             }
@@ -789,7 +793,7 @@
                         },
                             h('span', { className: 'relative z-10 text-lg flex items-center gap-2' },
                                 Icons.calculator({ size: 20 }),
-                                window.i18n?.t('buttons.calculate') || 'Calculează prețul',
+                                t('buttons.calculate'),
                                 h('span', { className: 'transition-transform group-hover:translate-x-1' }, Icons.arrowRight({ size: 16 }))
                             )
                         ),
@@ -801,11 +805,11 @@
                             // Bonus badge
                             h('span', { 
                                 className: 'absolute -top-3 -right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full animate-pulse shadow-lg'
-                            }, window.i18n?.t('buttons.freeLabel') || '🎁 GRATUIT'),
+                            }, t('buttons.freeLabel')),
                             h('span', { className: 'group-hover:animate-bounce' }, Icons.phoneCall({ size: 24 })),
                             h('span', { className: 'flex flex-col items-start' },
-                                h('span', { className: 'text-lg' }, window.i18n?.t('buttons.callBack') || 'Sună-mă înapoi'),
-                                h('span', { className: 'text-xs font-normal opacity-90' }, window.i18n?.t('buttons.freeDiagnostic') || 'Diagnostic gratuit inclus!')
+                                h('span', { className: 'text-lg' }, t('buttons.callBack')),
+                                h('span', { className: 'text-xs font-normal opacity-90' }, t('buttons.freeDiagnostic'))
                             )
                         )
                     )
