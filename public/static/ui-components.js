@@ -320,15 +320,14 @@
             )
           ),
           
-          // Service Mod Button (PIN protected) - PROMINENT VERSION
+          // Service Mod Button (PIN protected) - Small, subtle, black/white
           h('button', {
             onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
-            className: `inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:via-indigo-700 hover:to-purple-800 text-white rounded-xl font-bold text-sm transition-all duration-300 active:scale-95 focus:outline-none shadow-lg hover:shadow-purple-500/50 animate-pulse-slow border-2 border-purple-400/50`,
-            title: 'Service Mod (PIN required)',
-            style: { animation: 'pulse-glow 2s ease-in-out infinite' }
+            className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
+            title: 'Service Mod (PIN)'
           },
-            h('i', { className: 'fas fa-tools text-base' }),
-            h('span', null, '🔧 Service Mod')
+            h('i', { className: 'fas fa-cog text-xs' }),
+            h('span', null, 'Service')
           ),
           
           // Language Switcher - visible on desktop
@@ -359,13 +358,13 @@
             h('i', { className: `fas ${link.icon} w-5` }),
             link.label
           )),
-          // Service Mod link in mobile menu (PIN protected) - PROMINENT
+          // Service Mod link in mobile menu (PIN protected) - Small, subtle
           h('button', {
             onClick: () => { setIsMobileMenuOpen(false); window.openServiceModAuth && window.openServiceModAuth(); },
-            className: 'flex items-center gap-3 px-4 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 transition border-t-2 border-purple-400 mt-2 w-full text-left font-bold rounded-b-xl'
+            className: 'flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition text-xs border-t border-gray-100 mt-2 w-full text-left'
           },
-            h('i', { className: 'fas fa-tools w-6 text-lg' }),
-            h('span', null, '🔧 Service Mod (PIN)')
+            h('i', { className: 'fas fa-cog w-4 text-xs' }),
+            h('span', null, 'Service')
           )
         )
       )
