@@ -7,10 +7,10 @@ interface KeyCombinationsProps {
 }
 
 export const KeyCombinations: React.FC<KeyCombinationsProps> = ({ data, onClose }) => {
-  const [activeCategory, setActiveCategory] = React.useState<'iphone' | 'ipad' | 'mac' | 'watch'>('iphone');
-  const [activeMode, setActiveMode] = React.useState<'dfu_mode' | 'recovery_mode' | 'diagnostics'>('dfu_mode');
+  const [activeCategory, setActiveCategory] = React.useState<string>('iphone');
+  const [activeMode, setActiveMode] = React.useState<string>('dfu_mode');
 
-  if (!data) {
+  if (!data || Object.keys(data).length === 0) {
     return (
       <div className="flex flex-col h-full bg-white rounded-xl shadow-lg border border-slate-200">
         <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-purple-600 rounded-t-xl text-white">
@@ -52,7 +52,8 @@ export const KeyCombinations: React.FC<KeyCombinationsProps> = ({ data, onClose 
           { id: 'iphone', label: '📱 iPhone' },
           { id: 'ipad', label: '📱 iPad' },
           { id: 'mac', label: '💻 Mac' },
-          { id: 'watch', label: '⌚ Watch' }
+          { id: 'apple_watch', label: '⌚ Watch' },
+          { id: 'apple_tv', label: '📺 Apple TV' }
         ].map(cat => (
           <button
             key={cat.id}
@@ -84,6 +85,13 @@ export const KeyCombinations: React.FC<KeyCombinationsProps> = ({ data, onClose 
               {mode === 'dfu_mode' && '🔧 DFU Mode'}
               {mode === 'recovery_mode' && '🔄 Recovery Mode'}
               {mode === 'diagnostics' && '🩺 Diagnostics'}
+              {mode === 'force_restart' && '🔄 Force Restart'}
+              {mode === 'exit_dfu' && '⏏️ Exit DFU'}
+              {mode === 'boot_options' && '🔧 Boot Options'}
+              {mode === 'smc_reset' && '⚡ SMC Reset'}
+              {mode === 'nvram_reset' && '💾 NVRAM Reset'}
+              {mode === 'safe_mode' && '🛡️ Safe Mode'}
+              {!['dfu_mode', 'recovery_mode', 'diagnostics', 'force_restart', 'exit_dfu', 'boot_options', 'smc_reset', 'nvram_reset', 'safe_mode'].includes(mode) && `📋 ${mode.replace(/_/g, ' ')}`}
             </button>
           ))}
         </div>

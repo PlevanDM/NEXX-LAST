@@ -38,6 +38,7 @@ export const App = () => {
   const [measurements, setMeasurements] = React.useState<Record<string, DiodeMeasurement[]>>({});
   const [exchangePrices, setExchangePrices] = React.useState<Record<string, ExchangePrice>>({});
   const [servicePrices, setServicePrices] = React.useState<ServicePrices | null>(null);
+  const [services, setServices] = React.useState<Record<string, any>>({});
   
   const [rates, setRates] = React.useState<any>(null);
   const [keyCombinations, setKeyCombinations] = React.useState<any>(null);
@@ -207,9 +208,21 @@ export const App = () => {
       setMeasurements(data.measurements || {});
       setExchangePrices(data.exchangePrices || {});
       setServicePrices(data.servicePrices || null);
+      setServices(data.services || {});
       
       setRates(data.rates);
       setKeyCombinations(data.keyCombinations);
+      
+      // Debug logging
+      console.log('📊 Data loaded:', {
+        devices: data.devices?.length || 0,
+        errors: Object.keys(data.errors || {}).length,
+        ics: Object.keys(data.ics || {}).length,
+        logicBoards: data.logicBoards?.length || 0,
+        keyCombinations: Object.keys(data.keyCombinations || {}).length,
+        services: Object.keys(data.services || {}).length,
+        guides: data.guides?.length || 0
+      });
     } catch (err) {
       console.error(err);
       setError('Не удалось загрузить базу данных. Проверьте соединение.');
@@ -817,11 +830,11 @@ export const App = () => {
       )}
 
       {/* Service Prices Modal (NEW) */}
-      {showServicePrices && servicePrices && (
+      {showServicePrices && Object.keys(services).length > 0 && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
              <ServicePriceList 
-               prices={servicePrices}
+               services={services}
                rates={rates}
                onClose={() => setShowServicePrices(false)} 
              />

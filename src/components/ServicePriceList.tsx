@@ -1,56 +1,59 @@
 import React from 'react';
 import { Icons } from './Icons';
-import { ServicePrices, ServiceModel } from '../types';
-import { formatPrice, convertPrice } from '../utils';
+import { formatPrice } from '../utils';
+
+interface ServiceItem {
+  name: string;
+  price?: number;
+  free?: boolean;
+  icon?: string;
+}
 
 interface ServicePriceListProps {
-  prices: ServicePrices;
+  services: Record<string, ServiceItem>;
   rates: any;
   onClose: () => void;
 }
 
-export const ServicePriceList: React.FC<ServicePriceListProps> = ({ prices, rates, onClose }) => {
-  const [activeTab, setActiveTab] = React.useState<keyof ServicePrices>('iPhone');
+const iconMap: Record<string, string> = {
+  'fa-microscope': '🔬',
+  'fa-mobile-screen': '📱',
+  'fa-battery-full': '🔋',
+  'fa-plug': '🔌',
+  'fa-camera': '📷',
+  'fa-microchip': '💻',
+  'fa-code': '💾',
+  'fa-keyboard': '⌨️'
+};
+
+export const ServicePriceList: React.FC<ServicePriceListProps> = ({ services, rates, onClose }) => {
   const [search, setSearch] = React.useState('');
 
-  const currentModels = React.useMemo(() => {
-    const models = prices[activeTab] || [];
-    return models.filter(m => m.model.toLowerCase().includes(search.toLowerCase()));
-  }, [prices, activeTab, search]);
+  const servicesList = React.useMemo(() => {
+    return Object.entries(services).map(([key, value]) => ({
+      id: key,
+      ...value,
+      emoji: iconMap[value.icon || ''] || '🔧'
+    }));
+  }, [services]);
 
-  const getServicePriceUah = (priceStr: string) => {
-    // Цена в строке может быть "25" (EUR) или "25-30"
-    // Мы берем первое число и конвертируем
-    const num = parseFloat(priceStr.split(/[^0-9.]/)[0]);
-    if (isNaN(num)) return null;
-    return convertPrice(num, 'EUR', 'UAH', rates);
-  };
+  const filteredServices = React.useMemo(() => {
+    if (!search) return servicesList;
+    const q = search.toLowerCase();
+    return servicesList.filter(s => 
+      s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q)
+    );
+  }, [servicesList, search]);
 
   return (
     <div className="flex flex-col h-full bg-white rounded-xl shadow-lg border border-slate-200">
       <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-orange-600 rounded-t-xl text-white">
         <h2 className="text-lg font-bold flex items-center gap-2">
-          <Icons.Price /> Прайс на услуги (Работа)
+          <Icons.Price /> Servicii disponibile
         </h2>
         <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition-colors">
           <Icons.Close />
         </button>
-      </div>
-
-      <div className="bg-slate-50 p-2 flex gap-2 border-b border-slate-200 overflow-x-auto">
-        {Object.keys(prices).map(tab => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab as keyof ServicePrices)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              activeTab === tab 
-                ? 'bg-white text-orange-600 shadow-sm' 
-                : 'text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
       </div>
 
       <div className="p-4 bg-white border-b border-slate-200">
@@ -60,7 +63,7 @@ export const ServicePriceList: React.FC<ServicePriceListProps> = ({ prices, rate
           </div>
           <input
             type="text"
-            placeholder="Поиск модели..."
+            placeholder="Caută serviciu..."
             className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -69,33 +72,47 @@ export const ServicePriceList: React.FC<ServicePriceListProps> = ({ prices, rate
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 bg-slate-50">
-        <div className="grid grid-cols-1 gap-4">
-          {currentModels.map((item, i) => (
-            <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="font-bold text-lg text-slate-800 mb-3 border-b border-slate-100 pb-2">
-                {item.model}
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {Object.entries(item.services).map(([service, price]) => {
-                  const uahPrice = getServicePriceUah(price);
-                  return (
-                    <div key={service} className="flex justify-between items-center p-2 bg-slate-50 rounded">
-                      <span className="text-sm text-slate-600 font-medium truncate pr-2" title={service}>
-                        {service}
-                      </span>
-                      <div className="text-right">
-                        <span className="block font-bold text-orange-600">
-                          {uahPrice ? formatPrice(uahPrice, 'UAH') : price}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredServices.length > 0 ? (
+            filteredServices.map((service) => (
+              <div 
+                key={service.id} 
+                className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-all hover:border-orange-300"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="text-3xl">{service.emoji}</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-slate-800">{service.name}</h3>
+                    <div className="mt-2">
+                      {service.free ? (
+                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-bold">
+                          ✓ Gratuit
                         </span>
-                        {uahPrice && <span className="text-[10px] text-slate-400">({price} EUR)</span>}
-                      </div>
+                      ) : service.price ? (
+                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-bold">
+                          de la {service.price} RON
+                        </span>
+                      ) : (
+                        <span className="text-sm text-slate-500">Preț la cerere</span>
+                      )}
                     </div>
-                  );
-                })}
+                  </div>
+                </div>
               </div>
+            ))
+          ) : (
+            <div className="col-span-full flex flex-col items-center justify-center h-48 text-slate-400">
+              <p>Nu s-au găsit servicii</p>
             </div>
-          ))}
+          )}
+        </div>
+        
+        <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <h4 className="font-bold text-blue-800 mb-2">ℹ️ Notă</h4>
+          <p className="text-sm text-blue-700">
+            Prețurile finale depind de modelul dispozitivului și complexitatea reparației.
+            Contactați-ne pentru o estimare exactă.
+          </p>
         </div>
       </div>
     </div>
