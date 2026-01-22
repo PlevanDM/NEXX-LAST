@@ -547,16 +547,16 @@
                                     Icons.phoneCall({ size: 24, className: 'w-6 h-6 text-white' }),
                                     h('span', { className: 'absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs' }, '🎁')
                                 ),
-                                h('h3', { className: 'text-2xl font-bold text-white mb-1' }, 'Sună-mă înapoi'),
-                                h('p', { className: 'text-gray-400 text-sm' }, '🤖 AI vă sună în 10 secunde!'),
+                                h('h3', { className: 'text-2xl font-bold text-white mb-1' }, window.i18n?.t('callback.title') || 'Sună-mă înapoi'),
+                                h('p', { className: 'text-gray-400 text-sm' }, window.i18n?.t('callback.aiCalls') || '🤖 AI vă sună în 10 secunde!'),
                                 h('div', { className: 'mt-3 px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 rounded-xl' },
-                                    h('p', { className: 'text-yellow-400 text-sm font-semibold' }, '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!')
+                                    h('p', { className: 'text-yellow-400 text-sm font-semibold' }, window.i18n?.t('callback.bonus') || '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!')
                                 )
                             ),
                             
                             // Phone field (required)
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Telefon *'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.phone') || 'Telefon *'),
                                 h('input', {
                                     type: 'tel',
                                     value: phone,
@@ -569,7 +569,7 @@
                             
                             // Name field
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Nume'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.name') || 'Nume'),
                                 h('input', {
                                     type: 'text',
                                     value: name,
@@ -581,7 +581,7 @@
                             
                             // Device field
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Dispozitiv'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.device') || 'Dispozitiv'),
                                 h('input', {
                                     type: 'text',
                                     value: device,
@@ -593,7 +593,7 @@
                             
                             // Problem field
                             h('div', { className: 'mb-6' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Problemă'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.problem') || 'Problemă'),
                                 h('textarea', {
                                     value: problem,
                                     onChange: (e) => setProblem(e.target.value),
@@ -615,19 +615,19 @@
                                 isLoading ? (
                                     h(React.Fragment, null,
                                         Icons.loader({ size: 20 }),
-                                        'Se trimite...'
+                                        window.i18n?.t('callback.sending') || 'Se trimite...'
                                     )
                                 ) : (
                                     h(React.Fragment, null,
                                         Icons.phone({ size: 20 }),
-                                        'Trimite cererea'
+                                        window.i18n?.t('callback.submit') || 'Trimite cererea'
                                     )
                                 )
                             ),
                             
                             // Direct call link
                             h('div', { className: 'mt-4 text-center' },
-                                h('span', { className: 'text-gray-500 text-sm' }, 'sau sunați direct: '),
+                                h('span', { className: 'text-gray-500 text-sm' }, window.i18n?.t('callback.orCall') || 'sau sunați direct: '),
                                 h('a', {
                                     href: 'tel:+40721234567',
                                     className: 'text-blue-400 hover:text-blue-300 font-medium'
@@ -694,11 +694,11 @@
                             // Bonus badge
                             h('span', { 
                                 className: 'absolute -top-3 -right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full animate-pulse shadow-lg'
-                            }, '🎁 GRATUIT'),
+                            }, window.i18n?.t('buttons.freeLabel') || '🎁 GRATUIT'),
                             h('span', { className: 'group-hover:animate-bounce' }, Icons.phoneCall({ size: 24 })),
                             h('span', { className: 'flex flex-col items-start' },
-                                h('span', { className: 'text-lg' }, 'Sună-mă înapoi'),
-                                h('span', { className: 'text-xs font-normal opacity-90' }, 'Diagnostic gratuit inclus!')
+                                h('span', { className: 'text-lg' }, window.i18n?.t('buttons.callBack') || 'Sună-mă înapoi'),
+                                h('span', { className: 'text-xs font-normal opacity-90' }, window.i18n?.t('buttons.freeDiagnostic') || 'Diagnostic gratuit inclus!')
                             )
                         )
                     )
@@ -965,46 +965,47 @@
         // ============================================
         
         const WhyUs = () => {
+            const whyUsData = t('whyUs') || {};
             const features = [
                 { 
                     icon: 'smartphone',
-                    title: 'Multibrand',
-                    desc: 'Apple, Samsung, Xiaomi, Huawei, OnePlus și multe altele'
+                    title: whyUsData.multibrand?.title || 'Multibrand',
+                    desc: whyUsData.multibrand?.desc || 'Apple, Samsung, Xiaomi, Huawei și alte mărci'
                 },
                 { 
                     icon: 'zap',
-                    title: 'Service rapid',
-                    desc: 'Majoritatea reparațiilor în 30-60 minute. Express disponibil.'
+                    title: whyUsData.fast?.title || 'Service rapid',
+                    desc: whyUsData.fast?.desc || 'Majoritatea reparațiilor în 30-60 minute'
                 },
                 { 
                     icon: 'shield',
-                    title: 'Garanție 30 zile',
-                    desc: 'Garanție completă pentru toate reparațiile. Fără excepții.'
+                    title: whyUsData.warranty?.title || 'Garanție 30 zile',
+                    desc: whyUsData.warranty?.desc || 'Pe toate reparațiile'
                 },
                 { 
                     icon: 'tag',
-                    title: 'Prețuri corecte',
-                    desc: `${t('prices.startingPrice')}. ${t('prices.noHiddenFees')}. ${t('prices.calculator')}.`
+                    title: whyUsData.honest?.title || 'Prețuri corecte',
+                    desc: whyUsData.honest?.desc || 'Fără costuri ascunse'
                 },
                 { 
                     icon: 'wrench',
-                    title: 'Piese originale',
-                    desc: 'Original sau calitate premium. Verificate și testate.'
+                    title: whyUsData.original?.title || 'Piese originale',
+                    desc: whyUsData.original?.desc || 'Verificate și testate'
                 },
                 { 
                     icon: 'microscope',
-                    title: 'Diagnostic gratuit',
-                    desc: 'Diagnostic profesional sub microscop. Gratis la reparație.'
+                    title: whyUsData.diagnostic?.title || 'Diagnostic gratuit',
+                    desc: whyUsData.diagnostic?.desc || 'Profesional sub microscop'
                 },
                 { 
                     icon: 'camera',
-                    title: 'Transparent',
-                    desc: 'Raport foto/video complet al reparației. În timp real.'
+                    title: whyUsData.transparent?.title || 'Transparent',
+                    desc: whyUsData.transparent?.desc || 'Raport foto/video al reparației'
                 },
                 { 
                     icon: 'headphones',
-                    title: 'Suport Online',
-                    desc: 'Consultații după reparație. Telegram, WhatsApp disponibil.'
+                    title: whyUsData.support?.title || 'Suport Online',
+                    desc: whyUsData.support?.desc || 'Telegram, WhatsApp disponibil'
                 }
             ];
             

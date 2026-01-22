@@ -56,6 +56,23 @@
         next: 'Далі',
         prev: 'Назад',
         close: 'Закрити',
+        callBack: 'Передзвоніть мені',
+        freeDiagnostic: 'Безкоштовна діагностика!',
+        freeLabel: '🎁 БЕЗКОШТОВНО',
+      },
+      
+      // Callback Modal
+      callback: {
+        title: 'Передзвоніть мені',
+        aiCalls: '🤖 AI передзвонить за 10 секунд!',
+        bonus: '🎁 Бонус: БЕЗКОШТОВНА діагностика для онлайн-замовлень!',
+        phone: 'Телефон *',
+        name: "Ім'я",
+        device: 'Пристрій',
+        problem: 'Проблема',
+        sending: 'Відправляємо...',
+        submit: 'Надіслати запит',
+        orCall: 'або зателефонуйте: ',
       },
       
       // Services Section
@@ -273,6 +290,23 @@
         next: 'Următorul',
         prev: 'Înapoi',
         close: 'Închide',
+        callBack: 'Sună-mă înapoi',
+        freeDiagnostic: 'Diagnostic gratuit inclus!',
+        freeLabel: '🎁 GRATUIT',
+      },
+      
+      // Callback Modal
+      callback: {
+        title: 'Sună-mă înapoi',
+        aiCalls: '🤖 AI vă sună în 10 secunde!',
+        bonus: '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!',
+        phone: 'Telefon *',
+        name: 'Nume',
+        device: 'Dispozitiv',
+        problem: 'Problemă',
+        sending: 'Se trimite...',
+        submit: 'Trimite cererea',
+        orCall: 'sau sunați direct: ',
       },
       
       // Services Section
@@ -490,6 +524,23 @@
         next: 'Next',
         prev: 'Back',
         close: 'Close',
+        callBack: 'Call me back',
+        freeDiagnostic: 'Free diagnostic included!',
+        freeLabel: '🎁 FREE',
+      },
+      
+      // Callback Modal
+      callback: {
+        title: 'Call me back',
+        aiCalls: '🤖 AI will call you in 10 seconds!',
+        bonus: '🎁 Bonus: FREE diagnostic for online orders!',
+        phone: 'Phone *',
+        name: 'Name',
+        device: 'Device',
+        problem: 'Problem',
+        sending: 'Sending...',
+        submit: 'Send request',
+        orCall: 'or call directly: ',
       },
       
       // Services Section
