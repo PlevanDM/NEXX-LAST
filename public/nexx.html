@@ -39,6 +39,9 @@
         .animate-spin { animation: spin 1s linear infinite; }
         
         #database-wrapper {
+            padding-top: 0; /* Will be set dynamically when authenticated */
+        }
+        #database-wrapper.with-header {
             padding-top: 72px; /* Header height */
         }
     </style>
@@ -55,7 +58,8 @@
     <!-- Unified Footer -->
     <div id="app-footer"></div>
     
-    <!-- Load UI Components & Navigation -->
+    <!-- Load i18n, UI Components & Navigation -->
+    <script src="/static/i18n.js"></script>
     <script src="/static/ui-components.js"></script>
     <script src="/static/navigation-system.js"></script>
     
@@ -68,34 +72,39 @@
       const CORRECT_PIN = '31618585';
       
       // Render Unified Header with Search (only when authenticated)
-      const headerRoot = createRoot(document.getElementById('app-header'));
+      let headerRoot = null;
       const renderHeader = (isAuthed) => {
+        const wrapper = document.getElementById('database-wrapper');
         if (!isAuthed) {
-          headerRoot.render(null);
+          // Hide header container when not authenticated
+          document.getElementById('app-header').style.display = 'none';
+          wrapper.classList.remove('with-header');
           return;
         }
-        const HeaderWithSearch = () => h(React.Fragment, null,
-          h(Header, { currentPage: 'database' }),
-          h(Breadcrumbs, { currentPage: 'database' }),
-          h(GlobalSearch)
-        );
-        headerRoot.render(h(HeaderWithSearch));
+        document.getElementById('app-header').style.display = 'block';
+        wrapper.classList.add('with-header');
+        if (!headerRoot) {
+          headerRoot = createRoot(document.getElementById('app-header'));
+        }
+        // Only render Header for database page - no breadcrumbs or global search
+        headerRoot.render(h(Header, { currentPage: 'database' }));
       };
       renderHeader(localStorage.getItem('nexx_auth') === 'true');
       
       // Render Unified Footer with Quick Actions (only when authenticated)
-      const footerRoot = createRoot(document.getElementById('app-footer'));
+      let footerRoot = null;
       const renderFooter = (isAuthed) => {
         if (!isAuthed) {
-          footerRoot.render(null);
+          // Hide footer container when not authenticated
+          document.getElementById('app-footer').style.display = 'none';
           return;
         }
-        const FooterWithActions = () => h(React.Fragment, null,
-          h(Footer),
-          h(QuickActions, { currentPage: 'database' }),
-          h(BackButton, { showAlways: true })
-        );
-        footerRoot.render(h(FooterWithActions));
+        document.getElementById('app-footer').style.display = 'block';
+        if (!footerRoot) {
+          footerRoot = createRoot(document.getElementById('app-footer'));
+        }
+        // Only render Footer for database - no extra actions or back button
+        footerRoot.render(h(Footer));
       };
       renderFooter(localStorage.getItem('nexx_auth') === 'true');
       
@@ -145,11 +154,18 @@
         }
         isDatabaseLoading = true;
 
+        // Properly cleanup existing React root
         if (root) {
-          root.unmount();
+          try {
+            root.unmount();
+          } catch (e) {
+            console.warn('Root unmount warning:', e);
+          }
           root = null;
         }
-
+        
+        // Clear the container before loading new content
+        container.innerHTML = '';
         setLoader();
 
         const script = document.createElement('script');
@@ -158,7 +174,7 @@
         script.async = true;
         script.onload = () => {
           console.log('✅ NEXX Database loaded');
-          container.innerHTML = '';
+          // Note: app.js will render itself, don't clear container here
           renderHeader(true); // Show header after authentication
           renderFooter(true); // Show footer after authentication
         };

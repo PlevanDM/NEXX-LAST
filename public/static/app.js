@@ -1,820 +1,100 @@
-// NEXX Database - Apple Repair Database v7.6.1
-// Enhanced with AI Self-Healing System v2.0, Error Tracking, Auto-Diagnostics, Smart Suggestions
-// Build: 2026-01-19-v2 (Cache Busted)
-const { useState, useMemo, useEffect, useCallback, createElement: h } = React;
+// NEXX Database 2026 - Ultimate Repair Knowledge Base
+// Version 12.0 - Unified Professional Edition with Smart Search
+// Build: 2026-01-20
 
-// ===== 🤖 AI SELF-HEALING SYSTEM V2.0 =====
-// Автоматическое отслеживание, диагностика и исправление ошибок
-const AIHealer = {
-  errors: [],
-  fixes: [],
-  isEnabled: true,
-  maxErrors: 100,
-  userActions: [], // Отслеживание действий пользователя
-  performanceMetrics: [], // Метрики производительности
-  
-  // Конфигурация известных ошибок и их автоисправлений
-  knownFixes: {
-    // TypeError fixes
-    'Cannot read properties of undefined': {
-      pattern: /Cannot read propert(y|ies) of (undefined|null).*'(\w+)'/,
-      fix: (match, context) => {
-        const prop = match[3];
-        return { 
-          suggestion: `Добавить проверку: if (obj?.${prop})`,
-          autoFix: true,
-          severity: 'high'
-        };
-      }
-    },
-    'is not a function': {
-      pattern: /(\w+) is not a function/,
-      fix: (match) => ({
-        suggestion: `Проверить что ${match[1]} определён как функция`,
-        autoFix: false,
-        severity: 'high'
-      })
-    },
-    // React-specific fixes
-    'Invalid hook call': {
-      pattern: /Invalid hook call/,
-      fix: () => ({
-        suggestion: 'Hooks должны вызываться только на верхнем уровне компонента',
-        autoFix: false,
-        severity: 'critical'
-      })
-    },
-    'Rendered more hooks': {
-      pattern: /Rendered (more|fewer) hooks than during the previous render/,
-      fix: () => ({
-        suggestion: 'Количество хуков должно быть одинаковым при каждом рендере. Переместите все useState/useMemo в начало компонента.',
-        autoFix: false,
-        severity: 'critical'
-      })
-    },
-    // Network errors
-    'Failed to fetch': {
-      pattern: /Failed to fetch|NetworkError|net::ERR/,
-      fix: () => ({
-        suggestion: 'Проблема с сетью. Проверьте подключение и доступность API.',
-        autoFix: false,
-        severity: 'medium'
-      })
-    },
-    // JSON parse errors
-    'JSON.parse': {
-      pattern: /JSON\.parse|Unexpected token|SyntaxError.*JSON/,
-      fix: () => ({
-        suggestion: 'Ошибка парсинга JSON. Данные повреждены или неверный формат.',
-        autoFix: false,
-        severity: 'medium'
-      })
-    },
-    // Data loading errors
-    'Failed to load': {
-      pattern: /Failed to load|404|403|500/,
-      fix: (match) => ({
-        suggestion: 'Не удалось загрузить ресурс. Проверьте доступность файла или API.',
-        autoFix: false,
-        severity: 'high',
-        actions: ['Проверить URL', 'Проверить права доступа', 'Обновить страницу']
-      })
-    },
-    // Memory leaks
-    'Memory leak': {
-      pattern: /Memory.*leak|Too many.*created/,
-      fix: () => ({
-        suggestion: 'Возможна утечка памяти. Проверьте отписки от событий и очистку useEffect.',
-        autoFix: false,
-        severity: 'critical',
-        actions: ['Добавить cleanup функции', 'Проверить useEffect зависимости']
-      })
-    }
-  },
-  
-  // Отслеживание действий пользователя для контекстной помощи
-  trackAction(action, data = {}) {
-    const actionEntry = {
-      id: Date.now() + Math.random().toString(36).substr(2, 9),
-      timestamp: new Date().toISOString(),
-      action,
-      data,
-      context: {
-        url: window.location.href,
-        previousAction: this.userActions[0]?.action || 'none'
-      }
-    };
-    
-    this.userActions.unshift(actionEntry);
-    if (this.userActions.length > 50) {
-      this.userActions.pop();
-    }
-  },
-  
-  // Метрики производительности
-  trackPerformance(metric, value) {
-    this.performanceMetrics.unshift({
-      metric,
-      value,
-      timestamp: new Date().toISOString()
-    });
-    if (this.performanceMetrics.length > 100) {
-      this.performanceMetrics.pop();
-    }
-  },
-  
-  // Получить умные рекомендации на основе истории ошибок
-  getSmartSuggestions() {
-    const suggestions = [];
-    
-    // Анализ частых ошибок
-    const errorCounts = {};
-    this.errors.forEach(err => {
-      const key = err.message.substring(0, 50);
-      errorCounts[key] = (errorCounts[key] || 0) + 1;
-    });
-    
-    Object.entries(errorCounts).forEach(([msg, count]) => {
-      if (count >= 3) {
-        suggestions.push({
-          type: 'frequent',
-          severity: 'high',
-          message: `Повторяющаяся ошибка (${count}x): ${msg}`,
-          action: 'Требует немедленного исправления'
-        });
-      }
-    });
-    
-    // Анализ критических ошибок
-    const criticalErrors = this.errors.filter(e => e.fix?.severity === 'critical');
-    if (criticalErrors.length > 0) {
-      suggestions.push({
-        type: 'critical',
-        severity: 'critical',
-        message: `Найдено ${criticalErrors.length} критических ошибок`,
-        action: 'Исправьте критические ошибки в первую очередь'
-      });
-    }
-    
-    // Анализ производительности
-    const slowMetrics = this.performanceMetrics.filter(m => m.value > 3000);
-    if (slowMetrics.length > 5) {
-      suggestions.push({
-        type: 'performance',
-        severity: 'medium',
-        message: 'Обнаружены проблемы с производительностью',
-        action: 'Оптимизируйте медленные операции'
-      });
-    }
-    
-    return suggestions;
-  },
-  
-  // Экспорт отчёта для разработчиков
-  exportReport() {
-    const report = {
-      generatedAt: new Date().toISOString(),
-      appVersion: '7.5',
-      stats: this.getStats(),
-      errors: this.errors.slice(0, 20),
-      userActions: this.userActions.slice(0, 20),
-      performanceMetrics: this.performanceMetrics.slice(0, 20),
-      suggestions: this.getSmartSuggestions(),
-      browser: {
-        userAgent: navigator.userAgent,
-        platform: navigator.platform,
-        language: navigator.language,
-        online: navigator.onLine
-      }
-    };
-    
-    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `nexx-error-report-${Date.now()}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    
-    return report;
-  },
-  
-  // Логирование ошибки
-  log(error, context = {}) {
-    if (!this.isEnabled) return;
-    
-    const errorEntry = {
-      id: Date.now() + Math.random().toString(36).substr(2, 9),
-      timestamp: new Date().toISOString(),
-      message: error.message || String(error),
-      stack: error.stack,
-      context: {
-        component: context.component || 'Unknown',
-        action: context.action || 'Unknown',
-        data: context.data ? JSON.stringify(context.data).substring(0, 500) : null,
-        url: window.location.href,
-        userAgent: navigator.userAgent
-      },
-      fix: null,
-      fixed: false
-    };
-    
-    // Попытка найти автоисправление
-    errorEntry.fix = this.findFix(errorEntry.message);
-    
-    // Добавить в лог
-    this.errors.unshift(errorEntry);
-    if (this.errors.length > this.maxErrors) {
-      this.errors.pop();
-    }
-    
-    // Вывести в консоль с красивым форматированием
-    console.group('%c🤖 AI Healer: Error Detected', 'background: #ff4444; color: white; padding: 4px 8px; border-radius: 4px;');
-    console.log('%cMessage:', 'font-weight: bold;', errorEntry.message);
-    console.log('%cComponent:', 'font-weight: bold;', errorEntry.context.component);
-    console.log('%cAction:', 'font-weight: bold;', errorEntry.context.action);
-    if (errorEntry.fix) {
-      console.log('%c💡 Suggestion:', 'color: #4CAF50; font-weight: bold;', errorEntry.fix.suggestion);
-      console.log('%cSeverity:', 'font-weight: bold;', errorEntry.fix.severity);
-    }
-    console.log('%cStack:', 'color: #999;', errorEntry.stack);
-    console.groupEnd();
-    
-    // Сохранить в localStorage для анализа
-    this.saveToStorage();
-    
-    return errorEntry;
-  },
-  
-  // Найти подходящее исправление
-  findFix(message) {
-    for (const [name, config] of Object.entries(this.knownFixes)) {
-      const match = message.match(config.pattern);
-      if (match) {
-        return { name, ...config.fix(match) };
-      }
-    }
-    return null;
-  },
-  
-  // Сохранить в localStorage
-  saveToStorage() {
-    try {
-      localStorage.setItem('nexx_ai_healer_errors', JSON.stringify(this.errors.slice(0, 20)));
-    } catch (e) { /* ignore */ }
-  },
-  
-  // Загрузить из localStorage
-  loadFromStorage() {
-    try {
-      const saved = localStorage.getItem('nexx_ai_healer_errors');
-      if (saved) {
-        this.errors = JSON.parse(saved);
-      }
-    } catch (e) { /* ignore */ }
-  },
-  
-  // Получить статистику ошибок
-  getStats() {
-    const stats = {
-      total: this.errors.length,
-      byComponent: {},
-      bySeverity: { critical: 0, high: 0, medium: 0, low: 0 },
-      recent: this.errors.slice(0, 5)
-    };
-    
-    this.errors.forEach(err => {
-      const comp = err.context.component;
-      stats.byComponent[comp] = (stats.byComponent[comp] || 0) + 1;
-      if (err.fix) {
-        stats.bySeverity[err.fix.severity] = (stats.bySeverity[err.fix.severity] || 0) + 1;
-      }
-    });
-    
-    return stats;
-  },
-  
-  // Очистить лог ошибок
-  clear() {
-    this.errors = [];
-    this.saveToStorage();
-  },
-  
-  // Обёртка для безопасного вызова функций
-  safe(fn, context = {}) {
-    return (...args) => {
-      try {
-        return fn(...args);
-      } catch (error) {
-        this.log(error, context);
-        return context.fallback !== undefined ? context.fallback : null;
-      }
-    };
-  },
-  
-  // Обёртка для компонентов React
-  wrapComponent(Component, name) {
-    return (props) => {
-      try {
-        return Component(props);
-      } catch (error) {
-        this.log(error, { component: name, action: 'render', data: props });
-        // Вернуть fallback UI
-        return h('div', { className: 'p-4 bg-red-50 border border-red-200 rounded-xl' },
-          h('p', { className: 'text-red-600 font-semibold' }, `⚠️ Ошибка в компоненте: ${name}`),
-          h('p', { className: 'text-sm text-red-500 mt-1' }, error.message),
-          this.findFix(error.message) && h('p', { className: 'text-sm text-green-600 mt-2' }, 
-            '💡 ' + this.findFix(error.message).suggestion
-          )
-        );
-      }
-    };
-  }
-};
+const { useState, useEffect, useMemo, useCallback, useRef, createElement: h } = React;
 
-// Инициализация: загрузить сохранённые ошибки
-AIHealer.loadFromStorage();
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
 
-// Глобальный обработчик ошибок
-window.onerror = function(message, source, lineno, colno, error) {
-  AIHealer.log(error || new Error(message), {
-    component: 'Global',
-    action: 'window.onerror',
-    data: { source, lineno, colno }
-  });
-  return false; // Позволить стандартную обработку
-};
-
-// Обработчик необработанных Promise rejection
-window.onunhandledrejection = function(event) {
-  AIHealer.log(event.reason || new Error('Unhandled Promise Rejection'), {
-    component: 'Global',
-    action: 'unhandledrejection'
-  });
-};
-
-// Экспортировать глобально для отладки
-window.AIHealer = AIHealer;
-
-// ===== REACT ERROR BOUNDARY HOOK =====
-const useErrorBoundary = (componentName) => {
-  const [error, setError] = useState(null);
-  
-  const resetError = useCallback(() => setError(null), []);
-  
-  const captureError = useCallback((err, context = {}) => {
-    AIHealer.log(err, { component: componentName, ...context });
-    setError(err);
-  }, [componentName]);
-  
-  return { error, resetError, captureError };
-};
-
-// ===== SAFE DATA ACCESS HELPERS =====
-const safeGet = (obj, path, defaultValue = null) => {
-  try {
-    const keys = path.split('.');
-    let result = obj;
-    for (const key of keys) {
-      if (result == null) return defaultValue;
-      result = result[key];
-    }
-    return result ?? defaultValue;
-  } catch (e) {
-    return defaultValue;
-  }
-};
-
-const safeCall = (fn, args = [], fallback = null) => {
-  try {
-    return fn(...args);
-  } catch (e) {
-    AIHealer.log(e, { action: 'safeCall', data: { fnName: fn.name } });
-    return fallback;
-  }
-};
-
-const safeMap = (arr, mapFn, fallback = []) => {
-  if (!Array.isArray(arr)) return fallback;
-  try {
-    return arr.map(mapFn);
-  } catch (e) {
-    AIHealer.log(e, { action: 'safeMap' });
-    return fallback;
-  }
-};
-
-// ===== AI HEALER DEBUG PANEL COMPONENT V2.0 =====
-const AIHealerPanel = ({ onClose }) => {
-  const [stats, setStats] = useState(AIHealer.getStats());
-  const [filter, setFilter] = useState('all');
-  const [activeTab, setActiveTab] = useState('errors'); // errors, suggestions, performance, actions
-  const [suggestions, setSuggestions] = useState(AIHealer.getSmartSuggestions());
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStats(AIHealer.getStats());
-      setSuggestions(AIHealer.getSmartSuggestions());
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-  
-  const filteredErrors = filter === 'all' 
-    ? AIHealer.errors 
-    : AIHealer.errors.filter(e => e.fix?.severity === filter);
-  
-  const handleExport = () => {
-    AIHealer.exportReport();
-  };
-  
-  return h('div', { className: 'fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 backdrop-blur-sm' },
-    h('div', { className: 'bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col' },
-      // Header
-      h('div', { className: 'bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 p-5 text-white' },
-        h('div', { className: 'flex justify-between items-center' },
-          h('div', null,
-            h('h2', { className: 'text-2xl font-bold flex items-center gap-2' }, 
-              '🤖 AI Healer v2.0 - Умная Диагностика'
-            ),
-            h('p', { className: 'text-white/90 text-sm mt-1' }, 
-              `Отслежено: ${stats.total} ошибок • ${AIHealer.userActions.length} действий • ${suggestions.length} рекомендаций`
-            )
-          ),
-          h('div', { className: 'flex gap-2' },
-            h('button', {
-              onClick: handleExport,
-              className: 'px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-all flex items-center gap-2'
-            }, '📥 Экспорт'),
-            h('button', {
-              onClick: () => { AIHealer.clear(); setStats(AIHealer.getStats()); },
-              className: 'px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium'
-            }, '🗑️ Очистить'),
-            h('button', {
-              onClick: onClose,
-              className: 'w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-lg'
-            }, '✕')
-          )
-        )
-      ),
-      
-      // Stats Dashboard
-      h('div', { className: 'p-4 bg-gradient-to-br from-slate-50 to-slate-100 border-b grid grid-cols-2 sm:grid-cols-4 gap-3' },
-        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-red-200 text-center hover:scale-105 transition-transform' },
-          h('p', { className: 'text-3xl font-black text-red-600' }, stats.bySeverity.critical || 0),
-          h('p', { className: 'text-xs font-bold text-red-500 mt-1' }, 'CRITICAL'),
-          h('div', { className: 'mt-2 h-1 bg-red-200 rounded-full overflow-hidden' },
-            h('div', { className: 'h-full bg-red-500', style: { width: `${Math.min((stats.bySeverity.critical / stats.total) * 100, 100)}%` } })
-          )
-        ),
-        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-orange-200 text-center hover:scale-105 transition-transform' },
-          h('p', { className: 'text-3xl font-black text-orange-600' }, stats.bySeverity.high || 0),
-          h('p', { className: 'text-xs font-bold text-orange-500 mt-1' }, 'HIGH'),
-          h('div', { className: 'mt-2 h-1 bg-orange-200 rounded-full overflow-hidden' },
-            h('div', { className: 'h-full bg-orange-500', style: { width: `${Math.min((stats.bySeverity.high / stats.total) * 100, 100)}%` } })
-          )
-        ),
-        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-yellow-200 text-center hover:scale-105 transition-transform' },
-          h('p', { className: 'text-3xl font-black text-yellow-600' }, stats.bySeverity.medium || 0),
-          h('p', { className: 'text-xs font-bold text-yellow-500 mt-1' }, 'MEDIUM'),
-          h('div', { className: 'mt-2 h-1 bg-yellow-200 rounded-full overflow-hidden' },
-            h('div', { className: 'h-full bg-yellow-500', style: { width: `${Math.min((stats.bySeverity.medium / stats.total) * 100, 100)}%` } })
-          )
-        ),
-        h('div', { className: 'p-4 bg-white rounded-xl shadow-sm border-2 border-green-200 text-center hover:scale-105 transition-transform' },
-          h('p', { className: 'text-3xl font-black text-green-600' }, AIHealer.userActions.length),
-          h('p', { className: 'text-xs font-bold text-green-500 mt-1' }, 'ACTIONS'),
-          h('div', { className: 'mt-2 h-1 bg-green-200 rounded-full' },
-            h('div', { className: 'h-full bg-green-500 animate-pulse', style: { width: '75%' } })
-          )
-        )
-      ),
-      
-      // Tabs Navigation
-      h('div', { className: 'flex bg-white border-b overflow-x-auto' },
-        ...['errors', 'suggestions', 'performance', 'actions'].map(tab =>
-          h('button', {
-            key: tab,
-            onClick: () => setActiveTab(tab),
-            className: `px-6 py-3 text-sm font-bold transition-all border-b-2 whitespace-nowrap ${
-              activeTab === tab 
-                ? 'text-purple-600 border-purple-600 bg-purple-50' 
-                : 'text-slate-500 border-transparent hover:text-slate-700 hover:bg-slate-50'
-            }`
-          }, 
-            tab === 'errors' ? `❌ Ошибки (${stats.total})` :
-            tab === 'suggestions' ? `💡 Рекомендации (${suggestions.length})` :
-            tab === 'performance' ? `⚡ Производительность` :
-            `📊 Действия (${AIHealer.userActions.length})`
-          )
-        )
-      ),
-      // Tab Content
-      h('div', { className: 'flex-1 overflow-y-auto p-4' },
-        // Errors Tab
-        activeTab === 'errors' && h('div', null,
-          // Filter buttons
-          h('div', { className: 'mb-4 flex flex-wrap gap-2' },
-            ...['all', 'critical', 'high', 'medium'].map(f =>
-              h('button', {
-                key: f,
-                onClick: () => setFilter(f),
-                className: `px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
-                  filter === f 
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg' 
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`
-              }, f === 'all' ? '🔍 Все' : 
-                 f === 'critical' ? '🔴 Critical' :
-                 f === 'high' ? '🟠 High' : '🟡 Medium')
-            )
-          ),
-          
-          // Errors list
-          h('div', { className: 'space-y-3' },
-            filteredErrors.length === 0 
-              ? h('div', { className: 'text-center py-16 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl' },
-                  h('p', { className: 'text-6xl mb-4 animate-bounce' }, '✅'),
-                  h('p', { className: 'text-xl font-bold text-green-600' }, 'Отлично!'),
-                  h('p', { className: 'text-slate-500 mt-2' }, 'Ошибок не обнаружено. Приложение работает стабильно.')
-                )
-              : filteredErrors.map(err =>
-                  h('div', { 
-                    key: err.id, 
-                    className: `p-5 rounded-xl border-2 shadow-sm hover:shadow-md transition-all ${
-                      err.fix?.severity === 'critical' ? 'bg-gradient-to-br from-red-50 to-rose-50 border-red-300' :
-                      err.fix?.severity === 'high' ? 'bg-gradient-to-br from-orange-50 to-amber-50 border-orange-300' :
-                      err.fix?.severity === 'medium' ? 'bg-gradient-to-br from-yellow-50 to-lime-50 border-yellow-300' :
-                      'bg-gradient-to-br from-slate-50 to-gray-50 border-slate-300'
-                    }`
-                  },
-                    // Header
-                    h('div', { className: 'flex justify-between items-start gap-3 mb-3' },
-                      h('div', { className: 'flex-1 min-w-0' },
-                        h('p', { className: 'font-bold text-lg text-slate-900 mb-2' }, err.message),
-                        h('div', { className: 'flex items-center gap-3 text-xs' },
-                          h('span', { className: 'px-2 py-1 bg-blue-100 text-blue-700 rounded font-mono' }, 
-                            `📍 ${err.context.component}`
-                          ),
-                          h('span', { className: 'px-2 py-1 bg-indigo-100 text-indigo-700 rounded font-mono' }, 
-                            `⚡ ${err.context.action}`
-                          ),
-                          h('span', { className: 'text-slate-400' }, 
-                            new Date(err.timestamp).toLocaleString('ru-RU')
-                          )
-                        )
-                      ),
-                      err.fix && h('span', { 
-                        className: `px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm ${
-                          err.fix.severity === 'critical' ? 'bg-red-600 text-white' :
-                          err.fix.severity === 'high' ? 'bg-orange-600 text-white' :
-                          'bg-yellow-600 text-white'
-                        }`
-                      }, err.fix.severity)
-                    ),
-                    
-                    // Fix suggestion
-                    err.fix && h('div', { className: 'mt-3 p-4 bg-white rounded-lg border-2 border-green-300 shadow-sm' },
-                      h('p', { className: 'text-sm font-bold text-green-700 mb-2 flex items-center gap-2' }, 
-                        '💡 Рекомендация:'
-                      ),
-                      h('p', { className: 'text-sm text-green-800' }, err.fix.suggestion),
-                      err.fix.actions && h('div', { className: 'mt-3 flex flex-wrap gap-2' },
-                        ...err.fix.actions.map((action, i) =>
-                          h('span', { 
-                            key: i,
-                            className: 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium'
-                          }, `▶ ${action}`)
-                        )
-                      )
-                    ),
-                    
-                    // Stack trace
-                    err.stack && h('details', { className: 'mt-3 group' },
-                      h('summary', { 
-                        className: 'text-xs font-bold text-slate-500 cursor-pointer hover:text-slate-700 p-2 bg-white rounded hover:bg-slate-50 transition-colors'
-                      }, '📜 Stack Trace'),
-                      h('pre', { 
-                        className: 'mt-2 p-3 bg-slate-900 text-green-400 rounded-lg text-xs overflow-x-auto font-mono shadow-inner border border-slate-700' 
-                      }, err.stack.split('\n').slice(0, 8).join('\n'))
-                    )
-                  )
-                )
-          )
-        ),
-        
-        // Suggestions Tab
-        activeTab === 'suggestions' && h('div', { className: 'space-y-4' },
-          suggestions.length === 0 
-            ? h('div', { className: 'text-center py-16 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl' },
-                h('p', { className: 'text-6xl mb-4' }, '🎯'),
-                h('p', { className: 'text-xl font-bold text-blue-600' }, 'Всё в порядке!'),
-                h('p', { className: 'text-slate-500 mt-2' }, 'Умных рекомендаций пока нет.')
-              )
-            : suggestions.map((sugg, i) =>
-                h('div', { 
-                  key: i,
-                  className: `p-5 rounded-xl border-2 shadow-md bg-gradient-to-br ${
-                    sugg.severity === 'critical' ? 'from-red-50 to-rose-100 border-red-400' :
-                    sugg.severity === 'high' ? 'from-orange-50 to-amber-100 border-orange-400' :
-                    'from-blue-50 to-cyan-100 border-blue-400'
-                  }`
-                },
-                  h('div', { className: 'flex items-start gap-4' },
-                    h('div', { 
-                      className: `text-4xl ${
-                        sugg.type === 'frequent' ? '🔄' :
-                        sugg.type === 'critical' ? '🚨' :
-                        sugg.type === 'performance' ? '⚡' : '💡'
-                      }`
-                    }, sugg.type === 'frequent' ? '🔄' :
-                       sugg.type === 'critical' ? '🚨' :
-                       sugg.type === 'performance' ? '⚡' : '💡'),
-                    h('div', { className: 'flex-1' },
-                      h('p', { className: 'font-bold text-lg text-slate-900 mb-2' }, sugg.message),
-                      h('p', { className: 'text-sm text-slate-700 bg-white px-3 py-2 rounded-lg inline-block' }, 
-                        `✓ ${sugg.action}`
-                      )
-                    )
-                  )
-                )
-              )
-        ),
-        
-        // Performance Tab
-        activeTab === 'performance' && h('div', { className: 'space-y-4' },
-          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-6' },
-            h('div', { className: 'p-5 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl border-2 border-purple-300' },
-              h('p', { className: 'text-sm font-bold text-purple-700 mb-1' }, 'Среднее время отклика'),
-              h('p', { className: 'text-3xl font-black text-purple-900' }, 
-                `${AIHealer.performanceMetrics.length > 0 
-                  ? Math.round(AIHealer.performanceMetrics.reduce((a,b) => a + b.value, 0) / AIHealer.performanceMetrics.length) 
-                  : 0}ms`
-              )
-            ),
-            h('div', { className: 'p-5 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-xl border-2 border-cyan-300' },
-              h('p', { className: 'text-sm font-bold text-cyan-700 mb-1' }, 'Медленных операций'),
-              h('p', { className: 'text-3xl font-black text-cyan-900' }, 
-                AIHealer.performanceMetrics.filter(m => m.value > 3000).length
-              )
-            )
-          ),
-          h('div', { className: 'space-y-2' },
-            AIHealer.performanceMetrics.slice(0, 15).map((metric, i) =>
-              h('div', { 
-                key: i,
-                className: `p-3 rounded-lg border ${
-                  metric.value > 3000 ? 'bg-red-50 border-red-200' :
-                  metric.value > 1000 ? 'bg-yellow-50 border-yellow-200' :
-                  'bg-green-50 border-green-200'
-                }`
-              },
-                h('div', { className: 'flex justify-between items-center' },
-                  h('span', { className: 'font-mono text-sm font-bold' }, metric.metric),
-                  h('div', { className: 'flex items-center gap-2' },
-                    h('span', { 
-                      className: `font-bold ${
-                        metric.value > 3000 ? 'text-red-600' :
-                        metric.value > 1000 ? 'text-yellow-600' :
-                        'text-green-600'
-                      }`
-                    }, `${metric.value}ms`),
-                    h('span', { className: 'text-xs text-slate-400' }, 
-                      new Date(metric.timestamp).toLocaleTimeString('ru-RU')
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        
-        // Actions Tab
-        activeTab === 'actions' && h('div', { className: 'space-y-2' },
-          AIHealer.userActions.length === 0 
-            ? h('div', { className: 'text-center py-16 bg-slate-50 rounded-2xl' },
-                h('p', { className: 'text-6xl mb-4' }, '📊'),
-                h('p', { className: 'text-xl font-bold text-slate-600' }, 'Действия не отслеживаются'),
-                h('p', { className: 'text-slate-400 mt-2 text-sm' }, 'Начните использовать приложение')
-              )
-            : AIHealer.userActions.slice(0, 50).map((action, i) =>
-                h('div', { 
-                  key: action.id,
-                  className: 'p-3 bg-white hover:bg-slate-50 rounded-lg border border-slate-200 transition-all'
-                },
-                  h('div', { className: 'flex justify-between items-center' },
-                    h('div', { className: 'flex items-center gap-3' },
-                      h('span', { className: 'text-2xl' }, 
-                        action.action.includes('click') ? '👆' :
-                        action.action.includes('search') ? '🔍' :
-                        action.action.includes('open') ? '📂' :
-                        action.action.includes('close') ? '✕' : '⚡'
-                      ),
-                      h('div', null,
-                        h('p', { className: 'font-mono text-sm font-bold text-slate-700' }, action.action),
-                        h('p', { className: 'text-xs text-slate-400' }, action.context.previousAction)
-                      )
-                    ),
-                    h('span', { className: 'text-xs text-slate-400 font-mono' }, 
-                      new Date(action.timestamp).toLocaleTimeString('ru-RU')
-                    )
-                  )
-                )
-              )
-        )
-      ),
-      
-      // Footer with enhanced tips
-      h('div', { className: 'p-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white' },
-        h('div', { className: 'flex items-center justify-between text-xs' },
-          h('div', null,
-            h('p', { className: 'font-bold mb-1' }, '💻 Консоль разработчика'),
-            h('p', { className: 'text-slate-300' }, 'Нажмите F12 → Console для детальной информации')
-          ),
-          h('div', { className: 'text-right' },
-            h('p', { className: 'font-bold mb-1' }, '🔧 API для разработчиков'),
-            h('p', { className: 'text-slate-300 font-mono' }, 'window.AIHealer')
-          )
-        )
-      )
-    )
-  );
-};
-
-// ===== UTILITY FUNCTIONS =====
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
 const formatPrice = (price, currency = 'UAH') => {
   if (!price && price !== 0) return '—';
-  if (currency === 'UAH') return `${Number(price).toLocaleString('uk-UA')} ₴`;
-  if (currency === 'USD') return `$${Number(price).toFixed(2)}`;
-  if (currency === 'EUR') return `€${Number(price).toFixed(2)}`;
-  return `${Number(price).toFixed(2)}`;
+  const num = Number(price);
+  if (currency === 'UAH') return `${num.toLocaleString('uk-UA')} ₴`;
+  if (currency === 'USD') return `$${num.toFixed(2)}`;
+  if (currency === 'EUR') return `€${num.toFixed(2)}`;
+  return `${num.toFixed(2)}`;
 };
 
-// Currency conversion rates (approximate, update as needed)
 const RATES = { UAH_TO_USD: 0.024, UAH_TO_EUR: 0.022, USD_TO_UAH: 41.5, EUR_TO_UAH: 45.0 };
 
-const convertPrice = (price, from, to) => {
-  if (!price) return null;
-  if (from === to) return price;
-  if (from === 'UAH' && to === 'USD') return price * RATES.UAH_TO_USD;
-  if (from === 'UAH' && to === 'EUR') return price * RATES.UAH_TO_EUR;
-  if (from === 'USD' && to === 'UAH') return price * RATES.USD_TO_UAH;
-  if (from === 'EUR' && to === 'UAH') return price * RATES.EUR_TO_UAH;
-  return price;
-};
+// ============================================
+// ICONS
+// ============================================
 
-// ===== ICONS =====
 const Icons = {
   Search: () => h('svg', { className: 'w-5 h-5', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
     h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 2, d: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' })),
+  Close: () => h('svg', { className: 'w-5 h-5', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
+    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 2, d: 'M6 18L18 6M6 6l12 12' })),
   Back: () => h('svg', { className: 'w-5 h-5', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
     h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 2, d: 'M15 19l-7-7 7-7' })),
-  Close: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 2, d: 'M6 18L18 6M6 6l12 12' })),
-  Chip: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
+  Chip: () => h('svg', { className: 'w-5 h-5', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
     h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z' })),
-  Board: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z' })),
-  Price: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' })),
-  Error: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' })),
-  Calculator: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' })),
-  Book: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' })),
-  Tag: () => h('svg', { className: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
-    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 1.5, d: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' })),
+  ArrowRight: () => h('svg', { className: 'w-4 h-4', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' },
+    h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: 2, d: 'M9 5l7 7-7 7' })),
 };
 
-const getCategoryIcon = (cat) => ({ 'iPhone': '📱', 'iPad': '📟', 'Mac': '💻', 'MacBook': '💻', 'Apple Watch': '⌚', 'AirPods': '🎧' }[cat] || '🔧');
+const getCategoryIcon = (cat) => {
+  const icons = { 'iPhone': '📱', 'iPad': '📟', 'Mac': '💻', 'MacBook': '💻', 'Apple Watch': '⌚', 'AirPods': '🎧', 'iMac': '🖥️' };
+  return icons[cat] || '🔧';
+};
 
-// ===== MODAL WRAPPER =====
-const Modal = ({ title, subtitle, onClose, children, color = 'indigo' }) => {
+const getYearColor = (year) => {
+  if (!year) return 'bg-slate-100 text-slate-600';
+  if (year >= 2024) return 'bg-gradient-to-r from-violet-500 to-purple-500 text-white';
+  if (year >= 2022) return 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white';
+  if (year >= 2020) return 'bg-gradient-to-r from-emerald-500 to-green-500 text-white';
+  if (year >= 2018) return 'bg-amber-100 text-amber-700';
+  return 'bg-slate-100 text-slate-600';
+};
+
+// ============================================
+// MODAL COMPONENT
+// ============================================
+
+const Modal = ({ title, subtitle, onClose, children, size = 'lg', color = 'indigo' }) => {
   const colors = {
-    indigo: 'from-indigo-500 to-purple-600',
-    green: 'from-emerald-500 to-teal-600',
-    amber: 'from-amber-500 to-orange-600',
-    red: 'from-red-500 to-rose-600',
-    blue: 'from-blue-500 to-cyan-600',
-    violet: 'from-violet-500 to-purple-600',
+    indigo: 'from-indigo-600 to-purple-600',
+    green: 'from-emerald-600 to-teal-600',
+    amber: 'from-amber-500 to-orange-500',
+    red: 'from-red-500 to-rose-500',
+    blue: 'from-blue-600 to-cyan-600',
+    violet: 'from-violet-600 to-purple-600',
+    slate: 'from-slate-700 to-slate-800',
   };
   
+  const sizes = {
+    sm: 'max-w-md',
+    md: 'max-w-2xl',
+    lg: 'max-w-5xl',
+    xl: 'max-w-7xl',
+    full: 'max-w-[95vw]'
+  };
+  
+  useEffect(() => {
+    const handleEsc = (e) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+  
   return h('div', { 
-    className: 'fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm',
+    className: 'fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-2 sm:p-4 backdrop-blur-sm',
     onClick: (e) => e.target === e.currentTarget && onClose()
   },
-    h('div', { className: 'bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col animate-in fade-in zoom-in duration-200' },
-      h('div', { className: `bg-gradient-to-r ${colors[color]} p-5 text-white` },
-        h('div', { className: 'flex justify-between items-start' },
-          h('div', null,
-            h('h2', { className: 'text-xl font-bold' }, title),
-            subtitle && h('p', { className: 'text-white/80 text-sm mt-1' }, subtitle)
+    h('div', { className: `bg-white rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[95vh] overflow-hidden flex flex-col animate-scale-in` },
+      h('div', { className: `bg-gradient-to-r ${colors[color]} p-4 sm:p-5 text-white flex-shrink-0` },
+        h('div', { className: 'flex justify-between items-start gap-4' },
+          h('div', { className: 'min-w-0 flex-1' },
+            h('h2', { className: 'text-lg sm:text-xl font-bold truncate' }, title),
+            subtitle && h('p', { className: 'text-white/80 text-sm mt-1 truncate' }, subtitle)
           ),
           h('button', { 
             onClick: onClose, 
-            className: 'w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors' 
+            className: 'w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors flex-shrink-0' 
           }, h(Icons.Close))
         )
       ),
@@ -823,483 +103,590 @@ const Modal = ({ title, subtitle, onClose, children, color = 'indigo' }) => {
   );
 };
 
-// ===== DETAIL MODAL (for clickable items) =====
-const DetailModal = ({ item, type, onClose, ukrainePrices }) => {
-  if (!item) return null;
+// ============================================
+// STATS DASHBOARD
+// ============================================
+
+const StatsDashboard = ({ stats }) => {
+  const items = [
+    { icon: '📱', label: 'Устройства', value: stats.devices, color: 'from-blue-500 to-indigo-500' },
+    { icon: '💰', label: 'Цены UA', value: stats.prices?.toLocaleString(), color: 'from-amber-500 to-orange-500' },
+    { icon: '🖥️', label: 'Платы', value: stats.boards, color: 'from-violet-500 to-purple-500' },
+    { icon: '🔌', label: 'Микросхемы', value: stats.ics, color: 'from-emerald-500 to-green-500' },
+    { icon: '🚨', label: 'Ошибки', value: stats.errors, color: 'from-red-500 to-rose-500' },
+  ];
   
-  const getUkrainePrice = (article) => {
-    if (!ukrainePrices || !article) return null;
-    return ukrainePrices[article];
+  return h('div', { className: 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6' },
+    ...items.map(item => 
+      h('div', { 
+        key: item.label,
+        className: `bg-gradient-to-br ${item.color} rounded-2xl p-4 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-default`
+      },
+        h('div', { className: 'flex items-center gap-3' },
+          h('span', { className: 'text-2xl' }, item.icon),
+          h('div', null,
+            h('p', { className: 'text-2xl font-black' }, item.value || 0),
+            h('p', { className: 'text-xs text-white/80' }, item.label)
+          )
+        )
+      )
+    )
+  );
+};
+
+// ============================================
+// SMART UNIVERSAL SEARCH WITH AUTOCOMPLETE
+// ============================================
+
+const SmartSearch = ({ searchTerm, setSearchTerm, searchResults, onSelectResult, placeholder }) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const inputRef = useRef(null);
+  
+  useEffect(() => {
+    setShowResults(isFocused && searchTerm.length >= 2 && searchResults.length > 0);
+  }, [isFocused, searchTerm, searchResults]);
+  
+  const getCategoryColor = (type) => {
+    const colors = {
+      device: 'bg-blue-100 text-blue-700',
+      price: 'bg-amber-100 text-amber-700',
+      board: 'bg-violet-100 text-violet-700',
+      ic: 'bg-emerald-100 text-emerald-700',
+      error: 'bg-red-100 text-red-700',
+      article: 'bg-orange-100 text-orange-700',
+    };
+    return colors[type] || 'bg-slate-100 text-slate-700';
   };
   
-  // Logic Board Detail
-  if (type === 'board') {
-    const uaPrice = getUkrainePrice(item.article);
-    return h(Modal, { title: `🖥️ ${item.board_number || item.article}`, subtitle: item.model, onClose, color: 'violet' },
-      h('div', { className: 'p-6 overflow-y-auto' },
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
-          // Left column - Main info
-          h('div', { className: 'space-y-4' },
-            h('div', { className: 'bg-violet-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-violet-800 mb-3' }, '📋 Основная информация'),
-              h('div', { className: 'space-y-2 text-sm' },
-                item.article && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Артикул:'),
-                  h('span', { className: 'font-mono font-bold text-violet-600' }, item.article)
-                ),
-                item.board_number && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Board Number:'),
-                  h('span', { className: 'font-mono font-bold' }, item.board_number)
-                ),
-                item.model_number && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Model Number:'),
-                  h('span', { className: 'font-bold' }, item.model_number)
-                ),
-                item.emc && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'EMC:'),
-                  h('span', { className: 'font-bold' }, item.emc)
-                ),
-                item.year && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Год:'),
-                  h('span', { className: 'font-bold' }, item.year)
-                ),
-                item.architecture && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Архитектура:'),
-                  h('span', { className: 'font-bold text-purple-600' }, item.architecture)
-                )
-              )
+  const getCategoryIcon = (type) => {
+    const icons = { device: '📱', price: '💰', board: '🖥️', ic: '🔌', error: '🚨', article: '📦' };
+    return icons[type] || '🔍';
+  };
+  
+  return h('div', { className: 'relative mb-6' },
+    h('div', { className: cn('relative transition-all', showResults && 'shadow-2xl rounded-2xl') },
+      h('div', { className: 'absolute left-4 top-1/2 -translate-y-1/2 text-slate-400' }, h(Icons.Search)),
+      h('input', {
+        ref: inputRef,
+        type: 'text',
+        value: searchTerm,
+        onChange: e => setSearchTerm(e.target.value),
+        onFocus: () => setIsFocused(true),
+        onBlur: () => setTimeout(() => setIsFocused(false), 200),
+        placeholder: placeholder || 'Умный поиск: модель, IC, артикул, код ошибки...',
+        className: cn(
+          'w-full pl-12 pr-4 py-4 rounded-2xl bg-white border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none text-lg transition-all',
+          showResults && 'rounded-b-none border-b-0'
+        )
+      }),
+      searchTerm && h('button', {
+        onClick: () => { setSearchTerm(''); inputRef.current?.focus(); },
+        className: 'absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600'
+      }, h(Icons.Close))
+    ),
+    
+    // Results dropdown
+    showResults && h('div', { 
+      className: 'absolute top-full left-0 right-0 bg-white border-2 border-t-0 border-slate-200 rounded-b-2xl shadow-2xl overflow-hidden z-50'
+    },
+      h('div', { className: 'max-h-96 overflow-y-auto' },
+        ...searchResults.slice(0, 20).map((result, i) =>
+          h('button', {
+            key: `${result.type}-${result.id}-${i}`,
+            onClick: () => { onSelectResult(result); setShowResults(false); },
+            className: 'w-full text-left px-4 py-3 hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-b-0 flex items-center gap-3'
+          },
+            h('span', { className: 'text-xl' }, getCategoryIcon(result.type)),
+            h('div', { className: 'flex-1 min-w-0' },
+              h('p', { className: 'font-medium text-slate-800 truncate' }, result.title),
+              h('p', { className: 'text-sm text-slate-500 truncate' }, result.subtitle)
             ),
-            
-            // Specs if available
-            item.specs && h('div', { className: 'bg-blue-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-blue-800 mb-3' }, '⚙️ Характеристики'),
-              h('div', { className: 'space-y-2 text-sm' },
-                item.specs.cpu_ghz && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'CPU:'),
-                  h('span', { className: 'font-bold' }, `${item.specs.cpu_ghz} GHz`)
-                ),
-                item.specs.ram_gb && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'RAM:'),
-                  h('span', { className: 'font-bold' }, `${item.specs.ram_gb} GB`)
-                ),
-                item.specs.storage_gb && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Storage:'),
-                  h('span', { className: 'font-bold' }, `${item.specs.storage_gb} GB`)
-                )
-              )
-            )
-          ),
-          
-          // Right column - Prices
-          h('div', { className: 'space-y-4' },
-            h('div', { className: 'bg-green-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-green-800 mb-3' }, '💰 Цены'),
-              h('div', { className: 'space-y-3' },
-                // Ukraine price
-                (uaPrice || item.price_uah) && h('div', { className: 'p-3 bg-yellow-100 rounded-lg' },
-                  h('div', { className: 'flex items-center gap-2 mb-1' },
-                    h('span', null, '🇺🇦'),
-                    h('span', { className: 'font-semibold text-slate-700' }, 'Украина')
-                  ),
-                  h('p', { className: 'text-2xl font-bold text-yellow-700' }, 
-                    formatPrice(uaPrice?.price_uah || item.price_uah, 'UAH')
-                  ),
-                  h('p', { className: 'text-sm text-slate-500' }, 
-                    `≈ ${formatPrice(convertPrice(uaPrice?.price_uah || item.price_uah, 'UAH', 'USD'), 'USD')}`
-                  )
-                ),
-                
-                // USD price if available
-                item.price_usd && h('div', { className: 'p-3 bg-blue-100 rounded-lg' },
-                  h('div', { className: 'flex items-center gap-2 mb-1' },
-                    h('span', null, '🇺🇸'),
-                    h('span', { className: 'font-semibold text-slate-700' }, 'USD')
-                  ),
-                  h('p', { className: 'text-2xl font-bold text-blue-700' }, formatPrice(item.price_usd, 'USD'))
-                )
-              )
-            ),
-            
-            // Description
-            item.description && h('div', { className: 'bg-slate-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-slate-800 mb-2' }, '📝 Описание'),
-              h('p', { className: 'text-sm text-slate-600' }, item.description)
-            )
+            h('span', { className: cn('px-2 py-1 rounded-lg text-xs font-medium', getCategoryColor(result.type)) }, result.typeLabel),
+            h(Icons.ArrowRight)
           )
         )
+      ),
+      searchResults.length > 20 && h('div', { className: 'px-4 py-2 bg-slate-50 text-sm text-slate-500 text-center' },
+        `И ещё ${searchResults.length - 20} результатов...`
       )
-    );
-  }
+    )
+  );
+};
+
+// ============================================
+// QUICK ACTION CARDS
+// ============================================
+
+const QuickActionCard = ({ icon, title, subtitle, onClick, color = 'slate', badge }) => {
+  const colors = {
+    slate: 'bg-slate-50 hover:bg-slate-100 border-slate-200',
+    blue: 'bg-blue-50 hover:bg-blue-100 border-blue-200',
+    green: 'bg-emerald-50 hover:bg-emerald-100 border-emerald-200',
+    amber: 'bg-amber-50 hover:bg-amber-100 border-amber-200',
+    red: 'bg-red-50 hover:bg-red-100 border-red-200',
+    violet: 'bg-violet-50 hover:bg-violet-100 border-violet-200',
+    indigo: 'bg-indigo-50 hover:bg-indigo-100 border-indigo-200',
+  };
   
-  // Article/Part Detail
-  if (type === 'article') {
-    const uaPrice = getUkrainePrice(item.article);
-    const uaPriceVal = uaPrice?.price_uah || item.price_uah;
-    const euPriceVal = item.price_eur || (item.price_usd ? item.price_usd * 0.91 : null) || (uaPriceVal ? uaPriceVal * RATES.UAH_TO_EUR : null);
-    const usdPriceVal = item.price_usd || (uaPriceVal ? uaPriceVal * RATES.UAH_TO_USD : null);
+  return h('button', {
+    onClick,
+    className: `${colors[color]} p-4 rounded-2xl border-2 transition-all hover:shadow-lg hover:scale-[1.02] text-left w-full`
+  },
+    h('div', { className: 'flex items-start gap-3' },
+      h('span', { className: 'text-3xl' }, icon),
+      h('div', { className: 'flex-1 min-w-0' },
+        h('div', { className: 'flex items-center gap-2' },
+          h('p', { className: 'font-bold text-slate-800' }, title),
+          badge && h('span', { className: 'px-2 py-0.5 bg-white rounded-full text-xs font-bold text-slate-600 shadow-sm' }, badge)
+        ),
+        subtitle && h('p', { className: 'text-sm text-slate-500 mt-0.5' }, subtitle)
+      )
+    )
+  );
+};
+
+// ============================================
+// DEVICE CARD (Enhanced)
+// ============================================
+
+const DeviceCard = ({ device, ukrainePrices, onClick }) => {
+  const getPriceInfo = () => {
+    const prices = [];
+    if (device.service_parts) {
+      Object.entries(device.service_parts).forEach(([type, part]) => {
+        if (part.article && ukrainePrices?.[part.article]) {
+          prices.push({ type, price: ukrainePrices[part.article].price_uah });
+        } else if (part.price_usd) {
+          prices.push({ type, price: part.price_usd * RATES.USD_TO_UAH });
+        }
+      });
+    }
+    return prices;
+  };
+  
+  const prices = getPriceInfo();
+  const minPrice = prices.length > 0 ? Math.min(...prices.map(p => p.price)) : null;
+  
+  return h('div', {
+    onClick,
+    className: 'bg-white rounded-2xl border-2 border-slate-200 hover:border-indigo-300 hover:shadow-xl transition-all cursor-pointer overflow-hidden group'
+  },
+    device.ifixit_image && h('div', { className: 'h-32 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center overflow-hidden' },
+      h('img', { 
+        src: device.ifixit_image, 
+        alt: device.name,
+        className: 'h-full w-full object-contain p-4 group-hover:scale-110 transition-transform duration-300',
+        loading: 'lazy'
+      })
+    ),
+    h('div', { className: 'p-4' },
+      h('div', { className: 'flex items-center gap-2 mb-2' },
+        h('span', { className: `px-2 py-1 rounded-lg text-xs font-bold ${getYearColor(device.year)}` }, device.year || '?'),
+        h('span', { className: 'text-lg' }, getCategoryIcon(device.category))
+      ),
+      h('h3', { className: 'font-bold text-slate-800 mb-1 line-clamp-2' }, device.name),
+      device.model && h('p', { className: 'text-xs text-slate-500 font-mono mb-2' }, device.model),
+      device.processor && h('div', { className: 'flex items-center gap-1 text-xs text-slate-600 mb-2' },
+        h(Icons.Chip),
+        h('span', { className: 'truncate' }, device.processor.split(' ').slice(0, 2).join(' '))
+      ),
+      minPrice && h('div', { className: 'mt-2 pt-2 border-t border-slate-100' },
+        h('div', { className: 'flex items-center justify-between' },
+          h('span', { className: 'text-xs text-slate-500' }, 'от'),
+          h('span', { className: 'font-bold text-amber-600' }, formatPrice(minPrice, 'UAH'))
+        )
+      ),
+      device.available_repairs && h('div', { className: 'flex flex-wrap gap-1 mt-2' },
+        ...device.available_repairs.slice(0, 3).map(r => 
+          h('span', { key: r, className: 'px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-600' }, 
+            r === 'battery' ? '🔋' : r === 'display' ? '📱' : r === 'charging_port' ? '⚡' : '🔧'
+          )
+        ),
+        device.available_repairs.length > 3 && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-500' }, 
+          `+${device.available_repairs.length - 3}`
+        )
+      )
+    )
+  );
+};
+
+// ============================================
+// DEVICE DETAILS VIEW (Enhanced)
+// ============================================
+
+const DeviceDetailsView = ({ device, ukrainePrices, logicBoardsSpecs, icData, errorData, measurementsData, onClose, onOpenIC, onOpenError, onOpenBoard }) => {
+  const [activeTab, setActiveTab] = useState('overview');
+  
+  // Get all related data with improved matching
+  const relatedBoards = useMemo(() => {
+    if (!logicBoardsSpecs?.boards) return [];
+    const deviceNameLower = (device.name || '').toLowerCase();
+    const deviceYear = device.year;
     
-    // Calculate savings between UA and EU
-    const savings = uaPriceVal && euPriceVal ? ((euPriceVal * RATES.EUR_TO_UAH) - uaPriceVal) : null;
-    const savingsPercent = savings && euPriceVal ? Math.round((savings / (euPriceVal * RATES.EUR_TO_UAH)) * 100) : 0;
+    return Object.entries(logicBoardsSpecs.boards)
+      .filter(([_, board]) => {
+        const model = (board.model || board.description || '').toLowerCase();
+        // Match by device name patterns
+        const nameMatch = deviceNameLower.split(' ').slice(0, 3).some(part => 
+          part.length > 3 && model.includes(part)
+        );
+        // Match by year if available
+        const yearMatch = deviceYear && model.includes(String(deviceYear));
+        return nameMatch || yearMatch;
+      })
+      .map(([article, board]) => ({ article, ...board }))
+      .slice(0, 15);
+  }, [device, logicBoardsSpecs]);
+  
+  const relatedICs = useMemo(() => {
+    if (!icData) return [];
+    const ics = [];
+    const deviceSearch = device.name.toLowerCase().split(' ').slice(0, 2).join(' ');
     
-    return h(Modal, { title: `🔧 ${item.article}`, subtitle: item.description || item.label, onClose, color: 'green' },
-      h('div', { className: 'p-6 overflow-y-auto' },
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
-          h('div', { className: 'space-y-4' },
-            h('div', { className: 'bg-emerald-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-emerald-800 mb-3' }, '📋 Информация'),
-              h('div', { className: 'space-y-2 text-sm' },
-                h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Артикул:'),
-                  h('span', { className: 'font-mono font-bold text-emerald-600' }, item.article)
-                ),
-                (item.type || item.label) && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Тип:'),
-                  h('span', { className: 'font-bold capitalize' }, (item.label || item.type || '').replace('_', ' '))
-                ),
-                item.model && h('div', { className: 'flex justify-between' },
-                  h('span', { className: 'text-slate-600' }, 'Модель:'),
-                  h('span', { className: 'font-bold' }, item.model)
+    Object.values(icData).forEach(category => {
+      if (Array.isArray(category)) {
+        category.forEach(ic => {
+          if (ic.compatible_devices?.some(d => 
+            d.toLowerCase().includes(deviceSearch) ||
+            deviceSearch.includes(d.toLowerCase().split(' ')[0])
+          )) {
+            ics.push(ic);
+          }
+        });
+      }
+    });
+    return ics.slice(0, 15);
+  }, [device, icData]);
+
+  const deviceMeasurements = useMemo(() => {
+    if (!measurementsData?.devices) return null;
+    const key = Object.keys(measurementsData.devices).find(k => 
+      k.toLowerCase().includes(device.name.split(' ').slice(0, 2).join(' ').toLowerCase())
+    );
+    return key ? measurementsData.devices[key] : null;
+  }, [device, measurementsData]);
+  
+  const tabs = [
+    { id: 'overview', label: '📋 Обзор', count: null },
+    { id: 'parts', label: '🔧 Запчасти', count: device.service_parts ? Object.keys(device.service_parts).length : 0 },
+    { id: 'boards', label: '🖥️ Платы', count: relatedBoards.length },
+    { id: 'ics', label: '🔌 IC', count: relatedICs.length },
+    { id: 'diagnostics', label: '🔍 Диагностика', count: deviceMeasurements ? 1 : 0 },
+  ];
+  
+  return h(Modal, { 
+    title: device.name, 
+    subtitle: `${device.category} • ${device.year || 'N/A'} • ${device.model || ''}`,
+    onClose,
+    size: 'xl',
+    color: 'indigo'
+  },
+    h('div', { className: 'flex overflow-x-auto bg-slate-50 border-b flex-shrink-0' },
+      ...tabs.map(tab => 
+        h('button', {
+          key: tab.id,
+          onClick: () => setActiveTab(tab.id),
+          className: cn(
+            'px-4 py-3 font-medium text-sm whitespace-nowrap transition-all border-b-2',
+            activeTab === tab.id 
+              ? 'text-indigo-600 border-indigo-600 bg-white' 
+              : 'text-slate-500 border-transparent hover:text-slate-700'
+          )
+        }, 
+          tab.label,
+          tab.count > 0 && h('span', { className: 'ml-2 px-2 py-0.5 bg-slate-200 rounded-full text-xs' }, tab.count)
+        )
+      )
+    ),
+    
+    h('div', { className: 'flex-1 overflow-y-auto p-4 sm:p-6' },
+      // Overview Tab
+      activeTab === 'overview' && h('div', { className: 'grid md:grid-cols-2 gap-6' },
+        h('div', { className: 'space-y-4' },
+          device.ifixit_image && h('div', { className: 'bg-gradient-to-br from-slate-100 to-slate-50 rounded-2xl p-6 flex items-center justify-center' },
+            h('img', { src: device.ifixit_image, alt: device.name, className: 'max-h-64 object-contain' })
+          ),
+          h('div', { className: 'grid grid-cols-2 gap-3' },
+            h('div', { className: 'bg-blue-50 rounded-xl p-4' },
+              h('p', { className: 'text-xs text-blue-600 font-medium' }, 'Год'),
+              h('p', { className: 'text-2xl font-bold text-blue-800' }, device.year || 'N/A')
+            ),
+            h('div', { className: 'bg-purple-50 rounded-xl p-4' },
+              h('p', { className: 'text-xs text-purple-600 font-medium' }, 'Категория'),
+              h('p', { className: 'text-lg font-bold text-purple-800' }, device.category)
+            ),
+            device.guides_count && h('div', { className: 'bg-green-50 rounded-xl p-4' },
+              h('p', { className: 'text-xs text-green-600 font-medium' }, 'Гайды iFixit'),
+              h('p', { className: 'text-2xl font-bold text-green-800' }, device.guides_count)
+            ),
+            device.repairability && h('div', { className: 'bg-amber-50 rounded-xl p-4' },
+              h('p', { className: 'text-xs text-amber-600 font-medium' }, 'Ремонтопригодность'),
+              h('p', { className: 'text-2xl font-bold text-amber-800' }, `${device.repairability}/10`)
+            )
+          )
+        ),
+        h('div', { className: 'space-y-4' },
+          h('div', { className: 'bg-slate-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-slate-800 mb-3 flex items-center gap-2' }, '📋 Идентификация'),
+            h('div', { className: 'space-y-2 text-sm' },
+              device.model && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Model:'),
+                h('span', { className: 'font-mono font-bold' }, device.model)
+              ),
+              device.board_numbers?.length > 0 && h('div', { className: 'flex justify-between items-start' },
+                h('span', { className: 'text-slate-500' }, 'Board:'),
+                h('div', { className: 'text-right' },
+                  ...device.board_numbers.map(bn => 
+                    h('span', { key: bn, className: 'font-mono font-bold text-violet-600 block' }, bn)
+                  )
                 )
               )
-            ),
-            
-            item.description && h('div', { className: 'bg-slate-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-slate-800 mb-2' }, '📝 Описание'),
-              h('p', { className: 'text-sm text-slate-600' }, item.description)
             )
           ),
-          
-          h('div', { className: 'space-y-4' },
-            h('div', { className: 'bg-green-50 rounded-xl p-4' },
-              h('h3', { className: 'font-semibold text-green-800 mb-3' }, '💰 Сравнение цен'),
-              h('div', { className: 'space-y-3' },
-                // Ukraine price
-                h('div', { className: 'p-3 bg-yellow-100 rounded-lg' },
-                  h('div', { className: 'flex items-center gap-2 mb-1' },
-                    h('span', null, '🇺🇦'),
-                    h('span', { className: 'font-semibold text-slate-700' }, 'Украина')
-                  ),
-                  uaPriceVal 
-                    ? h('div', null,
-                        h('p', { className: 'text-2xl font-bold text-yellow-700' }, formatPrice(uaPriceVal, 'UAH')),
-                        h('p', { className: 'text-sm text-slate-500' }, `≈ ${formatPrice(usdPriceVal, 'USD')}`)
-                      )
-                    : h('p', { className: 'text-slate-500' }, 'Цена не доступна')
+          device.processor && h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-violet-800 mb-2 flex items-center gap-2' }, h(Icons.Chip), 'Процессор'),
+            h('p', { className: 'text-sm font-mono text-violet-700' }, device.processor)
+          ),
+          device.charging_ic && h('div', { className: 'bg-emerald-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-emerald-800 mb-3 flex items-center gap-2' }, '⚡ Зарядка IC'),
+            h('div', { className: 'space-y-2 text-sm' },
+              device.charging_ic.main && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Main:'),
+                h('span', { className: 'font-mono font-bold text-emerald-700' }, device.charging_ic.main)
+              ),
+              device.charging_ic.designation && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Designation:'),
+                h('span', { className: 'font-bold' }, device.charging_ic.designation)
+              ),
+              device.charging_ic.secondary && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Secondary:'),
+                h('span', { className: 'font-mono text-sm' }, device.charging_ic.secondary)
+              )
+            )
+          ),
+          device.official_service_prices && h('div', { className: 'bg-amber-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-amber-800 mb-3 flex items-center gap-2' }, '💰 Цены Apple (USD)'),
+            h('div', { className: 'grid grid-cols-2 gap-2' },
+              ...Object.entries(device.official_service_prices).map(([type, price]) =>
+                h('div', { key: type, className: 'flex justify-between items-center p-2 bg-white rounded-lg' },
+                  h('span', { className: 'text-xs text-slate-600 capitalize' }, type.replace('_', ' ')),
+                  h('span', { className: 'font-bold text-amber-700' }, formatPrice(price, 'USD'))
+                )
+              )
+            )
+          ),
+          device.ifixit_url && h('a', {
+            href: device.ifixit_url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'flex items-center justify-center gap-2 w-full py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-colors'
+          }, '🔗 Открыть на iFixit')
+        )
+      ),
+      
+      // Parts Tab
+      activeTab === 'parts' && device.service_parts && h('div', { className: 'space-y-3' },
+        ...Object.entries(device.service_parts).map(([type, part]) => {
+          const uaPrice = part.article && ukrainePrices?.[part.article];
+          return h('div', { 
+            key: type,
+            className: 'bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-indigo-300 transition-colors'
+          },
+            h('div', { className: 'flex justify-between items-start gap-4' },
+              h('div', { className: 'flex-1' },
+                h('div', { className: 'flex items-center gap-2 mb-1' },
+                  h('span', { className: 'text-xl' }, type === 'battery' ? '🔋' : type === 'display' ? '📱' : type.includes('camera') ? '📷' : '🔧'),
+                  h('h4', { className: 'font-bold text-slate-800 capitalize' }, type.replace('_', ' '))
                 ),
-                
-                // EU price
-                h('div', { className: 'p-3 bg-blue-100 rounded-lg' },
-                  h('div', { className: 'flex items-center gap-2 mb-1' },
-                    h('span', null, '🇪🇺'),
-                    h('span', { className: 'font-semibold text-slate-700' }, 'Европа (Self-Repair)')
-                  ),
-                  euPriceVal 
-                    ? h('div', null,
-                        h('p', { className: 'text-2xl font-bold text-blue-700' }, formatPrice(euPriceVal, 'EUR')),
-                        h('p', { className: 'text-sm text-slate-500' }, `≈ ${formatPrice(euPriceVal * RATES.EUR_TO_UAH, 'UAH')}`)
-                      )
-                    : h('p', { className: 'text-slate-500' }, 'Цена не доступна')
+                h('p', { className: 'text-sm text-slate-600' }, part.description),
+                part.article && h('p', { className: 'text-xs font-mono text-indigo-600 mt-1' }, part.article)
+              ),
+              h('div', { className: 'text-right' },
+                uaPrice && h('div', null,
+                  h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(uaPrice.price_uah, 'UAH')),
+                  h('p', { className: 'text-xs text-slate-500' }, '🇺🇦 Украина')
                 ),
-                
-                // Savings comparison
-                savings !== null && savings !== 0 && h('div', { 
-                  className: cn('p-3 rounded-lg', savings > 0 ? 'bg-green-100' : 'bg-red-100')
-                },
-                  h('div', { className: 'flex items-center justify-between' },
-                    h('span', { className: 'font-semibold text-slate-700' }, 
-                      savings > 0 ? '💚 Экономия в UA:' : '⚠️ Дороже в UA:'
-                    ),
-                    h('span', { className: cn('font-bold', savings > 0 ? 'text-green-700' : 'text-red-700') },
-                      `${savings > 0 ? '-' : '+'}${formatPrice(Math.abs(savings), 'UAH')} (${Math.abs(savingsPercent)}%)`
+                part.price_usd && h('div', { className: uaPrice ? 'mt-2 pt-2 border-t border-slate-100' : '' },
+                  h('p', { className: 'text-sm font-bold text-blue-600' }, formatPrice(part.price_usd, 'USD')),
+                  h('p', { className: 'text-xs text-slate-500' }, '🍎 Apple')
+                )
+              )
+            )
+          );
+        })
+      ),
+      
+      // Boards Tab
+      activeTab === 'boards' && h('div', { className: 'space-y-3' },
+        relatedBoards.length === 0 
+          ? h('div', { className: 'text-center py-12 text-slate-500' }, 'Платы не найдены для этого устройства')
+          : relatedBoards.map(board => 
+              h('div', { 
+                key: board.article,
+                className: 'bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-violet-300 cursor-pointer transition-colors',
+                onClick: () => onOpenBoard && onOpenBoard(board)
+              },
+                h('div', { className: 'flex justify-between items-start' },
+                  h('div', null,
+                    h('p', { className: 'font-mono font-bold text-violet-600' }, board.article),
+                    h('p', { className: 'text-sm text-slate-600 mt-1' }, board.description),
+                    board.specs && h('div', { className: 'flex gap-2 mt-2' },
+                      board.specs.cpu_ghz && h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-xs' }, `${board.specs.cpu_ghz} GHz`),
+                      board.specs.ram_gb && h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-xs' }, `${board.specs.ram_gb} GB RAM`)
                     )
+                  ),
+                  h('div', { className: 'text-right' },
+                    board.price_uah && h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(board.price_uah, 'UAH')),
+                    board.price_usd && h('p', { className: 'text-sm text-slate-500' }, formatPrice(board.price_usd, 'USD'))
                   )
                 )
               )
             )
-          )
-        )
-      )
-    );
-  }
-  
-  // IC Detail (ENHANCED)
-  if (type === 'ic') {
-    // Get IC category icon
-    const getCategoryIcon = () => {
-      const cat = item.category || '';
-      if (cat.includes('charging')) return '⚡';
-      if (cat.includes('power')) return '🔋';
-      if (cat.includes('audio')) return '🔊';
-      if (cat.includes('baseband')) return '📡';
-      if (cat.includes('wifi') || cat.includes('bt')) return '📶';
-      if (cat.includes('biometric')) return '👆';
-      if (cat.includes('nand')) return '💾';
-      return '🔌';
-    };
-    
-    // Difficulty color and icon
-    const getDifficultyBadge = () => {
-      if (!item.difficulty) return null;
-      const colors = {
-        'Basic': { bg: 'bg-green-100', text: 'text-green-700', icon: '✅' },
-        'Intermediate': { bg: 'bg-yellow-100', text: 'text-yellow-700', icon: '⚠️' },
-        'Advanced': { bg: 'bg-orange-100', text: 'text-orange-700', icon: '🔶' },
-        'Expert': { bg: 'bg-red-100', text: 'text-red-700', icon: '🔴' }
-      };
-      const style = colors[item.difficulty] || colors['Advanced'];
-      return { ...style, text: item.difficulty };
-    };
-    
-    const diffBadge = getDifficultyBadge();
-    
-    return h(Modal, { title: `${getCategoryIcon()} ${item.name}`, subtitle: item.designation, onClose, color: 'violet' },
-      h('div', { className: 'p-6 overflow-y-auto max-h-[70vh]' },
-        // Header badges
-        h('div', { className: 'flex flex-wrap gap-2 mb-6' },
-          item.category && h('span', { className: 'px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-semibold' }, 
-            item.category.replace('_', ' ').replace('ics', 'IC')
-          ),
-          item.package && h('span', { className: 'px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-mono' }, 
-            item.package
-          ),
-          diffBadge && h('span', { className: `px-3 py-1 ${diffBadge.bg} ${diffBadge.text} rounded-full text-sm font-semibold flex items-center gap-1` }, 
-            diffBadge.icon, ' ', diffBadge.text
-          ),
-          item.price_range && h('span', { className: 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-bold' }, 
-            `💰 ${item.price_range}`
+      ),
+      
+      // ICs Tab
+      activeTab === 'ics' && h('div', { className: 'space-y-3' },
+        relatedICs.length === 0 
+          ? h('div', { className: 'text-center py-12 text-slate-500' }, 'Микросхемы не найдены для этого устройства')
+          : relatedICs.map((ic, i) => 
+              h('div', { 
+                key: ic.name + i,
+                onClick: () => onOpenIC && onOpenIC(ic),
+                className: 'bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-emerald-300 cursor-pointer transition-colors'
+              },
+                h('div', { className: 'flex justify-between items-start' },
+                  h('div', null,
+                    h('div', { className: 'flex items-center gap-2' },
+                      h('p', { className: 'font-mono font-bold text-emerald-600' }, ic.name),
+                      ic.designation && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-xs' }, ic.designation)
+                    ),
+                    ic.functions && h('p', { className: 'text-sm text-slate-600 mt-1' }, ic.functions.slice(0, 2).join(', ')),
+                    ic.symptoms_when_faulty && h('p', { className: 'text-xs text-red-500 mt-2' }, '⚠️ ' + ic.symptoms_when_faulty[0])
+                  ),
+                  h('div', { className: 'text-right' },
+                    ic.price_range && h('p', { className: 'font-bold text-emerald-600' }, ic.price_range),
+                    ic.difficulty && h('span', { 
+                      className: cn('px-2 py-1 rounded text-xs font-bold mt-1 inline-block',
+                        ic.difficulty === 'Expert' ? 'bg-red-100 text-red-700' :
+                        ic.difficulty === 'Advanced' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'
+                      )
+                    }, ic.difficulty)
+                  )
+                )
+              )
+            )
+      ),
+      
+      // Diagnostics Tab
+      activeTab === 'diagnostics' && h('div', { className: 'space-y-4' },
+        // Device-specific measurements
+        deviceMeasurements && h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-violet-800 mb-3' }, '📐 Измерения для ' + device.name),
+          h('div', { className: 'grid sm:grid-cols-2 gap-3' },
+            ...Object.entries(deviceMeasurements).slice(0, 10).map(([point, value]) =>
+              h('div', { key: point, className: 'p-3 bg-white rounded-lg' },
+                h('p', { className: 'font-mono font-bold text-violet-600 text-sm' }, point),
+                h('p', { className: 'text-sm text-slate-600' }, String(value))
+              )
+            )
           )
         ),
         
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
-          // Left column
-          h('div', { className: 'space-y-4' },
-            // Main info
-            h('div', { className: 'bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-4 border border-violet-200' },
-              h('h3', { className: 'font-bold text-violet-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-violet-200 rounded-lg flex items-center justify-center' }, '📋'),
-                'Информация о микросхеме'
-              ),
-              h('div', { className: 'space-y-3 text-sm' },
-                h('div', { className: 'p-2 bg-white/80 rounded-lg' },
-                  h('span', { className: 'text-slate-500 text-xs' }, 'Микросхема'),
-                  h('p', { className: 'font-mono font-bold text-lg text-violet-600' }, item.name)
-                ),
-                item.designation && h('div', { className: 'p-2 bg-white/80 rounded-lg' },
-                  h('span', { className: 'text-slate-500 text-xs' }, 'Обозначение на плате'),
-                  h('p', { className: 'font-semibold text-slate-800' }, item.designation)
-                ),
-                item.manufacturer && h('div', { className: 'flex justify-between items-center' },
-                  h('span', { className: 'text-slate-600' }, 'Производитель:'),
-                  h('span', { className: 'font-bold' }, item.manufacturer)
-                )
+        // DFU/Recovery
+        h('div', { className: 'bg-indigo-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-indigo-800 mb-3' }, '⌨️ DFU/Recovery режимы'),
+          h('div', { className: 'grid sm:grid-cols-2 gap-3' },
+            h('div', { className: 'bg-white rounded-lg p-3' },
+              h('p', { className: 'font-bold text-sm mb-1' }, 'DFU Mode'),
+              h('p', { className: 'text-xs text-slate-600' }, 
+                device.category === 'iPhone' || device.category === 'iPad'
+                  ? 'Vol+ → Vol- → Hold Side → Side+Vol- (5s) → Vol- only (10s)'
+                  : 'Power + Option/Alt при загрузке'
               )
             ),
-            
-            // Functions
-            item.functions?.length > 0 && h('div', { className: 'bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-200' },
-              h('h3', { className: 'font-bold text-blue-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-blue-200 rounded-lg flex items-center justify-center' }, '⚙️'),
-                'Функции'
-              ),
-              h('ul', { className: 'space-y-2' },
-                ...item.functions.map((f, i) => h('li', { key: i, className: 'text-sm text-slate-700 flex items-start gap-2 p-2 bg-white/60 rounded-lg' },
-                  h('span', { className: 'text-blue-500 mt-0.5' }, '▸'), f
-                ))
-              )
-            ),
-            
-            // Diagnostics
-            item.diagnostics && h('div', { className: 'bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200' },
-              h('h3', { className: 'font-bold text-green-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-green-200 rounded-lg flex items-center justify-center' }, '🔍'),
-                'Диагностика'
-              ),
-              h('div', { className: 'space-y-3' },
-                item.diagnostics.diode_mode && h('div', { className: 'p-3 bg-white/80 rounded-lg' },
-                  h('p', { className: 'font-semibold text-slate-700 mb-2 text-xs uppercase tracking-wide' }, '📊 Диодный режим'),
-                  h('div', { className: 'grid grid-cols-2 gap-2' },
-                    ...Object.entries(item.diagnostics.diode_mode).map(([key, val]) =>
-                      h('div', { key, className: 'p-2 bg-green-100 rounded text-center' },
-                        h('p', { className: 'text-xs text-green-600' }, key),
-                        h('p', { className: 'font-mono font-bold text-green-800' }, val)
-                      )
-                    )
-                  )
-                ),
-                (item.diagnostics.pp5v0_usb || item.diagnostics.pp_vdd_main || item.diagnostics.usb_pd) && h('div', { className: 'p-3 bg-white/80 rounded-lg' },
-                  h('p', { className: 'font-semibold text-slate-700 mb-2 text-xs uppercase tracking-wide' }, '⚡ Напряжения'),
-                  h('div', { className: 'space-y-1 text-sm' },
-                    item.diagnostics.pp5v0_usb && h('div', { className: 'flex justify-between' },
-                      h('span', { className: 'text-slate-600' }, 'PP5V0_USB:'),
-                      h('span', { className: 'font-mono font-bold text-green-600' }, item.diagnostics.pp5v0_usb)
-                    ),
-                    item.diagnostics.pp_vdd_main && h('div', { className: 'flex justify-between' },
-                      h('span', { className: 'text-slate-600' }, 'PP_VDD_MAIN:'),
-                      h('span', { className: 'font-mono font-bold text-green-600' }, item.diagnostics.pp_vdd_main)
-                    ),
-                    item.diagnostics.usb_pd && h('div', { className: 'flex justify-between' },
-                      h('span', { className: 'text-slate-600' }, 'USB-PD:'),
-                      h('span', { className: 'font-mono font-bold text-green-600' }, item.diagnostics.usb_pd)
-                    )
-                  )
-                ),
-                item.diagnostics.current_draw && h('div', { className: 'p-3 bg-yellow-50 rounded-lg' },
-                  h('p', { className: 'font-semibold text-slate-700 mb-1 text-xs uppercase tracking-wide' }, '🔌 Потребление тока'),
-                  h('p', { className: 'font-mono text-yellow-700' }, item.diagnostics.current_draw)
-                )
+            h('div', { className: 'bg-white rounded-lg p-3' },
+              h('p', { className: 'font-bold text-sm mb-1' }, 'Recovery Mode'),
+              h('p', { className: 'text-xs text-slate-600' }, 
+                device.category === 'iPhone' || device.category === 'iPad'
+                  ? 'Vol+ → Vol- → Hold Side до логотипа iTunes'
+                  : 'Cmd + R при загрузке'
               )
             )
-          ),
-          
-          // Right column
-          h('div', { className: 'space-y-4' },
-            // Symptoms when faulty
-            item.symptoms_when_faulty?.length > 0 && h('div', { className: 'bg-gradient-to-br from-red-50 to-rose-50 rounded-xl p-4 border border-red-200' },
-              h('h3', { className: 'font-bold text-red-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-red-200 rounded-lg flex items-center justify-center' }, '⚠️'),
-                'Симптомы неисправности'
-              ),
-              h('ul', { className: 'space-y-2' },
-                ...item.symptoms_when_faulty.map((s, i) => h('li', { key: i, className: 'text-sm text-red-700 flex items-start gap-2 p-2 bg-white/60 rounded-lg' },
-                  h('span', { className: 'text-red-500' }, '❌'), s
-                ))
-              )
-            ),
-            
-            // Repair tips
-            item.repair_tips?.length > 0 && h('div', { className: 'bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-4 border border-amber-200' },
-              h('h3', { className: 'font-bold text-amber-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-amber-200 rounded-lg flex items-center justify-center' }, '💡'),
-                'Советы по ремонту'
-              ),
-              h('ul', { className: 'space-y-2' },
-                ...item.repair_tips.map((tip, i) => h('li', { key: i, className: 'text-sm text-amber-700 flex items-start gap-2 p-2 bg-white/60 rounded-lg' },
-                  h('span', { className: 'text-amber-500' }, '→'), tip
-                ))
-              )
-            ),
-            
-            // Compatible devices
-            item.compatible_devices?.length > 0 && h('div', { className: 'bg-gradient-to-br from-slate-50 to-gray-100 rounded-xl p-4 border border-slate-200' },
-              h('h3', { className: 'font-bold text-slate-800 mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-slate-200 rounded-lg flex items-center justify-center' }, '📱'),
-                `Совместимые устройства (${item.compatible_devices.length})`
-              ),
-              h('div', { className: 'flex flex-wrap gap-2' },
-                ...item.compatible_devices.map((d, i) => h('span', { 
-                  key: i, 
-                  className: 'px-3 py-1.5 bg-white rounded-lg text-xs font-medium text-slate-700 border border-slate-200 shadow-sm hover:border-indigo-300 transition-colors' 
-                }, d))
-              )
-            ),
-            
-            // Quick reference card
-            h('div', { className: 'bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-4 text-white' },
-              h('h3', { className: 'font-bold mb-3 flex items-center gap-2' }, 
-                h('span', { className: 'w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center' }, '📌'),
-                'Быстрая справка'
-              ),
-              h('div', { className: 'space-y-2 text-sm' },
-                h('div', { className: 'flex justify-between items-center p-2 bg-white/10 rounded-lg' },
-                  h('span', { className: 'text-white/80' }, 'Микросхема:'),
-                  h('span', { className: 'font-mono font-bold' }, item.name)
-                ),
-                item.designation && h('div', { className: 'flex justify-between items-center p-2 bg-white/10 rounded-lg' },
-                  h('span', { className: 'text-white/80' }, 'На плате:'),
-                  h('span', { className: 'font-bold' }, item.designation)
-                ),
-                item.price_range && h('div', { className: 'flex justify-between items-center p-2 bg-white/10 rounded-lg' },
-                  h('span', { className: 'text-white/80' }, 'Цена:'),
-                  h('span', { className: 'font-bold text-green-300' }, item.price_range)
-                ),
-                item.difficulty && h('div', { className: 'flex justify-between items-center p-2 bg-white/10 rounded-lg' },
-                  h('span', { className: 'text-white/80' }, 'Сложность:'),
-                  h('span', { className: cn('font-bold', 
-                    item.difficulty === 'Expert' ? 'text-red-300' : 
-                    item.difficulty === 'Advanced' ? 'text-orange-300' : 'text-green-300'
-                  ) }, item.difficulty)
+          )
+        ),
+        
+        // Common Issues
+        h('div', { className: 'bg-red-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-red-800 mb-3' }, '🚨 Частые проблемы'),
+          h('div', { className: 'space-y-2' },
+            ['4013', '4014', '-1', '9', '56'].map(code =>
+              h('button', {
+                key: code,
+                onClick: () => onOpenError && onOpenError(code),
+                className: 'w-full text-left p-3 bg-white rounded-lg hover:bg-red-100 transition-colors'
+              },
+                h('p', { className: 'font-bold text-sm' }, `Error ${code}`),
+                h('p', { className: 'text-xs text-slate-600' }, 
+                  code === '4013' ? 'NAND/eMMC проблемы' :
+                  code === '4014' ? 'Проблемы восстановления' :
+                  code === '-1' ? 'Baseband не отвечает' :
+                  code === '9' ? 'Потеря связи USB' :
+                  'Проблемы с батареей'
                 )
               )
             )
           )
         )
       )
-    );
-  }
-  
-  return null;
+    )
+  );
 };
 
-// ===== PRICES PANEL (Real Data) =====
-const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem }) => {
+// ============================================
+// PRICES PANEL
+// ============================================
+
+const PricesPanel = ({ ukrainePrices, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('all');
   const [sortBy, setSortBy] = useState('name');
-  
-  // Safety check
-  if (!ukrainePrices) {
-    return h(Modal, { title: '💰 Цены Украина', onClose, color: 'green' },
-      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка цен...')
-    );
-  }
-  
-  // Build unified price list from ukraine_prices.json
-  const priceList = useMemo(() => {
-    if (!ukrainePrices) return [];
-    
-    return Object.entries(ukrainePrices)
-      .map(([article, data]) => ({
-        article,
-        description: data.description || '',
-        price_uah: data.price_uah,
-        price_usd: convertPrice(data.price_uah, 'UAH', 'USD'),
-        discount: data.discount || 0,
-        category: detectCategory(data.description)
-      }))
-      .filter(item => item.price_uah > 0);
-  }, [ukrainePrices]);
-  
-  const categories = useMemo(() => {
-    const cats = new Set(priceList.map(p => p.category));
-    return ['all', ...Array.from(cats).sort()];
-  }, [priceList]);
+  const [priceRange, setPriceRange] = useState('all');
   
   const filtered = useMemo(() => {
-    if (!priceList || !Array.isArray(priceList)) return [];
-    let result = priceList;
-    
-    if (category !== 'all') {
-      result = result.filter(p => p.category === category);
-    }
+    if (!ukrainePrices) return [];
+    let items = Object.entries(ukrainePrices).map(([article, data]) => ({ article, ...data }));
     
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      result = result.filter(p => 
-        (p.article || '').toLowerCase().includes(term) ||
+      items = items.filter(p => 
+        p.article.toLowerCase().includes(term) ||
         (p.description || '').toLowerCase().includes(term)
       );
     }
     
-    // Sort
-    result = [...result].sort((a, b) => {
+    if (priceRange !== 'all') {
+      const ranges = {
+        'low': [0, 1000],
+        'mid': [1000, 5000],
+        'high': [5000, 20000],
+        'premium': [20000, Infinity]
+      };
+      const [min, max] = ranges[priceRange];
+      items = items.filter(p => (p.price_uah || 0) >= min && (p.price_uah || 0) < max);
+    }
+    
+    items.sort((a, b) => {
       if (sortBy === 'price_asc') return (a.price_uah || 0) - (b.price_uah || 0);
       if (sortBy === 'price_desc') return (b.price_uah || 0) - (a.price_uah || 0);
       return (a.description || '').localeCompare(b.description || '');
     });
     
-    return result.slice(0, 200);
-  }, [priceList, searchTerm, category, sortBy]);
+    return items.slice(0, 200);
+  }, [ukrainePrices, searchTerm, sortBy, priceRange]);
   
-  return h(Modal, { 
-    title: '💰 Каталог цен', 
-    subtitle: `${priceList.length.toLocaleString()} позиций • Реальные цены Украина`, 
-    onClose, 
-    color: 'amber' 
-  },
+  return h(Modal, { title: '💰 Каталог цен Украина', subtitle: `${Object.keys(ukrainePrices || {}).length.toLocaleString()} позиций`, onClose, color: 'amber' },
     h('div', { className: 'flex flex-col h-[70vh]' },
-      // Filters
-      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3' },
+      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3 flex-shrink-0' },
         h('input', {
           type: 'text',
           value: searchTerm,
@@ -1307,14 +694,7 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
           placeholder: 'Поиск по артикулу или описанию...',
           className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none'
         }),
-        h('div', { className: 'flex gap-2 flex-wrap items-center' },
-          h('select', {
-            value: category,
-            onChange: e => setCategory(e.target.value),
-            className: 'px-3 py-1.5 rounded-lg border border-slate-200 text-sm'
-          },
-            ...categories.map(c => h('option', { key: c, value: c }, c === 'all' ? 'Все категории' : c))
-          ),
+        h('div', { className: 'flex gap-2 flex-wrap' },
           h('select', {
             value: sortBy,
             onChange: e => setSortBy(e.target.value),
@@ -1324,28 +704,33 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
             h('option', { value: 'price_asc' }, 'Цена ↑'),
             h('option', { value: 'price_desc' }, 'Цена ↓')
           ),
-          h('span', { className: 'text-sm text-slate-500 ml-auto' }, `Показано: ${filtered.length}`)
+          h('select', {
+            value: priceRange,
+            onChange: e => setPriceRange(e.target.value),
+            className: 'px-3 py-1.5 rounded-lg border border-slate-200 text-sm'
+          },
+            h('option', { value: 'all' }, 'Все цены'),
+            h('option', { value: 'low' }, 'До 1000₴'),
+            h('option', { value: 'mid' }, '1-5 тыс₴'),
+            h('option', { value: 'high' }, '5-20 тыс₴'),
+            h('option', { value: 'premium' }, '20+ тыс₴')
+          ),
+          h('span', { className: 'text-sm text-slate-500 ml-auto self-center' }, `Показано: ${filtered.length}`)
         )
       ),
-      
-      // Results
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-2' },
-          filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...(filtered || []).map(item => 
-            h('div', { 
-              key: item.article, 
-              onClick: () => onSelectItem({ ...item, type: 'article' }),
-              className: 'p-3 bg-white rounded-xl border border-slate-200 hover:border-amber-300 hover:shadow-md cursor-pointer transition-all flex justify-between items-center gap-4'
-            },
-              h('div', { className: 'flex-1 min-w-0' },
-                h('p', { className: 'font-mono text-sm font-bold text-amber-600' }, item.article),
-                h('p', { className: 'text-sm text-slate-600 truncate' }, item.description),
-                h('span', { className: 'inline-block mt-1 px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-500' }, item.category)
-              ),
-              h('div', { className: 'text-right flex-shrink-0' },
-                h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(item.price_uah, 'UAH')),
-                h('p', { className: 'text-xs text-slate-500' }, `≈ ${formatPrice(item.price_usd, 'USD')}`)
+          ...filtered.map(item =>
+            h('div', { key: item.article, className: 'p-3 bg-white rounded-xl border border-slate-200 hover:border-amber-300 transition-colors' },
+              h('div', { className: 'flex justify-between items-start gap-4' },
+                h('div', { className: 'flex-1 min-w-0' },
+                  h('p', { className: 'font-mono text-sm font-bold text-amber-600' }, item.article),
+                  h('p', { className: 'text-sm text-slate-600 line-clamp-2' }, item.description)
+                ),
+                h('div', { className: 'text-right flex-shrink-0' },
+                  h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(item.price_uah, 'UAH')),
+                  h('p', { className: 'text-xs text-slate-500' }, `≈ ${formatPrice(item.price_uah * RATES.UAH_TO_USD, 'USD')}`)
+                )
               )
             )
           )
@@ -1355,283 +740,178 @@ const PricesPanel = ({ ukrainePrices, logicBoardsSpecs, onClose, onSelectItem })
   );
 };
 
-// Helper to detect category from description
-function detectCategory(desc) {
-  const d = desc.toLowerCase();
-  if (d.includes('logic board') || d.includes('материнская')) return 'Logic Board';
-  if (d.includes('display') || d.includes('lcd') || d.includes('screen') || d.includes('дисплей')) return 'Display';
-  if (d.includes('battery') || d.includes('батарея') || d.includes('аккумулятор')) return 'Battery';
-  if (d.includes('camera') || d.includes('камера')) return 'Camera';
-  if (d.includes('speaker') || d.includes('динамик')) return 'Speaker';
-  if (d.includes('keyboard') || d.includes('клавиатура') || d.includes('top case')) return 'Keyboard/TopCase';
-  if (d.includes('bottom case') || d.includes('housing')) return 'Housing';
-  if (d.includes('trackpad') || d.includes('трекпад')) return 'Trackpad';
-  if (d.includes('fan') || d.includes('вентилятор')) return 'Fan';
-  if (d.includes('ssd') || d.includes('flash') || d.includes('storage')) return 'Storage';
-  if (d.includes('charger') || d.includes('adapter') || d.includes('зарядка')) return 'Charger';
-  if (d.includes('cable') || d.includes('flex') || d.includes('кабель')) return 'Cable';
-  if (d.includes('screw') || d.includes('винт')) return 'Screws';
-  if (d.includes('iphone')) return 'iPhone Parts';
-  if (d.includes('ipad')) return 'iPad Parts';
-  if (d.includes('macbook') || d.includes('mbp')) return 'MacBook Parts';
-  if (d.includes('imac')) return 'iMac Parts';
-  if (d.includes('mac mini') || d.includes('mac pro')) return 'Mac Parts';
-  if (d.includes('watch')) return 'Watch Parts';
-  if (d.includes('airpods') || d.includes('beats')) return 'Audio Parts';
-  return 'Other';
-}
+// ============================================
+// LOGIC BOARDS PANEL
+// ============================================
 
-// ===== LOGIC BOARDS PANEL (with click) =====
-const LogicBoardsPanel = ({ logicBoards, logicBoardsSpecs, ukrainePrices, onClose, onSelectItem }) => {
+const LogicBoardsPanel = ({ logicBoardsSpecs, onClose, onSelectBoard }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showType, setShowType] = useState('all');
+  const [category, setCategory] = useState('all');
   
-  // Safety check
-  if (!logicBoards && !logicBoardsSpecs) {
-    return h(Modal, { title: '🖥️ База плат', onClose, color: 'violet' },
-      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка данных...')
-    );
-  }
+  const categories = useMemo(() => {
+    if (!logicBoardsSpecs?.boards) return ['all'];
+    const cats = new Set();
+    Object.values(logicBoardsSpecs.boards).forEach(b => {
+      if (b.model?.includes('MacBook')) cats.add('MacBook');
+      else if (b.model?.includes('iMac')) cats.add('iMac');
+      else if (b.model?.includes('Mac')) cats.add('Mac');
+      else if (b.model?.includes('iPhone')) cats.add('iPhone');
+      else if (b.model?.includes('iPad')) cats.add('iPad');
+    });
+    return ['all', ...Array.from(cats).sort()];
+  }, [logicBoardsSpecs]);
   
-  // Merge comprehensive boards with specs (which have prices)
-  const allBoards = useMemo(() => {
-    const boards = [];
+  const boards = useMemo(() => {
+    if (!logicBoardsSpecs?.boards) return [];
+    let items = Object.entries(logicBoardsSpecs.boards).map(([article, data]) => ({ article, ...data }));
     
-    // From logic_boards_comprehensive.json
-    if (logicBoards) {
-      (logicBoards.m_series_boards || []).forEach(b => {
-        boards.push({ ...b, type: 'M-series', source: 'comprehensive' });
-      });
-      (logicBoards.intel_boards || []).forEach(b => {
-        boards.push({ ...b, type: 'Intel', source: 'comprehensive' });
-      });
-    }
-    
-    // From logic_boards_specs.json (with prices)
-    if (logicBoardsSpecs?.boards) {
-      Object.entries(logicBoardsSpecs.boards).forEach(([article, data]) => {
-        // Check if already exists
-        const existing = boards.find(b => b.article === article);
-        if (existing) {
-          Object.assign(existing, data, { article, hasPrice: true });
-        } else {
-          boards.push({ 
-            ...data, 
-            article, 
-            type: data.model?.includes('M1') || data.model?.includes('M2') || data.model?.includes('M3') || data.model?.includes('M4') ? 'M-series' : 'Intel',
-            source: 'specs',
-            hasPrice: true 
-          });
-        }
-      });
-    }
-    
-    return boards;
-  }, [logicBoards, logicBoardsSpecs]);
-  
-  const filtered = useMemo(() => {
-    if (!allBoards || !Array.isArray(allBoards)) return [];
-    let result = allBoards;
-    
-    if (showType !== 'all') {
-      result = result.filter(b => b.type === showType);
+    if (category !== 'all') {
+      items = items.filter(b => (b.model || b.description || '').includes(category));
     }
     
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      result = result.filter(b => 
-        (b.board_number || '').toLowerCase().includes(term) ||
-        (b.model || '').toLowerCase().includes(term) ||
-        (b.model_number || '').toLowerCase().includes(term) ||
-        (b.article || '').toLowerCase().includes(term) ||
-        (b.description || '').toLowerCase().includes(term)
+      items = items.filter(b => 
+        b.article.toLowerCase().includes(term) ||
+        (b.description || '').toLowerCase().includes(term) ||
+        (b.model || '').toLowerCase().includes(term)
       );
     }
     
-    return result.slice(0, 100);
-  }, [allBoards, searchTerm, showType]);
+    return items.slice(0, 100);
+  }, [logicBoardsSpecs, searchTerm, category]);
   
-  const stats = useMemo(() => {
-    if (!allBoards || !Array.isArray(allBoards)) return { total: 0, mSeries: 0, intel: 0, withPrices: 0 };
-    return {
-      total: allBoards.length,
-      mSeries: allBoards.filter(b => b.type === 'M-series').length,
-      intel: allBoards.filter(b => b.type === 'Intel').length,
-      withPrices: allBoards.filter(b => b.hasPrice || b.price_uah || b.price_usd).length
-    };
-  }, [allBoards]);
-  
-  return h(Modal, { 
-    title: '🖥️ Logic Boards', 
-    subtitle: `${stats.total} плат • ${stats.mSeries} M-series • ${stats.intel} Intel • ${stats.withPrices} с ценами`, 
-    onClose, 
-    color: 'violet' 
-  },
+  return h(Modal, { title: '🖥️ Logic Boards', subtitle: `${logicBoardsSpecs?.total || 0} плат`, onClose, color: 'violet' },
     h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3' },
-        h('div', { className: 'flex gap-2' },
-          ['all', 'M-series', 'Intel'].map(type => 
+      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3 flex-shrink-0' },
+        h('div', { className: 'flex gap-2 overflow-x-auto pb-2' },
+          ...categories.map(cat =>
             h('button', {
-              key: type,
-              onClick: () => setShowType(type),
-              className: cn('px-4 py-2 rounded-xl font-medium text-sm transition-colors',
-                showType === type ? 'bg-violet-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
-            }, type === 'all' ? `Все (${stats.total})` : type === 'M-series' ? `Apple Silicon (${stats.mSeries})` : `Intel (${stats.intel})`)
+              key: cat,
+              onClick: () => setCategory(cat),
+              className: cn('px-4 py-2 rounded-xl font-medium whitespace-nowrap transition-all',
+                category === cat ? 'bg-violet-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
+            }, cat === 'all' ? 'Все' : cat)
           )
         ),
         h('input', {
           type: 'text',
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
-          placeholder: 'Поиск по модели, board number, артикулу...',
+          placeholder: 'Поиск по артикулу, модели...',
           className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-violet-500 focus:outline-none'
         })
       ),
-      
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          ...(filtered || []).map((board, i) => {
-            const uaPrice = ukrainePrices?.[board.article];
-            const hasAnyPrice = board.price_uah || board.price_usd || uaPrice;
-            
-            return h('div', { 
-              key: board.article || board.board_number || i,
-              onClick: () => onSelectItem({ ...board, ...(uaPrice || {}), type: 'board' }),
-              className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-violet-300 hover:shadow-md cursor-pointer transition-all'
+        h('div', { className: 'space-y-2' },
+          ...boards.map(board =>
+            h('div', { 
+              key: board.article, 
+              className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-violet-300 cursor-pointer transition-all',
+              onClick: () => onSelectBoard && onSelectBoard(board)
             },
-              h('div', { className: 'flex justify-between items-start mb-2' },
+              h('div', { className: 'flex justify-between items-start' },
                 h('div', null,
-                  h('p', { className: 'font-mono font-bold text-violet-600' }, board.board_number || board.article),
-                  board.article && board.board_number && h('p', { className: 'text-xs text-slate-400 font-mono' }, board.article)
+                  h('p', { className: 'font-mono font-bold text-violet-600' }, board.article),
+                  h('p', { className: 'text-sm text-slate-600 mt-1' }, board.description),
+                  board.specs && h('div', { className: 'flex gap-2 mt-2' },
+                    board.specs.cpu_ghz && h('span', { className: 'px-2 py-1 bg-violet-100 rounded text-xs text-violet-700' }, `${board.specs.cpu_ghz} GHz`),
+                    board.specs.ram_gb && h('span', { className: 'px-2 py-1 bg-blue-100 rounded text-xs text-blue-700' }, `${board.specs.ram_gb} GB`)
+                  )
                 ),
-                h('div', { className: 'flex gap-1' },
-                  h('span', { className: cn('px-2 py-0.5 rounded text-xs font-medium',
-                    board.type === 'M-series' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
-                  ) }, board.type),
-                  hasAnyPrice && h('span', { className: 'px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700' }, '💰')
-                )
-              ),
-              h('p', { className: 'text-sm text-slate-700 mb-2 line-clamp-2' }, board.model || board.description),
-              h('div', { className: 'flex flex-wrap gap-2 text-xs' },
-                board.model_number && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-slate-600' }, board.model_number),
-                board.emc && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-slate-600' }, board.emc),
-                board.year && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-slate-600' }, board.year),
-                board.architecture && h('span', { className: 'px-2 py-0.5 bg-purple-100 rounded text-purple-600' }, board.architecture)
-              ),
-              hasAnyPrice && h('div', { className: 'mt-2 pt-2 border-t border-slate-100 flex justify-between items-center' },
-                h('span', { className: 'text-xs text-slate-500' }, '🇺🇦'),
-                h('span', { className: 'font-bold text-amber-600' }, 
-                  formatPrice(uaPrice?.price_uah || board.price_uah, 'UAH')
+                h('div', { className: 'text-right' },
+                  board.price_uah && h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(board.price_uah, 'UAH')),
+                  board.price_usd && h('p', { className: 'text-sm text-slate-500' }, formatPrice(board.price_usd, 'USD'))
                 )
               )
-            );
-          })
+            )
+          )
         )
       )
     )
   );
 };
 
-// ===== IC DATABASE PANEL (with click) =====
-const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
+// ============================================
+// IC DATABASE PANEL
+// ============================================
+
+const ICDatabasePanel = ({ icData, onClose, onSelectIC }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('charging');
-  
-  // Safety check
-  if (!icData) {
-    return h(Modal, { title: '🔌 База микросхем', onClose, color: 'violet' },
-      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка данных...')
-    );
-  }
+  const [category, setCategory] = useState('charging_ics');
   
   const categories = {
-    charging: { name: '⚡ Зарядка', data: icData?.charging_ics || [] },
-    power: { name: '🔋 Питание', data: icData?.power_ics || [] },
-    audio: { name: '🔊 Аудио', data: icData?.audio_ics || [] },
-    baseband: { name: '📶 Baseband', data: icData?.baseband_ics || [] },
-    nand: { name: '💾 NAND', data: icData?.nand_ics || [] },
-    wifi_bt: { name: '📡 WiFi/BT', data: icData?.wifi_bt_ics || [] },
-    biometric: { name: '👆 Биометрия', data: icData?.biometric_ics || [] },
+    charging_ics: { name: '⚡ Зарядка', key: 'charging_ics' },
+    power_ics: { name: '🔋 Питание', key: 'power_ics' },
+    audio_ics: { name: '🔊 Аудио', key: 'audio_ics' },
+    baseband_ics: { name: '📶 Baseband', key: 'baseband_ics' },
+    nand_ics: { name: '💾 NAND', key: 'nand_ics' },
+    wifi_bt_ics: { name: '📡 WiFi/BT', key: 'wifi_bt_ics' },
   };
   
-  const currentData = categories[category]?.data || [];
-  
-  const filtered = useMemo(() => {
-    if (!currentData || !Array.isArray(currentData)) return [];
-    if (!searchTerm) return currentData;
+  const ics = useMemo(() => {
+    const items = icData?.[category] || [];
+    if (!searchTerm) return items;
     const term = searchTerm.toLowerCase();
-    return currentData.filter(ic => 
-      (ic.name || '').toLowerCase().includes(term) ||
+    return items.filter(ic => 
+      ic.name.toLowerCase().includes(term) ||
       (ic.designation || '').toLowerCase().includes(term) ||
       (ic.compatible_devices || []).some(d => d.toLowerCase().includes(term))
     );
-  }, [currentData, searchTerm]);
+  }, [icData, category, searchTerm]);
   
-  const totalICs = Object.values(categories || {}).reduce((sum, cat) => sum + (cat?.data?.length || 0), 0);
-  
-  return h(Modal, { 
-    title: '🔌 База микросхем', 
-    subtitle: `${totalICs} микросхем • Диагностика и совместимость`, 
-    onClose, 
-    color: 'violet' 
-  },
+  return h(Modal, { title: '🔌 База микросхем', subtitle: 'IC диагностика и совместимость', onClose, color: 'green' },
     h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3' },
+      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3 flex-shrink-0' },
         h('div', { className: 'flex gap-2 flex-wrap' },
-          ...Object.entries(categories).map(([key, cat]) => 
+          ...Object.entries(categories).map(([key, cat]) =>
             h('button', {
               key,
               onClick: () => setCategory(key),
-              className: cn('px-3 py-1.5 rounded-lg font-medium text-sm transition-colors',
-                category === key ? 'bg-violet-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
-            }, `${cat.name} (${cat.data.length})`)
+              className: cn('px-3 py-1.5 rounded-lg text-sm font-medium transition-colors',
+                category === key ? 'bg-emerald-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
+            }, cat.name)
           )
         ),
         h('input', {
           type: 'text',
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
-          placeholder: 'Поиск по названию, устройству...',
-          className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-violet-500 focus:outline-none'
+          placeholder: 'Поиск IC...',
+          className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-emerald-500 focus:outline-none'
         })
       ),
-      
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
-          filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...(filtered || []).map((ic, i) => 
+          ...ics.map((ic, i) =>
             h('div', { 
-              key: ic.name || i,
-              onClick: () => onSelectItem({ ...ic, type: 'ic' }),
-              className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-violet-300 hover:shadow-md cursor-pointer transition-all'
+              key: ic.name + i,
+              onClick: () => onSelectIC(ic),
+              className: 'p-4 bg-white rounded-xl border border-slate-200 hover:border-emerald-300 cursor-pointer transition-colors'
             },
-              h('div', { className: 'flex justify-between items-start mb-2' },
+              h('div', { className: 'flex justify-between items-start' },
                 h('div', null,
-                  h('p', { className: 'font-mono font-bold text-violet-600' }, ic.name),
-                  ic.designation && h('p', { className: 'text-xs text-slate-500' }, ic.designation)
+                  h('div', { className: 'flex items-center gap-2' },
+                    h('p', { className: 'font-mono font-bold text-emerald-600' }, ic.name),
+                    ic.designation && h('span', { className: 'px-2 py-0.5 bg-slate-100 rounded text-xs' }, ic.designation)
+                  ),
+                  ic.functions && h('p', { className: 'text-sm text-slate-600 mt-1' }, ic.functions.slice(0, 2).join(', ')),
+                  ic.compatible_devices && h('div', { className: 'flex flex-wrap gap-1 mt-2' },
+                    ...ic.compatible_devices.slice(0, 4).map((d, j) =>
+                      h('span', { key: j, className: 'px-2 py-0.5 bg-slate-100 rounded text-xs' }, d)
+                    ),
+                    ic.compatible_devices.length > 4 && h('span', { className: 'text-xs text-slate-400' }, `+${ic.compatible_devices.length - 4}`)
+                  )
                 ),
-                h('div', { className: 'flex gap-2' },
-                  ic.price_range && h('span', { className: 'px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs' }, ic.price_range),
-                  ic.difficulty && h('span', { className: cn('px-2 py-0.5 rounded text-xs',
-                    ic.difficulty === 'Expert' ? 'bg-red-100 text-red-700' :
-                    ic.difficulty === 'Advanced' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'
-                  ) }, ic.difficulty)
+                h('div', { className: 'text-right' },
+                  ic.price_range && h('p', { className: 'font-bold text-emerald-600' }, ic.price_range),
+                  ic.difficulty && h('span', { 
+                    className: cn('px-2 py-1 rounded text-xs font-bold',
+                      ic.difficulty === 'Expert' ? 'bg-red-100 text-red-700' :
+                      ic.difficulty === 'Advanced' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'
+                    )
+                  }, ic.difficulty)
                 )
-              ),
-              
-              ic.functions?.length > 0 && h('p', { className: 'text-sm text-slate-600 mb-2' }, 
-                ic.functions.slice(0, 2).join(', ')
-              ),
-              
-              ic.compatible_devices?.length > 0 && h('div', { className: 'flex flex-wrap gap-1' },
-                ...ic.compatible_devices.slice(0, 5).map((d, j) => 
-                  h('span', { key: j, className: 'px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-600' }, d)
-                ),
-                ic.compatible_devices.length > 5 && h('span', { className: 'text-xs text-slate-400' }, `+${ic.compatible_devices.length - 5}`)
-              ),
-              
-              ic.symptoms_when_faulty?.length > 0 && h('div', { className: 'mt-2 pt-2 border-t border-slate-100' },
-                h('p', { className: 'text-xs text-red-600' }, `⚠️ ${ic.symptoms_when_faulty[0]}`)
               )
             )
           )
@@ -1641,773 +921,614 @@ const ICDatabasePanel = ({ icData, onClose, onSelectItem }) => {
   );
 };
 
-// ===== ARTICLE SEARCH PANEL (with click) =====
-const ArticleSearchPanel = ({ articleData, ukrainePrices, onClose, onSelectItem }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [partType, setPartType] = useState('all');
+// ============================================
+// IC DETAIL MODAL
+// ============================================
+
+const ICDetailModal = ({ ic, onClose }) => {
+  if (!ic) return null;
   
-  const articles = articleData?.articles || [];
-  const partTypes = ['all', 'display', 'battery', 'rear_camera', 'front_camera', 'speaker', 'logic_board'];
-  
-  const filtered = useMemo(() => {
-    if (!articles || !Array.isArray(articles)) return [];
-    let result = articles;
-    
-    if (partType !== 'all') {
-      result = result.filter(a => a.part_type === partType);
-    }
-    
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter(a => 
-        (a.article || '').toLowerCase().includes(term) ||
-        (a.description || '').toLowerCase().includes(term) ||
-        (a.model || '').toLowerCase().includes(term)
-      );
-    }
-    
-    return result.slice(0, 100);
-  }, [articles, searchTerm, partType]);
-  
-  return h(Modal, { 
-    title: '🔍 Поиск артикулов', 
-    subtitle: `${articleData?.total || 0} артикулов в базе`, 
-    onClose, 
-    color: 'green' 
-  },
-    h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3' },
-        h('input', {
-          type: 'text',
-          value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-          placeholder: 'Введите артикул, модель или описание...',
-          className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-emerald-500 focus:outline-none'
-        }),
-        h('div', { className: 'flex gap-2 flex-wrap' },
-          ...partTypes.map(type => 
-            h('button', {
-              key: type,
-              onClick: () => setPartType(type),
-              className: cn('px-3 py-1 rounded-full text-sm font-medium transition-colors',
-                partType === type ? 'bg-emerald-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
-            }, type === 'all' ? 'Все' : 
-               type === 'display' ? '📱 Дисплеи' : 
-               type === 'battery' ? '🔋 Батареи' :
-               type === 'rear_camera' ? '📷 Задние камеры' :
-               type === 'front_camera' ? '🤳 Фронт камеры' :
-               type === 'speaker' ? '🔊 Динамики' :
-               type === 'logic_board' ? '🖥️ Платы' : type)
-          )
-        )
-      ),
-      
-      h('div', { className: 'flex-1 overflow-y-auto p-4' },
-        h('div', { className: 'space-y-2' },
-          filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ничего не найдено'),
-          ...(filtered || []).map((art, i) => {
-            const uaPrice = ukrainePrices?.[art.article];
-            return h('div', { 
-              key: art.article || i,
-              onClick: () => onSelectItem({ ...art, ...(uaPrice || {}), type: 'article' }),
-              className: 'p-3 bg-white rounded-xl border border-slate-200 hover:border-emerald-300 hover:shadow-md cursor-pointer transition-all'
-            },
-              h('div', { className: 'flex justify-between items-start gap-4' },
-                h('div', { className: 'flex-1 min-w-0' },
-                  h('p', { className: 'font-mono font-bold text-emerald-600' }, art.article),
-                  h('p', { className: 'text-sm text-slate-700 truncate' }, art.description),
-                  h('p', { className: 'text-xs text-slate-500 mt-1' }, art.model),
-                  h('span', { className: 'inline-block mt-1 px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-500 capitalize' }, 
-                    (art.part_type || '').replace('_', ' ')
+  return h(Modal, { title: `🔌 ${ic.name}`, subtitle: ic.designation, onClose, color: 'green', size: 'lg' },
+    h('div', { className: 'p-6 overflow-y-auto max-h-[70vh]' },
+      h('div', { className: 'grid md:grid-cols-2 gap-6' },
+        h('div', { className: 'space-y-4' },
+          h('div', { className: 'bg-emerald-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-emerald-800 mb-3' }, '📋 Информация'),
+            h('div', { className: 'space-y-2 text-sm' },
+              h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'IC:'),
+                h('span', { className: 'font-mono font-bold' }, ic.name)
+              ),
+              ic.designation && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Designation:'),
+                h('span', { className: 'font-bold' }, ic.designation)
+              ),
+              ic.package && h('div', { className: 'flex justify-between' },
+                h('span', { className: 'text-slate-500' }, 'Package:'),
+                h('span', { className: 'font-mono' }, ic.package)
+              )
+            )
+          ),
+          ic.functions && h('div', { className: 'bg-blue-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-blue-800 mb-3' }, '⚙️ Функции'),
+            h('ul', { className: 'space-y-1' },
+              ...ic.functions.map((f, i) => h('li', { key: i, className: 'text-sm text-slate-700 flex items-start gap-2' },
+                h('span', { className: 'text-blue-500' }, '▸'), f
+              ))
+            )
+          ),
+          ic.diagnostics && h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-violet-800 mb-3' }, '🔍 Диагностика'),
+            ic.diagnostics.diode_mode && h('div', { className: 'mb-3' },
+              h('p', { className: 'text-xs font-bold text-violet-600 mb-2' }, 'Диодный режим:'),
+              h('div', { className: 'grid grid-cols-2 gap-2' },
+                ...Object.entries(ic.diagnostics.diode_mode).map(([k, v]) =>
+                  h('div', { key: k, className: 'p-2 bg-white rounded text-center' },
+                    h('p', { className: 'text-xs text-violet-600' }, k),
+                    h('p', { className: 'font-mono font-bold' }, v)
                   )
-                ),
-                h('div', { className: 'text-right flex-shrink-0' },
-                  uaPrice && h('p', { className: 'text-lg font-bold text-amber-600' }, formatPrice(uaPrice.price_uah, 'UAH')),
-                  art.price_usd && h('p', { className: 'text-sm text-blue-600' }, formatPrice(art.price_usd, 'USD')),
-                  !uaPrice && !art.price_usd && h('p', { className: 'text-sm text-slate-400' }, '—')
                 )
               )
-            );
-          })
+            ),
+            ic.diagnostics.current_draw && h('p', { className: 'text-sm text-slate-600' }, '⚡ ', ic.diagnostics.current_draw)
+          )
+        ),
+        h('div', { className: 'space-y-4' },
+          ic.symptoms_when_faulty && h('div', { className: 'bg-red-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-red-800 mb-3' }, '⚠️ Симптомы неисправности'),
+            h('ul', { className: 'space-y-1' },
+              ...ic.symptoms_when_faulty.map((s, i) => h('li', { key: i, className: 'text-sm text-red-700 flex items-start gap-2' },
+                h('span', null, '❌'), s
+              ))
+            )
+          ),
+          ic.repair_tips && h('div', { className: 'bg-amber-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-amber-800 mb-3' }, '💡 Советы по ремонту'),
+            h('ul', { className: 'space-y-1' },
+              ...ic.repair_tips.map((t, i) => h('li', { key: i, className: 'text-sm text-amber-700 flex items-start gap-2' },
+                h('span', null, '→'), t
+              ))
+            )
+          ),
+          ic.compatible_devices && h('div', { className: 'bg-slate-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-slate-800 mb-3' }, `📱 Совместимость (${ic.compatible_devices.length})`),
+            h('div', { className: 'flex flex-wrap gap-2' },
+              ...ic.compatible_devices.map((d, i) =>
+                h('span', { key: i, className: 'px-2 py-1 bg-white rounded-lg text-xs border' }, d)
+              )
+            )
+          ),
+          h('div', { className: 'bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl p-4 text-white' },
+            h('div', { className: 'flex justify-between items-center' },
+              h('div', null,
+                h('p', { className: 'text-sm text-white/80' }, 'Цена'),
+                h('p', { className: 'text-2xl font-bold' }, ic.price_range || 'N/A')
+              ),
+              h('div', { className: 'text-right' },
+                h('p', { className: 'text-sm text-white/80' }, 'Сложность'),
+                h('p', { className: 'text-xl font-bold' }, ic.difficulty || 'N/A')
+              )
+            )
+          )
         )
       )
     )
   );
 };
 
-// ===== ERROR CODES PANEL =====
-const ErrorCodesPanel = ({ errorData, onClose }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+// ============================================
+// ERROR CODES PANEL
+// ============================================
+
+const ErrorCodesPanel = ({ errorData, onClose, initialSearch }) => {
+  const [searchTerm, setSearchTerm] = useState(initialSearch || '');
   const [category, setCategory] = useState('itunes');
   
-  // Safety check
-  if (!errorData) {
-    return h(Modal, { title: '⚠️ Коды ошибок', onClose, color: 'red' },
-      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка кодов ошибок...')
-    );
-  }
-  
-  const itunesErrors = errorData?.itunes_restore_errors || [];
-  const macErrors = errorData?.mac_diagnostics || [];
-  const currentErrors = category === 'itunes' ? itunesErrors : macErrors;
-  
-  const filtered = useMemo(() => {
-    if (!currentErrors || !Array.isArray(currentErrors)) return [];
-    if (!searchTerm) return currentErrors;
+  const errors = useMemo(() => {
+    const items = category === 'itunes' 
+      ? (errorData?.itunes_restore_errors || [])
+      : (errorData?.mac_diagnostics || []);
+    
+    if (!searchTerm) return items;
     const term = searchTerm.toLowerCase();
-    return currentErrors.filter(err => 
-      String(err.code).toLowerCase().includes(term) ||
-      (err.description || '').toLowerCase().includes(term) ||
-      (err.cause || '').toLowerCase().includes(term)
+    return items.filter(e =>
+      String(e.code).toLowerCase().includes(term) ||
+      (e.description || '').toLowerCase().includes(term) ||
+      (e.cause || '').toLowerCase().includes(term) ||
+      (e.fix || '').toLowerCase().includes(term)
     );
-  }, [currentErrors, searchTerm]);
+  }, [errorData, category, searchTerm]);
   
-  return h(Modal, { 
-    title: '🚨 Коды ошибок', 
-    subtitle: `${itunesErrors.length} iTunes • ${macErrors.length} Mac диагностика`, 
-    onClose, 
-    color: 'red' 
-  },
+  return h(Modal, { title: '🚨 Коды ошибок', subtitle: `${errors.length} ошибок`, onClose, color: 'red' },
     h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3' },
-        h('div', { className: 'flex gap-2' },
+      h('div', { className: 'p-4 border-b bg-slate-50 space-y-3 flex-shrink-0' },
+        h('div', { className: 'flex gap-3' },
           h('button', {
             onClick: () => setCategory('itunes'),
-            className: cn('px-4 py-2 rounded-xl font-medium text-sm',
-              category === 'itunes' ? 'bg-red-500 text-white' : 'bg-white text-slate-600')
-          }, `iTunes/Finder (${itunesErrors.length})`),
+            className: cn('px-4 py-2 rounded-xl font-medium transition-all',
+              category === 'itunes' ? 'bg-red-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
+          }, '🍎 iTunes/Finder'),
           h('button', {
             onClick: () => setCategory('mac'),
-            className: cn('px-4 py-2 rounded-xl font-medium text-sm',
-              category === 'mac' ? 'bg-blue-500 text-white' : 'bg-white text-slate-600')
-          }, `Mac Diagnostics (${macErrors.length})`)
+            className: cn('px-4 py-2 rounded-xl font-medium transition-all',
+              category === 'mac' ? 'bg-red-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
+          }, '💻 Mac Diagnostics')
         ),
         h('input', {
           type: 'text',
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
-          placeholder: 'Введите код ошибки (4013, 9, ADP...)...',
+          placeholder: 'Поиск по коду или описанию...',
           className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-red-500 focus:outline-none'
         })
       ),
-      
       h('div', { className: 'flex-1 overflow-y-auto p-4' },
         h('div', { className: 'space-y-3' },
-          filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ошибка не найдена'),
-          ...(filtered || []).map((err, i) => 
-            h('div', { key: err.code || i, className: 'p-4 bg-white rounded-xl border border-slate-200' },
+          ...errors.map((error, i) =>
+            h('div', { key: `${error.code}-${i}`, className: 'bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-red-300 transition-colors' },
               h('div', { className: 'flex items-start gap-4' },
-                h('div', { className: 'w-16 h-16 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0' },
-                  h('span', { className: 'text-xl font-bold text-red-600' }, err.code)
-                ),
+                h('span', { className: 'px-3 py-1 bg-gradient-to-r from-red-500 to-rose-500 text-white rounded-lg font-mono font-bold text-lg flex-shrink-0' }, error.code),
                 h('div', { className: 'flex-1' },
-                  h('p', { className: 'font-semibold text-slate-800 mb-1' }, err.description || 'Описание отсутствует'),
-                  err.cause && h('p', { className: 'text-sm text-slate-600 mb-2' }, `⚠️ Причина: ${err.cause}`),
-                  err.solution && h('div', { className: 'p-3 bg-green-50 rounded-lg' },
-                    h('p', { className: 'text-sm text-green-800' }, `✅ Решение: ${err.solution}`)
+                  h('p', { className: 'font-bold text-slate-800 mb-1' }, error.description),
+                  error.cause && h('p', { className: 'text-sm text-slate-600 mb-2' },
+                    h('span', { className: 'font-medium text-red-600' }, '📍 Причина: '), error.cause
                   ),
-                  h('div', { className: 'flex gap-2 mt-2' },
-                    err.hardware && h('span', { className: 'px-2 py-1 bg-red-100 text-red-700 rounded text-xs' }, '🔧 Hardware'),
-                    err.severity && h('span', { className: cn('px-2 py-1 rounded text-xs',
-                      err.severity === 'critical' ? 'bg-red-100 text-red-700' :
-                      err.severity === 'high' ? 'bg-orange-100 text-orange-700' :
-                      err.severity === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'
-                    ) }, err.severity),
-                    err.component && h('span', { className: 'px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs' }, err.component)
-                  )
+                  error.fix && h('div', { className: 'p-3 bg-green-50 rounded-lg border border-green-200' },
+                    h('p', { className: 'text-sm' },
+                      h('span', { className: 'font-medium text-green-700' }, '✅ Решение: '),
+                      h('span', { className: 'text-green-800' }, error.fix)
+                    )
+                  ),
+                  error.severity && h('span', { 
+                    className: cn('mt-2 inline-block px-2 py-1 rounded text-xs font-bold',
+                      error.severity === 'Critical' ? 'bg-red-100 text-red-700' :
+                      error.severity === 'High' ? 'bg-orange-100 text-orange-700' :
+                      'bg-yellow-100 text-yellow-700')
+                  }, error.severity)
                 )
               )
             )
           )
-        )
+        ),
+        errors.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Ошибки не найдены')
       )
     )
   );
 };
 
-// ===== REPAIR CALCULATOR =====
-const RepairCalculatorPanel = ({ devices, ukrainePrices, officialPrices, onClose }) => {
+// ============================================
+// REPAIR KNOWLEDGE PANEL
+// ============================================
+
+const RepairKnowledgePanel = ({ knowledgeData, onClose }) => {
+  const [selectedTopic, setSelectedTopic] = useState('tristar_hydra');
+  
+  const topics = knowledgeData ? Object.keys(knowledgeData).filter(k => typeof knowledgeData[k] === 'object' && knowledgeData[k].description) : [];
+  const current = knowledgeData?.[selectedTopic];
+  
+  return h(Modal, { title: '📚 База знаний', subtitle: 'Профессиональные гайды по ремонту', onClose, color: 'blue', size: 'xl' },
+    h('div', { className: 'flex h-[70vh]' },
+      h('div', { className: 'w-48 border-r bg-slate-50 overflow-y-auto flex-shrink-0' },
+        h('div', { className: 'p-2 space-y-1' },
+          ...topics.map(topic =>
+            h('button', {
+              key: topic,
+              onClick: () => setSelectedTopic(topic),
+              className: cn('w-full text-left px-3 py-2 rounded-lg text-sm transition-colors capitalize',
+                selectedTopic === topic ? 'bg-blue-500 text-white' : 'text-slate-600 hover:bg-slate-100')
+            }, topic.replace(/_/g, ' '))
+          )
+        )
+      ),
+      h('div', { className: 'flex-1 overflow-y-auto p-6' },
+        current ? h('div', { className: 'space-y-6' },
+          h('div', null,
+            h('h3', { className: 'text-2xl font-bold text-slate-800 mb-2 capitalize' }, selectedTopic.replace(/_/g, ' ')),
+            h('p', { className: 'text-slate-600' }, current.description)
+          ),
+          current.common_names && h('div', { className: 'flex flex-wrap gap-2' },
+            ...current.common_names.map(name => h('span', { key: name, className: 'px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium' }, name))
+          ),
+          current.symptoms && h('div', { className: 'bg-red-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-red-800 mb-3' }, '⚠️ Симптомы'),
+            h('ul', { className: 'grid sm:grid-cols-2 gap-2' },
+              ...current.symptoms.map((s, i) => h('li', { key: i, className: 'text-sm text-red-700 flex items-start gap-2' },
+                h('span', null, '•'), s
+              ))
+            )
+          ),
+          current.diagnostics?.voltage_checks && h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+            h('h4', { className: 'font-bold text-violet-800 mb-3' }, '🔍 Проверка напряжений'),
+            h('div', { className: 'space-y-2' },
+              ...current.diagnostics.voltage_checks.map((v, i) =>
+                h('div', { key: i, className: 'p-3 bg-white rounded-lg' },
+                  h('p', { className: 'font-mono font-bold text-violet-600' }, v.point),
+                  h('p', { className: 'text-sm text-slate-600' }, v.description),
+                  h('p', { className: 'text-sm font-bold text-green-600 mt-1' }, `Ожидается: ${v.expected}`)
+                )
+              )
+            )
+          )
+        ) : h('p', { className: 'text-slate-500' }, 'Выберите тему')
+      )
+    )
+  );
+};
+
+// ============================================
+// REGIONAL CODES PANEL
+// ============================================
+
+const RegionalCodesPanel = ({ regionData, onClose }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterRegion, setFilterRegion] = useState('all');
+  
+  const codes = regionData?.regional_codes || {};
+  const regions = useMemo(() => {
+    const r = new Set(Object.values(codes).map(c => c.region).filter(Boolean));
+    return ['all', ...Array.from(r).sort()];
+  }, [codes]);
+  
+  const filteredCodes = useMemo(() => {
+    return Object.entries(codes).filter(([code, data]) => {
+      const term = searchTerm.toLowerCase();
+      if (filterRegion !== 'all' && data.region !== filterRegion) return false;
+      return code.toLowerCase().includes(term) ||
+             data.region?.toLowerCase().includes(term) ||
+             data.countries?.some(c => c.toLowerCase().includes(term));
+    });
+  }, [codes, searchTerm, filterRegion]);
+  
+  return h(Modal, { title: '🌍 Региональные коды', subtitle: 'Коды стран для Apple устройств', onClose, color: 'blue' },
+    h('div', { className: 'p-4 border-b bg-slate-50' },
+      h('div', { className: 'flex gap-3 flex-wrap' },
+        h('input', {
+          type: 'text',
+          value: searchTerm,
+          onChange: e => setSearchTerm(e.target.value),
+          placeholder: 'Поиск по коду или стране...',
+          className: 'flex-1 min-w-48 px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
+        }),
+        h('select', {
+          value: filterRegion,
+          onChange: e => setFilterRegion(e.target.value),
+          className: 'px-4 py-2 rounded-xl border border-slate-200'
+        }, ...regions.map(r => h('option', { key: r, value: r }, r === 'all' ? 'Все регионы' : r)))
+      )
+    ),
+    h('div', { className: 'overflow-y-auto max-h-[60vh] p-4' },
+      h('div', { className: 'grid gap-3' },
+        ...filteredCodes.map(([code, data]) =>
+          h('div', { key: code, className: 'bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-blue-300 transition-all' },
+            h('div', { className: 'flex items-start justify-between mb-2' },
+              h('span', { className: 'px-3 py-1 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg font-mono font-bold text-lg' }, code),
+              h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-sm text-slate-600' }, data.region)
+            ),
+            h('div', { className: 'text-sm text-slate-600' },
+              h('p', { className: 'font-medium mb-1' }, 'Страны:'),
+              h('p', { className: 'text-slate-500' }, data.countries?.join(', ') || 'N/A')
+            ),
+            h('div', { className: 'flex gap-3 mt-3 text-xs' },
+              h('span', { className: cn('px-2 py-1 rounded',
+                data.facetime === true ? 'bg-green-100 text-green-700' :
+                data.facetime === false ? 'bg-red-100 text-red-700' :
+                'bg-amber-100 text-amber-700'
+              )}, `FaceTime: ${data.facetime === true ? 'Да' : data.facetime === false ? 'Нет' : data.facetime}`),
+              h('span', { className: cn('px-2 py-1 rounded',
+                data.dual_sim ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'
+              )}, `Dual SIM: ${data.dual_sim ? 'Да' : 'Нет'}`)
+            ),
+            data.notes && h('p', { className: 'mt-2 text-xs text-slate-500 italic' }, data.notes)
+          )
+        )
+      ),
+      filteredCodes.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Коды не найдены')
+    )
+  );
+};
+
+// ============================================
+// DFU / RECOVERY MODES PANEL
+// ============================================
+
+const DfuRecoveryPanel = ({ keyCombinations, onClose }) => {
+  const [selectedCategory, setSelectedCategory] = useState('iphone');
+  const [selectedMode, setSelectedMode] = useState('dfu_mode');
+  
+  const categories = ['iphone', 'ipad', 'mac', 'apple_watch', 'airpods'];
+  const modes = ['dfu_mode', 'recovery_mode', 'diagnostics'];
+  
+  const modeLabels = { 'dfu_mode': '🔧 DFU Mode', 'recovery_mode': '🔄 Recovery Mode', 'diagnostics': '🔍 Diagnostics' };
+  const catLabels = { 'iphone': '📱 iPhone', 'ipad': '📟 iPad', 'mac': '💻 Mac', 'apple_watch': '⌚ Watch', 'airpods': '🎧 AirPods' };
+  
+  const data = keyCombinations?.[selectedCategory]?.[selectedMode];
+  
+  return h(Modal, { title: '⌨️ DFU / Recovery Modes', subtitle: 'Комбинации клавиш', onClose, size: 'xl', color: 'slate' },
+    h('div', { className: 'flex flex-wrap gap-2 p-4 border-b bg-slate-50' },
+      ...categories.filter(c => keyCombinations?.[c]).map(cat =>
+        h('button', {
+          key: cat,
+          onClick: () => setSelectedCategory(cat),
+          className: cn('px-4 py-2 rounded-xl font-medium transition-all',
+            selectedCategory === cat ? 'bg-slate-800 text-white' : 'bg-white text-slate-600 hover:bg-slate-100')
+        }, catLabels[cat])
+      )
+    ),
+    h('div', { className: 'flex flex-wrap gap-2 p-4 border-b' },
+      ...modes.filter(m => keyCombinations?.[selectedCategory]?.[m]).map(mode =>
+        h('button', {
+          key: mode,
+          onClick: () => setSelectedMode(mode),
+          className: cn('px-4 py-2 rounded-xl font-medium transition-all',
+            selectedMode === mode ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')
+        }, modeLabels[mode])
+      )
+    ),
+    h('div', { className: 'overflow-y-auto max-h-[60vh] p-4' },
+      data ? h('div', { className: 'space-y-4' },
+        h('div', { className: 'bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-2xl p-6' },
+          h('h3', { className: 'text-xl font-bold mb-2' }, data.title),
+          h('p', { className: 'text-slate-300' }, data.description)
+        ),
+        data.models && Object.entries(data.models).map(([modelGroup, info]) =>
+          h('div', { key: modelGroup, className: 'bg-white rounded-xl border-2 border-slate-200 p-4' },
+            h('h4', { className: 'font-bold text-lg text-slate-800 mb-3 flex items-center gap-2' },
+              h('span', { className: 'w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600' }, '📱'),
+              modelGroup
+            ),
+            info.applies_to && h('div', { className: 'mb-3' },
+              h('p', { className: 'text-xs text-slate-500 mb-1' }, 'Применимо к:'),
+              h('p', { className: 'text-sm text-slate-600' }, info.applies_to.join(', '))
+            ),
+            info.steps && h('div', { className: 'bg-slate-50 rounded-xl p-4' },
+              h('p', { className: 'font-medium text-slate-700 mb-3' }, 'Шаги:'),
+              h('ol', { className: 'space-y-2' },
+                ...info.steps.map((step, i) =>
+                  h('li', { key: i, className: 'flex gap-3 text-sm' },
+                    h('span', { className: 'w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold' }, i + 1),
+                    h('span', { className: 'text-slate-600 pt-0.5' }, step)
+                  )
+                )
+              )
+            ),
+            info.steps_short && h('div', { className: 'mt-3 p-3 bg-indigo-50 rounded-xl' },
+              h('p', { className: 'text-sm font-mono text-indigo-700' }, info.steps_short)
+            ),
+            info.notes && h('div', { className: 'mt-3 p-3 bg-amber-50 rounded-xl border border-amber-200' },
+              h('p', { className: 'font-medium text-amber-700 text-sm mb-1' }, '💡 Примечания:'),
+              h('ul', { className: 'space-y-1' },
+                ...info.notes.map((note, i) => h('li', { key: i, className: 'text-sm text-amber-600' }, '• ' + note))
+              )
+            )
+          )
+        )
+      ) : h('p', { className: 'text-center text-slate-500 py-8' }, 'Нет данных')
+    )
+  );
+};
+
+// ============================================
+// ARTICLES SEARCH PANEL
+// ============================================
+
+const ArticlesSearchPanel = ({ articlesIndex, ukrainePrices, onClose }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterType, setFilterType] = useState('all');
+  
+  const articles = articlesIndex?.articles || [];
+  const types = useMemo(() => {
+    const t = new Set(articles.map(a => a.part_type).filter(Boolean));
+    return ['all', ...Array.from(t).sort()];
+  }, [articles]);
+  
+  const filtered = useMemo(() => {
+    return articles.filter(a => {
+      const term = searchTerm.toLowerCase();
+      if (filterType !== 'all' && a.part_type !== filterType) return false;
+      return a.article?.toLowerCase().includes(term) ||
+             a.model?.toLowerCase().includes(term) ||
+             a.description?.toLowerCase().includes(term);
+    }).slice(0, 100);
+  }, [articles, searchTerm, filterType]);
+  
+  return h(Modal, { title: '📦 Артикулы запчастей', subtitle: `${articles.length} позиций`, onClose, size: 'lg', color: 'amber' },
+    h('div', { className: 'p-4 border-b bg-slate-50 flex gap-3 flex-wrap' },
+      h('input', {
+        type: 'text',
+        value: searchTerm,
+        onChange: e => setSearchTerm(e.target.value),
+        placeholder: 'Поиск по артикулу или модели...',
+        className: 'flex-1 min-w-48 px-4 py-2 rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none'
+      }),
+      h('select', {
+        value: filterType,
+        onChange: e => setFilterType(e.target.value),
+        className: 'px-4 py-2 rounded-xl border border-slate-200'
+      }, ...types.map(t => h('option', { key: t, value: t }, t === 'all' ? 'Все типы' : t.replace('_', ' '))))
+    ),
+    h('div', { className: 'overflow-y-auto max-h-[60vh]' },
+      h('table', { className: 'w-full' },
+        h('thead', { className: 'bg-slate-50 sticky top-0' },
+          h('tr', null,
+            h('th', { className: 'text-left p-3 font-medium text-slate-600' }, 'Артикул'),
+            h('th', { className: 'text-left p-3 font-medium text-slate-600' }, 'Модель'),
+            h('th', { className: 'text-left p-3 font-medium text-slate-600 hidden sm:table-cell' }, 'Тип'),
+            h('th', { className: 'text-right p-3 font-medium text-slate-600' }, 'Цена UA')
+          )
+        ),
+        h('tbody', null,
+          ...filtered.map(a => {
+            const uaPrice = ukrainePrices?.[a.article]?.price_uah;
+            return h('tr', { key: a.article, className: 'border-b hover:bg-slate-50' },
+              h('td', { className: 'p-3 font-mono font-bold text-amber-600 text-sm' }, a.article),
+              h('td', { className: 'p-3 text-sm' }, a.model),
+              h('td', { className: 'p-3 hidden sm:table-cell' },
+                h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-xs capitalize' }, a.part_type?.replace('_', ' '))
+              ),
+              h('td', { className: 'p-3 text-right font-bold text-amber-600' }, uaPrice ? formatPrice(uaPrice, 'UAH') : formatPrice(a.price_usd, 'USD'))
+            );
+          })
+        )
+      ),
+      filtered.length === 0 && h('p', { className: 'text-center text-slate-500 py-8' }, 'Артикулы не найдены')
+    )
+  );
+};
+
+// ============================================
+// CALCULATOR PANEL
+// ============================================
+
+const CalculatorPanel = ({ devices, ukrainePrices, onClose }) => {
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [selectedRepairs, setSelectedRepairs] = useState([]);
-  const [laborCost, setLaborCost] = useState(500); // UAH per repair
+  const [laborCost, setLaborCost] = useState(500);
   const [margin, setMargin] = useState(30);
-  const [region, setRegion] = useState('UA');
   const [searchTerm, setSearchTerm] = useState('');
   
-  const repairTypes = [
-    { id: 'battery', name: 'Замена батареи', icon: '🔋' },
-    { id: 'display', name: 'Замена дисплея', icon: '📱' },
-    { id: 'rear_camera', name: 'Задняя камера', icon: '📷' },
-    { id: 'front_camera', name: 'Фронтальная камера', icon: '🤳' },
-    { id: 'speaker', name: 'Динамик', icon: '🔊' },
-    { id: 'taptic_engine', name: 'Taptic Engine', icon: '📳' },
-    { id: 'keyboard', name: 'Клавиатура', icon: '⌨️' },
-    { id: 'charging_port', name: 'Разъём зарядки', icon: '⚡' },
-  ];
-  
-  const deviceOptions = useMemo(() => {
-    let result = devices.filter(d => d.service_parts && Object.keys(d.service_parts).length > 0);
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter(d => d.name.toLowerCase().includes(term));
-    }
-    return result.sort((a, b) => (b.year || 0) - (a.year || 0));
+  const filteredDevices = useMemo(() => {
+    if (!searchTerm) return devices.slice(0, 50);
+    const term = searchTerm.toLowerCase();
+    return devices.filter(d => 
+      d.name.toLowerCase().includes(term) || 
+      (d.model || '').toLowerCase().includes(term)
+    ).slice(0, 50);
   }, [devices, searchTerm]);
   
-  // Get part price (UA or EU based on region)
-  const getPartPrice = (device, repairId) => {
-    if (!device?.service_parts?.[repairId]) return null;
-    const part = device.service_parts[repairId];
-    const article = part?.article;
-    
-    if (region === 'UA') {
-      // UA price from ukraine_prices.json
-      if (article && ukrainePrices?.[article]) {
-        return { price: ukrainePrices[article].price_uah, currency: 'UAH' };
-      }
-      // Fallback: convert USD price to UAH
-      if (part.price_usd) {
-        return { price: part.price_usd * RATES.USD_TO_UAH, currency: 'UAH' };
-      }
-    } else {
-      // EU price - use official prices or convert from USD
-      if (part.price_usd) {
-        return { price: part.price_usd * 0.91, currency: 'EUR' }; // USD to EUR
-      }
-      // Fallback: convert from UAH
-      if (article && ukrainePrices?.[article]) {
-        return { price: ukrainePrices[article].price_uah * RATES.UAH_TO_EUR, currency: 'EUR' };
-      }
-    }
-    return null;
-  };
-  
-  const calculations = useMemo(() => {
+  const calculation = useMemo(() => {
     if (!selectedDevice || selectedRepairs.length === 0) return null;
     
     let partsCost = 0;
-    const repairDetails = [];
-    const currency = region === 'UA' ? 'UAH' : 'EUR';
+    const details = [];
     
-    selectedRepairs.forEach(repairId => {
-      const priceData = getPartPrice(selectedDevice, repairId);
-      if (priceData) {
-        partsCost += priceData.price;
-        repairDetails.push({ 
-          id: repairId, 
-          price: priceData.price, 
-          currency: priceData.currency,
-          name: repairTypes.find(r => r.id === repairId)?.name 
-        });
+    selectedRepairs.forEach(type => {
+      const part = selectedDevice.service_parts?.[type];
+      if (part) {
+        const uaPrice = part.article && ukrainePrices?.[part.article];
+        const price = uaPrice?.price_uah || (part.price_usd * RATES.USD_TO_UAH) || 0;
+        partsCost += price;
+        details.push({ type, price });
       }
     });
     
-    // Convert labor to selected currency if needed
-    const laborInCurrency = region === 'UA' ? laborCost : laborCost * RATES.UAH_TO_EUR;
-    const labor = selectedRepairs.length * laborInCurrency;
+    const labor = laborCost * selectedRepairs.length;
     const subtotal = partsCost + labor;
     const marginAmount = subtotal * (margin / 100);
     const total = subtotal + marginAmount;
     
-    return { partsCost, labor, subtotal, marginAmount, total, repairDetails, currency };
-  }, [selectedDevice, selectedRepairs, laborCost, margin, region, ukrainePrices]);
+    return { partsCost, labor, marginAmount, total, details };
+  }, [selectedDevice, selectedRepairs, laborCost, margin, ukrainePrices]);
   
-  return h(Modal, { 
-    title: '🧮 Калькулятор ремонта', 
-    subtitle: 'Расчёт стоимости с реальными ценами', 
-    onClose, 
-    color: 'blue' 
-  },
-    h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'flex-1 overflow-y-auto p-6 space-y-6' },
-        // Region selector
-        h('div', { className: 'flex gap-2' },
-          h('button', {
-            onClick: () => setRegion('UA'),
-            className: cn('px-4 py-2 rounded-xl font-medium flex items-center gap-2',
-              region === 'UA' ? 'bg-yellow-400 text-yellow-900' : 'bg-slate-100 text-slate-600')
-          }, '🇺🇦 Украина (₴)'),
-          h('button', {
-            onClick: () => setRegion('EU'),
-            className: cn('px-4 py-2 rounded-xl font-medium flex items-center gap-2',
-              region === 'EU' ? 'bg-blue-500 text-white' : 'bg-slate-100 text-slate-600')
-          }, '🇪🇺 Европа (€)')
-        ),
-        
-        // Device search
-        h('div', null,
-          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Поиск устройства'),
-          h('input', {
-            type: 'text',
-            value: searchTerm,
-            onChange: e => setSearchTerm(e.target.value),
-            placeholder: 'iPhone 15, MacBook Pro...',
-            className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
-          })
-        ),
-        
-        // Device selector
-        h('div', null,
-          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 
-            `Выберите устройство (${deviceOptions.length})`
+  return h(Modal, { title: '🧮 Калькулятор ремонта', subtitle: 'Расчёт стоимости', onClose, size: 'lg', color: 'indigo' },
+    h('div', { className: 'p-6 overflow-y-auto max-h-[70vh]' },
+      h('div', { className: 'grid md:grid-cols-2 gap-6' },
+        h('div', { className: 'space-y-4' },
+          h('div', null,
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Поиск устройства'),
+            h('input', {
+              type: 'text',
+              value: searchTerm,
+              onChange: e => setSearchTerm(e.target.value),
+              placeholder: 'iPhone 15, MacBook...',
+              className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-indigo-500 focus:outline-none'
+            })
           ),
-          h('select', {
-            value: selectedDevice?.name || '',
-            onChange: e => {
-              const device = deviceOptions.find(d => d.name === e.target.value);
-              setSelectedDevice(device);
-              setSelectedRepairs([]);
-            },
-            size: 6,
-            className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
-          },
-            h('option', { value: '', disabled: true }, '-- Выберите --'),
-            ...deviceOptions.map(d => h('option', { key: d.name, value: d.name }, 
-              `${d.name} (${d.year || '?'})`
-            ))
-          )
-        ),
-        
-        // Repair types - show only available for device
-        selectedDevice && h('div', null,
-          h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Виды работ'),
-          h('div', { className: 'grid grid-cols-2 gap-2' },
-            ...repairTypes.filter(repair => selectedDevice.service_parts?.[repair.id]).map(repair => {
-              const priceData = getPartPrice(selectedDevice, repair.id);
-              const isSelected = selectedRepairs.includes(repair.id);
-              const displayCurrency = region === 'UA' ? 'UAH' : 'EUR';
-              
-              return h('button', {
-                key: repair.id,
-                disabled: !priceData,
-                onClick: () => {
-                  if (isSelected) {
-                    setSelectedRepairs(selectedRepairs.filter(r => r !== repair.id));
-                  } else {
-                    setSelectedRepairs([...selectedRepairs, repair.id]);
-                  }
-                },
-                className: cn('p-3 rounded-xl border-2 text-left transition-all',
-                  !priceData && 'opacity-50 cursor-not-allowed',
-                  isSelected ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300')
+          h('div', null,
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Устройство'),
+            h('select', {
+              value: selectedDevice?.name || '',
+              onChange: e => {
+                const d = filteredDevices.find(x => x.name === e.target.value);
+                setSelectedDevice(d);
+                setSelectedRepairs([]);
               },
-                h('div', { className: 'flex items-center gap-2' },
-                  h('span', { className: 'text-xl' }, repair.icon),
-                  h('div', null,
-                    h('p', { className: 'font-medium text-sm' }, repair.name),
-                    h('p', { className: 'text-xs text-slate-500' }, 
-                      priceData ? formatPrice(priceData.price, displayCurrency) : 'Нет данных'
-                    )
+              className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-indigo-500 focus:outline-none',
+              size: 5
+            },
+              h('option', { value: '' }, '-- Выберите --'),
+              ...filteredDevices.map(d => h('option', { key: d.name, value: d.name }, `${d.name} (${d.year})`))
+            )
+          ),
+          selectedDevice && h('div', null,
+            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Ремонты'),
+            h('div', { className: 'space-y-2' },
+              ...Object.entries(selectedDevice.service_parts || {}).map(([type, part]) => {
+                const uaPrice = part.article && ukrainePrices?.[part.article];
+                const price = uaPrice?.price_uah || (part.price_usd * RATES.USD_TO_UAH);
+                const isSelected = selectedRepairs.includes(type);
+                
+                return h('button', {
+                  key: type,
+                  onClick: () => {
+                    if (isSelected) setSelectedRepairs(selectedRepairs.filter(r => r !== type));
+                    else setSelectedRepairs([...selectedRepairs, type]);
+                  },
+                  className: cn('w-full p-3 rounded-xl border-2 text-left transition-all',
+                    isSelected ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 hover:border-slate-300')
+                },
+                  h('div', { className: 'flex justify-between' },
+                    h('span', { className: 'font-medium capitalize' }, type.replace('_', ' ')),
+                    h('span', { className: 'font-bold text-amber-600' }, price ? formatPrice(price, 'UAH') : 'N/A')
                   )
-                )
-              );
-            })
-          ),
-          // Show if no parts available
-          Object.keys(selectedDevice.service_parts || {}).length === 0 && 
-            h('p', { className: 'text-center text-slate-500 py-4' }, 'Нет данных о запчастях для этого устройства')
-        ),
-        
-        // Settings
-        selectedDevice && h('div', { className: 'grid grid-cols-2 gap-4' },
-          h('div', null,
-            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Работа за услугу (₴)'),
-            h('input', {
-              type: 'number',
-              value: laborCost,
-              onChange: e => setLaborCost(Number(e.target.value)),
-              className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
-            })
-          ),
-          h('div', null,
-            h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Наценка (%)'),
-            h('input', {
-              type: 'number',
-              value: margin,
-              onChange: e => setMargin(Number(e.target.value)),
-              className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-blue-500 focus:outline-none'
-            })
-          )
-        ),
-        
-        // Results
-        calculations && h('div', { className: 'p-5 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200' },
-          h('h3', { className: 'font-bold text-slate-800 mb-4 text-lg' }, 
-            region === 'UA' ? '📊 Итоговый расчёт (UA)' : '📊 Итоговый расчёт (EU)'
-          ),
-          
-          h('div', { className: 'space-y-2 text-sm mb-4' },
-            ...calculations.repairDetails.map(r => 
-              h('div', { key: r.id, className: 'flex justify-between items-center p-2 bg-white rounded' },
-                h('span', { className: 'text-slate-600' }, r.name),
-                h('span', { className: 'font-medium text-blue-600' }, formatPrice(r.price, calculations.currency))
-              )
+                );
+              })
             )
           ),
-          
-          h('div', { className: 'space-y-2 text-sm border-t border-slate-200 pt-4' },
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, '💰 Запчасти:'),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.partsCost, calculations.currency))
+          h('div', { className: 'grid grid-cols-2 gap-4' },
+            h('div', null,
+              h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Работа (₴)'),
+              h('input', {
+                type: 'number',
+                value: laborCost,
+                onChange: e => setLaborCost(Number(e.target.value)),
+                className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-indigo-500 focus:outline-none'
+              })
             ),
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, 
-                region === 'UA' 
-                  ? `🔧 Работа (${selectedRepairs.length}x${laborCost}₴):` 
-                  : `🔧 Работа (${selectedRepairs.length}x€${Math.round(laborCost * RATES.UAH_TO_EUR)}):`
-              ),
-              h('span', { className: 'font-medium' }, formatPrice(calculations.labor, calculations.currency))
-            ),
-            h('div', { className: 'flex justify-between border-t pt-2' },
-              h('span', { className: 'text-slate-600' }, '📝 Подитог:'),
-              h('span', { className: 'font-semibold' }, formatPrice(calculations.subtotal, calculations.currency))
-            ),
-            h('div', { className: 'flex justify-between' },
-              h('span', { className: 'text-slate-600' }, `📈 Наценка ${margin}%:`),
-              h('span', { className: 'font-medium text-green-600' }, `+${formatPrice(calculations.marginAmount, calculations.currency)}`)
-            )
-          ),
-          
-          h('div', { className: 'flex justify-between items-center p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg text-white mt-4' },
-            h('span', { className: 'font-bold text-lg' }, '💵 ИТОГО:'),
-            h('div', { className: 'text-right' },
-              h('span', { className: 'font-bold text-2xl' }, formatPrice(calculations.total, calculations.currency)),
-              h('p', { className: 'text-xs text-blue-100' }, 
-                region === 'UA' 
-                  ? `≈ ${formatPrice(convertPrice(calculations.total, 'UAH', 'USD'), 'USD')}`
-                  : `≈ ${formatPrice(convertPrice(calculations.total, 'EUR', 'UAH'), 'UAH')}`
-              )
-            )
-          )
-        )
-      )
-    )
-  );
-};
-
-// ===== KEY COMBINATIONS PANEL =====
-const KeyCombinationsPanel = ({ onClose }) => {
-  const [keyCombos, setKeyCombos] = useState(null);
-  const [activeDevice, setActiveDevice] = useState('iphone');
-  const [activeMode, setActiveMode] = useState('dfu_mode');
-  
-  // Load key combinations data
-  useEffect(() => {
-    fetch('/data/key_combinations.json')
-      .then(r => r.json())
-      .then(data => setKeyCombos(data))
-      .catch(err => console.error('Failed to load key combinations:', err));
-  }, []);
-  
-  if (!keyCombos) {
-    return h(Modal, { title: '⌨️ Комбинации клавиш', subtitle: 'Загрузка...', onClose, color: 'indigo' },
-      h('div', { className: 'p-8 text-center' },
-        h('div', { className: 'w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto' })
-      )
-    );
-  }
-  
-  const deviceTabs = [
-    { id: 'iphone', name: '📱 iPhone', icon: '📱' },
-    { id: 'ipad', name: '📟 iPad', icon: '📟' },
-    { id: 'mac', name: '💻 Mac', icon: '💻' },
-    { id: 'apple_watch', name: '⌚ Watch', icon: '⌚' },
-  ];
-  
-  const modeTabs = {
-    iphone: [
-      { id: 'dfu_mode', name: '🔧 DFU Mode' },
-      { id: 'recovery_mode', name: '🔄 Recovery Mode' },
-      { id: 'force_restart', name: '🔃 Перезагрузка' },
-      { id: 'exit_dfu', name: '🚪 Выход из DFU' },
-    ],
-    ipad: [
-      { id: 'dfu_mode', name: '🔧 DFU Mode' },
-      { id: 'recovery_mode', name: '🔄 Recovery Mode' },
-    ],
-    mac: [
-      { id: 'startup_modes', name: '🚀 Режимы запуска' },
-      { id: 'dfu_mode', name: '🔧 DFU Mode' },
-      { id: 'diagnostics', name: '🩺 Диагностика' },
-    ],
-    apple_watch: [
-      { id: 'dfu_mode', name: '🔧 DFU Mode' },
-      { id: 'force_restart', name: '🔃 Перезагрузка' },
-    ],
-  };
-  
-  const currentDeviceData = keyCombos[activeDevice];
-  const currentModeData = currentDeviceData?.[activeMode];
-  
-  // Render steps for a specific device model group
-  const renderSteps = (modelData) => {
-    if (!modelData) return null;
-    
-    return h('div', { className: 'space-y-4' },
-      // Steps
-      modelData.steps && h('div', { className: 'p-4 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl border border-indigo-200' },
-        h('h4', { className: 'font-bold text-indigo-800 mb-3 flex items-center gap-2' },
-          h('span', { className: 'w-8 h-8 bg-indigo-200 rounded-lg flex items-center justify-center' }, '📝'),
-          'Пошаговая инструкция'
-        ),
-        h('ol', { className: 'space-y-2' },
-          ...modelData.steps.map((step, i) => h('li', { 
-            key: i, 
-            className: 'flex items-start gap-3 text-sm text-slate-700 p-2 bg-white/80 rounded-lg' 
-          },
-            h('span', { className: 'w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0' }, i + 1),
-            h('span', null, step)
-          ))
-        )
-      ),
-      
-      // Short version
-      modelData.steps_short && h('div', { className: 'p-4 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-200' },
-        h('h4', { className: 'font-bold text-emerald-800 mb-2 flex items-center gap-2' },
-          h('span', { className: 'w-8 h-8 bg-emerald-200 rounded-lg flex items-center justify-center' }, '⚡'),
-          'Быстрая схема'
-        ),
-        h('p', { className: 'font-mono text-sm bg-white/80 p-3 rounded-lg text-emerald-700 font-semibold' }, modelData.steps_short)
-      ),
-      
-      // Notes
-      modelData.notes && h('div', { className: 'p-4 bg-amber-50 rounded-xl border border-amber-200' },
-        h('h4', { className: 'font-bold text-amber-800 mb-2 flex items-center gap-2' },
-          h('span', { className: 'w-8 h-8 bg-amber-200 rounded-lg flex items-center justify-center' }, '💡'),
-          'Примечания'
-        ),
-        h('ul', { className: 'space-y-1' },
-          ...modelData.notes.map((note, i) => h('li', { key: i, className: 'text-sm text-amber-700 flex items-start gap-2' },
-            h('span', null, '•'), note
-          ))
-        )
-      ),
-      
-      // Alternative method (for older iPhones)
-      modelData.alternative_method && h('div', { className: 'p-4 bg-slate-50 rounded-xl border border-slate-200' },
-        h('h4', { className: 'font-bold text-slate-800 mb-2' }, '🔄 Альтернативный метод'),
-        h('ol', { className: 'space-y-1 text-sm text-slate-600' },
-          ...modelData.alternative_method.map((step, i) => h('li', { key: i }, `${i + 1}. ${step}`))
-        )
-      ),
-      
-      // Applies to (device list)
-      modelData.applies_to && h('div', { className: 'p-3 bg-slate-100 rounded-lg' },
-        h('p', { className: 'text-xs text-slate-500 mb-2' }, 'Применимо к:'),
-        h('div', { className: 'flex flex-wrap gap-1' },
-          ...modelData.applies_to.slice(0, 10).map((d, i) => h('span', { 
-            key: i, 
-            className: 'px-2 py-0.5 bg-white text-slate-600 rounded text-xs' 
-          }, d)),
-          modelData.applies_to.length > 10 && h('span', { className: 'text-xs text-slate-400' }, `+${modelData.applies_to.length - 10}`)
-        )
-      )
-    );
-  };
-  
-  // Render Mac startup modes (special case)
-  const renderMacStartupModes = () => {
-    if (activeDevice !== 'mac' || activeMode !== 'startup_modes') return null;
-    
-    const startupData = currentModeData;
-    if (!startupData) return null;
-    
-    return h('div', { className: 'space-y-6' },
-      // Intel Macs
-      startupData.intel_macs && h('div', { className: 'bg-white rounded-xl shadow p-5' },
-        h('h3', { className: 'font-bold text-blue-800 mb-4 flex items-center gap-2' },
-          h('span', { className: 'w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center' }, '🔵'),
-          'Intel Mac (до 2020)'
-        ),
-        h('p', { className: 'text-sm text-slate-600 mb-4' }, startupData.intel_macs.description),
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          ...Object.entries(startupData.intel_macs.combinations || {}).map(([key, combo]) =>
-            h('div', { key, className: 'p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors' },
-              h('p', { className: 'font-semibold text-slate-800 text-sm' }, combo.title),
-              h('p', { className: 'font-mono text-indigo-600 text-sm font-bold my-1' }, combo.keys),
-              h('p', { className: 'text-xs text-slate-500' }, combo.description)
-            )
-          )
-        )
-      ),
-      
-      // Apple Silicon Macs
-      startupData.apple_silicon && h('div', { className: 'bg-white rounded-xl shadow p-5' },
-        h('h3', { className: 'font-bold text-purple-800 mb-4 flex items-center gap-2' },
-          h('span', { className: 'w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center' }, '🟣'),
-          'Apple Silicon Mac (M1/M2/M3/M4/M5)'
-        ),
-        h('p', { className: 'text-sm text-slate-600 mb-4' }, startupData.apple_silicon.description),
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          ...Object.entries(startupData.apple_silicon.combinations || {}).map(([key, combo]) =>
-            h('div', { key, className: 'p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors' },
-              h('p', { className: 'font-semibold text-purple-800 text-sm' }, combo.title),
-              h('p', { className: 'font-mono text-purple-600 text-sm font-bold my-1' }, combo.keys),
-              h('p', { className: 'text-xs text-slate-500' }, combo.description)
+            h('div', null,
+              h('label', { className: 'block text-sm font-medium text-slate-700 mb-2' }, 'Маржа (%)'),
+              h('input', {
+                type: 'number',
+                value: margin,
+                onChange: e => setMargin(Number(e.target.value)),
+                className: 'w-full px-4 py-2 rounded-xl border border-slate-200 focus:border-indigo-500 focus:outline-none'
+              })
             )
           )
         ),
-        startupData.apple_silicon.notes && h('div', { className: 'mt-4 p-3 bg-amber-50 rounded-lg' },
-          h('p', { className: 'text-xs font-semibold text-amber-800 mb-1' }, '⚠️ Важно:'),
-          h('ul', { className: 'text-xs text-amber-700 space-y-1' },
-            ...startupData.apple_silicon.notes.map((n, i) => h('li', { key: i }, `• ${n}`))
-          )
-        )
-      )
-    );
-  };
-  
-  // Render Mac diagnostics (special case)
-  const renderMacDiagnostics = () => {
-    if (activeDevice !== 'mac' || activeMode !== 'diagnostics') return null;
-    
-    const diagData = currentModeData;
-    if (!diagData) return null;
-    
-    return h('div', { className: 'space-y-6' },
-      h('div', { className: 'bg-white rounded-xl shadow p-5' },
-        h('h3', { className: 'font-bold text-slate-800 mb-4' }, '🩺 Apple Diagnostics'),
-        h('p', { className: 'text-sm text-slate-600 mb-4' }, diagData.description),
-        
-        // Intel steps
-        diagData.intel_macs && h('div', { className: 'mb-4 p-4 bg-blue-50 rounded-xl' },
-          h('p', { className: 'font-semibold text-blue-800 mb-2' }, '🔵 Intel Mac'),
-          h('ol', { className: 'text-sm text-slate-700 space-y-1' },
-            ...diagData.intel_macs.steps.map((s, i) => h('li', { key: i }, `${i + 1}. ${s}`))
-          ),
-          diagData.intel_macs.alternative && h('p', { className: 'text-xs text-slate-500 mt-2' }, 
-            `Альтернатива: ${diagData.intel_macs.alternative}`
-          )
-        ),
-        
-        // Apple Silicon steps
-        diagData.apple_silicon && h('div', { className: 'mb-4 p-4 bg-purple-50 rounded-xl' },
-          h('p', { className: 'font-semibold text-purple-800 mb-2' }, '🟣 Apple Silicon'),
-          h('ol', { className: 'text-sm text-slate-700 space-y-1' },
-            ...diagData.apple_silicon.steps.map((s, i) => h('li', { key: i }, `${i + 1}. ${s}`))
-          )
-        ),
-        
-        // Error code categories legend
-        diagData.error_code_categories && h('div', { className: 'mt-4 p-3 bg-slate-100 rounded-xl' },
-          h('h4', { className: 'font-semibold text-slate-700 mb-2 text-sm' }, '📋 Категории кодов:'),
-          h('div', { className: 'flex flex-wrap gap-2' },
-            ...Object.entries(diagData.error_code_categories).slice(0, 10).map(([prefix, info]) =>
-              h('span', { 
-                key: prefix, 
-                className: `px-2 py-1 rounded text-xs font-mono ${
-                  info.severity === 'critical' ? 'bg-red-200 text-red-800' :
-                  info.severity === 'high' ? 'bg-orange-200 text-orange-800' :
-                  'bg-yellow-200 text-yellow-800'
-                }`
-              }, `${prefix}: ${info.category}`)
-            )
-          )
-        ),
-        
-        // Error codes with scrollable container
-        diagData.error_codes && h('div', { className: 'mt-4' },
-          h('h4', { className: 'font-bold text-red-800 mb-3' }, `🚨 Коды ошибок диагностики (${Object.keys(diagData.error_codes).length})`),
-          h('div', { className: 'max-h-80 overflow-y-auto p-2 bg-slate-50 rounded-xl' },
-            h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
-              ...Object.entries(diagData.error_codes).map(([code, desc]) =>
-                h('div', { key: code, className: 'p-2 bg-red-50 rounded-lg hover:bg-red-100 transition-colors' },
-                  h('p', { className: 'font-mono font-bold text-red-600 text-sm' }, code),
-                  h('p', { className: 'text-xs text-slate-600 line-clamp-2' }, desc)
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-  };
-  
-  return h(Modal, { 
-    title: '⌨️ Комбинации клавиш', 
-    subtitle: 'DFU, Recovery, Diagnostics режимы', 
-    onClose, 
-    color: 'indigo' 
-  },
-    h('div', { className: 'flex flex-col h-[70vh]' },
-      // Device tabs
-      h('div', { className: 'p-4 border-b bg-slate-50' },
-        h('div', { className: 'flex gap-2 mb-3' },
-          ...deviceTabs.map(tab => h('button', {
-            key: tab.id,
-            onClick: () => { setActiveDevice(tab.id); setActiveMode(modeTabs[tab.id]?.[0]?.id || 'dfu_mode'); },
-            className: cn('px-4 py-2 rounded-xl font-medium text-sm transition-all',
-              activeDevice === tab.id ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
-          }, tab.name))
-        ),
-        // Mode tabs
-        h('div', { className: 'flex gap-2 overflow-x-auto' },
-          ...(modeTabs[activeDevice] || []).map(tab => h('button', {
-            key: tab.id,
-            onClick: () => setActiveMode(tab.id),
-            className: cn('px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all',
-              activeMode === tab.id ? 'bg-indigo-100 text-indigo-700' : 'bg-white text-slate-500 hover:bg-slate-100')
-          }, tab.name))
-        )
-      ),
-      
-      // Content
-      h('div', { className: 'flex-1 overflow-y-auto p-4' },
-        // Title
-        currentModeData?.title && h('h2', { className: 'text-xl font-bold text-slate-800 mb-2' }, currentModeData.title),
-        currentModeData?.description && h('p', { className: 'text-sm text-slate-600 mb-4' }, currentModeData.description),
-        
-        // Special renderers for Mac
-        renderMacStartupModes(),
-        renderMacDiagnostics(),
-        
-        // Regular mode content (iPhone, iPad, etc)
-        activeDevice !== 'mac' || (activeMode !== 'startup_modes' && activeMode !== 'diagnostics') 
-          ? h('div', { className: 'space-y-6' },
-              // Models groups
-              currentModeData?.models && Object.entries(currentModeData.models).map(([modelGroup, modelData]) =>
-                h('div', { key: modelGroup, className: 'bg-white rounded-xl shadow p-5' },
-                  h('h3', { className: 'font-bold text-slate-800 mb-4 flex items-center gap-2' },
-                    h('span', { className: 'w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-sm' }, 
-                      modelGroup.includes('8') ? '8+' : modelGroup.includes('7') ? '7' : modelGroup.includes('6') ? '6' : '📱'
-                    ),
-                    modelGroup.replace(/_/g, ' ')
-                  ),
-                  modelData.chip_generation && h('p', { className: 'text-xs text-slate-500 mb-3' }, 
-                    `Поколение чипа: ${modelData.chip_generation}`
-                  ),
-                  renderSteps(modelData)
+        h('div', null,
+          calculation ? h('div', { className: 'bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white' },
+            h('h3', { className: 'text-lg font-bold mb-4' }, '📊 Расчёт'),
+            h('div', { className: 'space-y-3' },
+              ...calculation.details.map(d =>
+                h('div', { key: d.type, className: 'flex justify-between text-sm' },
+                  h('span', { className: 'capitalize' }, d.type.replace('_', ' ')),
+                  h('span', null, formatPrice(d.price, 'UAH'))
                 )
               ),
-              
-              // Direct steps (for simpler modes like apple_watch)
-              !currentModeData?.models && currentModeData?.steps && renderSteps(currentModeData)
+              h('div', { className: 'border-t border-white/20 pt-3 mt-3' },
+                h('div', { className: 'flex justify-between text-sm' },
+                  h('span', null, 'Запчасти'),
+                  h('span', null, formatPrice(calculation.partsCost, 'UAH'))
+                ),
+                h('div', { className: 'flex justify-between text-sm' },
+                  h('span', null, `Работа (${selectedRepairs.length}x)`),
+                  h('span', null, formatPrice(calculation.labor, 'UAH'))
+                ),
+                h('div', { className: 'flex justify-between text-sm' },
+                  h('span', null, `Маржа ${margin}%`),
+                  h('span', null, formatPrice(calculation.marginAmount, 'UAH'))
+                )
+              ),
+              h('div', { className: 'border-t border-white/20 pt-3 mt-3' },
+                h('div', { className: 'flex justify-between text-xl font-bold' },
+                  h('span', null, 'ИТОГО'),
+                  h('span', null, formatPrice(calculation.total, 'UAH'))
+                ),
+                h('p', { className: 'text-sm text-white/70 mt-1' }, `≈ ${formatPrice(calculation.total * RATES.UAH_TO_USD, 'USD')}`)
+              )
             )
-          : null,
-        
-        // Quick Reference Card
-        keyCombos.quick_reference && h('div', { className: 'mt-6 p-5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white' },
-          h('h3', { className: 'font-bold mb-3 flex items-center gap-2' },
-            h('span', { className: 'w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center' }, '📋'),
-            'Быстрая справка'
-          ),
-          h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-            h('div', { className: 'p-3 bg-white/10 rounded-lg' },
-              h('p', { className: 'text-white/80 text-xs mb-1' }, 'iPhone DFU (A11+)'),
-              h('p', { className: 'font-mono text-sm font-semibold' }, keyCombos.quick_reference.iphone_dfu_quick?.A11_and_newer)
-            ),
-            h('div', { className: 'p-3 bg-white/10 rounded-lg' },
-              h('p', { className: 'text-white/80 text-xs mb-1' }, 'Mac Recovery (Intel)'),
-              h('p', { className: 'font-mono text-sm font-semibold' }, keyCombos.quick_reference.mac_recovery_quick?.intel)
-            ),
-            h('div', { className: 'p-3 bg-white/10 rounded-lg' },
-              h('p', { className: 'text-white/80 text-xs mb-1' }, 'Mac Recovery (Apple Silicon)'),
-              h('p', { className: 'font-mono text-sm font-semibold' }, keyCombos.quick_reference.mac_recovery_quick?.apple_silicon)
-            ),
-            h('div', { className: 'p-3 bg-white/10 rounded-lg' },
-              h('p', { className: 'text-white/80 text-xs mb-1' }, 'Mac Diagnostics (Intel)'),
-              h('p', { className: 'font-mono text-sm font-semibold' }, keyCombos.quick_reference.mac_diagnostics_quick?.intel)
-            )
+          ) : h('div', { className: 'bg-slate-100 rounded-2xl p-6 text-center text-slate-500' },
+            h('p', null, 'Выберите устройство и ремонты для расчёта')
           )
         )
       )
@@ -2415,980 +1536,411 @@ const KeyCombinationsPanel = ({ onClose }) => {
   );
 };
 
-// ===== KNOWLEDGE BASE PANEL =====
-const KnowledgeBasePanel = ({ knowledgeData, onClose }) => {
-  const [topic, setTopic] = useState('tristar_hydra');
-  
-  // Safety check
-  if (!knowledgeData) {
-    return h(Modal, { title: '📚 База знаний', onClose, color: 'blue' },
-      h('div', { className: 'p-8 text-center text-gray-500' }, '⏳ Загрузка базы знаний...')
-    );
-  }
-  
-  const topics = {
-    tristar_hydra: { name: '⚡ Tristar/Hydra', key: 'tristar_hydra' },
-    baseband: { name: '📶 Baseband', key: 'baseband' },
-    touch_ic: { name: '👆 Touch IC', key: 'touch_ic' },
-    water_damage: { name: '💧 Залитие', key: 'water_damage' },
-    nand_programming: { name: '💾 NAND', key: 'nand_programming' },
-    tools_supplies: { name: '🔧 Инструменты', key: 'tools_supplies' },
-  };
-  
-  const currentTopic = knowledgeData?.[topics[topic]?.key] || {};
-  
-  return h(Modal, { 
-    title: '📚 База знаний', 
-    subtitle: 'Руководства и процедуры ремонта', 
-    onClose, 
-    color: 'green' 
-  },
-    h('div', { className: 'flex flex-col h-[70vh]' },
-      h('div', { className: 'p-4 border-b bg-slate-50' },
-        h('div', { className: 'flex gap-2 flex-wrap' },
-          ...Object.entries(topics).map(([key, t]) => 
-            h('button', {
-              key,
-              onClick: () => setTopic(key),
-              className: cn('px-3 py-1.5 rounded-lg font-medium text-sm',
-                topic === key ? 'bg-emerald-500 text-white' : 'bg-white text-slate-600')
-            }, t.name)
-          )
-        )
-      ),
-      
-      h('div', { className: 'flex-1 overflow-y-auto p-6' },
-        h('div', { className: 'prose prose-sm max-w-none' },
-          currentTopic.description && h('p', { className: 'text-slate-700 mb-4' }, currentTopic.description),
-          
-          currentTopic.symptoms && h('div', { className: 'mb-4' },
-            h('h3', { className: 'font-bold text-red-600 mb-2' }, '❌ Симптомы'),
-            h('ul', { className: 'space-y-1' },
-              ...(Array.isArray(currentTopic.symptoms) ? currentTopic.symptoms : []).map((s, i) => 
-                h('li', { key: i, className: 'text-sm text-slate-700' }, s)
-              )
-            )
-          ),
-          
-          currentTopic.diagnosis && h('div', { className: 'mb-4' },
-            h('h3', { className: 'font-bold text-blue-600 mb-2' }, '🔍 Диагностика'),
-            h('ul', { className: 'space-y-1' },
-              ...(Array.isArray(currentTopic.diagnosis) ? currentTopic.diagnosis : [currentTopic.diagnosis]).map((d, i) => 
-                h('li', { key: i, className: 'text-sm text-slate-700' }, typeof d === 'string' ? d : JSON.stringify(d))
-              )
-            )
-          ),
-          
-          currentTopic.solution && h('div', { className: 'mb-4 p-4 bg-green-50 rounded-xl' },
-            h('h3', { className: 'font-bold text-green-600 mb-2' }, '✅ Решение'),
-            h('p', { className: 'text-sm text-green-800' }, 
-              typeof currentTopic.solution === 'string' ? currentTopic.solution : JSON.stringify(currentTopic.solution)
-            )
-          ),
-          
-          currentTopic.tools && h('div', { className: 'mb-4' },
-            h('h3', { className: 'font-bold text-slate-700 mb-2' }, '🔧 Инструменты'),
-            h('div', { className: 'flex flex-wrap gap-2' },
-              ...(Array.isArray(currentTopic.tools) ? currentTopic.tools : []).map((t, i) => 
-                h('span', { key: i, className: 'px-2 py-1 bg-slate-100 rounded text-xs' }, t)
-              )
-            )
-          ),
-          
-          currentTopic.notes && h('div', { className: 'p-4 bg-amber-50 rounded-xl' },
-            h('p', { className: 'text-sm text-amber-800' }, `💡 ${currentTopic.notes}`)
-          )
-        )
-      )
-    )
-  );
-};
+// ============================================
+// PARTS COMPATIBILITY PANEL (NEW 2026)
+// ============================================
 
-// ===== DEVICE CARD (ENHANCED v6.9.7) =====
-const DeviceCard = ({ device, onSelect, ukrainePrices }) => {
-  const icon = getCategoryIcon(device.category);
-  const hasServiceParts = device.service_parts && Object.keys(device.service_parts).length > 0;
-  const partsCount = hasServiceParts ? Object.keys(device.service_parts).length : 0;
-  
-  // Check if device has a custom icon image
-  const hasDeviceIcon = device.device_icon || device.device_icon_small;
-  
-  // Check if we have real prices
-  const hasRealPrices = useMemo(() => {
-    if (!hasServiceParts || !ukrainePrices) return false;
-    return Object.values(device.service_parts).some(part => part.article && ukrainePrices[part.article]);
-  }, [device, ukrainePrices, hasServiceParts]);
-  
-  // Calculate approximate total price
-  const totalPrice = useMemo(() => {
-    if (!hasRealPrices) return null;
-    let sum = 0;
-    Object.values(device.service_parts).forEach(part => {
-      if (part.article && ukrainePrices[part.article]) {
-        sum += ukrainePrices[part.article].price_uah || 0;
-      }
-    });
-    return sum > 0 ? sum : null;
-  }, [device, ukrainePrices, hasRealPrices]);
-  
-  // Get logic board info from prices
-  const boardInfo = useMemo(() => {
-    if (!ukrainePrices || !device.name) return null;
-    const deviceNameLower = (device.name || '').toLowerCase();
-    // Find logic board for this device in prices
-    const boardEntry = Object.entries(ukrainePrices).find(([_, data]) => {
-      const desc = (data.description || '').toLowerCase();
-      return desc.includes('logic board') && 
-             (desc.includes(deviceNameLower) || 
-              (device.category === 'iPhone' && desc.includes('iphone') && deviceNameLower.includes(desc.match(/iphone\s*\d+/)?.[0] || 'xxx')));
-    });
-    if (boardEntry) {
-      return { 
-        article: boardEntry[0], 
-        price: boardEntry[1].price_uah,
-        desc: boardEntry[1].description
-      };
-    }
-    return null;
-  }, [ukrainePrices, device]);
-  
-  // Determine device generation/era for styling - using full Tailwind classes with fallback
-  const getCardStyle = () => {
-    if (!device.year) return 'bg-slate-50';
-    if (device.year >= 2025) return 'bg-pink-50';   // 2025+
-    if (device.year >= 2024) return 'bg-purple-50'; // Latest
-    if (device.year >= 2021) return 'bg-blue-50';   // Modern
-    if (device.year >= 2018) return 'bg-emerald-50';  // Recent
-    return 'bg-amber-50'; // Legacy
-  };
-  
-  // Get repair complexity indicator
-  const getRepairIndicator = () => {
-    if (device.repairability) {
-      if (device.repairability >= 7) return { icon: '✅', text: 'Легкий', color: 'text-green-600' };
-      if (device.repairability >= 4) return { icon: '⚠️', text: 'Средний', color: 'text-yellow-600' };
-      return { icon: '🔴', text: 'Сложный', color: 'text-red-600' };
-    }
-    return null;
-  };
-  
-  const repairInfo = getRepairIndicator();
-  
-  // Image loading error handler - fall back to emoji icon
-  const [imageError, setImageError] = useState(false);
-  
-  return h('div', {
-    onClick: (e) => {
-      e.stopPropagation();
-      console.log('%c DeviceCard clicked: ' + device.name, 'background: green; color: white; font-size: 14px;');
-      console.log('Device data:', JSON.stringify(device, null, 2).substring(0, 500));
-      if (typeof onSelect === 'function') {
-        onSelect(device);
-        console.log('%c onSelect called successfully', 'background: blue; color: white;');
-      } else {
-        console.error('onSelect is not a function!', onSelect);
-      }
-    },
-    className: `${getCardStyle()} rounded-2xl border border-slate-200 p-4 hover:border-indigo-400 hover:shadow-xl cursor-pointer transition-all duration-200 group relative overflow-hidden`
-  },
-    // Decorative corner accent
-    h('div', { className: 'absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500' }),
-    
-    // Header with icon and badges
-    h('div', { className: 'flex items-start justify-between gap-3 mb-3 relative' },
-      h('div', { className: 'flex-1' },
-        h('div', { className: 'flex flex-wrap gap-1.5 mb-2' },
-          h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-bold bg-white/80 text-indigo-700 shadow-sm' }, device.category),
-          device.year && h('span', { className: cn('px-2 py-0.5 rounded-full text-xs font-bold shadow-sm',
-            device.year >= 2025 ? 'bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white' :
-            device.year >= 2024 ? 'bg-violet-500 text-white' : 
-            device.year >= 2021 ? 'bg-blue-500 text-white' : 'bg-white/80 text-slate-700'
-          ) }, device.year),
-          hasRealPrices && h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-semibold bg-green-500 text-white shadow-sm animate-pulse' }, '💰'),
-          device.charging_ic && h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-semibold bg-yellow-400 text-yellow-900 shadow-sm' }, '⚡'),
-          (device.board_numbers?.length > 0) && h('span', { className: 'px-2 py-0.5 rounded-full text-xs font-semibold bg-purple-500 text-white shadow-sm' }, '🖥️')
-        ),
-        h('h3', { className: 'font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2' }, device.name),
-        device.model && h('p', { className: 'text-xs text-slate-500 mt-1 font-mono truncate' }, (device.model || '').split('/')[0])
-      ),
-      // Device Icon - Show image if available, otherwise emoji
-      h('div', { className: 'flex flex-col items-center' },
-        (hasDeviceIcon && !imageError) 
-          ? h('div', { className: 'relative w-16 h-16 group-hover:scale-110 transition-transform' },
-              h('img', {
-                src: device.device_icon_small || device.device_icon,
-                alt: device.name,
-                className: 'w-full h-full object-contain drop-shadow-md rounded-lg',
-                loading: 'lazy',
-                onError: () => setImageError(true)
-              }),
-              // Source indicator
-              device.icon_source && h('span', { 
-                className: 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full text-[8px] flex items-center justify-center bg-white shadow border border-slate-200',
-                title: `Source: ${device.icon_source}`
-              }, device.icon_source === 'ifixit' ? '🔧' : device.icon_source === 'pngimg' ? '🖼️' : '📱')
-            )
-          : h('span', { className: 'text-4xl drop-shadow-md group-hover:scale-110 transition-transform' }, icon),
-        repairInfo && h('span', { className: `text-xs font-semibold ${repairInfo.color} mt-1` }, repairInfo.icon)
-      )
-    ),
-    
-    // Processor badge (prominent)
-    device.processor && h('div', { className: 'mb-3' },
-      h('div', { className: 'inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg shadow-md' },
-        h('span', { className: 'text-white/80 text-xs' }, '🧠'),
-        h('span', { className: 'text-white font-bold text-sm' }, device.processor)
-      )
-    ),
-    
-    // Model numbers (A1234, A5678, etc.)
-    device.model && h('div', { className: 'mb-2' },
-      h('div', { className: 'flex flex-wrap gap-1' },
-        ...(device.model || '').split('/').filter(Boolean).map((m, i) => 
-          h('span', { key: i, className: 'px-2 py-0.5 bg-slate-100/90 text-slate-600 rounded text-xs font-mono' }, m.trim())
-        )
-      )
-    ),
-    
-    // Board numbers (if available)
-    (device.board_numbers?.length > 0) && h('div', { className: 'mb-2' },
-      h('div', { className: 'flex flex-wrap gap-1' },
-        h('span', { className: 'text-xs text-purple-500' }, '🖥️'),
-        ...(device.board_numbers || []).slice(0, 2).map((bn, i) => 
-          h('span', { key: i, className: 'px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded text-xs font-mono border border-purple-200' }, bn)
-        ),
-        (device.board_numbers?.length || 0) > 2 && h('span', { className: 'px-1.5 py-0.5 text-xs text-slate-400 bg-white/50 rounded' }, `+${device.board_numbers.length - 2}`)
-      )
-    ),
-    
-    // Board price from price list
-    boardInfo && h('div', { className: 'mb-2 p-1.5 bg-green-50 rounded-lg border border-green-200' },
-      h('div', { className: 'flex items-center justify-between text-xs' },
-        h('span', { className: 'text-green-700' }, '💰 Плата:'),
-        h('span', { className: 'font-bold text-green-800' }, formatPrice(boardInfo.price, 'UAH'))
-      )
-    ),
-    
-    // Charging IC quick info
-    device.charging_ic && h('div', { className: 'mb-3 p-2 bg-yellow-100/80 rounded-lg' },
-      h('div', { className: 'flex items-center gap-2 text-xs' },
-        h('span', { className: 'text-yellow-700' }, '⚡ IC:'),
-        h('span', { className: 'font-bold text-yellow-800' }, device.charging_ic?.main || 'N/A')
-      )
-    ),
-    
-    // Stats row
-    h('div', { className: 'flex items-center justify-between pt-3 border-t border-slate-200/50' },
-      h('div', { className: 'flex items-center gap-2 text-xs' },
-        hasServiceParts && h('div', { className: 'flex items-center gap-1 px-2 py-1 bg-white/70 rounded-full' },
-          h('span', null, '🔧'),
-          h('span', { className: 'font-semibold text-slate-700' }, `${partsCount}`)
-        ),
-        totalPrice && h('div', { className: 'flex items-center gap-1 px-2 py-1 bg-green-100 rounded-full' },
-          h('span', null, '💰'),
-          h('span', { className: 'font-bold text-green-700' }, formatPrice(totalPrice, 'UAH'))
-        ),
-        device.common_issues?.length > 0 && h('div', { className: 'flex items-center gap-1 px-2 py-1 bg-red-100 rounded-full' },
-          h('span', null, '⚠️'),
-          h('span', { className: 'font-semibold text-red-700' }, device.common_issues?.length || 0)
-        )
-      ),
-      h('span', { className: 'text-indigo-600 text-sm font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1' }, 
-        'Детали', 
-        h('span', { className: 'text-lg' }, '→')
-      )
-    )
-  );
-};
-
-// ===== DEVICE DETAILS VIEW (ENHANCED v6.5) =====
-const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData, measurementsData, compatibilityData }) => {
-  // ALL useState hooks MUST be at the top level (React Rules of Hooks)
-  const [activeTab, setActiveTab] = useState('info');
-  const [priceRegion, setPriceRegion] = useState('UA');
-  const [componentError, setComponentError] = useState(null);
-  
-  // Log to AI Healer
-  useEffect(() => {
-    console.log('%c DeviceDetailsView MOUNTED', 'background: green; color: white; font-size: 14px;', device?.name);
-    return () => console.log('%c DeviceDetailsView UNMOUNTED', 'background: red; color: white;');
-  }, [device?.name]);
-  
-  // Safety check - if device is null/undefined, show error
-  if (!device) {
-    AIHealer.log(new Error('DeviceDetailsView: device is null/undefined'), { 
-      component: 'DeviceDetailsView', 
-      action: 'render' 
-    });
-    return h('div', { className: 'p-8 text-center' },
-      h('p', { className: 'text-red-500 mb-4' }, '❌ Ошибка: устройство не найдено'),
-      h('button', { 
-        onClick: onBack, 
-        className: 'px-4 py-2 bg-indigo-500 text-white rounded-lg' 
-      }, '← Назад')
-    );
-  }
-  
-  // Show component error with recovery option
-  if (componentError) {
-    return h('div', { className: 'p-6 bg-red-50 rounded-xl' },
-      h('p', { className: 'text-red-600 font-bold text-lg mb-2' }, '⚠️ Ошибка отображения'),
-      h('p', { className: 'text-red-500 text-sm mb-3' }, componentError),
-      h('div', { className: 'flex gap-3' },
-        h('button', { 
-          onClick: () => setComponentError(null), 
-          className: 'px-4 py-2 bg-orange-500 text-white rounded-lg' 
-        }, '🔄 Попробовать снова'),
-        h('button', { 
-          onClick: onBack, 
-          className: 'px-4 py-2 bg-gray-500 text-white rounded-lg' 
-        }, '← Назад')
-      )
-    );
-  }
-  
-  console.log('%c DeviceDetailsView rendering:', 'background: purple; color: white;', device.name);
-  
-  const serviceParts = device.service_parts || {};
-  console.log('serviceParts keys:', Object.keys(serviceParts));
-  const hasServiceParts = Object.keys(serviceParts).length > 0;
-  
-  // Part type labels
-  const partLabels = {
-    battery: '🔋 Батарея',
-    display: '📱 Дисплей',
-    rear_camera: '📷 Задняя камера',
-    front_camera: '🤳 Фронт. камера',
-    speaker: '🔊 Динамик',
-    taptic_engine: '📳 Taptic Engine',
-    keyboard: '⌨️ Клавиатура',
-    charging_port: '⚡ Разъём зарядки',
-    logic_board: '🖥️ Плата',
-    trackpad: '🖱️ Трекпад',
-    top_case: '⌨️ Top Case'
-  };
-  
-  // Get IC data for this device (with error handling)
-  const deviceICs = useMemo(() => {
-    try {
-      if (!icData) return [];
-      const ics = [];
-      
-      // Check all IC categories
-      ['charging_ics', 'power_ics', 'audio_ics', 'baseband_ics', 'wifi_bt_ics', 'biometric_ics'].forEach(category => {
-        const list = icData[category] || [];
-        list.forEach(ic => {
-          if (ic.compatible_devices?.some(d => 
-            device.name?.includes(d) || d.includes((device.name || '').split(' ').slice(0,2).join(' '))
-          )) {
-            ics.push({ ...ic, category });
-          }
-        });
-      });
-      
-      return ics;
-    } catch (err) {
-      AIHealer.log(err, { component: 'DeviceDetailsView', action: 'deviceICs calculation' });
-      return [];
-    }
-  }, [device, icData]);
-  
-  // Get real prices for parts (with error handling)
-  const partsWithPrices = useMemo(() => {
-    try {
-      if (!hasServiceParts) return [];
-      return Object.entries(serviceParts).map(([type, part]) => {
-        const uaData = ukrainePrices?.[part?.article];
-        const uaPrice = uaData?.price_uah || (part?.price_usd ? part.price_usd * RATES.USD_TO_UAH : null);
-        const euPrice = part?.price_usd ? part.price_usd * 0.91 : (uaPrice ? uaPrice * RATES.UAH_TO_EUR : null);
-        return {
-          type,
-          label: partLabels[type] || type.replace('_', ' '),
-          ...part,
-          price_uah: uaPrice,
-          price_eur: euPrice,
-          price_usd: part?.price_usd || (uaPrice ? uaPrice * RATES.UAH_TO_USD : null)
-        };
-      });
-    } catch (err) {
-      AIHealer.log(err, { component: 'DeviceDetailsView', action: 'partsWithPrices calculation' });
-      return [];
-    }
-  }, [serviceParts, ukrainePrices]);
-  
-  // Power rails data based on device
-  const powerRails = useMemo(() => {
-    if (!measurementsData?.power_rails?.rails) return [];
-    return Object.entries(measurementsData.power_rails.rails)
-      .filter(([_, rail]) => !rail.models || rail.models === 'All iPhone' || 
-        device.name.toLowerCase().includes('iphone') ||
-        rail.models.toLowerCase().includes(device.category.toLowerCase()))
-      .map(([key, rail]) => ({ id: key, ...rail }));
-  }, [device, measurementsData]);
-  
-  // Get compatibility data for components
-  const componentCompatibility = useMemo(() => {
-    if (!compatibilityData) return null;
-    
-    const compat = {
-      cameras: [],
-      displays: [],
-      batteries: []
-    };
-
-    const normalizeList = (value) => {
-      if (!value) return [];
-      if (Array.isArray(value)) return value.filter(Boolean);
-      if (typeof value === 'string') return [value];
-      if (typeof value === 'object') {
-        if (Array.isArray(value.compatible)) return normalizeList(value.compatible);
-        if (Array.isArray(value.devices)) return normalizeList(value.devices);
-        if (Array.isArray(value.models)) return normalizeList(value.models);
-        return Object.values(value).reduce((acc, item) => acc.concat(normalizeList(item)), []);
-      }
-      return [];
-    };
-    
-    // Check rear cameras
-    if (compatibilityData.rear_cameras) {
-      Object.entries(compatibilityData.rear_cameras).forEach(([group, data]) => {
-        const compatibleList = normalizeList(data.compatible || data.devices || data.models);
-        if (compatibleList.some(d => device.name.includes(d))) {
-          compat.cameras.push({
-            type: 'rear',
-            ...data,
-            compatibleWith: compatibleList
-          });
-        }
-      });
-    }
-    
-    // Check front cameras
-    if (compatibilityData.front_cameras) {
-      Object.entries(compatibilityData.front_cameras).forEach(([group, devices]) => {
-        const deviceList = normalizeList(devices);
-        if (deviceList.some(d => device.name.includes(d))) {
-          compat.cameras.push({
-            type: 'front',
-            compatibleWith: deviceList
-          });
-        }
-      });
-    }
-    
-    return compat;
-  }, [device, compatibilityData]);
+const PartsCompatibilityPanel = ({ onClose }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState('displays');
+  const extData = window.NEXXExtendedData?.partsCompatibility || {};
   
   const tabs = [
-    { id: 'info', name: '📋 Информация' },
-    { id: 'parts', name: '🔧 Запчасти' },
-    { id: 'chips', name: '🔌 Микросхемы' },
-    { id: 'diagnostics', name: '⚡ Диагностика' },
-    { id: 'compatibility', name: '🔄 Совместимость' },
+    { id: 'displays', label: '📱 Дисплеи', data: extData.displays?.iphone || [] },
+    { id: 'batteries', label: '🔋 Батареи', data: extData.batteries?.iphone || [] },
+    { id: 'charging', label: '⚡ Порты зарядки', data: extData.charging_ports?.iphone || [] },
+    { id: 'ics', label: '🔌 IC Cross-Ref', data: extData.ics_cross_reference?.charging_ics || [] }
   ];
   
-  return h('div', { className: 'space-y-4 pb-10' },
-    // Header
-    h('div', { className: 'flex items-start gap-4' },
-      h('button', { 
-        onClick: onBack, 
-        className: 'w-12 h-12 rounded-xl bg-white shadow-lg flex items-center justify-center hover:shadow-xl' 
-      }, h(Icons.Back)),
-      h('div', { className: 'flex-1' },
-        h('h1', { className: 'text-xl font-bold text-gray-800' }, device.name),
-        h('p', { className: 'text-sm text-gray-500' }, device.model)
-      )
-    ),
-    
-    // Tags
-    h('div', { className: 'flex flex-wrap gap-2' },
-      device.year && h('span', { className: 'px-3 py-1 bg-white rounded-xl shadow text-sm' }, `📅 ${device.year}`),
-      device.processor && h('span', { className: 'px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl shadow text-sm' }, device.processor),
-      ...(device.board_numbers || []).slice(0, 2).map((bn, i) => 
-        h('span', { key: i, className: 'px-3 py-1 bg-purple-100 text-purple-700 rounded-xl text-sm' }, bn)
-      )
-    ),
-    
-    // Tabs
-    h('div', { className: 'flex gap-2 overflow-x-auto pb-2' },
-      ...tabs.map(tab => h('button', {
-        key: tab.id,
-        onClick: () => setActiveTab(tab.id),
-        className: cn('px-4 py-2 rounded-xl font-medium whitespace-nowrap text-sm transition-all',
-          activeTab === tab.id ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
-      }, tab.name))
-    ),
-    
-    // Info Tab (ENHANCED)
-    activeTab === 'info' && h('div', { className: 'space-y-4' },
-      // Device Overview Card
-      h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-4' }, '📋 Обзор устройства'),
-        h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-3' },
-          // Year
-          device.year && h('div', { className: 'p-3 bg-slate-50 rounded-xl' },
-            h('p', { className: 'text-xs text-slate-500' }, '📅 Год выпуска'),
-            h('p', { className: 'font-bold text-slate-800' }, device.year)
-          ),
-          // Model number
-          device.model && h('div', { className: 'p-3 bg-slate-50 rounded-xl' },
-            h('p', { className: 'text-xs text-slate-500' }, '📱 Модель'),
-            h('p', { className: 'font-bold text-slate-800 text-sm' }, (device.model || '').split('/')[0])
-          ),
-          // Processor
-          device.processor && h('div', { className: 'p-3 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl' },
-            h('p', { className: 'text-xs text-purple-600' }, '🧠 Процессор'),
-            h('p', { className: 'font-bold text-purple-800' }, device.processor)
-          ),
-          // Architecture
-          device.architecture && h('div', { className: 'p-3 bg-slate-50 rounded-xl' },
-            h('p', { className: 'text-xs text-slate-500' }, '⚙️ Архитектура'),
-            h('p', { className: 'font-bold text-slate-800 text-sm' }, device.architecture)
-          ),
-          // Charging IC
-          device.charging_ic && h('div', { className: 'p-3 bg-yellow-50 rounded-xl' },
-            h('p', { className: 'text-xs text-yellow-700' }, '⚡ Charging IC'),
-            h('p', { className: 'font-bold text-yellow-800' }, device.charging_ic.main)
-          ),
-          // Connector type
-          device.connector_type && h('div', { className: 'p-3 bg-slate-50 rounded-xl' },
-            h('p', { className: 'text-xs text-slate-500' }, '🔌 Разъём'),
-            h('p', { className: 'font-bold text-slate-800' }, device.connector_type)
-          )
-        )
+  const activeData = tabs.find(t => t.id === activeTab)?.data || [];
+  
+  const filteredData = useMemo(() => {
+    if (!searchTerm) return activeData;
+    const term = searchTerm.toLowerCase();
+    return activeData.filter(item => 
+      JSON.stringify(item).toLowerCase().includes(term)
+    );
+  }, [activeData, searchTerm]);
+  
+  return h(Modal, { title: '🔧 Совместимость запчастей', subtitle: 'iPhone 14-17 cross-reference', onClose, size: 'lg', color: 'cyan' },
+    h('div', { className: 'p-4' },
+      // Tabs
+      h('div', { className: 'flex gap-2 mb-4 overflow-x-auto pb-2' },
+        tabs.map(tab => h('button', {
+          key: tab.id,
+          onClick: () => setActiveTab(tab.id),
+          className: `px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
+            activeTab === tab.id ? 'bg-cyan-500 text-white shadow-lg' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`
+        }, `${tab.label} (${tab.data.length})`))
       ),
-      
-      // Board Numbers Card
-      (device.board_numbers?.length > 0 || device.emc) && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '🖥️ Идентификация платы'),
-        h('div', { className: 'space-y-3' },
-          device.board_numbers?.length > 0 && h('div', null,
-            h('p', { className: 'text-xs text-slate-500 mb-2' }, 'Board Numbers'),
-            h('div', { className: 'flex flex-wrap gap-2' },
-              ...(device.board_numbers || []).map((bn, i) => 
-                h('span', { key: i, className: 'px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg font-mono text-sm font-semibold' }, bn)
-              )
-            )
-          ),
-          device.emc && h('div', { className: 'flex items-center gap-2' },
-            h('span', { className: 'text-xs text-slate-500' }, 'EMC:'),
-            h('span', { className: 'px-2 py-1 bg-slate-100 rounded font-mono text-sm' }, device.emc)
-          )
-        )
-      ),
-      
-      // Common Issues Card
-      device.common_issues?.length > 0 && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '⚠️ Типовые неисправности'),
-        h('ul', { className: 'space-y-2' },
-          ...(device.common_issues || []).slice(0, 8).map((issue, i) =>
-            h('li', { key: i, className: 'flex items-start gap-2 text-sm text-slate-700 p-2 bg-red-50 rounded-lg' },
-              h('span', { className: 'text-red-500 mt-0.5' }, '⚡'), issue
-            )
-          )
-        )
-      ),
-      
-      // Repair Info
-      (device.repair_difficulty || device.repair_time || device.repairability) && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '🔧 Информация о ремонте'),
-        h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-3' },
-          device.repair_difficulty && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
-            h('p', { className: 'text-xs text-slate-500 mb-1' }, 'Сложность'),
-            h('p', { className: cn('text-lg font-bold',
-              (device.repair_difficulty || '').includes('Экстремал') || (device.repair_difficulty || '').includes('Expert') ? 'text-red-600' :
-              (device.repair_difficulty || '').includes('Сложн') || (device.repair_difficulty || '').includes('Advanced') ? 'text-orange-600' : 'text-green-600'
-            ) }, device.repair_difficulty)
-          ),
-          device.repair_time && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
-            h('p', { className: 'text-xs text-slate-500 mb-1' }, 'Время'),
-            h('p', { className: 'text-lg font-bold text-blue-600' }, device.repair_time)
-          ),
-          device.repairability && h('div', { className: 'p-4 bg-slate-50 rounded-xl text-center' },
-            h('p', { className: 'text-xs text-slate-500 mb-1' }, 'iFixit Score'),
-            h('p', { className: cn('text-lg font-bold',
-              device.repairability >= 7 ? 'text-green-600' :
-              device.repairability >= 4 ? 'text-yellow-600' : 'text-red-600'
-            ) }, `${device.repairability}/10`)
-          )
-        )
-      ),
-      
-      // Official Service Prices (if available)
-      device.official_service_prices && Object.keys(device.official_service_prices).length > 0 && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '🍎 Официальный сервис Apple (USD)'),
-        h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
-          ...Object.entries(device.official_service_prices).map(([key, price]) =>
-            h('div', { key, className: 'p-3 bg-blue-50 rounded-xl' },
-              h('p', { className: 'text-xs text-blue-600 capitalize' }, key.replace('_', ' ')),
-              h('p', { className: 'font-bold text-blue-800' }, formatPrice(price, 'USD'))
-            )
-          )
-        )
-      ),
-      
-      // Description
-      device.description && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '📝 Описание'),
-        h('p', { className: 'text-sm text-slate-700' }, device.description)
-      )
-    ),
-    
-    // Parts Tab
-    activeTab === 'parts' && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-      h('div', { className: 'flex justify-between items-center mb-4' },
-        h('h2', { className: 'text-lg font-bold text-gray-800' }, '🔧 Запчасти и цены'),
-        // Region toggle
-        h('div', { className: 'flex gap-1 bg-slate-100 rounded-lg p-1' },
-          h('button', {
-            onClick: () => setPriceRegion('UA'),
-            className: cn('px-3 py-1 rounded-md text-xs font-medium transition-all',
-              priceRegion === 'UA' ? 'bg-yellow-400 text-yellow-900' : 'text-slate-600 hover:bg-slate-200')
-          }, '🇺🇦 UA'),
-          h('button', {
-            onClick: () => setPriceRegion('EU'),
-            className: cn('px-3 py-1 rounded-md text-xs font-medium transition-all',
-              priceRegion === 'EU' ? 'bg-blue-500 text-white' : 'text-slate-600 hover:bg-slate-200')
-          }, '🇪🇺 EU')
-        )
-      ),
-      partsWithPrices.length === 0 
-        ? h('p', { className: 'text-slate-500 text-center py-4' }, 'Нет данных о запчастях для этого устройства')
-        : h('div', { className: 'space-y-3' },
-            ...partsWithPrices.map((part, i) => 
-              h('div', { 
-                key: i,
-                onClick: () => onSelectItem({ ...part, type: 'article' }),
-                className: 'p-3 bg-slate-50 rounded-xl hover:bg-slate-100 cursor-pointer transition-colors border border-transparent hover:border-indigo-200'
-              },
-                h('div', { className: 'flex justify-between items-start' },
-                  h('div', { className: 'flex-1' },
-                    h('p', { className: 'font-semibold text-slate-800' }, part.label),
-                    h('p', { className: 'font-mono text-xs text-indigo-600' }, part.article),
-                    part.description && h('p', { className: 'text-xs text-slate-500 truncate max-w-[200px]' }, part.description)
-                  ),
-                  h('div', { className: 'text-right' },
-                    priceRegion === 'UA' 
-                      ? (part.price_uah 
-                          ? h('div', null,
-                              h('p', { className: 'font-bold text-amber-600' }, formatPrice(part.price_uah, 'UAH')),
-                              h('p', { className: 'text-xs text-slate-500' }, `≈ ${formatPrice(part.price_usd, 'USD')}`)
-                            )
-                          : h('p', { className: 'text-sm text-slate-400' }, '—')
-                        )
-                      : (part.price_eur
-                          ? h('div', null,
-                              h('p', { className: 'font-bold text-blue-600' }, formatPrice(part.price_eur, 'EUR')),
-                              h('p', { className: 'text-xs text-slate-500' }, `≈ ${formatPrice(part.price_usd, 'USD')}`)
-                            )
-                          : h('p', { className: 'text-sm text-slate-400' }, '—')
-                        )
-                  )
-                )
-              )
-            ),
-            // Summary
-            h('div', { className: 'mt-4 pt-4 border-t border-slate-200' },
-              h('div', { className: 'flex justify-between items-center' },
-                h('span', { className: 'text-sm text-slate-600' }, '💰 Всего деталей:'),
-                h('span', { className: 'font-bold text-slate-800' }, partsWithPrices.length)
+      // Search
+      h('input', {
+        type: 'text',
+        placeholder: 'Поиск по модели или артикулу...',
+        value: searchTerm,
+        onChange: e => setSearchTerm(e.target.value),
+        className: 'w-full p-3 border border-slate-200 rounded-xl mb-4 focus:ring-2 focus:ring-cyan-500'
+      }),
+      // Content
+      h('div', { className: 'space-y-3 max-h-[50vh] overflow-y-auto' },
+        filteredData.length === 0 
+          ? h('p', { className: 'text-center text-slate-400 py-8' }, 'Нет данных')
+          : filteredData.map((item, idx) => 
+            h('div', { key: idx, className: 'bg-slate-50 rounded-xl p-4' },
+              h('div', { className: 'flex justify-between items-start mb-2' },
+                h('span', { className: 'font-bold text-slate-800' }, item.part_name || item.ic_name || item.name || 'Запчасть'),
+                item.apple_part && h('span', { className: 'text-xs font-mono bg-blue-100 text-blue-700 px-2 py-1 rounded' }, item.apple_part)
               ),
-              h('div', { className: 'flex justify-between items-center mt-1' },
-                h('span', { className: 'text-sm text-slate-600' }, '💵 Сумма (примерно):'),
-                h('span', { className: cn('font-bold', priceRegion === 'UA' ? 'text-amber-600' : 'text-blue-600') }, 
-                  priceRegion === 'UA'
-                    ? formatPrice(partsWithPrices.reduce((sum, p) => sum + (p.price_uah || 0), 0), 'UAH')
-                    : formatPrice(partsWithPrices.reduce((sum, p) => sum + (p.price_eur || 0), 0), 'EUR')
-                )
-              )
-            )
-          )
-    ),
-    
-    // Chips/IC Tab (NEW)
-    activeTab === 'chips' && h('div', { className: 'space-y-4' },
-      // Main chips from device data
-      h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-4' }, '🔌 Основные микросхемы'),
-        h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-3' },
-          // Charging IC
-          device.charging_ic && h('div', { 
-            className: 'p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border border-yellow-200 cursor-pointer hover:shadow-md transition-all',
-            onClick: () => {
-              const ic = device.charging_ic?.main ? icData?.charging_ics?.find(c => c.name === device.charging_ic.main) : null;
-              if (ic) onSelectItem({ ...ic, type: 'ic' });
-            }
-          },
-            h('div', { className: 'flex items-center gap-3' },
-              h('div', { className: 'w-10 h-10 rounded-lg bg-yellow-200 flex items-center justify-center' }, '⚡'),
-              h('div', null,
-                h('p', { className: 'text-xs text-yellow-700 font-semibold' }, 'Charging IC (U2/Tristar)'),
-                h('p', { className: 'font-bold text-slate-800' }, device.charging_ic?.main || 'Unknown'),
-                device.charging_ic?.designation && h('p', { className: 'text-xs text-slate-500' }, device.charging_ic.designation)
-              )
-            )
-          ),
-          
-          // Processor
-          device.processor && h('div', { className: 'p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl border border-purple-200' },
-            h('div', { className: 'flex items-center gap-3' },
-              h('div', { className: 'w-10 h-10 rounded-lg bg-purple-200 flex items-center justify-center' }, '🧠'),
-              h('div', null,
-                h('p', { className: 'text-xs text-purple-700 font-semibold' }, 'Процессор (SoC)'),
-                h('p', { className: 'font-bold text-slate-800' }, device.processor),
-                h('p', { className: 'text-xs text-slate-500' }, device.architecture || ((device.processor || '').includes('M') ? 'Apple Silicon' : 'A-series'))
-              )
-            )
-          ),
-          
-          // Power IC (if known)
-          device.power_ic && h('div', { className: 'p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200' },
-            h('div', { className: 'flex items-center gap-3' },
-              h('div', { className: 'w-10 h-10 rounded-lg bg-green-200 flex items-center justify-center' }, '🔋'),
-              h('div', null,
-                h('p', { className: 'text-xs text-green-700 font-semibold' }, 'Power Management IC'),
-                h('p', { className: 'font-bold text-slate-800' }, device.power_ic)
-              )
-            )
-          ),
-          
-          // Audio Codec (if known)
-          device.audio_codec && h('div', { className: 'p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200' },
-            h('div', { className: 'flex items-center gap-3' },
-              h('div', { className: 'w-10 h-10 rounded-lg bg-blue-200 flex items-center justify-center' }, '🔊'),
-              h('div', null,
-                h('p', { className: 'text-xs text-blue-700 font-semibold' }, 'Audio Codec'),
-                h('p', { className: 'font-bold text-slate-800' }, device.audio_codec)
-              )
-            )
-          )
-        )
-      ),
-      
-      // Matched ICs from database
-      deviceICs.length > 0 && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-4' }, '📋 Совместимые IC из базы'),
-        h('div', { className: 'space-y-3' },
-          ...deviceICs.map((ic, i) => h('div', {
-            key: i,
-            onClick: () => onSelectItem({ ...ic, type: 'ic' }),
-            className: 'p-4 bg-slate-50 rounded-xl cursor-pointer hover:bg-slate-100 transition-colors border border-transparent hover:border-violet-200'
-          },
-            h('div', { className: 'flex justify-between items-start' },
-              h('div', null,
-                h('p', { className: 'font-bold text-violet-700' }, ic.name),
-                ic.designation && h('p', { className: 'text-sm text-slate-600' }, ic.designation),
-                h('p', { className: 'text-xs text-slate-400 mt-1' }, ic.category.replace('_', ' '))
+              item.compatible_models && h('div', { className: 'text-sm text-green-600 mb-1' },
+                '✅ Совместимо: ', item.compatible_models.join(', ')
               ),
-              h('div', { className: 'text-right' },
-                ic.price_range && h('p', { className: 'text-sm font-semibold text-green-600' }, ic.price_range),
-                ic.difficulty && h('span', { 
-                  className: cn('text-xs px-2 py-0.5 rounded-full',
-                    ic.difficulty === 'Expert' ? 'bg-red-100 text-red-700' :
-                    ic.difficulty === 'Advanced' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'
-                  )
-                }, ic.difficulty)
-              )
+              item.not_compatible && h('div', { className: 'text-sm text-red-500 mb-1' },
+                '❌ Несовместимо: ', item.not_compatible.join(', ')
+              ),
+              item.used_in && h('div', { className: 'text-sm text-blue-600 mb-1' },
+                '📱 Используется в: ', item.used_in.slice(0, 5).join(', '), item.used_in.length > 5 ? '...' : ''
+              ),
+              item.notes && h('div', { className: 'text-xs text-slate-500 mt-2 italic' }, item.notes),
+              item.price_range_usd && h('div', { className: 'text-sm text-amber-600 mt-1' }, `💰 ${item.price_range_usd}`)
             )
-          ))
-        )
-      ),
-      
-      // If no ICs found
-      deviceICs.length === 0 && !device.charging_ic && h('div', { className: 'bg-slate-50 rounded-2xl p-8 text-center' },
-        h('p', { className: 'text-slate-500' }, '🔍 Нет данных о микросхемах для этого устройства')
+          )
       )
-    ),
-    
-    // Diagnostics Tab (ENHANCED)
-    activeTab === 'diagnostics' && h('div', { className: 'space-y-4' },
-      // Board numbers
-      (device.board_numbers?.length > 0) && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '🖥️ Board Numbers'),
-        h('div', { className: 'flex flex-wrap gap-2' },
-          ...(device.board_numbers || []).map((bn, i) => 
-            h('span', { key: i, className: 'px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg font-mono text-sm' }, bn)
-          )
-        ),
-        device.emc && h('p', { className: 'text-sm text-slate-500 mt-2' }, `EMC: ${device.emc}`)
+    )
+  );
+};
+
+// ============================================
+// EXTENDED DIAGNOSTICS PANEL (NEW 2026)
+// ============================================
+
+const ExtendedDiagnosticsPanel = ({ onClose }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('all');
+  const extData = window.NEXXExtendedData?.diagnosticsExtended || {};
+  
+  const allCodes = useMemo(() => {
+    const codes = [];
+    if (extData.apple_diagnostics_codes) {
+      Object.entries(extData.apple_diagnostics_codes).forEach(([category, items]) => {
+        items.forEach(item => codes.push({ ...item, category }));
+      });
+    }
+    if (extData.iphone_16_specific_issues) {
+      extData.iphone_16_specific_issues.forEach(item => codes.push({ ...item, category: 'iphone16' }));
+    }
+    return codes;
+  }, [extData]);
+  
+  const categories = ['all', ...new Set(allCodes.map(c => c.category))];
+  
+  const filteredCodes = useMemo(() => {
+    let filtered = allCodes;
+    if (activeCategory !== 'all') {
+      filtered = filtered.filter(c => c.category === activeCategory);
+    }
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(c => 
+        (c.code || '').toLowerCase().includes(term) ||
+        (c.description || '').toLowerCase().includes(term) ||
+        (c.issue || '').toLowerCase().includes(term)
+      );
+    }
+    return filtered.slice(0, 100);
+  }, [allCodes, activeCategory, searchTerm]);
+  
+  const getSeverityColor = (sev) => {
+    const colors = { critical: 'bg-red-100 text-red-700', high: 'bg-orange-100 text-orange-700', medium: 'bg-yellow-100 text-yellow-700', low: 'bg-green-100 text-green-700' };
+    return colors[sev] || 'bg-slate-100 text-slate-700';
+  };
+  
+  return h(Modal, { title: '🔬 Расширенная диагностика', subtitle: 'Apple Diagnostics + iPhone 16 Issues', onClose, size: 'lg', color: 'purple' },
+    h('div', { className: 'p-4' },
+      // Category filter
+      h('div', { className: 'flex gap-2 mb-4 overflow-x-auto pb-2' },
+        categories.slice(0, 8).map(cat => h('button', {
+          key: cat,
+          onClick: () => setActiveCategory(cat),
+          className: `px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+            activeCategory === cat ? 'bg-purple-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`
+        }, cat === 'all' ? 'Все' : cat.replace('_', ' ')))
       ),
-      
-      // Quick diagnostic info
-      device.charging_ic && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '⚡ Быстрая диагностика зарядки'),
-        h('div', { className: 'p-4 bg-yellow-50 rounded-xl' },
-          h('p', { className: 'font-semibold text-yellow-800 mb-2' }, `IC: ${device.charging_ic?.main || 'N/A'}`),
-          h('div', { className: 'text-sm text-slate-700 space-y-1' },
-            h('p', null, '• Диодный режим D+/D-: 0.400-0.600V'),
-            h('p', null, '• PP5V0_USB: 5.0V при подключении'),
-            h('p', null, '• Ток покоя: 0.05-0.20A')
-          ),
-          h('div', { className: 'mt-3 p-3 bg-red-50 rounded-lg' },
-            h('p', { className: 'text-xs font-semibold text-red-700' }, '⚠️ Симптомы неисправности:'),
-            h('p', { className: 'text-xs text-red-600' }, 'Не заряжается, "Аксессуар не поддерживается", Нет определения в iTunes')
-          )
-        )
-      ),
-      
-      // Power Rails (from measurements.json)
-      powerRails.length > 0 && h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-3' }, '📊 Шины питания (Power Rails)'),
-        h('div', { className: 'space-y-3' },
-          ...powerRails.slice(0, 6).map(rail => h('div', { key: rail.id, className: 'p-3 bg-slate-50 rounded-xl' },
+      // Search
+      h('input', {
+        type: 'text',
+        placeholder: 'Поиск по коду или описанию...',
+        value: searchTerm,
+        onChange: e => setSearchTerm(e.target.value),
+        className: 'w-full p-3 border border-slate-200 rounded-xl mb-4 focus:ring-2 focus:ring-purple-500'
+      }),
+      h('p', { className: 'text-sm text-slate-500 mb-3' }, `Найдено: ${filteredCodes.length} записей`),
+      // Results
+      h('div', { className: 'space-y-2 max-h-[50vh] overflow-y-auto' },
+        filteredCodes.map((item, idx) => 
+          h('div', { key: idx, className: 'bg-white border border-slate-200 rounded-xl p-3 hover:shadow-md transition-shadow' },
             h('div', { className: 'flex justify-between items-start mb-2' },
-              h('div', null,
-                h('p', { className: 'font-semibold text-slate-800' }, rail.name),
-                h('p', { className: 'text-xs text-slate-500' }, rail.id)
-              ),
-              h('span', { className: 'px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-mono' }, rail.voltage)
+              h('span', { className: 'font-mono font-bold text-purple-700' }, item.code || item.issue),
+              item.severity && h('span', { className: `text-xs px-2 py-1 rounded-full ${getSeverityColor(item.severity)}` }, item.severity)
             ),
+            h('p', { className: 'text-sm text-slate-700 mb-1' }, item.description || item.symptom),
+            item.description_ru && h('p', { className: 'text-sm text-slate-600' }, item.description_ru),
+            item.action && h('p', { className: 'text-xs text-blue-600 mt-2' }, '🔧 ', item.action),
+            item.fix && h('p', { className: 'text-xs text-green-600 mt-1' }, '✅ ', item.fix),
+            item.diagnostic && h('p', { className: 'text-xs text-orange-600 mt-1' }, '📊 ', item.diagnostic)
+          )
+        )
+      )
+    )
+  );
+};
+
+// ============================================
+// MEASUREMENTS PANEL (NEW 2026)
+// ============================================
+
+const MeasurementsPanel = ({ measurementsData, onClose }) => {
+  const [activeDevice, setActiveDevice] = useState('iphone_16');
+  const extMeasurements = window.NEXXExtendedData?.measurementsExtended || {};
+  
+  const deviceData = activeDevice === 'iphone_16' ? extMeasurements.iphone_16_measurements :
+                     activeDevice === 'iphone_15' ? extMeasurements.iphone_15_measurements :
+                     activeDevice === 'mac_m4' ? extMeasurements.mac_m4_measurements :
+                     measurementsData?.power_rails?.rails;
+  
+  const powerRails = deviceData?.power_rails || deviceData || {};
+  
+  return h(Modal, { title: '📏 Измерения и точки', subtitle: 'Voltage & Diode Mode', onClose, size: 'lg', color: 'teal' },
+    h('div', { className: 'p-4' },
+      // Device selector
+      h('div', { className: 'flex gap-2 mb-4' },
+        [
+          { id: 'iphone_16', label: 'iPhone 16' },
+          { id: 'iphone_15', label: 'iPhone 15' },
+          { id: 'mac_m4', label: 'Mac M4' },
+          { id: 'legacy', label: 'Старые модели' }
+        ].map(d => h('button', {
+          key: d.id,
+          onClick: () => setActiveDevice(d.id),
+          className: `px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+            activeDevice === d.id ? 'bg-teal-500 text-white' : 'bg-slate-100 text-slate-600'
+          }`
+        }, d.label))
+      ),
+      // Power rails table
+      h('div', { className: 'space-y-3 max-h-[55vh] overflow-y-auto' },
+        Object.entries(powerRails).map(([key, rail]) => 
+          h('div', { key, className: 'bg-slate-50 rounded-xl p-4 border-l-4 border-teal-500' },
+            h('div', { className: 'flex justify-between items-center mb-2' },
+              h('span', { className: 'font-mono font-bold text-teal-700' }, key),
+              rail.expected_voltage && h('span', { className: 'bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full' }, rail.expected_voltage || rail.voltage)
+            ),
+            h('p', { className: 'text-sm text-slate-600 mb-2' }, rail.description || rail.name),
             h('div', { className: 'grid grid-cols-2 gap-2 text-xs' },
-              h('div', { className: 'p-2 bg-blue-50 rounded' },
-                h('p', { className: 'text-blue-600' }, 'Диод режим'),
-                h('p', { className: 'font-mono text-slate-700' }, rail.diode_mode_normal)
+              rail.diode_mode && h('div', { className: 'bg-blue-50 p-2 rounded' },
+                h('span', { className: 'text-blue-600' }, '🔍 Diode: '), rail.diode_mode || rail.diode_mode_normal
               ),
-              h('div', { className: 'p-2 bg-red-50 rounded' },
-                h('p', { className: 'text-red-600' }, 'КЗ если'),
-                h('p', { className: 'font-mono text-slate-700' }, rail.short_threshold)
+              rail.if_shorted && h('div', { className: 'bg-red-50 p-2 rounded' },
+                h('span', { className: 'text-red-600' }, '⚠️ Если КЗ: '), 
+                Array.isArray(rail.if_shorted) ? rail.if_shorted[0] : rail.if_shorted
+              ),
+              rail.if_missing && h('div', { className: 'bg-orange-50 p-2 rounded col-span-2' },
+                h('span', { className: 'text-orange-600' }, '❓ Если нет: '), rail.if_missing
+              ),
+              rail.source_ic && h('div', { className: 'bg-purple-50 p-2 rounded' },
+                h('span', { className: 'text-purple-600' }, '🔌 IC: '), rail.source_ic
               )
+            )
+          )
+        )
+      ),
+      // USB-C diagnostics for iPhone 16
+      activeDevice === 'iphone_16' && extMeasurements.iphone_16_measurements?.usb_c_diagnostics && 
+        h('div', { className: 'mt-4 bg-cyan-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-cyan-800 mb-3' }, '🔌 USB-C Диагностика'),
+          h('div', { className: 'grid grid-cols-2 gap-3' },
+            Object.entries(extMeasurements.iphone_16_measurements.usb_c_diagnostics).map(([pin, data]) =>
+              h('div', { key: pin, className: 'bg-white rounded-lg p-3' },
+                h('span', { className: 'font-mono font-bold text-cyan-700' }, pin),
+                h('p', { className: 'text-xs text-slate-500' }, data.description),
+                h('p', { className: 'text-sm text-green-600' }, 'Diode: ', data.diode_mode)
+              )
+            )
+          )
+        )
+    )
+  );
+};
+
+// ============================================
+// CALIBRATION PANEL (NEW 2026)
+// ============================================
+
+const CalibrationPanel = ({ onClose }) => {
+  const [activeTab, setActiveTab] = useState('display');
+  const extData = window.NEXXExtendedData?.calibrationRepair || {};
+  
+  const tabs = [
+    { id: 'display', label: '📱 Дисплей', color: 'blue' },
+    { id: 'battery', label: '🔋 Батарея', color: 'green' },
+    { id: 'faceid', label: '👤 Face ID', color: 'purple' },
+    { id: 'bga', label: '🔩 BGA', color: 'orange' }
+  ];
+  
+  const displayData = extData.display_calibration || {};
+  const batteryData = extData.battery_calibration || {};
+  const faceIdData = extData.face_id_calibration || {};
+  const bgaData = extData.microsoldering_guides?.bga_reballing || {};
+  const bgaRepairs = extData.microsoldering_guides?.common_bga_repairs || {};
+  
+  return h(Modal, { title: '🎯 Калибровка и Ремонт', subtitle: 'True Tone, Face ID, BGA', onClose, size: 'lg', color: 'rose' },
+    h('div', { className: 'p-4' },
+      // Tabs
+      h('div', { className: 'flex gap-2 mb-4 overflow-x-auto pb-2' },
+        tabs.map(tab => h('button', {
+          key: tab.id,
+          onClick: () => setActiveTab(tab.id),
+          className: `px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
+            activeTab === tab.id ? `bg-rose-500 text-white` : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`
+        }, tab.label))
+      ),
+      
+      // Display Calibration
+      activeTab === 'display' && h('div', { className: 'space-y-4 max-h-[60vh] overflow-y-auto' },
+        h('div', { className: 'bg-blue-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-blue-800 mb-3' }, '📱 Калибровка дисплеев'),
+          h('p', { className: 'text-sm text-slate-600 mb-3' }, displayData.description || 'Калибровка True Tone для восстановления цветопередачи'),
+          displayData.tools_required && h('div', { className: 'mb-3' },
+            h('p', { className: 'text-xs text-blue-600 font-medium mb-2' }, '🔧 Инструменты:'),
+            h('div', { className: 'grid grid-cols-2 gap-2' },
+              displayData.tools_required.map((tool, i) => h('div', { key: i, className: 'bg-blue-100 p-2 rounded-lg' },
+                h('span', { className: 'text-blue-800 text-sm font-medium' }, tool.name),
+                h('p', { className: 'text-xs text-blue-600' }, tool.purpose)
+              ))
+            )
+          )
+        ),
+        displayData.iphone_16_display && h('div', { className: 'bg-indigo-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-indigo-800 mb-2' }, '📱 iPhone 16 Display'),
+          h('p', { className: 'text-xs text-indigo-600 mb-2' }, `True Tone: ${displayData.iphone_16_display.true_tone_data_location}`),
+          displayData.iphone_16_display.programming_steps && h('ol', { className: 'text-sm text-slate-700 space-y-1 list-decimal list-inside' },
+            displayData.iphone_16_display.programming_steps.map((step, i) => h('li', { key: i }, step))
+          ),
+          displayData.iphone_16_display.without_programming && h('div', { className: 'mt-3 bg-amber-100 rounded-lg p-2' },
+            h('p', { className: 'text-xs font-medium text-amber-800' }, '⚠️ Без программирования:'),
+            h('p', { className: 'text-xs text-amber-700' }, `True Tone: ${displayData.iphone_16_display.without_programming.true_tone}`),
+            h('p', { className: 'text-xs text-amber-700' }, displayData.iphone_16_display.without_programming.important_message)
+          )
+        )
+      ),
+      
+      // Battery Calibration
+      activeTab === 'battery' && h('div', { className: 'space-y-4 max-h-[60vh] overflow-y-auto' },
+        h('div', { className: 'bg-green-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-green-800 mb-3' }, '🔋 Калибровка батареи'),
+          h('p', { className: 'text-sm text-slate-600 mb-3' }, batteryData.description || 'Калибровка батарей iPhone'),
+          batteryData.tools_required && h('div', { className: 'mb-3' },
+            h('p', { className: 'text-xs text-green-600 font-medium mb-2' }, '🔧 Инструменты:'),
+            h('div', { className: 'flex flex-wrap gap-2' },
+              batteryData.tools_required.map((tool, i) => h('div', { key: i, className: 'bg-green-100 px-2 py-1 rounded text-xs' },
+                h('span', { className: 'text-green-800 font-medium' }, tool.name)
+              ))
+            )
+          )
+        ),
+        batteryData.iphone_16_battery && h('div', { className: 'bg-emerald-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-emerald-800 mb-2' }, '🔋 iPhone 16 Battery'),
+          h('p', { className: 'text-xs text-emerald-600 mb-2' }, `Метод: ${batteryData.iphone_16_battery.removal_method}`),
+          batteryData.iphone_16_battery.programming_steps && h('ol', { className: 'text-sm text-slate-700 space-y-1 list-decimal list-inside' },
+            batteryData.iphone_16_battery.programming_steps.map((step, i) => h('li', { key: i }, step))
+          ),
+          batteryData.iphone_16_battery.without_programming && h('div', { className: 'mt-3 bg-yellow-100 rounded-lg p-2' },
+            h('p', { className: 'text-xs font-medium text-yellow-800' }, '⚠️ Без программирования:'),
+            h('p', { className: 'text-xs text-yellow-700' }, batteryData.iphone_16_battery.without_programming.message),
+            h('p', { className: 'text-xs text-yellow-700' }, `Health: ${batteryData.iphone_16_battery.without_programming.health_display}`)
+          )
+        ),
+        batteryData.battery_health_reset && h('div', { className: 'bg-red-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-red-800 mb-2' }, '⚠️ Health Reset'),
+          h('p', { className: 'text-xs text-red-700' }, batteryData.battery_health_reset.warning),
+          h('p', { className: 'text-xs text-slate-600 mt-1' }, `Допустимо: ${batteryData.battery_health_reset.legitimate_use}`)
+        )
+      ),
+      
+      // Face ID
+      activeTab === 'faceid' && h('div', { className: 'space-y-4 max-h-[60vh] overflow-y-auto' },
+        h('div', { className: 'bg-purple-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-purple-800 mb-3' }, '👤 Face ID Ремонт'),
+          h('p', { className: 'text-sm text-slate-600 mb-3' }, faceIdData.description || 'Калибровка и восстановление Face ID'),
+          faceIdData.components && h('div', { className: 'grid grid-cols-2 gap-2 mb-3' },
+            Object.entries(faceIdData.components).map(([key, val]) => h('div', { key, className: 'bg-purple-100 p-2 rounded-lg' },
+              h('span', { className: 'text-xs text-purple-800 font-medium' }, key.replace(/_/g, ' ')),
+              h('p', { className: 'text-xs text-purple-600' }, val)
+            ))
+          ),
+          faceIdData.serialization && h('div', { className: 'bg-red-100 rounded-lg p-3' },
+            h('p', { className: 'text-xs text-red-800 font-medium' }, '🔒 Сериализация:'),
+            h('p', { className: 'text-xs text-red-700' }, `Paired to: ${faceIdData.serialization.paired_to}`),
+            h('p', { className: 'text-xs text-red-700' }, faceIdData.serialization.apple_tools)
+          )
+        ),
+        faceIdData.repair_options && h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-violet-800 mb-3' }, '🔧 Варианты ремонта'),
+          Object.entries(faceIdData.repair_options).map(([key, opt]) => h('div', { key, className: 'bg-white rounded-lg p-3 mb-2 border-l-4 border-violet-500' },
+            h('p', { className: 'font-medium text-violet-700 text-sm' }, key.replace(/_/g, ' ')),
+            h('p', { className: 'text-xs text-slate-600 mt-1' }, `Face ID: ${opt.affects_face_id}`),
+            opt.steps && h('ol', { className: 'text-xs text-slate-500 mt-2 list-decimal list-inside' },
+              opt.steps.map((s, i) => h('li', { key: i }, s))
             )
           ))
         )
       ),
       
-      // If no diagnostics data
-      !device.charging_ic && powerRails.length === 0 && h('div', { className: 'bg-slate-50 rounded-2xl p-8 text-center' },
-        h('p', { className: 'text-slate-500' }, '🔍 Нет данных диагностики для этого устройства')
-      )
-    ),
-    
-    // Compatibility Tab (NEW)
-    activeTab === 'compatibility' && h('div', { className: 'space-y-4' },
-      // Component compatibility info
-      h('div', { className: 'bg-white rounded-2xl shadow-lg p-5' },
-        h('h2', { className: 'text-lg font-bold text-gray-800 mb-4' }, '🔄 Совместимость компонентов'),
-        h('p', { className: 'text-sm text-slate-600 mb-4' }, 
-          'Информация о взаимозаменяемости компонентов между моделями'
-        ),
-        
-        h('div', { className: 'space-y-4' },
-          // Camera compatibility
-          h('div', { className: 'p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200' },
-            h('h3', { className: 'font-bold text-blue-800 mb-3 flex items-center gap-2' },
-              h('span', { className: 'w-8 h-8 bg-blue-200 rounded-lg flex items-center justify-center' }, '📷'),
-              'Камеры'
-            ),
-            componentCompatibility?.cameras?.length > 0 
-              ? h('div', { className: 'space-y-2' },
-                  ...componentCompatibility.cameras.map((cam, i) => h('div', { key: i, className: 'p-3 bg-white/80 rounded-lg' },
-                    h('p', { className: 'text-sm font-semibold text-slate-700 mb-2' }, 
-                      `${cam.type === 'rear' ? '📷 Задняя' : '🤳 Фронтальная'} камера`
-                    ),
-                    cam.resolution && h('p', { className: 'text-xs text-slate-500' }, `Разрешение: ${cam.resolution}`),
-                    cam.features && h('p', { className: 'text-xs text-slate-500' }, `Особенности: ${cam.features.join(', ')}`),
-                    cam.compatibleWith && h('div', { className: 'mt-2' },
-                      h('p', { className: 'text-xs text-slate-500 mb-1' }, 'Совместимо с:'),
-                      h('div', { className: 'flex flex-wrap gap-1' },
-                        ...cam.compatibleWith.map((d, j) => h('span', { 
-                          key: j, 
-                          className: 'px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs' 
-                        }, d))
-                      )
-                    ),
-                    cam.notes && h('p', { className: 'text-xs text-amber-600 mt-2' }, `⚠️ ${cam.notes}`)
-                  ))
-                )
-              : h('p', { className: 'text-sm text-slate-500' }, 'Данные о совместимости камер не найдены')
-          ),
-          
-          // Display compatibility
-          h('div', { className: 'p-4 bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl border border-purple-200' },
-            h('h3', { className: 'font-bold text-purple-800 mb-3 flex items-center gap-2' },
-              h('span', { className: 'w-8 h-8 bg-purple-200 rounded-lg flex items-center justify-center' }, '📱'),
-              'Дисплеи'
-            ),
-            h('div', { className: 'p-3 bg-white/80 rounded-lg' },
-              h('p', { className: 'text-sm text-slate-700' }, 
-                device.category === 'iPhone' 
-                  ? 'Дисплеи iPhone обычно НЕ взаимозаменяемы между моделями. True Tone требует калибровки.'
-                  : 'Для точной информации о совместимости дисплеев проверьте номер детали.'
-              ),
-              h('div', { className: 'mt-2 p-2 bg-amber-50 rounded' },
-                h('p', { className: 'text-xs text-amber-700' }, 
-                  '⚠️ Замена дисплея может привести к потере True Tone без специального оборудования для калибровки'
-                )
-              )
+      // BGA Reballing
+      activeTab === 'bga' && h('div', { className: 'space-y-4 max-h-[60vh] overflow-y-auto' },
+        h('div', { className: 'bg-orange-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-orange-800 mb-3' }, '🔩 BGA Reballing'),
+          h('p', { className: 'text-sm text-slate-600 mb-3' }, bgaData.description || 'Процесс замены шариков BGA'),
+          bgaData.temperature_profiles && h('div', { className: 'mb-4' },
+            h('p', { className: 'text-xs text-orange-600 font-medium mb-2' }, '🌡️ Температурные профили:'),
+            h('div', { className: 'grid grid-cols-2 gap-2' },
+              Object.entries(bgaData.temperature_profiles).map(([type, temps]) => h('div', { key: type, className: 'bg-white rounded-lg p-2' },
+                h('p', { className: 'font-mono text-sm text-orange-700' }, type),
+                h('p', { className: 'text-xs text-slate-500' }, `Preheat: ${temps.preheat}`),
+                h('p', { className: 'text-xs text-slate-500' }, `Reflow: ${temps.reflow}`)
+              ))
             )
           ),
-          
-          // Battery compatibility
-          h('div', { className: 'p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200' },
-            h('h3', { className: 'font-bold text-green-800 mb-3 flex items-center gap-2' },
-              h('span', { className: 'w-8 h-8 bg-green-200 rounded-lg flex items-center justify-center' }, '🔋'),
-              'Батареи'
-            ),
-            h('div', { className: 'p-3 bg-white/80 rounded-lg' },
-              h('p', { className: 'text-sm text-slate-700 mb-2' }, 
-                'Батареи обычно уникальны для каждой модели из-за различий в форме и разъёмах.'
-              ),
-              device.service_parts?.battery && h('div', { className: 'space-y-1 text-sm' },
-                device.service_parts.battery.article && h('p', { className: 'text-slate-600' },
-                  'Артикул: ',
-                  h('span', { className: 'font-mono font-bold text-green-600' }, device.service_parts.battery.article)
-                ),
-                device.service_parts.battery.description && h('p', { className: 'text-slate-600' },
-                  device.service_parts.battery.description
-                )
-              ),
-              h('div', { className: 'mt-2 p-2 bg-red-50 rounded' },
-                h('p', { className: 'text-xs text-red-700' }, 
-                  '⚠️ Использование неоригинальной батареи может привести к предупреждению в iOS и проблемам с Battery Health'
-                )
-              )
+          bgaData.equipment && h('div', { className: 'mb-4' },
+            h('p', { className: 'text-xs text-orange-600 font-medium mb-2' }, '🔧 Оборудование:'),
+            h('div', { className: 'grid grid-cols-2 gap-2' },
+              bgaData.equipment.map((eq, i) => h('div', { key: i, className: 'bg-orange-100 p-2 rounded text-xs' },
+                h('span', { className: 'text-orange-800 font-medium' }, eq.item),
+                eq.specs && h('p', { className: 'text-orange-600 text-xs' }, eq.specs)
+              ))
             )
           ),
-          
-          // Charging IC compatibility (for iPhone)
-          device.charging_ic && h('div', { className: 'p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border border-yellow-200' },
-            h('h3', { className: 'font-bold text-yellow-800 mb-3 flex items-center gap-2' },
-              h('span', { className: 'w-8 h-8 bg-yellow-200 rounded-lg flex items-center justify-center' }, '⚡'),
-              'Контроллер зарядки'
-            ),
-            h('div', { className: 'p-3 bg-white/80 rounded-lg' },
-              h('div', { className: 'flex items-center gap-3 mb-2' },
-                h('span', { className: 'px-3 py-1 bg-yellow-100 text-yellow-800 rounded-lg font-mono font-bold' }, device.charging_ic?.main || 'N/A'),
-                device.charging_ic.designation && h('span', { className: 'text-sm text-slate-600' }, device.charging_ic.designation)
-              ),
-              h('p', { className: 'text-sm text-slate-600' }, 
-                'Этот IC контроллер используется в данном устройстве. Нажмите на вкладку "Микросхемы" для детальной информации.'
-              )
+          bgaData.steps && h('div', null,
+            h('p', { className: 'text-xs text-orange-600 font-medium mb-2' }, '📋 Шаги:'),
+            h('ol', { className: 'text-sm text-slate-700 space-y-1 list-decimal list-inside' },
+              bgaData.steps.map((step, i) => h('li', { key: i }, step))
             )
           )
-        )
-      ),
-      
-      // General compatibility notes
-      h('div', { className: 'bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg p-5 text-white' },
-        h('h2', { className: 'text-lg font-bold mb-3 flex items-center gap-2' },
-          h('span', { className: 'w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center' }, '💡'),
-          'Советы по совместимости'
         ),
-        h('ul', { className: 'space-y-2 text-sm' },
-          h('li', { className: 'flex items-start gap-2 p-2 bg-white/10 rounded-lg' },
-            h('span', null, '✓'),
-            'Всегда проверяйте номер модели и артикул перед заказом запчастей'
-          ),
-          h('li', { className: 'flex items-start gap-2 p-2 bg-white/10 rounded-lg' },
-            h('span', null, '✓'),
-            'Face ID и Touch ID компоненты привязаны к материнской плате и не переносятся'
-          ),
-          h('li', { className: 'flex items-start gap-2 p-2 bg-white/10 rounded-lg' },
-            h('span', null, '✓'),
-            'Камеры iPhone 12+ требуют программирования для полной функциональности'
-          ),
-          h('li', { className: 'flex items-start gap-2 p-2 bg-white/10 rounded-lg' },
-            h('span', null, '✓'),
-            'Батареи отображают "Service" без оригинального BMS чипа'
+        bgaRepairs.iphone && h('div', { className: 'bg-amber-50 rounded-xl p-4' },
+          h('h4', { className: 'font-bold text-amber-800 mb-3' }, '📱 iPhone BGA Ремонты'),
+          h('div', { className: 'space-y-2' },
+            bgaRepairs.iphone.map((rep, i) => h('div', { key: i, className: 'bg-white rounded-lg p-3 border-l-4 border-amber-500' },
+              h('div', { className: 'flex justify-between items-start' },
+                h('span', { className: 'font-medium text-amber-700' }, rep.ic),
+                h('span', { className: `text-xs px-2 py-0.5 rounded ${rep.difficulty === 'Expert' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}` }, rep.difficulty)
+              ),
+              h('p', { className: 'text-xs text-slate-600 mt-1' }, rep.common_issue),
+              h('p', { className: 'text-xs text-blue-600' }, `📱 ${rep.models}`),
+              rep.notes && h('p', { className: 'text-xs text-slate-500 mt-1 italic' }, rep.notes)
+            ))
           )
         )
       )
@@ -3396,670 +1948,520 @@ const DeviceDetailsView = ({ device, onBack, ukrainePrices, onSelectItem, icData
   );
 };
 
-// ===== REGION LOOKUP PANEL =====
-const RegionLookupPanel = ({ onClose }) => {
-  const [searchCode, setSearchCode] = useState('');
-  const [regionalData, setRegionalData] = useState(null);
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(true);
+// ============================================
+// MICROSOLDERING PANEL (NEW 2026)
+// ============================================
+
+const MicrosolderingPanel = ({ onClose }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('backlight');
+  const extData = window.NEXXExtendedData?.microsolderingComponents || {};
   
-  useEffect(() => {
-    fetch('/data/regional_codes_extended.json')
-      .then(r => r.json())
-      .then(data => {
-        setRegionalData(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  const categories = ['backlight', 'charging', 'audio', 'touch', 'baseband', 'power'];
   
-  const handleSearch = () => {
-    if (!regionalData || !searchCode.trim()) {
-      setResult(null);
-      return;
-    }
-    // Extract code from input (e.g., "LL/A" -> "LL", "LL" -> "LL", "MN6W3LL/A" -> "LL")
-    const input = searchCode.trim().toUpperCase();
-    let code = input;
-    
-    // If contains "/", get the part before it
-    if (input.includes('/')) {
-      const parts = input.split('/');
-      // Check if it's like "MN6W3LL/A" - code is 2 chars before /
-      const beforeSlash = parts[0];
-      if (beforeSlash.length > 2) {
-        code = beforeSlash.slice(-2);
-      } else {
-        code = beforeSlash;
-      }
-    }
-    
-    const regionInfo = regionalData.regional_codes[code];
-    if (regionInfo) {
-      setResult({ code, ...regionInfo });
-    } else {
-      setResult({ notFound: true, searchedCode: code });
-    }
-  };
+  const categoryData = extData[activeCategory] || {};
   
-  useEffect(() => {
-    if (searchCode.length >= 2) {
-      handleSearch();
-    } else {
-      setResult(null);
-    }
-  }, [searchCode, regionalData]);
+  const allComponents = useMemo(() => {
+    const comps = [];
+    // Parse device-specific components from the category
+    Object.entries(categoryData).forEach(([device, deviceData]) => {
+      if (device === 'description') return;
+      Object.entries(deviceData || {}).forEach(([compType, compData]) => {
+        if (compData && typeof compData === 'object') {
+          comps.push({
+            name: compType.replace(/_/g, ' '),
+            device: device.replace(/_/g, ' '),
+            value: compData.value,
+            digikey: compData.digikey,
+            locations: compData.locations,
+            aliexpress: compData.aliexpress,
+            note: compData.note
+          });
+        }
+      });
+    });
+    return comps;
+  }, [categoryData]);
   
-  if (loading) {
-    return h(Modal, { title: '🌍 Определить регион', subtitle: 'Загрузка...', onClose, color: 'blue' },
-      h('div', { className: 'flex justify-center py-8' },
-        h('div', { className: 'w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin' })
-      )
+  const filteredComponents = useMemo(() => {
+    if (!searchTerm) return allComponents;
+    const term = searchTerm.toLowerCase();
+    return allComponents.filter(c => 
+      (c.name || '').toLowerCase().includes(term) ||
+      (c.device || '').toLowerCase().includes(term) ||
+      (c.value || '').toLowerCase().includes(term) ||
+      (c.locations?.join(' ') || '').toLowerCase().includes(term)
     );
-  }
+  }, [allComponents, searchTerm]);
   
-  const popularCodes = ['LL', 'ZA', 'ZP', 'CH', 'J', 'KH', 'X', 'B', 'FB', 'HN'];
-  
-  return h(Modal, { title: '🌍 Определить регион', subtitle: 'Введите код региона из номера модели', onClose, color: 'blue' },
-    h('div', { className: 'space-y-4' },
-      // Search input
-      h('div', { className: 'relative' },
-        h('input', {
-          type: 'text',
-          value: searchCode,
-          onChange: e => setSearchCode(e.target.value),
-          placeholder: 'Введите код (LL, ZA, CH) или полный номер (MN6W3LL/A)...',
-          className: 'w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none text-lg font-mono'
-        })
-      ),
-      
-      // Popular codes
-      h('div', null,
-        h('p', { className: 'text-xs text-slate-500 mb-2' }, 'Популярные коды:'),
-        h('div', { className: 'flex flex-wrap gap-2' },
-          ...popularCodes.map(code => 
-            h('button', {
-              key: code,
-              onClick: () => setSearchCode(code),
-              className: 'px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm font-mono hover:bg-blue-100 transition-colors'
-            }, code + '/A')
-          )
-        )
-      ),
-      
-      // Result
-      result && (result.notFound 
-        ? h('div', { className: 'p-4 bg-red-50 rounded-xl border border-red-200' },
-            h('p', { className: 'text-red-700 font-semibold' }, `❌ Код "${result.searchedCode}" не найден`),
-            h('p', { className: 'text-sm text-red-600 mt-1' }, 'Проверьте правильность ввода')
-          )
-        : h('div', { className: 'p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200' },
-            h('div', { className: 'flex items-start gap-4' },
-              h('div', { className: 'w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center text-white text-2xl font-bold' }, result.code),
-              h('div', { className: 'flex-1' },
-                h('h3', { className: 'text-xl font-bold text-slate-800' }, result.region),
-                h('p', { className: 'text-sm text-slate-600' }, result.countries?.join(', '))
-              )
-            ),
-            
-            // Features grid
-            h('div', { className: 'grid grid-cols-3 gap-3 mt-4' },
-              // FaceTime
-              h('div', { className: cn('p-3 rounded-lg text-center', 
-                result.facetime === true ? 'bg-green-100' : 
-                result.facetime === false ? 'bg-red-100' : 'bg-yellow-100'
-              )},
-                h('p', { className: 'text-2xl' }, result.facetime === true ? '✅' : result.facetime === false ? '❌' : '⚠️'),
-                h('p', { className: 'text-xs font-semibold mt-1' }, 'FaceTime'),
-                h('p', { className: 'text-xs text-slate-600' }, 
-                  result.facetime === true ? 'Есть' : 
-                  result.facetime === false ? 'Нет' : 'Зависит от оператора'
-                )
-              ),
-              // Dual SIM
-              h('div', { className: cn('p-3 rounded-lg text-center',
-                result.dual_sim === 'physical_dual' ? 'bg-purple-100' : 
-                result.dual_sim === true ? 'bg-green-100' : 'bg-slate-100'
-              )},
-                h('p', { className: 'text-2xl' }, result.dual_sim ? '📱📱' : '📱'),
-                h('p', { className: 'text-xs font-semibold mt-1' }, 'Dual SIM'),
-                h('p', { className: 'text-xs text-slate-600' }, 
-                  result.dual_sim === 'physical_dual' ? '2 физ. SIM' : 
-                  result.dual_sim === true ? 'eSIM + SIM' : 'Нет'
-                )
-              ),
-              // Charger
-              h('div', { className: cn('p-3 rounded-lg text-center',
-                result.box_contents?.charger ? 'bg-green-100' : 'bg-slate-100'
-              )},
-                h('p', { className: 'text-2xl' }, result.box_contents?.charger ? '🔌' : '📦'),
-                h('p', { className: 'text-xs font-semibold mt-1' }, 'Зарядка'),
-                h('p', { className: 'text-xs text-slate-600' }, 
-                  result.box_contents?.charger ? 'В комплекте' : 'Не включена'
-                )
-              )
-            ),
-            
-            // Notes
-            result.notes && h('div', { className: 'mt-4 p-3 bg-yellow-50 rounded-lg border border-yellow-200' },
-              h('p', { className: 'text-sm text-yellow-800' }, '📝 ' + result.notes)
-            ),
-            
-            // Special features (mmWave etc)
-            result.special_features && h('div', { className: 'mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200' },
-              h('p', { className: 'text-sm font-semibold text-purple-800' }, '⚡ Особенности:'),
-              result.special_features.mmwave_5g && h('p', { className: 'text-sm text-purple-700 mt-1' }, '• Поддержка mmWave 5G (только США)')
-            ),
-            
-            // Box contents
-            h('div', { className: 'mt-4 pt-4 border-t border-slate-200' },
-              h('p', { className: 'text-xs font-semibold text-slate-500 mb-2' }, '📦 В коробке (iPhone 12+):'),
-              h('div', { className: 'flex gap-2' },
-                result.box_contents?.cable && h('span', { className: 'px-2 py-1 bg-slate-100 rounded text-xs' }, '🔌 USB-C кабель'),
-                result.box_contents?.charger && h('span', { className: 'px-2 py-1 bg-green-100 rounded text-xs' }, '🔋 Зарядка'),
-                result.box_contents?.earpods && h('span', { className: 'px-2 py-1 bg-blue-100 rounded text-xs' }, '🎧 EarPods')
-              )
-            )
-          )
-      ),
-      
-      // All codes table
-      !result && h('div', { className: 'mt-6' },
-        h('p', { className: 'text-sm font-semibold text-slate-700 mb-3' }, '📋 Все региональные коды:'),
-        h('div', { className: 'max-h-64 overflow-y-auto rounded-lg border border-slate-200' },
-          h('table', { className: 'w-full text-sm' },
-            h('thead', { className: 'bg-slate-50 sticky top-0' },
-              h('tr', null,
-                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Код'),
-                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Регион'),
-                h('th', { className: 'px-3 py-2 text-left font-semibold' }, 'Страны'),
-                h('th', { className: 'px-3 py-2 text-center font-semibold' }, 'FT')
-              )
-            ),
-            h('tbody', null,
-              ...Object.entries(regionalData?.regional_codes || {}).map(([code, info]) =>
-                h('tr', { 
-                  key: code, 
-                  className: 'border-t border-slate-100 hover:bg-blue-50 cursor-pointer',
-                  onClick: () => setSearchCode(code)
-                },
-                  h('td', { className: 'px-3 py-2 font-mono font-bold text-blue-600' }, code + '/A'),
-                  h('td', { className: 'px-3 py-2' }, info.region),
-                  h('td', { className: 'px-3 py-2 text-xs text-slate-600' }, info.countries?.slice(0, 2).join(', ')),
-                  h('td', { className: 'px-3 py-2 text-center' }, 
-                    info.facetime === true ? '✅' : info.facetime === false ? '❌' : '⚠️'
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-  );
-};
-
-// ===== QUICK ACTION CARD =====
-const QuickCard = ({ name, icon, count, color, onClick }) => {
-  const colors = {
-    green: 'from-emerald-500 to-teal-600',
-    amber: 'from-amber-500 to-orange-600',
-    violet: 'from-violet-500 to-purple-600',
-    red: 'from-red-500 to-rose-600',
-    blue: 'from-blue-500 to-cyan-600',
-    indigo: 'from-indigo-500 to-purple-600',
-  };
-  
-  return h('button', {
-    onClick: (e) => {
-      console.log('QuickCard clicked:', name);
-      onClick && onClick(e);
-    },
-    className: 'bg-white rounded-2xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all text-left'
-  },
-    h('div', { className: `w-10 h-10 rounded-xl bg-gradient-to-br ${colors[color]} flex items-center justify-center text-white mb-3` },
-      icon
-    ),
-    h('h3', { className: 'font-semibold text-slate-800' }, name),
-    count && h('p', { className: 'text-xs text-slate-500 mt-1' }, count)
-  );
-};
-
-// ===== MAIN APP =====
-const App = () => {
-  // Add global error state for debugging
-  const [renderError, setRenderError] = useState(null);
-  
-  // Global error boundary effect
-  useEffect(() => {
-    const errorHandler = (event) => {
-      console.error('Global error caught:', event.error);
-      setRenderError(event.error?.message || String(event.error));
+  const getCategoryIcon = (cat) => {
+    const icons = { 
+      backlight: '💡', charging: '🔋', audio: '🔊', 
+      touch: '👆', baseband: '📡', power: '⚡'
     };
-    window.addEventListener('error', errorHandler);
-    return () => window.removeEventListener('error', errorHandler);
-  }, []);
+    return icons[cat] || '🔩';
+  };
   
-  // Show error if caught
-  if (renderError) {
-    return h('div', { className: 'min-h-screen bg-red-50 p-8 flex items-center justify-center' },
-      h('div', { className: 'bg-white rounded-xl p-8 shadow-xl max-w-2xl' },
-        h('h1', { className: 'text-2xl font-bold text-red-600 mb-4' }, '❌ Произошла ошибка'),
-        h('pre', { className: 'bg-gray-100 p-4 rounded text-sm overflow-auto' }, renderError),
-        h('button', {
-          onClick: () => { setRenderError(null); window.location.reload(); },
-          className: 'mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg'
-        }, '🔄 Перезагрузить')
+  return h(Modal, { title: '🔩 Микропайка', subtitle: 'Компоненты для микропайки', onClose, size: 'lg', color: 'orange' },
+    h('div', { className: 'p-4' },
+      // Category description
+      categoryData.description && h('p', { className: 'text-sm text-slate-600 mb-4 bg-orange-50 p-3 rounded-lg' }, categoryData.description),
+      
+      // Category filter
+      h('div', { className: 'flex gap-2 mb-4 overflow-x-auto pb-2' },
+        categories.map(cat => h('button', {
+          key: cat,
+          onClick: () => setActiveCategory(cat),
+          className: `px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+            activeCategory === cat ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`
+        }, getCategoryIcon(cat), ' ', cat.charAt(0).toUpperCase() + cat.slice(1)))
+      ),
+      
+      // Search
+      h('input', {
+        type: 'text',
+        placeholder: 'Поиск компонента или устройства...',
+        value: searchTerm,
+        onChange: e => setSearchTerm(e.target.value),
+        className: 'w-full p-3 border border-slate-200 rounded-xl mb-4 focus:ring-2 focus:ring-orange-500'
+      }),
+      
+      h('p', { className: 'text-sm text-slate-500 mb-3' }, `Найдено: ${filteredComponents.length} компонентов`),
+      
+      // Components grid
+      h('div', { className: 'grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto' },
+        filteredComponents.map((comp, idx) => 
+          h('div', { key: idx, className: 'bg-white border border-slate-200 rounded-xl p-3 hover:shadow-md transition-shadow' },
+            h('div', { className: 'flex justify-between items-start mb-2' },
+              h('span', { className: 'font-bold text-slate-800 text-sm' }, comp.name),
+              h('span', { className: 'bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded' }, comp.device)
+            ),
+            comp.value && h('p', { className: 'text-xs text-amber-600 mb-1' }, '📏 ', comp.value),
+            comp.locations && h('p', { className: 'text-xs text-purple-600 font-mono' }, '📍 ', comp.locations.join(', ')),
+            comp.digikey && h('p', { className: 'text-xs text-green-600 mt-1' }, '🛒 DigiKey: ', comp.digikey),
+            comp.aliexpress && h('p', { className: 'text-xs text-orange-600' }, '🛍️ ', comp.aliexpress),
+            comp.note && h('p', { className: 'text-xs text-slate-500 mt-1 italic' }, comp.note)
+          )
+        )
+      ),
+      
+      // Sources
+      extData.references && h('div', { className: 'mt-4 bg-slate-50 rounded-xl p-3' },
+        h('p', { className: 'text-xs text-slate-500' }, '📚 Источники: ', extData.references.join(', '))
       )
-    );
-  }
+    )
+  );
+};
+
+// ============================================
+// BOARD DETAIL MODAL
+// ============================================
+
+const BoardDetailModal = ({ board, ukrainePrices, onClose }) => {
+  if (!board) return null;
   
+  return h(Modal, { title: `🖥️ ${board.article}`, subtitle: board.description, onClose, color: 'violet', size: 'md' },
+    h('div', { className: 'p-6 overflow-y-auto max-h-[70vh] space-y-4' },
+      h('div', { className: 'bg-violet-50 rounded-xl p-4' },
+        h('h4', { className: 'font-bold text-violet-800 mb-3' }, '📋 Информация'),
+        h('div', { className: 'space-y-2 text-sm' },
+          h('div', { className: 'flex justify-between' },
+            h('span', { className: 'text-slate-500' }, 'Артикул:'),
+            h('span', { className: 'font-mono font-bold' }, board.article)
+          ),
+          board.model && h('div', { className: 'flex justify-between' },
+            h('span', { className: 'text-slate-500' }, 'Модель:'),
+            h('span', { className: 'font-bold' }, board.model)
+          ),
+          h('div', null,
+            h('span', { className: 'text-slate-500' }, 'Описание:'),
+            h('p', { className: 'text-slate-700 mt-1' }, board.description)
+          )
+        )
+      ),
+      board.specs && h('div', { className: 'bg-blue-50 rounded-xl p-4' },
+        h('h4', { className: 'font-bold text-blue-800 mb-3' }, '⚙️ Спецификации'),
+        h('div', { className: 'grid grid-cols-2 gap-3' },
+          board.specs.cpu_ghz && h('div', { className: 'p-3 bg-white rounded-lg text-center' },
+            h('p', { className: 'text-xs text-slate-500' }, 'CPU'),
+            h('p', { className: 'font-bold text-blue-700' }, `${board.specs.cpu_ghz} GHz`)
+          ),
+          board.specs.ram_gb && h('div', { className: 'p-3 bg-white rounded-lg text-center' },
+            h('p', { className: 'text-xs text-slate-500' }, 'RAM'),
+            h('p', { className: 'font-bold text-blue-700' }, `${board.specs.ram_gb} GB`)
+          ),
+          board.specs.storage_gb && h('div', { className: 'p-3 bg-white rounded-lg text-center' },
+            h('p', { className: 'text-xs text-slate-500' }, 'Storage'),
+            h('p', { className: 'font-bold text-blue-700' }, `${board.specs.storage_gb} GB`)
+          )
+        )
+      ),
+      h('div', { className: 'bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl p-4 text-white' },
+        h('h4', { className: 'font-bold mb-3' }, '💰 Цены'),
+        h('div', { className: 'flex justify-between items-center' },
+          h('div', null,
+            h('p', { className: 'text-sm text-white/80' }, 'Украина'),
+            h('p', { className: 'text-2xl font-bold' }, formatPrice(board.price_uah, 'UAH'))
+          ),
+          h('div', { className: 'text-right' },
+            h('p', { className: 'text-sm text-white/80' }, 'USD'),
+            h('p', { className: 'text-xl font-bold' }, formatPrice(board.price_usd, 'USD'))
+          )
+        )
+      )
+    )
+  );
+};
+
+// ============================================
+// MAIN APP COMPONENT
+// ============================================
+
+const App = () => {
   // Data states
   const [devices, setDevices] = useState([]);
   const [ukrainePrices, setUkrainePrices] = useState(null);
-  const [logicBoards, setLogicBoards] = useState(null);
   const [logicBoardsSpecs, setLogicBoardsSpecs] = useState(null);
-  const [articleData, setArticleData] = useState(null);
+  const [icData, setIcData] = useState(null);
   const [errorData, setErrorData] = useState(null);
-  const [icData, setICData] = useState(null);
   const [knowledgeData, setKnowledgeData] = useState(null);
+  const [regionData, setRegionData] = useState(null);
+  const [keyCombinations, setKeyCombinations] = useState(null);
+  const [articlesIndex, setArticlesIndex] = useState(null);
   const [measurementsData, setMeasurementsData] = useState(null);
-  const [compatibilityData, setCompatibilityData] = useState(null);
-  const [regionalCodes, setRegionalCodes] = useState(null);
+  const [loading, setLoading] = useState(true);
   
   // UI states
-  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedYear, setSelectedYear] = useState('all');
   const [selectedDevice, setSelectedDevice] = useState(null);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIC, setSelectedIC] = useState(null);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [errorSearchTerm, setErrorSearchTerm] = useState('');
   
-  // Panel states
+  // Panels
   const [showPrices, setShowPrices] = useState(false);
   const [showBoards, setShowBoards] = useState(false);
-  const [showErrors, setShowErrors] = useState(false);
-  const [showCalculator, setShowCalculator] = useState(false);
-  const [showKnowledge, setShowKnowledge] = useState(false);
   const [showICs, setShowICs] = useState(false);
-  const [showKeyCombos, setShowKeyCombos] = useState(false);
-  const [showRegionLookup, setShowRegionLookup] = useState(false);
-  const [showAIHealer, setShowAIHealer] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
+  const [showKnowledge, setShowKnowledge] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [showRegions, setShowRegions] = useState(false);
+  const [showDfu, setShowDfu] = useState(false);
+  const [showArticles, setShowArticles] = useState(false);
+  // NEW 2026 Extended Panels
+  const [showDiagnosticsExt, setShowDiagnosticsExt] = useState(false);
+  const [showPartsCompat, setShowPartsCompat] = useState(false);
+  const [showMeasurements, setShowMeasurements] = useState(false);
+  const [showCalibration, setShowCalibration] = useState(false);
+  const [showMicrosoldering, setShowMicrosoldering] = useState(false);
   
-  // Load data
+  // Load all data from ЕДИНОЙ базы master-db.json
   useEffect(() => {
-    Promise.all([
-      fetch('/data/devices.json').then(r => r.json()),
-      fetch('/data/ukraine_prices.json').then(r => r.json()).catch(() => null),
-      fetch('/data/logic_boards_comprehensive.json').then(r => r.json()).catch(() => null),
-      fetch('/data/logic_boards_specs.json').then(r => r.json()).catch(() => null),
-      fetch('/data/article_search_index.json').then(r => r.json()).catch(() => null),
-      fetch('/data/error_codes.json').then(r => r.json()).catch(() => null),
-      fetch('/data/ic_compatibility.json').then(r => r.json()).catch(() => null),
-      fetch('/data/repair_knowledge.json').then(r => r.json()).catch(() => null),
-      fetch('/data/measurements.json').then(r => r.json()).catch(() => null),
-      fetch('/data/camera_compatibility.json').then(r => r.json()).catch(() => null),
-      fetch('/data/regional_codes.json').then(r => r.json()).catch(() => null),
-    ])
-    .then(([devicesData, ukraine, boards, boardsSpecs, articles, errors, ic, knowledge, measurements, compatibility, regions]) => {
-      setDevices(Array.isArray(devicesData) ? devicesData : []);
-      setUkrainePrices(ukraine);
-      setLogicBoards(boards);
-      setLogicBoardsSpecs(boardsSpecs);
-      setArticleData(articles);
-      setErrorData(errors);
-      setICData(ic);
-      setKnowledgeData(knowledge);
-      setMeasurementsData(measurements);
-      setCompatibilityData(compatibility);
-      setRegionalCodes(regions?.regional_codes || null);
-      setLoading(false);
-    })
-    .catch(err => {
-      console.error('Error loading data:', err);
-      setLoading(false);
-    });
+    fetch('/data/master-db.json')
+      .then(r => r.json())
+      .then(db => {
+        // Устройства
+        setDevices(Array.isArray(db.devices) ? db.devices : []);
+        
+        // Цены
+        if (db.prices) {
+          setUkrainePrices(db.prices);
+        }
+        
+        // База знаний (всё внутри knowledge)
+        const knowledge = db.knowledge || {};
+        
+        // Логические платы
+        setLogicBoardsSpecs(knowledge.logicBoards?.specs || {});
+        
+        // IC совместимость
+        setIcData(knowledge.icCompatibility || {});
+        
+        // Коды ошибок
+        setErrorData(knowledge.errorCodes || {});
+        
+        // База знаний по ремонту
+        setKnowledgeData(knowledge.repairKnowledge || {});
+        
+        // Региональные коды
+        setRegionData(knowledge.regionalCodes?.basic || {});
+        
+        // Комбинации клавиш
+        setKeyCombinations(knowledge.keyCombinations || {});
+        
+        // Индекс статей
+        setArticlesIndex(knowledge.articleSearchIndex || {});
+        
+        // Измерения
+        setMeasurementsData(knowledge.measurements || {});
+        
+        // Расширенные данные для глобального доступа
+        window.NEXXExtendedData = {
+          cameraCompatibility: knowledge.cameraCompatibility,
+          regionalCodesExtended: knowledge.regionalCodes?.extended
+        };
+        
+        setLoading(false);
+        console.log('✅ NEXX Database v3.0 - Единая база загружена');
+        console.log('📊 Данные:', { 
+          devices: db.devices?.length || 0,
+          knowledge: Object.keys(knowledge).length
+        });
+      })
+      .catch(err => {
+        console.error('Error loading master-db:', err);
+        setLoading(false);
+      });
   }, []);
   
-  // Categories
+  // Stats - Extended with 2026 data
+  const stats = useMemo(() => {
+    const extData = window.NEXXExtendedData || {};
+    const extDiagCodes = extData.diagnosticsExtended?.apple_diagnostics_codes ? 
+      Object.values(extData.diagnosticsExtended.apple_diagnostics_codes).flat().length : 0;
+    return {
+      devices: devices.length,
+      prices: ukrainePrices ? Object.keys(ukrainePrices).length : 0,
+      boards: logicBoardsSpecs?.total || 0,
+      ics: icData ? Object.values(icData).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0) : 0,
+      errors: errorData ? (errorData.itunes_restore_errors?.length || 0) + (errorData.mac_diagnostics?.length || 0) + extDiagCodes : 0,
+      partsCompat: extData.partsCompatibility ? (extData.partsCompatibility.displays?.iphone?.length || 0) + (extData.partsCompatibility.batteries?.iphone?.length || 0) : 0,
+      measurements: extData.measurementsExtended?.iphone_16_measurements ? Object.keys(extData.measurementsExtended.iphone_16_measurements.power_rails || {}).length : 0
+    };
+  }, [devices, ukrainePrices, logicBoardsSpecs, icData, errorData]);
+  
+  // Universal search results
+  const searchResults = useMemo(() => {
+    if (!searchTerm || searchTerm.length < 2) return [];
+    const term = searchTerm.toLowerCase();
+    const results = [];
+    
+    // Search devices
+    devices.forEach(d => {
+      if (d.name.toLowerCase().includes(term) || (d.model || '').toLowerCase().includes(term) || (d.processor || '').toLowerCase().includes(term)) {
+        results.push({ type: 'device', id: d.name, title: d.name, subtitle: `${d.category} • ${d.year}`, typeLabel: 'Устройство', data: d });
+      }
+    });
+    
+    // Search prices
+    if (ukrainePrices) {
+      Object.entries(ukrainePrices).slice(0, 1000).forEach(([article, data]) => {
+        if (article.toLowerCase().includes(term) || (data.description || '').toLowerCase().includes(term)) {
+          results.push({ type: 'price', id: article, title: article, subtitle: data.description?.slice(0, 50), typeLabel: 'Цена', data: { article, ...data } });
+        }
+      });
+    }
+    
+    // Search boards
+    if (logicBoardsSpecs?.boards) {
+      Object.entries(logicBoardsSpecs.boards).forEach(([article, board]) => {
+        if (article.toLowerCase().includes(term) || (board.description || '').toLowerCase().includes(term)) {
+          results.push({ type: 'board', id: article, title: article, subtitle: board.description?.slice(0, 50), typeLabel: 'Плата', data: { article, ...board } });
+        }
+      });
+    }
+    
+    // Search ICs
+    if (icData) {
+      Object.values(icData).forEach(category => {
+        if (Array.isArray(category)) {
+          category.forEach(ic => {
+            if (ic.name.toLowerCase().includes(term) || (ic.designation || '').toLowerCase().includes(term)) {
+              results.push({ type: 'ic', id: ic.name, title: ic.name, subtitle: ic.designation || ic.functions?.[0], typeLabel: 'IC', data: ic });
+            }
+          });
+        }
+      });
+    }
+    
+    // Search errors
+    if (errorData?.itunes_restore_errors) {
+      errorData.itunes_restore_errors.forEach(e => {
+        if (String(e.code).includes(term) || (e.description || '').toLowerCase().includes(term)) {
+          results.push({ type: 'error', id: e.code, title: `Error ${e.code}`, subtitle: e.description?.slice(0, 50), typeLabel: 'Ошибка', data: e });
+        }
+      });
+    }
+    
+    // Search articles
+    if (articlesIndex?.articles) {
+      articlesIndex.articles.forEach(a => {
+        if (a.article?.toLowerCase().includes(term) || (a.model || '').toLowerCase().includes(term)) {
+          results.push({ type: 'article', id: a.article, title: a.article, subtitle: a.model, typeLabel: 'Артикул', data: a });
+        }
+      });
+    }
+    
+    return results.slice(0, 50);
+  }, [searchTerm, devices, ukrainePrices, logicBoardsSpecs, icData, errorData, articlesIndex]);
+  
+  // Handle search result selection
+  const handleSelectResult = useCallback((result) => {
+    switch (result.type) {
+      case 'device': setSelectedDevice(result.data); break;
+      case 'price': setShowPrices(true); break;
+      case 'board': setSelectedBoard(result.data); break;
+      case 'ic': setSelectedIC(result.data); break;
+      case 'error': setErrorSearchTerm(String(result.data.code)); setShowErrors(true); break;
+      case 'article': setShowArticles(true); break;
+    }
+    setSearchTerm('');
+  }, []);
+  
+  // Categories & Years
   const categories = useMemo(() => {
     const cats = new Set(devices.map(d => d.category).filter(Boolean));
     return ['all', ...Array.from(cats).sort()];
   }, [devices]);
   
-  // Years
   const years = useMemo(() => {
     const yrs = new Set(devices.map(d => d.year).filter(Boolean));
     return ['all', ...Array.from(yrs).sort((a, b) => b - a)];
   }, [devices]);
   
-  // Filtered and sorted devices
+  // Filtered devices
   const filteredDevices = useMemo(() => {
     let result = devices;
+    
     if (selectedCategory !== 'all') {
       result = result.filter(d => d.category === selectedCategory);
     }
     if (selectedYear !== 'all') {
       result = result.filter(d => d.year === parseInt(selectedYear));
     }
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter(d =>
-        (d.name || '').toLowerCase().includes(term) ||
-        (d.model || '').toLowerCase().includes(term) ||
-        (d.processor || '').toLowerCase().includes(term) ||
-        (d.board_numbers || []).some(bn => bn.toLowerCase().includes(term))
-      );
-    }
-    // Sort by year (newest first), then by name within same year
-    return result.sort((a, b) => {
-      // First sort by year descending
-      if (b.year !== a.year) return (b.year || 0) - (a.year || 0);
-      // Then by category order (iPhone, iPad, MacBook)
-      const catOrder = { 'iPhone': 0, 'iPad': 1, 'MacBook': 2 };
-      const catA = catOrder[a.category] ?? 99;
-      const catB = catOrder[b.category] ?? 99;
-      if (catA !== catB) return catA - catB;
-      // Finally by name for devices in same year and category
-      return (a.name || '').localeCompare(b.name || '');
-    });
-  }, [devices, searchTerm, selectedCategory, selectedYear]);
+    
+    return result.sort((a, b) => (b.year || 0) - (a.year || 0));
+  }, [devices, selectedCategory, selectedYear]);
   
-  // Stats
-  const stats = useMemo(() => ({
-    devices: devices.length,
-    prices: ukrainePrices ? Object.keys(ukrainePrices).length : 0,
-    boards: logicBoardsSpecs?.total || (logicBoards ? (logicBoards.m_series_boards?.length || 0) + (logicBoards.intel_boards?.length || 0) : 0),
-    errors: errorData ? (errorData.itunes_restore_errors?.length || 0) + (errorData.mac_diagnostics?.length || 0) : 0,
-    ics: icData ? Object.values(icData).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0) : 0
-  }), [devices, ukrainePrices, logicBoards, logicBoardsSpecs, errorData, icData]);
-  
-  // Handle item selection
-  const handleSelectItem = useCallback((item) => {
-    setSelectedItem(item);
-  }, []);
-  
-  // Loading
+  // Loading screen
   if (loading) {
-    return h('div', { className: 'min-h-screen bg-gray-100 flex items-center justify-center' },
-      h('div', { className: 'text-center' },
+    return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center' },
+      h('div', { className: 'text-center text-white' },
         h('div', { className: 'w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4' }),
-        h('p', { className: 'text-gray-600' }, 'Загрузка...')
+        h('p', { className: 'text-xl font-bold' }, 'NEXX Database 2026'),
+        h('p', { className: 'text-slate-400' }, 'Загрузка базы знаний...')
       )
     );
   }
   
-  // Device details view
-  if (selectedDevice) {
-    console.log('App: Rendering DeviceDetailsView for:', selectedDevice?.name);
-    try {
-      return h('div', { className: 'min-h-screen bg-gray-100 p-4' },
-        h('div', { className: 'max-w-4xl mx-auto' },
-          h(DeviceDetailsView, { 
-            device: selectedDevice, 
-            onBack: () => setSelectedDevice(null),
-            ukrainePrices,
-            onSelectItem: handleSelectItem,
-            icData,
-            measurementsData,
-            compatibilityData
-          })
-        ),
-        selectedItem && h(DetailModal, { 
-          item: selectedItem, 
-          type: selectedItem.type, 
-          onClose: () => setSelectedItem(null),
-          ukrainePrices 
-        })
-      );
-    } catch (err) {
-      console.error('App: Error rendering DeviceDetailsView:', err);
-      return h('div', { className: 'min-h-screen bg-gray-100 p-8 text-center' },
-        h('p', { className: 'text-red-500 text-xl mb-4' }, '❌ Ошибка рендеринга'),
-        h('p', { className: 'text-gray-600 mb-4' }, String(err)),
-        h('button', { 
-          onClick: () => setSelectedDevice(null), 
-          className: 'px-4 py-2 bg-indigo-500 text-white rounded-lg' 
-        }, '← Назад к списку')
-      );
-    }
-  }
-  
-  // Main view
-  return h('div', { className: 'min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50/30 to-purple-50/20' },
-    // Header
-    h('div', { className: 'bg-white border-b border-gray-100 shadow-sm' },
-      h('div', { className: 'max-w-6xl mx-auto px-4 py-4' },
-        h('div', { className: 'flex items-center justify-between flex-wrap gap-4' },
-          h('div', { className: 'flex items-center gap-4' },
-            h('img', { 
-              src: '/static/nexx-logo.png', 
-              alt: 'NEXX Database',
-              className: 'h-12 md:h-14 object-contain'
-            }),
-            h('p', { className: 'text-sm text-gray-600 font-medium hidden sm:block' }, 
-              'База данных для ремонта Apple'
-            )
-          ),
-          h('div', { className: 'flex flex-wrap gap-2 text-xs' },
-            h('span', { className: 'px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold' }, 
-              `📱 ${stats.devices} устройств`
-            ),
-            h('span', { className: 'px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 font-semibold' }, 
-              `💰 ${stats.prices.toLocaleString()} цен`
-            ),
-            h('span', { className: 'px-3 py-1.5 rounded-full bg-violet-50 text-violet-700 font-semibold' }, 
-              `🖥️ ${stats.boards} плат`
-            )
-          )
-        )
-      )
-    ),
-    
-    // Main content
-    h('div', { className: 'max-w-6xl mx-auto px-4 py-6' },
-      // Search
-      h('div', { className: 'bg-white rounded-2xl shadow-sm border border-slate-200 p-2 mb-4' },
-        h('div', { className: 'relative' },
-          h('input', {
-            type: 'text',
-            placeholder: 'Поиск по модели, процессору, номеру платы...',
-            value: searchTerm,
-            onChange: e => setSearchTerm(e.target.value),
-            className: 'w-full px-5 py-3 pl-12 rounded-xl border-0 bg-slate-50 focus:ring-2 focus:ring-indigo-500 focus:outline-none'
-          }),
-          h('div', { className: 'absolute left-4 top-1/2 -translate-y-1/2 text-slate-400' }, h(Icons.Search))
-        )
+  // Main render
+  return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-50 to-slate-100' },
+    h('div', { className: 'max-w-7xl mx-auto px-4 py-6' },
+      // Stats
+      h(StatsDashboard, { stats }),
+      
+      // Smart Search
+      h(SmartSearch, { 
+        searchTerm, 
+        setSearchTerm,
+        searchResults,
+        onSelectResult: handleSelectResult,
+        placeholder: 'Умный поиск: модель, IC, артикул, код ошибки...' 
+      }),
+      
+      // Quick Actions - Row 1
+      h('div', { className: 'grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-3' },
+        h(QuickActionCard, { icon: '💰', title: 'Цены UA', subtitle: `${stats.prices.toLocaleString()} поз.`, color: 'amber', onClick: () => setShowPrices(true) }),
+        h(QuickActionCard, { icon: '🖥️', title: 'Платы', subtitle: `${stats.boards}`, color: 'violet', onClick: () => setShowBoards(true) }),
+        h(QuickActionCard, { icon: '🔌', title: 'IC', subtitle: `${stats.ics}`, color: 'green', onClick: () => setShowICs(true) }),
+        h(QuickActionCard, { icon: '🚨', title: 'Ошибки', subtitle: `${stats.errors}`, color: 'red', onClick: () => { setErrorSearchTerm(''); setShowErrors(true); } }),
+        h(QuickActionCard, { icon: '📚', title: '', subtitle: '', color: 'blue', onClick: () => setShowKnowledge(true) }),
+        h(QuickActionCard, { icon: '🧮', title: 'Кальк', subtitle: 'Расчёт', color: 'indigo', onClick: () => setShowCalculator(true) })
       ),
       
-      // Filters row (Categories + Year)
-      h('div', { className: 'flex flex-wrap gap-4 mb-4 items-center' },
-        // Categories
+      // Quick Actions - Row 2
+      h('div', { className: 'grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-3' },
+        h(QuickActionCard, { icon: '🌍', title: 'Регионы', subtitle: 'Коды стран', color: 'blue', onClick: () => setShowRegions(true) }),
+        h(QuickActionCard, { icon: '⌨️', title: 'DFU/Recovery', subtitle: 'Режимы', color: 'slate', onClick: () => setShowDfu(true) }),
+        h(QuickActionCard, { icon: '📦', title: 'Артикулы', subtitle: `${articlesIndex?.articles?.length || 0} запч.`, color: 'amber', onClick: () => setShowArticles(true) }),
+        h(QuickActionCard, { icon: '🔬', title: 'Диагностика+', subtitle: `${stats.errors}+ кодов`, color: 'purple', onClick: () => setShowDiagnosticsExt(true), badge: 'NEW' }),
+        h(QuickActionCard, { icon: '🔧', title: 'Совместимость', subtitle: `${stats.partsCompat} запч.`, color: 'emerald', onClick: () => setShowPartsCompat(true), badge: 'NEW' }),
+        h(QuickActionCard, { icon: '📏', title: 'Измерения', subtitle: `${stats.measurements} точек`, color: 'teal', onClick: () => setShowMeasurements(true), badge: 'NEW' })
+      ),
+      
+      // Quick Actions - Row 3 (NEW 2026)
+      h('div', { className: 'grid grid-cols-2 gap-3 mb-6' },
+        h(QuickActionCard, { icon: '🎯', title: 'Калибровка', subtitle: 'True Tone, Face ID', color: 'rose', onClick: () => setShowCalibration(true), badge: 'NEW' }),
+        h(QuickActionCard, { icon: '🔩', title: 'Микропайка', subtitle: 'BGA, Reballing', color: 'orange', onClick: () => setShowMicrosoldering(true), badge: 'NEW' })
+      ),
+      
+      // Filters
+      h('div', { className: 'flex flex-wrap gap-3 mb-6 items-center' },
         h('div', { className: 'flex gap-2 overflow-x-auto pb-1' },
-          ...categories.map(cat => h('button', {
-            key: cat,
-            onClick: () => setSelectedCategory(cat),
-            className: cn('px-3 py-1.5 rounded-xl font-medium whitespace-nowrap text-sm transition-all',
-              selectedCategory === cat ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
-          }, cat === 'all' ? 'Все' : cat))
-        ),
-        
-        // Year filter
-        h('div', { className: 'flex items-center gap-2' },
-          h('span', { className: 'text-sm text-slate-500' }, '📅'),
-          h('select', {
-            value: selectedYear,
-            onChange: e => setSelectedYear(e.target.value),
-            className: 'px-3 py-1.5 rounded-xl bg-white text-slate-700 border border-slate-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500'
-          },
-            ...years.map(yr => h('option', { key: yr, value: yr }, yr === 'all' ? 'Все года' : yr))
+          ...categories.map(cat =>
+            h('button', {
+              key: cat,
+              onClick: () => setSelectedCategory(cat),
+              className: cn('px-4 py-2 rounded-xl font-medium whitespace-nowrap transition-all',
+                selectedCategory === cat ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100')
+            }, cat === 'all' ? 'Все' : cat)
           )
-        )
+        ),
+        h('select', {
+          value: selectedYear,
+          onChange: e => setSelectedYear(e.target.value),
+          className: 'px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium'
+        },
+          ...years.map(yr => h('option', { key: yr, value: yr }, yr === 'all' ? 'Все года' : yr))
+        ),
+        h('span', { className: 'text-sm text-slate-500 ml-auto' }, `Найдено: ${filteredDevices.length}`)
       ),
       
-      // Quick actions (removed Артикулы card per user request)
-      h('div', { className: 'grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-6' },
-        h(QuickCard, { 
-          name: 'Цены', 
-          icon: '💰', 
-          count: `${stats.prices.toLocaleString()} позиций`, 
-          color: 'amber',
-          onClick: () => setShowPrices(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Платы', 
-          icon: '🖥️', 
-          count: `${stats.boards} плат`, 
-          color: 'violet',
-          onClick: () => setShowBoards(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Ошибки', 
-          icon: '🚨', 
-          count: `${stats.errors} кодов`, 
-          color: 'red',
-          onClick: () => setShowErrors(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Калькулятор', 
-          icon: '🧮', 
-          count: 'Расчёт цен', 
-          color: 'blue',
-          onClick: () => setShowCalculator(true) 
-        }),
-        h(QuickCard, { 
-          name: 'База знаний', 
-          icon: '📚', 
-          count: 'Гайды', 
-          color: 'green',
-          onClick: () => setShowKnowledge(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Микросхемы', 
-          icon: '🔌', 
-          count: `${stats.ics} IC`, 
-          color: 'violet',
-          onClick: () => setShowICs(true) 
-        }),
-        h(QuickCard, { 
-          name: 'DFU/Recovery', 
-          icon: '⌨️', 
-          count: 'Комбинации', 
-          color: 'indigo',
-          onClick: () => setShowKeyCombos(true) 
-        }),
-        h(QuickCard, { 
-          name: 'Регион', 
-          icon: '🌍', 
-          count: 'По коду', 
-          color: 'blue',
-          onClick: () => setShowRegionLookup(true) 
-        }),
-        h(QuickCard, { 
-          name: 'AI Healer', 
-          icon: '🤖', 
-          count: `${AIHealer.errors.length} ошибок`, 
-          color: AIHealer.errors.length > 0 ? 'red' : 'green',
-          onClick: () => setShowAIHealer(true) 
-        })
-      ),
-      
-      // Devices count
-      h('p', { className: 'text-slate-500 mb-3 text-sm' }, `Найдено: ${filteredDevices.length}`),
-      
-      // Devices grid
-      h('div', { className: 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4' },
+      // Devices Grid
+      h('div', { className: 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4' },
         ...filteredDevices.map(device =>
-          h(DeviceCard, { 
-            key: device.name, 
-            device, 
-            onSelect: setSelectedDevice,
-            ukrainePrices
+          h(DeviceCard, {
+            key: device.name,
+            device,
+            ukrainePrices,
+            onClick: () => setSelectedDevice(device)
           })
         )
       )
     ),
     
-    // Panels (with null checks)
-    showPrices && ukrainePrices && h(PricesPanel, { 
-      ukrainePrices, 
-      logicBoardsSpecs,
-      onClose: () => setShowPrices(false),
-      onSelectItem: handleSelectItem
-    }),
-    showPrices && !ukrainePrices && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
-      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
-        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка цен...'),
-        h('button', { onClick: () => setShowPrices(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
-      )
-    ),
-    showBoards && (logicBoards || logicBoardsSpecs) && h(LogicBoardsPanel, { 
-      logicBoards, 
-      logicBoardsSpecs,
+    // Modals
+    selectedDevice && h(DeviceDetailsView, {
+      device: selectedDevice,
       ukrainePrices,
-      onClose: () => setShowBoards(false),
-      onSelectItem: handleSelectItem
-    }),
-    showBoards && !logicBoards && !logicBoardsSpecs && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
-      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
-        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка данных плат...'),
-        h('button', { onClick: () => setShowBoards(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
-      )
-    ),
-    showErrors && errorData && h(ErrorCodesPanel, { 
-      errorData, 
-      onClose: () => setShowErrors(false) 
-    }),
-    showErrors && !errorData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
-      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
-        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка кодов ошибок...'),
-        h('button', { onClick: () => setShowErrors(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
-      )
-    ),
-    showCalculator && h(RepairCalculatorPanel, { 
-      devices, 
-      ukrainePrices,
-      onClose: () => setShowCalculator(false) 
-    }),
-    showKnowledge && knowledgeData && h(KnowledgeBasePanel, { 
-      knowledgeData, 
-      onClose: () => setShowKnowledge(false) 
-    }),
-    showKnowledge && !knowledgeData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
-      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
-        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка базы знаний...'),
-        h('button', { onClick: () => setShowKnowledge(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
-      )
-    ),
-    showICs && icData && h(ICDatabasePanel, { 
-      icData, 
-      onClose: () => setShowICs(false),
-      onSelectItem: handleSelectItem
-    }),
-    showICs && !icData && h('div', { className: 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center' },
-      h('div', { className: 'bg-white p-6 rounded-xl text-center' },
-        h('p', { className: 'text-gray-600 mb-4' }, '⏳ Загрузка данных IC...'),
-        h('button', { onClick: () => setShowICs(false), className: 'px-4 py-2 bg-gray-200 rounded hover:bg-gray-300' }, 'Закрыть')
-      )
-    ),
-    showKeyCombos && h(KeyCombinationsPanel, { 
-      onClose: () => setShowKeyCombos(false) 
-    }),
-    showRegionLookup && h(RegionLookupPanel, { 
-      onClose: () => setShowRegionLookup(false) 
-    }),
-    showAIHealer && h(AIHealerPanel, { 
-      onClose: () => setShowAIHealer(false) 
+      logicBoardsSpecs,
+      icData,
+      errorData,
+      measurementsData,
+      onClose: () => setSelectedDevice(null),
+      onOpenIC: (ic) => { setSelectedDevice(null); setSelectedIC(ic); },
+      onOpenError: (code) => { setSelectedDevice(null); setErrorSearchTerm(code); setShowErrors(true); },
+      onOpenBoard: (board) => { setSelectedDevice(null); setSelectedBoard(board); }
     }),
     
-    // Detail modal
-    selectedItem && !selectedDevice && h(DetailModal, { 
-      item: selectedItem, 
-      type: selectedItem.type, 
-      onClose: () => setSelectedItem(null),
-      ukrainePrices 
-    })
+    selectedIC && h(ICDetailModal, { ic: selectedIC, onClose: () => setSelectedIC(null) }),
+    selectedBoard && h(BoardDetailModal, { board: selectedBoard, ukrainePrices, onClose: () => setSelectedBoard(null) }),
+    
+    showPrices && h(PricesPanel, { ukrainePrices, onClose: () => setShowPrices(false) }),
+    showBoards && h(LogicBoardsPanel, { logicBoardsSpecs, onClose: () => setShowBoards(false), onSelectBoard: (b) => { setShowBoards(false); setSelectedBoard(b); } }),
+    showICs && h(ICDatabasePanel, { icData, onClose: () => setShowICs(false), onSelectIC: (ic) => { setShowICs(false); setSelectedIC(ic); } }),
+    showErrors && h(ErrorCodesPanel, { errorData, onClose: () => setShowErrors(false), initialSearch: errorSearchTerm }),
+    showKnowledge && knowledgeData && h(RepairKnowledgePanel, { knowledgeData, onClose: () => setShowKnowledge(false) }),
+    showCalculator && h(CalculatorPanel, { devices, ukrainePrices, onClose: () => setShowCalculator(false) }),
+    showRegions && regionData && h(RegionalCodesPanel, { regionData, onClose: () => setShowRegions(false) }),
+    showDfu && keyCombinations && h(DfuRecoveryPanel, { keyCombinations, onClose: () => setShowDfu(false) }),
+    showArticles && h(ArticlesSearchPanel, { articlesIndex, ukrainePrices, onClose: () => setShowArticles(false) }),
+    // NEW 2026 Extended Panels
+    showDiagnosticsExt && h(ExtendedDiagnosticsPanel, { onClose: () => setShowDiagnosticsExt(false) }),
+    showPartsCompat && h(PartsCompatibilityPanel, { onClose: () => setShowPartsCompat(false) }),
+    showMeasurements && h(MeasurementsPanel, { measurementsData, onClose: () => setShowMeasurements(false) }),
+    showCalibration && h(CalibrationPanel, { onClose: () => setShowCalibration(false) }),
+    showMicrosoldering && h(MicrosolderingPanel, { onClose: () => setShowMicrosoldering(false) })
   );
 };
 
-ReactDOM.createRoot(document.getElementById('app')).render(h(App));
+// Initialize
+const appContainer = document.getElementById('app');
+if (appContainer) {
+  appContainer.innerHTML = '';
+  ReactDOM.createRoot(appContainer).render(h(App));
+  console.log('✅ NEXX Database 2026 v13 mounted - Extended Edition with Parts Compatibility, Diagnostics, Measurements, Calibration & Microsoldering data');
+}

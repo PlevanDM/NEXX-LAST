@@ -30,9 +30,9 @@
       
       // Hero Section
       hero: {
-        title: 'iPhone, MacBook, Samsung - Сервіс',
-        subtitle: 'Швидко • Гарантія 30 днів',
-        description: 'Apple, Samsung, Xiaomi, Huawei. Телефони, ноутбуки, планшети. Бухарест.',
+        title: 'Ремонт iPhone, MacBook, Samsung',
+        subtitle: 'Сервіс 30-60 хв • Гарантія 30 днів',
+        description: 'Професійний ремонт Apple, Samsung, Xiaomi, Huawei. Безкоштовна діагностика. Оригінальні запчастини.',
       },
       
       // Prices
@@ -46,12 +46,16 @@
       
       // CTA Buttons
       buttons: {
+        calculate: 'Розрахувати ціну',
         bookRepair: 'Замовити ремонт',
         call: 'Дзвонити',
         order: 'Замовити',
         book: 'Замовити',
         submit: 'Відправити',
         send: 'Відправити',
+        next: 'Далі',
+        prev: 'Назад',
+        close: 'Закрити',
       },
       
       // Services Section
@@ -138,8 +142,8 @@
       
       // Calculator
       calculator: {
-        calculator: 'Калькулятор ціни',
-        title: 'Безплатна онлайн оцінка',
+        calculator: 'Вартість ремонту',
+        title: 'Приблизна вартість ремонту',
         subtitle: 'Дайте відповіді на кілька запитань, щоб дізнатись приблизну ціну',
         description: 'Дайте відповіді на кілька запитань, щоб дізнатись приблизну ціну',
         selectBrand: 'Виберіть марку:',
@@ -207,6 +211,17 @@
         terms: 'Умови',
         copyright: 'NEXX Service Center. Всі права захищені.',
         security: 'Безпечний сайт • SSL шифрування'
+      },
+      
+      // Quick Actions (Floating Menu)
+      quickActions: {
+        home: 'На головну',
+        calculator: 'Калькулятор',
+        database: 'База даних',
+        call: 'Дзвінок',
+        telegram: 'Telegram',
+        close: 'Закрити',
+        quickMenu: 'Швидке меню'
       }
     },
     
@@ -232,9 +247,9 @@
       
       // Hero Section
       hero: {
-        title: 'iPhone, MacBook, Samsung',
-        subtitle: 'Service rapid • Garanție 30 zile',
-        description: 'Apple, Samsung, Xiaomi, Huawei. București. Diagnostic gratuit.',
+        title: 'Reparații iPhone, MacBook, Samsung',
+        subtitle: 'Service 30-60 min • Garanție 30 zile',
+        description: 'Service profesional Apple, Samsung, Xiaomi, Huawei. Diagnostic gratuit. Piese originale.',
       },
       
       // Prices
@@ -248,12 +263,16 @@
       
       // CTA Buttons
       buttons: {
+        calculate: 'Calculează prețul',
         bookRepair: 'Comandă reparație',
         call: 'Sună acum',
         order: 'Comandă',
         book: 'Comandă',
         submit: 'Trimite',
         send: 'Trimite cererea',
+        next: 'Următorul',
+        prev: 'Înapoi',
+        close: 'Închide',
       },
       
       // Services Section
@@ -340,8 +359,8 @@
       
       // Calculator
       calculator: {
-        calculator: 'Calculator preț',
-        title: 'Estimare gratuită online',
+        calculator: 'Cost reparație',
+        title: 'Cost aproximativ reparație',
         subtitle: 'Răspundeți la câteva întrebări pentru a afla prețul aproximativ',
         description: 'Răspundeți la câteva întrebări pentru a afla prețul aproximativ',
         selectBrand: 'Alegeți marca:',
@@ -409,6 +428,17 @@
         terms: 'Termeni',
         copyright: 'NEXX Service Center. Toate drepturile rezervate.',
         security: 'Site Securizat • SSL Criptat'
+      },
+      
+      // Quick Actions (Floating Menu)
+      quickActions: {
+        home: 'Acasă',
+        calculator: 'Calculator',
+        database: 'Bază de date',
+        call: 'Apel',
+        telegram: 'Telegram',
+        close: 'Închide',
+        quickMenu: 'Meniu rapid'
       }
     },
     
@@ -434,9 +464,9 @@
       
       // Hero Section
       hero: {
-        title: 'iPhone, MacBook, Samsung',
-        subtitle: 'Fast service • 30-day warranty',
-        description: 'Apple, Samsung, Xiaomi, Huawei. Bucharest. Free diagnosis.',
+        title: 'iPhone, MacBook, Samsung Repair',
+        subtitle: '30-60 min service • 30-day warranty',
+        description: 'Professional Apple, Samsung, Xiaomi, Huawei repair. Free diagnostics. Original parts.',
       },
       
       // Prices
@@ -450,12 +480,16 @@
       
       // CTA Buttons
       buttons: {
+        calculate: 'Calculate price',
         bookRepair: 'Book repair',
         call: 'Call now',
         order: 'Book',
         book: 'Book',
         submit: 'Send',
         send: 'Send request',
+        next: 'Next',
+        prev: 'Back',
+        close: 'Close',
       },
       
       // Services Section
@@ -542,8 +576,8 @@
       
       // Calculator
       calculator: {
-        calculator: 'Price Calculator',
-        title: 'Free Online Estimate',
+        calculator: 'Repair Cost',
+        title: 'Approximate Repair Cost',
         subtitle: 'Answer a few questions to learn the approximate price',
         description: 'Answer a few questions to learn the approximate price',
         selectBrand: 'Select brand:',
@@ -611,6 +645,17 @@
         terms: 'Terms',
         copyright: 'NEXX Service Center. All rights reserved.',
         security: 'Secure Site • SSL Encrypted'
+      },
+      
+      // Quick Actions (Floating Menu)
+      quickActions: {
+        home: 'Home',
+        calculator: 'Calculator',
+        database: 'Database',
+        call: 'Call',
+        telegram: 'Telegram',
+        close: 'Close',
+        quickMenu: 'Quick menu'
       }
     }
   };
@@ -637,8 +682,18 @@
     }
     
     detectLanguage() {
+      // 1. Проверяем URL параметр ?lang=
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      if (urlLang && translations[urlLang]) {
+        localStorage.setItem('nexx_lang', urlLang);
+        return urlLang;
+      }
+      
+      // 2. Проверяем сохранённый язык
       const saved = localStorage.getItem('nexx_lang');
       if (saved && translations[saved]) return saved;
+      
       return 'ro'; // Default Romanian
     }
     
@@ -727,7 +782,7 @@
   // LANGUAGE SWITCHER COMPONENT
   // ============================================
   
-  const LanguageSwitcher = ({ isScrolled = false }) => {
+  const LanguageSwitcher = ({ isScrolled = false, compact = false }) => {
     const h = React.createElement;
     const [currentLang, setCurrentLang] = React.useState(window.i18n.getCurrentLanguage());
     const [isOpen, setIsOpen] = React.useState(false);
@@ -741,32 +796,62 @@
     const languages = window.i18n.getAvailableLanguages();
     const bgColor = isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-white/20 hover:bg-white/30 text-white';
     
+    // Compact mode for mobile - just flag button
+    if (compact) {
+      return h('div', { className: 'relative' },
+        h('button', {
+          onClick: () => setIsOpen(!isOpen),
+          className: `${bgColor} w-10 h-10 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center justify-center text-lg`,
+          title: `${currentLang.name} • Натисніть для зміни`
+        },
+          h('span', null, currentLang.flag)
+        ),
+        
+        isOpen && h('div', { 
+          className: 'absolute top-full right-0 mt-2 bg-gray-900 rounded-xl shadow-2xl overflow-hidden min-w-[180px] z-50 border border-gray-700'
+        },
+          ...languages.map((lang, idx) => h('button', {
+            key: lang.code,
+            onClick: () => { window.i18n.setLanguage(lang.code); setIsOpen(false); },
+            className: `w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-800 transition text-left ${
+              lang.code === currentLang.code ? 'bg-gray-700 text-white' : 'text-gray-300'
+            } ${idx > 0 ? 'border-t border-gray-700' : ''}`,
+          },
+            h('span', { className: 'text-xl' }, lang.flag),
+            h('span', { className: 'font-medium' }, lang.name),
+            lang.code === currentLang.code && h('i', { className: 'fas fa-check text-green-500 ml-auto' })
+          ))
+        )
+      );
+    }
+    
+    // Full mode for desktop
     return h('div', { className: 'relative' },
       h('button', {
         onClick: () => setIsOpen(!isOpen),
-        className: `${bgColor} px-2 py-1 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center gap-1 text-sm font-medium`,
+        className: `${bgColor} px-3 py-2 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center gap-2 text-sm font-medium`,
         title: `${currentLang.name} • Click to change`
       },
+        h('span', { className: 'text-base' }, currentLang.flag),
         h('span', null, currentLang.code.toUpperCase()),
         h('i', { className: `fas fa-chevron-down text-xs transition-transform ${isOpen ? 'rotate-180' : ''}` })
       ),
       
       isOpen && h('div', { 
-        className: `absolute top-full right-0 mt-2 bg-gray-900 rounded-lg shadow-2xl overflow-hidden min-w-[200px] z-50 border border-gray-700`,
-        onClick: () => setIsOpen(false)
+        className: 'absolute top-full right-0 mt-2 bg-gray-900 rounded-xl shadow-2xl overflow-hidden min-w-[200px] z-50 border border-gray-700'
       },
         ...languages.map((lang, idx) => h('button', {
           key: lang.code,
-          onClick: () => window.i18n.setLanguage(lang.code),
-          className: `w-full px-4 py-2 flex items-center gap-2 hover:bg-gray-800 transition text-left ${
+          onClick: () => { window.i18n.setLanguage(lang.code); setIsOpen(false); },
+          className: `w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-800 transition text-left ${
             lang.code === currentLang.code ? 'bg-gray-700 text-white' : 'text-gray-300'
           } ${idx > 0 ? 'border-t border-gray-700' : ''}`,
         },
-          h('span', { className: 'text-lg' }, lang.flag),
-          h('div', { className: 'flex-1 truncate' },
-            h('div', { className: 'font-medium truncate' }, lang.name)
+          h('span', { className: 'text-xl' }, lang.flag),
+          h('div', { className: 'flex-1' },
+            h('div', { className: 'font-medium' }, lang.name)
           ),
-          lang.code === currentLang.code && h('i', { className: 'fas fa-check text-green-500 ml-auto flex-shrink-0' })
+          lang.code === currentLang.code && h('i', { className: 'fas fa-check text-green-500 ml-auto' })
         ))
       )
     );

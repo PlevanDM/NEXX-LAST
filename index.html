@@ -310,9 +310,10 @@
     
     <script src="/static/utils.js"></script>
     <script src="/static/database.js"></script>
-    <script src="/static/i18n.js"></script>
-    <script src="/static/ui-components.js"></script>
-    <script src="/static/navigation-system.js"></script>
+    <script src="/static/nexx-core.js"></script>
+    <script src="/static/i18n.js?v=9.9.3"></script>
+    <script src="/static/ui-components.js?v=9.9.5"></script>
+    <script src="/static/navigation-system.js?v=2.0"></script>
     <script src="/static/analytics.js"></script>
     <style>
       :root {
@@ -368,7 +369,6 @@
         background: rgba(59, 130, 246, 0.7);
       }
     </style>
-    <script src="/static/utils-calculator.js"></script>
     <script src="/static/price-calculator.js"></script>
     
     <script>
@@ -410,6 +410,205 @@
         }
         
         // ============================================
+        // CALLBACK MODAL - Форма зворотного дзвінка
+        // ============================================
+        
+        const CallbackModal = () => {
+            const [isOpen, setIsOpen] = React.useState(false);
+            const [phone, setPhone] = React.useState('');
+            const [name, setName] = React.useState('');
+            const [device, setDevice] = React.useState('');
+            const [problem, setProblem] = React.useState('');
+            const [isLoading, setIsLoading] = React.useState(false);
+            const [isSuccess, setIsSuccess] = React.useState(false);
+            const [error, setError] = React.useState('');
+            
+            // Expose open function globally
+            React.useEffect(() => {
+                window.openCallbackModal = () => setIsOpen(true);
+                return () => { delete window.openCallbackModal; };
+            }, []);
+            
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setIsLoading(true);
+                setError('');
+                
+                try {
+                    const response = await fetch('/api/callback', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone, name, device, problem })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        setIsSuccess(true);
+                        window.showToast && window.showToast('🤖 AI-ul nostru vă va suna acum!', 'success');
+                    } else {
+                        throw new Error(data.error || 'Eroare la trimitere');
+                    }
+                } catch (err) {
+                    setError(err.message);
+                    window.showToast && window.showToast(err.message, 'error');
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            
+            const resetForm = () => {
+                setPhone('');
+                setName('');
+                setDevice('');
+                setProblem('');
+                setIsSuccess(false);
+                setError('');
+            };
+            
+            const closeModal = () => {
+                setIsOpen(false);
+                setTimeout(resetForm, 300);
+            };
+            
+            if (!isOpen) return null;
+            
+            return h('div', {
+                className: 'fixed inset-0 z-[100] flex items-center justify-center p-4',
+                onClick: (e) => e.target === e.currentTarget && closeModal()
+            },
+                // Backdrop
+                h('div', { className: 'absolute inset-0 bg-black/70 backdrop-blur-sm' }),
+                
+                // Modal
+                h('div', { className: 'relative bg-gray-900 rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl border border-gray-700 animate-scale-in' },
+                    // Close button
+                    h('button', {
+                        onClick: closeModal,
+                        className: 'absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded-full transition'
+                    }, h('i', { className: 'fas fa-xmark text-xl' })),
+                    
+                    isSuccess ? (
+                        // Success state
+                        h('div', { className: 'text-center py-8' },
+                            h('div', { className: 'w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4' },
+                                h('i', { className: 'fas fa-check text-4xl text-white' })
+                            ),
+                            h('h3', { className: 'text-2xl font-bold text-white mb-2' }, 'Mulțumim!'),
+                            h('div', { className: 'flex items-center justify-center gap-2 mb-2' },
+                                h('div', { className: 'w-3 h-3 bg-green-500 rounded-full animate-pulse' }),
+                                h('p', { className: 'text-green-400 font-semibold' }, 'AI vă sună acum...')
+                            ),
+                            h('p', { className: 'text-gray-400 mb-4' }, 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.'),
+                            h('div', { className: 'bg-yellow-500/20 border border-yellow-500/30 rounded-xl p-3 mb-4' },
+                                h('p', { className: 'text-yellow-400 text-sm' }, '🎁 Diagnostic GRATUIT inclus în comandă!')
+                            ),
+                            h('button', {
+                                onClick: closeModal,
+                                className: 'px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition'
+                            }, 'Închide')
+                        )
+                    ) : (
+                        // Form
+                        h('form', { onSubmit: handleSubmit },
+                            h('div', { className: 'text-center mb-6' },
+                                h('div', { className: 'relative w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4' },
+                                    h('i', { className: 'fas fa-phone-volume text-2xl text-white' }),
+                                    h('span', { className: 'absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs' }, '🎁')
+                                ),
+                                h('h3', { className: 'text-2xl font-bold text-white mb-1' }, 'Sună-mă înapoi'),
+                                h('p', { className: 'text-gray-400 text-sm' }, '🤖 AI-ul nostru vă va suna instant!'),
+                                h('div', { className: 'mt-3 px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 rounded-xl' },
+                                    h('p', { className: 'text-yellow-400 text-sm font-semibold' }, '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!')
+                                )
+                            ),
+                            
+                            // Phone field (required)
+                            h('div', { className: 'mb-4' },
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Telefon *'),
+                                h('input', {
+                                    type: 'tel',
+                                    value: phone,
+                                    onChange: (e) => setPhone(e.target.value),
+                                    placeholder: '+40 7XX XXX XXX',
+                                    required: true,
+                                    className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
+                                })
+                            ),
+                            
+                            // Name field
+                            h('div', { className: 'mb-4' },
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Nume'),
+                                h('input', {
+                                    type: 'text',
+                                    value: name,
+                                    onChange: (e) => setName(e.target.value),
+                                    placeholder: 'Numele dvs.',
+                                    className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
+                                })
+                            ),
+                            
+                            // Device field
+                            h('div', { className: 'mb-4' },
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Dispozitiv'),
+                                h('input', {
+                                    type: 'text',
+                                    value: device,
+                                    onChange: (e) => setDevice(e.target.value),
+                                    placeholder: 'ex: iPhone 14 Pro, Samsung S24',
+                                    className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
+                                })
+                            ),
+                            
+                            // Problem field
+                            h('div', { className: 'mb-6' },
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, 'Problemă'),
+                                h('textarea', {
+                                    value: problem,
+                                    onChange: (e) => setProblem(e.target.value),
+                                    placeholder: 'Descrieți problema...',
+                                    rows: 2,
+                                    className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition resize-none'
+                                })
+                            ),
+                            
+                            // Error message
+                            error && h('div', { className: 'mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-sm' }, error),
+                            
+                            // Submit button
+                            h('button', {
+                                type: 'submit',
+                                disabled: isLoading,
+                                className: `w-full py-4 ${isLoading ? 'bg-gray-600' : 'bg-green-500 hover:bg-green-600'} text-white rounded-xl font-bold text-lg transition flex items-center justify-center gap-2`
+                            },
+                                isLoading ? (
+                                    h(React.Fragment, null,
+                                        h('i', { className: 'fas fa-spinner fa-spin' }),
+                                        'Se trimite...'
+                                    )
+                                ) : (
+                                    h(React.Fragment, null,
+                                        h('i', { className: 'fas fa-phone' }),
+                                        'Trimite cererea'
+                                    )
+                                )
+                            ),
+                            
+                            // Direct call link
+                            h('div', { className: 'mt-4 text-center' },
+                                h('span', { className: 'text-gray-500 text-sm' }, 'sau sunați direct: '),
+                                h('a', {
+                                    href: 'tel:+40721234567',
+                                    className: 'text-blue-400 hover:text-blue-300 font-medium'
+                                }, '+40 721 234 567')
+                            )
+                        )
+                    )
+                )
+            );
+        };
+        
+        // ============================================
         // HERO - Для клієнтів
         // ============================================
         
@@ -433,36 +632,43 @@
             ),
             
             h('div', { className: 'relative z-10 max-w-5xl mx-auto px-4 text-center animate-fade-in' },
-                h('h1', { className: 'text-5xl md:text-7xl font-bold mb-4 leading-tight' },
+                h('h1', { className: 'text-4xl sm:text-5xl md:text-7xl font-bold mb-3 md:mb-4 leading-tight' },
                     h('span', { className: 'block' }, t('hero.title')),
-                    h('span', { className: 'block mt-2 text-gray-300' }, 
+                    h('span', { className: 'block mt-1 md:mt-2 text-gray-300 text-3xl sm:text-4xl md:text-5xl' }, 
                         t('hero.subtitle')
                     )
                 ),
                 
-                h('p', { className: 'text-xl md:text-2xl mb-6 text-blue-100 max-w-3xl mx-auto' },
+                h('p', { className: 'text-lg sm:text-xl md:text-2xl mb-4 md:mb-6 text-blue-100 max-w-3xl mx-auto' },
                     t('hero.description')
                 ),
                 
                     h('div', { className: 'flex flex-col gap-4 justify-center max-w-md mx-auto w-full px-4' },
                         h('a', {
-                            href: '#booking',
-                            className: 'group relative px-8 py-5 md:py-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-size-200 hover:bg-right text-white text-lg md:text-xl font-bold rounded-2xl shadow-2xl hover:shadow-gray-900/50 transition-all duration-500 active:scale-95 flex items-center justify-center gap-3 overflow-hidden',
+                            href: '#calculator',
+                            className: 'group relative px-8 py-5 md:py-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-size-200 hover:bg-right text-white text-lg md:text-xl font-bold rounded-2xl shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 active:scale-95 flex items-center justify-center gap-3 overflow-hidden',
                             style: { backgroundSize: '200% 100%', minHeight: '64px' }
                         },
                             h('span', { className: 'relative z-10 text-lg flex items-center gap-2' },
-                                h('i', { className: 'fas fa-calendar-check' }),
-                                'Comandă reparație',
+                                h('i', { className: 'fas fa-calculator' }),
+                                window.i18n?.t('buttons.calculate') || 'Calculează prețul',
                                 h('i', { className: 'fas fa-arrow-right transition-transform group-hover:translate-x-1' })
                             )
                         ),
-                        h('a', {
-                            href: 'tel:+40721234567',
-                            className: 'px-8 py-5 md:py-6 bg-white/10 backdrop-blur-md border-2 border-white/20 hover:bg-white/20 hover:border-white/30 text-white text-lg md:text-xl font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-3',
+                        h('button', {
+                            onClick: () => window.openCallbackModal && window.openCallbackModal(),
+                            className: 'relative px-8 py-5 md:py-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 border-2 border-green-400 text-white text-lg md:text-xl font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-3 shadow-lg shadow-green-500/30 group',
                             style: { minHeight: '64px' }
                         },
-                            h('i', { className: 'fas fa-phone' }),
-                            h('span', { className: 'text-lg' }, '+40 721 234 567')
+                            // Bonus badge
+                            h('span', { 
+                                className: 'absolute -top-3 -right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full animate-pulse shadow-lg'
+                            }, '🎁 GRATUIT'),
+                            h('i', { className: 'fas fa-phone-volume group-hover:animate-bounce' }),
+                            h('span', { className: 'flex flex-col items-start' },
+                                h('span', { className: 'text-lg' }, 'Sună-mă înapoi'),
+                                h('span', { className: 'text-xs font-normal opacity-90' }, 'Diagnostic gratuit inclus!')
+                            )
                         )
                     )
             )
@@ -473,77 +679,117 @@
         // ============================================
         
         const Services = () => {
-            // Dynamic services with translations
+            // State for carousel
+            const [activeCardIndex, setActiveCardIndex] = React.useState({});
+            
+            // Dynamic services with translations and multiple sub-services
             const getServices = () => {
                 const battery = t('services.items.battery') || {};
                 const board = t('services.items.board') || {};
                 const display = t('services.items.display') || {};
                 const port = t('services.items.port') || {};
                 const modular = t('services.items.modular') || {};
-                const diagnostics = t('services.items.diagnostics') || {};
                 
                 return [
                     { 
                         icon: 'fa-battery-full',
                         title: battery.title || 'Reparații Baterii',
-                        desc: battery.desc || 'Înlocuire + regenerare acumulatori',
-                        details: battery.detailsText || 'Baterii originale și calitate premium. Testare capacitate. Garanție.',
-                        specs: battery.details || ['Înlocuire baterie', 'Regenerare celule', 'Calibrare BMS', 'Test capacitate'],
-                        price: `${t('prices.from')} 60 lei`,
-                        time: '30-60 min',
-                        popular: true
+                        popular: true,
+                        subServices: [
+                            { name: 'iPhone 12-16', price: '150-250 lei', time: '30 min' },
+                            { name: 'iPhone SE/11', price: '100-150 lei', time: '30 min' },
+                            { name: 'Samsung S/Note', price: '120-200 lei', time: '45 min' },
+                            { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
+                            { name: 'iPad', price: '200-350 lei', time: '1 oră' }
+                        ],
+                        specs: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule']
                     },
                     { 
                         icon: 'fa-microchip',
                         title: board.title || 'Reparații Plăci',
-                        desc: board.desc || 'Lipire micro-componente la microscop',
-                        details: board.detailsText || 'Reparații la nivel de componentă. Diagnostic sub microscop. BGA reballing.',
-                        specs: board.details || ['Lipire IC', 'BGA reballing', 'Reparare piste', 'Deteriorare prin apă'],
-                        price: `${t('prices.from')} 150 lei`,
-                        time: '2-4 ore'
+                        subServices: [
+                            { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 ore' },
+                            { name: 'Reparare piste', price: '150-400 lei', time: '1-3 ore' },
+                            { name: 'Înlocuire IC', price: '200-500 lei', time: '1-2 ore' },
+                            { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
+                            { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
+                        ],
+                        specs: ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale']
                     },
                     { 
                         icon: 'fa-tv',
                         title: display.title || 'Înlocuire Display',
-                        desc: display.desc || 'Ecrane originale + compatibile',
-                        details: display.detailsText || 'Display-uri original, refurbished sau compatibil premium. Garanție dead pixel.',
-                        specs: display.details || ['LCD/OLED', 'Touchscreen', 'Laminate/delaminate', 'Calibrare'],
-                        price: `${t('prices.from')} 100 lei`,
-                        time: '30-90 min'
+                        subServices: [
+                            { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
+                            { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
+                            { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 oră' },
+                            { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
+                            { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
+                        ],
+                        specs: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone']
                     },
                     { 
                         icon: 'fa-plug',
                         title: port.title || 'Port Încărcare',
-                        desc: port.desc || 'USB-C, Lightning, Micro-USB',
-                        details: port.detailsText || 'Înlocuire conector. Curățare oxidare. Reparare piste placa.',
-                        specs: port.details || ['Curățare port', 'Înlocuire', 'Reparare piste', 'Testare încărcare'],
-                        price: `${t('prices.from')} 50 lei`,
-                        time: '30-60 min'
+                        subServices: [
+                            { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
+                            { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
+                            { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
+                            { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
+                            { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
+                        ],
+                        specs: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni']
                     },
                     { 
                         icon: 'fa-screwdriver-wrench',
                         title: modular.title || 'Service Modular',
-                        desc: modular.desc || 'Cameră, speaker, vibrator, butoane',
-                        details: modular.detailsText || 'Înlocuire module: cameră, speaker, home button, power button, flex-uri.',
-                        specs: modular.details || ['Cameră foto', 'Speaker/Mic', 'Butoane', 'Senzori'],
-                        price: `${t('prices.from')} 70 lei`,
-                        time: '30-90 min'
+                        subServices: [
+                            { name: 'Cameră principală', price: '150-400 lei', time: '30-60 min' },
+                            { name: 'Cameră frontală', price: '80-200 lei', time: '30 min' },
+                            { name: 'Speaker/Microfon', price: '60-150 lei', time: '20-40 min' },
+                            { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
+                            { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
+                        ],
+                        specs: ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing']
                     },
                     { 
-                        icon: 'fa-calculator',
-                        title: diagnostics.title || 'Calculator Preț',
-                        desc: diagnostics.desc || 'Estimare instant + diagnostic',
-                        details: diagnostics.detailsText || 'Răspundeți la întrebări și aflați prețul exact. Diagnostic pentru cauza probabilă.',
-                        specs: diagnostics.details || ['Preț instant', 'Diagnostic', 'Toate mărcile', 'Online 24/7'],
-                        price: t('prices.free'),
-                        time: '1 min',
+                        icon: 'fa-images',
+                        title: 'Lucrări Recente',
+                        isGallery: true,
                         featured: true,
-                        link: '#calculator'
+                        works: [
+                            { device: 'iPhone 15 Pro Max', repair: 'Înlocuire display OLED', result: 'Ca nou' },
+                            { device: 'MacBook Pro M3', repair: 'Reparație placă - deteriorare apă', result: 'Funcțional 100%' },
+                            { device: 'Samsung S24 Ultra', repair: 'Reballing CPU + display', result: 'Client mulțumit' },
+                            { device: 'iPad Pro 12.9', repair: 'Înlocuire baterie + port', result: 'Garanție 12 luni' },
+                            { device: 'iPhone 14', repair: 'Face ID + cameră', result: 'Reparat în 2 ore' }
+                        ]
                     }
                 ];
             };
             
             const services = getServices();
+            
+            // Initialize card indices
+            React.useEffect(() => {
+                const initial = {};
+                services.forEach((_, idx) => { initial[idx] = 0; });
+                setActiveCardIndex(initial);
+            }, []);
+            
+            const nextSlide = (idx, maxLen) => {
+                setActiveCardIndex(prev => ({
+                    ...prev,
+                    [idx]: (prev[idx] + 1) % maxLen
+                }));
+            };
+            
+            const prevSlide = (idx, maxLen) => {
+                setActiveCardIndex(prev => ({
+                    ...prev,
+                    [idx]: (prev[idx] - 1 + maxLen) % maxLen
+                }));
+            };
             
             return h('section', { id: 'services', className: 'py-8 md:py-12 px-4 bg-gray-900' },
                 h('div', { className: 'max-w-7xl mx-auto' },
@@ -551,63 +797,133 @@
                         h('h2', { className: 'text-4xl md:text-5xl font-bold mb-4 text-white' }, 
                             t('services.title')
                         ),
-                        h('p', { className: 'text-gray-600 text-lg' }, 
+                        h('p', { className: 'text-gray-400 text-lg' }, 
                             t('services.subtitle')
                         )
                     ),
                     
                     h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6' },
-                        ...                        services.map((service, idx) => h('div', {
-                            key: idx,
-                            className: 'group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible'
-                        },
-                            // Gradient hover effect
-                            h('div', { 
-                                className: 'absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500'
-                            }),
-                            (service.popular || service.featured) && h('div', { className: 'absolute -top-3 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg z-20 flex items-center gap-1' },
-                                h('span', null, service.popular ? '🔥' : '✨'),
-                                service.popular ? 'Popular' : 'Gratuit'
-                            ),
+                        ...services.map((service, idx) => {
+                            const currentIndex = activeCardIndex[idx] || 0;
+                            const items = service.isGallery ? service.works : service.subServices;
+                            const currentItem = items ? items[currentIndex] : null;
                             
-                            h('div', { className: 'relative z-10 mb-4' },
-                                h('div', { className: 'w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center text-white text-3xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300' },
-                                    h('i', { className: `fas ${service.icon}` })
-                                )
-                            ),
-                            
-                            h('h3', { className: 'text-2xl font-bold mb-2 text-white relative z-10 group-hover:text-blue-400 transition-colors' }, 
-                                service.title
-                            ),
-                            h('p', { className: 'text-gray-400 mb-2 text-sm relative z-10' }, service.desc),
-                            service.details && h('p', { className: 'text-gray-500 mb-4 text-xs relative z-10' }, service.details),
-                            h('div', { className: 'flex items-center justify-between pt-4 border-t border-gray-700 relative z-10' },
-                                h('div', null,
-                                    h('div', { className: 'text-2xl font-bold text-blue-600' }, service.price),
-                                    h('div', { className: 'text-sm text-gray-500' }, service.time)
-                                ),
-                                h('a', {
-                                    href: service.link || '#booking',
-                                    className: 'group/btn px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-gray-900/50 flex items-center gap-2'
+                            return h('div', {
+                                key: idx,
+                                className: 'group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible'
+                            },
+                                // Gradient hover effect
+                                h('div', { 
+                                    className: 'absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'
+                                }),
+                                
+                                // Badge
+                                (service.popular || service.featured) && h('div', { 
+                                    className: `absolute -top-3 right-4 ${service.popular ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'} text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-20 flex items-center gap-1` 
                                 },
-                                    'Comandă',
-                                    h('i', { className: 'fas fa-arrow-right text-sm group-hover/btn:translate-x-1 transition-transform' })
+                                    h('span', null, service.popular ? '🔥' : '📸'),
+                                    service.popular ? 'Popular' : 'Galerie'
+                                ),
+                                
+                                // Header with icon and title
+                                h('div', { className: 'flex items-center gap-3 mb-4 relative z-10' },
+                                    h('div', { className: 'w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg' },
+                                        h('i', { className: `fas ${service.icon}` })
+                                    ),
+                                    h('h3', { className: 'text-xl font-bold text-white group-hover:text-blue-400 transition-colors' }, 
+                                        service.title
+                                    )
+                                ),
+                                
+                                // Carousel content
+                                service.isGallery ? (
+                                    // Gallery card
+                                    h('div', { className: 'relative z-10' },
+                                        currentItem && h('div', { className: 'bg-gray-700/50 rounded-xl p-4 mb-3 min-h-[100px]' },
+                                            h('div', { className: 'flex items-center gap-2 mb-2' },
+                                                h('i', { className: 'fas fa-mobile-alt text-blue-400' }),
+                                                h('span', { className: 'text-white font-semibold text-sm' }, currentItem.device)
+                                            ),
+                                            h('p', { className: 'text-gray-300 text-sm mb-2' }, currentItem.repair),
+                                            h('div', { className: 'flex items-center gap-1 text-green-400 text-xs' },
+                                                h('i', { className: 'fas fa-check-circle' }),
+                                                h('span', null, currentItem.result)
+                                            )
+                                        ),
+                                        // Navigation
+                                        h('div', { className: 'flex items-center justify-between' },
+                                            h('button', {
+                                                onClick: () => prevSlide(idx, items.length),
+                                                className: 'w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors'
+                                            }, h('i', { className: 'fas fa-chevron-left text-xs' })),
+                                            h('div', { className: 'flex gap-1' },
+                                                ...items.map((_, i) => h('div', {
+                                                    key: i,
+                                                    className: `w-2 h-2 rounded-full transition-colors ${i === currentIndex ? 'bg-blue-500' : 'bg-gray-600'}`
+                                                }))
+                                            ),
+                                            h('button', {
+                                                onClick: () => nextSlide(idx, items.length),
+                                                className: 'w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors'
+                                            }, h('i', { className: 'fas fa-chevron-right text-xs' }))
+                                        )
+                                    )
+                                ) : (
+                                    // Service card with sub-services
+                                    h('div', { className: 'relative z-10' },
+                                        // Current sub-service
+                                        currentItem && h('div', { className: 'bg-gray-700/50 rounded-xl p-4 mb-3' },
+                                            h('div', { className: 'flex justify-between items-start mb-2' },
+                                                h('span', { className: 'text-white font-medium text-sm' }, currentItem.name),
+                                                h('span', { className: 'text-blue-400 font-bold text-sm' }, currentItem.price)
+                                            ),
+                                            h('div', { className: 'flex items-center gap-1 text-gray-400 text-xs' },
+                                                h('i', { className: 'fas fa-clock' }),
+                                                h('span', null, currentItem.time)
+                                            )
+                                        ),
+                                        
+                                        // Navigation
+                                        h('div', { className: 'flex items-center justify-between mb-4' },
+                                            h('button', {
+                                                onClick: () => prevSlide(idx, items.length),
+                                                className: 'w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors'
+                                            }, h('i', { className: 'fas fa-chevron-left text-xs' })),
+                                            h('div', { className: 'flex gap-1' },
+                                                ...items.map((_, i) => h('div', {
+                                                    key: i,
+                                                    className: `w-2 h-2 rounded-full transition-colors ${i === currentIndex ? 'bg-blue-500' : 'bg-gray-600'}`
+                                                }))
+                                            ),
+                                            h('button', {
+                                                onClick: () => nextSlide(idx, items.length),
+                                                className: 'w-8 h-8 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors'
+                                            }, h('i', { className: 'fas fa-chevron-right text-xs' }))
+                                        ),
+                                        
+                                        // Specs in 2 columns
+                                        service.specs && h('div', { className: 'grid grid-cols-2 gap-x-2 gap-y-1 pt-3 border-t border-gray-700/50' },
+                                            ...service.specs.map((spec, sidx) => h('div', {
+                                                key: sidx,
+                                                className: 'flex items-center gap-1 text-xs text-gray-400'
+                                            },
+                                                h('i', { className: 'fas fa-check text-green-400 text-[10px]' }),
+                                                h('span', { className: 'truncate' }, spec)
+                                            ))
+                                        ),
+                                        
+                                        // CTA Button
+                                        h('a', {
+                                            href: '#calculator',
+                                            className: 'mt-4 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all hover:shadow-lg flex items-center justify-center gap-2 text-sm'
+                                        },
+                                            t('buttons.calculate') || 'Calculează prețul',
+                                            h('i', { className: 'fas fa-arrow-right text-xs' })
+                                        )
+                                    )
                                 )
-                            ),
-                            
-                            // Specs list
-                            service.specs && h('div', { className: 'mt-4 pt-4 border-t border-gray-700/50 relative z-10' },
-                                h('div', { className: 'space-y-2' },
-                                    ...service.specs.map((spec, sidx) => h('div', {
-                                        key: sidx,
-                                        className: 'flex items-center gap-2 text-xs text-gray-400'
-                                    },
-                                        h('i', { className: 'fas fa-check text-green-400' }),
-                                        h('span', null, spec)
-                                    ))
-                                )
-                            )
-                        ))
+                            );
+                        })
                     )
                 )
             );
@@ -1230,12 +1546,12 @@
             return h(React.Fragment, null,
                 h(Header, { currentPage: 'home' }),
                 h(ToastContainer),
+                h(CallbackModal),
                 h(Hero),
                 h(Services),
                 h(CalculatorSection),
                 h(WhyUs),
                 h(Gallery),
-                h(Booking),
                 h(Contact),
                 h(Footer),
                 h(QuickActions, { currentPage: 'home' })
@@ -1255,6 +1571,15 @@
                 });
             });
         });
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('✅ Service Worker registered'))
+                    .catch(err => console.log('Service Worker error:', err));
+            });
+        }
     </script>
 </body>
 </html>

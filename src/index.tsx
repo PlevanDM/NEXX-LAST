@@ -19,23 +19,29 @@ app.use('*', secureHeaders({
       "'unsafe-eval'",
       "https://cdn.tailwindcss.com",
       "https://cdn.jsdelivr.net",
-      "https://unpkg.com"
+      "https://unpkg.com",
+      "https://cdnjs.cloudflare.com",
+      "https://static.cloudflareinsights.com"
     ],
     styleSrc: [
       "'self'", 
       "'unsafe-inline'",
       "https://cdn.tailwindcss.com",
-      "https://cdn.jsdelivr.net"
+      "https://cdn.jsdelivr.net",
+      "https://cdnjs.cloudflare.com",
+      "https://fonts.googleapis.com"
     ],
     imgSrc: ["'self'", "data:", "https:", "blob:"],
     fontSrc: [
       "'self'", 
       "https://cdn.jsdelivr.net",
+      "https://cdnjs.cloudflare.com",
+      "https://fonts.gstatic.com",
       "data:"
     ],
-    connectSrc: ["'self'"],
+    connectSrc: ["'self'", "https://cloudflareinsights.com"],
     frameSrc: ["'none'"],
-    objectSrc: ["'none'"],
+    objectSrc: ["'self'"],
     baseUri: ["'self'"],
     formAction: ["'self'"],
     upgradeInsecureRequests: []
@@ -101,6 +107,116 @@ app.get('/api/settings', (c) => {
   })
 })
 
+// Callback API - creates order in Remonline CRM
+app.post('/api/callback', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { phone, name, device, problem } = body
+    
+    // Validate phone
+    if (!phone || phone.length < 9) {
+      return c.json({ success: false, error: 'Număr de telefon invalid' }, 400)
+    }
+    
+    const cleanPhone = phone.replace(/[^0-9+]/g, '')
+    
+    // Remonline integration
+    const REMONLINE_API_KEY = '55f93eacf65e94ef55e6fed9fd41f8c4'
+    const REMONLINE_BASE = 'https://api.remonline.app'
+    const BRANCH_ID = 218970
+    const ORDER_TYPE = 334611
+    
+    let orderId = null
+    let remonlineSuccess = false
+    
+    try {
+      // Get token
+      const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `api_key=${REMONLINE_API_KEY}`
+      })
+      const tokenJson = await tokenRes.json() as { success: boolean; token?: string }
+      
+      if (tokenJson.success && tokenJson.token) {
+        const token = tokenJson.token
+        
+        // Create client
+        const clientRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || 'Client Website',
+            phone: [cleanPhone]
+          })
+        })
+        const clientJson = await clientRes.json() as { success?: boolean; data?: { id: number } }
+        
+        let clientId = clientJson.data?.id
+        
+        // If client exists, search for it
+        if (!clientId) {
+          const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(cleanPhone)}`)
+          const searchJson = await searchRes.json() as { data?: Array<{ id: number }> }
+          if (searchJson.data && searchJson.data.length > 0) {
+            clientId = searchJson.data[0].id
+          }
+        }
+        
+        if (clientId) {
+          // Create order
+          const now = new Date().toISOString()
+          const getBrand = (d: string | undefined) => {
+            if (!d) return ''
+            const dl = d.toLowerCase()
+            if (dl.includes('iphone') || dl.includes('macbook') || dl.includes('ipad')) return 'Apple'
+            if (dl.includes('samsung') || dl.includes('galaxy')) return 'Samsung'
+            if (dl.includes('xiaomi') || dl.includes('redmi') || dl.includes('poco')) return 'Xiaomi'
+            if (dl.includes('huawei') || dl.includes('honor')) return 'Huawei'
+            return ''
+          }
+          
+          const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              branch_id: BRANCH_ID,
+              order_type: ORDER_TYPE,
+              client_id: clientId,
+              kindof_good: device?.toLowerCase().includes('macbook') ? 'Laptop' : 'Telefon',
+              brand: getBrand(device),
+              model: device || '',
+              malfunction: problem || 'Callback de pe website',
+              manager_notes: `🌐 CALLBACK WEBSITE\n🎁 BONUS: DIAGNOSTIC GRATUIT!\n📱 ${device || 'N/A'}\n📞 ${cleanPhone}\n❓ ${problem || 'N/A'}\n⏰ ${now}\n\n✅ Comandă online - diagnostic gratuit inclus`
+            })
+          })
+          const orderJson = await orderRes.json() as { success?: boolean; data?: { id: number } }
+          
+          if (orderJson.success && orderJson.data) {
+            orderId = orderJson.data.id
+            remonlineSuccess = true
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Remonline error:', e)
+    }
+    
+    // Always return success to user
+    return c.json({
+      success: true,
+      order_id: orderId,
+      message: remonlineSuccess 
+        ? 'Mulțumim! Vă vom contacta în câteva minute!' 
+        : 'Cererea a fost primită! Vă contactăm în curând.'
+    })
+    
+  } catch (error) {
+    console.error('Callback error:', error)
+    return c.json({ success: false, error: 'Eroare server' }, 500)
+  }
+})
+
 // Favicon
 app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
 
@@ -116,8 +232,8 @@ app.get('/test-click', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         <!-- React 19 Production -->
-        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-100 p-4">
         <div id="app"></div>
@@ -230,8 +346,8 @@ app.get('/nexx', (c) => {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         
         <!-- React 19 Production -->
-        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
@@ -390,9 +506,9 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
         <!-- React 19 Production -->
-        <script crossorigin src="https://unpkg.com/react@19.0.0/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@19.0.0/umd/react-dom.production.min.js"></script>
-        ${useJSX ? '<!-- Babel Standalone for JSX transformation -->\n        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>' : ''}
+        <script crossorigin src="/static/vendor/react.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+        ${useJSX ? '<!-- Babel Standalone for JSX transformation -->\n        <script src="/static/vendor/babel.min.js"></script>' : ''}
         <style>
           html { scroll-behavior: smooth; }
         </style>
@@ -424,8 +540,8 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
 // Calculator page
 app.get('/calculator', (c) => {
   return c.html(createPageTemplate(
-    'Калькулятор вартості ремонту - NEXX',
-    'Розрахуйте вартість ремонту вашого пристрою онлайн. iPhone, Android, MacBook, iPad, Apple Watch.',
+    'Calculator preț reparații - NEXX',
+    'Calculează prețul reparației dispozitivului tău online. iPhone, Android, MacBook, iPad, Apple Watch.',
     'calculator.js',
     'bg-slate-50'
   ));
@@ -434,8 +550,8 @@ app.get('/calculator', (c) => {
 // About page
 app.get('/about', (c) => {
   return c.html(createPageTemplate(
-    'Про нас - NEXX Service Center',
-    'Історія NEXX - професійного сервісного центру Apple техніки в Києві. Наша команда, цінності та досвід.',
+    'Despre noi - NEXX Service Center',
+    'Istoria NEXX - centru de service profesional Apple în București. Echipa noastră, valori și experiență.',
     'about.js',
     'bg-white',
     true
@@ -445,8 +561,8 @@ app.get('/about', (c) => {
 // FAQ page
 app.get('/faq', (c) => {
   return c.html(createPageTemplate(
-    'Поширені питання (FAQ) - NEXX',
-    'Відповіді на найчастіші питання про ремонт Apple техніки: гарантія, термін, оплата, доставка.',
+    'Întrebări frecvente (FAQ) - NEXX',
+    'Răspunsuri la cele mai frecvente întrebări despre reparații Apple: garanție, termen, plată, livrare.',
     'faq.js',
     'bg-slate-50',
     true
@@ -456,8 +572,8 @@ app.get('/faq', (c) => {
 // Privacy page
 app.get('/privacy', (c) => {
   return c.html(createPageTemplate(
-    'Політика конфіденційності - NEXX',
-    'Політика конфіденційності NEXX Service Center. Захист персональних даних згідно з GDPR.',
+    'Politica de confidențialitate - NEXX',
+    'Politica de confidențialitate NEXX Service Center. Protecția datelor personale conform GDPR.',
     'privacy.js',
     'bg-white',
     true
@@ -467,19 +583,30 @@ app.get('/privacy', (c) => {
 // Terms page
 app.get('/terms', (c) => {
   return c.html(createPageTemplate(
-    'Умови використання - NEXX',
-    'Умови надання послуг NEXX Service Center. Правила та умови ремонту Apple техніки.',
+    'Termeni și condiții - NEXX',
+    'Termeni și condiții NEXX Service Center. Reguli și condiții pentru reparații Apple.',
     'terms.js',
     'bg-white',
     true
   ));
 })
 
-// Main page - Service Center Landing with React
-app.get('/', (c) => {
+// Main page - serve static index.html (Romanian version with i18n support)
+app.get('/', async (c) => {
+  // Serve the static index.html file
+  const assetResponse = await c.env.ASSETS.fetch(new Request(new URL('/index.html', c.req.url)))
+  if (assetResponse.ok) {
+    return new Response(assetResponse.body, {
+      headers: {
+        'Content-Type': 'text/html; charset=UTF-8',
+        'Cache-Control': 'public, max-age=3600'
+      }
+    })
+  }
+  // Fallback to dynamic generation if static file not found
   return c.html(createPageTemplate(
-    'NEXX - Професійний ремонт Apple техніки в Києві',
-    'Професійний ремонт Apple техніки в Києві. iPhone, iPad, MacBook, Apple Watch. Швидко, якісно, з гарантією 30 днів. Записатися онлайн.',
+    'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐',
+    'Service profesional reparații iPhone, MacBook, Samsung în București ⭐ Garanție 30 zile • Diagnostic gratuit • De la 60 lei',
     'homepage.js'
   ));
 })

@@ -1,7 +1,8 @@
 /**
- * NEXX Modern Price Calculator v3.0
+ * NEXX Modern Price Calculator v3.1
  * Современный калькулятор с дизайном от 21st.dev
  * Обновленный UI с градиентами, анимациями и улучшенным UX
+ * + Full Error Protection
  */
 
 (function() {
@@ -12,43 +13,109 @@
   // Check if Framer Motion is available
   const hasFramerMotion = typeof window !== 'undefined' && window.motion;
   
-  // Ціни по категоріях ремонтів (базові ціни)
+  // ============================================
+  // ERROR BOUNDARY - Ловит все ошибки React
+  // ============================================
+  class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { hasError: false, error: null };
+    }
+    
+    static getDerivedStateFromError(error) {
+      return { hasError: true, error };
+    }
+    
+    componentDidCatch(error, errorInfo) {
+      console.error('❌ Calculator Error:', error, errorInfo);
+    }
+    
+    render() {
+      if (this.state.hasError) {
+        return h('div', { className: 'max-w-md mx-auto p-6 bg-zinc-900 border border-red-500/50 rounded-2xl text-center' },
+          h('div', { className: 'w-16 h-16 mx-auto mb-4 bg-red-500/20 rounded-full flex items-center justify-center' },
+            h('i', { className: 'fas fa-exclamation-triangle text-3xl text-red-400' })
+          ),
+          h('h3', { className: 'text-xl font-bold text-white mb-2' }, 'Oops! Ceva nu a mers bine'),
+          h('p', { className: 'text-zinc-400 mb-4' }, 'A apărut o eroare. Vă rugăm reîncărcați pagina.'),
+          h('button', {
+            onClick: () => window.location.reload(),
+            className: 'px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all'
+          }, 'Reîncărcați pagina')
+        );
+      }
+      return this.props.children;
+    }
+  }
+  
+  // ============================================
+  // SAFE HELPERS - Безопасные функции
+  // ============================================
+  const safeGet = (obj, path, defaultValue = null) => {
+    try {
+      return path.split('.').reduce((o, k) => (o && o[k] !== undefined) ? o[k] : defaultValue, obj);
+    } catch {
+      return defaultValue;
+    }
+  };
+  
+  const safeCall = (fn, ...args) => {
+    try {
+      return fn(...args);
+    } catch (e) {
+      console.warn('⚠️ Safe call error:', e);
+      return null;
+    }
+  };
+  
+  const safeArray = (arr) => Array.isArray(arr) ? arr : [];
+  
+  const safeString = (str) => (typeof str === 'string') ? str : '';
+  
+  // Ціни по категоріях ремонтів (базові ціни) - 2026 România
+  // Цены в RON (Romanian Lei) - обновлены на январь 2026
   const REPAIR_PRICES = {
     screen: { 
-      phone: { min: 80, max: 300, avg: 150 },
-      tablet: { min: 120, max: 400, avg: 250 },
-      laptop: { min: 200, max: 800, avg: 450 },
-      watch: { min: 60, max: 200, avg: 120 }
+      phone: { min: 150, max: 600, avg: 350 },      // iPhone/Samsung flagship: 400-600, budget: 150-250
+      tablet: { min: 200, max: 800, avg: 450 },     // iPad Pro: 600-800, iPad: 300-450
+      laptop: { min: 350, max: 1500, avg: 800 },    // MacBook: 800-1500, Windows: 350-700
+      watch: { min: 200, max: 1100, avg: 600 }      // Apple Watch Series 10-11: 750-1100, SE: 500-850
     },
     battery: {
-      phone: { min: 60, max: 150, avg: 90 },
-      tablet: { min: 80, max: 200, avg: 120 },
-      laptop: { min: 150, max: 400, avg: 250 },
-      watch: { min: 50, max: 150, avg: 90 }
+      phone: { min: 100, max: 300, avg: 180 },      // iPhone: 150-250, Android: 100-180
+      tablet: { min: 150, max: 400, avg: 250 },     // iPad: 200-400, Android: 150-250
+      laptop: { min: 250, max: 600, avg: 400 },     // MacBook: 350-600, Windows: 250-400
+      watch: { min: 150, max: 400, avg: 250 }       // Apple Watch: 200-400
     },
     charging: {
-      phone: { min: 40, max: 120, avg: 70 },
-      tablet: { min: 50, max: 150, avg: 90 },
-      laptop: { min: 80, max: 200, avg: 120 },
-      watch: { min: 30, max: 100, avg: 60 }
+      phone: { min: 80, max: 250, avg: 150 },       // Port cleaning: 80-120, replacement: 150-250
+      tablet: { min: 100, max: 300, avg: 180 },     // iPad: 150-300, Android: 100-200
+      laptop: { min: 150, max: 400, avg: 250 },     // MacBook: 200-400, Windows: 150-300
+      watch: { min: 100, max: 300, avg: 180 }       // Sensor/port repair
     },
     camera: {
-      phone: { min: 80, max: 250, avg: 140 },
-      tablet: { min: 100, max: 200, avg: 150 },
-      laptop: { min: 120, max: 300, avg: 180 },
-      watch: { min: 50, max: 150, avg: 80 }
+      phone: { min: 120, max: 450, avg: 250 },      // iPhone Pro camera: 300-450, main: 150-250
+      tablet: { min: 150, max: 350, avg: 220 },     // iPad camera: 150-350
+      laptop: { min: 150, max: 400, avg: 250 },     // Webcam replacement
+      watch: { min: 100, max: 250, avg: 150 }       // Sensors
     },
     motherboard: {
-      phone: { min: 150, max: 600, avg: 350 },
-      tablet: { min: 200, max: 700, avg: 400 },
-      laptop: { min: 300, max: 1200, avg: 600 },
-      watch: { min: 100, max: 400, avg: 200 }
+      phone: { min: 250, max: 900, avg: 500 },      // BGA repair, IC replacement
+      tablet: { min: 350, max: 1000, avg: 600 },    // Logic board repair
+      laptop: { min: 500, max: 2000, avg: 1000 },   // MacBook logic board: 800-2000
+      watch: { min: 200, max: 600, avg: 350 }       // Main board repair
     },
     keyboard: {
-      laptop: { min: 100, max: 350, avg: 200 },
-      phone: { min: 50, max: 150, avg: 80 },
-      tablet: { min: 60, max: 180, avg: 100 },
-      watch: { min: 40, max: 120, avg: 70 }
+      laptop: { min: 200, max: 600, avg: 350 },     // MacBook butterfly/magic: 350-600
+      phone: { min: 80, max: 200, avg: 120 },       // Button/connector repair
+      tablet: { min: 100, max: 250, avg: 150 },     // Button repair
+      watch: { min: 80, max: 200, avg: 120 }        // Crown/button repair
+    },
+    software: {
+      phone: { min: 50, max: 250, avg: 150 },       // Data recovery, firmware
+      tablet: { min: 50, max: 250, avg: 150 },
+      laptop: { min: 100, max: 350, avg: 200 },     // OS reinstall, data recovery
+      watch: { min: 50, max: 200, avg: 100 }
     },
     diagnostic: {
       phone: { min: 0, max: 0, avg: 0 },
@@ -62,28 +129,54 @@
   // Коэффициенты сложности ремонта
   const COMPLEXITY_FACTORS = {
     screen: 1.0,      // Простая замена
-    battery: 1.0,    // Простая замена
-    charging: 1.2,   // Средняя сложность (очистка, пайка)
-    camera: 1.3,     // Средняя сложность
-    motherboard: 2.5, // Высокая сложность (BGA, пайка микросхем)
-    keyboard: 1.5,   // Средняя сложность
-    diagnostic: 0.0  // Бесплатно
+    battery: 1.0,     // Простая замена
+    charging: 1.1,    // Средняя сложность (очистка, пайка)
+    camera: 1.2,      // Средняя сложность
+    motherboard: 2.0, // Высокая сложность (BGA, пайка микросхем)
+    keyboard: 1.3,    // Средняя сложность
+    software: 0.8,    // Программное обеспечение
+    diagnostic: 0.0   // Бесплатно
   };
   
   // Коэффициенты возраста модели (для редких запчастей)
   const AGE_FACTORS = {
-    current: 1.0,    // Текущие модели (2023-2026)
-    recent: 1.1,     // Недавние (2020-2022)
-    old: 1.3,        // Старые (2017-2019)
-    veryOld: 1.5     // Очень старые (до 2017)
+    current: 1.0,    // Текущие модели (2024-2026)
+    recent: 1.05,    // Недавние (2021-2023)
+    old: 1.15,       // Старые (2018-2020)
+    veryOld: 1.25    // Очень старые (до 2018)
+  };
+  
+  // Специальные цены Apple Watch (из прайс-листа 2026) в RON
+  const APPLE_WATCH_PRICES = {
+    'Series 11': { screen: 750, battery: 400, micro: 400 },
+    'Series 10': { screen: 750, battery: 400, micro: 400 },
+    'Series 9': { screen: 750, battery: 400, micro: 400 },
+    'Series 8': { screen: 550, battery: 400, micro: 550 },
+    'Series 7': { screen: 550, battery: 400, micro: 500 },
+    'Series 6': { screen: 450, battery: 400, micro: 450 },
+    'Series 5': { screen: 450, battery: 400, micro: 400 },
+    'Series 4': { screen: 450, battery: 400, micro: 350 },
+    'SE 3': { screen: 500, battery: 400, micro: null },
+    'SE 2': { screen: 500, battery: 400, micro: 650 },
+    'SE': { screen: 400, battery: 400, micro: 400 }
   };
   
   // Коэффициенты бренда (премиум бренды дороже)
   const BRAND_FACTORS = {
-    apple: 1.2,
-    samsung: 1.1,
-    xiaomi: 0.9,
-    huawei: 1.0,
+    apple: 1.15,      // Apple premium
+    samsung: 1.1,     // Samsung flagship premium
+    xiaomi: 0.85,     // Budget friendly
+    huawei: 0.95,     // Средняя цена
+    oneplus: 1.0,     // Средняя цена
+    google: 1.1,      // Pixel premium
+    oppo: 0.9,        // Budget
+    realme: 0.85,
+    motorola: 0.95,
+    vivo: 0.9,
+    nokia: 0.9,
+    sony: 1.1,
+    asus: 1.0,
+    nothing: 1.0,
     other: 1.0
   };
   
@@ -93,7 +186,7 @@
       brand: null,
       deviceType: null,
       model: null,
-      issue: null,
+      issues: [],  // Множественный выбор дефектов
       name: '',
       phone: ''
     });
@@ -103,94 +196,112 @@
     const [searchQuery, setSearchQuery] = React.useState('');
     const [direction, setDirection] = React.useState(0);
     const [errors, setErrors] = React.useState({});
+    const [dbReady, setDbReady] = React.useState(false);
+    const [loadingModels, setLoadingModels] = React.useState(false);
     
-    // Load models from NEXXDatabase
+    // Load models from NEXXDatabase - улучшенная загрузка
     React.useEffect(() => {
       let isMounted = true;
+      let checkInterval = null;
       
       const loadModels = async () => {
-        // Ждем загрузки базы данных
-        if (!window.NEXXDatabase) {
-          // Если база еще не загружена, ждем
-          const checkInterval = setInterval(() => {
-            if (window.NEXXDatabase && !window.NEXXDatabase.loading) {
-              clearInterval(checkInterval);
-              if (isMounted) {
-                if (window.NEXXDatabase.loaded) {
-                  setModels(window.NEXXDatabase.devices || []);
-                  console.log(`✅ Загружено ${(window.NEXXDatabase.devices || []).length} моделей из базы данных`);
-                } else {
-                  window.NEXXDatabase.loadAll().then(() => {
-                    if (isMounted) {
-                      setModels(window.NEXXDatabase.devices || []);
-                      console.log(`✅ Загружено ${(window.NEXXDatabase.devices || []).length} моделей из базы данных`);
-                    }
-                  }).catch(e => {
-                    console.error('❌ Ошибка загрузки базы данных:', e);
-                    if (isMounted) setModels([]);
-                  });
-                }
-              }
+        setLoadingModels(true);
+        
+        // Функция загрузки из базы
+        const loadFromDatabase = () => {
+          if (window.NEXXDatabase && window.NEXXDatabase.devices && Array.isArray(window.NEXXDatabase.devices)) {
+            if (isMounted) {
+              setModels(window.NEXXDatabase.devices);
+              setDbReady(true);
+              setLoadingModels(false);
+              console.log(`✅ Калькулятор: загружено ${window.NEXXDatabase.devices.length} моделей`);
             }
-          }, 100);
-          
-          // Таймаут на случай, если база не загрузится
-          setTimeout(() => {
-            clearInterval(checkInterval);
-            if (isMounted && !window.NEXXDatabase?.devices) {
-              console.warn('⚠️ База данных не загружена, используем fallback');
-              // Fallback: загружаем напрямую
-              fetch('/data/devices.json')
-                .then(r => r.json())
-                .then(devices => {
-                  if (isMounted && Array.isArray(devices)) {
-                    setModels(devices);
-                    console.log(`✅ Загружено ${devices.length} моделей (fallback)`);
-                  }
-                })
-                .catch(e => {
-                  console.error('❌ Ошибка fallback загрузки:', e);
-                  if (isMounted) setModels([]);
-                });
-            }
-          }, 5000);
-          
+            return true;
+          }
+          return false;
+        };
+        
+        // Проверяем, есть ли уже загруженные данные
+        if (loadFromDatabase()) {
           return;
         }
         
-        // База уже есть
-        if (window.NEXXDatabase.loaded) {
-          if (isMounted) {
-            setModels(window.NEXXDatabase.devices || []);
-            console.log(`✅ Загружено ${(window.NEXXDatabase.devices || []).length} моделей из базы данных`);
-          }
-        } else if (!window.NEXXDatabase.loading) {
-          // Загружаем базу
-          window.NEXXDatabase.loadAll().then(() => {
-            if (isMounted) {
-              setModels(window.NEXXDatabase.devices || []);
-              console.log(`✅ Загружено ${(window.NEXXDatabase.devices || []).length} моделей из базы данных`);
+        // Ждем загрузки базы данных
+        if (window.NEXXDatabase) {
+          // Подписываемся на событие загрузки
+          const unsubscribe = window.NEXXDatabase.subscribe(() => {
+            if (isMounted && loadFromDatabase()) {
+              unsubscribe();
             }
-          }).catch(e => {
-            console.error('❌ Ошибка загрузки базы данных:', e);
-            if (isMounted) setModels([]);
           });
+          
+          // Запускаем загрузку если еще не загружено
+          if (!window.NEXXDatabase.loaded && !window.NEXXDatabase.loading) {
+            window.NEXXDatabase.loadAll().catch(e => {
+              console.error('❌ Ошибка загрузки базы:', e);
+            });
+          }
         }
+        
+        // Интервальная проверка как резерв
+        checkInterval = setInterval(() => {
+          if (loadFromDatabase()) {
+            clearInterval(checkInterval);
+          }
+        }, 200);
+        
+        // Fallback через 3 секунды - загружаем из единой базы master-db.json
+        setTimeout(() => {
+          if (isMounted && !dbReady) {
+            console.warn('⚠️ База не загружена, используем fallback');
+            fetch('/data/master-db.json')
+              .then(r => r.json())
+              .then(db => {
+                if (isMounted && db && Array.isArray(db.devices)) {
+                  setModels(db.devices);
+                  setDbReady(true);
+                  setLoadingModels(false);
+                  console.log(`✅ Fallback: загружено ${db.devices.length} моделей из master-db.json`);
+                }
+              })
+              .catch(e => {
+                console.error('❌ Fallback ошибка:', e);
+                if (isMounted) {
+                  setModels([]);
+                  setDbReady(true);
+                  setLoadingModels(false);
+                }
+              });
+          }
+        }, 3000);
       };
       
       loadModels();
       
       return () => {
         isMounted = false;
+        if (checkInterval) clearInterval(checkInterval);
       };
-    }, []);
+    }, [dbReady]);
     
+    // Полный список брендов для румынского рынка (сортировка по популярности)
+    // SVG иконки брендов в /static/brands/
     const brands = [
-      { id: 'apple', name: 'Apple', icon: 'fab fa-apple', color: 'from-gray-600 to-gray-800', gradient: 'from-blue-500/20 to-purple-500/20' },
-      { id: 'samsung', name: 'Samsung', icon: 'fas fa-mobile-screen', color: 'from-blue-500 to-blue-700', gradient: 'from-blue-500/20 to-cyan-500/20' },
-      { id: 'xiaomi', name: 'Xiaomi', icon: 'fas fa-circle-notch', color: 'from-orange-500 to-orange-700', gradient: 'from-orange-500/20 to-red-500/20' },
-      { id: 'huawei', name: 'Huawei', icon: 'fas fa-square-full', color: 'from-red-500 to-red-700', gradient: 'from-red-500/20 to-pink-500/20' },
-      { id: 'other', name: 'Alte mărci', icon: 'fas fa-sitemap', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
+      { id: 'apple', name: 'Apple', svg: '/static/brands/apple.svg', color: 'from-gray-600 to-gray-800', gradient: 'from-blue-500/20 to-purple-500/20' },
+      { id: 'samsung', name: 'Samsung', svg: '/static/brands/samsung.svg', color: 'from-blue-500 to-blue-700', gradient: 'from-blue-500/20 to-cyan-500/20' },
+      { id: 'xiaomi', name: 'Xiaomi', svg: '/static/brands/xiaomi.svg', color: 'from-orange-500 to-orange-700', gradient: 'from-orange-500/20 to-red-500/20' },
+      { id: 'huawei', name: 'Huawei', svg: '/static/brands/huawei.svg', color: 'from-red-500 to-red-700', gradient: 'from-red-500/20 to-pink-500/20' },
+      { id: 'oneplus', name: 'OnePlus', svg: '/static/brands/oneplus.svg', color: 'from-red-600 to-red-800', gradient: 'from-red-500/20 to-orange-500/20' },
+      { id: 'google', name: 'Google Pixel', svg: '/static/brands/google.svg', color: 'from-green-500 to-blue-500', gradient: 'from-green-500/20 to-blue-500/20' },
+      { id: 'oppo', name: 'Oppo', svg: '/static/brands/oppo.svg', color: 'from-green-600 to-green-800', gradient: 'from-green-500/20 to-teal-500/20' },
+      { id: 'realme', name: 'Realme', svg: '/static/brands/realme.svg', color: 'from-yellow-500 to-yellow-700', gradient: 'from-yellow-500/20 to-orange-500/20' },
+      { id: 'motorola', name: 'Motorola', svg: '/static/brands/motorola.svg', color: 'from-blue-600 to-blue-800', gradient: 'from-blue-500/20 to-indigo-500/20' },
+      { id: 'vivo', name: 'Vivo', svg: '/static/brands/vivo.svg', color: 'from-blue-400 to-blue-600', gradient: 'from-blue-400/20 to-cyan-500/20' },
+      { id: 'nokia', name: 'Nokia', svg: '/static/brands/nokia.svg', color: 'from-blue-700 to-blue-900', gradient: 'from-blue-600/20 to-indigo-600/20' },
+      { id: 'sony', name: 'Sony', svg: '/static/brands/sony.svg', color: 'from-gray-700 to-gray-900', gradient: 'from-gray-600/20 to-black/20' },
+      { id: 'asus', name: 'Asus', svg: '/static/brands/asus.svg', color: 'from-purple-600 to-purple-800', gradient: 'from-purple-500/20 to-pink-500/20' },
+      { id: 'nothing', name: 'Nothing', svg: '/static/brands/nothing.svg', color: 'from-gray-800 to-black', gradient: 'from-gray-700/20 to-black/20' },
+      { id: 'other', name: 'Alte mărci', svg: '/static/brands/other.svg', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
     ];
     
     const deviceTypes = [
@@ -232,11 +343,10 @@
     
     const steps = [
       { id: 1, name: 'Marca', icon: 'fa-mobile-screen' },
-      { id: 2, name: 'Tip', icon: 'fa-device' },
+      { id: 2, name: 'Tip', icon: 'fa-tablet-screen-button' },
       { id: 3, name: 'Model', icon: 'fa-list' },
       { id: 4, name: 'Problemă', icon: 'fa-wrench' },
-      { id: 5, name: 'Date', icon: 'fa-user' },
-      { id: 6, name: 'Rezultat', icon: 'fa-check' }
+      { id: 6, name: 'Preț', icon: 'fa-calculator' }
     ];
     
     const handleNext = () => {
@@ -254,9 +364,9 @@
     };
     
     const calculatePrice = async () => {
-      if (!data.deviceType || !data.issue) {
+      if (!data.deviceType || !data.issues || data.issues.length === 0) {
         if (window.showToast) {
-          window.showToast('Selectați toate câmpurile necesare', 'warning', 3000);
+          window.showToast('Selectați cel puțin o problemă', 'warning', 3000);
         }
         return;
       }
@@ -266,255 +376,119 @@
       setTimeout(async () => {
         try {
           const deviceType = data.deviceType;
-          const issue = data.issue;
+          const issues = data.issues;  // Массив выбранных проблем
           const model = data.model;
           
-          console.log(`🔍 Расчет цены: deviceType=${deviceType}, issue=${issue?.id || issue?.name}, model=${model?.name || 'не выбрана'}`);
+          console.log(`🔍 Расчет цены: deviceType=${deviceType}, issues=${issues.map(i => i.id).join(', ')}, model=${model?.name || 'не выбрана'}`);
           
-          let priceData = null;
-          
-          // Приоритет 1: Цена из базы данных NEXXDatabase
-          if (model && window.NEXXDatabase && typeof window.NEXXDatabase.getDevicePrice === 'function') {
-            try {
-              const deviceName = typeof model === 'string' ? model : (model.name || '');
-              const dbPrice = window.NEXXDatabase.getDevicePrice(deviceName, issue.id);
-              if (dbPrice && typeof dbPrice === 'number' && dbPrice > 0) {
-                priceData = {
-                  min: Math.round(dbPrice * 0.8),
-                  max: Math.round(dbPrice * 1.2),
-                  avg: dbPrice
-                };
-                console.log(`✅ Цена из базы данных: ${dbPrice} lei для ${deviceName} - ${issue.id}`);
-              }
-            } catch (dbError) {
-              console.warn('⚠️ Ошибка получения цены из БД:', dbError);
-            }
-          }
-          
-          // Приоритет 2: Цена из official_service_prices модели
-          if (!priceData && model && model.official_service_prices) {
-            const prices = model.official_service_prices;
-            const issueKey = issue.id;
+          // Функция расчёта цены для одного дефекта
+          const calculateSingleIssuePrice = async (issue) => {
+            let priceData = null;
             
-            // Пробуем разные варианты ключей
-            let price = prices[issueKey];
-            if (!price) {
-              // Маппинг ключей проблем на ключи цен
-              const keyMap = {
-                'screen': 'display',
-                'battery': 'battery',
-                'charging': 'charging_port',
-                'camera': 'rear_camera',
-                'motherboard': 'logic_board',
-                'keyboard': 'keyboard',
-                'diagnostic': 'diagnostic'
-              };
-              const mappedKey = keyMap[issueKey];
-              if (mappedKey && prices[mappedKey]) {
-                price = prices[mappedKey];
-              }
-            }
-            
-            if (price && typeof price === 'number' && price > 0) {
-              priceData = {
-                min: Math.round(price * 0.8),
-                max: Math.round(price * 1.2),
-                avg: price
-              };
-              console.log(`✅ Цена из модели: ${price} lei для ${model.name} - ${issueKey}`);
-            }
-          }
-          
-          // Приоритет 3: Цена из masterDb по категории
-          if (!priceData && window.NEXXDatabase && window.NEXXDatabase.masterDb) {
-            try {
-              const category = model?.category?.toLowerCase() || deviceType;
-              const categoryMap = {
-                'phone': 'phone',
-                'tablet': 'tablet',
-                'laptop': 'laptop',
-                'iphone': 'phone',
-                'ipad': 'tablet',
-                'macbook': 'laptop'
-              };
-              const mappedCategory = categoryMap[category] || deviceType;
-              
-              const commonPrice = window.NEXXDatabase.getPrice(
-                data.brand?.id || 'apple',
-                issue.price || issue.id
-              );
-              
-              if (commonPrice && typeof commonPrice === 'object') {
-                const categoryPrice = commonPrice[mappedCategory] || commonPrice.avg || commonPrice;
-                if (categoryPrice && typeof categoryPrice === 'number' && categoryPrice > 0) {
-                  priceData = {
-                    min: Math.round(categoryPrice * 0.8),
-                    max: Math.round(categoryPrice * 1.2),
-                    avg: categoryPrice
-                  };
-                  console.log(`✅ Цена из общих цен: ${categoryPrice} lei для ${mappedCategory} - ${issue.id}`);
+            // Приоритет 1: Цена из базы данных NEXXDatabase
+            if (model && window.NEXXDatabase && typeof window.NEXXDatabase.getDevicePrice === 'function') {
+              try {
+                const deviceName = typeof model === 'string' ? model : (model.name || '');
+                const dbPrice = window.NEXXDatabase.getDevicePrice(deviceName, issue.id);
+                if (dbPrice && typeof dbPrice === 'number' && dbPrice > 0) {
+                  priceData = { min: Math.round(dbPrice * 0.8), max: Math.round(dbPrice * 1.2), avg: dbPrice };
                 }
+              } catch (dbError) {
+                console.warn('⚠️ Ошибка получения цены из БД:', dbError);
               }
-            } catch (e) {
-              console.warn('⚠️ Ошибка получения общей цены:', e);
             }
-          }
-          
-          // Приоритет 4: Онлайн-запрос цены через API (параллельно, не блокирует)
-          // Запрос выполняется асинхронно с таймаутом
-          if (!priceData) {
-            try {
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 2000); // Таймаут 2 секунды
-              
-              const apiResponse = await Promise.race([
-                fetch('/api/price-estimate', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    brand: data.brand?.id || 'apple',
-                    deviceType: deviceType,
-                    model: model?.name || null,
-                    issue: issue.id
-                  }),
-                  signal: controller.signal
-                }),
-                new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 2000))
-              ]);
-              
-              clearTimeout(timeoutId);
-              
-              if (apiResponse && apiResponse.ok) {
-                const apiData = await apiResponse.json();
-                if (apiData.success && apiData.price && apiData.price.avg > 0) {
-                  priceData = apiData.price;
-                  console.log(`✅ Цена из онлайн API: ${apiData.price.avg} lei (источник: ${apiData.source})`);
+            
+            // Приоритет 2: Цена из official_service_prices модели (Apple цены в USD)
+            // ВАЖНО: official_service_prices это цены Apple в USD - конвертируем в RON
+            if (!priceData && model && model.official_service_prices) {
+              const prices = model.official_service_prices;
+              const keyMap = { 'screen': 'display', 'battery': 'battery', 'charging': 'charging_port', 'camera': 'rear_camera', 'motherboard': 'logic_board', 'keyboard': 'keyboard' };
+              let priceUSD = prices[issue.id] || prices[keyMap[issue.id]];
+              if (priceUSD && typeof priceUSD === 'number' && priceUSD > 0) {
+                // Конвертация USD в RON (курс ~4.5 RON за 1 USD)
+                const USD_TO_RON = 4.5;
+                const priceRON = Math.round(priceUSD * USD_TO_RON);
+                priceData = { min: Math.round(priceRON * 0.8), max: Math.round(priceRON * 1.2), avg: priceRON };
+                console.log(`💰 Конвертация: ${priceUSD} USD → ${priceRON} RON`);
+              }
+            }
+            
+            // Приоритет 3: Расчёт на основе базовых цен
+            if (!priceData) {
+              let basePrice = REPAIR_PRICES[issue.id]?.[deviceType] || REPAIR_PRICES[issue.price]?.[deviceType];
+              if (basePrice && basePrice.avg) {
+                let calculatedPrice = basePrice.avg;
+                const complexityFactor = COMPLEXITY_FACTORS[issue.id] || COMPLEXITY_FACTORS[issue.price] || 1.0;
+                calculatedPrice *= complexityFactor;
+                
+                if (model && model.year) {
+                  const age = new Date().getFullYear() - model.year;
+                  let ageFactor = age <= 1 ? AGE_FACTORS.current : age <= 3 ? AGE_FACTORS.recent : age <= 6 ? AGE_FACTORS.old : AGE_FACTORS.veryOld;
+                  calculatedPrice *= ageFactor;
                 }
-              }
-            } catch (apiError) {
-              // Тихая ошибка - не критично, используем локальный расчет
-              if (apiError.name !== 'AbortError' && apiError.message !== 'Timeout') {
-                console.debug('Онлайн-запрос цены недоступен, используем локальный расчет');
+                
+                const brandFactor = BRAND_FACTORS[data.brand?.id] || BRAND_FACTORS.other;
+                calculatedPrice *= brandFactor;
+                calculatedPrice = Math.max(30, Math.round(calculatedPrice / 10) * 10);
+                
+                priceData = { min: Math.max(30, Math.round(calculatedPrice * 0.75)), max: Math.round(calculatedPrice * 1.35), avg: calculatedPrice };
               }
             }
-          }
-          
-          // Приоритет 5: Расчет на основе базовых цен с коэффициентами
-          if (!priceData) {
-            console.log(`📊 Пробуем расчет на основе базовых цен: issue.id=${issue.id}, issue.price=${issue.price}, deviceType=${deviceType}`);
             
-            // Пробуем получить базовую цену по issue.id
-            let basePrice = REPAIR_PRICES[issue.id]?.[deviceType];
-            
-            console.log(`🔍 Поиск базовой цены: REPAIR_PRICES[${issue.id}]?.[${deviceType}] =`, basePrice);
-            
-            // Если не нашли по issue.id, пробуем по issue.price
-            if (!basePrice && issue.price) {
-              basePrice = REPAIR_PRICES[issue.price]?.[deviceType];
-              console.log(`🔍 Поиск по issue.price: REPAIR_PRICES[${issue.price}]?.[${deviceType}] =`, basePrice);
-            }
-            
-            // Если все еще нет, пробуем найти любую цену для этого типа устройства
-            if (!basePrice) {
-              console.log(`⚠️ Не найдена цена для ${issue.id}/${issue.price} и ${deviceType}, ищем альтернативу...`);
-              // Ищем первую доступную цену для этого типа устройства
+            // Fallback: минимальные цены
+            if (!priceData) {
               for (const issueKey in REPAIR_PRICES) {
                 const priceForDevice = REPAIR_PRICES[issueKey]?.[deviceType];
-                if (priceForDevice && priceForDevice.avg) {
-                  basePrice = priceForDevice;
-                  console.log(`⚠️ Используем базовую цену для ${issueKey} вместо ${issue.id}`);
+                if (priceForDevice) {
+                  priceData = { min: priceForDevice.min || 50, max: priceForDevice.max || 200, avg: priceForDevice.avg || 100 };
                   break;
                 }
               }
             }
             
-            if (basePrice && basePrice.avg) {
-              let calculatedPrice = basePrice.avg;
-              console.log(`💰 Базовая цена: ${calculatedPrice} lei`);
-              
-              // Применяем коэффициент сложности
-              const complexityFactor = COMPLEXITY_FACTORS[issue.id] || COMPLEXITY_FACTORS[issue.price] || 1.0;
-              calculatedPrice *= complexityFactor;
-              console.log(`📈 После коэффициента сложности (${complexityFactor}): ${calculatedPrice} lei`);
-              
-              // Применяем коэффициент возраста модели (если модель выбрана)
-              if (model && model.year) {
-                const modelYear = model.year;
-                const currentYear = new Date().getFullYear();
-                const age = currentYear - modelYear;
-                let ageFactor = AGE_FACTORS.current;
-                if (age <= 1) ageFactor = AGE_FACTORS.current;
-                else if (age <= 3) ageFactor = AGE_FACTORS.recent;
-                else if (age <= 6) ageFactor = AGE_FACTORS.old;
-                else ageFactor = AGE_FACTORS.veryOld;
-                calculatedPrice *= ageFactor;
-                console.log(`📅 После коэффициента возраста (${ageFactor}, возраст: ${age} лет): ${calculatedPrice} lei`);
-              }
-              
-              // Применяем коэффициент бренда
-              const brandId = data.brand?.id || 'other';
-              const brandFactor = BRAND_FACTORS[brandId] || BRAND_FACTORS.other;
-              calculatedPrice *= brandFactor;
-              console.log(`🏷️ После коэффициента бренда (${brandFactor}): ${calculatedPrice} lei`);
-              
-              // Округляем до ближайших 10
-              calculatedPrice = Math.round(calculatedPrice / 10) * 10;
-              
-              // Минимальная цена не должна быть меньше 30
-              if (calculatedPrice < 30) calculatedPrice = 30;
-              
-              priceData = {
-                min: Math.max(30, Math.round(calculatedPrice * 0.75)),
-                max: Math.round(calculatedPrice * 1.35),
-                avg: calculatedPrice
-              };
-              
-              console.log(`✅ Итоговая расчетная цена: ${priceData.avg} lei (диапазон: ${priceData.min}-${priceData.max}) для ${deviceType} - ${issue.id}`);
-            } else {
-              console.warn(`❌ Не найдена базовая цена для ${issue.id}/${issue.price} и ${deviceType}`);
-            }
-          }
+            return priceData;
+          };
           
-          // Последний fallback: используем минимальные цены из REPAIR_PRICES
-          if (!priceData) {
-            console.log(`🔄 Используем последний fallback для ${deviceType}...`);
-            // Пробуем найти любую цену для этого типа устройства
-            for (const issueKey in REPAIR_PRICES) {
-              const priceForDevice = REPAIR_PRICES[issueKey]?.[deviceType];
-              if (priceForDevice) {
-                priceData = {
-                  min: priceForDevice.min || 50,
-                  max: priceForDevice.max || 200,
-                  avg: priceForDevice.avg || 100
-                };
-                console.log(`⚠️ Используем fallback цену из REPAIR_PRICES для ${issueKey} - ${deviceType}: ${priceData.avg} lei`);
-                break;
-              }
-            }
-          }
+          // Расчёт цен для всех выбранных дефектов
+          const allPrices = await Promise.all(issues.map(issue => calculateSingleIssuePrice(issue)));
+          const validPrices = allPrices.filter(p => p && p.avg > 0);
           
-          if (priceData && typeof priceData.min === 'number' && typeof priceData.max === 'number') {
+          if (validPrices.length > 0) {
+            // Суммируем цены всех дефектов со скидкой за комплекс
+            let totalMin = 0, totalMax = 0, totalAvg = 0;
+            validPrices.forEach((p, i) => {
+              // Скидка 10% на каждый последующий дефект
+              const discount = i === 0 ? 1 : 0.9;
+              totalMin += Math.round(p.min * discount);
+              totalMax += Math.round(p.max * discount);
+              totalAvg += Math.round(p.avg * discount);
+            });
+            
+            // Определяем время ремонта
             let time = '30-60 min';
-            if (issue.id === 'board' || issue.id === 'water') {
+            const hasComplexIssue = issues.some(i => i.id === 'motherboard' || i.id === 'board');
+            if (hasComplexIssue) {
               time = deviceType === 'phone' || deviceType === 'tablet' ? '2-4 ore' : '4-8 ore';
+            } else if (issues.length > 2) {
+              time = '1-2 ore';
             } else if (deviceType === 'laptop') {
               time = '1-2 ore';
-            } else if (deviceType === 'tablet') {
-              time = '45-90 min';
             }
             
+            const issueNames = issues.map(i => i.name).join(', ');
             const resultData = {
-              min: priceData.min,
-              max: priceData.max,
-              avg: priceData.avg,
-              diagnostic: `Posibilă cauză: ${issue.name}`,
+              min: totalMin,
+              max: totalMax,
+              avg: totalAvg,
+              diagnostic: `Probleme selectate: ${issueNames}`,
               time: time,
-              model: model?.name || null
+              model: model?.name || null,
+              issues: issues.map(i => i.name)  // Список выбранных проблем
             };
             
+            console.log(`✅ Итого за ${issues.length} дефект(ов): ${totalAvg} lei (${totalMin}-${totalMax})`);
             setResult(resultData);
-            // Переходим на шаг сбора контактных данных, а не сразу показываем результат
-            setStep(5);
+            setStep(6);
           } else {
             if (window.showToast) {
               window.showToast('Nu s-a putut calcula prețul. Încercați din nou.', 'error', 4000);
@@ -574,213 +548,174 @@
       return false;
     };
     
-    const getFilteredModels = React.useCallback(() => {
-      if (!data.brand || !data.deviceType) return [];
-      
-      const n_brand = data.brand.id.toLowerCase();
-      const deviceType = data.deviceType;
-      
-      // Используем базу данных для фильтрации, если доступна
-      let filtered = [];
-      
-      if (window.NEXXDatabase && window.NEXXDatabase.devices && Array.isArray(window.NEXXDatabase.devices)) {
-        // Фильтруем модели из базы данных
-        filtered = window.NEXXDatabase.devices.filter(m => {
-          if (!m || !m.name) return false;
-          const n = m.name.toLowerCase();
-          const category = (m.category || '').toLowerCase();
-          
-          // Фильтр по бренду
-          let brandMatch = false;
-          switch (n_brand) {
-            case 'apple':
-              brandMatch = n.includes('iphone') || n.includes('ipad') || n.includes('macbook') || n.includes('imac') || n.includes('mac') || n.includes('watch') ||
-                          category.includes('iphone') || category.includes('ipad') || category.includes('macbook') || category.includes('watch');
-              break;
-            case 'samsung':
-              brandMatch = n.includes('samsung') || n.includes('galaxy') || category.includes('samsung') || category.includes('galaxy');
-              break;
-            case 'xiaomi':
-              brandMatch = n.includes('xiaomi') || n.includes('redmi') || n.includes('poco') || category.includes('xiaomi');
-              break;
-            case 'huawei':
-              brandMatch = n.includes('huawei') || n.includes('honor') || category.includes('huawei') || category.includes('honor');
-              break;
-            default:
-              brandMatch = true;
+    // Получаем доступные типы устройств для выбранного бренда
+    const getAvailableDeviceTypes = React.useCallback(() => {
+      try {
+        if (!data.brand) return deviceTypes;
+        
+        const selectedBrand = safeString(safeGet(data, 'brand.id', '')).toLowerCase();
+        if (!selectedBrand) return deviceTypes;
+        
+        const devices = safeArray(window.NEXXDatabase?.devices || models);
+        
+        if (devices.length === 0) {
+          return deviceTypes; // Если база пуста, показываем все типы
+        }
+        
+        // Маппинг бренда
+        const brandMap = {
+          'apple': 'Apple', 'samsung': 'Samsung', 'xiaomi': 'Xiaomi',
+          'huawei': 'Huawei', 'oneplus': 'OnePlus', 'google': 'Google',
+          'oppo': 'Oppo', 'realme': 'Realme', 'motorola': 'Motorola',
+          'vivo': 'Vivo', 'nokia': 'Nokia', 'sony': 'Sony',
+          'asus': 'Asus', 'nothing': 'Nothing', 'other': 'Other'
+        };
+        const targetBrand = brandMap[selectedBrand] || selectedBrand;
+        
+        // Находим какие типы устройств есть у этого бренда
+        const availableTypes = new Set();
+        devices.forEach(device => {
+          if (!device) return;
+          const deviceBrand = safeString(device.brand);
+          if (deviceBrand.toLowerCase() === targetBrand.toLowerCase()) {
+            availableTypes.add(device.device_type);
           }
-          
-          if (!brandMatch) return false;
-          
-          // Фильтр по типу устройства
-          if (deviceType === 'phone') {
-            // Для телефонов: iPhone, Samsung Galaxy, Xiaomi, Huawei и другие смартфоны
-            if (n_brand === 'apple') {
-              return (n.includes('iphone') || category.includes('iphone')) && 
-                     !n.includes('ipad') && !n.includes('macbook') && !n.includes('tablet') && !n.includes('watch');
-            } else if (n_brand === 'samsung') {
-              // Samsung телефоны: все Galaxy модели кроме Tab и Watch
-              // Проверяем категорию "Samsung" ИЛИ название содержит "galaxy" (но не tab)
-              const isSamsung = category === 'samsung' || n.includes('samsung') || n.includes('galaxy');
-              const isNotTablet = !n.includes('tab') && !n.includes('tablet');
-              const isNotWatch = !n.includes('watch');
-              return isSamsung && isNotTablet && isNotWatch;
-            } else if (n_brand === 'xiaomi') {
-              // Xiaomi телефоны: все модели кроме Pad, Laptop и Watch
-              const isXiaomi = category === 'xiaomi' || n.includes('xiaomi') || n.includes('redmi') || n.includes('poco');
-              const isNotTablet = !n.includes('pad') && !n.includes('tablet');
-              const isNotLaptop = !n.includes('laptop') && !n.includes('notebook') && !category.includes('laptop');
-              const isNotWatch = !n.includes('watch') && !category.includes('watch');
-              return isXiaomi && isNotTablet && isNotLaptop && isNotWatch;
-            } else {
-              // Другие бренды - все что не планшет/ноутбук/часы
-              return !n.includes('tablet') && !n.includes('pad') && !n.includes('macbook') && 
-                     !n.includes('laptop') && !n.includes('notebook') && !n.includes('watch') &&
-                     !category.includes('tablet') && !category.includes('laptop') && !category.includes('watch');
-            }
-          } else if (deviceType === 'tablet') {
-            // Для планшетов: iPad, Galaxy Tab, Xiaomi Pad и исключаем телефоны/ноутбуки
-            const isTablet = n.includes('ipad') || n.includes('tablet') || n.includes('tab') || n.includes('pad') ||
-                            category.includes('ipad') || category.includes('tablet');
-            
-            // Исключаем телефоны, ноутбуки и часы
-            const isNotPhone = !n.includes('iphone') && !n.includes('galaxy s') && 
-                              !category.includes('iphone') && !category.includes('phone');
-            const isNotLaptop = !n.includes('macbook') && !n.includes('laptop') && !n.includes('notebook') &&
-                               !category.includes('macbook') && !category.includes('laptop');
-            const isNotWatch = !n.includes('watch') && !category.includes('watch');
-            
-            return isTablet && isNotPhone && isNotLaptop && isNotWatch;
-          } else if (deviceType === 'laptop') {
-            // Для ноутбуков: MacBook, Windows ноутбуки, Xiaomi ноутбуки, и исключаем телефоны/планшеты
-            const isLaptop = n.includes('macbook') || n.includes('mac') || n.includes('laptop') || 
-                            n.includes('xps') || n.includes('inspiron') || n.includes('latitude') ||
-                            n.includes('pavilion') || n.includes('spectre') || n.includes('elitebook') ||
-                            n.includes('thinkpad') || n.includes('ideapad') || n.includes('legion') ||
-                            n.includes('zenbook') || n.includes('vivobook') || n.includes('rog') ||
-                            n.includes('aspire') || n.includes('swift') || n.includes('predator') ||
-                            n.includes('surface') || n.includes('blade') ||
-                            n.includes('mi book') || n.includes('redmibook') || n.includes('mi notebook') ||
-                            category.includes('macbook') || category.includes('laptop') || category.includes('notebook');
-            
-            // Исключаем телефоны, планшеты и часы
-            // Для Xiaomi: исключаем телефоны (Xiaomi, Redmi, Poco), но включаем ноутбуки (Mi Book, RedmiBook)
-            const isNotPhone = !(n.includes('xiaomi') && !n.includes('book') && !n.includes('notebook')) &&
-                               !(n.includes('redmi') && !n.includes('book') && !n.includes('notebook')) &&
-                               !(n.includes('poco') && !n.includes('book')) &&
-                               !n.includes('iphone') && !(n.includes('galaxy') && !n.includes('tab')) &&
-                               !n.includes('huawei') && !category.includes('iphone') && !category.includes('phone');
-            const isNotTablet = !n.includes('ipad') && !n.includes('tablet') && !n.includes('tab') && 
-                               !n.includes('pad') && !category.includes('ipad') && !category.includes('tablet');
-            const isNotWatch = !n.includes('watch') && !category.includes('watch');
-            
-            return isLaptop && isNotPhone && isNotTablet && isNotWatch;
-          } else if (deviceType === 'watch') {
-            // Для watch: фильтруем по бренду
-            if (n_brand === 'apple') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('apple') || n.includes('watch') || category.includes('watch'));
-            } else if (n_brand === 'samsung') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('samsung') || n.includes('galaxy') || category.includes('samsung'));
-            } else if (n_brand === 'xiaomi') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('xiaomi') || category.includes('xiaomi'));
-            } else if (n_brand === 'huawei') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('huawei') || n.includes('honor') || category.includes('huawei'));
-            } else {
-              // Другие бренды - все watch
-              return n.includes('watch') || category.includes('watch');
-            }
-          }
-          
-          return true;
         });
-      } else if (Array.isArray(models) && models.length > 0) {
-        // Fallback: фильтруем из локального состояния
-        filtered = models.filter(m => {
+        
+        // Фильтруем типы устройств
+        const filtered = deviceTypes.filter(type => availableTypes.has(type.id));
+        
+        console.log(`🔍 Типы для бренда ${targetBrand}:`, Array.from(availableTypes), '→ показываем:', filtered.map(t => t.id));
+        
+        return filtered.length > 0 ? filtered : deviceTypes;
+      } catch (error) {
+        console.error('❌ Ошибка получения типов устройств:', error);
+        return deviceTypes;
+      }
+    }, [data.brand, models, dbReady]);
+    
+    // Упрощенная и надёжная фильтрация моделей через поля brand и device_type
+    const getFilteredModels = React.useCallback(() => {
+      try {
+        if (!data.brand || !data.deviceType) return [];
+        
+        const selectedBrand = safeString(safeGet(data, 'brand.id', '')).toLowerCase();
+        const selectedType = safeString(data.deviceType);
+        
+        if (!selectedBrand || !selectedType) return [];
+      
+      let filtered = [];
+      const devices = window.NEXXDatabase?.devices || models || [];
+      
+      if (!Array.isArray(devices) || devices.length === 0) {
+        console.warn('⚠️ База данных пуста или не загружена');
+        return [];
+      }
+      
+      // Маппинг ID бренда на название в базе
+      const brandMap = {
+        'apple': 'Apple',
+        'samsung': 'Samsung',
+        'xiaomi': 'Xiaomi',
+        'huawei': 'Huawei',
+        'oneplus': 'OnePlus',
+        'google': 'Google',
+        'oppo': 'Oppo',
+        'realme': 'Realme',
+        'motorola': 'Motorola',
+        'vivo': 'Vivo',
+        'nokia': 'Nokia',
+        'sony': 'Sony',
+        'asus': 'Asus',
+        'nothing': 'Nothing',
+        'other': 'Other'
+      };
+      
+      const targetBrand = brandMap[selectedBrand] || selectedBrand;
+      
+      filtered = devices.filter(m => {
+        if (!m || !m.name) return false;
+        
+        // Используем поле brand если оно есть
+        const deviceBrand = m.brand || '';
+        const deviceType = m.device_type || '';
+        
+        // Фильтр по бренду
+        let brandMatch = false;
+        if (selectedBrand === 'other') {
+          // Для "Alte mărci" показываем устройства с брендом "Other" или без бренда
+          brandMatch = deviceBrand === 'Other' || !deviceBrand;
+        } else {
+          // Точное совпадение по бренду
+          brandMatch = deviceBrand.toLowerCase() === targetBrand.toLowerCase();
+        }
+        
+        if (!brandMatch) return false;
+        
+        // Фильтр по типу устройства
+        const typeMatch = deviceType === selectedType;
+        
+        return typeMatch;
+      });
+      
+      // Если новые поля не работают, используем fallback логику
+      if (filtered.length === 0) {
+        console.log(`⚠️ Fallback фильтрация для ${selectedBrand}/${selectedType}`);
+        filtered = devices.filter(m => {
           if (!m || !m.name) return false;
           const n = m.name.toLowerCase();
           const category = (m.category || '').toLowerCase();
           
-          // Фильтр по бренду
+          // Fallback проверка бренда по имени
           let brandMatch = false;
-          switch (n_brand) {
-            case 'apple':
-              brandMatch = n.includes('iphone') || n.includes('ipad') || n.includes('macbook') || n.includes('imac') || n.includes('mac') || 
-                          category.includes('iphone') || category.includes('ipad');
-              break;
-            case 'samsung':
-              brandMatch = n.includes('samsung') || n.includes('galaxy') || category.includes('samsung') || category.includes('watch');
-              break;
-            case 'xiaomi':
-              brandMatch = n.includes('xiaomi') || n.includes('redmi') || n.includes('poco') || category.includes('xiaomi');
-              break;
-            case 'huawei':
-              brandMatch = n.includes('huawei') || n.includes('honor') || category.includes('huawei');
-              break;
-            default:
-              brandMatch = true;
+          if (selectedBrand === 'apple') {
+            brandMatch = n.includes('iphone') || n.includes('ipad') || n.includes('macbook') || 
+                        category === 'iphone' || category === 'ipad' || category === 'macbook' || category === 'watch';
+          } else if (selectedBrand === 'samsung') {
+            brandMatch = n.includes('samsung') || n.includes('galaxy') || category === 'samsung';
+          } else if (selectedBrand === 'xiaomi') {
+            brandMatch = n.includes('xiaomi') || n.includes('redmi') || n.includes('poco') || category === 'xiaomi';
+          } else if (selectedBrand === 'huawei') {
+            brandMatch = n.includes('huawei') || n.includes('honor') || category === 'huawei';
+          } else if (selectedBrand === 'oneplus') {
+            brandMatch = n.includes('oneplus') || category === 'oneplus';
+          } else if (selectedBrand === 'google') {
+            brandMatch = n.includes('pixel') || n.includes('google') || category === 'google';
+          } else if (selectedBrand === 'oppo') {
+            brandMatch = n.includes('oppo') || category === 'oppo';
+          } else if (selectedBrand === 'realme') {
+            brandMatch = n.includes('realme') || category === 'realme';
+          } else if (selectedBrand === 'motorola') {
+            brandMatch = n.includes('motorola') || n.includes('moto ') || n.includes('razr') || category === 'motorola';
+          } else if (selectedBrand === 'vivo') {
+            brandMatch = n.includes('vivo') || category === 'vivo';
+          } else if (selectedBrand === 'nokia') {
+            brandMatch = n.includes('nokia') || category === 'nokia';
+          } else if (selectedBrand === 'sony') {
+            brandMatch = n.includes('sony') || n.includes('xperia') || category === 'sony';
+          } else if (selectedBrand === 'asus') {
+            brandMatch = n.includes('asus') || n.includes('rog phone') || n.includes('zenfone') || category === 'asus';
+          } else if (selectedBrand === 'nothing') {
+            brandMatch = n.includes('nothing') || category === 'nothing';
+          } else if (selectedBrand === 'other') {
+            brandMatch = true; // Показываем все для other
           }
           
           if (!brandMatch) return false;
           
-          // Фильтр по типу устройства
-          if (deviceType === 'phone') {
-            // Телефоны: iPhone, Galaxy S, Xiaomi, Huawei и другие смартфоны (но НЕ ноутбуки)
-            const isPhone = (n.includes('iphone') || category.includes('iphone') ||
-                            (n.includes('galaxy') && !n.includes('tab') && !n.includes('watch') && !n.includes('book')) ||
-                            ((n.includes('xiaomi') || n.includes('redmi') || n.includes('poco')) && 
-                             !n.includes('book') && !n.includes('notebook')) ||
-                            (n.includes('huawei') || n.includes('honor'))) &&
-                            !n.includes('ipad') && !n.includes('macbook') && !n.includes('tablet') && 
-                            !n.includes('laptop') && !n.includes('notebook') && !n.includes('watch') &&
-                            !n.includes('pad') && !n.includes('tab');
-            return isPhone;
-          } else if (deviceType === 'tablet') {
-            // Планшеты: iPad, Galaxy Tab, Xiaomi Pad
-            const isTablet = (n.includes('ipad') || n.includes('tablet') || n.includes('tab') || n.includes('pad') ||
-                            category.includes('ipad') || category.includes('tablet')) &&
-                            !n.includes('iphone') && !n.includes('macbook') && !n.includes('laptop') &&
-                            !n.includes('notebook') && !n.includes('watch');
-            return isTablet;
-          } else if (deviceType === 'laptop') {
-            // Ноутбуки: MacBook, Windows ноутбуки, Xiaomi ноутбуки (Dell, HP, Lenovo, Asus, Acer и т.д.)
-            const isLaptop = (n.includes('macbook') || n.includes('mac') || n.includes('laptop') ||
-                            n.includes('xps') || n.includes('inspiron') || n.includes('latitude') ||
-                            n.includes('pavilion') || n.includes('spectre') || n.includes('elitebook') ||
-                            n.includes('thinkpad') || n.includes('ideapad') || n.includes('legion') ||
-                            n.includes('zenbook') || n.includes('vivobook') || n.includes('rog') ||
-                            n.includes('aspire') || n.includes('swift') || n.includes('predator') ||
-                            n.includes('surface') || n.includes('blade') ||
-                            n.includes('mi book') || n.includes('redmibook') || n.includes('mi notebook') ||
-                            category.includes('macbook') || category.includes('laptop') || category.includes('notebook')) &&
-                            !n.includes('iphone') && !(n.includes('galaxy') && !n.includes('tab')) &&
-                            !(n.includes('xiaomi') && !n.includes('book') && !n.includes('notebook')) &&
-                            !(n.includes('redmi') && !n.includes('book') && !n.includes('notebook')) &&
-                            !(n.includes('poco') && !n.includes('book')) &&
-                            !n.includes('ipad') && !n.includes('tablet') && !n.includes('tab') && 
-                            !n.includes('pad') && !n.includes('watch');
-            return isLaptop;
-          } else if (deviceType === 'watch') {
-            // Для watch: фильтруем по бренду (fallback логика)
-            if (n_brand === 'apple') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('apple') || n.includes('watch') || category.includes('watch'));
-            } else if (n_brand === 'samsung') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('samsung') || n.includes('galaxy') || category.includes('samsung'));
-            } else if (n_brand === 'xiaomi') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('xiaomi') || category.includes('xiaomi'));
-            } else if (n_brand === 'huawei') {
-              return (n.includes('watch') || category.includes('watch')) && 
-                     (n.includes('huawei') || n.includes('honor') || category.includes('huawei'));
-            } else {
-              // Другие бренды - все watch
-              return n.includes('watch') || category.includes('watch');
-            }
+          // Fallback проверка типа устройства
+          if (selectedType === 'phone') {
+            return !n.includes('ipad') && !n.includes('macbook') && !n.includes('tab') && 
+                   !n.includes('laptop') && !n.includes('watch') && !n.includes('pad') &&
+                   category !== 'ipad' && category !== 'macbook' && category !== 'watch';
+          } else if (selectedType === 'tablet') {
+            return n.includes('ipad') || n.includes('tab') || n.includes('pad') || 
+                   category === 'ipad' || category.includes('tablet');
+          } else if (selectedType === 'laptop') {
+            return n.includes('macbook') || n.includes('laptop') || n.includes('book') ||
+                   category === 'macbook' || category.includes('laptop');
+          } else if (selectedType === 'watch') {
+            return n.includes('watch') || category === 'watch' || category.includes('watch');
           }
           
           return true;
@@ -809,25 +744,16 @@
       
       // Логирование для отладки
       if (filtered.length > 0) {
-        console.log(`✅ Фильтрация: бренд=${n_brand}, тип=${deviceType}, найдено=${filtered.length} моделей`);
-        console.log('Примеры:', filtered.slice(0, 3).map(m => `${m.name} (${m.category})`));
+        console.log(`✅ Фильтрация: бренд=${selectedBrand}, тип=${selectedType}, найдено=${filtered.length} моделей`);
       } else {
-        console.warn(`⚠️ Не найдено моделей: бренд=${n_brand}, тип=${deviceType}`);
-        // Показываем все устройства этого бренда для отладки
-        if (window.NEXXDatabase && window.NEXXDatabase.devices) {
-          const allBrand = window.NEXXDatabase.devices.filter(m => {
-            const n = (m.name || '').toLowerCase();
-            const cat = (m.category || '').toLowerCase();
-            if (n_brand === 'samsung') return n.includes('samsung') || n.includes('galaxy') || cat === 'samsung';
-            if (n_brand === 'xiaomi') return n.includes('xiaomi') || n.includes('redmi') || n.includes('poco') || cat === 'xiaomi';
-            return false;
-          });
-          console.log(`Всего устройств бренда ${n_brand}:`, allBrand.length);
-          console.log('Примеры:', allBrand.slice(0, 5).map(m => `${m.name} (${m.category})`));
-        }
+        console.warn(`⚠️ Не найдено моделей: бренд=${selectedBrand}, тип=${selectedType}`);
       }
       
       return filtered;
+      } catch (error) {
+        console.error('❌ Ошибка фильтрации моделей:', error);
+        return [];
+      }
     }, [data.brand, data.deviceType, models, searchQuery]);
     
     const reset = () => {
@@ -839,26 +765,26 @@
       setErrors({});
     };
     
-    return h('div', { id: 'calculator', className: 'max-w-5xl mx-auto' },
-      h('div', { className: 'bg-gradient-to-br from-zinc-900/90 via-zinc-900 to-zinc-950/90 border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl backdrop-blur-sm' },
+    return h('div', { id: 'calculator', className: 'max-w-3xl mx-auto' },
+      h('div', { className: 'bg-gradient-to-br from-zinc-900/90 via-zinc-900 to-zinc-950/90 border border-zinc-800 rounded-2xl p-4 md:p-6 shadow-2xl backdrop-blur-sm' },
         // Modern Header
-        h('div', { className: 'text-center mb-10' },
-          h('div', { className: 'inline-flex items-center gap-3 px-5 py-2.5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-5 backdrop-blur-sm' },
-            h('i', { className: 'fas fa-calculator text-blue-400 text-lg' }),
-            h('span', { className: 'text-sm font-semibold text-zinc-300' }, 
+        h('div', { className: 'text-center mb-4' },
+          h('div', { className: 'inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-3 backdrop-blur-sm' },
+            h('i', { className: 'fas fa-calculator text-blue-400 text-sm' }),
+            h('span', { className: 'text-xs font-semibold text-zinc-300' }, 
               window.i18n?.t('calculator.calculator') || 'Calculator preț'
             )
           ),
-          h('h2', { className: 'text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent mb-4' }, 
+          h('h2', { className: 'text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent mb-2' }, 
             window.i18n?.t('calculator.title') || 'Estimare gratuită online'
           ),
-          h('p', { className: 'text-zinc-400 text-lg' }, 
+          h('p', { className: 'text-zinc-400 text-xs' }, 
             window.i18n?.t('calculator.description') || 'Răspundeți la câteva întrebări pentru a afla prețul aproximativ'
           )
         ),
         
         // Modern Steps Indicator
-        step < 6 && h('div', { className: 'mb-10' },
+        step < 6 && h('div', { className: 'mb-4' },
           h('div', { className: 'flex items-center justify-between relative' },
             // Progress line
             h('div', { 
@@ -873,7 +799,7 @@
               className: 'relative z-20 flex flex-col items-center'
             },
               h('div', {
-                className: `w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                className: `w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
                   step >= s.id 
                     ? 'bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/50 scale-110' 
                     : 'bg-zinc-800 text-zinc-500'
@@ -891,60 +817,82 @@
         ),
         
         // Step Content with Animation
-        h('div', { className: 'min-h-[400px] relative' },
+        h('div', { className: 'min-h-[220px] relative' },
           // Step 1: Brand Selection
-          step === 1 && !result && h('div', { className: 'space-y-6 animate-fadeIn' },
-            h('h3', { className: 'text-2xl font-bold text-white mb-8 text-center' }, 
+          step === 1 && !result && h('div', { className: 'space-y-4 ' },
+            h('h3', { className: 'text-lg font-bold text-white mb-3 text-center' }, 
               window.i18n?.t('calculator.selectBrand') || 'Alegeți marca:'
             ),
-            h('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-4' },
+            h('div', { className: 'grid grid-cols-3 md:grid-cols-5 gap-2' },
               ...brands.map(brand => h('button', {
                 key: brand.id,
                 onClick: () => {
                   setData({ ...data, brand });
                   handleNext();
+                  // Скролл к калькулятору
+                  setTimeout(() => {
+                    const calcEl = document.getElementById('calculator');
+                    if (calcEl) {
+                      calcEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }, 100);
                 },
-                className: 'group relative p-6 bg-zinc-800/50 hover:bg-zinc-800 border-2 border-zinc-700 hover:border-blue-500 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden cursor-pointer'
+                className: 'group relative p-3 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20 overflow-hidden cursor-pointer'
               },
                 h('div', { 
                   className: `absolute inset-0 bg-gradient-to-br ${brand.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`
                 }),
                 h('div', { 
-                  className: `w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${brand.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`
+                  className: `w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-br ${brand.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md p-2`
                 },
-                  h('i', { className: `fas ${brand.icon} text-2xl text-white` })
+                  h('img', { 
+                    src: brand.svg, 
+                    alt: brand.name, 
+                    className: 'w-full h-full object-contain',
+                    style: { filter: 'brightness(0) invert(1)' },
+                    loading: 'lazy'
+                  })
                 ),
-                h('div', { className: 'font-semibold text-white text-lg relative z-10' }, brand.name)
+                h('div', { className: 'font-medium text-white text-xs relative z-10' }, brand.name)
               ))
             )
           ),
           
           // Step 2: Device Type
-          step === 2 && !result && h('div', { className: 'space-y-6 animate-fadeIn' },
-            h('h3', { className: 'text-2xl font-bold text-white mb-8 text-center' }, 
+          step === 2 && !result && h('div', { className: 'space-y-4 ' },
+            h('h3', { className: 'text-lg font-bold text-white mb-4 text-center' }, 
               `${data.brand?.name} - ${window.i18n?.t('calculator.selectDevice') || 'Alegeți tipul:'}`
             ),
-            h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-4' },
-              ...deviceTypes.map(type => h('button', {
+            // Показываем индикатор загрузки базы данных
+            !dbReady && h('div', { className: 'text-center py-4' },
+              h('div', { className: 'inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg' },
+                h('div', { className: 'w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin' }),
+                h('span', { className: 'text-sm text-blue-400' }, 'Se încarcă baza de date...')
+              )
+            ),
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-2' },
+              ...getAvailableDeviceTypes().map(type => h('button', {
                 key: type.id,
                 onClick: () => {
-                  setData({ ...data, deviceType: type.id });
+                  const newData = { ...data, deviceType: type.id, model: null };
+                  setData(newData);
+                  setSearchQuery('');
+                  const n_brand = data.brand?.id?.toLowerCase();
+                  console.log(`📱 Выбран тип: brand=${n_brand}, type=${type.id}, dbReady=${dbReady}, models=${models.length}`);
+                  setStep(3);
                   setTimeout(() => {
-                    const filteredModels = getFilteredModels();
-                    setStep(filteredModels.length > 0 ? 3 : 4);
-                  }, 0);
+                    const calcEl = document.getElementById('calculator');
+                    if (calcEl) calcEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
                 },
-                className: 'group p-6 bg-zinc-800/50 hover:bg-zinc-800 border-2 border-zinc-700 hover:border-blue-500 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl overflow-hidden cursor-pointer'
+                className: 'group p-3 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg transition-all duration-200 hover:scale-[1.02] cursor-pointer'
               },
                 h('div', { 
-                  className: `absolute inset-0 bg-gradient-to-br ${type.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`
-                }),
-                h('div', { 
-                  className: `w-14 h-14 mx-auto mb-3 rounded-xl bg-gradient-to-br ${type.color} flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg`
+                  className: `w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-br ${type.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md`
                 },
-                  h('i', { className: `fas ${type.icon} text-2xl text-white` })
+                  h('i', { className: `fas ${type.icon} text-lg text-white` })
                 ),
-                h('div', { className: 'font-semibold text-white text-sm relative z-10' }, type.name)
+                h('div', { className: 'font-medium text-white text-xs' }, type.name)
               ))
             ),
             h('button', {
@@ -957,11 +905,24 @@
           ),
           
           // Step 3: Model Selection with Search
-          step === 3 && !result && h('div', { className: 'space-y-6 animate-fadeIn' },
-            h('h3', { className: 'text-2xl font-bold text-white mb-6 text-center' }, 
+          step === 3 && !result && h('div', { className: 'space-y-4 ' },
+            h('h3', { className: 'text-lg font-bold text-white mb-3 text-center' }, 
               window.i18n?.t('calculator.selectModel') || 'Alegeți modelul:'
             ),
-            h('div', { className: 'relative mb-6' },
+            // Показываем информацию о выборе
+            h('div', { className: 'text-center mb-4' },
+              h('span', { className: 'inline-flex items-center gap-2 px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-400' },
+                h('i', { className: 'fas fa-info-circle' }),
+                `${data.brand?.name || ''} / ${deviceTypes.find(t => t.id === data.deviceType)?.name || ''}`
+              )
+            ),
+            // Индикатор загрузки моделей
+            loadingModels && h('div', { className: 'text-center py-8' },
+              h('div', { className: 'w-10 h-10 mx-auto mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
+              h('p', { className: 'text-zinc-400' }, 'Se încarcă modelele...')
+            ),
+            // Поле поиска
+            !loadingModels && h('div', { className: 'relative mb-6' },
               h('div', { className: 'absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500' },
                 h('i', { className: 'fas fa-search' })
               ),
@@ -971,83 +932,181 @@
                 value: searchQuery,
                 onChange: (e) => setSearchQuery(e.target.value),
                 className: 'w-full pl-12 pr-4 py-3 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all'
-              })
+              }),
+              // Показываем количество найденных моделей
+              h('div', { className: 'absolute right-4 top-1/2 -translate-y-1/2 text-xs text-zinc-500' },
+                `${getFilteredModels().length} modele`
+              )
             ),
-            h('div', { className: 'space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar' },
+            // Список моделей
+            !loadingModels && h('div', { className: 'space-y-1 max-h-60 overflow-y-auto pr-1 custom-scrollbar' },
               getFilteredModels()
                 .slice(0, 30)
                 .map(model => h('button', {
-                  key: model.name,
+                  key: model.name + '-' + (model.year || ''),
                   onClick: () => {
+                    console.log('✅ Выбрана модель:', model.name);
                     setData({ ...data, model });
-                    handleNext();
+                    setStep(4);
                   },
-                  className: 'w-full p-4 bg-zinc-800/40 hover:bg-zinc-800/70 border-2 border-zinc-700 hover:border-blue-500/50 rounded-xl transition-all text-left flex items-center justify-between group'
+                  className: 'w-full p-2 bg-zinc-800/40 hover:bg-zinc-800/70 border border-zinc-700 hover:border-blue-500/50 rounded-lg transition-all text-left flex items-center justify-between group'
                 },
-                  h('div', null,
-                    h('div', { className: 'text-white font-semibold truncate' }, model.name),
-                    h('div', { className: 'text-zinc-500 text-sm mt-1' }, 
-                      `${model.year || 'N/A'} • ${model.category || 'N/A'}`
+                  h('div', { className: 'flex-1 min-w-0' },
+                    h('div', { className: 'text-white font-medium text-sm truncate' }, model.name),
+                    h('div', { className: 'text-zinc-500 text-xs flex items-center gap-1' }, 
+                      h('span', null, model.year || 'N/A'),
+                      h('span', { className: 'text-zinc-600' }, '•'),
+                      h('span', null, model.category || 'N/A')
                     )
                   ),
-                  h('i', { className: 'fas fa-chevron-right text-zinc-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0' })
+                  h('i', { className: 'fas fa-chevron-right text-zinc-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0 ml-2' })
                 ))
             ),
-            getFilteredModels().length === 0 && h('div', { className: 'text-center py-12 text-zinc-400' },
-              h('i', { className: 'fas fa-search text-4xl mb-4 opacity-50' }),
-              h('p', null, 'Niciun model găsit. Încercați altă căutare.')
+            // Сообщение если нет моделей для этой комбинации бренд/тип
+            !loadingModels && getFilteredModels().length === 0 && h('div', { className: 'text-center py-6' },
+              h('div', { className: 'w-14 h-14 mx-auto mb-4 bg-zinc-800/50 rounded-full flex items-center justify-center' },
+                h('i', { className: 'fas fa-box-open text-2xl text-zinc-500' })
+              ),
+              h('p', { className: 'text-base text-white mb-1' }, 'Nu avem modele pentru această combinație'),
+              h('p', { className: 'text-zinc-400 mb-6' }, 
+                `${data.brand?.name || ''} nu produce ${deviceTypes.find(t => t.id === data.deviceType)?.name?.toLowerCase() || 'acest tip'}.`
+              ),
+              h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+                h('button', {
+                  onClick: () => setStep(2),
+                  className: 'px-6 py-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-xl transition-all flex items-center justify-center gap-2'
+                },
+                  h('i', { className: 'fas fa-arrow-left' }),
+                  'Alegeți alt tip'
+                ),
+                h('button', {
+                  onClick: () => {
+                    // Продолжаем без конкретной модели
+                    setData({ ...data, model: { name: `${data.brand?.name || 'Dispozitiv'} (general)`, year: null, category: data.deviceType } });
+                    setStep(4);
+                  },
+                  className: 'px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl transition-all flex items-center justify-center gap-2'
+                },
+                  'Continuați fără model',
+                  h('i', { className: 'fas fa-arrow-right' })
+                )
+              )
             ),
-            h('button', {
-              onClick: handlePrevious,
-              className: 'mt-6 text-zinc-400 hover:text-white transition flex items-center gap-2 mx-auto'
-            },
-              h('i', { className: 'fas fa-arrow-left' }),
-              window.i18n?.t('calculator.back') || 'Înapoi'
+            // Кнопки навигации
+            h('div', { className: 'flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 pt-4 border-t border-zinc-800' },
+              h('button', {
+                onClick: () => {
+                  setStep(2);
+                  setSearchQuery('');
+                },
+                className: 'text-zinc-400 hover:text-white transition flex items-center gap-2'
+              },
+                h('i', { className: 'fas fa-arrow-left' }),
+                window.i18n?.t('calculator.back') || 'Înapoi'
+              ),
+              h('button', {
+                onClick: () => {
+                  console.log('➡️ Продолжаем без модели');
+                  setData({ ...data, model: null });
+                  setStep(4);
+                },
+                className: 'px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all flex items-center gap-2 shadow-lg'
+              },
+                'Continuă fără model',
+                h('i', { className: 'fas fa-arrow-right' })
+              )
             )
           ),
           
-          // Step 4: Issue Selection
-          step === 4 && !result && h('div', { className: 'space-y-6 animate-fadeIn' },
-            h('h3', { className: 'text-2xl font-bold text-white mb-2 text-center' }, 
-              `${data.brand?.name || ''}${data.model?.name ? ` ${data.model.name}` : ''} - ${window.i18n?.t('calculator.selectIssue') || 'Ce problemă aveți?'}`
+          // Step 4: Issue Selection (множественный выбор)
+          step === 4 && !result && h('div', { className: 'space-y-4 ' },
+            h('h3', { className: 'text-lg font-bold text-white mb-2 text-center' }, 
+              `${data.brand?.name || ''}${data.model?.name ? ` ${data.model.name}` : ''} - Ce problemă aveți?`
             ),
-            h('p', { className: 'text-zinc-400 text-center mb-8' }, 'Selectați tipul de reparație'),
-            h('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-4' },
-              ...(issues[data.deviceType] || []).map(issue => h('button', {
-                key: issue.id,
-                onClick: () => {
-                  if (!issue || !issue.id) return;
-                  setData({ ...data, issue });
-                  setTimeout(() => calculatePrice(), 100);
+            h('p', { className: 'text-zinc-400 text-sm text-center mb-4' },
+              `Puteți selecta mai multe probleme (${data.issues?.length || 0} selectate)`
+            ),
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
+              ...((function() {
+                // Получаем тип устройства
+                const deviceType = typeof data.deviceType === 'string' ? data.deviceType : (data.deviceType?.id || 'phone');
+                const issueList = issues[deviceType] || issues['phone'] || [];
+                return issueList;
+              })().map(issue => {
+                const isSelected = (data.issues || []).some(i => i.id === issue.id);
+                return h('button', {
+                  key: issue.id,
+                  onClick: () => {
+                    if (!issue || !issue.id) return;
+                    // Toggle выбор дефекта
+                    const currentIssues = data.issues || [];
+                    const exists = currentIssues.some(i => i.id === issue.id);
+                    const newIssues = exists 
+                      ? currentIssues.filter(i => i.id !== issue.id)  // Удаляем
+                      : [...currentIssues, issue];  // Добавляем
+                    setData({ ...data, issues: newIssues });
+                  },
+                  className: `group p-3 border rounded-lg transition-all text-left flex items-center gap-2 hover:scale-[1.02] ${
+                    isSelected 
+                      ? 'bg-blue-600/30 border-blue-500 ring-2 ring-blue-500/50' 
+                      : 'bg-zinc-800/40 hover:bg-zinc-800/70 border-zinc-700 hover:border-blue-500/50'
+                  }`
                 },
-                className: 'group p-5 bg-zinc-800/40 hover:bg-zinc-800/70 border-2 border-zinc-700 hover:border-blue-500/50 rounded-xl transition-all text-left flex items-center justify-between hover:scale-105 hover:shadow-lg'
-              },
-                h('div', { className: 'flex items-center gap-4' },
-                  h('div', { className: 'w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform' },
-                    h('i', { className: `fas ${issue.icon || 'fa-wrench'} text-blue-400` })
+                  h('div', { className: `w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 ${
+                    isSelected ? 'bg-blue-500' : 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
+                  }` },
+                    isSelected 
+                      ? h('i', { className: 'fas fa-check text-white text-sm' })
+                      : h('i', { className: `fas ${issue.icon || 'fa-wrench'} text-blue-400 text-sm` })
                   ),
-                  h('span', { className: 'text-white font-medium text-lg' }, issue.name)
-                ),
-                h('i', { className: 'fas fa-chevron-right text-zinc-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all' })
-              ))
+                  h('span', { className: `font-medium text-xs ${isSelected ? 'text-blue-300' : 'text-white'}` }, issue.name)
+                );
+              }))
             ),
-            h('button', {
-              onClick: handlePrevious,
-              className: 'mt-6 text-zinc-400 hover:text-white transition flex items-center gap-2 mx-auto'
-            },
-              h('i', { className: 'fas fa-arrow-left' }),
-              window.i18n?.t('calculator.back') || 'Înapoi'
+            // Показываем выбранные проблемы
+            data.issues && data.issues.length > 0 && h('div', { className: 'mt-4 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg' },
+              h('p', { className: 'text-sm text-blue-300' },
+                `✓ Selectate: ${data.issues.map(i => i.name).join(', ')}`
+              )
+            ),
+            // Кнопки: Назад и Рассчитать
+            h('div', { className: 'flex items-center justify-center gap-4 mt-6' },
+              h('button', {
+                onClick: handlePrevious,
+                className: 'text-zinc-400 hover:text-white transition flex items-center gap-2'
+              },
+                h('i', { className: 'fas fa-arrow-left' }),
+                'Înapoi'
+              ),
+              h('button', {
+                onClick: () => {
+                  if (data.issues && data.issues.length > 0) {
+                    calculatePrice();
+                  } else if (window.showToast) {
+                    window.showToast('Selectați cel puțin o problemă', 'warning', 2000);
+                  }
+                },
+                disabled: !data.issues || data.issues.length === 0,
+                className: `px-6 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 ${
+                  data.issues && data.issues.length > 0
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg shadow-blue-500/25' 
+                    : 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
+                }`
+              },
+                h('i', { className: 'fas fa-calculator' }),
+                `Calculează prețul${data.issues?.length > 1 ? ` (${data.issues.length})` : ''}`
+              )
             )
           ),
           
           // Loading State
-          loading && h('div', { className: 'text-center py-16' },
-            h('div', { className: 'w-20 h-20 mx-auto mb-6 border-4 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
-            h('p', { className: 'text-zinc-400 text-lg' }, 'Calculăm prețul...')
+          loading && h('div', { className: 'text-center py-8' },
+            h('div', { className: 'w-12 h-12 mx-auto mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
+            h('p', { className: 'text-zinc-400 text-sm' }, 'Calculăm prețul...')
           ),
           
           // Step 5: Contact Data Collection
-          step === 5 && result && h('div', { className: 'space-y-6 animate-fadeIn' },
+          step === 5 && result && h('div', { className: 'space-y-6 ' },
             h('h3', { className: 'text-2xl font-bold text-white mb-2 text-center' }, 
               'Introduceți datele pentru a obține prețul'
             ),
@@ -1116,7 +1175,7 @@
                     brand: data.brand?.name,
                     deviceType: data.deviceType,
                     model: data.model?.name || 'Not specified',
-                    issue: data.issue?.name,
+                    issue: (data.issues || []).map(i => i.name).join(', ') || 'Not specified',
                     estimatedPrice: `${result.min}-${result.max} lei`,
                     source: 'price_calculator'
                   });
@@ -1140,61 +1199,73 @@
           ),
           
           // Step 6: Result
-          step === 6 && result && h('div', { className: 'text-center space-y-8 animate-fadeIn' },
-            h('div', { className: 'inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 mb-6' },
-              h('i', { className: 'fas fa-circle-check text-5xl text-green-400' })
+          step === 6 && result && h('div', { className: 'text-center space-y-4 ' },
+            h('div', { className: 'inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 mb-3' },
+              h('i', { className: 'fas fa-circle-check text-3xl text-green-400' })
             ),
             
             h('div', null,
-              h('h3', { className: 'text-3xl font-bold text-white mb-3' }, 
+              h('h3', { className: 'text-xl font-bold text-white mb-2' }, 
                 window.i18n?.t('calculator.estimatedPrice') || 'Preț estimat'
               ),
-              result.model && h('p', { className: 'text-zinc-400 mb-6' }, result.model),
+              result.model && h('p', { className: 'text-zinc-400 text-sm mb-3' }, result.model),
               result.min === result.max
-                ? h('div', { className: 'text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
+                ? h('div', { className: 'text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
                     result.avg === 0 ? 'GRATUIT' : `${result.avg} lei`
                   )
-                : h('div', { className: 'text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
-                    h('span', { className: 'text-zinc-400 text-3xl' }, 'de la '),
+                : h('div', { className: 'text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
                     `${result.min}-${result.max} lei`
                   )
             ),
             
-            h('div', { className: 'bg-zinc-800/50 rounded-2xl p-8 space-y-4 text-left max-w-lg mx-auto border border-zinc-700/50' },
-              h('div', { className: 'flex items-start gap-4' },
-                h('div', { className: 'w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0' },
-                  h('i', { className: 'fas fa-circle-info text-blue-400' })
-                ),
-                h('div', null,
-                  h('div', { className: 'text-base font-semibold text-zinc-200 mb-1' }, result.diagnostic),
-                  h('div', { className: 'text-sm text-zinc-400' }, `Timp estimat: ${result.time}`)
+            // Показываем выбранные проблемы
+            result.issues && result.issues.length > 0 && h('div', { className: 'bg-blue-500/10 rounded-xl p-4 mb-4 border border-blue-500/30 max-w-sm mx-auto' },
+              h('p', { className: 'text-sm font-medium text-blue-300 mb-2' }, 
+                `Probleme selectate (${result.issues.length}):`
+              ),
+              h('ul', { className: 'space-y-1' },
+                ...result.issues.map((issue, i) => 
+                  h('li', { key: i, className: 'flex items-center gap-2 text-xs text-zinc-300' },
+                    h('i', { className: 'fas fa-check text-green-400 text-[10px]' }),
+                    issue
+                  )
                 )
               ),
-              h('div', { className: 'flex items-center gap-3 text-sm text-zinc-400 pt-4 border-t border-zinc-700' },
-                h('i', { className: 'fas fa-shield-check text-green-400' }),
-                'Garanție 30 zile inclusă'
+              result.issues.length > 1 && h('p', { className: 'text-[10px] text-zinc-500 mt-2 pt-2 border-t border-zinc-700/50' },
+                '* Reducere 10% aplicată pentru reparații multiple'
+              )
+            ),
+            
+            h('div', { className: 'bg-zinc-800/50 rounded-xl p-4 space-y-2 text-left max-w-sm mx-auto border border-zinc-700/50' },
+              h('div', { className: 'flex items-center gap-2 text-xs text-zinc-400' },
+                h('i', { className: 'fas fa-clock text-blue-400' }),
+                `Timp estimat: ${result.time || '30-60 min'}`
               ),
-              h('div', { className: 'flex items-center gap-3 text-sm text-zinc-400' },
-                h('i', { className: 'fas fa-stethoscope text-blue-400' }),
+              h('div', { className: 'flex items-center gap-2 text-xs text-zinc-400' },
+                h('i', { className: 'fas fa-shield-check text-green-400' }),
+                'Garanție 30 zile'
+              ),
+              h('div', { className: 'flex items-center gap-2 text-xs text-zinc-400' },
+                h('i', { className: 'fas fa-stethoscope text-purple-400' }),
                 'Diagnostic gratuit'
               )
             ),
             
-            h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center mt-10' },
+            h('div', { className: 'flex flex-col sm:flex-row gap-2 justify-center mt-4' },
               h('a', {
                 href: `https://wa.me/40721234567?text=Bună! Am estimat ${result.min}-${result.max} lei pentru reparație. Doresc să programez.`,
                 target: '_blank',
-                className: 'px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3'
+                className: 'px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all shadow-md flex items-center justify-center gap-2 text-sm'
               },
-                h('i', { className: 'fab fa-whatsapp text-2xl' }),
+                h('i', { className: 'fab fa-whatsapp text-lg' }),
                 'Comandă pe WhatsApp'
               ),
               h('button', {
                 onClick: reset,
-                className: 'px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-all border border-zinc-700'
+                className: 'px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-lg transition-all border border-zinc-700 text-sm'
               },
-                h('i', { className: 'fas fa-redo mr-2' }),
-                'Calculează din nou'
+                h('i', { className: 'fas fa-redo mr-1' }),
+                'Din nou'
               )
             )
           )
@@ -1202,13 +1273,19 @@
       ),
       
       // Info footer
-      step < 6 && h('div', { className: 'text-center mt-8 text-sm text-zinc-500 flex items-center justify-center gap-2' },
-        h('i', { className: 'fas fa-circle-info' }),
-        'Prețul final poate varia în funcție de complexitate. Diagnostic gratuit pentru confirmare.'
+      step < 6 && h('div', { className: 'text-center mt-4 text-xs text-zinc-500 flex items-center justify-center gap-1' },
+        h('i', { className: 'fas fa-circle-info text-[10px]' }),
+        'Prețul final poate varia. Diagnostic gratuit.'
       )
     );
   };
   
-  window.PriceCalculator = PriceCalculator;
-  console.log('✅ Modern Price Calculator v2.0 loaded');
+  // Оборачиваем в ErrorBoundary для защиты от ошибок
+  const SafePriceCalculator = () => {
+    return h(ErrorBoundary, null, h(PriceCalculator));
+  };
+  
+  window.PriceCalculator = SafePriceCalculator;
+  window.PriceCalculatorRaw = PriceCalculator; // Для отладки
+  console.log('✅ Modern Price Calculator v3.1 loaded (with Error Boundary)');
 })();

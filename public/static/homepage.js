@@ -14,13 +14,13 @@ const SITE_CONFIG = {
   name: 'NEXX',
   tagline: 'Професійний ремонт Apple',
   phone: {
-    display: '+380 12 345 6789',
-    tel: '+380123456789',
+    display: '+40 721 234 567',
+    tel: '+40721234567',
   },
-  email: 'info@nexx.com.ua',
+  email: 'info@nexxgsm.ro',
   address: {
-    line1: 'вул. Хрещатик, 22',
-    line2: 'Київ, Україна 01001',
+    line1: 'Str. Victoriei 22',
+    line2: 'București, România 010061',
   },
   hours: {
     weekdays: '10:00 - 19:00',
@@ -212,7 +212,7 @@ const HeroSection = () => {
           h('div', { className: 'mb-6 flex justify-center lg:justify-start' },
             h(LiveCounter)
           ),
-          h('h1', { className: 'text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight' },
+          h('h1', { className: 'text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight' },
             'Професійний ремонт',
             h('span', { className: 'block bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent' }, 'Apple техніки')
           ),

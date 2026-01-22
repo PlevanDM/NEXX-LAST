@@ -9,9 +9,9 @@ function Header() {
 
   const navItems = [
     { href: '/', label: 'Acasă', icon: 'fa-home' },
-    { href: '/about', label: 'Despre noi', icon: 'fa-info-circle' },
+    { href: '/about.html', label: 'Despre noi', icon: 'fa-info-circle' },
     { href: '/calculator', label: 'Calculator', icon: 'fa-calculator' },
-    { href: '/faq', label: 'FAQ', icon: 'fa-question-circle' }
+    { href: '/faq.html', label: 'FAQ', icon: 'fa-question-circle' }
   ];
 
   const masterItems = [
@@ -121,11 +121,20 @@ function Header() {
 
 // Footer Component
 function Footer() {
+  // Safe translation function with fallback
+  const t = (key) => {
+    try {
+      return window.i18n?.t?.(key) || key.split('.').pop();
+    } catch {
+      return key.split('.').pop();
+    }
+  };
+
   const footerLinks = {
     'Про нас': [
-      { href: '/about', label: 'Наștoria noastră' },
-      { href: '/about#team', label: 'Команда' },
-      { href: '/about#values', label: 'Цінності' }
+      { href: '/about.html', label: 'Наștoria noastră' },
+      { href: '/about.html#team', label: 'Команда' },
+      { href: '/about.html#values', label: 'Цінності' }
     ],
     'Послуги': [
       { href: '/calculator', label: 'Калькулятор цін' },
@@ -133,9 +142,9 @@ function Footer() {
       { href: '/#pricing', label: 'Тарифи' }
     ],
     'Інформація': [
-      { href: '/faq', label: 'FAQ' },
-      { href: '/privacy', label: 'Конфіденційність' },
-      { href: '/terms', label: 'Умови використання' }
+      { href: '/faq.html', label: 'FAQ' },
+      { href: '/privacy.html', label: 'Конфіденційність' },
+      { href: '/terms.html', label: 'Умови використання' }
     ]
   };
 
@@ -199,8 +208,8 @@ function Footer() {
           '© 2026 NEXX Service Center. Toate drepturile rezervate.'
         ),
         h('div', { className: 'flex gap-6 text-sm' },
-          h('a', { href: '/privacy', className: 'text-blue-200 hover:text-white transition-colors' }, 'Конфіденційність'),
-          h('a', { href: '/terms', className: 'text-blue-200 hover:text-white transition-colors' }, 'Умови використання')
+          h('a', { href: '/privacy.html', className: 'text-blue-200 hover:text-white transition-colors' }, 'Конфіденційність'),
+          h('a', { href: '/terms.html', className: 'text-blue-200 hover:text-white transition-colors' }, 'Умови використання')
         )
       )
     )

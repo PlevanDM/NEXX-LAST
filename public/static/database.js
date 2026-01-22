@@ -31,31 +31,29 @@
       this.loading = true;
       
       try {
-        // Загружаем master database
+        // Загружаем ЕДИНУЮ базу данных
         const masterResponse = await fetch('/data/master-db.json');
         this.masterDb = await masterResponse.json();
         
-        // Загружаем devices database
-        const devicesResponse = await fetch('/data/devices.json');
-        this.devices = await devicesResponse.json();
+        // Основные данные
+        this.devices = this.masterDb.devices || [];
+        this.prices = this.masterDb.prices || {};
+        this.brands = this.masterDb.brands || {};
+        this.services = this.masterDb.services || {};
+        this.contact = this.masterDb.contact || {};
+        this.config = this.masterDb.config || {};
         
-        // Загружаем prices (optional)
-        try {
-          const pricesResponse = await fetch('/data/ukraine_prices.json');
-          this.prices = await pricesResponse.json();
-        } catch (e) {
-          console.warn('Prices database not loaded:', e);
-          this.prices = {};
-        }
-        
-        // Загружаем error codes (optional)
-        try {
-          const errorCodesResponse = await fetch('/data/error_codes.json');
-          this.errorCodes = await errorCodesResponse.json();
-        } catch (e) {
-          console.warn('Error codes not loaded:', e);
-          this.errorCodes = {};
-        }
+        // База знаний (внутри knowledge)
+        const knowledge = this.masterDb.knowledge || {};
+        this.errorCodes = knowledge.errorCodes || {};
+        this.logicBoards = knowledge.logicBoards || {};
+        this.icCompatibility = knowledge.icCompatibility || {};
+        this.cameraCompatibility = knowledge.cameraCompatibility || {};
+        this.measurements = knowledge.measurements || {};
+        this.keyCombinations = knowledge.keyCombinations || {};
+        this.regionalCodes = knowledge.regionalCodes || {};
+        this.repairKnowledge = knowledge.repairKnowledge || {};
+        this.articleSearchIndex = knowledge.articleSearchIndex || {};
         
         this.loaded = true;
         this.loading = false;
@@ -64,10 +62,10 @@
         this.notifyListeners();
         
         console.log('✅ NEXX Database loaded:', {
-          masterDb: !!this.masterDb,
+          version: this.masterDb.version,
           devices: this.devices?.length || 0,
           prices: Object.keys(this.prices).length,
-          errorCodes: Object.keys(this.errorCodes).length
+          knowledge: Object.keys(knowledge).length
         });
         
       } catch (error) {
@@ -167,11 +165,13 @@
         
         if (!device) return null;
         
-        // Проверяем official_service_prices
+        // Проверяем official_service_prices (Apple цены в USD - конвертируем в RON)
         if (device.official_service_prices && typeof device.official_service_prices === 'object') {
-          const price = device.official_service_prices[issueId];
-          if (typeof price === 'number' && price > 0) {
-            return price;
+          const priceUSD = device.official_service_prices[issueId];
+          if (typeof priceUSD === 'number' && priceUSD > 0) {
+            // Конвертация USD в RON (курс ~4.5 RON за 1 USD)
+            const USD_TO_RON = 4.5;
+            return Math.round(priceUSD * USD_TO_RON);
           }
         }
         

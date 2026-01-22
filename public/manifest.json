@@ -1,37 +1,42 @@
 {
-  "name": "NEXX Service Center",
-  "short_name": "NEXX",
-  "description": "Професійний ремонт iPhone, iPad, MacBook в Києві",
+  "name": "NEXX GSM - Service Reparații",
+  "short_name": "NEXX GSM",
+  "description": "Reparații profesionale iPhone, MacBook, Samsung în București",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#0f172a",
+  "theme_color": "#1e3a8a",
   "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/static/nexx-logo.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/static/nexx-logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/static/nexx-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["business", "utilities"],
-  "lang": "uk-UA",
+  "lang": "ro-RO",
   "dir": "ltr",
   "scope": "/",
-  "screenshots": [],
   "shortcuts": [
     {
-      "name": "Замовити ремонт",
-      "short_name": "Замовити",
-      "description": "Швидке замовлення ремонту",
-      "url": "/#booking",
+      "name": "Calculator Preț",
+      "short_name": "Calculator",
+      "description": "Calculează prețul reparației",
+      "url": "/#calculator",
       "icons": [
         {
           "src": "/static/nexx-logo.png",
@@ -40,10 +45,10 @@
       ]
     },
     {
-      "name": "База даних",
-      "short_name": "База",
-      "description": "База знань для майстрів",
-      "url": "/nexx.html",
+      "name": "Contacte",
+      "short_name": "Contacte",
+      "description": "Contactează-ne",
+      "url": "/#contacts",
       "icons": [
         {
           "src": "/static/nexx-logo.png",

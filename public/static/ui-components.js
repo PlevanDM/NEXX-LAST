@@ -239,7 +239,7 @@
         client: [
           { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
           { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'booking', label: t('nav.booking'), href: '/#booking', icon: 'fa-calendar-check' },
+          { id: 'calculator', label: t('nav.calculator') || 'Calculator', href: '/#calculator', icon: 'fa-calculator' },
           { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
         ],
         service: [
@@ -276,23 +276,24 @@
       h('header', { className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg}` },
       h('div', { className: 'max-w-7xl mx-auto px-4 py-4' },
         h('div', { className: 'flex items-center justify-between' },
-          // Logo - Your custom SVG logo with animation
+          // Logo - Animated SVG logo on dark background, PNG on white
           h('a', { 
             href: '/', 
-            className: 'flex items-center group transition-all duration-300 hover:scale-110 cursor-pointer',
-            'aria-label': 'NEX GSM Home',
+            className: 'flex items-center group transition-all duration-300 hover:scale-105 cursor-pointer flex-shrink-0',
+            'aria-label': 'NEXX GSM Home',
             title: 'Перейти на головну'
           },
-            h('object', {
-              data: isScrolled ? '/static/nexx-logo-blue.svg' : '/static/nexx-logo-white.svg',
-              type: 'image/svg+xml',
-              className: 'h-16 md:h-16 w-auto transition-all duration-300 group-hover:scale-115 logo-float',
+            h('img', {
+              src: '/static/nexx-logo-trimmed.png?v=1',
+              alt: 'NEXX GSM',
+              className: 'w-auto transition-all duration-500',
               style: {
-                maxWidth: '322px',
-                height: '64px',
+                width: window.innerWidth < 640 ? '154px' : '243px',
+                height: 'auto',
                 display: 'block',
-                pointerEvents: 'none',
-                backgroundColor: 'transparent'
+                objectFit: 'contain',
+                filter: isScrolled ? 'none' : 'invert(1) drop-shadow(0 0 10px rgba(100, 180, 255, 0.7))',
+                transition: 'filter 0.5s ease'
               }
             })
           ),
@@ -329,29 +330,43 @@
             h('span', { className: 'hidden lg:inline' }, 'NEXX База')
           ),
           
-          // Language Switcher in right corner (planet icon - click to cycle through languages)
+          // Language Switcher - visible on desktop
           h('div', { className: 'hidden md:flex items-center' },
             window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled })
           ),
           
-          // Mobile Menu Button
-          h('button', {
-            onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-            className: `md:hidden w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`
-          }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
+          // Mobile: Language + Menu Button
+          h('div', { className: 'flex md:hidden items-center gap-2' },
+            // Language Switcher for mobile
+            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled, compact: true }),
+            // Mobile Menu Button
+            h('button', {
+              onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
+              className: `w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`
+            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
+          )
         ),
         
         // Mobile Menu
-        isMobileMenuOpen && h('div', { className: 'md:hidden mt-4 py-4 bg-white rounded-lg shadow-lg animate-slide-down' },
+        isMobileMenuOpen && h('div', { className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down' },
           ...navLinks.map(link => h('a', {
             key: link.id,
             href: link.href,
-            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition ${currentPage === link.id ? 'bg-gray-200 font-semibold' : ''}`,
+            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition ${currentPage === link.id ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
             onClick: () => setIsMobileMenuOpen(false)
           },
-            h('i', { className: `fas ${link.icon} text-gray-800 w-5` }),
+            h('i', { className: `fas ${link.icon} w-5` }),
             link.label
-          ))
+          )),
+          // NEXX Database link in mobile menu
+          h('a', {
+            href: '/nexx.html',
+            className: 'flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition border-t border-gray-200 mt-2 pt-3',
+            onClick: () => setIsMobileMenuOpen(false)
+          },
+            h('i', { className: 'fas fa-database w-5' }),
+            'NEXX База'
+          )
         )
       )
     ),
@@ -384,33 +399,36 @@
   const Footer = () => {
     const currentYear = new Date().getFullYear();
     
-    const getFooterLinks = () => {
-      const t = (key) => {
-        // Используем window.t() который правильно привязан в i18n.init()
-        if (window.t && typeof window.t === 'function') {
-          return window.t(key);
-        }
-        // Fallback to Romanian if i18n not ready
-        const fallback = {
-          'footer.company': 'Companie',
-          'footer.about': 'Despre noi',
-          'nav.contacts': 'Contacte',
-          'footer.jobs': 'Joburi',
-          'footer.services': 'Servicii',
-          'footer.servicePhone': 'Reparații telefoane',
-          'footer.serviceLaptop': 'Reparații laptopuri',
-          'calculator.title': 'Calculator preț',
-          'footer.info': 'Informații',
-          'footer.faq': 'FAQ',
-          'footer.privacy': 'Confidențialitate',
-          'footer.terms': 'Termeni'
-        };
-        return fallback[key] || key;
+    // Define t at component level so it's accessible everywhere
+    const t = (key) => {
+      // Используем window.t() который правильно привязан в i18n.init()
+      if (window.t && typeof window.t === 'function') {
+        return window.t(key);
+      }
+      // Fallback to Romanian if i18n not ready
+      const fallback = {
+        'footer.company': 'Companie',
+        'footer.about': 'Despre noi',
+        'nav.contacts': 'Contacte',
+        'footer.jobs': 'Joburi',
+        'footer.services': 'Servicii',
+        'footer.servicePhone': 'Reparații telefoane',
+        'footer.serviceLaptop': 'Reparații laptopuri',
+        'calculator.title': 'Calculator preț',
+        'footer.info': 'Informații',
+        'footer.faq': 'FAQ',
+        'footer.privacy': 'Confidențialitate',
+        'footer.terms': 'Termeni',
+        'footer.tagline': 'Service profesional pentru dispozitive Apple'
       };
+      return fallback[key] || key;
+    };
+    
+    const getFooterLinks = () => {
       
       return [
         { title: t('footer.company'), links: [
-          { label: t('footer.about'), href: '/about' },
+          { label: t('footer.about'), href: '/about.html' },
           { label: t('nav.contacts'), href: '/#contacts' },
           { label: t('footer.jobs'), href: '#' },
         ]},
@@ -420,9 +438,9 @@
           { label: t('calculator.title'), href: '/#calculator' },
         ]},
         { title: t('footer.info'), links: [
-          { label: t('footer.faq'), href: '/faq' },
-          { label: t('footer.privacy'), href: '/privacy' },
-          { label: t('footer.terms'), href: '/terms' },
+          { label: t('footer.faq'), href: '/faq.html' },
+          { label: t('footer.privacy'), href: '/privacy.html' },
+          { label: t('footer.terms'), href: '/terms.html' },
         ]},
       ];
     };
