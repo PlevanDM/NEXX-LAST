@@ -1726,16 +1726,16 @@
         const installBanner = document.createElement('div');
         installBanner.id = 'pwa-install-banner';
         installBanner.innerHTML = `
-            <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;padding:16px 24px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.3);display:flex;align-items:center;gap:16px;z-index:9999;max-width:90%;animation:slideUp 0.5s ease-out;">
-                <div style="width:48px;height:48px;background:white;border-radius:12px;display:flex;align-items:center;justify-content:center;">
-                    <img src="/static/nexx-logo.png" alt="NEXX" style="width:36px;height:36px;">
+            <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;padding:16px 20px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.3);display:flex;align-items:center;gap:14px;z-index:9999;max-width:calc(100% - 32px);animation:slideUp 0.5s ease-out;">
+                <div style="width:52px;height:52px;background:linear-gradient(135deg,#f8fafc,#e2e8f0);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <span style="font-size:28px;">🔧</span>
                 </div>
-                <div style="flex:1;">
-                    <div style="font-weight:bold;font-size:16px;">Встановити NEXX GSM</div>
-                    <div style="font-size:13px;opacity:0.9;">Швидкий доступ з головного екрану</div>
+                <div style="flex:1;min-width:0;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:2px;">NEXX GSM</div>
+                    <div style="font-size:12px;opacity:0.85;">Додати на головний екран</div>
                 </div>
-                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 20px;border-radius:10px;font-weight:bold;cursor:pointer;white-space:nowrap;">Встановити</button>
-                <button id="pwa-close-btn" style="background:transparent;border:none;color:white;font-size:24px;cursor:pointer;padding:4px;opacity:0.7;">×</button>
+                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">Додати</button>
+                <button id="pwa-close-btn" style="background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">×</button>
             </div>
         `;
         installBanner.style.display = 'none';
