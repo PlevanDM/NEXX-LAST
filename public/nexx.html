@@ -170,11 +170,11 @@
 
         const script = document.createElement('script');
         script.id = 'nexx-db-script';
-        script.src = '/static/app.js';
+        script.src = '/static/client-v2.js';
         script.async = true;
         script.onload = () => {
           console.log('✅ NEXX Database loaded');
-          // Note: app.js will render itself, don't clear container here
+          // Note: client-v2.js will render itself, don't clear container here
           renderHeader(true); // Show header after authentication
           renderFooter(true); // Show footer after authentication
         };
@@ -190,7 +190,7 @@
                 <h2 class="text-2xl font-bold text-gray-100 mb-2">Помилка завантаження</h2>
                 <p class="text-gray-400 mb-6">Не вдалося завантажити базу даних. Перевірте з'єднання.</p>
                 <div class="bg-gray-800 rounded-lg p-3 mb-6 text-left border border-gray-700">
-                  <p class="text-xs text-gray-500 font-mono">/static/app.js</p>
+                  <p class="text-xs text-gray-500 font-mono">/static/client-v2.js</p>
                 </div>
                 <div class="flex gap-3">
                   <button id="retry-load" class="flex-1 px-6 py-3 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-black hover:to-gray-900 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 border border-gray-700">
