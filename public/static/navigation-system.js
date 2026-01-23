@@ -78,7 +78,7 @@
       path: '/terms',
       title: 'Termeni',
       icon: 'fa-file-contract',
-      description: 'Умови користування',
+      description: 'Termeni și condiții',
       related: ['privacy']
     },
     contacts: {
@@ -170,7 +170,7 @@
       h('div', { className: 'max-w-7xl mx-auto' },
         h('h3', { className: 'text-2xl font-bold mb-6 flex items-center gap-2' },
           h('i', { className: 'fas fa-link text-blue-600' }),
-          'Корисні посилання'
+          'Link-uri utile'
         ),
         h('div', { className: 'grid md:grid-cols-3 gap-4' },
           ...relatedIds.map(relatedId => {
@@ -356,7 +356,7 @@
       if (current.children) {
         current.children.forEach(id => {
           const page = SITE_MAP[id];
-          if (page) suggestions.push({ ...page, reason: 'Підрозділ' });
+          if (page) suggestions.push({ ...page, reason: 'Secțiune' });
         });
       }
       
@@ -365,7 +365,7 @@
         current.related.forEach(id => {
           const page = SITE_MAP[id];
           if (page && !suggestions.find(s => s.id === id)) {
-            suggestions.push({ ...page, reason: 'Схоже' });
+            suggestions.push({ ...page, reason: 'Similar' });
           }
         });
       }
@@ -441,7 +441,7 @@
               type: 'text',
               value: query,
               onChange: (e) => setQuery(e.target.value),
-              placeholder: 'Шукати сторінки, функції...',
+              placeholder: 'Căutați pagini, funcții...',
               className: 'w-full pl-12 pr-4 py-3 text-lg focus:outline-none',
               autoFocus: true
             })
@@ -453,7 +453,7 @@
           results.length === 0 && query.length >= 2
             ? h('div', { className: 'py-8 text-center text-gray-500' },
                 h('i', { className: 'fas fa-magnifying-glass text-4xl mb-2 opacity-30' }),
-                h('p', null, 'Нічого не знайдено')
+                h('p', null, 'Nu s-a găsit nimic')
               )
             : results.map(page => h('a', {
                 key: page.id,
@@ -474,7 +474,7 @@
         
         // Footer
         h('div', { className: 'p-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500 flex items-center justify-between' },
-          h('span', null, 'Використовуйте ↑↓ для навігації, Enter для вибору'),
+          h('span', null, 'Folosiți ↑↓ pentru navigare, Enter pentru selecție'),
           h('button', {
             onClick: () => setIsOpen(false),
             className: 'px-2 py-1 bg-gray-200 rounded'
@@ -501,7 +501,7 @@
       h('div', { className: 'max-w-7xl mx-auto' },
         h('h3', { className: 'text-2xl font-bold mb-6 flex items-center gap-2' },
           h('i', { className: 'fas fa-compass text-blue-600' }),
-          'Куди далі?'
+          'Unde mergem?'
         ),
         h('div', { className: 'grid md:grid-cols-2 lg:grid-cols-4 gap-4' },
           ...suggestions.map(page => h('a', {

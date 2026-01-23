@@ -42,7 +42,7 @@
     "deploy:prod": "npm run build && wrangler pages deploy dist --project-name nexx --branch main",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "type-check": "tsc --noEmit",
-    "validate": "python3 scripts/validate_database.py",
+    "validate": "node scripts/validate-database.cjs",
     "stats": "node scripts/show_stats.cjs",
     "enhance": "node scripts/enhance_database_2026.cjs",
     "optimize:images": "node scripts/optimize_images.cjs",

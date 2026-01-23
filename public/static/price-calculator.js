@@ -1,7 +1,7 @@
 /**
  * NEXX Modern Price Calculator v3.1
- * Современный калькулятор с дизайном от 21st.dev
- * Обновленный UI с градиентами, анимациями и улучшенным UX
+ * Modern calculator with design from 21st.dev
+ * Updated UI with gradients, animations and improved UX
  * + Full Error Protection
  */
 
@@ -14,7 +14,7 @@
   const hasFramerMotion = typeof window !== 'undefined' && window.motion;
   
   // ============================================
-  // ERROR BOUNDARY - Ловит все ошибки React
+  // ERROR BOUNDARY - Catches React errors
   // ============================================
   class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -49,7 +49,7 @@
   }
   
   // ============================================
-  // SAFE HELPERS - Безопасные функции
+  // SAFE HELPERS - Safe functions
   // ============================================
   const safeGet = (obj, path, defaultValue = null) => {
     try {
@@ -72,8 +72,8 @@
   
   const safeString = (str) => (typeof str === 'string') ? str : '';
   
-  // Ціни по категоріях ремонтів (базові ціни) - 2026 România
-  // Цены в RON (Romanian Lei) - обновлены на январь 2026
+  // Repair prices by categories (base prices) - 2026 Romania
+  // Prices in RON (Romanian Lei) - updated January 2026
   const REPAIR_PRICES = {
     screen: { 
       phone: { min: 150, max: 600, avg: 350 },      // iPhone/Samsung flagship: 400-600, budget: 150-250
@@ -863,7 +863,7 @@
             h('h3', { className: 'text-lg font-bold text-white mb-4 text-center' }, 
               `${data.brand?.name} - ${window.i18n?.t('calculator.selectDevice') || 'Alegeți tipul:'}`
             ),
-            // Показываем индикатор загрузки базы данных
+    // Database loading indicator
             !dbReady && h('div', { className: 'text-center py-4' },
               h('div', { className: 'inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg' },
                 h('div', { className: 'w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin' }),
@@ -916,7 +916,7 @@
                 `${data.brand?.name || ''} / ${deviceTypes.find(t => t.id === data.deviceType)?.name || ''}`
               )
             ),
-            // Индикатор загрузки моделей
+            // Models loading indicator
             loadingModels && h('div', { className: 'text-center py-8' },
               h('div', { className: 'w-10 h-10 mx-auto mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
               h('p', { className: 'text-zinc-400' }, 'Se încarcă modelele...')

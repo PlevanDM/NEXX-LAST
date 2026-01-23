@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * NEXX Database Validator
- * Проверяет целостность и корректность данных в базе
+ * Checks the integrity and correctness of the database data
  */
 
 const fs = require('fs');
@@ -12,97 +12,102 @@ console.log('🔍 NEXX Database Validator\n');
 const errors = [];
 const warnings = [];
 
-// Загружаем devices.json
+// Load devices.json
 const devicesPath = path.join(__dirname, '..', 'public', 'data', 'devices.json');
+if (!fs.existsSync(devicesPath)) {
+  console.error('❌ Error: devices.json not found at ' + devicesPath);
+  process.exit(1);
+}
+
 const devices = JSON.parse(fs.readFileSync(devicesPath, 'utf-8'));
 
-console.log(`📊 Загружено устройств: ${devices.length}\n`);
+console.log(`📊 Devices loaded: ${devices.length}\n`);
 
 // ============================================
-// ПРОВЕРКА 1: Соответствие имени и категории
+// CHECK 1: Name and Category Consistency
 // ============================================
 
-console.log('1️⃣  Проверка соответствия имени и категории...');
+console.log('1️⃣  Checking name and category consistency...');
 
 devices.forEach((device, idx) => {
   const name = device.name?.toLowerCase() || '';
   const category = device.category?.toLowerCase() || '';
   
-  // iPhone должен быть в категории iPhone
+  // iPhone should be in iPhone category
   if (name.includes('iphone') && !category.includes('iphone')) {
     errors.push({
       index: idx,
       device: device.name,
-      issue: `iPhone в категории "${device.category}" (должно быть "iPhone")`
+      issue: `iPhone in category "${device.category}" (should be "iPhone")`
     });
   }
   
-  // Samsung должен быть в категории Samsung
-  if (name.includes('samsung') && !category.includes('samsung')) {
+  // Samsung should be in Samsung/Galaxy category
+  if (name.includes('samsung') && !(category.includes('samsung') || category.includes('galaxy'))) {
     errors.push({
       index: idx,
       device: device.name,
-      issue: `Samsung в категории "${device.category}" (должно быть "Samsung" или "Galaxy")`
+      issue: `Samsung in category "${device.category}" (should be "Samsung" or "Galaxy")`
     });
   }
   
-  // MacBook должен быть в категории MacBook
+  // MacBook should be in MacBook category
   if (name.includes('macbook') && !category.includes('macbook')) {
     errors.push({
       index: idx,
       device: device.name,
-      issue: `MacBook в категории "${device.category}" (должно быть "MacBook")`
+      issue: `MacBook in category "${device.category}" (should be "MacBook")`
     });
   }
   
-  // iPad должен быть в категории iPad
+  // iPad should be in iPad category
   if (name.includes('ipad') && !category.includes('ipad')) {
     errors.push({
       index: idx,
       device: device.name,
-      issue: `iPad в категории "${device.category}" (должно быть "iPad")`
+      issue: `iPad in category "${device.category}" (should be "iPad")`
     });
   }
 });
 
-console.log(`   Найдено ошибок категорий: ${errors.filter(e => e.issue.includes('категории')).length}`);
+console.log(`   Category errors found: ${errors.filter(e => e.issue.includes('category')).length}`);
 
 // ============================================
-// ПРОВЕРКА 2: Обязательные поля
+// CHECK 2: Required Fields
 // ============================================
 
-console.log('2️⃣  Проверка обязательных полей...');
+console.log('2️⃣  Checking required fields...');
 
-const requiredFields = ['name', 'category'];
+const requiredFields = ['name', 'category', 'brand', 'device_type'];
 
 devices.forEach((device, idx) => {
   requiredFields.forEach(field => {
-    if (!device[field]) {
+    if (!device[field] || device[field] === 'undefined') {
       errors.push({
         index: idx,
         device: device.name || `Device #${idx}`,
-        issue: `Отсутствует обязательное поле: ${field}`
+        issue: `Missing or invalid required field: ${field}`
       });
     }
   });
   
-  // Проверка пустых названий
+  // Check empty names
   if (device.name && device.name.trim() === '') {
     errors.push({
       index: idx,
       device: `Device #${idx}`,
-      issue: 'Пустое название устройства'
+      issue: 'Empty device name'
     });
   }
 });
 
-console.log(`   Найдено ошибок полей: ${errors.filter(e => e.issue.includes('поле') || e.issue.includes('название')).length}`);
+console.log(`   Field errors found: ${errors.filter(e => e.issue.includes('field') || e.issue.includes('name')).length}`);
 
 // ============================================
-// ПРОВЕРКА 3: Дубликаты
+// CHECK 3: Duplicates
 // ============================================
 
-console.log('3️⃣  Проверка дубликатов...');
+console.log('3️⃣  Checking for duplicates...');
 
 const nameMap = new Map();
 
@@ -112,116 +117,116 @@ devices.forEach((device, idx) => {
     warnings.push({
       index: idx,
       device: name,
-      issue: `Дубликат устройства (первый раз на индексе ${nameMap.get(name)})`
+      issue: `Duplicate device (first seen at index ${nameMap.get(name)})`
     });
   } else {
     nameMap.set(name, idx);
   }
 });
 
-console.log(`   Найдено дубликатов: ${warnings.filter(w => w.issue.includes('Дубликат')).length}`);
+console.log(`   Duplicates found: ${warnings.filter(w => w.issue.includes('Duplicate')).length}`);
 
 // ============================================
-// ПРОВЕРКА 4: Корректность цен
+// CHECK 4: Price Correctness
 // ============================================
 
-console.log('4️⃣  Проверка цен...');
+console.log('4️⃣  Checking prices...');
 
 devices.forEach((device, idx) => {
   const prices = device.official_service_prices;
   
   if (prices) {
-    // Проверка отрицательных цен
+    // Check negative prices
     Object.entries(prices).forEach(([key, value]) => {
       if (typeof value === 'number' && value < 0) {
         errors.push({
           index: idx,
           device: device.name,
-          issue: `Отрицательная цена для ${key}: ${value}`
+          issue: `Negative price for ${key}: ${value}`
         });
       }
       
-      // Проверка нереально высоких цен
+      // Check suspiciously high prices
       if (typeof value === 'number' && value > 10000) {
         warnings.push({
           index: idx,
           device: device.name,
-          issue: `Подозрительно высокая цена для ${key}: ${value}`
+          issue: `Suspiciously high price for ${key}: ${value}`
         });
       }
     });
   }
 });
 
-console.log(`   Найдено ошибок цен: ${errors.filter(e => e.issue.includes('цена')).length}`);
+console.log(`   Price errors found: ${errors.filter(e => e.issue.includes('price')).length}`);
 
 // ============================================
-// ПРОВЕРКА 5: Года выпуска
+// CHECK 5: Release Years
 // ============================================
 
-console.log('5️⃣  Проверка годов выпуска...');
+console.log('5️⃣  Checking release years...');
 
 devices.forEach((device, idx) => {
   if (device.year) {
-    // Проверка года в будущем
+    // Check future year
     if (device.year > 2026) {
       errors.push({
         index: idx,
         device: device.name,
-        issue: `Год в будущем: ${device.year}`
+        issue: `Year in future: ${device.year}`
       });
     }
     
-    // Проверка слишком старого года
+    // Check too old year
     if (device.year < 2000) {
       warnings.push({
         index: idx,
         device: device.name,
-        issue: `Очень старое устройство: ${device.year}`
+        issue: `Very old device: ${device.year}`
       });
     }
   }
 });
 
-console.log(`   Найдено ошибок годов: ${errors.filter(e => e.issue.includes('Год')).length}`);
+console.log(`   Year errors found: ${errors.filter(e => e.issue.includes('Year')).length}`);
 
 // ============================================
-// ИТОГОВЫЙ ОТЧЕТ
+// FINAL REPORT
 // ============================================
 
 console.log('\n' + '='.repeat(60));
-console.log('📋 ИТОГОВЫЙ ОТЧЕТ');
+console.log('📋 FINAL VALIDATION REPORT');
 console.log('='.repeat(60) + '\n');
 
-console.log(`✅ Проверено устройств: ${devices.length}`);
-console.log(`❌ Критических ошибок: ${errors.length}`);
-console.log(`⚠️  Предупреждений: ${warnings.length}\n`);
+console.log(`✅ Total devices checked: ${devices.length}`);
+console.log(`❌ Critical errors: ${errors.length}`);
+console.log(`⚠️  Warnings: ${warnings.length}\n`);
 
 if (errors.length > 0) {
-  console.log('❌ КРИТИЧЕСКИЕ ОШИБКИ:\n');
+  console.log('❌ CRITICAL ERRORS:\n');
   errors.slice(0, 20).forEach((err, i) => {
     console.log(`${i + 1}. [${err.index}] ${err.device}`);
     console.log(`   └─ ${err.issue}\n`);
   });
   
   if (errors.length > 20) {
-    console.log(`... и еще ${errors.length - 20} ошибок\n`);
+    console.log(`... and ${errors.length - 20} more errors\n`);
   }
 }
 
 if (warnings.length > 0) {
-  console.log('\n⚠️  ПРЕДУПРЕЖДЕНИЯ:\n');
+  console.log('\n⚠️  WARNINGS:\n');
   warnings.slice(0, 10).forEach((warn, i) => {
     console.log(`${i + 1}. [${warn.index}] ${warn.device}`);
     console.log(`   └─ ${warn.issue}\n`);
   });
   
   if (warnings.length > 10) {
-    console.log(`... и еще ${warnings.length - 10} предупреждений\n`);
+    console.log(`... and ${warnings.length - 10} more warnings\n`);
   }
 }
 
-// Сохраняем отчет
+// Save report
 const report = {
   timestamp: new Date().toISOString(),
   totalDevices: devices.length,
@@ -237,12 +242,12 @@ const report = {
 const reportPath = path.join(__dirname, '..', 'database-validation-report.json');
 fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
-console.log(`\n📄 Полный отчет сохранен: database-validation-report.json\n`);
+console.log(`\n📄 Full report saved to: database-validation-report.json\n`);
 
 if (errors.length === 0) {
-  console.log('🎉 База данных корректна!\n');
+  console.log('🎉 Database is valid!\n');
   process.exit(0);
 } else {
-  console.log('❌ Найдены критические ошибки! Требуется исправление.\n');
+  console.log('❌ Critical errors found! Fix required.\n');
   process.exit(1);
 }

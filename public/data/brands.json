@@ -1,0 +1,170 @@
+{
+  "phone": [
+    {
+      "id": "apple",
+      "name": "Apple"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung"
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi"
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei"
+    },
+    {
+      "id": "google",
+      "name": "Google"
+    },
+    {
+      "id": "oneplus",
+      "name": "OnePlus"
+    },
+    {
+      "id": "oppo",
+      "name": "Oppo"
+    },
+    {
+      "id": "vivo",
+      "name": "Vivo"
+    },
+    {
+      "id": "realme",
+      "name": "Realme"
+    },
+    {
+      "id": "motorola",
+      "name": "Motorola"
+    },
+    {
+      "id": "nokia",
+      "name": "Nokia"
+    },
+    {
+      "id": "sony",
+      "name": "Sony"
+    },
+    {
+      "id": "asus",
+      "name": "Asus"
+    },
+    {
+      "id": "nothing",
+      "name": "Nothing"
+    }
+  ],
+  "tablet": [
+    {
+      "id": "apple",
+      "name": "Apple"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung"
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi"
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei"
+    },
+    {
+      "id": "realme",
+      "name": "Realme"
+    },
+    {
+      "id": "oppo",
+      "name": "Oppo"
+    },
+    {
+      "id": "oneplus",
+      "name": "OnePlus"
+    },
+    {
+      "id": "vivo",
+      "name": "Vivo"
+    },
+    {
+      "id": "motorola",
+      "name": "Motorola"
+    },
+    {
+      "id": "google",
+      "name": "Google"
+    }
+  ],
+  "laptop": [
+    {
+      "id": "apple",
+      "name": "Apple"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung"
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi"
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei"
+    },
+    {
+      "id": "asus",
+      "name": "Asus"
+    }
+  ],
+  "watch": [
+    {
+      "id": "apple",
+      "name": "Apple"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung"
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi"
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei"
+    },
+    {
+      "id": "google",
+      "name": "Google"
+    },
+    {
+      "id": "oneplus",
+      "name": "OnePlus"
+    },
+    {
+      "id": "oppo",
+      "name": "Oppo"
+    },
+    {
+      "id": "vivo",
+      "name": "Vivo"
+    },
+    {
+      "id": "realme",
+      "name": "Realme"
+    },
+    {
+      "id": "motorola",
+      "name": "Motorola"
+    },
+    {
+      "id": "asus",
+      "name": "Asus"
+    }
+  ]
+}

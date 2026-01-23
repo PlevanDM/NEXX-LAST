@@ -1,7 +1,7 @@
 /**
- * NEXX Internationalization System - ПОЛНАЯ ВЕРСИЯ
- * Підтримка: Українська, Румунська, Англійська
- * ВСЕ елементи для повної локалізації
+ * NEXX Internationalization System - FULL VERSION
+ * Support: Romanian, Ukrainian, English
+ * All elements for full localization
  */
 
 (function() {
@@ -810,17 +810,17 @@
     }
     
     init() {
-      // Додаємо глобальну функцію t() для сумісності (используем стрелочную функцию)
+      // Global t() function for compatibility
       window.t = (key) => {
         return this.t(key);
       };
       
-      // Оновлюємо HTML атрибут lang
+      // Update HTML lang attribute
       document.documentElement.lang = this.currentLang;
     }
     
     detectLanguage() {
-      // 1. Проверяем URL параметр ?lang=
+      // 1. Check URL parameter ?lang=
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get('lang');
       if (urlLang && translations[urlLang]) {
@@ -828,7 +828,7 @@
         return urlLang;
       }
       
-      // 2. Проверяем сохранённый язык
+      // 2. Check saved language
       const saved = localStorage.getItem('nexx_lang');
       if (saved && translations[saved]) return saved;
       
@@ -845,7 +845,7 @@
       this.updatePageTranslations();
       this.notifyListeners();
       
-      // Перезагружаем после обновления
+      // Reload after update
       setTimeout(() => {
         window.location.reload();
       }, 150);
@@ -854,7 +854,7 @@
     }
     
     updatePageTranslations() {
-      // Обновляем все элементы с data-translate атрибутом
+      // Update all elements with data-translate attribute
       document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
         const translated = this.t(key);
@@ -940,7 +940,7 @@
         h('button', {
           onClick: () => setIsOpen(!isOpen),
           className: `${bgColor} w-10 h-10 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center justify-center text-lg`,
-          title: `${currentLang.name} • Натисніть для зміни`
+          title: `${currentLang.name} • Click to change`
         },
           h('span', null, currentLang.flag)
         ),
@@ -1002,5 +1002,5 @@
   window.i18n = new I18N();
   window.LanguageSwitcher = LanguageSwitcher;
   
-  console.log('✅ NEXX i18n ПОЛНА система загружена -', window.i18n.getCurrentLanguage().name);
+  console.log('✅ NEXX i18n system loaded -', window.i18n.getCurrentLanguage().name);
 })();

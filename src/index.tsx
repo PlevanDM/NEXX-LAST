@@ -224,7 +224,7 @@ app.get('/favicon.ico', (c) => c.redirect('/static/favicon.ico'))
 app.get('/test-click', (c) => {
   return c.html(`
     <!DOCTYPE html>
-    <html lang="uk">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -335,12 +335,12 @@ app.get('/test-click', (c) => {
 app.get('/nexx', (c) => {
   return c.html(`
     <!DOCTYPE html>
-    <html lang="uk">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NEXX Database - Apple Repair</title>
-        <meta name="description" content="NEXX Database - База данных для ремонта устройств Apple: цены, платы, микросхемы">
+        <meta name="description" content="NEXX Database - Baza de date pentru reparații Apple: prețuri, plăci, circuite integrate">
         <link rel="icon" type="image/png" href="/static/nexx-logo.png">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
@@ -363,7 +363,7 @@ app.get('/nexx', (c) => {
           let isDatabaseLoading = false;
 
           const setLoader = (message) => {
-            const text = message || 'Загрузка базы данных...';
+            const text = message || 'Se încarcă baza de date...';
             container.innerHTML = '<div class="min-h-screen bg-gray-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-2xl px-8 py-6 text-center"><div class="w-12 h-12 mx-auto mb-4 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div><p class="text-slate-600 font-semibold">' + text + '</p></div></div>';
           };
 
@@ -389,7 +389,7 @@ app.get('/nexx', (c) => {
             };
             script.onerror = () => {
               isDatabaseLoading = false;
-              container.innerHTML = '<div class="min-h-screen bg-red-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl px-8 py-6 text-center"><p class="text-red-600 font-semibold mb-3">Не удалось загрузить базу данных</p><button id="retry-load" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">Повторить</button></div></div>';
+              container.innerHTML = '<div class="min-h-screen bg-red-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl px-8 py-6 text-center"><p class="text-red-600 font-semibold mb-3">Nu s-a putut încărca baza de date</p><button id="retry-load" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">Reîncearcă</button></div></div>';
               script.remove();
               const retry = document.getElementById('retry-load');
               if (retry) {
@@ -422,25 +422,25 @@ app.get('/nexx', (c) => {
                 h('div', { className: 'text-center mb-8' },
                   h('div', { className: 'text-6xl mb-4' }, '🔐'),
                   h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
-                  h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
+                  h('p', { className: 'text-slate-600' }, 'Introduceți PIN-ul pentru acces')
                 ),
                 h('form', { onSubmit: handleSubmit },
                   h('input', {
                     type: 'password',
                     value: pin,
                     onChange: (event) => setPin(event.target.value),
-                    placeholder: 'Пинкод',
+                    placeholder: 'PIN',
                     maxLength: 8,
                     className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
                       (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
                       ' focus:outline-none transition-all',
                     autoFocus: true
                   }),
-                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
+                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ PIN incorect'),
                   h('button', {
                     type: 'submit',
                     className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
-                  }, 'Войти')
+                  }, 'Accesează')
                 ),
                 h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
                   'Protected access only'
@@ -481,13 +481,13 @@ app.post('/api/booking', async (c) => {
     
     return c.json({
       success: true,
-      message: 'Заявка успішно відправлена! Ми зв\'яжемося з вами найближчим часом.',
+      message: 'Cererea a fost trimisă cu succes! Vă vom contacta în curând.',
       orderId: 'TEST-' + Date.now()
     });
   } catch (error) {
     return c.json({
       success: false,
-      message: 'Помилка при обробці заявки. Спробуйте ще раз.'
+      message: 'Eroare la procesarea cererii. Încercați din nou.'
     }, 500);
   }
 });
@@ -496,7 +496,7 @@ app.post('/api/booking', async (c) => {
 const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white', useJSX = false) => {
   return `
     <!DOCTYPE html>
-    <html lang="uk">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

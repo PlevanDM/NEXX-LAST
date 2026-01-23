@@ -1736,9 +1736,9 @@
                 </div>
                 <div style="flex:1;min-width:0;">
                     <div style="font-weight:700;font-size:15px;margin-bottom:2px;">NEXX GSM</div>
-                    <div style="font-size:12px;opacity:0.85;">Додати на головний екран</div>
+                    <div style="font-size:12px;opacity:0.85;">Adaugă pe ecranul principal</div>
                 </div>
-                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">Додати</button>
+                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">Adaugă</button>
                 <button id="pwa-close-btn" style="background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">×</button>
             </div>
         `;
@@ -1779,7 +1779,7 @@
         window.addEventListener('appinstalled', () => {
             console.log('✅ PWA installed');
             installBanner.style.display = 'none';
-            if (window.showToast) window.showToast('🎉 NEXX GSM встановлено!', 'success');
+            if (window.showToast) window.showToast('🎉 NEXX GSM a fost instalat!', 'success');
         });
     </script>
 </body>

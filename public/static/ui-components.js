@@ -280,7 +280,7 @@
             href: '/', 
             className: 'flex items-center group transition-all duration-300 hover:scale-105 cursor-pointer flex-shrink-0',
             'aria-label': 'NEXX GSM Home',
-            title: 'Перейти на головну'
+            title: 'Acasă'
           },
             h('img', {
               src: '/static/nexx-logo-trimmed.png?v=1',
@@ -312,7 +312,7 @@
             isAuthenticated && currentPage === 'database' && h('button', {
               onClick: handleLogout,
               className: `flex items-center gap-2 px-3 py-2 ${isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-500/20 hover:bg-gray-500/30 text-white'} rounded-lg transition-all duration-300 font-medium`,
-              title: 'Ieșire з бази даних'
+              title: 'Ieșire'
             },
               h('i', { className: 'fas fa-right-from-bracket' }),
               h('span', null, 'Ieșire')
@@ -372,20 +372,20 @@
     h(Modal, {
       isOpen: isLogoutModalOpen,
       onClose: () => setIsLogoutModalOpen(false),
-      title: 'Ieșire з бази даних?',
+      title: 'Ieșire din baza de date?',
       size: 'sm',
       footer: h('div', { className: 'flex gap-3 justify-end' },
         h('button', {
           onClick: () => setIsLogoutModalOpen(false),
           className: 'px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg transition'
-        }, 'Скасувати'),
+        }, 'Anulează'),
         h('button', {
           onClick: confirmLogout,
           className: 'px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition'
         }, 'Ieșire')
       )
     },
-      h('p', { className: 'text-gray-700 text-center' }, 'Ви впевнені, що хочете вийти з бази даних?')
+      h('p', { className: 'text-gray-700 text-center' }, 'Sunteți sigur că doriți să părăsiți baza de date?')
     )
   );
   };
@@ -533,7 +533,7 @@
   // ERROR STATE
   // ============================================
   
-  const ErrorState = ({ title = 'Щось пішло не так', message, onRetry }) => {
+  const ErrorState = ({ title = 'Ceva nu a mers bine', message, onRetry }) => {
     return h('div', { className: 'flex flex-col items-center justify-center p-8 text-center' },
       h('div', { className: 'text-6xl mb-4' }, '⚠️'),
       h('h3', { className: 'text-2xl font-bold text-gray-900 mb-2' }, title),
@@ -542,7 +542,7 @@
         onClick: onRetry,
         icon: 'fa-rotate-right',
         variant: 'primary'
-      }, 'Спробувати ще раз')
+      }, 'Reîncearcă')
     );
   };
   
@@ -550,7 +550,7 @@
   // EMPTY STATE
   // ============================================
   
-  const EmptyState = ({ icon = 'fa-inbox', title = 'Немає даних', message, action }) => {
+  const EmptyState = ({ icon = 'fa-inbox', title = 'Nu sunt date', message, action }) => {
     return h('div', { className: 'flex flex-col items-center justify-center p-12 text-center' },
       h('i', { className: `fas ${icon} text-6xl text-gray-300 mb-4` }),
       h('h3', { className: 'text-xl font-bold text-gray-700 mb-2' }, title),
@@ -563,7 +563,7 @@
   // SEARCH BAR
   // ============================================
   
-  const SearchBar = ({ value, onChange, placeholder = 'Пошук...', className = '' }) => {
+  const SearchBar = ({ value, onChange, placeholder = 'Căutare...', className = '' }) => {
     return h('div', { className: `relative ${className}` },
       h('div', { className: 'absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' },
         h('i', { className: 'fas fa-magnifying-glass' })

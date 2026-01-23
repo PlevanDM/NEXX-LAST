@@ -1,0 +1,17 @@
+{
+  "phone": "+40 721 234 567",
+  "phoneTel": "+40721234567",
+  "whatsapp": "https://wa.me/40721234567",
+  "email": "info@nexx.ro",
+  "address": {
+    "street": "Str. Victoriei 15",
+    "city": "București",
+    "country": "România",
+    "postalCode": "010063"
+  },
+  "hours": {
+    "weekdays": "10:00-19:00",
+    "saturday": "Închis",
+    "sunday": "Închis"
+  }
+}
