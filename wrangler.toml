@@ -1,8 +1,8 @@
-﻿# Cloudflare Pages/Workers Configuration
+# Cloudflare Pages/Workers Configuration
 # https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name = "nexx"
-compatibility_date = "2025-01-20"
+compatibility_date = "2026-01-21"
 compatibility_flags = ["nodejs_compat"]
 
 # Pages configuration
@@ -16,3 +16,17 @@ account_id = "ad170d773e79a037e28f4530fd5305a5"
 PROJECT_NAME = "nexx"
 ENVIRONMENT = "production"
 ZONE_NAME = "nexxgsm.com"
+
+# Build configuration
+[build]
+command = "npm run build"
+cwd = "."
+
+# Pages settings
+[pages]
+production_branch = "main"
+
+# AI Configuration
+# Cloudflare AI is available in Workers and Pages Functions
+# Models available: @cf/meta/llama-3.1-8b-instruct, @cf/meta/llama-3.1-70b-instruct, etc.
+# See: https://developers.cloudflare.com/workers-ai/models/

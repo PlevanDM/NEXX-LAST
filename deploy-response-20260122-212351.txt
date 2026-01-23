@@ -1,0 +1,28 @@
+﻿curl.exe :   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+At C:\NEXX LAST\deploy-with-manifest.ps1:115 char:11
++ $result = & curl.exe -X POST $uploadUrl $curlHeaders `
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (  % Total    % ...  Time  Current:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 11 24.2M    0     0   11 2800k      0  6225k  0:00:03 --:--:--  0:00:03 6292k
+ 51 24.2M    0     0   51 12.5M      0  8908k  0:00:02  0:00:01  0:00:01 8937k
+100 24.2M    0     0  100 24.2M      0  7652k  0:00:03  0:00:03 --:--:-- 7666k
+100 24.2M    0     0  100 24.2M      0  5836k  0:00:04  0:00:04 --:--:-- 5845k
+100 24.2M    0     0  100 24.2M      0  4719k  0:00:05  0:00:05 --:--:-- 4725k
+100 24.2M    0   208  100 24.2M     35  4195k  0:00:05  0:00:05 --:--:-- 4029k
+100 24.2M    0   208  100 24.2M     35  4194k  0:00:05  0:00:05 --:--:-- 2685k
+{
+  "result": null,
+  "success": false,
+  "errors": [
+    {
+      "code": 8000096,
+      "message": "A \"manifest\" field was expected in the request body but was not provided."
+    }
+  ],
+  "messages": []
+}

@@ -120,11 +120,11 @@ app.post('/api/callback', async (c) => {
     
     const cleanPhone = phone.replace(/[^0-9+]/g, '')
     
-    // Remonline integration
-    const REMONLINE_API_KEY = '55f93eacf65e94ef55e6fed9fd41f8c4'
-    const REMONLINE_BASE = 'https://api.remonline.app'
-    const BRANCH_ID = 218970
-    const ORDER_TYPE = 334611
+    // Remonline integration - from environment variables
+    const REMONLINE_API_KEY = c.env?.REMONLINE_API_KEY || '55f93eacf65e94ef55e6fed9fd41f8c4'
+    const REMONLINE_BASE = c.env?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+    const BRANCH_ID = parseInt(c.env?.REMONLINE_BRANCH_ID || '218970')
+    const ORDER_TYPE = parseInt(c.env?.REMONLINE_ORDER_TYPE || '334611')
     
     let orderId = null
     let remonlineSuccess = false
@@ -591,24 +591,8 @@ app.get('/terms', (c) => {
   ));
 })
 
-// Main page - serve static index.html (Romanian version with i18n support)
-app.get('/', async (c) => {
-  // Serve the static index.html file
-  const assetResponse = await c.env.ASSETS.fetch(new Request(new URL('/index.html', c.req.url)))
-  if (assetResponse.ok) {
-    return new Response(assetResponse.body, {
-      headers: {
-        'Content-Type': 'text/html; charset=UTF-8',
-        'Cache-Control': 'public, max-age=3600'
-      }
-    })
-  }
-  // Fallback to dynamic generation if static file not found
-  return c.html(createPageTemplate(
-    'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐',
-    'Service profesional reparații iPhone, MacBook, Samsung în București ⭐ Garanție 30 zile • Diagnostic gratuit • De la 60 lei',
-    'homepage.js'
-  ));
-})
+// Main page - excluded from worker, served directly as static index.html
+// This route is handled by Cloudflare Pages static file serving
+// See _routes.json for exclusion configuration
 
 export default app

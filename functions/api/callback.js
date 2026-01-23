@@ -181,7 +181,7 @@ function getPriceEstimate(device, problem) {
 }
 
 export async function onRequest(context) {
-  const { request } = context;
+  const { request, env } = context;
   
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -225,16 +225,16 @@ export async function onRequest(context) {
     // Get price estimate from database
     const priceEstimate = getPriceEstimate(device, problem);
     
-    // Remonline integration
-    const REMONLINE_API_KEY = '55f93eacf65e94ef55e6fed9fd41f8c4';
-    const REMONLINE_BASE = 'https://api.remonline.app';
-    const BRANCH_ID = 218970;
-    const ORDER_TYPE = 334611;
+    // Remonline integration - from environment variables
+    const REMONLINE_API_KEY = env?.REMONLINE_API_KEY || '55f93eacf65e94ef55e6fed9fd41f8c4';
+    const REMONLINE_BASE = env?.REMONLINE_BASE_URL || 'https://api.remonline.app';
+    const BRANCH_ID = parseInt(env?.REMONLINE_BRANCH_ID || '218970');
+    const ORDER_TYPE = parseInt(env?.REMONLINE_ORDER_TYPE || '334611');
     
-    // Vapi AI Voice Agent
-    const VAPI_API_KEY = 'ae7cb2c0-9b24-48cf-9115-fb15f5042d73';
-    const VAPI_PHONE_ID = 'a725ed7c-0465-4cde-ade7-c346aade9aea'; // Twilio +19789918149
-    const VAPI_ASSISTANT_ID = '96cd370d-806f-4cbe-993e-381a5df85d46';
+    // Vapi AI Voice Agent - from environment variables
+    const VAPI_API_KEY = env?.VAPI_API_KEY || 'ae7cb2c0-9b24-48cf-9115-fb15f5042d73';
+    const VAPI_PHONE_ID = env?.VAPI_PHONE_ID || 'a725ed7c-0465-4cde-ade7-c346aade9aea'; // Twilio +19789918149
+    const VAPI_ASSISTANT_ID = env?.VAPI_ASSISTANT_ID || '96cd370d-806f-4cbe-993e-381a5df85d46';
     
     let orderId = null;
     let remonlineSuccess = false;

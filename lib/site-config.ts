@@ -15,7 +15,7 @@ export const SITE_CONFIG = {
     // Phone Romania
     phoneE164: '+40721234567',
     phoneDisplay: '+40 721 234 567',
-    phoneWhatsApp: '40721234567',
+    phoneWhatsApp: '', // TODO: Add real WhatsApp number
     
     // Email
     email: 'info@nexx.ro',

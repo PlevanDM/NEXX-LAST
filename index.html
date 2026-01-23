@@ -28,6 +28,7 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1f2937">
+    <meta name="version" content="2026-01-23-20:00">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="NEXX">
@@ -318,7 +319,7 @@
     <script src="/static/utils.js"></script>
     <script src="/static/database.js"></script>
     <script src="/static/nexx-core.js"></script>
-    <script src="/static/i18n.js?v=10.0.1-20260122212000"></script>
+    <script src="/static/i18n.js?v=10.5.0-20260123200000"></script>
     <script src="/static/ui-components.js?v=10.0.1"></script>
     <script src="/static/navigation-system.js?v=2.0"></script>
     <script src="/static/analytics.js"></script>
@@ -376,12 +377,11 @@
         background: rgba(59, 130, 246, 0.7);
       }
     </style>
-    <script src="/static/price-calculator.js"></script>
+    <script src="/static/price-calculator.js?v=3.3-20260123200000"></script>
     
     <script>
         const { useState, useEffect, createElement: h } = React;
         const { Header, Footer, ToastContainer } = window.NEXXDesign;
-        const { QuickActions } = window.NEXXNavigation;
         
         // Lucide Icons as SVG components (replacing Font Awesome)
         const Icons = {
@@ -415,22 +415,77 @@
         };
         
         // Translation helper with fallback
+        const fallbacks = {
+            'booking.errors.nameRequired': 'Numele este obligatoriu (min. 2 caractere)',
+            'booking.errors.phoneInvalid': 'Telefonul este invalid',
+            'booking.errors.deviceRequired': 'Selectați dispozitivul',
+            'booking.success': 'Mulțumim! Te vom suna în curând',
+            'buttons.freeLabel': '🎁 GRATUIT',
+            'buttons.callBack': 'Sună-mă înapoi',
+            'buttons.freeDiagnostic': 'Diagnostic gratuit inclus!',
+            'buttons.calculate': 'Calculează prețul',
+            'nav.calculator': 'Calculator',
+            'nav.home': 'Acasă',
+            'nav.services': 'Servicii',
+            'nav.contacts': 'Contacte',
+            'callback.title': 'Sună-mă înapoi',
+            'callback.aiCalls': '🤖 AI vă sună în 10 secunde!',
+            'callback.bonus': '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!',
+            'callback.phone': 'Telefon *',
+            'callback.name': 'Nume',
+            'callback.device': 'Dispozitiv',
+            'callback.problem': 'Problemă',
+            'callback.sending': 'Se trimite...',
+            'callback.submit': 'Trimite cererea',
+            'callback.orCall': 'sau sunați direct: ',
+            'callback.thanks': 'Mulțumim!',
+            'callback.callingNow': '📞 AI vă sună acum...',
+            'callback.confirmDetails': 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.',
+            'callback.freeIncluded': '🎁 Diagnostic GRATUIT inclus în comandă!',
+            'callback.close': 'Închide',
+            'services.popular': 'Popular',
+            'services.items.battery': { title: 'Reparații Baterii', desc: 'Înlocuire + regenerare acumulatori' },
+            'services.items.board': { title: 'Reparații Plăci', desc: 'Lipire IC, BGA reballing, reparare piste' },
+            'services.items.display': { title: 'Înlocuire Display', desc: 'Ecrane originale sau de calitate' },
+            'services.items.port': { title: 'Port Încărcare', desc: 'Înlocuire conector, curățare' },
+            'services.items.modular': { title: 'Service Modular', desc: 'Cameră, speaker, butoane, senzori' },
+            'gallery.title': 'Galerie',
+            'gallery.recentWorks': 'Lucrări Recente',
+        };
+        
         const t = (key) => {
-            if (!window.i18n) {
-                // Fallback translations
-                const fallbacks = {
-                    'booking.errors.nameRequired': 'Numele este obligatoriu (min. 2 caractere)',
-                    'booking.errors.phoneInvalid': 'Telefonul este invalid',
-                    'booking.errors.deviceRequired': 'Selectați dispozitivul',
-                    'booking.success': 'Mulțumim! Te vom suna în curând',
-                    'buttons.freeLabel': '🎁 GRATUIT',
-                    'buttons.callBack': 'Sună-mă înapoi',
-                    'buttons.freeDiagnostic': 'Diagnostic gratuit inclus!',
-                    'buttons.calculate': 'Calculează prețul'
-                };
+            // Если window.i18n еще не загружен, используем fallback
+            if (!window.i18n || typeof window.i18n.t !== 'function') {
+                const fallback = fallbacks[key];
+                if (fallback !== undefined) return fallback;
+                return key;
+            }
+            
+            try {
+                const v = window.i18n.t(key);
+                
+                // Если вернулся ключ (перевод не найден), используем fallback
+                if (v === key || v === undefined || v === null) {
+                    const fallback = fallbacks[key];
+                    if (fallback !== undefined) return fallback;
+                    return key;
+                }
+                
+                // Если возвращается массив, возвращаем его как есть
+                if (Array.isArray(v)) return v;
+                
+                // Если возвращается объект, возвращаем его как есть
+                if (v && typeof v === 'object' && v !== null) return v;
+                
+                // Если возвращается строка (и она не равна ключу), возвращаем её
+                if (typeof v === 'string' && v !== key) return v;
+                
+                // В остальных случаях используем fallback или ключ
+                return fallbacks[key] || v || key;
+            } catch (e) {
+                console.warn('Translation error for', key, e);
                 return fallbacks[key] || key;
             }
-            return window.i18n.t(key);
         };
         
         // Safe toast function (works even if ToastContainer not mounted yet)
@@ -464,12 +519,48 @@
             const [isLoading, setIsLoading] = React.useState(false);
             const [isSuccess, setIsSuccess] = React.useState(false);
             const [error, setError] = React.useState('');
+            // State for language changes
+            const [lang, setLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
             
+            const resetForm = () => {
+                setPhone('');
+                setName('');
+                setDevice('');
+                setProblem('');
+                setIsSuccess(false);
+                setError('');
+            };
+            const closeModal = () => {
+                setIsOpen(false);
+                document.body.style.overflow = '';
+                setTimeout(resetForm, 300);
+            };
             // Expose open function globally
             React.useEffect(() => {
                 window.openCallbackModal = () => setIsOpen(true);
                 return () => { delete window.openCallbackModal; };
             }, []);
+            // Subscribe to language changes
+            React.useEffect(() => {
+                if (!window.i18n) return;
+                const unsubscribe = window.i18n.subscribe((newLang) => {
+                    setLang(newLang);
+                });
+                return unsubscribe;
+            }, []);
+            React.useEffect(() => {
+                if (!isOpen) {
+                    document.body.style.overflow = '';
+                    return;
+                }
+                document.body.style.overflow = 'hidden';
+                const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+                window.addEventListener('keydown', onKey);
+                return () => {
+                    window.removeEventListener('keydown', onKey);
+                    document.body.style.overflow = '';
+                };
+            }, [isOpen]);
             
             const handleSubmit = async (e) => {
                 e.preventDefault();
@@ -499,31 +590,24 @@
                 }
             };
             
-            const resetForm = () => {
-                setPhone('');
-                setName('');
-                setDevice('');
-                setProblem('');
-                setIsSuccess(false);
-                setError('');
-            };
-            
-            const closeModal = () => {
-                setIsOpen(false);
-                setTimeout(resetForm, 300);
-            };
-            
             if (!isOpen) return null;
             
             return h('div', {
                 className: 'fixed inset-0 z-[100] flex items-center justify-center p-4',
-                onClick: (e) => e.target === e.currentTarget && closeModal()
+                style: { pointerEvents: 'auto' }
             },
-                // Backdrop
-                h('div', { className: 'absolute inset-0 bg-black/70 backdrop-blur-sm' }),
-                
-                // Modal
-                h('div', { className: 'relative bg-gray-900 rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl border border-gray-700 animate-scale-in' },
+                h('div', {
+                    className: 'absolute inset-0 bg-black/70 backdrop-blur-sm',
+                    onClick: closeModal,
+                    role: 'button',
+                    tabIndex: -1,
+                    'aria-label': 'Close',
+                    style: { pointerEvents: 'auto' }
+                }),
+                h('div', {
+                    className: 'relative bg-gray-900 rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl border border-gray-700 animate-scale-in',
+                    onClick: (e) => e.stopPropagation()
+                },
                     // Close button
                     h('button', {
                         onClick: closeModal,
@@ -531,24 +615,23 @@
                     }, Icons.x({ size: 20, className: 'w-5 h-5' })),
                     
                     isSuccess ? (
-                        // Success state
                         h('div', { className: 'text-center py-8' },
                             h('div', { className: 'w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4' },
                                 Icons.check({ size: 40, className: 'w-10 h-10 text-white' })
                             ),
-                            h('h3', { className: 'text-2xl font-bold text-white mb-2' }, 'Mulțumim!'),
+                            h('h3', { className: 'text-2xl font-bold text-white mb-2' }, t('callback.thanks')),
                             h('div', { className: 'flex items-center justify-center gap-2 mb-2' },
                                 h('div', { className: 'w-3 h-3 bg-green-500 rounded-full animate-pulse' }),
-                                h('p', { className: 'text-green-400 font-semibold' }, '📞 AI vă sună acum...')
+                                h('p', { className: 'text-green-400 font-semibold' }, t('callback.callingNow'))
                             ),
-                            h('p', { className: 'text-gray-400 mb-4' }, 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.'),
+                            h('p', { className: 'text-gray-400 mb-4' }, t('callback.confirmDetails')),
                             h('div', { className: 'bg-yellow-500/20 border border-yellow-500/30 rounded-xl p-3 mb-4' },
-                                h('p', { className: 'text-yellow-400 text-sm' }, '🎁 Diagnostic GRATUIT inclus în comandă!')
+                                h('p', { className: 'text-yellow-400 text-sm' }, t('callback.freeIncluded'))
                             ),
                             h('button', {
                                 onClick: closeModal,
                                 className: 'px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition'
-                            }, 'Închide')
+                            }, t('callback.close'))
                         )
                     ) : (
                         // Form
@@ -558,21 +641,21 @@
                                     Icons.phoneCall({ size: 24, className: 'w-6 h-6 text-white' }),
                                     h('span', { className: 'absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs' }, '🎁')
                                 ),
-                                h('h3', { className: 'text-2xl font-bold text-white mb-1' }, window.i18n?.t('callback.title') || 'Sună-mă înapoi'),
-                                h('p', { className: 'text-gray-400 text-sm' }, window.i18n?.t('callback.aiCalls') || '🤖 AI vă sună în 10 secunde!'),
+                                h('h3', { className: 'text-2xl font-bold text-white mb-1' }, t('callback.title')),
+                                h('p', { className: 'text-gray-400 text-sm' }, t('callback.aiCalls')),
                                 h('div', { className: 'mt-3 px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 rounded-xl' },
-                                    h('p', { className: 'text-yellow-400 text-sm font-semibold' }, window.i18n?.t('callback.bonus') || '🎁 Bonus: Diagnostic GRATUIT pentru comenzile online!')
+                                    h('p', { className: 'text-yellow-400 text-sm font-semibold' }, t('callback.bonus'))
                                 )
                             ),
                             
                             // Phone field (required)
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.phone') || 'Telefon *'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, t('callback.phone')),
                                 h('input', {
                                     type: 'tel',
                                     value: phone,
                                     onChange: (e) => setPhone(e.target.value),
-                                    placeholder: '+40 7XX XXX XXX',
+                                    placeholder: (t('booking.form.phonePlaceholder') || '+40 7XX XXX XXX'),
                                     required: true,
                                     className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
                                 })
@@ -580,35 +663,35 @@
                             
                             // Name field
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.name') || 'Nume'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, t('callback.name')),
                                 h('input', {
                                     type: 'text',
                                     value: name,
                                     onChange: (e) => setName(e.target.value),
-                                    placeholder: 'Numele dvs.',
+                                    placeholder: (t('callback.name') || 'Numele dvs.'),
                                     className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
                                 })
                             ),
                             
                             // Device field
                             h('div', { className: 'mb-4' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.device') || 'Dispozitiv'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, t('callback.device')),
                                 h('input', {
                                     type: 'text',
                                     value: device,
                                     onChange: (e) => setDevice(e.target.value),
-                                    placeholder: 'ex: iPhone 14 Pro, Samsung S24',
+                                    placeholder: (t('booking.form.devicePlaceholder') || 'ex: iPhone 14 Pro, Samsung S24'),
                                     className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition'
                                 })
                             ),
                             
                             // Problem field
                             h('div', { className: 'mb-6' },
-                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, window.i18n?.t('callback.problem') || 'Problemă'),
+                                h('label', { className: 'block text-gray-300 text-sm mb-2' }, t('callback.problem')),
                                 h('textarea', {
                                     value: problem,
                                     onChange: (e) => setProblem(e.target.value),
-                                    placeholder: 'Descrieți problema...',
+                                    placeholder: (t('booking.form.problemPlaceholder') || 'Descrieți problema...'),
                                     rows: 2,
                                     className: 'w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition resize-none'
                                 })
@@ -626,19 +709,19 @@
                                 isLoading ? (
                                     h(React.Fragment, null,
                                         Icons.loader({ size: 20 }),
-                                        window.i18n?.t('callback.sending') || 'Se trimite...'
+                                        t('callback.sending')
                                     )
                                 ) : (
                                     h(React.Fragment, null,
                                         Icons.phone({ size: 20 }),
-                                        window.i18n?.t('callback.submit') || 'Trimite cererea'
+                                        t('callback.submit')
                                     )
                                 )
                             ),
                             
                             // Direct call link
                             h('div', { className: 'mt-4 text-center' },
-                                h('span', { className: 'text-gray-500 text-sm' }, window.i18n?.t('callback.orCall') || 'sau sunați direct: '),
+                                h('span', { className: 'text-gray-500 text-sm' }, t('callback.orCall')),
                                 h('a', {
                                     href: 'tel:+40721234567',
                                     className: 'text-blue-400 hover:text-blue-300 font-medium'
@@ -693,17 +776,36 @@
             
             const closeModal = () => {
                 setIsOpen(false);
+                document.body.style.overflow = '';
                 setPin('');
                 setError('');
             };
+            
+            React.useEffect(() => {
+                if (!isOpen) {
+                    document.body.style.overflow = '';
+                    return;
+                }
+                document.body.style.overflow = 'hidden';
+                const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+                window.addEventListener('keydown', onKey);
+                return () => {
+                    window.removeEventListener('keydown', onKey);
+                    document.body.style.overflow = '';
+                };
+            }, [isOpen]);
             
             if (!isOpen) return null;
             
             return h('div', {
                 className: 'fixed inset-0 z-[100] flex items-center justify-center p-4',
-                onClick: (e) => e.target === e.currentTarget && closeModal()
+                onClick: (e) => e.target === e.currentTarget && closeModal(),
+                style: { pointerEvents: 'auto' }
             },
-                h('div', { className: 'absolute inset-0 bg-black/80 backdrop-blur-sm' }),
+                h('div', { 
+                    className: 'absolute inset-0 bg-black/80 backdrop-blur-sm',
+                    style: { pointerEvents: 'auto' }
+                }),
                 h('div', { className: 'relative bg-gray-900 rounded-3xl p-8 w-full max-w-sm shadow-2xl border border-purple-500/30 animate-scale-in' },
                     h('button', {
                         onClick: closeModal,
@@ -714,8 +816,8 @@
                         h('div', { className: 'w-20 h-20 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/30' },
                             h('i', { className: 'fas fa-lock text-3xl text-white' })
                         ),
-                        h('h3', { className: 'text-2xl font-bold text-white mb-2' }, 'Service Mod'),
-                        h('p', { className: 'text-gray-400 text-sm' }, 'Introduceți PIN-ul pentru acces')
+                        h('h3', { className: 'text-2xl font-bold text-white mb-2' }, t('quickActions.serviceMod') || 'Service Mod'),
+                        h('p', { className: 'text-gray-400 text-sm' }, t('serviceMod.enterPin') || 'Introduceți PIN-ul pentru acces')
                     ),
                     
                     h('form', { onSubmit: handleSubmit },
@@ -739,12 +841,12 @@
                             className: `w-full py-4 ${isLoading || pin.length < 4 ? 'bg-gray-700 cursor-not-allowed' : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700'} text-white rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 shadow-lg`
                         },
                             isLoading ? Icons.loader({ size: 20 }) : h('i', { className: 'fas fa-unlock' }),
-                            isLoading ? 'Verificare...' : 'Accesează'
+                            isLoading ? (t('serviceMod.checking') || 'Verificare...') : (t('serviceMod.access') || 'Accesează')
                         )
                     ),
                     
                     h('p', { className: 'text-gray-500 text-xs text-center mt-4' }, 
-                        '🔒 Acces restricționat pentru personal autorizat'
+                        t('serviceMod.restricted') || '🔒 Acces restricționat pentru personal autorizat'
                     )
                 )
             );
@@ -823,6 +925,17 @@
         const Services = () => {
             // State for carousel
             const [activeCardIndex, setActiveCardIndex] = React.useState({});
+            // State for language changes
+            const [lang, setLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+            
+            // Subscribe to language changes
+            React.useEffect(() => {
+                if (!window.i18n) return;
+                const unsubscribe = window.i18n.subscribe((newLang) => {
+                    setLang(newLang);
+                });
+                return unsubscribe;
+            }, []);
             
             // Dynamic services with translations and multiple sub-services
             const getServices = () => {
@@ -837,87 +950,92 @@
                         icon: 'battery',
                         title: battery.title || 'Reparații Baterii',
                         popular: true,
-                        subServices: [
+                        subServices: (battery.subServices && Array.isArray(battery.subServices)) ? battery.subServices : [
                             { name: 'iPhone 12-16', price: '150-250 lei', time: '30 min' },
                             { name: 'iPhone SE/11', price: '100-150 lei', time: '30 min' },
                             { name: 'Samsung S/Note', price: '120-200 lei', time: '45 min' },
                             { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
                             { name: 'iPad', price: '200-350 lei', time: '1 oră' }
                         ],
-                        specs: (window.i18n?.t('services.specs.battery') || ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'])
+                        specs: (Array.isArray(t('services.specs.battery')) ? t('services.specs.battery') : ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'])
                     },
                     { 
                         icon: 'cpu',
                         title: board.title || 'Reparații Plăci',
-                        subServices: [
+                        subServices: (board.subServices && Array.isArray(board.subServices)) ? board.subServices : [
                             { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 ore' },
                             { name: 'Reparare piste', price: '150-400 lei', time: '1-3 ore' },
                             { name: 'Înlocuire IC', price: '200-500 lei', time: '1-2 ore' },
                             { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
                             { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
                         ],
-                        specs: (window.i18n?.t('services.specs.board') || ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'])
+                        specs: (Array.isArray(t('services.specs.board')) ? t('services.specs.board') : ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'])
                     },
                     { 
                         icon: 'monitor',
                         title: display.title || 'Înlocuire Display',
-                        subServices: [
+                        subServices: (display.subServices && Array.isArray(display.subServices)) ? display.subServices : [
                             { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
                             { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
                             { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 oră' },
                             { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
                             { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
                         ],
-                        specs: (window.i18n?.t('services.specs.display') || ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone'])
+                        specs: (Array.isArray(t('services.specs.display')) ? t('services.specs.display') : ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone'])
                     },
                     { 
                         icon: 'plug',
                         title: port.title || 'Port Încărcare',
-                        subServices: [
+                        subServices: (port.subServices && Array.isArray(port.subServices)) ? port.subServices : [
                             { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
                             { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
                             { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
                             { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
                             { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
                         ],
-                        specs: (window.i18n?.t('services.specs.port') || ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'])
+                        specs: (Array.isArray(t('services.specs.port')) ? t('services.specs.port') : ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'])
                     },
                     { 
                         icon: 'wrench',
                         title: modular.title || 'Service Modular',
-                        subServices: [
+                        subServices: (modular.subServices && Array.isArray(modular.subServices)) ? modular.subServices : [
                             { name: 'Cameră principală', price: '150-400 lei', time: '30-60 min' },
                             { name: 'Cameră frontală', price: '80-200 lei', time: '30 min' },
                             { name: 'Speaker/Microfon', price: '60-150 lei', time: '20-40 min' },
                             { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
                             { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
                         ],
-                        specs: (window.i18n?.t('services.specs.modular') || ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing'])
+                        specs: (Array.isArray(t('services.specs.modular')) ? t('services.specs.modular') : ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing'])
                     },
                     { 
                         icon: 'images',
-                        title: 'Lucrări Recente',
+                        title: (t('gallery.recentWorks') || 'Lucrări Recente'),
                         isGallery: true,
                         featured: true,
-                        works: [
-                            { device: 'iPhone 15 Pro Max', repair: 'Înlocuire display OLED', result: 'Ca nou' },
-                            { device: 'MacBook Pro M3', repair: 'Reparație placă - deteriorare apă', result: 'Funcțional 100%' },
-                            { device: 'Samsung S24 Ultra', repair: 'Reballing CPU + display', result: 'Client mulțumit' },
-                            { device: 'iPad Pro 12.9', repair: 'Înlocuire baterie + port', result: 'Garanție 12 luni' },
-                            { device: 'iPhone 14', repair: 'Face ID + cameră', result: 'Reparat în 2 ore' }
-                        ]
+                        works: (() => {
+                            const g = (typeof t('gallery.works') === 'object' && t('gallery.works')) || {};
+                            const r = (typeof t('gallery.results') === 'object' && t('gallery.results')) || {};
+                            return [
+                                { device: 'iPhone 15 Pro Max', repair: g.displayOLED || 'Înlocuire display OLED', result: r.likeNew || 'Ca nou' },
+                                { device: 'MacBook Pro M3', repair: g.boardWater || 'Reparație placă - deteriorare apă', result: r.functional || 'Funcțional 100%' },
+                                { device: 'Samsung S24 Ultra', repair: g.reballingDisplay || 'Reballing CPU + display', result: r.satisfied || 'Client mulțumit' },
+                                { device: 'iPad Pro 12.9', repair: g.batteryPort || 'Înlocuire baterie + port', result: r.warranty || 'Garanție 12 luni' },
+                                { device: 'iPhone 14', repair: g.faceIdCamera || 'Face ID + cameră', result: r.repaired || 'Reparat în 2 ore' }
+                            ];
+                        })()
                     }
                 ];
             };
             
-            const services = getServices();
+            // Recalculate services when language changes
+            const services = React.useMemo(() => getServices(), [lang]);
             
             // Initialize card indices
             React.useEffect(() => {
                 const initial = {};
                 services.forEach((_, idx) => { initial[idx] = 0; });
                 setActiveCardIndex(initial);
-            }, []);
+            }, [services]);
             
             const nextSlide = (idx, maxLen) => {
                 setActiveCardIndex(prev => ({
@@ -964,7 +1082,7 @@
                                     className: `absolute -top-3 right-4 ${service.popular ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'} text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-20 flex items-center gap-1` 
                                 },
                                     h('span', null, service.popular ? '🔥' : '📸'),
-                                    service.popular ? 'Popular' : 'Galerie'
+                                    service.popular ? t('services.popular') : t('gallery.title')
                                 ),
                                 
                                 // Header with icon and title
@@ -1528,7 +1646,7 @@
                                             h('option', { value: 'Poco F5' }, 'Poco F5'),
                                             h('option', { value: 'Alt Xiaomi' }, 'Alt model Xiaomi')
                                         ),
-                                        h('optgroup', { label: '📱 Alte mărci' },
+                                        h('optgroup', { label: '📱 ' + (t('calculator.otherBrands') || 'Alte mărci') },
                                             h('option', { value: 'Huawei' }, 'Huawei / Honor'),
                                             h('option', { value: 'OnePlus' }, 'OnePlus'),
                                             h('option', { value: 'Google Pixel' }, 'Google Pixel'),
@@ -1579,20 +1697,20 @@
                                             h('option', { value: 'Samsung Tab' }, 'Samsung Galaxy Tab'),
                                             h('option', { value: 'Xiaomi Pad' }, 'Xiaomi Pad'),
                                             h('option', { value: 'Lenovo Tab' }, 'Lenovo Tab'),
-                                            h('option', { value: 'Alte tablete' }, 'Alte mărci')
+                                            h('option', { value: 'Alte tablete' }, t('calculator.otherBrands') || 'Alte mărci')
                                         ),
                                         h('optgroup', { label: '⌚ Smartwatch' },
                                             h('option', { value: 'Apple Watch' }, 'Apple Watch'),
                                             h('option', { value: 'Samsung Watch' }, 'Samsung Galaxy Watch'),
                                             h('option', { value: 'Xiaomi Watch' }, 'Xiaomi Watch'),
                                             h('option', { value: 'Huawei Watch' }, 'Huawei Watch'),
-                                            h('option', { value: 'Alte smartwatch' }, 'Alte mărci')
+                                            h('option', { value: 'Alte smartwatch' }, t('calculator.otherBrands') || 'Alte mărci')
                                         ),
                                         h('optgroup', { label: '🎧 Audio' },
                                             h('option', { value: 'AirPods' }, 'AirPods / AirPods Pro'),
                                             h('option', { value: 'Samsung Buds' }, 'Samsung Galaxy Buds'),
                                             h('option', { value: 'Xiaomi Buds' }, 'Xiaomi Buds'),
-                                            h('option', { value: 'Alte audio' }, 'Alte mărci')
+                                            h('option', { value: 'Alte audio' }, t('calculator.otherBrands') || 'Alte mărci')
                                         )
                                     )
                                 ),
@@ -1652,7 +1770,7 @@
                 h('div', { className: 'flex flex-wrap justify-center gap-4' },
                     [
                         { emoji: '✈️', label: 'Telegram', href: 'https://t.me/nexx_support' },
-                        { emoji: '💬', label: 'WhatsApp', href: 'https://wa.me/40721234567' },
+                        // { emoji: '💬', label: 'WhatsApp', href: 'https://wa.me/...' }, // TODO: Add real WhatsApp number
                         { emoji: '📸', label: 'Instagram', href: '#' }
                     ].map((social, idx) => h('a', {
                         key: idx,
@@ -1698,7 +1816,6 @@
                 h(Gallery),
                 h(Contact),
                 h(Footer),
-                h(QuickActions, { currentPage: 'home' })
             );
         };
         
@@ -1716,39 +1833,202 @@
             });
         });
         
-        // Register Service Worker for PWA
+        // Register Service Worker for PWA with forced update
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('✅ Service Worker registered'))
+                // Unregister old service workers first
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    registrations.forEach(registration => {
+                        if (registration.active?.scriptURL.includes('sw.js')) {
+                            registration.unregister().then(() => {
+                                console.log('✅ Old service worker unregistered');
+                            });
+                        }
+                    });
+                });
+                
+                // Register new service worker with version
+                navigator.serviceWorker.register('/sw.js?v=2.0-20260123')
+                    .then(reg => {
+                        console.log('✅ Service Worker registered:', reg.scope);
+                        // Force update
+                        reg.update();
+                    })
                     .catch(err => console.log('Service Worker error:', err));
             });
         }
         
-        // PWA Install Prompt
+        // PWA Install Prompt - Bar Style
         let deferredPrompt;
+        
+        const updateInstallBanner = () => {
+            if (!window.i18n) return;
+            const pwaT = (key) => {
+                if (!window.i18n || typeof window.i18n.t !== 'function') return key;
+                const v = window.i18n.t(key);
+                return (v && v !== key) ? v : key;
+            };
+            const pwaTitle = pwaT('pwa.installTitle') || 'NEXX GSM';
+            const pwaSubtitle = pwaT('pwa.installSubtitle') || 'Add to home screen';
+            const pwaButton = pwaT('pwa.installButton') || 'Add';
+            
+            const banner = document.getElementById('pwa-install-banner');
+            if (banner) {
+                banner.innerHTML = `
+                    <div class="pwa-bar-container">
+                        <img src="/static/nexx-logo.png" alt="NEXX" class="pwa-bar-icon" onerror="this.style.display='none'">
+                        <div class="pwa-bar-content">
+                            <div class="pwa-bar-title">${pwaTitle}</div>
+                            <div class="pwa-bar-subtitle">${pwaSubtitle}</div>
+                        </div>
+                        <button id="pwa-install-btn" class="pwa-bar-button">${pwaButton}</button>
+                        <button id="pwa-close-btn" class="pwa-bar-close">×</button>
+                    </div>
+                `;
+                
+                // Re-attach event listeners
+                document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log('PWA install:', outcome);
+                        deferredPrompt = null;
+                        banner.style.display = 'none';
+                    }
+                });
+                
+                document.getElementById('pwa-close-btn')?.addEventListener('click', () => {
+                    banner.style.display = 'none';
+                    localStorage.setItem('pwa-install-dismissed', 'true');
+                });
+            }
+        };
+        
         const installBanner = document.createElement('div');
         installBanner.id = 'pwa-install-banner';
-        installBanner.innerHTML = `
-            <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;padding:16px 20px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.3);display:flex;align-items:center;gap:14px;z-index:9999;max-width:calc(100% - 32px);animation:slideUp 0.5s ease-out;">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#f8fafc,#e2e8f0);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-                    <span style="font-size:28px;">🔧</span>
-                </div>
-                <div style="flex:1;min-width:0;">
-                    <div style="font-weight:700;font-size:15px;margin-bottom:2px;">NEXX GSM</div>
-                    <div style="font-size:12px;opacity:0.85;">Додати на головний екран</div>
-                </div>
-                <button id="pwa-install-btn" style="background:white;color:#1e3a8a;border:none;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">Додати</button>
-                <button id="pwa-close-btn" style="background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">×</button>
-            </div>
-        `;
-        installBanner.style.display = 'none';
+        installBanner.style.cssText = 'display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;width:100%;';
         document.body.appendChild(installBanner);
         
-        // Add animation
+        // Add bar style
         const style = document.createElement('style');
-        style.textContent = '@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(100px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}';
+        style.textContent = `
+            .pwa-bar-container {
+                background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+                color: white;
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+                border-top: 1px solid rgba(255,255,255,0.1);
+                animation: slideUpBar 0.4s ease-out;
+            }
+            .pwa-bar-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                background: white;
+                padding: 4px;
+                flex-shrink: 0;
+                object-fit: contain;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            }
+            .pwa-bar-content {
+                flex: 1;
+                min-width: 0;
+            }
+            .pwa-bar-title {
+                font-weight: 700;
+                font-size: 15px;
+                margin-bottom: 2px;
+                line-height: 1.2;
+            }
+            .pwa-bar-subtitle {
+                font-size: 12px;
+                opacity: 0.9;
+                line-height: 1.2;
+            }
+            .pwa-bar-button {
+                background: white;
+                color: #1e3a8a;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-weight: 700;
+                cursor: pointer;
+                white-space: nowrap;
+                font-size: 13px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                transition: transform 0.2s, box-shadow 0.2s;
+                flex-shrink: 0;
+            }
+            .pwa-bar-button:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+            .pwa-bar-button:active {
+                transform: translateY(0);
+            }
+            .pwa-bar-close {
+                background: rgba(255,255,255,0.15);
+                border: none;
+                color: white;
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                flex-shrink: 0;
+                transition: background 0.2s;
+            }
+            .pwa-bar-close:hover {
+                background: rgba(255,255,255,0.25);
+            }
+            @keyframes slideUpBar {
+                from {
+                    opacity: 0;
+                    transform: translateY(100%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @media (max-width: 480px) {
+                .pwa-bar-container {
+                    padding: 10px 12px;
+                    gap: 10px;
+                }
+                .pwa-bar-icon {
+                    width: 40px;
+                    height: 40px;
+                }
+                .pwa-bar-title {
+                    font-size: 14px;
+                }
+                .pwa-bar-subtitle {
+                    font-size: 11px;
+                }
+                .pwa-bar-button {
+                    padding: 8px 16px;
+                    font-size: 12px;
+                }
+            }
+        `;
         document.head.appendChild(style);
+        
+        // Update banner when language changes
+        if (window.i18n) {
+            window.i18n.subscribe(() => {
+                updateInstallBanner();
+            });
+        }
+        
+        // Initial update
+        setTimeout(updateInstallBanner, 100);
         
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -1756,30 +2036,17 @@
             // Show install banner after 3 seconds
             setTimeout(() => {
                 if (!localStorage.getItem('pwa-install-dismissed')) {
+                    updateInstallBanner();
                     installBanner.style.display = 'block';
                 }
             }, 3000);
         });
         
-        document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log('PWA install:', outcome);
-                deferredPrompt = null;
-                installBanner.style.display = 'none';
-            }
-        });
-        
-        document.getElementById('pwa-close-btn')?.addEventListener('click', () => {
-            installBanner.style.display = 'none';
-            localStorage.setItem('pwa-install-dismissed', 'true');
-        });
-        
         window.addEventListener('appinstalled', () => {
             console.log('✅ PWA installed');
             installBanner.style.display = 'none';
-            if (window.showToast) window.showToast('🎉 NEXX GSM встановлено!', 'success');
+            const installedMsg = pwaT('pwa.installed') || '🎉 NEXX GSM installed!';
+            if (window.showToast) window.showToast(installedMsg, 'success');
         });
     </script>
 </body>

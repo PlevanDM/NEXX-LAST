@@ -1,67 +1,52 @@
-# NEXX GSM - Simple Deploy Script
+# Simple Deployment - Manual Upload Instructions
 
-Write-Host "NEXX GSM - Deployment to nexxgsm.com"
-Write-Host "====================================="
-Write-Host ""
-
-# Clean
-Write-Host "Step 1: Cleaning old build..."
-if (Test-Path "dist") {
-    Remove-Item -Path "dist" -Recurse -Force
-}
-Write-Host "OK"
+Write-Host "=== NEXX WebApp Deployment ===" -ForegroundColor Cyan
 Write-Host ""
 
 # Build
-Write-Host "Step 2: Building production..."
+Write-Host "Building project..." -ForegroundColor Yellow
 npm run build
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "ERROR: Build failed!"
+    Write-Host "Build failed!" -ForegroundColor Red
     exit 1
 }
-Write-Host "OK"
+Write-Host "Build completed!" -ForegroundColor Green
 Write-Host ""
 
-# Validate
-Write-Host "Step 3: Validating dist folder..."
-if (!(Test-Path "dist/index.html")) {
-    Write-Host "ERROR: dist/index.html not found!"
-    exit 1
-}
-Write-Host "OK - dist folder ready"
+# Create ZIP for manual upload
+Write-Host "Creating ZIP archive for upload..." -ForegroundColor Yellow
+$distPath = Resolve-Path "dist"
+$zipPath = Join-Path $PWD "nexx-deploy.zip"
+
+if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::CreateFromDirectory($distPath, $zipPath)
+
+$zipSize = [math]::Round((Get-Item $zipPath).Length / 1MB, 2)
+Write-Host "ZIP created: $zipPath ($zipSize MB)" -ForegroundColor Green
 Write-Host ""
 
-# Deploy options
-Write-Host "Step 4: Deploy options:"
+Write-Host "=== Manual Upload Instructions ===" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Option 1: Wrangler CLI"
-Write-Host "  Command: wrangler pages deploy dist --project-name=nexxgsm"
+Write-Host "1. Open Cloudflare Dashboard:" -ForegroundColor Yellow
+Write-Host "   https://dash.cloudflare.com/" -ForegroundColor White
 Write-Host ""
-Write-Host "Option 2: Manual upload"
-Write-Host "  1. Open: https://dash.cloudflare.com/ad170d773e79a037e28f4530fd5305a5/pages"
-Write-Host "  2. Create project or upload to existing"
-Write-Host "  3. Upload dist folder"
+Write-Host "2. Go to Pages → nexx project" -ForegroundColor Yellow
 Write-Host ""
-
-$deploy = Read-Host "Deploy now with Wrangler? (y/n)"
-
-if ($deploy -eq "y") {
-    Write-Host ""
-    Write-Host "Deploying with Wrangler..."
-    wrangler pages deploy dist --project-name=nexxgsm
-    
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host ""
-        Write-Host "SUCCESS! Site deployed!"
-        Write-Host "URL: https://nexxgsm.com"
-    } else {
-        Write-Host "Wrangler failed. Please deploy manually."
-        Start-Process "https://dash.cloudflare.com/ad170d773e79a037e28f4530fd5305a5/pages"
-    }
-} else {
-    Write-Host "Opening Cloudflare Dashboard..."
-    Start-Process "https://dash.cloudflare.com/ad170d773e79a037e28f4530fd5305a5/pages"
-}
-
+Write-Host "3. Click 'Upload assets' button" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "Deployment script completed!"
+Write-Host "4. Upload this file:" -ForegroundColor Yellow
+Write-Host "   $zipPath" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "5. Wait for deployment to complete" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "6. Check your site:" -ForegroundColor Yellow
+Write-Host "   https://nexxgsm.com/" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "=== Alternative: Use Wrangler Login ===" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "In a new terminal window, run:" -ForegroundColor Yellow
+Write-Host "  wrangler login" -ForegroundColor White
+Write-Host "  wrangler pages deploy dist --project-name nexx" -ForegroundColor White
+Write-Host ""

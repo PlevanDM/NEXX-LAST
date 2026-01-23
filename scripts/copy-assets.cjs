@@ -124,6 +124,14 @@ if (fs.existsSync(redirectsSource)) {
   console.log(`✅ Copied: _redirects (Cloudflare)\n`);
 }
 
+// Copy _routes.json (Cloudflare Pages routing config)
+const routesSource = path.join(publicDir, '_routes.json');
+const routesDest = path.join(distDir, '_routes.json');
+if (fs.existsSync(routesSource)) {
+  fs.copyFileSync(routesSource, routesDest);
+  console.log(`✅ Copied: _routes.json (Cloudflare Pages routing)\n`);
+}
+
 // Copy SVG logos (white and blue)
 const staticDestDir = path.join(distDir, 'static');
 if (!fs.existsSync(staticDestDir)) {
@@ -161,13 +169,26 @@ if (fs.existsSync(staticSource) && fs.existsSync(staticDest)) {
   
   let minified = 0;
   for (const minFile of minFiles) {
-    const baseName = minFile.replace('.min.js', '.js');
     const srcPath = path.join(staticSource, minFile);
-    const destPath = path.join(staticDest, baseName);
-    
-    if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, destPath);
-      minified++;
+    // For i18n.min.js, copy as both i18n.min.js and i18n.js
+    // For other files, replace .min.js with .js
+    let destPath;
+    if (minFile === 'i18n.min.js') {
+      // Copy as both i18n.min.js and i18n.js
+      const destPathMin = path.join(staticDest, minFile);
+      const destPathJs = path.join(staticDest, 'i18n.js');
+      if (fs.existsSync(srcPath)) {
+        fs.copyFileSync(srcPath, destPathMin);
+        fs.copyFileSync(srcPath, destPathJs);
+        minified += 2;
+      }
+    } else {
+      const baseName = minFile.replace('.min.js', '.js');
+      destPath = path.join(staticDest, baseName);
+      if (fs.existsSync(srcPath)) {
+        fs.copyFileSync(srcPath, destPath);
+        minified++;
+      }
     }
   }
   

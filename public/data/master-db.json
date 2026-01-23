@@ -1,6 +1,6 @@
 {
-  "version": "3.2.0",
-  "lastUpdated": "2026-01-22",
+  "version": "3.2.2",
+  "lastUpdated": "2026-01-23",
   "description": "NEXX GSM - Единая централизованная база данных",
   "config": {
     "currency": "RON",
@@ -161,7 +161,14 @@
         "Back Glass": 200
       },
       "price_ron": 698,
-      "price_eur": 138
+      "price_eur": 138,
+      "service_prices_ron": {
+        "battery": 450,
+        "display": 1800,
+        "charging_port": 500,
+        "rear_camera": 1100,
+        "logic_board": 2700
+      }
     },
     {
       "name": "iPhone 16 Pro",
@@ -589,7 +596,14 @@
         "Back Glass": 200
       },
       "price_ron": 698,
-      "price_eur": 138
+      "price_eur": 138,
+      "service_prices_ron": {
+        "battery": 400,
+        "display": 1200,
+        "charging_port": 450,
+        "rear_camera": 1000,
+        "logic_board": 2300
+      }
     },
     {
       "name": "iPhone 15 Pro",
@@ -17827,7 +17841,7 @@
   "contact": {
     "phone": "+40 721 234 567",
     "phoneTel": "+40721234567",
-    "whatsapp": "https://wa.me/40721234567",
+    "whatsapp": "",
     "email": "info@nexx.ro",
     "address": {
       "street": "Str. Victoriei 15",

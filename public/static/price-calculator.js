@@ -198,6 +198,17 @@
     const [errors, setErrors] = React.useState({});
     const [dbReady, setDbReady] = React.useState(false);
     const [loadingModels, setLoadingModels] = React.useState(false);
+    // State for language changes
+    const [lang, setLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+    
+    // Subscribe to language changes
+    React.useEffect(() => {
+      if (!window.i18n) return;
+      const unsubscribe = window.i18n.subscribe((newLang) => {
+        setLang(newLang);
+      });
+      return unsubscribe;
+    }, []);
     
     // Load models from NEXXDatabase - улучшенная загрузка
     React.useEffect(() => {
@@ -286,7 +297,8 @@
     
     // Полный список брендов для румынского рынка (сортировка по популярности)
     // SVG иконки брендов в /static/brands/
-    const brands = [
+    // Используем useMemo для обновления при изменении языка
+    const brands = React.useMemo(() => [
       { id: 'apple', name: 'Apple', svg: '/static/brands/apple.svg', color: 'from-gray-600 to-gray-800', gradient: 'from-blue-500/20 to-purple-500/20' },
       { id: 'samsung', name: 'Samsung', svg: '/static/brands/samsung.svg', color: 'from-blue-500 to-blue-700', gradient: 'from-blue-500/20 to-cyan-500/20' },
       { id: 'xiaomi', name: 'Xiaomi', svg: '/static/brands/xiaomi.svg', color: 'from-orange-500 to-orange-700', gradient: 'from-orange-500/20 to-red-500/20' },
@@ -294,22 +306,36 @@
       { id: 'oneplus', name: 'OnePlus', svg: '/static/brands/oneplus.svg', color: 'from-red-600 to-red-800', gradient: 'from-red-500/20 to-orange-500/20' },
       { id: 'google', name: 'Google Pixel', svg: '/static/brands/google.svg', color: 'from-green-500 to-blue-500', gradient: 'from-green-500/20 to-blue-500/20' },
       { id: 'oppo', name: 'Oppo', svg: '/static/brands/oppo.svg', color: 'from-green-600 to-green-800', gradient: 'from-green-500/20 to-teal-500/20' },
-      { id: 'realme', name: 'Realme', svg: '/static/brands/realme.svg', color: 'from-yellow-500 to-yellow-700', gradient: 'from-yellow-500/20 to-orange-500/20' },
+      { id: 'realme', name: 'Realme', svg: '/static/brands/realme.svg', color: 'from-gray-600 to-gray-800', gradient: 'from-gray-500/20 to-gray-600/20' },
       { id: 'motorola', name: 'Motorola', svg: '/static/brands/motorola.svg', color: 'from-blue-600 to-blue-800', gradient: 'from-blue-500/20 to-indigo-500/20' },
       { id: 'vivo', name: 'Vivo', svg: '/static/brands/vivo.svg', color: 'from-blue-400 to-blue-600', gradient: 'from-blue-400/20 to-cyan-500/20' },
       { id: 'nokia', name: 'Nokia', svg: '/static/brands/nokia.svg', color: 'from-blue-700 to-blue-900', gradient: 'from-blue-600/20 to-indigo-600/20' },
       { id: 'sony', name: 'Sony', svg: '/static/brands/sony.svg', color: 'from-gray-700 to-gray-900', gradient: 'from-gray-600/20 to-black/20' },
       { id: 'asus', name: 'Asus', svg: '/static/brands/asus.svg', color: 'from-purple-600 to-purple-800', gradient: 'from-purple-500/20 to-pink-500/20' },
       { id: 'nothing', name: 'Nothing', svg: '/static/brands/nothing.svg', color: 'from-gray-800 to-black', gradient: 'from-gray-700/20 to-black/20' },
-      { id: 'other', name: window.i18n?.t('calculator.otherBrands') || 'Alte mărci', svg: '/static/brands/other.svg', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
-    ];
+      { id: 'other', name: (() => {
+          if (window.i18n && typeof window.i18n.t === 'function') {
+            const translated = window.i18n.t('calculator.otherBrands');
+            if (translated && translated !== 'calculator.otherBrands') return translated;
+          }
+          return 'Alte mărci';
+        })(), svg: '/static/brands/other.svg', color: 'from-gray-500 to-gray-700', gradient: 'from-gray-500/20 to-gray-600/20' }
+    ], [lang]);
     
-    const deviceTypes = [
-      { id: 'phone', name: 'Telefon', icon: 'fa-mobile', color: 'from-blue-500 to-blue-700' },
-      { id: 'tablet', name: 'Tabletă', icon: 'fa-tablet', color: 'from-purple-500 to-purple-700' },
-      { id: 'laptop', name: 'Laptop', icon: 'fa-laptop', color: 'from-green-500 to-green-700' },
-      { id: 'watch', name: 'Smartwatch', icon: 'fa-watch', color: 'from-pink-500 to-pink-700' }
-    ];
+    const deviceTypes = React.useMemo(() => [
+      { id: 'phone', nameKey: 'calculator.devicePhone', name: 'Telefon', icon: 'fa-mobile', color: 'from-blue-500 to-blue-700' },
+      { id: 'tablet', nameKey: 'calculator.deviceTablet', name: 'Tabletă', icon: 'fa-tablet', color: 'from-purple-500 to-purple-700' },
+      { id: 'laptop', nameKey: 'calculator.deviceLaptop', name: 'Laptop', icon: 'fa-laptop', color: 'from-green-500 to-green-700' },
+      { id: 'watch', nameKey: 'calculator.deviceWatch', name: 'Smartwatch', icon: 'fa-watch', color: 'from-pink-500 to-pink-700' }
+    ], [lang]);
+    const deviceTypeName = (type) => {
+      if (!type) return '';
+      if (type.nameKey && window.i18n && typeof window.i18n.t === 'function') {
+        const translated = window.i18n.t(type.nameKey);
+        if (translated && translated !== type.nameKey) return translated;
+      }
+      return type.name || '';
+    };
     
     const issues = {
       phone: [
@@ -892,7 +918,7 @@
                 },
                   h('i', { className: `fas ${type.icon} text-lg text-white` })
                 ),
-                h('div', { className: 'font-medium text-white text-xs' }, type.name)
+                h('div', { className: 'font-medium text-white text-xs' }, deviceTypeName(type))
               ))
             ),
             h('button', {
@@ -913,7 +939,7 @@
             h('div', { className: 'text-center mb-4' },
               h('span', { className: 'inline-flex items-center gap-2 px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-400' },
                 h('i', { className: 'fas fa-info-circle' }),
-                `${data.brand?.name || ''} / ${deviceTypes.find(t => t.id === data.deviceType)?.name || ''}`
+                `${data.brand?.name || ''} / ${deviceTypeName(deviceTypes.find(t => t.id === data.deviceType) || {}) || ''}`
               )
             ),
             // Индикатор загрузки моделей
@@ -969,7 +995,7 @@
               ),
               h('p', { className: 'text-base text-white mb-1' }, 'Nu avem modele pentru această combinație'),
               h('p', { className: 'text-zinc-400 mb-6' }, 
-                `${data.brand?.name || ''} nu produce ${deviceTypes.find(t => t.id === data.deviceType)?.name?.toLowerCase() || 'acest tip'}.`
+                `${data.brand?.name || ''} nu produce ${(deviceTypeName(deviceTypes.find(t => t.id === data.deviceType) || {}) || '').toLowerCase() || 'acest tip'}.`
               ),
               h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
                 h('button', {
@@ -1252,14 +1278,19 @@
             ),
             
             h('div', { className: 'flex flex-col sm:flex-row gap-2 justify-center mt-4' },
-              h('a', {
-                href: `https://wa.me/40721234567?text=Bună! Am estimat ${result.min}-${result.max} lei pentru reparație. Doresc să programez.`,
-                target: '_blank',
-                className: 'px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all shadow-md flex items-center justify-center gap-2 text-sm'
-              },
-                h('i', { className: 'fab fa-whatsapp text-lg' }),
-                'Comandă pe WhatsApp'
-              ),
+              // TODO: Add real WhatsApp number in site-config.ts
+              // (() => {
+              //   const whatsappNumber = window.SITE_CONFIG?.contact?.phoneWhatsApp || '';
+              //   if (!whatsappNumber) return null;
+              //   return h('a', {
+              //     href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bună! Am estimat ${result.min}-${result.max} lei pentru reparație. Doresc să programez.`)}`,
+              //     target: '_blank',
+              //     className: 'px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all shadow-md flex items-center justify-center gap-2 text-sm'
+              //   },
+              //     h('i', { className: 'fab fa-whatsapp text-lg' }),
+              //     'Comandă pe WhatsApp'
+              //   );
+              // })(),
               h('button', {
                 onClick: reset,
                 className: 'px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-lg transition-all border border-zinc-700 text-sm'

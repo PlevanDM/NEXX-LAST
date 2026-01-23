@@ -1,0 +1,708 @@
+﻿{
+    "files":  {
+                  "/NEXX LAST/dist/static/brands/google.svg":  {
+                                                                   "hash":  "sha256-004b71c373203f75f5e8bcde379da7bf921d4a26521ed4ab1c399d6f3c1ee45d",
+                                                                   "size":  477
+                                                               },
+                  "/NEXX LAST/dist/static/price-calculator.js":  {
+                                                                     "hash":  "sha256-79e0526f984b470eace79996c0e8c954830d95169a0c45e419a92272aaac9073",
+                                                                     "size":  65985
+                                                                 },
+                  "/NEXX LAST/dist/static/privacy.min.js":  {
+                                                                "hash":  "sha256-eff516d3ef503241cb43dd6965e33c6840f7eb36713f4d81d0218da5b4613f04",
+                                                                "size":  17851
+                                                            },
+                  "/NEXX LAST/dist/static/static/brands/other.svg":  {
+                                                                         "hash":  "sha256-fe2b927ff883117f236963b7627f48134de9380e4429b6652272f0e2f2ab4789",
+                                                                         "size":  279
+                                                                     },
+                  "/NEXX LAST/dist/static/brands/huawei.svg":  {
+                                                                   "hash":  "sha256-b4f5f3aa54ad1068c9b41dc49e8f9fffe1190042207f62b2f5099914464cd32a",
+                                                                   "size":  1343
+                                                               },
+                  "/NEXX LAST/dist/static/static/brands/google.svg":  {
+                                                                          "hash":  "sha256-004b71c373203f75f5e8bcde379da7bf921d4a26521ed4ab1c399d6f3c1ee45d",
+                                                                          "size":  477
+                                                                      },
+                  "/NEXX LAST/dist/static/static/brands/asus.svg":  {
+                                                                        "hash":  "sha256-dade33986ea2e701e7cbd5cb89faf5e81b472634f3905f38481449f47a63d7eb",
+                                                                        "size":  934
+                                                                    },
+                  "/NEXX LAST/dist/static/static/terms.min.js":  {
+                                                                     "hash":  "sha256-d541f85f78cbae7eee0dd2258381e02c33cc4dbfb6fcf13a4912ddd6e89e1be7",
+                                                                     "size":  22721
+                                                                 },
+                  "/NEXX LAST/dist/static/static/analytics.min.js":  {
+                                                                         "hash":  "sha256-e5621bda63200ca54cdd7e116b16311d14772cc7e167b149957aecb61ef241ac",
+                                                                         "size":  4773
+                                                                     },
+                  "/NEXX LAST/dist/static/static/nexx-logo-trimmed.png":  {
+                                                                              "hash":  "sha256-313a842686385cf323e0c8bc1558cb1354a3883541c0cd783840bc42a4051966",
+                                                                              "size":  18512
+                                                                          },
+                  "/NEXX LAST/dist/static/static/brands/xiaomi.svg":  {
+                                                                          "hash":  "sha256-7498ec6426673ce6e2405c4d5b3d4a6ca951aa7209a35504726dd5d28474067d",
+                                                                          "size":  923
+                                                                      },
+                  "/NEXX LAST/dist/static/static/brands/samsung.svg":  {
+                                                                           "hash":  "sha256-62b24d813135894111042cdbd75bcc8c1a3358a140c28f78bc8614294b273fcd",
+                                                                           "size":  2307
+                                                                       },
+                  "/NEXX LAST/dist/static/static/nexx-logo.png":  {
+                                                                      "hash":  "sha256-1f1fee36894965f65935fd66ec1fb25c2221dd4258901c0df704d902dcc05b30",
+                                                                      "size":  597483
+                                                                  },
+                  "/NEXX LAST/dist/static/static/nexx-logo.svg":  {
+                                                                      "hash":  "sha256-970c0c5c60f595f80be3cfe2dee0cb362b25e3361237a17aeb162a2160de4a8b",
+                                                                      "size":  362103
+                                                                  },
+                  "/NEXX LAST/dist/static/i18n.js":  {
+                                                         "hash":  "sha256-4740af216e7ba8fe1acbc4f6b2f2390085cf56391bfe26532f485da0856d59ec",
+                                                         "size":  41430
+                                                     },
+                  "/NEXX LAST/dist/images/kids-training-2.png":  {
+                                                                     "hash":  "sha256-c95e8dba8db88147c50398dacaa7434d5aea02e848dc853217b00f08a263e530",
+                                                                     "size":  1164825
+                                                                 },
+                  "/NEXX LAST/dist/static/static/about.min.js":  {
+                                                                     "hash":  "sha256-d6e6b6d5ddefa6beac61e0d7666ece3c12a120f5e724007fb80e758a109114d4",
+                                                                     "size":  11825
+                                                                 },
+                  "/NEXX LAST/dist/static/images/services-icons.png":  {
+                                                                           "hash":  "sha256-9a4f1e80dc9c893f37470796f84ca6fba04e37ed66e62ac9796aaa1ef0e07baf",
+                                                                           "size":  194869
+                                                                       },
+                  "/NEXX LAST/dist/static/static/vendor/babel.min.js":  {
+                                                                            "hash":  "sha256-7deffc9f3cd4a8d265ecf490252ab6327ed01d96efa61d7c3347acb2c4b577ae",
+                                                                            "size":  3129064
+                                                                        },
+                  "/NEXX LAST/dist/static/static/utils.js":  {
+                                                                 "hash":  "sha256-4765d1e0ac1cd8f0021f821cf6e7de870eb8e0959d3441e9f92591173220b2a4",
+                                                                 "size":  6034
+                                                             },
+                  "/NEXX LAST/dist/static/images/kids-training-2.png":  {
+                                                                            "hash":  "sha256-c95e8dba8db88147c50398dacaa7434d5aea02e848dc853217b00f08a263e530",
+                                                                            "size":  1164825
+                                                                        },
+                  "/NEXX LAST/dist/static/images/kids-training-1.png":  {
+                                                                            "hash":  "sha256-ef1e88657f8bb7994f350cc04c92c49cc324033876b68e64be4e4d54c96a547c",
+                                                                            "size":  1551422
+                                                                        },
+                  "/NEXX LAST/dist/static/static/images/tools-setup.jpg":  {
+                                                                               "hash":  "sha256-22f6815724746e94730fc90b3cceb6cf045923ce78cc24bfe5c6ab1fcfad3832",
+                                                                               "size":  23
+                                                                           },
+                  "/NEXX LAST/dist/static/homepage.min.js":  {
+                                                                 "hash":  "sha256-bd5a9b18661317c8f22ea12114454eefef12ec8b8fa0a97f025501db48143e50",
+                                                                 "size":  37590
+                                                             },
+                  "/NEXX LAST/dist/static/ui-components.min.js":  {
+                                                                      "hash":  "sha256-edcc1573afb86109fa881546bd051b6c6cd49528042978dbdb148a78575e01dd",
+                                                                      "size":  15558
+                                                                  },
+                  "/NEXX LAST/dist/static/static/nexx-logo-black.png":  {
+                                                                            "hash":  "sha256-f0b1321a17053ca9721e01a02dc96b477b2d9c6fdb32a46f3994701b2eb46b2a",
+                                                                            "size":  23636
+                                                                        },
+                  "/NEXX LAST/dist/static/sitemap.xml":  {
+                                                             "hash":  "sha256-6f3e144f5bbf1330c9305c620ffee92db226c56fdaf34e8d3898c951bdc3f99d",
+                                                             "size":  2330
+                                                         },
+                  "/NEXX LAST/dist/static/nexx-logo-black-on-white.png":  {
+                                                                              "hash":  "sha256-87ba54c3e4fc6935b5f98edd71873d93aab254272c3604a81f518d3bcd848e3f",
+                                                                              "size":  24422
+                                                                          },
+                  "/NEXX LAST/dist/static/manifest.json":  {
+                                                               "hash":  "sha256-635c6eef3a40318e02930fff55933acf6738b8672ee2f0a5a47b601bfa8a97cc",
+                                                               "size":  1454
+                                                           },
+                  "/NEXX LAST/dist/static/brands/apple.svg":  {
+                                                                  "hash":  "sha256-93439c0957e7e4c557012da88ffbb58fc74ac109f8069638fe9585a0afe99329",
+                                                                  "size":  670
+                                                              },
+                  "/NEXX LAST/dist/static/nexx-logo-original.png":  {
+                                                                        "hash":  "sha256-c115331ec892a35be5e5c14b45d815adb537de7f0f7bcf9fe27d105acbc74cd4",
+                                                                        "size":  598029
+                                                                    },
+                  "/NEXX LAST/dist/static/brands/other.svg":  {
+                                                                  "hash":  "sha256-fe2b927ff883117f236963b7627f48134de9380e4429b6652272f0e2f2ab4789",
+                                                                  "size":  279
+                                                              },
+                  "/NEXX LAST/dist/static/shared-components.js":  {
+                                                                      "hash":  "sha256-2f28db473282ca6aa89538122b8594fc59ccc1c454f4cb05cba31a74410554a8",
+                                                                      "size":  9344
+                                                                  },
+                  "/NEXX LAST/dist/static/test-auth.html":  {
+                                                                "hash":  "sha256-8d4578dbc6366f33a3219888c6a30ddc65c95fe9aa6aec758962f51957cef499",
+                                                                "size":  193
+                                                            },
+                  "/NEXX LAST/dist/static/images/workspace.png":  {
+                                                                      "hash":  "sha256-018aa3bf206b062886b6bd43d0073b0fabc3f7a0e00aacd966e1da04a3d72e11",
+                                                                      "size":  1924540
+                                                                  },
+                  "/NEXX LAST/dist/static/static/database.js":  {
+                                                                    "hash":  "sha256-2ddf85964843dc988febcb0cbb5dd8a95219a08e278b2466f8fcb61fcae1d47a",
+                                                                    "size":  10909
+                                                                },
+                  "/NEXX LAST/dist/sitemap.xml":  {
+                                                      "hash":  "sha256-6f3e144f5bbf1330c9305c620ffee92db226c56fdaf34e8d3898c951bdc3f99d",
+                                                      "size":  2330
+                                                  },
+                  "/NEXX LAST/dist/static/nexx-logo.png":  {
+                                                               "hash":  "sha256-1f1fee36894965f65935fd66ec1fb25c2221dd4258901c0df704d902dcc05b30",
+                                                               "size":  597483
+                                                           },
+                  "/NEXX LAST/dist/static/static/shared-components.js":  {
+                                                                             "hash":  "sha256-2f28db473282ca6aa89538122b8594fc59ccc1c454f4cb05cba31a74410554a8",
+                                                                             "size":  9344
+                                                                         },
+                  "/NEXX LAST/dist/static/price-calculator.min.js":  {
+                                                                         "hash":  "sha256-79e0526f984b470eace79996c0e8c954830d95169a0c45e419a92272aaac9073",
+                                                                         "size":  65985
+                                                                     },
+                  "/NEXX LAST/dist/static/brands/vivo.svg":  {
+                                                                 "hash":  "sha256-a9484c5d37d0c2bedf7a7d92f7de2631da70293742568f810960ccf7f548d416",
+                                                                 "size":  1288
+                                                             },
+                  "/NEXX LAST/dist/faq.html":  {
+                                                   "hash":  "sha256-3ee072b29fe79294010a0a4463efdba96ac4d1cee503a4076dca79e31fda4471",
+                                                   "size":  19784
+                                               },
+                  "/NEXX LAST/dist/static/app.js":  {
+                                                        "hash":  "sha256-836e73d005c55552f4d921f0c0e902b653f9ce4a1e04e5ab9b57e886fdf42eae",
+                                                        "size":  126479
+                                                    },
+                  "/NEXX LAST/dist/static/static/nexx-logo-white-on-black.png":  {
+                                                                                     "hash":  "sha256-7fc436520a0d904a7e97f3f289a5980d10c9090d8e0058779687ec035c5dd8b7",
+                                                                                     "size":  16194
+                                                                                 },
+                  "/NEXX LAST/dist/static/brands/xiaomi.svg":  {
+                                                                   "hash":  "sha256-7498ec6426673ce6e2405c4d5b3d4a6ca951aa7209a35504726dd5d28474067d",
+                                                                   "size":  923
+                                                               },
+                  "/NEXX LAST/dist/static/static/faq.js":  {
+                                                               "hash":  "sha256-050cd10b9e246fb6165ccc0975d2149f26ecdec4c6f58b52560cc808fc550cd2",
+                                                               "size":  14863
+                                                           },
+                  "/NEXX LAST/dist/static/shared-components.min.js":  {
+                                                                          "hash":  "sha256-2f28db473282ca6aa89538122b8594fc59ccc1c454f4cb05cba31a74410554a8",
+                                                                          "size":  9344
+                                                                      },
+                  "/NEXX LAST/dist/static/privacy.html":  {
+                                                              "hash":  "sha256-78bd913259f199192143750e41b5ec8235cefe76be111f9c7ccf55fd4555a33b",
+                                                              "size":  6361
+                                                          },
+                  "/NEXX LAST/dist/static/static/price-calculator.min.js":  {
+                                                                                "hash":  "sha256-79e0526f984b470eace79996c0e8c954830d95169a0c45e419a92272aaac9073",
+                                                                                "size":  65985
+                                                                            },
+                  "/NEXX LAST/dist/static/static/navigation-system.js":  {
+                                                                             "hash":  "sha256-ab89a1144fdc761bd301dd2fceb200a4550e7972b8f4c2d8a98eb9cb2151b6fa",
+                                                                             "size":  20811
+                                                                         },
+                  "/NEXX LAST/dist/static/static/nexx-logo-black-on-white.png":  {
+                                                                                     "hash":  "sha256-87ba54c3e4fc6935b5f98edd71873d93aab254272c3604a81f518d3bcd848e3f",
+                                                                                     "size":  24422
+                                                                                 },
+                  "/NEXX LAST/dist/static/vendor/babel.min.js":  {
+                                                                     "hash":  "sha256-7deffc9f3cd4a8d265ecf490252ab6327ed01d96efa61d7c3347acb2c4b577ae",
+                                                                     "size":  3129064
+                                                                 },
+                  "/NEXX LAST/dist/static/static/database.min.js":  {
+                                                                        "hash":  "sha256-2ddf85964843dc988febcb0cbb5dd8a95219a08e278b2466f8fcb61fcae1d47a",
+                                                                        "size":  10909
+                                                                    },
+                  "/NEXX LAST/dist/static/static/privacy.min.js":  {
+                                                                       "hash":  "sha256-eff516d3ef503241cb43dd6965e33c6840f7eb36713f4d81d0218da5b4613f04",
+                                                                       "size":  17851
+                                                                   },
+                  "/NEXX LAST/dist/static/nexx-logo-source.png":  {
+                                                                      "hash":  "sha256-c115331ec892a35be5e5c14b45d815adb537de7f0f7bcf9fe27d105acbc74cd4",
+                                                                      "size":  598029
+                                                                  },
+                  "/NEXX LAST/dist/static/privacy.js":  {
+                                                            "hash":  "sha256-eff516d3ef503241cb43dd6965e33c6840f7eb36713f4d81d0218da5b4613f04",
+                                                            "size":  17851
+                                                        },
+                  "/NEXX LAST/dist/static/utils.min.js":  {
+                                                              "hash":  "sha256-4765d1e0ac1cd8f0021f821cf6e7de870eb8e0959d3441e9f92591173220b2a4",
+                                                              "size":  6034
+                                                          },
+                  "/NEXX LAST/dist/terms.html":  {
+                                                     "hash":  "sha256-cc96c126cd8b99aa30366b052de771d5a360dcc37a5e52b494c7e0226a992173",
+                                                     "size":  5935
+                                                 },
+                  "/NEXX LAST/dist/static/style.css":  {
+                                                           "hash":  "sha256-ef73096ba718c5f42e9bc3233e4bf719f7191143d1f385ed7cfdd7ccf913e49c",
+                                                           "size":  49
+                                                       },
+                  "/NEXX LAST/dist/test-auth.html":  {
+                                                         "hash":  "sha256-8d4578dbc6366f33a3219888c6a30ddc65c95fe9aa6aec758962f51957cef499",
+                                                         "size":  193
+                                                     },
+                  "/NEXX LAST/dist/static/faq.html":  {
+                                                          "hash":  "sha256-3ee072b29fe79294010a0a4463efdba96ac4d1cee503a4076dca79e31fda4471",
+                                                          "size":  19784
+                                                      },
+                  "/NEXX LAST/dist/static/nexx-core.min.js":  {
+                                                                  "hash":  "sha256-0c025c464cde23ebb94e7d57268966fae4f45e2c862942cb827e3dfe789ccf35",
+                                                                  "size":  18771
+                                                              },
+                  "/NEXX LAST/dist/static/static/i18n.js":  {
+                                                                "hash":  "sha256-4740af216e7ba8fe1acbc4f6b2f2390085cf56391bfe26532f485da0856d59ec",
+                                                                "size":  41430
+                                                            },
+                  "/NEXX LAST/dist/static/database.min.js":  {
+                                                                 "hash":  "sha256-2ddf85964843dc988febcb0cbb5dd8a95219a08e278b2466f8fcb61fcae1d47a",
+                                                                 "size":  10909
+                                                             },
+                  "/NEXX LAST/dist/static/brands/sony.svg":  {
+                                                                 "hash":  "sha256-e96cb63dab2a30950f99650cee597e9518321b8578188c309ca3a5fced532459",
+                                                                 "size":  2765
+                                                             },
+                  "/NEXX LAST/dist/static/static/faq.min.js":  {
+                                                                   "hash":  "sha256-050cd10b9e246fb6165ccc0975d2149f26ecdec4c6f58b52560cc808fc550cd2",
+                                                                   "size":  14863
+                                                               },
+                  "/NEXX LAST/dist/static/static/brands/apple.svg":  {
+                                                                         "hash":  "sha256-93439c0957e7e4c557012da88ffbb58fc74ac109f8069638fe9585a0afe99329",
+                                                                         "size":  670
+                                                                     },
+                  "/NEXX LAST/dist/static/brands/oneplus.svg":  {
+                                                                    "hash":  "sha256-2403ba936c060b26b89d8f9eb4dd12f631e8cc4013ad01ed936eb2467eea1eb3",
+                                                                    "size":  372
+                                                                },
+                  "/NEXX LAST/dist/static/static/app.js":  {
+                                                               "hash":  "sha256-836e73d005c55552f4d921f0c0e902b653f9ce4a1e04e5ab9b57e886fdf42eae",
+                                                               "size":  126479
+                                                           },
+                  "/NEXX LAST/dist/static/favicon.ico":  {
+                                                             "hash":  "sha256-8040c163d74efe626b734fa9b2b8d349e8bca674c059269c217681dc2322a101",
+                                                             "size":  94334
+                                                         },
+                  "/NEXX LAST/dist/static/static/homepage.min.js":  {
+                                                                        "hash":  "sha256-bd5a9b18661317c8f22ea12114454eefef12ec8b8fa0a97f025501db48143e50",
+                                                                        "size":  37590
+                                                                    },
+                  "/NEXX LAST/dist/manifest.json":  {
+                                                        "hash":  "sha256-635c6eef3a40318e02930fff55933acf6738b8672ee2f0a5a47b601bfa8a97cc",
+                                                        "size":  1454
+                                                    },
+                  "/NEXX LAST/dist/static/sw.js":  {
+                                                       "hash":  "sha256-2daf3c2bf9deef2ecd6d6df7b5d2ac35ca2f9ac1e572f6d31a931a6c5bff463e",
+                                                       "size":  1360
+                                                   },
+                  "/NEXX LAST/dist/static/static/brands/vivo.svg":  {
+                                                                        "hash":  "sha256-a9484c5d37d0c2bedf7a7d92f7de2631da70293742568f810960ccf7f548d416",
+                                                                        "size":  1288
+                                                                    },
+                  "/NEXX LAST/dist/static/static/nexx-logo-original.png":  {
+                                                                               "hash":  "sha256-c115331ec892a35be5e5c14b45d815adb537de7f0f7bcf9fe27d105acbc74cd4",
+                                                                               "size":  598029
+                                                                           },
+                  "/NEXX LAST/dist/static/static/vendor/react.production.min.js":  {
+                                                                                       "hash":  "sha256-d72610e728466bf70f27ecc9a1a14580fd8f1e75b977aa0612146cab0e80a3fe",
+                                                                                       "size":  10782
+                                                                                   },
+                  "/NEXX LAST/dist/static/static/brands/oneplus.svg":  {
+                                                                           "hash":  "sha256-2403ba936c060b26b89d8f9eb4dd12f631e8cc4013ad01ed936eb2467eea1eb3",
+                                                                           "size":  372
+                                                                       },
+                  "/NEXX LAST/dist/static/brands/realme.svg":  {
+                                                                   "hash":  "sha256-a00b320300fdbeaa08a12714ebc76f7a7614a2e179ed0baa71868b7ccc1d8c02",
+                                                                   "size":  414
+                                                               },
+                  "/NEXX LAST/dist/static/terms.html":  {
+                                                            "hash":  "sha256-cc96c126cd8b99aa30366b052de771d5a360dcc37a5e52b494c7e0226a992173",
+                                                            "size":  5935
+                                                        },
+                  "/NEXX LAST/dist/static/terms.js":  {
+                                                          "hash":  "sha256-d541f85f78cbae7eee0dd2258381e02c33cc4dbfb6fcf13a4912ddd6e89e1be7",
+                                                          "size":  22721
+                                                      },
+                  "/NEXX LAST/dist/static/brands/nothing.svg":  {
+                                                                    "hash":  "sha256-e8a15ef19fb06a6de0b7049e6beae55e92048ef1e8728aacbddc3b9778e18eaf",
+                                                                    "size":  548
+                                                                },
+                  "/NEXX LAST/dist/images/facade.png":  {
+                                                            "hash":  "sha256-7c63350db8bd71f85c6c0bd5020bf72d85fe5eb83ee0faf301726b4361f61307",
+                                                            "size":  1741544
+                                                        },
+                  "/NEXX LAST/dist/static/images/reception.png":  {
+                                                                      "hash":  "sha256-436e49760d2c33bc01b9b37c2e94ccf903148420f21a8066a3921a4bed898317",
+                                                                      "size":  1237501
+                                                                  },
+                  "/NEXX LAST/dist/static/static/homepage.js":  {
+                                                                    "hash":  "sha256-bd5a9b18661317c8f22ea12114454eefef12ec8b8fa0a97f025501db48143e50",
+                                                                    "size":  37590
+                                                                },
+                  "/NEXX LAST/dist/static/images/facade.png":  {
+                                                                   "hash":  "sha256-7c63350db8bd71f85c6c0bd5020bf72d85fe5eb83ee0faf301726b4361f61307",
+                                                                   "size":  1741544
+                                                               },
+                  "/NEXX LAST/dist/static/terms.min.js":  {
+                                                              "hash":  "sha256-d541f85f78cbae7eee0dd2258381e02c33cc4dbfb6fcf13a4912ddd6e89e1be7",
+                                                              "size":  22721
+                                                          },
+                  "/NEXX LAST/dist/static/static/privacy.js":  {
+                                                                   "hash":  "sha256-eff516d3ef503241cb43dd6965e33c6840f7eb36713f4d81d0218da5b4613f04",
+                                                                   "size":  17851
+                                                               },
+                  "/NEXX LAST/dist/static/static/ui-components.min.js":  {
+                                                                             "hash":  "sha256-edcc1573afb86109fa881546bd051b6c6cd49528042978dbdb148a78575e01dd",
+                                                                             "size":  15558
+                                                                         },
+                  "/NEXX LAST/dist/static/nexx-logo-black.png":  {
+                                                                     "hash":  "sha256-f0b1321a17053ca9721e01a02dc96b477b2d9c6fdb32a46f3994701b2eb46b2a",
+                                                                     "size":  23636
+                                                                 },
+                  "/NEXX LAST/dist/_headers":  {
+                                                   "hash":  "sha256-efea9c5014f7a4e08c03f0b0564bc502bbbc3700494fbb2476b0b9a9aa2464b5",
+                                                   "size":  1433
+                                               },
+                  "/NEXX LAST/dist/static/_redirects":  {
+                                                            "hash":  "sha256-9a10305a1a44239c4c5d4b06a8fbdfe42c3e487fe5989d97cb5ab2343fb20ceb",
+                                                            "size":  933
+                                                        },
+                  "/NEXX LAST/dist/static/static/nexx-logo-white-transparent.png":  {
+                                                                                        "hash":  "sha256-ff3129c4e3981f77faaa8569d5a1d0851c6b72b59aa70bdbbe5582ba7ced991e",
+                                                                                        "size":  31735
+                                                                                    },
+                  "/NEXX LAST/dist/static/images/tools-setup.jpg":  {
+                                                                        "hash":  "sha256-22f6815724746e94730fc90b3cceb6cf045923ce78cc24bfe5c6ab1fcfad3832",
+                                                                        "size":  23
+                                                                    },
+                  "/NEXX LAST/dist/static/static/nexx-logo-source.png":  {
+                                                                             "hash":  "sha256-c115331ec892a35be5e5c14b45d815adb537de7f0f7bcf9fe27d105acbc74cd4",
+                                                                             "size":  598029
+                                                                         },
+                  "/NEXX LAST/dist/static/brands/nokia.svg":  {
+                                                                  "hash":  "sha256-9d0d4f9166f018b7a39480ec03858651d41dd6f3c7de798f8721fcac5724fcc2",
+                                                                  "size":  618
+                                                              },
+                  "/NEXX LAST/dist/static/nexx-logo-animated.svg":  {
+                                                                        "hash":  "sha256-4b1498d231d3645a5c8afb9eba9a236d86f6a437f04d078460746b807b5200a5",
+                                                                        "size":  43508
+                                                                    },
+                  "/NEXX LAST/dist/static/utils.js":  {
+                                                          "hash":  "sha256-4765d1e0ac1cd8f0021f821cf6e7de870eb8e0959d3441e9f92591173220b2a4",
+                                                          "size":  6034
+                                                      },
+                  "/NEXX LAST/dist/static/nexx-logo-white-on-black.png":  {
+                                                                              "hash":  "sha256-7fc436520a0d904a7e97f3f289a5980d10c9090d8e0058779687ec035c5dd8b7",
+                                                                              "size":  16194
+                                                                          },
+                  "/NEXX LAST/dist/images/hero-background.png":  {
+                                                                     "hash":  "sha256-cd248659d74644bfc943e7c5b881bc7c688e25053e9830742eb6831f6c1009fb",
+                                                                     "size":  80197
+                                                                 },
+                  "/NEXX LAST/dist/static/static/navigation-system.min.js":  {
+                                                                                 "hash":  "sha256-5cde2c3854a4e126833e14569f8fa4659289ba70e690609710071eaf1e616f76",
+                                                                                 "size":  20763
+                                                                             },
+                  "/NEXX LAST/dist/static/static/nexx-logo-animated.svg":  {
+                                                                               "hash":  "sha256-4b1498d231d3645a5c8afb9eba9a236d86f6a437f04d078460746b807b5200a5",
+                                                                               "size":  43508
+                                                                           },
+                  "/NEXX LAST/dist/static/static/terms.js":  {
+                                                                 "hash":  "sha256-d541f85f78cbae7eee0dd2258381e02c33cc4dbfb6fcf13a4912ddd6e89e1be7",
+                                                                 "size":  22721
+                                                             },
+                  "/NEXX LAST/dist/static/about.js":  {
+                                                          "hash":  "sha256-d6e6b6d5ddefa6beac61e0d7666ece3c12a120f5e724007fb80e758a109114d4",
+                                                          "size":  11825
+                                                      },
+                  "/NEXX LAST/dist/static/static/i18n.min.js":  {
+                                                                    "hash":  "sha256-4740af216e7ba8fe1acbc4f6b2f2390085cf56391bfe26532f485da0856d59ec",
+                                                                    "size":  41430
+                                                                },
+                  "/NEXX LAST/dist/static/static/brands/motorola.svg":  {
+                                                                            "hash":  "sha256-ab9d3c764bc0c0f6d62f2f30664b1905761caa872735e375a4d3a3c8680e7fae",
+                                                                            "size":  586
+                                                                        },
+                  "/NEXX LAST/dist/static/database.js":  {
+                                                             "hash":  "sha256-2ddf85964843dc988febcb0cbb5dd8a95219a08e278b2466f8fcb61fcae1d47a",
+                                                             "size":  10909
+                                                         },
+                  "/NEXX LAST/dist/static/nexx-logo.svg":  {
+                                                               "hash":  "sha256-970c0c5c60f595f80be3cfe2dee0cb362b25e3361237a17aeb162a2160de4a8b",
+                                                               "size":  362103
+                                                           },
+                  "/NEXX LAST/dist/static/faq.js":  {
+                                                        "hash":  "sha256-050cd10b9e246fb6165ccc0975d2149f26ecdec4c6f58b52560cc808fc550cd2",
+                                                        "size":  14863
+                                                    },
+                  "/NEXX LAST/dist/nexx.html":  {
+                                                    "hash":  "sha256-9187c9bf3a313e273268958495ee8d9b81a04445e35a4ee82f81ceff2c7714e8",
+                                                    "size":  15783
+                                                },
+                  "/NEXX LAST/dist/static/_headers":  {
+                                                          "hash":  "sha256-efea9c5014f7a4e08c03f0b0564bc502bbbc3700494fbb2476b0b9a9aa2464b5",
+                                                          "size":  1433
+                                                      },
+                  "/NEXX LAST/dist/static/about.html":  {
+                                                            "hash":  "sha256-c23097dfc058a1a84581cac8e9d113a1bd1163922af5349110fc759085eace09",
+                                                            "size":  9634
+                                                        },
+                  "/NEXX LAST/dist/images/kids-training-1.png":  {
+                                                                     "hash":  "sha256-ef1e88657f8bb7994f350cc04c92c49cc324033876b68e64be4e4d54c96a547c",
+                                                                     "size":  1551422
+                                                                 },
+                  "/NEXX LAST/dist/static/static/favicon.ico":  {
+                                                                    "hash":  "sha256-8040c163d74efe626b734fa9b2b8d349e8bca674c059269c217681dc2322a101",
+                                                                    "size":  94334
+                                                                },
+                  "/NEXX LAST/dist/static/static/style.css":  {
+                                                                  "hash":  "sha256-ef73096ba718c5f42e9bc3233e4bf719f7191143d1f385ed7cfdd7ccf913e49c",
+                                                                  "size":  49
+                                                              },
+                  "/NEXX LAST/dist/static/navigation-system.min.js":  {
+                                                                          "hash":  "sha256-5cde2c3854a4e126833e14569f8fa4659289ba70e690609710071eaf1e616f76",
+                                                                          "size":  20763
+                                                                      },
+                  "/NEXX LAST/dist/static/data/master-db.json":  {
+                                                                     "hash":  "sha256-f82cc3c9b7a3fcbaa4dfef08bf8255787bdd54978b48b667a63415e045c932d4",
+                                                                     "size":  1101502
+                                                                 },
+                  "/NEXX LAST/dist/static/vendor/react-dom.production.min.js":  {
+                                                                                    "hash":  "sha256-13b1c0705b9fa93346936ed98bd4a858fea4cdacdb09e564f897c5ba6bd0943a",
+                                                                                    "size":  132102
+                                                                                },
+                  "/NEXX LAST/dist/static/app.min.js":  {
+                                                            "hash":  "sha256-836e73d005c55552f4d921f0c0e902b653f9ce4a1e04e5ab9b57e886fdf42eae",
+                                                            "size":  126479
+                                                        },
+                  "/NEXX LAST/dist/index.html":  {
+                                                     "hash":  "sha256-b5bfa8544c399b3659e75335ba84a5df062fb1b0b27ab81cf902ba926d118c70",
+                                                     "size":  114126
+                                                 },
+                  "/NEXX LAST/dist/static/vendor/react.production.min.js":  {
+                                                                                "hash":  "sha256-d72610e728466bf70f27ecc9a1a14580fd8f1e75b977aa0612146cab0e80a3fe",
+                                                                                "size":  10782
+                                                                            },
+                  "/NEXX LAST/dist/static/static/vendor/react-dom.production.min.js":  {
+                                                                                           "hash":  "sha256-13b1c0705b9fa93346936ed98bd4a858fea4cdacdb09e564f897c5ba6bd0943a",
+                                                                                           "size":  132102
+                                                                                       },
+                  "/NEXX LAST/dist/static/static/app.min.js":  {
+                                                                   "hash":  "sha256-836e73d005c55552f4d921f0c0e902b653f9ce4a1e04e5ab9b57e886fdf42eae",
+                                                                   "size":  126479
+                                                               },
+                  "/NEXX LAST/dist/static/static/brands/huawei.svg":  {
+                                                                          "hash":  "sha256-b4f5f3aa54ad1068c9b41dc49e8f9fffe1190042207f62b2f5099914464cd32a",
+                                                                          "size":  1343
+                                                                      },
+                  "/NEXX LAST/dist/static/nexx-logo-trimmed.png":  {
+                                                                       "hash":  "sha256-313a842686385cf323e0c8bc1558cb1354a3883541c0cd783840bc42a4051966",
+                                                                       "size":  18512
+                                                                   },
+                  "/NEXX LAST/dist/static/robots.txt":  {
+                                                            "hash":  "sha256-9db1bcdbb3c66bdc6dd97d89f88b40ffde690d20bd57171f153479ca00e45c03",
+                                                            "size":  486
+                                                        },
+                  "/NEXX LAST/dist/privacy.html":  {
+                                                       "hash":  "sha256-78bd913259f199192143750e41b5ec8235cefe76be111f9c7ccf55fd4555a33b",
+                                                       "size":  6361
+                                                   },
+                  "/NEXX LAST/dist/static/client-v2.js":  {
+                                                              "hash":  "sha256-e06f5f3d9d75845b2bd230f5706a2317c868931be2d4eb9d20d6f5687bb7ff98",
+                                                              "size":  276502
+                                                          },
+                  "/NEXX LAST/dist/static/brands/motorola.svg":  {
+                                                                     "hash":  "sha256-ab9d3c764bc0c0f6d62f2f30664b1905761caa872735e375a4d3a3c8680e7fae",
+                                                                     "size":  586
+                                                                 },
+                  "/NEXX LAST/dist/static/images/screen-repair-process.jpg":  {
+                                                                                  "hash":  "sha256-ad424699c2130f8a6214d8605575aba533bf849c155fee7d8458d9c6b170f954",
+                                                                                  "size":  23
+                                                                              },
+                  "/NEXX LAST/dist/static/nexx-logo-dark-transparent.png":  {
+                                                                                "hash":  "sha256-33490d4329c83fa85003f03b0f1f588c2bb1e52bef68e056d124f3eb966f3b23",
+                                                                                "size":  22069
+                                                                            },
+                  "/NEXX LAST/dist/static/static/nexx-logo-white.svg":  {
+                                                                            "hash":  "sha256-417ddd1c24389f65c9edc18711db6f9734ccde471e9c58fcd3e36fbea88d5e69",
+                                                                            "size":  940092
+                                                                        },
+                  "/NEXX LAST/dist/static/static/brands/realme.svg":  {
+                                                                          "hash":  "sha256-a00b320300fdbeaa08a12714ebc76f7a7614a2e179ed0baa71868b7ccc1d8c02",
+                                                                          "size":  414
+                                                                      },
+                  "/NEXX LAST/dist/static/static/images/screen-repair-process.jpg":  {
+                                                                                         "hash":  "sha256-ad424699c2130f8a6214d8605575aba533bf849c155fee7d8458d9c6b170f954",
+                                                                                         "size":  23
+                                                                                     },
+                  "/NEXX LAST/dist/sw.js":  {
+                                                "hash":  "sha256-2daf3c2bf9deef2ecd6d6df7b5d2ac35ca2f9ac1e572f6d31a931a6c5bff463e",
+                                                "size":  1360
+                                            },
+                  "/NEXX LAST/dist/static/static/brands/sony.svg":  {
+                                                                        "hash":  "sha256-e96cb63dab2a30950f99650cee597e9518321b8578188c309ca3a5fced532459",
+                                                                        "size":  2765
+                                                                    },
+                  "/NEXX LAST/dist/static/nexx-logo-white.svg":  {
+                                                                     "hash":  "sha256-417ddd1c24389f65c9edc18711db6f9734ccde471e9c58fcd3e36fbea88d5e69",
+                                                                     "size":  940092
+                                                                 },
+                  "/NEXX LAST/dist/static/nexx-logo-blue.svg":  {
+                                                                    "hash":  "sha256-417ddd1c24389f65c9edc18711db6f9734ccde471e9c58fcd3e36fbea88d5e69",
+                                                                    "size":  940092
+                                                                },
+                  "/NEXX LAST/dist/about.html":  {
+                                                     "hash":  "sha256-c23097dfc058a1a84581cac8e9d113a1bd1163922af5349110fc759085eace09",
+                                                     "size":  9634
+                                                 },
+                  "/NEXX LAST/dist/static/static/analytics.js":  {
+                                                                     "hash":  "sha256-e5621bda63200ca54cdd7e116b16311d14772cc7e167b149957aecb61ef241ac",
+                                                                     "size":  4773
+                                                                 },
+                  "/NEXX LAST/dist/static/i18n.min.js":  {
+                                                             "hash":  "sha256-4740af216e7ba8fe1acbc4f6b2f2390085cf56391bfe26532f485da0856d59ec",
+                                                             "size":  41430
+                                                         },
+                  "/NEXX LAST/dist/static/analytics.min.js":  {
+                                                                  "hash":  "sha256-e5621bda63200ca54cdd7e116b16311d14772cc7e167b149957aecb61ef241ac",
+                                                                  "size":  4773
+                                                              },
+                  "/NEXX LAST/dist/static/navigation-system.js":  {
+                                                                      "hash":  "sha256-5cde2c3854a4e126833e14569f8fa4659289ba70e690609710071eaf1e616f76",
+                                                                      "size":  20763
+                                                                  },
+                  "/NEXX LAST/dist/data/master-db.json":  {
+                                                              "hash":  "sha256-f82cc3c9b7a3fcbaa4dfef08bf8255787bdd54978b48b667a63415e045c932d4",
+                                                              "size":  1101502
+                                                          },
+                  "/NEXX LAST/dist/static/nexx-logo-white-transparent.png":  {
+                                                                                 "hash":  "sha256-ff3129c4e3981f77faaa8569d5a1d0851c6b72b59aa70bdbbe5582ba7ced991e",
+                                                                                 "size":  31735
+                                                                             },
+                  "/NEXX LAST/dist/static/nexx.html":  {
+                                                           "hash":  "sha256-9187c9bf3a313e273268958495ee8d9b81a04445e35a4ee82f81ceff2c7714e8",
+                                                           "size":  15783
+                                                       },
+                  "/NEXX LAST/dist/static/static/nexx-logo-blue.svg":  {
+                                                                           "hash":  "sha256-417ddd1c24389f65c9edc18711db6f9734ccde471e9c58fcd3e36fbea88d5e69",
+                                                                           "size":  940092
+                                                                       },
+                  "/NEXX LAST/dist/images/services-icons.png":  {
+                                                                    "hash":  "sha256-9a4f1e80dc9c893f37470796f84ca6fba04e37ed66e62ac9796aaa1ef0e07baf",
+                                                                    "size":  194869
+                                                                },
+                  "/NEXX LAST/dist/static/brands/oppo.svg":  {
+                                                                 "hash":  "sha256-28b0d7c2c6d7ec391d36a1221d4fc6ad20daf7d91eb7f6c4a9edd92d2f7efa59",
+                                                                 "size":  1239
+                                                             },
+                  "/NEXX LAST/dist/robots.txt":  {
+                                                     "hash":  "sha256-9db1bcdbb3c66bdc6dd97d89f88b40ffde690d20bd57171f153479ca00e45c03",
+                                                     "size":  486
+                                                 },
+                  "/NEXX LAST/dist/_routes.json":  {
+                                                       "hash":  "sha256-a1c3249cae4c012855b14145fb086f92697368d5af38d31a026fa53595bec5dd",
+                                                       "size":  244
+                                                   },
+                  "/NEXX LAST/dist/static/about.min.js":  {
+                                                              "hash":  "sha256-d6e6b6d5ddefa6beac61e0d7666ece3c12a120f5e724007fb80e758a109114d4",
+                                                              "size":  11825
+                                                          },
+                  "/NEXX LAST/dist/static/ui-components.js":  {
+                                                                  "hash":  "sha256-edcc1573afb86109fa881546bd051b6c6cd49528042978dbdb148a78575e01dd",
+                                                                  "size":  15558
+                                                              },
+                  "/NEXX LAST/dist/static/static/brands/nokia.svg":  {
+                                                                         "hash":  "sha256-9d0d4f9166f018b7a39480ec03858651d41dd6f3c7de798f8721fcac5724fcc2",
+                                                                         "size":  618
+                                                                     },
+                  "/NEXX LAST/dist/static/faq.min.js":  {
+                                                            "hash":  "sha256-050cd10b9e246fb6165ccc0975d2149f26ecdec4c6f58b52560cc808fc550cd2",
+                                                            "size":  14863
+                                                        },
+                  "/NEXX LAST/dist/static/static/nexx-core.js":  {
+                                                                     "hash":  "sha256-0c025c464cde23ebb94e7d57268966fae4f45e2c862942cb827e3dfe789ccf35",
+                                                                     "size":  18771
+                                                                 },
+                  "/NEXX LAST/dist/static/static/about.js":  {
+                                                                 "hash":  "sha256-d6e6b6d5ddefa6beac61e0d7666ece3c12a120f5e724007fb80e758a109114d4",
+                                                                 "size":  11825
+                                                             },
+                  "/NEXX LAST/dist/static/static/utils.min.js":  {
+                                                                     "hash":  "sha256-4765d1e0ac1cd8f0021f821cf6e7de870eb8e0959d3441e9f92591173220b2a4",
+                                                                     "size":  6034
+                                                                 },
+                  "/NEXX LAST/dist/images/reception.png":  {
+                                                               "hash":  "sha256-436e49760d2c33bc01b9b37c2e94ccf903148420f21a8066a3921a4bed898317",
+                                                               "size":  1237501
+                                                           },
+                  "/NEXX LAST/dist/static/static/nexx-core.min.js":  {
+                                                                         "hash":  "sha256-0c025c464cde23ebb94e7d57268966fae4f45e2c862942cb827e3dfe789ccf35",
+                                                                         "size":  18771
+                                                                     },
+                  "/NEXX LAST/dist/static/images/hero-background.png":  {
+                                                                            "hash":  "sha256-cd248659d74644bfc943e7c5b881bc7c688e25053e9830742eb6831f6c1009fb",
+                                                                            "size":  80197
+                                                                        },
+                  "/NEXX LAST/dist/static/static/brands/oppo.svg":  {
+                                                                        "hash":  "sha256-28b0d7c2c6d7ec391d36a1221d4fc6ad20daf7d91eb7f6c4a9edd92d2f7efa59",
+                                                                        "size":  1239
+                                                                    },
+                  "/NEXX LAST/dist/images/workspace.png":  {
+                                                               "hash":  "sha256-018aa3bf206b062886b6bd43d0073b0fabc3f7a0e00aacd966e1da04a3d72e11",
+                                                               "size":  1924540
+                                                           },
+                  "/NEXX LAST/dist/static/static/nexx-logo-dark-transparent.png":  {
+                                                                                       "hash":  "sha256-33490d4329c83fa85003f03b0f1f588c2bb1e52bef68e056d124f3eb966f3b23",
+                                                                                       "size":  22069
+                                                                                   },
+                  "/NEXX LAST/dist/static/nexx-core.js":  {
+                                                              "hash":  "sha256-0c025c464cde23ebb94e7d57268966fae4f45e2c862942cb827e3dfe789ccf35",
+                                                              "size":  18771
+                                                          },
+                  "/NEXX LAST/dist/_worker.js":  {
+                                                     "hash":  "sha256-dbb366435e996c5ded2ec96992bb1bebc20412aeccd6c433c13629795d37a6a3",
+                                                     "size":  42007
+                                                 },
+                  "/NEXX LAST/dist/static/brands/samsung.svg":  {
+                                                                    "hash":  "sha256-62b24d813135894111042cdbd75bcc8c1a3358a140c28f78bc8614294b273fcd",
+                                                                    "size":  2307
+                                                                },
+                  "/NEXX LAST/dist/static/static/images/battery-repair-process.jpg":  {
+                                                                                          "hash":  "sha256-9b1da72a56349f98c7164e63d1ed3ff8d53fbf5bf2a857fc9bfe9a3663aaa8af",
+                                                                                          "size":  23
+                                                                                      },
+                  "/NEXX LAST/dist/static/static/price-calculator.js":  {
+                                                                            "hash":  "sha256-79e0526f984b470eace79996c0e8c954830d95169a0c45e419a92272aaac9073",
+                                                                            "size":  65985
+                                                                        },
+                  "/NEXX LAST/dist/_redirects":  {
+                                                     "hash":  "sha256-9a10305a1a44239c4c5d4b06a8fbdfe42c3e487fe5989d97cb5ab2343fb20ceb",
+                                                     "size":  933
+                                                 },
+                  "/NEXX LAST/dist/static/static/shared-components.min.js":  {
+                                                                                 "hash":  "sha256-2f28db473282ca6aa89538122b8594fc59ccc1c454f4cb05cba31a74410554a8",
+                                                                                 "size":  9344
+                                                                             },
+                  "/NEXX LAST/dist/static/analytics.js":  {
+                                                              "hash":  "sha256-e5621bda63200ca54cdd7e116b16311d14772cc7e167b149957aecb61ef241ac",
+                                                              "size":  4773
+                                                          },
+                  "/NEXX LAST/dist/static/brands/asus.svg":  {
+                                                                 "hash":  "sha256-dade33986ea2e701e7cbd5cb89faf5e81b472634f3905f38481449f47a63d7eb",
+                                                                 "size":  934
+                                                             },
+                  "/NEXX LAST/dist/static/homepage.js":  {
+                                                             "hash":  "sha256-bd5a9b18661317c8f22ea12114454eefef12ec8b8fa0a97f025501db48143e50",
+                                                             "size":  37590
+                                                         },
+                  "/NEXX LAST/dist/static/static/ui-components.js":  {
+                                                                         "hash":  "sha256-12f40012926fda69a63ce94042863eea80f1fcf1c949862e2d4e4c0ed9fe1e12",
+                                                                         "size":  28686
+                                                                     },
+                  "/NEXX LAST/dist/static/images/battery-repair-process.jpg":  {
+                                                                                   "hash":  "sha256-9b1da72a56349f98c7164e63d1ed3ff8d53fbf5bf2a857fc9bfe9a3663aaa8af",
+                                                                                   "size":  23
+                                                                               },
+                  "/NEXX LAST/dist/static/static/brands/nothing.svg":  {
+                                                                           "hash":  "sha256-e8a15ef19fb06a6de0b7049e6beae55e92048ef1e8728aacbddc3b9778e18eaf",
+                                                                           "size":  548
+                                                                       }
+              }
+}

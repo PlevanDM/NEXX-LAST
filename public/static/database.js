@@ -31,9 +31,24 @@
       this.loading = true;
       
       try {
-        // Загружаем ЕДИНУЮ базу данных
-        const masterResponse = await fetch('/data/master-db.json');
+        // Загружаем ЕДИНУЮ базу данных (с cache-busting через версию)
+        // Використовуємо версію з бази для cache-busting, якщо вона є в localStorage
+        const cachedVersion = localStorage.getItem('nexx_db_version') || '3.2.2';
+        const masterResponse = await fetch(`/data/master-db.json?v=${cachedVersion}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+        if (!masterResponse.ok) {
+          throw new Error(`Failed to load database: ${masterResponse.status} ${masterResponse.statusText}`);
+        }
         this.masterDb = await masterResponse.json();
+        
+        // Зберігаємо версію для наступного завантаження
+        if (this.masterDb.version) {
+          localStorage.setItem('nexx_db_version', this.masterDb.version);
+        }
         
         // Основные данные
         this.devices = this.masterDb.devices || [];
@@ -149,44 +164,54 @@
     }
     
     /**
-     * Получить цену для конкретного устройства и проблемы
-     * Используется в калькуляторе цен
+     * Получить цену для конкретного устройства и проблемы (RON/lei).
+     * Приоритет: service_prices_ron (ручные lei из Sheets) > official_service_prices (USD→RON) > prices.devices > commonRepairs.
      */
     getDevicePrice(deviceName, issueId) {
       if (!this.devices || !deviceName || !issueId) return null;
+      const keyMap = { screen: 'display', charging: 'charging_port', camera: 'rear_camera', motherboard: 'logic_board' };
+      const keys = [issueId, keyMap[issueId]].filter(Boolean);
       
       try {
-        // Поиск устройства по имени
         const device = this.devices.find(d => {
           const name = (d.name || '').toLowerCase();
           const searchName = (deviceName || '').toLowerCase();
           return name.includes(searchName) || searchName.includes(name);
         });
-        
         if (!device) return null;
         
-        // Проверяем official_service_prices (Apple цены в USD - конвертируем в RON)
-        if (device.official_service_prices && typeof device.official_service_prices === 'object') {
-          const priceUSD = device.official_service_prices[issueId];
-          if (typeof priceUSD === 'number' && priceUSD > 0) {
-            // Конвертация USD в RON (курс ~4.5 RON за 1 USD)
-            const USD_TO_RON = 4.5;
-            return Math.round(priceUSD * USD_TO_RON);
+        // 1. service_prices_ron — цены в lei из Google Sheets (вкладки *_price)
+        if (device.service_prices_ron && typeof device.service_prices_ron === 'object') {
+          for (const k of keys) {
+            const v = device.service_prices_ron[k];
+            if (typeof v === 'number' && v > 0) return v;
           }
         }
         
-        // Проверяем masterDb цены
+        // 2. official_service_prices (USD → RON)
+        if (device.official_service_prices && typeof device.official_service_prices === 'object') {
+          const USD_TO_RON = 4.5;
+          for (const k of keys) {
+            const priceUSD = device.official_service_prices[k];
+            if (typeof priceUSD === 'number' && priceUSD > 0) return Math.round(priceUSD * USD_TO_RON);
+          }
+        }
+        
+        // 3. prices.devices
         if (this.masterDb?.prices?.devices) {
           const devicePrices = this.masterDb.prices.devices[deviceName];
-          if (devicePrices && devicePrices[issueId]) {
-            return devicePrices[issueId];
+          if (devicePrices) {
+            for (const k of keys) { if (devicePrices[k]) return devicePrices[k]; }
           }
         }
         
-        // Проверяем общие цены по категории
-        const category = device.category?.toLowerCase() || 'phone';
-        if (this.masterDb?.prices?.commonRepairs?.[issueId]?.[category]) {
-          return this.masterDb.prices.commonRepairs[issueId][category];
+        // 4. commonRepairs по категории
+        const category = (device.category || 'phone').toLowerCase();
+        if (this.masterDb?.prices?.commonRepairs) {
+          for (const k of keys) {
+            const v = this.masterDb.prices.commonRepairs[k]?.[category];
+            if (typeof v === 'number' && v > 0) return v;
+          }
         }
         
         return null;

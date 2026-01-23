@@ -16,11 +16,13 @@
 - Zone: nexxgsm.com
 
 ### Available Cloudflare Services
-- ✅ Cloudflare Pages (active)
-- ✅ Cloudflare Workers (available)
-- ✅ R2 Storage (available)
-- ✅ KV Storage (available)
-- ✅ D1 Database (available)
+- ✅ Cloudflare Pages (active) - Project: nexx, Branch: main
+- ✅ Cloudflare Workers (available) - 4 API functions configured
+- ✅ Security: Medium level, TLS 1.2+, SSL Full, Always HTTPS
+- ✅ Cache: Aggressive level, optimized headers
+- ⚠️ R2 Storage (available but not configured)
+- ⚠️ KV Storage (available but not configured)
+- ⚠️ D1 Database (available but not configured)
 
 ## Deployment
 
@@ -65,6 +67,8 @@
 - `/api/callback` - Callback API
 - `/api/price-estimate` - Price estimation
 - `/api/remonline` - RemOnline integration
+- `/api/ai-chat` - AI Chat (Cloudflare AI)
+- `/api/ai-assistant` - AI Assistant for NEXX service
 
 ## When Making Changes
 1. Update version in `index.html` for cache busting
@@ -72,3 +76,9 @@
 3. Use deployment script or GitHub Actions
 4. Clear cache with `purge-cloudflare-cache.ps1`
 5. Wait 1-2 minutes for CDN propagation
+
+## Context7 MCP Server
+- Installed: Context7 MCP for up-to-date code documentation
+- Configuration: `.cursor/mcp.json`
+- Usage: Add "use context7" to prompts for library/API documentation
+- Auto-invoke: Context7 is automatically used for code-related questions
