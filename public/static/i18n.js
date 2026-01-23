@@ -440,15 +440,15 @@
           display: { 
             title: 'Înlocuire Display', 
             desc: 'Ecrane originale sau de calitate',
+            detailsText: 'Ecrane originale, refabricate sau compatibile premium. Garanție dead pixel.',
+            details: ['LCD/OLED', 'Touchscreen', 'Laminare', 'Calibrare True Tone'],
             subServices: [
               { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
               { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
               { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 oră' },
               { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
               { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
-            ],
-            detailsText: 'Display-uri original, refurbished sau compatibil premium. Garanție dead pixel.',
-            details: ['LCD/OLED', 'Touchscreen', 'Laminate/delaminate', 'Calibrare']
+            ]
           },
           port: { 
             title: 'Port Încărcare', 
@@ -1057,31 +1057,66 @@
             title: 'Battery Repair', 
             desc: 'Replacement + recovery',
             detailsText: 'Original batteries and premium quality. Capacity testing. Warranty.',
-            details: ['Battery replacement', 'Cell recovery', 'BMS calibration', 'Capacity test']
+            details: ['Battery replacement', 'Cell recovery', 'BMS calibration', 'Capacity test'],
+            subServices: [
+              { name: 'iPhone 12-16', price: '150-250 lei', time: '30 min' },
+              { name: 'iPhone SE/11', price: '100-150 lei', time: '30 min' },
+              { name: 'Samsung S/Note', price: '120-200 lei', time: '45 min' },
+              { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 hours' },
+              { name: 'iPad', price: '200-350 lei', time: '1 hour' }
+            ]
           },
           board: { 
             title: 'Board Repair', 
             desc: 'IC soldering, BGA reballing, trace repair',
             detailsText: 'Component-level repair. Diagnostic under microscope. BGA reballing.',
-            details: ['IC soldering', 'BGA reballing', 'Trace repair', 'Water damage']
+            details: ['IC soldering', 'BGA reballing', 'Trace repair', 'Water damage'],
+            subServices: [
+              { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 hours' },
+              { name: 'Trace repair', price: '150-400 lei', time: '1-3 hours' },
+              { name: 'IC replacement', price: '200-500 lei', time: '1-2 hours' },
+              { name: 'Water damage', price: '250-700 lei', time: '2-8 hours' },
+              { name: 'Diagnostics', price: '50-100 lei', time: '30 min' }
+            ]
           },
           display: { 
             title: 'Display Replacement', 
             desc: 'Original or quality screens',
             detailsText: 'Original, refurbished or premium compatible displays. Dead pixel warranty.',
-            details: ['LCD/OLED', 'Touchscreen', 'Laminate/delaminate', 'Calibration']
+            details: ['LCD/OLED', 'Touchscreen', 'Laminate/delaminate', 'Calibration'],
+            subServices: [
+              { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
+              { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
+              { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 hour' },
+              { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 hours' },
+              { name: 'iPad Display', price: '400-900 lei', time: '1-2 hours' }
+            ]
           },
           port: { 
             title: 'Charging Port', 
             desc: 'Connector replacement, cleaning',
             detailsText: 'Connector replacement. Oxidation cleaning. Board trace repair.',
-            details: ['Port cleaning', 'Replacement', 'Trace repair', 'Charging test']
+            details: ['Port cleaning', 'Replacement', 'Trace repair', 'Charging test'],
+            subServices: [
+              { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
+              { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
+              { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
+              { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 hours' },
+              { name: 'Oxidation cleaning', price: '30-60 lei', time: '15 min' }
+            ]
           },
           modular: { 
             title: 'Modular Service', 
             desc: 'Camera, speaker, buttons, sensors',
             detailsText: 'Module replacement: camera, speaker, home button, power button, flex cables.',
-            details: ['Camera', 'Speaker/Mic', 'Buttons', 'Sensors']
+            details: ['Camera', 'Speaker/Mic', 'Buttons', 'Sensors'],
+            subServices: [
+              { name: 'Main camera', price: '150-400 lei', time: '30-60 min' },
+              { name: 'Front camera', price: '80-200 lei', time: '30 min' },
+              { name: 'Speaker/Microphone', price: '60-150 lei', time: '20-40 min' },
+              { name: 'Buttons/Sensors', price: '80-200 lei', time: '30-60 min' },
+              { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 hour' }
+            ]
           },
           diagnostics: { 
             title: 'Price Calculator', 
