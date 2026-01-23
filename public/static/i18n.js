@@ -454,13 +454,27 @@
             title: 'Port Încărcare', 
             desc: 'Înlocuire conector, curățare',
             detailsText: 'Înlocuire conector. Curățare oxidare. Reparare piste placa.',
-            details: ['Curățare port', 'Înlocuire', 'Reparare piste', 'Testare încărcare']
+            details: ['Curățare port', 'Înlocuire', 'Reparare piste', 'Testare încărcare'],
+            subServices: [
+              { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
+              { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
+              { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
+              { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
+              { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
+            ]
           },
           modular: { 
             title: 'Service Modular', 
             desc: 'Cameră, difuzor, butoane, senzori',
             detailsText: 'Înlocuire module: cameră, speaker, home button, power button, flex-uri.',
-            details: ['Cameră foto', 'Speaker/Mic', 'Butoane', 'Senzori']
+            details: ['Cameră foto', 'Speaker/Mic', 'Butoane', 'Senzori'],
+            subServices: [
+              { name: 'Cameră principală', price: '150-400 lei', time: '30-60 min' },
+              { name: 'Cameră frontală', price: '80-200 lei', time: '30 min' },
+              { name: 'Speaker/Microfon', price: '60-150 lei', time: '20-40 min' },
+              { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
+              { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
+            ]
           },
           diagnostics: { 
             title: 'Calculator Preț', 
@@ -804,7 +818,7 @@
           board: ['Микроскоп 45x', 'BGA реболлинг', 'Пайка IC', 'Диагностика', 'Профессиональная станция', 'Оригинальные компоненты'],
           display: ['Оригинальный OLED', 'Премиум LCD', 'Гарантия на битый пиксель', 'Сенсорный экран', 'Ламинирование', 'Калибровка True Tone'],
           port: ['Оригинальные разъёмы', 'Профессиональная чистка', 'Тест зарядки', 'Ремонт дорожек', 'Новый шлейф', 'Гарантия 6 месяцев'],
-          modular: ['Оригинальные модули', 'Тест HD камеры', 'Калибровка аудио', 'Проверенные сенсоры', 'Ремонт Face ID', 'Параирование Touch ID']
+          modular: ['Оригинальные модули', 'Тест HD камеры', 'Калибровка аудио', 'Проверенные сенсоры', 'Ремонт Face ID', 'Парование Touch ID']
         }
       },
       
