@@ -13,7 +13,7 @@ Context7 MCP уже установлен и настроен в `.cursor/mcp.jso
 ## 🔧 Remonline Configuration
 
 ### Текущие настройки:
-- **API Key:** `55f93eacf65e94ef55e6fed9fd41f8c4`
+- **API Key:** `a7948011b9a3ccf979db1b706e9bcd3c`
 - **Base URL:** `https://api.remonline.app`
 - **Branch ID:** `218970`
 - **Order Type:** `334611`

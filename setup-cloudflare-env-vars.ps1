@@ -17,7 +17,7 @@ $headers = @{
 }
 
 # Remonline Configuration
-$REMONLINE_API_KEY = "55f93eacf65e94ef55e6fed9fd41f8c4"
+$REMONLINE_API_KEY = "a7948011b9a3ccf979db1b706e9bcd3c"
 $REMONLINE_BASE_URL = "https://api.remonline.app"
 $REMONLINE_BRANCH_ID = "218970"
 $REMONLINE_ORDER_TYPE = "334611"

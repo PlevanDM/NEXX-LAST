@@ -226,7 +226,7 @@ export async function onRequest(context) {
     const priceEstimate = getPriceEstimate(device, problem);
     
     // Remonline integration - from environment variables
-    const REMONLINE_API_KEY = env?.REMONLINE_API_KEY || '55f93eacf65e94ef55e6fed9fd41f8c4';
+    const REMONLINE_API_KEY = env?.REMONLINE_API_KEY || 'a7948011b9a3ccf979db1b706e9bcd3c';
     const REMONLINE_BASE = env?.REMONLINE_BASE_URL || 'https://api.remonline.app';
     const BRANCH_ID = parseInt(env?.REMONLINE_BRANCH_ID || '218970');
     const ORDER_TYPE = parseInt(env?.REMONLINE_ORDER_TYPE || '334611');

@@ -380,8 +380,21 @@
     <script src="/static/price-calculator.js?v=3.3-20260123200000"></script>
     
     <script>
-        const { useState, useEffect, createElement: h } = React;
-        const { Header, Footer, ToastContainer } = window.NEXXDesign;
+        // Wait for all dependencies to load
+        const initApp = () => {
+            if (!window.React || !window.ReactDOM || !window.NEXXDesign || !window.i18n) {
+                console.warn('Waiting for dependencies...', {
+                    React: !!window.React,
+                    ReactDOM: !!window.ReactDOM,
+                    NEXXDesign: !!window.NEXXDesign,
+                    i18n: !!window.i18n
+                });
+                setTimeout(initApp, 100);
+                return;
+            }
+            
+            const { useState, useEffect, createElement: h } = React;
+            const { Header, Footer, ToastContainer } = window.NEXXDesign;
         
         // Lucide Icons as SVG components (replacing Font Awesome)
         const Icons = {
@@ -1821,6 +1834,14 @@
         
         const root = ReactDOM.createRoot(document.getElementById('app'));
         root.render(h(App));
+        };
+        
+        // Start initialization
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
         
         // Smooth scroll
         document.addEventListener('DOMContentLoaded', () => {
