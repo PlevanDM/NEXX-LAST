@@ -59,9 +59,44 @@ jobs:
           fi
           echo "✅ Cloudflare secrets are configured"
       
+      - name: Verify dist directory contents
+        run: |
+          echo "📦 Checking dist directory..."
+          ls -la dist/
+          echo ""
+          echo "📊 Directory size:"
+          du -sh dist/
+          echo ""
+          echo "📁 Key files check:"
+          [ -f "dist/index.html" ] && echo "✅ index.html exists" || echo "❌ index.html missing"
+          [ -d "dist/static" ] && echo "✅ static/ directory exists" || echo "❌ static/ directory missing"
+          [ -d "dist/functions" ] && echo "✅ functions/ directory exists" || echo "⚠️  functions/ directory missing (optional)"
+      
+      - name: Test wrangler command
+        run: |
+          echo "🧪 Testing wrangler installation..."
+          npx wrangler --version
+          echo ""
+          echo "🧪 Testing wrangler pages command..."
+          npx wrangler pages project list --account-id=${{ secrets.CLOUDFLARE_ACCOUNT_ID }} || echo "⚠️  Cannot list projects (may need auth)"
+      
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=nexx
+          command: pages deploy dist --project-name=nexx --compatibility-date=2026-01-21
+          workingDirectory: .
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      
+      - name: Check deployment status
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "📋 Troubleshooting steps:"
+          echo "1. Check Cloudflare API token permissions"
+          echo "2. Verify account ID is correct"
+          echo "3. Check if project 'nexx' exists in Cloudflare Pages"
+          echo "4. Review wrangler logs above for specific errors"
