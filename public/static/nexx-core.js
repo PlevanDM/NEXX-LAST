@@ -14,6 +14,16 @@
   'use strict';
   
   // =====================================================
+  // UTILITY FUNCTIONS
+  // =====================================================
+  
+  // Check if running in development environment
+  const isDev = () => {
+    const hostname = window.location.hostname;
+    return hostname === 'localhost' || hostname.includes('127.0.0.1') || hostname.includes('192.168.');
+  };
+  
+  // =====================================================
   // CORE STATE MANAGER - Централизованное управление состоянием
   // =====================================================
   
@@ -46,11 +56,16 @@
           // Проверяем TTL
           if (parsed._timestamp && Date.now() - parsed._timestamp < CACHE_TTL) {
             this.state = parsed.state || {};
-            console.log('📦 NEXX State restored from localStorage');
+            // Only log in development
+            if (isDev()) {
+              console.log('📦 NEXX State restored from localStorage');
+            }
           }
         }
       } catch (e) {
-        console.warn('⚠️ Could not restore state:', e);
+        if (isDev()) {
+          console.warn('⚠️ Could not restore state:', e);
+        }
       }
     }
     
@@ -61,7 +76,9 @@
           _timestamp: Date.now()
         }));
       } catch (e) {
-        console.warn('⚠️ Could not save state:', e);
+        if (isDev()) {
+          console.warn('⚠️ Could not save state:', e);
+        }
       }
     }
     
@@ -82,14 +99,17 @@
     async fetchWithCache(url, options = {}) {
       const cacheKey = url + JSON.stringify(options);
       
-      // Проверяем кэш
-      if (this.cache.has(cacheKey)) {
-        const cached = this.cache.get(cacheKey);
-        if (Date.now() - cached.timestamp < CACHE_TTL) {
-          console.log(`🐜 Cache hit: ${url}`);
-          return cached.data;
+        // Проверяем кэш
+        if (this.cache.has(cacheKey)) {
+          const cached = this.cache.get(cacheKey);
+          if (Date.now() - cached.timestamp < CACHE_TTL) {
+            // Only log cache hits in development
+            if (isDev()) {
+              console.log(`🐜 Cache hit: ${url}`);
+            }
+            return cached.data;
+          }
         }
-      }
       
       // Загружаем данные
       try {
@@ -103,10 +123,33 @@
           timestamp: Date.now()
         });
         
-        console.log(`🌐 Fetched: ${url}`);
+        // Only log fetches in development
+        if (isDev()) {
+          console.log(`🌐 Fetched: ${url}`);
+        }
         return data;
       } catch (error) {
-        console.error(`❌ Fetch error: ${url}`, error);
+        // Don't log network errors for external resources or if it's a known issue
+        const isNetworkError = error.message && (
+          error.message.includes('Failed to fetch') ||
+          error.message.includes('NetworkError') ||
+          error.message.includes('network')
+        );
+        
+        if (!isNetworkError && isDev()) {
+          console.error(`❌ Fetch error: ${url}`, error);
+        }
+        
+        // Return cached data if available, even if expired
+        if (this.cache.has(cacheKey)) {
+          const cached = this.cache.get(cacheKey);
+          // Only log in development
+          if (isDev()) {
+            console.log(`🐜 Using stale cache: ${url}`);
+          }
+          return cached.data;
+        }
+        
         throw error;
       }
     }
@@ -142,7 +185,9 @@
           try {
             cb(data);
           } catch (e) {
-            console.error('Listener error:', e);
+            if (isDev()) {
+              console.error('Listener error:', e);
+            }
           }
         });
       }
@@ -166,10 +211,20 @@
           await this.routes.get(route)(params);
           this.emit('navigation', { route, params });
         } catch (e) {
-          console.error(`❌ Navigation error: ${route}`, e);
+          // Only log in development
+          if (isDev()) {
+            if (isDev()) {
+              console.error(`❌ Navigation error: ${route}`, e);
+            }
+          }
         }
       } else {
-        console.warn(`⚠️ Unknown route: ${route}`);
+        // Only log in development
+        if (isDev()) {
+          if (isDev()) {
+            console.warn(`⚠️ Unknown route: ${route}`);
+          }
+        }
       }
     }
     
@@ -178,9 +233,19 @@
     // =====================================================
     
     async preload(urls) {
-      const promises = urls.map(url => this.fetchWithCache(url).catch(() => null));
-      await Promise.all(promises);
-      console.log(`📥 Preloaded ${urls.length} resources`);
+      // Use Promise.allSettled to handle failures gracefully
+      const promises = urls.map(url => 
+        this.fetchWithCache(url).catch(err => {
+          // Silently handle preload errors - they're not critical
+          return null;
+        })
+      );
+      const results = await Promise.allSettled(promises);
+      const successful = results.filter(r => r.status === 'fulfilled' && r.value !== null).length;
+      // Only log in development or if there are failures
+      if (successful < urls.length || isDev()) {
+        console.log(`📥 Preloaded ${successful}/${urls.length} resources`);
+      }
     }
     
     // =====================================================
@@ -190,7 +255,10 @@
     async init() {
       if (this.initialized) return;
       
-      console.log('🚀 NEXX Core initializing...');
+      // Only log in development
+      if (isDev()) {
+        console.log('🚀 NEXX Core initializing...');
+      }
       
       // Предзагружаем единую базу данных (всё в одном файле)
       await this.preload([
@@ -209,7 +277,9 @@
       
       this.initialized = true;
       this.emit('ready');
-      console.log('✅ NEXX Core ready');
+      if (isDev()) {
+        console.log('✅ NEXX Core ready');
+      }
     }
     
     _registerDefaultRoutes() {
@@ -253,9 +323,14 @@
           data,
           timestamp: Date.now()
         }));
-        console.log('💾 Состояние калькулятора сохранено');
+        // Only log in development
+        if (isDev()) {
+          console.log('💾 Состояние калькулятора сохранено');
+        }
       } catch (e) {
-        console.warn('⚠️ Не удалось сохранить состояние калькулятора:', e);
+        if (isDev()) {
+          console.warn('⚠️ Не удалось сохранить состояние калькулятора:', e);
+        }
       }
     }
     
@@ -266,12 +341,17 @@
           const parsed = JSON.parse(saved);
           // Сохраненное состояние действует 30 минут
           if (Date.now() - parsed.timestamp < 30 * 60 * 1000) {
-            console.log('📂 Состояние калькулятора восстановлено');
+            // Only log in development
+            if (isDev()) {
+              console.log('📂 Состояние калькулятора восстановлено');
+            }
             return parsed.data;
           }
         }
       } catch (e) {
-        console.warn('⚠️ Не удалось восстановить состояние калькулятора:', e);
+        if (isDev()) {
+          console.warn('⚠️ Не удалось восстановить состояние калькулятора:', e);
+        }
       }
       return null;
     }
@@ -279,7 +359,10 @@
     clearCalculatorState() {
       try {
         localStorage.removeItem(CALCULATOR_STATE_KEY);
-        console.log('🗑️ Состояние калькулятора очищено');
+        // Only log in development
+        if (isDev()) {
+          console.log('🗑️ Состояние калькулятора очищено');
+        }
       } catch (e) {
         // ignore
       }
@@ -337,7 +420,10 @@
               break;
           }
         } catch (e) {
-          console.error('❌ Sync error:', e);
+          // Only log in development
+          if (isDev()) {
+            console.error('❌ Sync error:', e);
+          }
           // Возвращаем в очередь при ошибке (с лимитом попыток)
           if (!item.retries || item.retries < 3) {
             item.retries = (item.retries || 0) + 1;
@@ -401,11 +487,39 @@
         this.errors = this.errors.slice(-50);
       }
       
-      console.error('🔴 Error captured:', errorInfo.message);
+      // Filter out benign Service Worker errors and common browser issues
+      const errorMsg = String(errorInfo.message || '').toLowerCase();
+      const isServiceWorkerError = errorMsg && (
+        errorMsg.includes('serviceworker') ||
+        errorMsg.includes('service worker') ||
+        errorMsg.includes('invalid state') ||
+        errorMsg.includes('not found') ||
+        errorMsg.includes('failed to update') ||
+        errorMsg.includes('failed to register') ||
+        errorMsg.includes('the object is in an invalid state') ||
+        (errorMsg.includes('script') && errorMsg.includes('unknown')) ||
+        errorMsg.includes('chunkloaderror') ||
+        errorMsg.includes('loading chunk') ||
+        errorMsg.includes('network error')
+      );
       
-      // Показываем пользователю уведомление
-      if (window.showToast) {
-        window.showToast('A apărut o eroare. Reîncărcați pagina.', 'error', 5000);
+      // Only log non-critical errors
+      if (!isServiceWorkerError) {
+        // Only log in development for non-critical errors
+        if (isDev()) {
+          console.error('🔴 Error captured:', errorInfo.message);
+        }
+      }
+      
+      // Показываем пользователю уведомление только для критических ошибок
+      // НЕ показываем toast для Service Worker ошибок или других benign ошибок
+      if (window.showToast && !isServiceWorkerError && errorInfo.message && 
+          !errorInfo.message.toLowerCase().includes('chunk') &&
+          !errorInfo.message.toLowerCase().includes('loading')) {
+        // Только для реальных критических ошибок
+        if (isDev()) {
+          window.showToast('A apărut o eroare. Reîncărcați pagina.', 'error', 5000);
+        }
       }
     }
     
@@ -463,14 +577,24 @@
             lead.status = 'sent';
             lead.remonline_id = result.lead_id;
             this.queue.shift();
-            console.log(`✅ Лид ${lead.id} отправлен в Remonline`);
+            // Only log in development
+            if (isDev()) {
+              if (isDev()) {
+                console.log(`✅ Лид ${lead.id} отправлен в Remonline`);
+              }
+            }
           } else {
             // При ошибке - перемещаем в конец очереди
             lead.retries = (lead.retries || 0) + 1;
             if (lead.retries >= 3) {
               lead.status = 'failed';
               this.queue.shift();
-              console.warn(`⚠️ Лид ${lead.id} не отправлен после 3 попыток`);
+              // Only log in development
+              if (isDev()) {
+                if (isDev()) {
+                  console.warn(`⚠️ Лид ${lead.id} не отправлен после 3 попыток`);
+                }
+              }
             } else {
               this.queue.shift();
               this.queue.push(lead);
@@ -479,7 +603,10 @@
             }
           }
         } catch (e) {
-          console.error('❌ Ошибка обработки лида:', e);
+          // Only log in development
+          if (isDev()) {
+            console.error('❌ Ошибка обработки лида:', e);
+          }
           lead.retries = (lead.retries || 0) + 1;
           if (lead.retries >= 3) {
             lead.status = 'failed';
@@ -516,7 +643,12 @@
         
         return await response.json();
       } catch (e) {
-        console.error('Ошибка Remonline API:', e);
+        // Only log in development
+        if (isDev()) {
+          if (isDev()) {
+            console.error('Ошибка Remonline API:', e);
+          }
+        }
         return { success: false, error: e.message };
       }
     }
@@ -547,7 +679,12 @@
       this._loadQueue();
       // Процессируем очередь при загрузке
       if (this.queue.length > 0) {
-        console.log(`📨 В очереди ${this.queue.length} неотправленных лидов`);
+        // Only log in development
+        if (isDev()) {
+          if (isDev()) {
+            console.log(`📨 В очереди ${this.queue.length} неотправленных лидов`);
+          }
+        }
         this._processQueue();
       }
     }
@@ -579,5 +716,10 @@
     leadPipeline.init();
   }
   
-  console.log(`🎯 NEXX Core v${VERSION} loaded - "Венозная система"`);
+  // Only log in development
+  if (isDev()) {
+    if (isDev()) {
+      console.log(`🎯 NEXX Core v${VERSION} loaded - "Венозная система"`);
+    }
+  }
 })();

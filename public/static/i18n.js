@@ -489,11 +489,11 @@
         price: 'Preț',
         time: 'Timp',
         specs: {
-          battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'],
+          battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Calitate premium', 'Regenerare celule'],
           board: ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'],
-          display: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone'],
+          display: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Ecran tactil', 'Laminare', 'Calibrare True Tone'],
           port: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'],
-          modular: ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing']
+          modular: ['Module originale', 'Cameră HD test', 'Calibrare audio', 'Senzori verificați', 'Reparație Face ID', 'Pereche Touch ID']
         }
       },
       

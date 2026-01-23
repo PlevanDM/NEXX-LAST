@@ -212,10 +212,58 @@
     const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
     
     React.useEffect(() => {
-      const handleScroll = () => setIsScrolled(window.scrollY > 20);
-      window.addEventListener('scroll', handleScroll);
+      // Throttle scroll handler for better performance
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            setIsScrolled(window.scrollY > 20);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+    
+    // Prevent body scroll when mobile menu is open
+    React.useEffect(() => {
+      if (isMobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }, [isMobileMenuOpen]);
+    
+    // Close mobile menu on outside click
+    React.useEffect(() => {
+      if (!isMobileMenuOpen) return;
+      
+      const handleClickOutside = (e) => {
+        const target = e.target;
+        if (!target.closest('header')) {
+          setIsMobileMenuOpen(false);
+        }
+      };
+      
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          setIsMobileMenuOpen(false);
+        }
+      };
+      
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+      
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+        document.removeEventListener('keydown', handleEscape);
+      };
+    }, [isMobileMenuOpen]);
     
     // Dynamic navigation with translations
     const getNavLinks = () => {
@@ -338,24 +386,30 @@
           h('div', { className: 'flex md:hidden items-center gap-2' },
             // Language Switcher for mobile
             window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled, compact: true }),
-            // Mobile Menu Button
+            // Mobile Menu Button - larger touch target
             h('button', {
               onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-              className: `w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`
-            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
+              className: `w-12 h-12 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`,
+              'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu',
+              style: { touchAction: 'manipulation', minWidth: '48px', minHeight: '48px' }
+            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl` }))
           )
         ),
         
         // Mobile Menu
-        isMobileMenuOpen && h('div', { className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down' },
+        isMobileMenuOpen && h('div', { 
+          className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down border-t border-gray-200',
+          style: { maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }
+        },
           ...navLinks.map(link => h('a', {
             key: link.id,
             href: link.href,
-            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition ${currentPage === link.id ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
-            onClick: () => setIsMobileMenuOpen(false)
+            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition min-h-[48px] ${currentPage === link.id ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
+            onClick: () => setIsMobileMenuOpen(false),
+            style: { touchAction: 'manipulation' }
           },
-            h('i', { className: `fas ${link.icon} w-5` }),
-            link.label
+            h('i', { className: `fas ${link.icon} w-5 text-lg` }),
+            h('span', { className: 'text-base' }, link.label)
           )),
           // Service Mod link in mobile menu (PIN protected) - Small, subtle
           h('button', {

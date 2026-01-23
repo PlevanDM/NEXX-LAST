@@ -210,10 +210,12 @@
       return unsubscribe;
     }, []);
     
-    // Load models from NEXXDatabase - улучшенная загрузка
+    // Load models from NEXXDatabase - улучшенная загрузка с правильной очисткой
     React.useEffect(() => {
       let isMounted = true;
       let checkInterval = null;
+      let fallbackTimeout = null;
+      let unsubscribe = null;
       
       const loadModels = async () => {
         setLoadingModels(true);
@@ -225,7 +227,10 @@
               setModels(window.NEXXDatabase.devices);
               setDbReady(true);
               setLoadingModels(false);
-              console.log(`✅ Калькулятор: загружено ${window.NEXXDatabase.devices.length} моделей`);
+              // Only log in development
+              if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+                console.log(`✅ Калькулятор: загружено ${window.NEXXDatabase.devices.length} моделей`);
+              }
             }
             return true;
           }
@@ -240,30 +245,69 @@
         // Ждем загрузки базы данных
         if (window.NEXXDatabase) {
           // Подписываемся на событие загрузки
-          const unsubscribe = window.NEXXDatabase.subscribe(() => {
+          unsubscribe = window.NEXXDatabase.subscribe(() => {
             if (isMounted && loadFromDatabase()) {
-              unsubscribe();
+              // Cleanup on success
+              if (unsubscribe) {
+                unsubscribe();
+                unsubscribe = null;
+              }
+              if (checkInterval) {
+                clearInterval(checkInterval);
+                checkInterval = null;
+              }
+              if (fallbackTimeout) {
+                clearTimeout(fallbackTimeout);
+                fallbackTimeout = null;
+              }
             }
           });
           
           // Запускаем загрузку если еще не загружено
           if (!window.NEXXDatabase.loaded && !window.NEXXDatabase.loading) {
             window.NEXXDatabase.loadAll().catch(e => {
-              console.error('❌ Ошибка загрузки базы:', e);
+              if (isMounted) {
+                console.error('❌ Ошибка загрузки базы:', e);
+              }
             });
           }
         }
         
-        // Интервальная проверка как резерв
+        // Интервальная проверка как резерв с ограничением попыток
+        let checkAttempts = 0;
+        const MAX_CHECK_ATTEMPTS = 15; // 3 секунды максимум (15 * 200ms)
         checkInterval = setInterval(() => {
-          if (loadFromDatabase()) {
-            clearInterval(checkInterval);
+          if (!isMounted) {
+            if (checkInterval) {
+              clearInterval(checkInterval);
+              checkInterval = null;
+            }
+            return;
+          }
+          
+          checkAttempts++;
+          if (loadFromDatabase() || checkAttempts >= MAX_CHECK_ATTEMPTS) {
+            if (checkInterval) {
+              clearInterval(checkInterval);
+              checkInterval = null;
+            }
+            if (fallbackTimeout) {
+              clearTimeout(fallbackTimeout);
+              fallbackTimeout = null;
+            }
           }
         }, 200);
         
         // Fallback через 3 секунды - загружаем из единой базы master-db.json
-        setTimeout(() => {
-          if (isMounted && !dbReady) {
+        fallbackTimeout = setTimeout(() => {
+          if (!isMounted) return;
+          
+          if (checkInterval) {
+            clearInterval(checkInterval);
+            checkInterval = null;
+          }
+          
+          if (!dbReady) {
             console.warn('⚠️ База не загружена, используем fallback');
             fetch('/data/master-db.json')
               .then(r => r.json())
@@ -272,12 +316,15 @@
                   setModels(db.devices);
                   setDbReady(true);
                   setLoadingModels(false);
-                  console.log(`✅ Fallback: загружено ${db.devices.length} моделей из master-db.json`);
+                  // Only log in development
+                  if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+                    console.log(`✅ Fallback: загружено ${db.devices.length} моделей из master-db.json`);
+                  }
                 }
               })
               .catch(e => {
-                console.error('❌ Fallback ошибка:', e);
                 if (isMounted) {
+                  console.error('❌ Fallback ошибка:', e);
                   setModels([]);
                   setDbReady(true);
                   setLoadingModels(false);
@@ -289,9 +336,21 @@
       
       loadModels();
       
+      // Cleanup function - предотвращает утечки памяти
       return () => {
         isMounted = false;
-        if (checkInterval) clearInterval(checkInterval);
+        if (checkInterval) {
+          clearInterval(checkInterval);
+          checkInterval = null;
+        }
+        if (fallbackTimeout) {
+          clearTimeout(fallbackTimeout);
+          fallbackTimeout = null;
+        }
+        if (unsubscribe) {
+          unsubscribe();
+          unsubscribe = null;
+        }
       };
     }, [dbReady]);
     
@@ -405,7 +464,10 @@
           const issues = data.issues;  // Массив выбранных проблем
           const model = data.model;
           
-          console.log(`🔍 Расчет цены: deviceType=${deviceType}, issues=${issues.map(i => i.id).join(', ')}, model=${model?.name || 'не выбрана'}`);
+          // Debug logging only in development
+          if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+            console.log(`🔍 Расчет цены: deviceType=${deviceType}, issues=${issues.map(i => i.id).join(', ')}, model=${model?.name || 'не выбрана'}`);
+          }
           
           // Функция расчёта цены для одного дефекта
           const calculateSingleIssuePrice = async (issue) => {
@@ -435,7 +497,10 @@
                 const USD_TO_RON = 4.5;
                 const priceRON = Math.round(priceUSD * USD_TO_RON);
                 priceData = { min: Math.round(priceRON * 0.8), max: Math.round(priceRON * 1.2), avg: priceRON };
-                console.log(`💰 Конвертация: ${priceUSD} USD → ${priceRON} RON`);
+                // Debug logging only in development
+                if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+                  console.log(`💰 Конвертация: ${priceUSD} USD → ${priceRON} RON`);
+                }
               }
             }
             

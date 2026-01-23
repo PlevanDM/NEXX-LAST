@@ -52,6 +52,33 @@
   }
   
   // ============================================
+  // DEBOUNCE & THROTTLE - Performance helpers
+  // ============================================
+  
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  function throttle(func, limit) {
+    let inThrottle;
+    return function executedFunction(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+  
+  // ============================================
   // PERFORMANCE MONITOR
   // ============================================
   
@@ -107,10 +134,14 @@
       };
     }
     
-    // Log performance report
+    // Log performance report (only in development)
     logReport() {
       const metrics = this.getPageMetrics();
       if (!metrics) return;
+      
+      // Only log in development
+      const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+      if (!isDev) return;
       
       console.log('\n📊 Performance Report:');
       console.log('  DNS:', metrics.dns + 'ms');
@@ -133,7 +164,11 @@
         const item = localStorage.getItem(key);
         return item ? JSON.parse(item) : defaultValue;
       } catch (e) {
-        console.warn('Storage get error:', e);
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          console.warn('Storage get error:', e);
+        }
         return defaultValue;
       }
     },
@@ -143,7 +178,11 @@
         localStorage.setItem(key, JSON.stringify(value));
         return true;
       } catch (e) {
-        console.warn('Storage set error:', e);
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          console.warn('Storage set error:', e);
+        }
         return false;
       }
     },
@@ -153,7 +192,11 @@
         localStorage.removeItem(key);
         return true;
       } catch (e) {
-        console.warn('Storage remove error:', e);
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          console.warn('Storage remove error:', e);
+        }
         return false;
       }
     },
@@ -163,7 +206,11 @@
         localStorage.clear();
         return true;
       } catch (e) {
-        console.warn('Storage clear error:', e);
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          console.warn('Storage clear error:', e);
+        }
         return false;
       }
     }

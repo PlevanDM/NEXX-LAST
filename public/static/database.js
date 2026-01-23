@@ -76,12 +76,19 @@
         // Notify listeners
         this.notifyListeners();
         
-        console.log('✅ NEXX Database loaded:', {
-          version: this.masterDb.version,
-          devices: this.devices?.length || 0,
-          prices: Object.keys(this.prices).length,
-          knowledge: Object.keys(knowledge).length
-        });
+        // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          // Only log in development
+        const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+        if (isDev) {
+          console.log('✅ NEXX Database loaded:', {
+            version: this.masterDb.version,
+            devices: this.devices?.length || 0,
+            prices: Object.keys(this.prices).length,
+            knowledge: Object.keys(knowledge).length
+          });
+        }
         
       } catch (error) {
         this.loading = false;
@@ -324,5 +331,9 @@
     window.NEXXDatabase.loadAll();
   }
   
-  console.log('✅ NEXX Database Manager initialized');
+  // Only log in development
+  const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+  if (isDev) {
+    console.log('✅ NEXX Database Manager initialized');
+  }
 })();

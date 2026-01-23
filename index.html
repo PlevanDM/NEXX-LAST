@@ -28,7 +28,8 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1f2937">
-    <meta name="version" content="2026-01-23-04:00">
+    <meta name="version" content="2026-01-23-05:00">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="NEXX">
@@ -211,7 +212,181 @@
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Critical CSS - Comprehensive fallback styles -->
+    <style id="critical-css">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+            overflow-x: hidden;
+            background: #0f172a;
+            color: #fff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Show content immediately with fallback styles */
+        /* Content is visible from the start, Tailwind enhances it when loaded */
+        /* Basic layout fallback */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .hidden { display: none !important; }
+        /* Common utility classes - more specific selectors */
+        [class*="bg-slate-900"], [class*="bg-gray-900"], [class*="bg-zinc-900"] { background-color: #0f172a; }
+        [class*="bg-white"] { background-color: #fff; color: #000; }
+        [class*="text-white"] { color: #fff; }
+        [class*="text-center"] { text-align: center; }
+        [class*="rounded-xl"], [class*="rounded-lg"], [class*="rounded"] { border-radius: 0.5rem; }
+        [class*="p-4"], [class*="p-6"], [class*="p-8"] { padding: 1rem; }
+        [class*="px-4"], [class*="px-6"] { padding-left: 1rem; padding-right: 1rem; }
+        [class*="py-4"], [class*="py-6"] { padding-top: 1rem; padding-bottom: 1rem; }
+        [class*="mb-4"], [class*="mb-6"] { margin-bottom: 1rem; }
+        [class*="mt-4"], [class*="mt-6"] { margin-top: 1rem; }
+        [class*="gap-4"], [class*="gap-6"] { gap: 1rem; }
+        [class*="items-center"] { align-items: center; }
+        [class*="justify-center"] { justify-content: center; }
+        [class*="w-full"] { width: 100%; }
+        [class*="max-w-"] { max-width: 100%; }
+        /* Images */
+        img { max-width: 100%; height: auto; display: block; }
+        /* Links and buttons basic styling */
+        a, button { transition: all 0.2s ease; }
+        /* Sections */
+        section { padding: 2rem 0; }
+        /* Headers and navigation */
+        header, nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); }
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; margin-bottom: 0.5em; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1em; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        /* Buttons */
+        button, .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        button:hover, .btn:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\\:flex { display: flex; }
+            .md\\:hidden { display: none; }
+            .md\\:grid { display: grid; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.25rem; }
+        }
+    </style>
+    
+    <!-- Tailwind CSS with error handling -->
+    <script>
+        // Load Tailwind CSS with retry mechanism
+        (function() {
+            // Suppress Tailwind CDN warning in production
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) {
+                    return; // Suppress Tailwind CDN warning
+                }
+                originalWarn.apply(console, args);
+            };
+            
+            let retries = 0;
+            const maxRetries = 3;
+            
+            function loadTailwind() {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.tailwindcss.com?t=' + Date.now();
+                script.async = true;
+                
+                script.onload = function() {
+                    // Verify Tailwind is working
+                    setTimeout(() => {
+                        const test = document.createElement('div');
+                        test.className = 'hidden';
+                        document.body.appendChild(test);
+                        const isWorking = window.getComputedStyle(test).display === 'none';
+                        document.body.removeChild(test);
+                        
+                        if (isWorking) {
+                            // Tailwind is working
+                            document.body.classList.add('styles-loaded');
+                            // Only log in development
+                            const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+                            if (isDev) {
+                                console.log('✅ Tailwind CSS loaded');
+                            }
+                        } else if (retries < maxRetries) {
+                            retries++;
+                            if (isDev) {
+                                console.warn('⚠️ Tailwind not working, retrying...', retries);
+                            }
+                            loadTailwind();
+                        } else {
+                            // Fallback - show content anyway
+                            document.body.classList.add('styles-loaded');
+                            if (isDev) {
+                                console.error('❌ Tailwind CSS failed to load, using fallback styles');
+                            }
+                        }
+                    }, 100);
+                };
+                
+                script.onerror = function() {
+                    const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+                    if (retries < maxRetries) {
+                        retries++;
+                        if (isDev) {
+                            console.warn('⚠️ Tailwind failed to load, retrying...', retries);
+                        }
+                        setTimeout(loadTailwind, 1000 * retries);
+                    } else {
+                        // Show content with fallback styles
+                        document.body.classList.add('styles-loaded');
+                        if (isDev) {
+                            console.error('❌ Tailwind CSS failed to load after', maxRetries, 'attempts - using fallback styles');
+                        }
+                    }
+                };
+                
+                document.head.appendChild(script);
+            }
+            
+            // Start loading Tailwind immediately
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadTailwind);
+            } else {
+                loadTailwind();
+            }
+            
+            // Fallback: Ensure content is visible after 1 second even if Tailwind hasn't loaded
+            setTimeout(() => {
+                document.body.classList.add('styles-loaded');
+            }, 1000);
+        })();
+    </script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Lucide Icons (modern, lightweight) -->
@@ -222,15 +397,21 @@
     <script src="/static/vendor/react-dom.production.min.js"></script>
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Ensure styles are applied even if Tailwind loads late */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            overflow-x: hidden; 
+            overflow-x: hidden;
+        }
+        /* Show content when styles are loaded */
+        body.styles-loaded {
+            opacity: 1;
         }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+        @keyframes slide-down { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-slide-down { animation: slide-down 0.3s ease-out; }
         @keyframes pulse-glow { 
           0%, 100% { box-shadow: 0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3); transform: scale(1); } 
           50% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.8), 0 0 40px rgba(147, 51, 234, 0.5); transform: scale(1.02); } 
@@ -308,6 +489,116 @@
         .skip-to-content:focus {
             top: 0;
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            /* Ensure touch targets are at least 44x44px */
+            button, a, input, select, textarea {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Better text readability on mobile */
+            body {
+                font-size: 16px;
+                -webkit-text-size-adjust: 100%;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            /* Prevent horizontal scroll */
+            html, body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            /* Improve button spacing on mobile */
+            button {
+                padding: 12px 20px;
+            }
+            
+            /* Better image display on mobile */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Improve form inputs on mobile */
+            input, textarea, select {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 12px;
+            }
+            
+            /* Better card spacing */
+            .card, [class*="card"] {
+                margin-bottom: 16px;
+            }
+            
+            /* Improve navigation on mobile */
+            nav {
+                padding: 8px 0;
+            }
+            
+            nav a {
+                padding: 12px 16px;
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small devices */
+            body {
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2 {
+                font-size: 1.75rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            h3 {
+                font-size: 1.5rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Better padding on small screens */
+            .container, [class*="container"] {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            /* Stack elements vertically on very small screens */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Fix for Font Awesome icons on mobile */
+        @media (max-width: 768px) {
+            .fas, .far, .fab, .fal, .fad {
+                font-size: 1.2em;
+                line-height: 1;
+            }
+        }
+        
+        /* Improve mobile menu visibility */
+        @media (max-width: 768px) {
+            [class*="mobile-menu"], [class*="mobileMenu"] {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: white;
+                z-index: 1000;
+                max-height: calc(100vh - 64px);
+                overflow-y: auto;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -319,7 +610,7 @@
     <script src="/static/utils.js"></script>
     <script src="/static/database.js"></script>
     <script src="/static/nexx-core.js"></script>
-    <script src="/static/i18n.js?v=10.8.1-20260123040000"></script>
+    <script src="/static/i18n.js?v=10.8.2-20260123050000"></script>
     <script src="/static/ui-components.js?v=10.0.1"></script>
     <script src="/static/navigation-system.js?v=2.0"></script>
     <script src="/static/analytics.js"></script>
@@ -380,18 +671,31 @@
     <script src="/static/price-calculator.js?v=3.3-20260123200000"></script>
     
     <script>
-        // Wait for all dependencies to load
+        // Wait for all dependencies to load with timeout
+        let initAttempts = 0;
+        const MAX_INIT_ATTEMPTS = 50; // 5 seconds max
         const initApp = () => {
+            if (initAttempts >= MAX_INIT_ATTEMPTS) {
+                console.error('❌ Failed to initialize app: dependencies not loaded');
+                return;
+            }
+            
             if (!window.React || !window.ReactDOM || !window.NEXXDesign || !window.i18n) {
-                console.warn('Waiting for dependencies...', {
-                    React: !!window.React,
-                    ReactDOM: !!window.ReactDOM,
-                    NEXXDesign: !!window.NEXXDesign,
-                    i18n: !!window.i18n
-                });
+                initAttempts++;
+                if (initAttempts % 10 === 0) {
+                    console.warn('Waiting for dependencies...', {
+                        React: !!window.React,
+                        ReactDOM: !!window.ReactDOM,
+                        NEXXDesign: !!window.NEXXDesign,
+                        i18n: !!window.i18n,
+                        attempts: initAttempts
+                    });
+                }
                 setTimeout(initApp, 100);
                 return;
             }
+            
+            initAttempts = 0; // Reset on success
             
             const { useState, useEffect, createElement: h } = React;
             const { Header, Footer, ToastContainer } = window.NEXXDesign;
@@ -970,7 +1274,7 @@
                             { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
                             { name: 'iPad', price: '200-350 lei', time: '1 oră' }
                         ],
-                        specs: (Array.isArray(t('services.specs.battery')) ? t('services.specs.battery') : ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Premium quality', 'Regenerare celule'])
+                        specs: (Array.isArray(t('services.specs.battery')) ? t('services.specs.battery') : ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Calitate premium', 'Regenerare celule'])
                     },
                     { 
                         icon: 'cpu',
@@ -1428,10 +1732,10 @@
                 try {
                     // Таймаут для запроса (10 секунд)
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 10000);
+                    let timeoutId;
                     
                     // Реальный API вызов с улучшенной обработкой ошибок
-                    const response = await fetch('/api/booking', {
+                    const fetchPromise = fetch('/api/booking', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -1448,7 +1752,16 @@
                         signal: controller.signal
                     });
                     
-                    clearTimeout(timeoutId);
+                    // Set timeout with cleanup
+                    timeoutId = setTimeout(() => {
+                        controller.abort();
+                        console.warn('⚠️ Request timeout after 10s');
+                    }, 10000);
+                    
+                    // Cleanup timeout on completion
+                    const response = await fetchPromise.finally(() => {
+                        if (timeoutId) clearTimeout(timeoutId);
+                    });
                     
                     // Проверяем статус ответа
                     if (!response.ok) {
@@ -1500,7 +1813,11 @@
                             // Игнорируем ошибки при обработке сохраненных лидов
                         }
                         
-                        setTimeout(() => setStatus(null), 3000);
+                        // Clear status after delay with cleanup
+                        const statusTimer = setTimeout(() => setStatus(null), 3000);
+                        // Store timer for cleanup if component unmounts
+                        if (window.currentStatusTimer) clearTimeout(window.currentStatusTimer);
+                        window.currentStatusTimer = statusTimer;
                     } else {
                         throw new Error(result.error || result.message || 'Eroare la trimitere');
                     }
@@ -1857,28 +2174,114 @@
             });
         });
         
-        // Register Service Worker for PWA with forced update
+        // Check if Tailwind CSS loaded properly
+        const checkTailwindLoaded = () => {
+            // Check if Tailwind utilities are available
+            const testEl = document.createElement('div');
+            testEl.className = 'hidden';
+            testEl.style.display = 'none';
+            document.body.appendChild(testEl);
+            
+            const computed = window.getComputedStyle(testEl);
+            const isLoaded = computed.display === 'none';
+            
+            document.body.removeChild(testEl);
+            
+            if (!isLoaded) {
+                console.warn('⚠️ Tailwind CSS may not be loaded, reloading...');
+                // Try to reload Tailwind
+                const script = document.createElement('script');
+                script.src = 'https://cdn.tailwindcss.com?reload=' + Date.now();
+                script.onload = () => {
+                    console.log('✅ Tailwind CSS reloaded');
+                    // Force re-render
+                    document.body.style.display = 'none';
+                    setTimeout(() => {
+                        document.body.style.display = '';
+                    }, 10);
+                };
+                script.onerror = () => {
+                    console.error('❌ Failed to reload Tailwind CSS');
+                };
+                document.head.appendChild(script);
+            }
+        };
+        
+        // Check Tailwind after page load
+        window.addEventListener('load', () => {
+            setTimeout(checkTailwindLoaded, 1000);
+        });
+        
+        // Register Service Worker for PWA with improved error handling
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                // Unregister old service workers first
-                navigator.serviceWorker.getRegistrations().then(registrations => {
-                    registrations.forEach(registration => {
-                        if (registration.active?.scriptURL.includes('sw.js')) {
-                            registration.unregister().then(() => {
-                                console.log('✅ Old service worker unregistered');
-                            });
-                        }
-                    });
-                });
-                
-                // Register new service worker with version
-                navigator.serviceWorker.register('/sw.js?v=2.0-20260123')
-                    .then(reg => {
-                        console.log('✅ Service Worker registered:', reg.scope);
-                        // Force update
-                        reg.update();
+                // Unregister old service workers first with error handling
+                navigator.serviceWorker.getRegistrations()
+                    .then(registrations => {
+                        return Promise.all(
+                            registrations.map(registration => {
+                                if (registration.active?.scriptURL.includes('sw.js')) {
+                                    return registration.unregister()
+                                        .then(() => {
+                                            console.log('✅ Old service worker unregistered');
+                                        })
+                                        .catch(err => {
+                                            console.warn('⚠️ Failed to unregister old SW:', err);
+                                            return true; // Continue even if unregister fails
+                                        });
+                                }
+                                return Promise.resolve();
+                            })
+                        );
                     })
-                    .catch(err => console.log('Service Worker error:', err));
+                    .catch(err => {
+                        console.warn('⚠️ Error getting SW registrations:', err);
+                    })
+                    .finally(() => {
+                        // Register new service worker with version and better error handling
+                        navigator.serviceWorker.register('/sw.js?v=2.0-20260123')
+                            .then(reg => {
+                                // Only log in development
+                                const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+                                if (isDev) {
+                                  console.log('✅ Service Worker registered:', reg.scope);
+                                }
+                                // Check for updates
+                                reg.addEventListener('updatefound', () => {
+                                    const newWorker = reg.installing;
+                                    if (newWorker) {
+                                        newWorker.addEventListener('statechange', () => {
+                                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                                // Only log in development
+                                                const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+                                                if (isDev) {
+                                                  console.log('🔄 New SW version available');
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                                // Try to update, but don't fail if it errors
+                                try {
+                                    reg.update();
+                                } catch (e) {
+                                    // Ignore update errors
+                                }
+                            })
+                            .catch(err => {
+                                // Only log if it's not a known benign error
+                                const benignErrors = ['invalid state', 'Failed to register', 'Not found', 'network error', 'Failed to fetch', 'Failed to update'];
+                                const isBenign = benignErrors.some(benign => 
+                                    err.message && err.message.toLowerCase().includes(benign.toLowerCase())
+                                );
+                                
+                                // Only log in development or if it's a critical error
+                                const isDev = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+                                if (!isBenign && isDev) {
+                                    console.warn('⚠️ Service Worker registration error:', err.message);
+                                }
+                            });
+                    });
             });
         }
         

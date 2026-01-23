@@ -83,6 +83,14 @@ if (fs.existsSync(manifestSource)) {
   console.log(`✅ Copied: manifest.json (PWA)\n`);
 }
 
+// Copy sw.js (Service Worker)
+const swSource = path.join(publicDir, 'sw.js');
+const swDest = path.join(distDir, 'sw.js');
+if (fs.existsSync(swSource)) {
+  fs.copyFileSync(swSource, swDest);
+  console.log(`✅ Copied: sw.js (Service Worker)\n`);
+}
+
 // Copy HTML pages (including main index.html from root)
 const htmlPages = ['nexx.html', 'faq.html', 'about.html', 'privacy.html', 'terms.html'];
 let htmlCopied = 0;

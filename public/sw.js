@@ -33,9 +33,16 @@ self.addEventListener('activate', event => {
 });
 
 // Fetch - Network first, fallback to cache
-// DO NOT cache JavaScript/CSS files with version parameters to ensure updates
+// DO NOT cache external CDN resources or versioned assets
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+  
+  // Never cache external CDN resources (Tailwind, Font Awesome, etc.)
+  const isExternalCDN = url.hostname.includes('cdn.tailwindcss.com') ||
+                        url.hostname.includes('cdnjs.cloudflare.com') ||
+                        url.hostname.includes('unpkg.com') ||
+                        url.hostname.includes('fonts.googleapis.com') ||
+                        url.hostname.includes('fonts.gstatic.com');
   
   // Don't cache JS/CSS files with version parameters (e.g., ?v=10.2.0)
   const isVersionedAsset = (url.pathname.endsWith('.js') || url.pathname.endsWith('.css')) && url.search.includes('v=');
@@ -46,9 +53,17 @@ self.addEventListener('fetch', event => {
                          url.pathname.includes('.min.js') ||
                          url.pathname.includes('price-calculator.js');
   
-  if (isVersionedAsset || isDynamicAsset) {
-    // Always fetch from network, no caching
-    event.respondWith(fetch(event.request));
+  if (isExternalCDN || isVersionedAsset || isDynamicAsset) {
+    // Always fetch from network, no caching for external resources
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // If network fails, return a basic response for external resources
+        if (isExternalCDN) {
+          return new Response('', { status: 200, statusText: 'OK' });
+        }
+        return caches.match(event.request);
+      })
+    );
     return;
   }
   
