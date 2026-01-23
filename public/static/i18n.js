@@ -1345,10 +1345,11 @@
       this.updatePageTranslations();
       this.notifyListeners();
       
-      // Перезагружаем после обновления
-      setTimeout(() => {
-        window.location.reload();
-      }, 150);
+      // Обновляем meta title без перезагрузки
+      const metaTitle = this.t('meta.title');
+      if (metaTitle && metaTitle !== 'meta.title') {
+        document.title = metaTitle;
+      }
       
       return true;
     }

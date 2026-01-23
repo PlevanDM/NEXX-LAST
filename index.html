@@ -28,7 +28,7 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1f2937">
-    <meta name="version" content="2026-01-23-03:10">
+    <meta name="version" content="2026-01-23-03:20">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="NEXX">
@@ -1041,7 +1041,10 @@
             };
             
             // Recalculate services when language changes
-            const services = React.useMemo(() => getServices(), [lang]);
+            const services = React.useMemo(() => {
+                // Force re-evaluation - get fresh translations
+                return getServices();
+            }, [lang]);
             
             // Initialize card indices
             React.useEffect(() => {
