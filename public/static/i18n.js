@@ -21,10 +21,15 @@
       nav: {
         home: 'Головна',
         services: 'Послуги',
+        about: 'Про нас',
         calculator: 'Калькулятор',
+        faq: 'FAQ',
         booking: 'Замовити',
         contacts: 'Контакти',
         serviceMod: 'Service Mod',
+        database: 'База знань',
+        test: 'Тестування',
+        forProfessionals: 'Для майстрів',
         logout: 'Вийти',
         search: 'Пошук',
       },
@@ -50,6 +55,7 @@
         calculate: 'Розрахувати ціну',
         bookRepair: 'Замовити ремонт',
         call: 'Дзвонити',
+        callNow: 'Дзвонити зараз',
         order: 'Замовити',
         book: 'Замовити',
         submit: 'Відправити',
@@ -292,17 +298,19 @@
         skipToContent: 'Перейти до змісту',
         ariaLabel: 'Головна секція',
         tagline: 'Професійний ремонт техніки. Досвід 10+ років',
-        company: 'Компанія',
-        about: 'Про нас',
-        jobs: 'Вакансії',
-        services: 'Послуги',
-        servicePhone: 'Ремонт телефонів',
-        serviceLaptop: 'Ремонт ноутбуків',
-        info: 'Інформація',
+        aboutTitle: 'Про нас',
+        servicesTitle: 'Послуги',
+        infoTitle: 'Інформація',
+        ourHistory: 'Наша історія',
+        team: 'Команда',
+        values: 'Цінності',
+        calculator: 'Калькулятор цін',
+        allServices: 'Всі послуги',
+        tariffs: 'Тарифи',
         faq: 'FAQ',
         privacy: 'Конфіденційність',
-        terms: 'Умови',
-        copyright: 'NEXX Service Center. Всі права захищені.',
+        terms: 'Умови використання',
+        rights: 'Всі права захищені.',
         security: 'Безпечний сайт • SSL шифрування'
       },
       
@@ -330,7 +338,37 @@
         installButton: 'Додати',
         installed: '🎉 NEXX GSM встановлено!'
       },
-      meta: { title: 'Ремонт iPhone, MacBook, Samsung Київ | Швидкий Сервіс 30 хв | NEXX ⭐' }
+      meta: { title: 'Ремонт iPhone, MacBook, Samsung Київ | Швидкий Сервіс 30 хв | NEXX ⭐' },
+      aboutPage: {
+        title: 'Про NEXX',
+        subtitle: '5+ років досвіду',
+        description: 'Ми — команда професіоналів, які закохані в Apple техніку. Наша місія — повернути до життя кожен пристрій та зробити ремонт доступним для кожного.',
+        mission: 'Наша Місія',
+        missionDesc: 'Забезпечити швидкий, якісний та доступний ремонт Apple техніки з використанням найсучасніших технологій та оригінальних компонентів.',
+        vision: 'Наше Бачення',
+        visionDesc: 'Стати найнадійнішим партнером для власників Apple техніки в Україні, встановлюючи нові стандарти якості обслуговування.',
+        values: 'Наші Цінності',
+        valuesDesc: 'Чесність, професіоналізм, відповідальність та прагнення до досконалості у кожній деталі нашої роботи.',
+        whyTitle: 'Чому обирають NEXX?',
+        whySubtitle: 'Ми створили унікальну систему, яка робить ремонт максимально зручним та прозорим',
+        stats: {
+          devices: 'Відремонтовано пристроїв',
+          masters: 'Професійних майстрів',
+          years: 'Років на ринку',
+          satisfied: 'Задоволених клієнтів'
+        }
+      },
+      faqPage: {
+        title: 'Питання та відповіді',
+        subtitle: 'Часті питання',
+        description: 'Зібрали найпопулярніші питання про наші послуги, ціни та процес ремонту',
+        contactTitle: 'Не знайшли відповідь?',
+        contactDesc: 'Зателефонуйте нам або напишіть — ми з радістю відповімо на всі ваші питання!'
+      },
+      errors: {
+        defaultTitle: 'Щось пішло не так',
+        noData: 'Немає даних'
+      }
     },
     
     // ============================================
@@ -346,10 +384,15 @@
       nav: {
         home: 'Acasă',
         services: 'Servicii',
+        about: 'Despre noi',
         calculator: 'Calculator',
+        faq: 'FAQ',
         booking: 'Comandă',
         contacts: 'Contacte',
         serviceMod: 'Service Mod',
+        database: 'Bază de date',
+        test: 'Testare',
+        forProfessionals: 'Pentru profesioniști',
         logout: 'Ieșire',
         search: 'Căutare',
       },
@@ -375,6 +418,7 @@
         calculate: 'Calculează prețul',
         bookRepair: 'Comandă reparație',
         call: 'Sună acum',
+        callNow: 'Sună acum',
         order: 'Comandă',
         book: 'Comandă',
         submit: 'Trimite',
@@ -617,17 +661,19 @@
         skipToContent: 'Treci la conținut',
         ariaLabel: 'Secțiunea principală',
         tagline: 'Service profesional multibrand. Garanție 30 zile. Diagnostic gratuit. București.',
-        company: 'Companie',
-        about: 'Despre noi',
-        jobs: 'Joburi',
-        services: 'Servicii',
-        servicePhone: 'Reparații telefoane',
-        serviceLaptop: 'Reparații laptopuri',
-        info: 'Informații',
+        aboutTitle: 'Despre noi',
+        servicesTitle: 'Servicii',
+        infoTitle: 'Informații',
+        ourHistory: 'Istoria noastră',
+        team: 'Echipa',
+        values: 'Valori',
+        calculator: 'Calculator prețuri',
+        allServices: 'Toate serviciile',
+        tariffs: 'Tarife',
         faq: 'FAQ',
         privacy: 'Confidențialitate',
-        terms: 'Termeni',
-        copyright: 'NEXX Service Center. Toate drepturile rezervate.',
+        terms: 'Termeni și condiții',
+        rights: 'Toate drepturile rezervate.',
         security: 'Site Securizat • SSL Criptat'
       },
       
@@ -655,7 +701,49 @@
         installButton: 'Adaugă',
         installed: '🎉 NEXX GSM instalat!'
       },
-      meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' }
+      meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' },
+      aboutPage: {
+        title: 'Despre NEXX',
+        subtitle: '5+ ani de experiență',
+        description: 'Suntem o echipă de profesioniști pasionați de tehnologia Apple. Misiunea noastră este să readucem la viață fiecare dispozitiv și să facem reparațiile accesibile tuturor.',
+        mission: 'Misiunea Noastră',
+        missionDesc: 'Să oferim reparații Apple rapide, de calitate și accesibile, folosind cele mai noi tehnologii și componente originale.',
+        vision: 'Viziunea Noastră',
+        visionDesc: 'Să devenim cel mai de încredere partener pentru posesorii de tehnologie Apple din România, stabilind noi standarde de calitate în service.',
+        values: 'Valorile Noastre',
+        valuesDesc: 'Onestitate, profesionalism, responsabilitate și dorința de perfecțiune în fiecare detaliu al muncii noastre.',
+        whyTitle: 'De ce să alegi NEXX?',
+        whySubtitle: 'Am creat un sistem unic care face reparațiile cât mai convenabile și transparente posibil.',
+        stats: {
+          devices: 'Dispozitive reparate',
+          masters: 'Tehnicieni profesioniști',
+          years: 'Ani pe piață',
+          satisfied: 'Clienți mulțumiți'
+        }
+      },
+      faqPage: {
+        title: 'Întrebări și Răspunsuri',
+        subtitle: 'Întrebări frecvente',
+        description: 'Am adunat cele mai populare întrebări despre serviciile noastre, prețuri și procesul de reparație.',
+        contactTitle: 'Nu ai găsit răspunsul?',
+        contactDesc: 'Sună-ne sau scrie-ne – vom fi bucuroși să răspundem la toate întrebările tale!'
+      },
+      privacyPage: {
+        title: 'Politică de Confidențialitate',
+        subtitle: 'Confidențialitate',
+        description: 'Apreciem încrederea dumneavoastră și garantăm confidențialitatea deplină a datelor dumneavoastră.',
+        lastUpdate: 'Ultima actualizare: 23 ianuarie 2026'
+      },
+      termsPage: {
+        title: 'Termeni și Condiții',
+        subtitle: 'Informații juridice',
+        description: 'Regulile și condițiile de furnizare a serviciilor centrului de service NEXX.',
+        lastUpdate: 'Ultima actualizare: 23 ianuarie 2026'
+      },
+      errors: {
+        defaultTitle: 'Ceva nu a mers bine',
+        noData: 'Nu există date'
+      }
     },
     
     // ============================================
@@ -671,10 +759,15 @@
       nav: {
         home: 'Главная',
         services: 'Услуги',
+        about: 'О нас',
         calculator: 'Калькулятор',
+        faq: 'FAQ',
         booking: 'Заказать',
         contacts: 'Контакты',
         serviceMod: 'Service Mod',
+        database: 'База данных',
+        test: 'Тестирование',
+        forProfessionals: 'Для профи',
         logout: 'Выйти',
         search: 'Поиск',
       },
@@ -700,6 +793,7 @@
         calculate: 'Рассчитать цену',
         bookRepair: 'Заказать ремонт',
         call: 'Позвонить сейчас',
+        callNow: 'Позвонить сейчас',
         order: 'Заказать',
         book: 'Заказать',
         submit: 'Отправить',
@@ -815,7 +909,7 @@
         time: 'Время',
         specs: {
           battery: ['Оригинальные батареи', 'Гарантия 12 месяцев', 'Тест ёмкости', 'Калибровка BMS', 'Премиум качество', 'Регенерация элементов'],
-          board: ['Микроскоп 45x', 'BGA реболлинг', 'Пайка IC', 'Диагностика', 'Профессиональная станция', 'Оригинальные компоненты'],
+          board: ['Микроскоп 45x', 'BGA реболлинг', 'Пайка IC', 'Діагностика', 'Профессиональная станция', 'Оригинальные компоненты'],
           display: ['Оригинальный OLED', 'Премиум LCD', 'Гарантия на битый пиксель', 'Сенсорный экран', 'Ламинирование', 'Калибровка True Tone'],
           port: ['Оригинальные разъёмы', 'Профессиональная чистка', 'Тест зарядки', 'Ремонт дорожек', 'Новый шлейф', 'Гарантия 6 месяцев'],
           modular: ['Оригинальные модули', 'Тест HD камеры', 'Калибровка аудио', 'Проверенные сенсоры', 'Ремонт Face ID', 'Парование Touch ID']
@@ -850,7 +944,7 @@
         warranty: { title: 'Гарантия 30 дней', desc: 'На все виды ремонта' },
         honest: { title: 'Честные цены', desc: 'Без скрытых платежей' },
         original: { title: 'Оригинальные детали', desc: 'Проверенные и протестированные' },
-        diagnostic: { title: 'Диагностика бесплатна', desc: 'Профессиональная под микроскопом' },
+        diagnostic: { title: 'Діагностика безкоштовна', desc: 'Профессиональная под микроскопом' },
         transparent: { title: 'Прозрачно', desc: 'Фото/видео отчёт ремонта' },
         support: { title: 'Онлайн поддержка', desc: 'Консультации после ремонта' }
       },
@@ -906,56 +1000,50 @@
         form: {
           name: 'Ваше имя',
           namePlaceholder: 'Александр',
-          phone: 'Телефон *',
-          phonePlaceholder: '+40 7XX XXX XXX',
+          phone: 'Телефон',
+          phonePlaceholder: '+40 XXX XXX XXX',
           device: 'Устройство',
-          devicePlaceholder: 'ex: iPhone 14 Pro, Samsung S24',
+          devicePlaceholder: 'Выберите устройство',
           problem: 'Проблема',
           problemPlaceholder: 'Опишите проблему...',
           submit: 'Отправить заявку',
-          sending: 'Отправляется...',
-          success: 'Спасибо! Мы перезвоним в ближайшее время',
-          errors: {
-            nameRequired: 'Имя обязательно (мин. 2 символа)',
-            phoneInvalid: 'Телефон недействителен',
-            deviceRequired: 'Выберите устройство'
-          }
+          sending: 'Отправка...'
+        },
+        success: {
+          title: 'Заявка отправлена!',
+          message: 'Мы свяжемся с вами в ближайшее время',
+          newRequest: 'Новая заявка'
         }
       },
       
-      // Contact Section
+      // Contact
       contact: {
         title: 'Свяжитесь с нами',
-        subtitle: 'Программа: Пн-Пт 10:00-19:00',
+        hours: 'Пн-Пт 10:00-19:00',
         address: 'București, Str. Victoriei 15',
         phone: '+40 721 234 567',
         email: 'info@nexx.ro',
-        social: {
-          telegram: 'Telegram',
-          whatsapp: 'WhatsApp',
-          instagram: 'Instagram'
-        }
       },
       
       // Footer
       footer: {
-        skipToContent: 'Перейти к содержимому',
-        description: 'Профессиональный мультибрендовый сервис. Гарантия 30 дней. Бесплатная диагностика. Бухарест.',
-        company: 'Компания',
-        services: 'Услуги',
-        info: 'Информация',
-        about: 'О нас',
-        contacts: 'Контакты',
-        jobs: 'Вакансии',
-        phoneRepair: 'Ремонт телефонов',
-        laptopRepair: 'Ремонт ноутбуков',
-        priceCalculator: 'Примерная стоимость ремонта',
+        skipToContent: 'Перейти к контенту',
+        ariaLabel: 'Главная секция',
+        tagline: 'Профессиональный ремонт техники. Опыт 10+ лет',
+        aboutTitle: 'О нас',
+        servicesTitle: 'Услуги',
+        infoTitle: 'Информация',
+        ourHistory: 'Наша история',
+        team: 'Команда',
+        values: 'Ценности',
+        calculator: 'Калькулятор цен',
+        allServices: 'Все услуги',
+        tariffs: 'Тарифы',
         faq: 'FAQ',
         privacy: 'Конфиденциальность',
-        terms: 'Условия',
-        rights: '© 2026 NEXX Service Center. Все права защищены.',
-        secure: 'Безопасный сайт',
-        ssl: 'SSL Зашифрован'
+        terms: 'Условия использования',
+        rights: 'Все права защищены.',
+        security: 'Безопасный сайт • SSL шифрование'
       },
       
       // Quick Actions (Floating Menu)
@@ -982,11 +1070,7 @@
         installButton: 'Добавить',
         installed: '🎉 NEXX GSM установлено!'
       },
-      // Meta
-      meta: {
-        title: 'Ремонт iPhone, MacBook, Samsung Бухарест | Быстрый Сервис 30 мин | NEXX ⭐',
-        description: 'Профессиональный сервис ремонта iPhone, MacBook, Samsung в Бухаресте ⭐ Гарантия 30 дней • Бесплатная диагностика • От 60 lei • Быстрый сервис 30-60 мин • Все сектора • Звоните: 0721 234 567'
-      }
+      meta: { title: 'Ремонт iPhone, MacBook, Samsung Бухарест | Быстрый Сервис 30 мин | NEXX ⭐' }
     },
     
     // ============================================
@@ -1002,10 +1086,15 @@
       nav: {
         home: 'Home',
         services: 'Services',
+        about: 'About Us',
         calculator: 'Calculator',
+        faq: 'FAQ',
         booking: 'Book',
         contacts: 'Contact',
         serviceMod: 'Service Mod',
+        database: 'Database',
+        test: 'Testing',
+        forProfessionals: 'For Pros',
         logout: 'Logout',
         search: 'Search',
       },
@@ -1031,6 +1120,7 @@
         calculate: 'Calculate price',
         bookRepair: 'Book repair',
         call: 'Call now',
+        callNow: 'Call now',
         order: 'Book',
         book: 'Book',
         submit: 'Send',
@@ -1186,104 +1276,24 @@
         support: { title: 'Online support', desc: 'Post-repair consultations' }
       },
       
-      // Work Process Gallery - kept for compatibility
-      workGallery: {
-        title: 'Our Work Process',
-        subtitle: 'Professional equipment and certified technicians',
-        items: {
-          tools: 'Professional tools for precise repairs',
-          battery: 'Battery replacement with quality testing',
-          screen: 'Screen repairs under microscope',
-          storefront: 'Our NEXX GSM service center'
-        }
-      },
-      
-      // About/Office Section
-      office: {
-        title: 'Our Service Center',
-        subtitle: 'Professional repairs in central Bucharest',
-        address: 'Str. Victoriei 15, București',
-        visit: 'Visit us'
-      },
-      
-      // Calculator
-      calculator: {
-        calculator: 'Repair Cost',
-        title: 'Approximate Repair Cost',
-        subtitle: 'Answer a few questions to learn the approximate price',
-        description: 'Answer a few questions to learn the approximate price',
-        selectBrand: 'Select brand:',
-        selectDevice: 'Select type:',
-        selectModel: 'Select model:',
-        selectIssue: 'What\'s the problem?',
-        back: 'Back',
-        estimatedPrice: 'Estimated price',
-        time: 'Repair time',
-        noHiddenFees: 'No hidden fees',
-        otherBrands: 'Other brands',
-        disclaimer: 'Final price may vary. Free diagnosis.',
-        devicePhone: 'Phone',
-        deviceTablet: 'Tablet',
-        deviceLaptop: 'Laptop',
-        deviceWatch: 'Smartwatch',
-        popular: 'Popular',
-        gallery: 'Gallery',
-      },
-      
-      // Booking Form
-      booking: {
-        title: 'Book repair',
-        subtitle: 'Leave a request - we\'ll call you in 5 minutes',
-        form: {
-          name: 'Your name',
-          namePlaceholder: 'John',
-          phone: 'Phone',
-          phonePlaceholder: '+40 XXX XXX XXX',
-          device: 'Device',
-          devicePlaceholder: 'Choose device',
-          problem: 'Problem description',
-          problemPlaceholder: 'Not charging, broken screen...',
-          submit: 'Send request',
-          submitting: 'Sending...'
-        },
-        success: {
-          title: 'Request sent!',
-          message: 'We will call you soon',
-          newRequest: 'New request'
-        },
-        errors: {
-          nameRequired: 'Name is required (min. 2 characters)',
-          phoneInvalid: 'Phone number is invalid',
-          deviceRequired: 'Please select a device',
-          submitError: 'Submission error. Please try again or call: +40 721 234 567'
-        }
-      },
-      
-      // Contact
-      contact: {
-        title: 'Contact us',
-        hours: 'Working hours: Mon-Fri 10:00-19:00',
-        address: 'Bucharest, Str. Victoriei 15',
-        phone: '+40 721 234 567',
-        email: 'info@nexx.ro',
-      },
-      
       // Footer
       footer: {
         skipToContent: 'Skip to content',
         ariaLabel: 'Main section',
         tagline: 'Professional multibrand repair. 30-day warranty. Free diagnosis. Bucharest.',
-        company: 'Company',
-        about: 'About us',
-        jobs: 'Jobs',
-        services: 'Services',
-        servicePhone: 'Phone repair',
-        serviceLaptop: 'Laptop repair',
-        info: 'Information',
+        aboutTitle: 'About Us',
+        servicesTitle: 'Services',
+        infoTitle: 'Information',
+        ourHistory: 'Our History',
+        team: 'Team',
+        values: 'Values',
+        calculator: 'Price Calculator',
+        allServices: 'All Services',
+        tariffs: 'Tariffs',
         faq: 'FAQ',
         privacy: 'Privacy',
-        terms: 'Terms',
-        copyright: 'NEXX Service Center. All rights reserved.',
+        terms: 'Terms of Use',
+        rights: 'All rights reserved.',
         security: 'Secure Site • SSL Encrypted'
       },
       
@@ -1334,7 +1344,6 @@
     }
     
     detectLanguage() {
-      // 1. Проверяем URL параметр ?lang=
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get('lang');
       if (urlLang && translations[urlLang]) {
@@ -1342,11 +1351,10 @@
         return urlLang;
       }
       
-      // 2. Проверяем сохранённый язык
       const saved = localStorage.getItem('nexx_lang');
       if (saved && translations[saved]) return saved;
       
-      return 'ro'; // Default Romanian
+      return 'ro';
     }
     
     setLanguage(lang) {
@@ -1359,7 +1367,6 @@
       this.updatePageTranslations();
       this.notifyListeners();
       
-      // Обновляем meta title без перезагрузки
       const metaTitle = this.t('meta.title');
       if (metaTitle && metaTitle !== 'meta.title') {
         document.title = metaTitle;
@@ -1369,7 +1376,6 @@
     }
     
     updatePageTranslations() {
-      // Обновляем все элементы с data-translate атрибутом
       document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
         const translated = this.t(key);
@@ -1389,7 +1395,6 @@
     
     t = (key) => {
       if (!this.currentLang || !translations[this.currentLang]) {
-        console.warn('i18n: currentLang not set, using default "ro"');
         this.currentLang = 'ro';
       }
       
@@ -1401,8 +1406,6 @@
         if (value === undefined) break;
       }
       
-      // Якщо value є undefined або null, повертаємо key
-      // Але якщо value є порожнім рядком '', повертаємо його
       if (value === undefined || value === null) {
         return key;
       }
@@ -1454,13 +1457,12 @@
     const languages = window.i18n.getAvailableLanguages();
     const bgColor = isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-white/20 hover:bg-white/30 text-white';
     
-    // Compact mode for mobile - just flag button
     if (compact) {
       return h('div', { className: 'relative' },
         h('button', {
           onClick: () => setIsOpen(!isOpen),
           className: `${bgColor} w-10 h-10 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center justify-center text-lg`,
-          title: `${currentLang.name} • Натисніть для зміни`
+          title: `${currentLang.name}`
         },
           h('span', null, currentLang.flag)
         ),
@@ -1483,12 +1485,10 @@
       );
     }
     
-    // Full mode for desktop
     return h('div', { className: 'relative' },
       h('button', {
         onClick: () => setIsOpen(!isOpen),
-        className: `${bgColor} px-3 py-2 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center gap-2 text-sm font-medium`,
-        title: `${currentLang.name} • Click to change`
+        className: `${bgColor} px-3 py-2 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center gap-2 text-sm font-medium`
       },
         h('span', { className: 'text-base' }, currentLang.flag),
         h('span', null, currentLang.code.toUpperCase()),
@@ -1522,5 +1522,5 @@
   window.i18n = new I18N();
   window.LanguageSwitcher = LanguageSwitcher;
   
-  console.log('✅ NEXX i18n ПОЛНА система загружена -', window.i18n.getCurrentLanguage().name);
+  console.log('✅ NEXX i18n system loaded -', window.i18n.getCurrentLanguage().name);
 })();

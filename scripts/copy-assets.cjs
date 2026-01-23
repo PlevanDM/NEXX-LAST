@@ -92,7 +92,7 @@ if (fs.existsSync(swSource)) {
 }
 
 // Copy HTML pages (including main index.html from root)
-const htmlPages = ['nexx.html', 'faq.html', 'about.html', 'privacy.html', 'terms.html'];
+const htmlPages = [];
 let htmlCopied = 0;
 htmlPages.forEach(page => {
   const source = path.join(publicDir, page);

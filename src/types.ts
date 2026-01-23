@@ -183,18 +183,25 @@ export interface OfficialServiceData {
 
 export interface ICComponent {
   name: string;
+  type?: string;
+  description?: string;
   designation?: string;
   package?: string;
   price_range?: string;
-  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+  difficulty?: string;
   functions?: string[];
   diagnostics?: {
-    diode_mode?: Record<string, string>;
-    pp5v0_usb?: string;
-    current_draw?: string;
+    diode_mode?: Record<string, string | number>;
+    pp5v0_usb?: string | number;
+    current_draw?: string | number;
+    [key: string]: any;
   };
   symptoms_when_faulty?: string[];
   compatible_devices?: string[];
+  datasheet_url?: string | null;
+  voltage?: string | null;
+  alternatives?: string[];
+  [key: string]: any;
 }
 
 export interface ErrorDetail {

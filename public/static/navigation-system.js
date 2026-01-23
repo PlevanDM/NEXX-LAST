@@ -40,7 +40,7 @@
     },
     database: {
       id: 'database',
-      path: '/nexx.html',
+      path: '/nexx',
       title: 'Bază de date',
       icon: 'fa-database',
       description: 'Bază completă de reparații',
@@ -78,7 +78,7 @@
       path: '/terms',
       title: 'Termeni',
       icon: 'fa-file-contract',
-      description: 'Умови користування',
+      description: 'Termeni și condiții de utilizare',
       related: ['privacy']
     },
     contacts: {
@@ -170,7 +170,7 @@
       h('div', { className: 'max-w-7xl mx-auto' },
         h('h3', { className: 'text-2xl font-bold mb-6 flex items-center gap-2' },
           h('i', { className: 'fas fa-link text-blue-600' }),
-          'Корисні посилання'
+          'Linkuri utile'
         ),
         h('div', { className: 'grid md:grid-cols-3 gap-4' },
           ...relatedIds.map(relatedId => {
@@ -227,7 +227,7 @@
     const actions = [
       { id: 'home', labelKey: 'quickActions.home', icon: 'fa-house', gradient: 'from-gray-900 to-gray-800', path: '/' },
       { id: 'calculator', labelKey: 'quickActions.calculator', icon: 'fa-calculator', gradient: 'from-gray-800 to-gray-700', path: '/#calculator' },
-      { id: 'database', labelKey: 'quickActions.database', icon: 'fa-database', gradient: 'from-gray-700 to-gray-600', path: '/nexx.html' },
+      { id: 'database', labelKey: 'quickActions.database', icon: 'fa-database', gradient: 'from-gray-700 to-gray-600', path: '/nexx' },
       { id: 'phone', labelKey: 'quickActions.call', icon: 'fa-phone', gradient: 'from-gray-800 to-gray-900', path: 'tel:+40721234567' },
       { id: 'telegram', labelKey: 'quickActions.telegram', icon: 'fa-telegram', gradient: 'from-gray-700 to-gray-800', path: 'https://t.me/nexx_support' }
     ];
@@ -235,34 +235,6 @@
     const visibleActions = actions.filter(a => a.id !== currentPage);
     
     return null; // Quick menu disabled
-    return h('div', { className: 'fixed bottom-6 right-6 z-50 hidden' },
-      // Main Toggle Button
-      h('div', { className: 'flex flex-col items-end gap-3' },
-        // Action Buttons (show when expanded)
-        isExpanded && visibleActions.map((action, idx) => 
-          h('a', {
-            key: action.id,
-            href: action.path,
-            className: `flex items-center gap-3 bg-gradient-to-r ${action.gradient} text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 group animate-slide-down`,
-            style: { animationDelay: `${idx * 50}ms` }
-          },
-            h('span', { className: 'font-medium text-sm' }, t(action.labelKey)),
-            h('div', { className: 'w-10 h-10 bg-white/20 rounded-full flex items-center justify-center' },
-              h('i', { className: `fas ${action.icon}` })
-            )
-          )
-        ),
-        
-        // Toggle Button
-        h('button', {
-          onClick: () => setIsExpanded(!isExpanded),
-          className: `w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-800 hover:from-black hover:to-gray-900 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all transform ${isExpanded ? 'rotate-45' : 'hover:scale-110'} flex items-center justify-center`,
-          title: isExpanded ? t('quickActions.close') : t('quickActions.quickMenu')
-        },
-          h('i', { className: `fas ${isExpanded ? 'fa-xmark' : 'fa-bars'} text-2xl` })
-        )
-      )
-    );
   };
   
   // ============================================
@@ -356,7 +328,7 @@
       if (current.children) {
         current.children.forEach(id => {
           const page = SITE_MAP[id];
-          if (page) suggestions.push({ ...page, reason: 'Підрозділ' });
+          if (page) suggestions.push({ ...page, reason: 'Secțiune' });
         });
       }
       
@@ -365,7 +337,7 @@
         current.related.forEach(id => {
           const page = SITE_MAP[id];
           if (page && !suggestions.find(s => s.id === id)) {
-            suggestions.push({ ...page, reason: 'Схоже' });
+            suggestions.push({ ...page, reason: 'Similar' });
           }
         });
       }
@@ -441,7 +413,7 @@
               type: 'text',
               value: query,
               onChange: (e) => setQuery(e.target.value),
-              placeholder: 'Шукати сторінки, функції...',
+              placeholder: 'Căutare pagini, funcții...',
               className: 'w-full pl-12 pr-4 py-3 text-lg focus:outline-none',
               autoFocus: true
             })
@@ -453,7 +425,7 @@
           results.length === 0 && query.length >= 2
             ? h('div', { className: 'py-8 text-center text-gray-500' },
                 h('i', { className: 'fas fa-magnifying-glass text-4xl mb-2 opacity-30' }),
-                h('p', null, 'Нічого не знайдено')
+                h('p', null, 'Nu s-a găsit nimic')
               )
             : results.map(page => h('a', {
                 key: page.id,
@@ -474,7 +446,7 @@
         
         // Footer
         h('div', { className: 'p-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500 flex items-center justify-between' },
-          h('span', null, 'Використовуйте ↑↓ для навігації, Enter для вибору'),
+          h('span', null, 'Folosiți ↑↓ pentru navigare, Enter pentru selecție'),
           h('button', {
             onClick: () => setIsOpen(false),
             className: 'px-2 py-1 bg-gray-200 rounded'
@@ -501,7 +473,7 @@
       h('div', { className: 'max-w-7xl mx-auto' },
         h('h3', { className: 'text-2xl font-bold mb-6 flex items-center gap-2' },
           h('i', { className: 'fas fa-compass text-blue-600' }),
-          'Куди далі?'
+          'Unde urmează?'
         ),
         h('div', { className: 'grid md:grid-cols-2 lg:grid-cols-4 gap-4' },
           ...suggestions.map(page => h('a', {
@@ -546,10 +518,10 @@
         }
       },
       className: 'fixed top-24 left-6 z-40 flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 border border-gray-200',
-      title: 'Назад'
+      title: 'Înapoi'
     },
       h('i', { className: 'fas fa-arrow-left' }),
-      h('span', { className: 'font-medium text-sm' }, 'Назад')
+      h('span', { className: 'font-medium text-sm' }, 'Înapoi')
     );
   };
   

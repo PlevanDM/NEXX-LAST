@@ -71,13 +71,13 @@ export const ICDetailModal: React.FC<ICDetailModalProps> = ({ item, onClose }) =
               <div className="bg-green-50 rounded-xl p-4">
                 <h3 className="font-semibold text-green-800 mb-3">🔍 Диагностика</h3>
                 <div className="space-y-2 text-sm">
-                  {item.diagnostics.diode_mode && (
+                  {item.diagnostics.diode_mode && typeof item.diagnostics.diode_mode === 'object' && (
                     <div>
                       <p className="font-medium text-slate-700 mb-1">Диодный режим:</p>
-                      {Object.entries(item.diagnostics.diode_mode).map(([key, val]) => (
+                      {Object.entries(item.diagnostics.diode_mode as Record<string, any>).map(([key, val]) => (
                         <div key={key} className="flex justify-between pl-2">
                           <span className="text-slate-600">{key}:</span>
-                          <span className="font-mono text-green-600">{val}</span>
+                          <span className="font-mono text-green-600">{String(val)}</span>
                         </div>
                       ))}
                     </div>

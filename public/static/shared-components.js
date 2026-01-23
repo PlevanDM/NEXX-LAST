@@ -1,22 +1,35 @@
-// Shared Components for NEXX v9.0
+// Shared Components for NEXX v10.0
 // Header and Footer used across all pages
 
 const { createElement: h } = React;
+
+// Helper for translations with fallbacks
+const safeT = (key, fallback) => {
+  try {
+    if (window.i18n && typeof window.i18n.t === 'function') {
+      const val = window.i18n.t(key);
+      if (val && val !== key) return val;
+    }
+  } catch (e) {
+    console.warn('Translation error:', key);
+  }
+  return fallback || key.split('.').pop();
+};
 
 // Header Component
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navItems = [
-    { href: '/', label: 'Acasă', icon: 'fa-home' },
-    { href: '/about.html', label: 'Despre noi', icon: 'fa-info-circle' },
-    { href: '/calculator', label: 'Calculator', icon: 'fa-calculator' },
-    { href: '/faq.html', label: 'FAQ', icon: 'fa-question-circle' }
+    { href: '/', label: safeT('nav.home', 'Acasă'), icon: 'fa-home' },
+    { href: '/about', label: safeT('nav.about', 'Despre noi'), icon: 'fa-info-circle' },
+    { href: '/calculator', label: safeT('nav.calculator', 'Calculator'), icon: 'fa-calculator' },
+    { href: '/faq', label: safeT('nav.faq', 'FAQ'), icon: 'fa-question-circle' }
   ];
 
   const masterItems = [
-    { href: '/nexx', label: 'Bază de date', icon: 'fa-database' },
-    { href: '/test-click', label: 'Testare', icon: 'fa-vial' }
+    { href: '/nexx', label: safeT('nav.database', 'Bază de date'), icon: 'fa-database' },
+    { href: '/test-click', label: safeT('nav.test', 'Testare'), icon: 'fa-vial' }
   ];
 
   return h('header', { className: 'fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm' },
@@ -48,7 +61,7 @@ function Header() {
           h('div', { className: 'relative group' },
             h('button', { className: 'text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 flex items-center gap-2' },
               h('i', { className: 'fas fa-tools text-sm' }),
-              'Pentru profesioniști',
+              safeT('nav.forProfessionals', 'Pentru profesioniști'),
               h('i', { className: 'fas fa-chevron-down text-xs ml-1 group-hover:rotate-180 transition-transform duration-300' })
             ),
             h('div', { className: 'absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2' },
@@ -70,11 +83,11 @@ function Header() {
         h('div', { className: 'flex items-center gap-4' },
           // Call Button
           h('a', {
-            href: 'tel:+380000000000',
+            href: 'tel:+40721234567',
             className: 'hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white font-semibold rounded-xl hover:bg-black transition-all duration-200 shadow-md hover:shadow-lg'
           },
             h('i', { className: 'fas fa-phone' }),
-            h('span', { className: 'hidden lg:inline' }, 'Sună acum')
+            h('span', { className: 'hidden lg:inline' }, safeT('buttons.callNow', 'Sună acum'))
           ),
 
           // Mobile Menu Button
@@ -101,7 +114,7 @@ function Header() {
             )
           ),
           h('div', { className: 'border-t border-gray-200 mt-2 pt-2' },
-            h('div', { className: 'px-4 py-2 text-xs font-semibold text-gray-500 uppercase' }, 'Pentru profesioniști'),
+            h('div', { className: 'px-4 py-2 text-xs font-semibold text-gray-500 uppercase' }, safeT('nav.forProfessionals', 'Pentru profesioniști')),
             ...masterItems.map(item =>
               h('a', {
                 key: item.href,
@@ -121,36 +134,36 @@ function Header() {
 
 // Footer Component
 function Footer() {
-  // Safe translation function with fallback
-  const t = (key) => {
-    try {
-      return window.i18n?.t?.(key) || key.split('.').pop();
-    } catch {
-      return key.split('.').pop();
+  const footerLinks = [
+    {
+      title: safeT('footer.aboutTitle', 'Despre noi'),
+      links: [
+        { href: '/about', label: safeT('footer.ourHistory', 'Istoria noastră') },
+        { href: '/about#team', label: safeT('footer.team', 'Echipa') },
+        { href: '/about#values', label: safeT('footer.values', 'Valori') }
+      ]
+    },
+    {
+      title: safeT('footer.servicesTitle', 'Servicii'),
+      links: [
+        { href: '/calculator', label: safeT('footer.calculator', 'Calculator prețuri') },
+        { href: '/#services', label: safeT('footer.allServices', 'Toate serviciile') },
+        { href: '/#pricing', label: safeT('footer.tariffs', 'Tarife') }
+      ]
+    },
+    {
+      title: safeT('footer.infoTitle', 'Informații'),
+      links: [
+        { href: '/faq', label: safeT('footer.faq', 'FAQ') },
+        { href: '/privacy', label: safeT('footer.privacy', 'Confidențialitate') },
+        { href: '/terms', label: safeT('footer.terms', 'Termeni și condiții') }
+      ]
     }
-  };
-
-  const footerLinks = {
-    'Про нас': [
-      { href: '/about.html', label: 'Наștoria noastră' },
-      { href: '/about.html#team', label: 'Команда' },
-      { href: '/about.html#values', label: 'Цінності' }
-    ],
-    'Послуги': [
-      { href: '/calculator', label: 'Калькулятор цін' },
-      { href: '/#services', label: 'Всі послуги' },
-      { href: '/#pricing', label: 'Тарифи' }
-    ],
-    'Інформація': [
-      { href: '/faq.html', label: 'FAQ' },
-      { href: '/privacy.html', label: 'Конфіденційність' },
-      { href: '/terms.html', label: 'Умови використання' }
-    ]
-  };
+  ];
 
   const socialLinks = [
     { href: 'https://www.instagram.com/', icon: 'fa-instagram', label: 'Instagram', color: 'hover:text-pink-600' },
-    { href: 'https://t.me/', icon: 'fa-telegram', label: 'Telegram', color: 'hover:text-blue-500' },
+    { href: 'https://t.me/nexx_support', icon: 'fa-telegram', label: 'Telegram', color: 'hover:text-blue-500' },
     { href: 'https://www.facebook.com/', icon: 'fa-facebook', label: 'Facebook', color: 'hover:text-blue-600' }
   ];
 
@@ -166,7 +179,7 @@ function Footer() {
             h('span', { className: 'text-2xl font-bold' }, 'NEXX')
           ),
           h('p', { className: 'text-blue-200 text-sm leading-relaxed mb-4' },
-            t('footer.tagline')
+            safeT('footer.tagline', 'Service profesional multibrand cu experiență de peste 10 ani.')
           ),
           h('div', { className: 'flex gap-3' },
             ...socialLinks.map(social =>
@@ -185,11 +198,11 @@ function Footer() {
         ),
 
         // Links Columns
-        ...Object.entries(footerLinks).map(([title, links]) =>
-          h('div', { key: title },
-            h('h3', { className: 'font-bold text-lg mb-4' }, title),
+        ...footerLinks.map(column =>
+          h('div', { key: column.title },
+            h('h3', { className: 'font-bold text-lg mb-4' }, column.title),
             h('ul', { className: 'space-y-2' },
-              ...links.map(link =>
+              ...column.links.map(link =>
                 h('li', { key: link.href },
                   h('a', {
                     href: link.href,
@@ -205,11 +218,11 @@ function Footer() {
       // Bottom Bar
       h('div', { className: 'border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4' },
         h('p', { className: 'text-blue-200 text-sm' },
-          '© 2026 NEXX Service Center. Toate drepturile rezervate.'
+          `© ${new Date().getFullYear()} NEXX Service Center. ${safeT('footer.rights', 'Toate drepturile rezervate.')}`
         ),
         h('div', { className: 'flex gap-6 text-sm' },
-          h('a', { href: '/privacy.html', className: 'text-blue-200 hover:text-white transition-colors' }, 'Конфіденційність'),
-          h('a', { href: '/terms.html', className: 'text-blue-200 hover:text-white transition-colors' }, 'Умови використання')
+          h('a', { href: '/privacy', className: 'text-blue-200 hover:text-white transition-colors' }, safeT('footer.privacy', 'Confidențialitate')),
+          h('a', { href: '/terms', className: 'text-blue-200 hover:text-white transition-colors' }, safeT('footer.terms', 'Termeni'))
         )
       )
     )

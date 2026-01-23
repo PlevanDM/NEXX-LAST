@@ -12,9 +12,10 @@ console.log('🔍 NEXX Database Validator\n');
 const errors = [];
 const warnings = [];
 
-// Загружаем devices.json
-const devicesPath = path.join(__dirname, '..', 'public', 'data', 'devices.json');
-const devices = JSON.parse(fs.readFileSync(devicesPath, 'utf-8'));
+// Загружаем master-db.json
+const dbPath = path.join(__dirname, '..', 'public', 'data', 'master-db.json');
+const db = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+const devices = db.devices || [];
 
 console.log(`📊 Загружено устройств: ${devices.length}\n`);
 
@@ -37,12 +38,12 @@ devices.forEach((device, idx) => {
     });
   }
   
-  // Samsung должен быть в категории Samsung
-  if (name.includes('samsung') && !category.includes('samsung')) {
+  // Samsung должен быть в категории Samsung (или Watch/Tablet если применимо)
+  if (name.includes('samsung') && !category.includes('samsung') && !category.includes('watch') && !category.includes('tablet')) {
     errors.push({
       index: idx,
       device: device.name,
-      issue: `Samsung в категории "${device.category}" (должно быть "Samsung" или "Galaxy")`
+      issue: `Samsung в категории "${device.category}" (должно быть "Samsung", "Galaxy", "Watch" или "Tablet")`
     });
   }
   

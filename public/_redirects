@@ -1,29 +1,27 @@
 # Cloudflare Pages Redirects
 # https://developers.cloudflare.com/pages/platform/redirects/
 
-# Homepage
+# Canonical Home
 /home              /                 301
 /index             /                 301
 /index.html        /                 301
 
-# Database - rewrite to serve nexx.html
-/nexx              /nexx.html        200!
-/nexx.html         /nexx.html        200!
-/database          /nexx.html        301
-/db                /nexx.html        301
+# Database and Tools
+/database          /nexx             301
+/db                /nexx             301
 
-# Legacy routes
+# Legacy to Modern (Clean URLs)
 /calculator.html   /calculator       301
 /about.html        /about            301
 /faq.html          /faq              301
+/privacy.html      /privacy          301
+/terms.html        /terms            301
+/nexx.html         /nexx             301
 
-# API routes (handled by Hono _worker.js)
+# API routes (Handled by Hono)
 /api/*             /api/:splat       200
 
-# Static assets
+# Ensure static assets are served as-is
 /static/*          /static/:splat    200
 /images/*          /images/:splat    200
 /data/*            /data/:splat      200
-
-# SPA fallback - only for non-existent routes
-# Note: nexx.html and other HTML files should work directly

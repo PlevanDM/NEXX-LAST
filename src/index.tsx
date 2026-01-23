@@ -4,7 +4,11 @@ import { cors } from 'hono/cors'
 import { secureHeaders } from 'hono/secure-headers'
 
 type Bindings = {
-  ASSETS: { fetch: (request: Request) => Promise<Response> }
+  ASSETS: { fetch: (request: Request) => Promise<Response> };
+  REMONLINE_API_KEY?: string;
+  REMONLINE_BASE_URL?: string;
+  REMONLINE_BRANCH_ID?: string;
+  REMONLINE_ORDER_TYPE?: string;
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -120,11 +124,17 @@ app.post('/api/callback', async (c) => {
     
     const cleanPhone = phone.replace(/[^0-9+]/g, '')
     
-    // Remonline integration - from environment variables
-    const REMONLINE_API_KEY = c.env?.REMONLINE_API_KEY || 'a7948011b9a3ccf979db1b706e9bcd3c'
+    // Remonline integration - strictly from environment variables
+    const REMONLINE_API_KEY = c.env?.REMONLINE_API_KEY
     const REMONLINE_BASE = c.env?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-    const BRANCH_ID = parseInt(c.env?.REMONLINE_BRANCH_ID || '218970')
-    const ORDER_TYPE = parseInt(c.env?.REMONLINE_ORDER_TYPE || '334611')
+    const BRANCH_ID = parseInt(c.env?.REMONLINE_BRANCH_ID || '0')
+    const ORDER_TYPE = parseInt(c.env?.REMONLINE_ORDER_TYPE || '0')
+
+    if (!REMONLINE_API_KEY || BRANCH_ID === 0 || ORDER_TYPE === 0) {
+      console.error('Missing Remonline configuration')
+      // Return success to user but log error internally
+      return c.json({ success: true, message: 'Cererea a fost primită! Vă contactăm în curând.' })
+    }
     
     let orderId = null
     let remonlineSuccess = false
@@ -247,16 +257,17 @@ app.get('/test-click', (c) => {
             const [loading, setLoading] = useState(true);
             
             useEffect(() => {
-                console.log('Loading devices...');
-                fetch('/data/devices.json')
+                console.log('Loading devices from master-db...');
+                fetch('/data/master-db.json')
                     .then(r => r.json())
-                    .then(data => {
-                        console.log('Loaded', data.length, 'devices');
-                        setDevices(data.slice(0, 6));
+                    .then(db => {
+                        const devicesList = db.devices || [];
+                        console.log('Loaded', devicesList.length, 'devices');
+                        setDevices(devicesList.slice(0, 6));
                         setLoading(false);
                     })
                     .catch(err => {
-                        console.error('Error loading devices:', err);
+                        console.error('Error loading database:', err);
                         setError(err.message);
                         setLoading(false);
                     });
@@ -422,25 +433,25 @@ app.get('/nexx', (c) => {
                 h('div', { className: 'text-center mb-8' },
                   h('div', { className: 'text-6xl mb-4' }, '🔐'),
                   h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
-                  h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
+                  h('p', { className: 'text-slate-600' }, 'Introduceți codul PIN pentru acces')
                 ),
                 h('form', { onSubmit: handleSubmit },
                   h('input', {
                     type: 'password',
                     value: pin,
                     onChange: (event) => setPin(event.target.value),
-                    placeholder: 'Пинкод',
+                    placeholder: 'Cod PIN',
                     maxLength: 8,
                     className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
                       (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
                       ' focus:outline-none transition-all',
                     autoFocus: true
                   }),
-                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
+                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Cod PIN incorect'),
                   h('button', {
                     type: 'submit',
                     className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
-                  }, 'Войти')
+                  }, 'Autentificare')
                 ),
                 h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
                   'Protected access only'
@@ -496,7 +507,7 @@ app.post('/api/booking', async (c) => {
 const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white', useJSX = false) => {
   return `
     <!DOCTYPE html>
-    <html lang="uk">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -587,16 +587,20 @@
   // ERROR STATE
   // ============================================
   
-  const ErrorState = ({ title = 'Щось пішло не так', message, onRetry }) => {
+  const ErrorState = ({ title, message, onRetry }) => {
+    const t = (key, fallback) => (window.i18n?.t(key) !== key ? window.i18n.t(key) : fallback);
+    const displayTitle = title || t('errors.defaultTitle', 'Ceva nu a mers bine');
+    const retryText = t('buttons.retry', 'Încearcă din nou');
+
     return h('div', { className: 'flex flex-col items-center justify-center p-8 text-center' },
       h('div', { className: 'text-6xl mb-4' }, '⚠️'),
-      h('h3', { className: 'text-2xl font-bold text-gray-900 mb-2' }, title),
+      h('h3', { className: 'text-2xl font-bold text-gray-900 mb-2' }, displayTitle),
       message && h('p', { className: 'text-gray-600 mb-6 max-w-md' }, message),
       onRetry && h(Button, {
         onClick: onRetry,
         icon: 'fa-rotate-right',
         variant: 'primary'
-      }, 'Спробувати ще раз')
+      }, retryText)
     );
   };
   
@@ -604,10 +608,13 @@
   // EMPTY STATE
   // ============================================
   
-  const EmptyState = ({ icon = 'fa-inbox', title = 'Немає даних', message, action }) => {
+  const EmptyState = ({ icon = 'fa-inbox', title, message, action }) => {
+    const t = (key, fallback) => (window.i18n?.t(key) !== key ? window.i18n.t(key) : fallback);
+    const displayTitle = title || t('errors.noData', 'Nu există date');
+
     return h('div', { className: 'flex flex-col items-center justify-center p-12 text-center' },
       h('i', { className: `fas ${icon} text-6xl text-gray-300 mb-4` }),
-      h('h3', { className: 'text-xl font-bold text-gray-700 mb-2' }, title),
+      h('h3', { className: 'text-xl font-bold text-gray-700 mb-2' }, displayTitle),
       message && h('p', { className: 'text-gray-500 mb-6 max-w-md' }, message),
       action
     );
@@ -617,7 +624,9 @@
   // SEARCH BAR
   // ============================================
   
-  const SearchBar = ({ value, onChange, placeholder = 'Пошук...', className = '' }) => {
+  const SearchBar = ({ value, onChange, placeholder, className = '' }) => {
+    const t = (key, fallback) => (window.i18n?.t(key) !== key ? window.i18n.t(key) : fallback);
+    const displayPlaceholder = placeholder || t('nav.search', 'Căutare...');
     return h('div', { className: `relative ${className}` },
       h('div', { className: 'absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' },
         h('i', { className: 'fas fa-magnifying-glass' })
