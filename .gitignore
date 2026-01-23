@@ -127,6 +127,20 @@ screenshots/
 wrangler.jsonc
 wrangler.toml.backup
 
+# Temporary deployment files
+deploy-*.zip
+manifest-*.json
+deploy-response-*.txt
+nexx-deploy.zip
+
+# GitHub secrets helper (local only)
+.github-secrets-helper/
+auto-setup-github-secrets.ps1
+
+# Repository sync tools (temporary)
+REPOSITORY-COMPARISON.md
+sync-repositories.ps1
+
 # Docker
 # .dockerignore - держим в репозитории
 # Dockerfile* - держим в репозитории
