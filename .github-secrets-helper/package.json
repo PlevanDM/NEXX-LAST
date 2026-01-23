@@ -1,0 +1,9 @@
+{
+  "name": "github-secrets-helper",
+  "version": "1.0.0",
+  "description": "Helper for encrypting GitHub secrets",
+  "main": "encrypt.js",
+  "dependencies": {
+    "libsodium-wrappers": "^0.7.13"
+  }
+}
