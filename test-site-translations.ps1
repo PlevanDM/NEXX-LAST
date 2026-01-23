@@ -104,7 +104,7 @@ Write-Host ""
 Write-Host "6. Checking Cloudflare Pages deployment..." -ForegroundColor Yellow
 try {
     $cfHeaders = @{
-        "X-Auth-Key" = "519bdfbd2efeaa9c3a418b905202058bac2fc"
+        "X-Auth-Key" = "853487a6a39bd7f6f8128b4caf420ac22de33"
         "X-Auth-Email" = "dmitro.plevan@gmail.com"
         "Content-Type" = "application/json"
     }

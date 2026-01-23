@@ -1,7 +1,7 @@
 # Optimize Cloudflare Settings
 # Оптимізація налаштувань Cloudflare
 
-$GlobalApiKey = "519bdfbd2efeaa9c3a418b905202058bac2fc"
+$GlobalApiKey = "853487a6a39bd7f6f8128b4caf420ac22de33"
 $Email = "dmitro.plevan@gmail.com"
 $AccountId = "ad170d773e79a037e28f4530fd5305a5"
 $ZoneName = "nexxgsm.com"

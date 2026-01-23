@@ -1,7 +1,7 @@
 # Aggressive Cloudflare Cache Purge
 # Агрессивная очистка кеша Cloudflare
 
-$GlobalApiKey = "519bdfbd2efeaa9c3a418b905202058bac2fc"
+$GlobalApiKey = "853487a6a39bd7f6f8128b4caf420ac22de33"
 $Email = "dmitro.plevan@gmail.com"
 $ZoneName = "nexxgsm.com"
 $API_BASE = "https://api.cloudflare.com/client/v4"

@@ -12,7 +12,7 @@ $REPO_NAME = "nexx-webapp"
 $API_BASE = "https://api.github.com"
 
 # Cloudflare credentials
-$CLOUDFLARE_API_TOKEN = "519bdfbd2efeaa9c3a418b905202058bac2fc"  # Global API Key (will work as API Token)
+$CLOUDFLARE_API_TOKEN = "853487a6a39bd7f6f8128b4caf420ac22de33"  # Global API Key (will work as API Token)
 $CLOUDFLARE_ACCOUNT_ID = "ad170d773e79a037e28f4530fd5305a5"
 
 Write-Host "=== Auto Setup GitHub Secrets ===" -ForegroundColor Cyan

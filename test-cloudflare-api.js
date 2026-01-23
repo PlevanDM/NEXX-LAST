@@ -4,7 +4,7 @@
  */
 
 const API_BASE = 'https://api.cloudflare.com/client/v4';
-const TOKEN = process.env.CLOUDFLARE_API_TOKEN || '519bdfbd2efeaa9c3a418b905202058bac2fc';
+const TOKEN = process.env.CLOUDFLARE_API_TOKEN || '853487a6a39bd7f6f8128b4caf420ac22de33';
 const EMAIL = process.env.CLOUDFLARE_EMAIL || 'dmitro.plevan@gmail.com';
 const GLOBAL_API_KEY = process.env.CLOUDFLARE_GLOBAL_API_KEY;
 

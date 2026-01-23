@@ -42,7 +42,7 @@
 
 Если API Token не работает, можно попробовать использовать Global API Key:
 - **Name:** `CLOUDFLARE_API_TOKEN`
-- **Secret:** `519bdfbd2efeaa9c3a418b905202058bac2fc`
+- **Secret:** `853487a6a39bd7f6f8128b4caf420ac22de33`
 
 ⚠️ **Внимание:** Global API Key менее безопасен, рекомендуется использовать API Token.
 
