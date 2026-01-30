@@ -12,26 +12,28 @@ export const SITE_CONFIG = {
 
   // Contact
   contact: {
-    // Phone Romania
-    phoneE164: '+40721234567',
-    phoneDisplay: '+40 721 234 567',
-    phoneWhatsApp: '', // TODO: Add real WhatsApp number
+    // Phone Romania - TODO: Add real phone number
+    phoneE164: '',
+    phoneDisplay: '',
+    phoneWhatsApp: '',
     
     // Email
     email: 'info@nexx.ro',
     supportEmail: 'support@nexx.ro',
 
-    // Address - Bucharest, Romania
-    addressLine1: 'Str. Victoriei, 15',
-    addressLine2: 'București, România 010062',
+    // Address - Bucharest, Romania (Sector 4)
+    addressLine1: 'Calea Șerban Vodă 47',
+    addressLine2: 'Sector 4, București 040215',
     city: 'București',
     cityLocal: 'Bucharest',
+    sector: 'Sector 4',
     country: 'România',
     countryCode: 'RO',
+    postalCode: '040215',
     
     // Map coordinates (Calea Victoriei, Bucharest)
-    mapsLat: 44.4268,
-    mapsLng: 26.1025,
+    mapsLat: 44.42146803174267,
+    mapsLng: 26.102888425255543,
   },
   
   // Currency (Romanian Leu)

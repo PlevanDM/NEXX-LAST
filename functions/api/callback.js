@@ -225,21 +225,23 @@ export async function onRequest(context) {
     // Get price estimate from database
     const priceEstimate = getPriceEstimate(device, problem);
     
-    // Remonline integration - from environment variables
-    const REMONLINE_API_KEY = env?.REMONLINE_API_KEY || 'a7948011b9a3ccf979db1b706e9bcd3c';
+    // Remonline integration - from environment variables (set in Cloudflare Dashboard)
+    const REMONLINE_API_KEY = env?.REMONLINE_API_KEY || '';
     const REMONLINE_BASE = env?.REMONLINE_BASE_URL || 'https://api.remonline.app';
-    const BRANCH_ID = parseInt(env?.REMONLINE_BRANCH_ID || '218970');
-    const ORDER_TYPE = parseInt(env?.REMONLINE_ORDER_TYPE || '334611');
+    const BRANCH_ID = parseInt(env?.REMONLINE_BRANCH_ID || '0');
+    const ORDER_TYPE = parseInt(env?.REMONLINE_ORDER_TYPE || '0');
     
-    // Vapi AI Voice Agent - from environment variables
-    const VAPI_API_KEY = env?.VAPI_API_KEY || 'ae7cb2c0-9b24-48cf-9115-fb15f5042d73';
-    const VAPI_PHONE_ID = env?.VAPI_PHONE_ID || 'a725ed7c-0465-4cde-ade7-c346aade9aea'; // Twilio +19789918149
-    const VAPI_ASSISTANT_ID = env?.VAPI_ASSISTANT_ID || '96cd370d-806f-4cbe-993e-381a5df85d46';
+    // Vapi AI Voice Agent - from environment variables (set in Cloudflare Dashboard)
+    const VAPI_API_KEY = env?.VAPI_API_KEY || '';
+    const VAPI_PHONE_ID = env?.VAPI_PHONE_ID || '';
+    const VAPI_ASSISTANT_ID = env?.VAPI_ASSISTANT_ID || '';
     
     let orderId = null;
     let remonlineSuccess = false;
     let vapiCallId = null;
     
+    // Only call Remonline if API key is configured
+    if (REMONLINE_API_KEY && BRANCH_ID) {
     try {
       // Get Remonline token
       const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
@@ -306,14 +308,15 @@ export async function onRequest(context) {
     } catch (e) {
       console.error('Remonline error:', e.message);
     }
+    } // End Remonline block
     
     // Build dynamic price context for AI
     const priceContext = priceEstimate 
       ? `\n\nESTIMARE PREȚ pentru ${device}:\n- Tip reparație: ${priceEstimate.type}\n- Preț estimat: ${priceEstimate.price} lei\n- Notă: Prețul final se stabilește după diagnostic. Diagnosticul este GRATUIT!`
       : '';
     
-    // Vapi AI Voice Call - ENABLED with Twilio number
-    const VAPI_ENABLED = true;
+    // Vapi AI Voice Call - only if API keys are configured
+    const VAPI_ENABLED = !!(VAPI_API_KEY && VAPI_PHONE_ID && VAPI_ASSISTANT_ID);
     let vapiError = null;
     
     if (VAPI_ENABLED) {

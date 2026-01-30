@@ -7,14 +7,9 @@
     <meta name="description" content="Răspunsuri la întrebările frecvente despre reparații iPhone, MacBook, Samsung în București. Garanție, prețuri, timp de reparație.">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
     
-    <!-- React & ReactDOM -->
     <script crossorigin src="/static/vendor/react.production.min.js"></script>
     <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -27,190 +22,96 @@
     <div id="app"></div>
     <div id="footer"></div>
     
-    <script src="/static/utils.js"></script>
-    <script src="/static/database.js"></script>
+    <script src="/static/utils.min.js"></script>
+    <script src="/static/database.min.js"></script>
     <script src="/static/i18n.js"></script>
     <script src="/static/ui-components.js"></script>
     
     <script>
-        const { createElement: h } = React;
-        const t = window.i18n?.t || ((k) => k);
+        const { createElement: h, useState, useEffect } = React;
         
         const FAQPage = () => {
-            const [openIndex, setOpenIndex] = React.useState(null);
+            const [openIndex, setOpenIndex] = useState(null);
+            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+            
+            // Subscribe to language changes
+            useEffect(() => {
+                if (window.i18n?.subscribe) {
+                    return window.i18n.subscribe(() => {
+                        setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+                    });
+                }
+            }, []);
             
             const faqData = {
                 ro: [
-                    {
-                        q: "Unde vă aflați în București?",
-                        a: "Ne găsiți pe Str. Victoriei 15, București (Sector 1), la 5 minute de metrou Piața Victoriei. Avem parcare disponibilă în apropiere."
-                    },
-                    {
-                        q: "Cât durează o reparație?",
-                        a: "Majoritatea reparațiilor (baterie, display, port încărcare) se realizează în 30-60 minute. Reparații mai complexe (plăci, deteriorare prin apă) pot dura 2-4 ore. Oferim și service express urgent."
-                    },
-                    {
-                        q: "Oferiți garanție?",
-                        a: "Da! Oferim garanție de 30 zile pentru toate reparațiile. Garanția acoperă piesele înlocuite și manopera. Excludem doar deteriorările mecanice ulterioare."
-                    },
-                    {
-                        q: "Costă ceva diagnosticul?",
-                        a: "Nu! Diagnosticul profesional sub microscop este GRATUIT dacă decideți să reparați dispozitivul la noi. Dacă refuzați reparația, diagnosticul rămâne gratuit."
-                    },
-                    {
-                        q: "Folosiți piese originale?",
-                        a: "Folosim piese originale Apple sau compatibile premium de calitate A+++. Toate piesele sunt testate înainte de instalare. Pentru Samsung, Xiaomi, Huawei folosim piese OEM sau originale."
-                    },
-                    {
-                        q: "Pot urmări statusul reparației?",
-                        a: "Da! Oferim raport foto/video în timp real prin WhatsApp sau Telegram. Veți vedea exact ce facem cu dispozitivul dumneavoastră."
-                    },
-                    {
-                        q: "Acceptați plata cu cardul?",
-                        a: "Da! Acceptăm plata cu cardul, numerar, transfer bancar. Puteți plăti după finalizarea reparației."
-                    },
-                    {
-                        q: "Ce mărci reparați?",
-                        a: "Apple (iPhone, iPad, MacBook, Apple Watch), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel, Oppo, Vivo, Realme și alte mărci. Suntem service multibrand."
-                    },
-                    {
-                        q: "Aveți piese în stoc?",
-                        a: "Da! Avem în stoc cele mai comune piese (baterii, display-uri, conectori) pentru iPhone, Samsung, Xiaomi. Pentru piese rare, le comandăm în 1-2 zile."
-                    },
-                    {
-                        q: "Faceți reparații la fața locului?",
-                        a: "Nu, toate reparațiile se fac în service-ul nostru cu echipament profesional (microscop, stație BGA, etc.). Dar puteți aștepta - majoritatea reparațiilor durează sub 1 oră."
-                    },
-                    {
-                        q: "Ce se întâmplă dacă nu puteți repara?",
-                        a: "Dacă nu putem repara (piese indisponibile, deteriorare ireversibilă), diagnosticul rămâne gratuit. Nu plătiți nimic!"
-                    },
-                    {
-                        q: "Oferințeți trade-in?",
-                        a: "Momentan nu oferim trade-in, dar vă putem consulta despre valoarea dispozitivului și opțiuni de vânzare."
-                    }
+                    { q: "Unde vă aflați în București?", a: "Ne găsiți pe Calea Șerban Vodă 47, București (Sector 4), la 3 minute de metrou Eroii Revoluției. Avem parcare disponibilă în apropiere." },
+                    { q: "Cât durează o reparație?", a: "Majoritatea reparațiilor (baterie, display, port încărcare) se realizează în 30-60 minute. Reparații mai complexe (plăci, deteriorare prin apă) pot dura 2-4 ore. Oferim și service express urgent." },
+                    { q: "Oferiți garanție?", a: "Da! Oferim garanție de 30 zile pentru toate reparațiile. Garanția acoperă piesele înlocuite și manopera." },
+                    { q: "Costă ceva diagnosticul?", a: "Nu! Diagnosticul profesional sub microscop este GRATUIT." },
+                    { q: "Folosiți piese originale?", a: "Folosim piese originale Apple sau compatibile premium de calitate A+++. Toate piesele sunt testate înainte de instalare." },
+                    { q: "Pot urmări statusul reparației?", a: "Da! Oferim raport foto/video în timp real prin Telegram." },
+                    { q: "Acceptați plata cu cardul?", a: "Da! Acceptăm plata cu cardul, numerar, transfer bancar." },
+                    { q: "Ce mărci reparați?", a: "Apple (iPhone, iPad, MacBook), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel și alte mărci. Suntem service multibrand." },
+                    { q: "Aveți piese în stoc?", a: "Da! Avem în stoc cele mai comune piese pentru iPhone, Samsung, Xiaomi. Pentru piese rare, le comandăm în 1-2 zile." },
+                    { q: "Ce se întâmplă dacă nu puteți repara?", a: "Dacă nu putem repara, diagnosticul rămâne gratuit. Nu plătiți nimic!" }
+                ],
+                ru: [
+                    { q: "Где вы находитесь в Бухаресте?", a: "Мы находимся по адресу Calea Șerban Vodă 47, Бухарест (Сектор 4), в 3 минутах от метро Eroii Revoluției. Парковка рядом." },
+                    { q: "Сколько времени занимает ремонт?", a: "Большинство ремонтов (батарея, дисплей, порт зарядки) выполняются за 30-60 минут. Сложные ремонты (платы, залитие) могут занять 2-4 часа." },
+                    { q: "Вы даёте гарантию?", a: "Да! 30 дней гарантии на все ремонты. Гарантия покрывает замененные детали и работу." },
+                    { q: "Диагностика платная?", a: "Нет! Профессиональная диагностика под микроскопом БЕСПЛАТНА." },
+                    { q: "Вы используете оригинальные детали?", a: "Используем оригинальные детали Apple или совместимые премиум качества A+++. Все детали тестируются перед установкой." },
+                    { q: "Могу ли я отследить статус ремонта?", a: "Да! Предоставляем фото/видео отчёт в реальном времени через Telegram." },
+                    { q: "Вы принимаете оплату картой?", a: "Да! Принимаем карту, наличные, банковский перевод." },
+                    { q: "Какие марки вы ремонтируете?", a: "Apple (iPhone, iPad, MacBook), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel и другие. Мы мультибрендовый сервис." },
+                    { q: "У вас есть детали в наличии?", a: "Да! Есть в наличии популярные детали для iPhone, Samsung, Xiaomi. Редкие детали заказываем за 1-2 дня." },
+                    { q: "Что если не можете отремонтировать?", a: "Если не можем отремонтировать - диагностика бесплатна. Вы ничего не платите!" }
                 ],
                 uk: [
-                    {
-                        q: "Де ви знаходитесь у Бухаресті?",
-                        a: "Ми знаходимось на Str. Victoriei 15, Бухарест (Сектор 1), за 5 хвилин від метро Piața Victoriei. Є паркування поблизу."
-                    },
-                    {
-                        q: "Скільки часу займає ремонт?",
-                        a: "Більшість ремонтів (батарея, дисплей, порт зарядки) виконуються за 30-60 хвилин. Складніші ремонти (плати, пошкодження водою) можуть зайняти 2-4 години. Є термінове обслуговування."
-                    },
-                    {
-                        q: "Ви даєте гарантію?",
-                        a: "Так! Ми даємо гарантію 30 днів на всі ремонти. Гарантія покриває замінені деталі та роботу. Виключаються тільки механічні пошкодження після ремонту."
-                    },
-                    {
-                        q: "Діагностика коштує гроші?",
-                        a: "Ні! Професійна діагностика під мікроскопом БЕЗКОШТОВНА якщо ви вирішите ремонтувати пристрій у нас. Якщо відмовитесь, діагностика залишається безкоштовною."
-                    },
-                    {
-                        q: "Ви використовуєте оригінальні деталі?",
-                        a: "Використовуємо оригінальні деталі Apple або сумісні преміум якості A+++. Всі деталі тестуються перед установкою. Для Samsung, Xiaomi, Huawei використовуємо OEM або оригінальні."
-                    },
-                    {
-                        q: "Чи можу я відстежити статус ремонту?",
-                        a: "Так! Надаємо фото/відео звіт в реальному часі через WhatsApp або Telegram. Ви побачите точно що ми робимо з вашим пристроєм."
-                    },
-                    {
-                        q: "Ви приймаєте оплату карткою?",
-                        a: "Так! Приймаємо оплату карткою, готівкою, банківський переказ. Можна оплатити після завершення ремонту."
-                    },
-                    {
-                        q: "Які марки ви ремонтуєте?",
-                        a: "Apple (iPhone, iPad, MacBook, Apple Watch), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel, Oppo, Vivo, Realme та інші марки. Ми мультибрендовий сервіс."
-                    },
-                    {
-                        q: "У вас є деталі в наявності?",
-                        a: "Так! Маємо в наявності найпопулярніші деталі (батареї, дисплеї, конектори) для iPhone, Samsung, Xiaomi. Рідкісні деталі замовляємо за 1-2 дні."
-                    },
-                    {
-                        q: "Ви робите ремонт на місці?",
-                        a: "Ні, всі ремонти виконуються в нашому сервісі з професійним обладнанням (мікроскоп, BGA станція тощо). Але можете почекати - більшість ремонтів займає менше 1 години."
-                    },
-                    {
-                        q: "Що буде якщо не можете відремонтувати?",
-                        a: "Якщо не можемо відремонтувати (деталі недоступні, незворотнє пошкодження), діагностика залишається безкоштовною. Ви нічого не платите!"
-                    },
-                    {
-                        q: "Ви пропонуєте trade-in?",
-                        a: "Наразі не пропонуємо trade-in, але можемо проконсультувати щодо вартості пристрою та варіантів продажу."
-                    }
+                    { q: "Де ви знаходитесь у Бухаресті?", a: "Ми знаходимось на Calea Șerban Vodă 47, Бухарест (Сектор 4), за 3 хвилини від метро Eroii Revoluției. Є паркування поблизу." },
+                    { q: "Скільки часу займає ремонт?", a: "Більшість ремонтів (батарея, дисплей, порт зарядки) виконуються за 30-60 хвилин. Складні ремонти (плати, залиття) можуть зайняти 2-4 години." },
+                    { q: "Ви даєте гарантію?", a: "Так! 30 днів гарантії на всі ремонти. Гарантія покриває замінені деталі та роботу." },
+                    { q: "Діагностика коштує гроші?", a: "Ні! Професійна діагностика під мікроскопом БЕЗКОШТОВНА." },
+                    { q: "Ви використовуєте оригінальні деталі?", a: "Використовуємо оригінальні деталі Apple або сумісні преміум якості A+++. Всі деталі тестуються перед установкою." },
+                    { q: "Чи можу я відстежити статус ремонту?", a: "Так! Надаємо фото/відео звіт в реальному часі через Telegram." },
+                    { q: "Ви приймаєте оплату карткою?", a: "Так! Приймаємо картку, готівку, банківський переказ." },
+                    { q: "Які марки ви ремонтуєте?", a: "Apple (iPhone, iPad, MacBook), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel та інші. Ми мультибрендовий сервіс." },
+                    { q: "У вас є деталі в наявності?", a: "Так! Маємо в наявності популярні деталі для iPhone, Samsung, Xiaomi. Рідкісні деталі замовляємо за 1-2 дні." },
+                    { q: "Що буде якщо не можете відремонтувати?", a: "Якщо не можемо відремонтувати - діагностика безкоштовна. Ви нічого не платите!" }
                 ],
                 en: [
-                    {
-                        q: "Where are you located in Bucharest?",
-                        a: "We're located at Str. Victoriei 15, Bucharest (Sector 1), 5 minutes from Piața Victoriei metro. Parking available nearby."
-                    },
-                    {
-                        q: "How long does a repair take?",
-                        a: "Most repairs (battery, display, charging port) are completed in 30-60 minutes. More complex repairs (boards, water damage) may take 2-4 hours. We offer express urgent service."
-                    },
-                    {
-                        q: "Do you offer warranty?",
-                        a: "Yes! We offer 30-day warranty on all repairs. Warranty covers replaced parts and labor. Excludes only subsequent mechanical damage."
-                    },
-                    {
-                        q: "Is diagnostics free?",
-                        a: "Yes! Professional diagnostics under microscope is FREE if you decide to repair with us. If you decline repair, diagnostics remains free."
-                    },
-                    {
-                        q: "Do you use original parts?",
-                        a: "We use original Apple parts or premium compatible A+++ quality. All parts are tested before installation. For Samsung, Xiaomi, Huawei we use OEM or original."
-                    },
-                    {
-                        q: "Can I track repair status?",
-                        a: "Yes! We provide photo/video report in real-time via WhatsApp or Telegram. You'll see exactly what we're doing with your device."
-                    },
-                    {
-                        q: "Do you accept card payments?",
-                        a: "Yes! We accept card, cash, bank transfer. You can pay after repair is completed."
-                    },
-                    {
-                        q: "What brands do you repair?",
-                        a: "Apple (iPhone, iPad, MacBook, Apple Watch), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel, Oppo, Vivo, Realme and other brands. We're a multibrand service."
-                    },
-                    {
-                        q: "Do you have parts in stock?",
-                        a: "Yes! We have the most common parts in stock (batteries, displays, connectors) for iPhone, Samsung, Xiaomi. For rare parts, we order within 1-2 days."
-                    },
-                    {
-                        q: "Do you do on-site repairs?",
-                        a: "No, all repairs are done in our service center with professional equipment (microscope, BGA station, etc.). But you can wait - most repairs take under 1 hour."
-                    },
-                    {
-                        q: "What if you can't repair it?",
-                        a: "If we can't repair (parts unavailable, irreversible damage), diagnostics remains free. You don't pay anything!"
-                    },
-                    {
-                        q: "Do you offer trade-in?",
-                        a: "Currently we don't offer trade-in, but we can consult you about device value and selling options."
-                    }
+                    { q: "Where are you located in Bucharest?", a: "We're located at Calea Șerban Vodă 47, Bucharest (Sector 4), 3 minutes from Eroii Revoluției metro. Parking available nearby." },
+                    { q: "How long does a repair take?", a: "Most repairs (battery, display, charging port) are completed in 30-60 minutes. Complex repairs (boards, water damage) may take 2-4 hours." },
+                    { q: "Do you offer warranty?", a: "Yes! 30-day warranty on all repairs. Warranty covers replaced parts and labor." },
+                    { q: "Is diagnostics free?", a: "Yes! Professional diagnostics under microscope is FREE." },
+                    { q: "Do you use original parts?", a: "We use original Apple parts or premium compatible A+++ quality. All parts are tested before installation." },
+                    { q: "Can I track repair status?", a: "Yes! We provide photo/video report in real-time via Telegram." },
+                    { q: "Do you accept card payments?", a: "Yes! We accept card, cash, bank transfer." },
+                    { q: "What brands do you repair?", a: "Apple (iPhone, iPad, MacBook), Samsung, Xiaomi, Huawei, OnePlus, Google Pixel and others. We're a multibrand service." },
+                    { q: "Do you have parts in stock?", a: "Yes! We have popular parts in stock for iPhone, Samsung, Xiaomi. Rare parts ordered within 1-2 days." },
+                    { q: "What if you can't repair it?", a: "If we can't repair - diagnostics is free. You don't pay anything!" }
                 ]
             };
             
-            const currentLang = window.i18n?.getCurrentLanguage()?.code || 'ro';
-            const faqs = faqData[currentLang] || faqData.ro;
+            const titles = {
+                ro: { title: 'Întrebări Frecvente', subtitle: 'Răspunsuri la cele mai frecvente întrebări', notFound: 'Nu ați găsit răspunsul?', contact: 'Scrieți-ne pe Telegram', book: 'Comandă reparație' },
+                ru: { title: 'Частые Вопросы', subtitle: 'Ответы на самые частые вопросы', notFound: 'Не нашли ответ?', contact: 'Напишите нам в Telegram', book: 'Заказать ремонт' },
+                uk: { title: 'Часті Питання', subtitle: 'Відповіді на найчастіші питання', notFound: 'Не знайшли відповідь?', contact: 'Напишіть нам у Telegram', book: 'Замовити ремонт' },
+                en: { title: 'Frequently Asked Questions', subtitle: 'Answers to the most common questions', notFound: 'Didn\'t find an answer?', contact: 'Contact us on Telegram', book: 'Book repair' }
+            };
+            
+            const faqs = faqData[lang] || faqData.ro;
+            const text = titles[lang] || titles.ro;
             
             return h('div', { className: 'min-h-screen bg-gray-50' },
-                // Hero
                 h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-20 px-4' },
                     h('div', { className: 'max-w-4xl mx-auto text-center' },
-                        h('h1', { className: 'text-5xl font-bold mb-4' },
-                            currentLang === 'uk' ? 'Часті Питання' : (currentLang === 'en' ? 'Frequently Asked Questions' : 'Întrebări Frecvente')
-                        ),
-                        h('p', { className: 'text-xl text-gray-300' },
-                            currentLang === 'uk' ? 'Відповіді на найпопулярніші питання про наш сервіс' : 
-                            (currentLang === 'en' ? 'Answers to the most popular questions about our service' : 
-                            'Răspunsuri la cele mai frecvente întrebări despre serviciul nostru')
-                        )
+                        h('h1', { className: 'text-5xl font-bold mb-4' }, text.title),
+                        h('p', { className: 'text-xl text-gray-300' }, text.subtitle)
                     )
                 ),
                 
-                // FAQ List
                 h('section', { className: 'py-16 px-4' },
                     h('div', { className: 'max-w-4xl mx-auto' },
                         h('div', { className: 'space-y-4' },
@@ -218,7 +119,6 @@
                                 key: idx,
                                 className: 'faq-item bg-white rounded-xl border-2 border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all'
                             },
-                                // Question
                                 h('button', {
                                     onClick: () => setOpenIndex(openIndex === idx ? null : idx),
                                     className: 'w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition'
@@ -229,15 +129,9 @@
                                         ),
                                         h('h3', { className: 'text-lg font-semibold text-gray-900' }, faq.q)
                                     ),
-                                    h('i', { 
-                                        className: `fas fa-chevron-down text-gray-400 transition-transform ${openIndex === idx ? 'rotate-180' : ''}` 
-                                    })
+                                    h('i', { className: `fas fa-chevron-down text-gray-400 transition-transform ${openIndex === idx ? 'rotate-180' : ''}` })
                                 ),
-                                
-                                // Answer
-                                openIndex === idx && h('div', { 
-                                    className: 'px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-4 animate-fade-in'
-                                },
+                                openIndex === idx && h('div', { className: 'px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-4' },
                                     h('div', { className: 'flex gap-4' },
                                         h('i', { className: 'fas fa-check-circle text-green-600 mt-1 flex-shrink-0' }),
                                         h('p', null, faq.a)
@@ -246,32 +140,14 @@
                             ))
                         ),
                         
-                        // Contact CTA
                         h('div', { className: 'mt-12 text-center bg-gradient-to-br from-gray-900 to-black text-white p-8 rounded-2xl' },
-                            h('h3', { className: 'text-2xl font-bold mb-4' },
-                                currentLang === 'uk' ? 'Не знайшли відповідь?' : 
-                                (currentLang === 'en' ? 'Didn\'t find an answer?' : 
-                                'Nu ați găsit răspunsul?')
-                            ),
-                            h('p', { className: 'text-gray-300 mb-6' },
-                                currentLang === 'uk' ? 'Зателефонуйте нам або напишіть - відповімо на всі питання!' : 
-                                (currentLang === 'en' ? 'Call us or write - we\'ll answer all questions!' : 
-                                'Sunați-ne sau scrieți - vom răspunde la toate întrebările!')
-                            ),
+                            h('h3', { className: 'text-2xl font-bold mb-4' }, text.notFound),
                             h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
-                                h('a', {
-                                    href: 'tel:+40721234567',
-                                    className: 'px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition'
-                                },
-                                    h('i', { className: 'fas fa-phone mr-2' }),
-                                    '+40 721 234 567'
+                                h('a', { href: 'https://t.me/nexx_support', target: '_blank', className: 'px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition' },
+                                    h('i', { className: 'fab fa-telegram mr-2' }), text.contact
                                 ),
-                                h('a', {
-                                    href: '/#booking',
-                                    className: 'px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition'
-                                },
-                                    h('i', { className: 'fas fa-calendar mr-2' }),
-                                    currentLang === 'uk' ? 'Замовити ремонт' : (currentLang === 'en' ? 'Book repair' : 'Comandă reparație')
+                                h('a', { href: '/#calculator', className: 'px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition' },
+                                    h('i', { className: 'fas fa-calculator mr-2' }), text.book
                                 )
                             )
                         )

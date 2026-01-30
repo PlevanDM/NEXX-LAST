@@ -5,6 +5,10 @@ import { secureHeaders } from 'hono/secure-headers'
 
 type Bindings = {
   ASSETS: { fetch: (request: Request) => Promise<Response> }
+  REMONLINE_API_KEY?: string
+  REMONLINE_BASE_URL?: string
+  REMONLINE_BRANCH_ID?: string
+  REMONLINE_ORDER_TYPE?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -118,13 +122,21 @@ app.post('/api/callback', async (c) => {
       return c.json({ success: false, error: 'Număr de telefon invalid' }, 400)
     }
     
-    const cleanPhone = phone.replace(/[^0-9+]/g, '')
+    let cleanPhone = phone.replace(/[^0-9+]/g, '')
+    // Format phone for Romanian numbers
+    if (cleanPhone.startsWith('07')) {
+      cleanPhone = '+40' + cleanPhone.substring(1)
+    } else if (cleanPhone.startsWith('40') && !cleanPhone.startsWith('+')) {
+      cleanPhone = '+' + cleanPhone
+    } else if (!cleanPhone.startsWith('+') && cleanPhone.length >= 9) {
+      cleanPhone = '+40' + cleanPhone
+    }
     
     // Remonline integration - from environment variables
-    const REMONLINE_API_KEY = c.env?.REMONLINE_API_KEY || 'a7948011b9a3ccf979db1b706e9bcd3c'
-    const REMONLINE_BASE = c.env?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-    const BRANCH_ID = parseInt(c.env?.REMONLINE_BRANCH_ID || '218970')
-    const ORDER_TYPE = parseInt(c.env?.REMONLINE_ORDER_TYPE || '334611')
+    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970')
+    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611')
     
     let orderId = null
     let remonlineSuccess = false
@@ -492,6 +504,193 @@ app.post('/api/booking', async (c) => {
   }
 });
 
+// Remonline unified API endpoint
+app.post('/api/remonline', async (c) => {
+  try {
+    const body = await c.req.json();
+    const action = new URL(c.req.url).searchParams.get('action');
+    const formType = body.formType || action;
+    
+    // Remonline API configuration
+    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || '';
+    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app';
+    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970');
+    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611');
+    
+    if (!REMONLINE_API_KEY) {
+      return c.json({ 
+        success: false,
+        error: 'Remonline API not configured',
+        message: 'Service temporarily unavailable'
+      }, 503);
+    }
+    
+    // Get auth token
+    const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `api_key=${REMONLINE_API_KEY}`
+    });
+    const tokenJson = await tokenRes.json() as { success: boolean; token?: string; message?: string };
+    
+    if (!tokenJson.success || !tokenJson.token) {
+      return c.json({ 
+        success: false, 
+        error: 'Failed to authenticate with Remonline',
+        message: tokenJson.message || 'Authentication failed'
+      }, 500);
+    }
+    
+    const token = tokenJson.token;
+    
+    // Get or create client
+    let cleanPhone = (body.customerPhone || body.phone || '').replace(/[^0-9+]/g, '');
+    // Ensure phone has + prefix for Romanian numbers
+    if (cleanPhone.startsWith('07')) {
+      cleanPhone = '+40' + cleanPhone.substring(1);
+    } else if (cleanPhone.startsWith('40') && !cleanPhone.startsWith('+')) {
+      cleanPhone = '+' + cleanPhone;
+    } else if (!cleanPhone.startsWith('+') && cleanPhone.length >= 9) {
+      cleanPhone = '+40' + cleanPhone;
+    }
+    
+    const customerName = body.customerName || body.name || 'Website Client';
+    
+    // Try to create client
+    const createClientRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        name: customerName,
+        phone: [cleanPhone]
+      })
+    });
+    const createClientData = await createClientRes.json() as { data?: { id: number }; success?: boolean };
+    
+    let clientId = createClientData.data?.id;
+    
+    // If client exists, search for it
+    if (!clientId) {
+      const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(cleanPhone)}`);
+      const searchData = await searchRes.json() as { data?: Array<{ id: number }> };
+      if (searchData.data?.length) {
+        clientId = searchData.data[0].id;
+      }
+    }
+    
+    if (!clientId) {
+      return c.json({ 
+        success: false, 
+        error: 'Failed to create client',
+        message: 'Could not create or find client'
+      }, 500);
+    }
+    
+    // Create order based on form type
+    const now = new Date().toISOString();
+    let notes = '';
+    let deviceType = 'Telefon';
+    let brand = '';
+    let model = '';
+    let malfunction = '';
+    
+    if (formType === 'callback') {
+      // Parse device string for brand/model if provided
+      const deviceStr = body.device || '';
+      if (deviceStr.toLowerCase().includes('iphone')) {
+        brand = 'Apple';
+        model = deviceStr;
+        deviceType = 'Telefon';
+      } else if (deviceStr.toLowerCase().includes('samsung')) {
+        brand = 'Samsung';
+        model = deviceStr;
+        deviceType = 'Telefon';
+      } else if (deviceStr.toLowerCase().includes('macbook')) {
+        brand = 'Apple';
+        model = deviceStr;
+        deviceType = 'Laptop';
+      } else {
+        deviceType = deviceStr || 'Telefon';
+      }
+      malfunction = body.problem || 'Callback request';
+      notes = `[CALLBACK] ${customerName} | ${cleanPhone}\nDevice: ${deviceStr || 'N/A'}\nProblem: ${body.problem || 'N/A'}\nTime: ${body.preferredTime || 'ASAP'}\nDate: ${now}`;
+    } else if (formType === 'repair_order' || action === 'create_order') {
+      deviceType = body.device?.type || body.deviceType || 'Telefon';
+      brand = body.device?.brand || '';
+      model = body.device?.model || '';
+      malfunction = body.problem || 'Repair request';
+      notes = `[REPAIR ORDER] ${customerName}\nDevice: ${deviceType} ${brand} ${model}\nProblem: ${malfunction}\nEstimate: ${body.estimatedCost || 'N/A'}\nDate: ${now}`;
+    } else if (action === 'create_inquiry' || action === 'create_lead') {
+      // Price calculator lead
+      if (!cleanPhone && !customerName) {
+        return c.json({ success: true, message: 'Price calculated (no contact)' });
+      }
+      // Map device type to Romanian
+      const typeMap: Record<string, string> = { 'phone': 'Telefon', 'tablet': 'Tablet', 'laptop': 'Laptop', 'watch': 'Smartwatch' };
+      deviceType = typeMap[body.device?.type] || body.device?.type || 'Telefon';
+      brand = body.device?.brand || '';
+      model = body.device?.model || '';
+      malfunction = body.issue || 'Calculator inquiry';
+      notes = `[CALCULATOR LEAD] ${customerName}\nDevice: ${brand} ${model}\nIssue: ${body.issue || 'N/A'}\nEstimate: ${body.estimated_price || body.estimatedPrice || 'N/A'}\nDate: ${now}`;
+    } else {
+      malfunction = body.problem || 'Website inquiry';
+      notes = `[WEBSITE] ${customerName}\nDevice: ${body.device || 'N/A'}\nProblem: ${body.problem || 'N/A'}\nDate: ${now}`;
+    }
+    
+    // Create order
+    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        branch_id: BRANCH_ID,
+        order_type: ORDER_TYPE,
+        client_id: clientId,
+        kindof_good: deviceType,
+        brand: brand,
+        model: model,
+        malfunction: malfunction,
+        manager_notes: notes
+      })
+    });
+    
+    const orderData = await orderRes.json() as { success: boolean; data?: { id: number }; message?: string };
+    
+    if (!orderData.success) {
+      return c.json({ 
+        success: false, 
+        error: 'Failed to create order',
+        message: orderData.message || 'Order creation failed'
+      }, 500);
+    }
+    
+    return c.json({
+      success: true,
+      id: orderData.data?.id,
+      formId: orderData.data?.id,
+      message: 'Request submitted successfully',
+      data: orderData.data
+    });
+    
+  } catch (error) {
+    console.error('Remonline API error:', error);
+    return c.json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      message: 'Error processing request'
+    }, 500);
+  }
+});
+
+app.get('/api/remonline', async (c) => {
+  const action = new URL(c.req.url).searchParams.get('action');
+  
+  if (action === 'health') {
+    return c.json({ success: true, status: 'ok' });
+  }
+  
+  return c.json({ success: false, error: 'GET not supported for this endpoint' }, 400);
+});
+
 // Helper function to generate page template
 const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white', useJSX = false) => {
   return `
@@ -590,6 +789,144 @@ app.get('/terms', (c) => {
     true
   ));
 })
+
+// Directions page - "Cum să Ajungi"
+app.get('/directions', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cum să Ajungi la NEXX GSM Sector 4 | Metrou, Autobuz, Taxi</title>
+        <meta name="description" content="Ghid complet cum să ajungi la NEXX GSM din Calea Șerban Vodă 47, Sector 4, București. Rute metrou M2, autobuz 116, tramvai 19, taxi. Tarife și timp actualizate 2026.">
+        <meta name="keywords" content="nexx gsm sector 4, service telefoane sector 4, cum sa ajungi calea serban voda, reparatii telefoane bucuresti, metrou piata unirii">
+        <link rel="canonical" href="https://nexxgsm.com/directions">
+        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+        
+        <!-- Open Graph -->
+        <meta property="og:title" content="Cum să Ajungi la NEXX GSM Sector 4 București">
+        <meta property="og:description" content="Ghid complet: Metrou M2, Autobuz 116, Tramvai 19, Taxi. 3 minute de la Piața Unirii.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://nexxgsm.com/directions">
+        <meta property="og:locale" content="ro_RO">
+        
+        <!-- Scripts -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+        <script crossorigin src="/static/vendor/react.production.min.js"></script>
+        <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+        
+        <!-- Structured Data - LocalBusiness -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "NEXX GSM Service Center",
+          "description": "Service profesional de reparații telefoane, tablete și electronice în București Sector 4",
+          "image": "https://nexxgsm.com/images/reception.png",
+          "telephone": "",
+          "email": "info@nexxgsm.ro",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calea Șerban Vodă 47",
+            "addressLocality": "București",
+            "addressRegion": "Sector 4",
+            "postalCode": "040215",
+            "addressCountry": "RO"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 44.42146803174267,
+            "longitude": 26.102888425255543
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:00",
+              "closes": "19:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "11:00",
+              "closes": "17:00"
+            }
+          ],
+          "areaServed": {
+            "@type": "City",
+            "name": "București"
+          },
+          "priceRange": "$$"
+        }
+        </script>
+        
+        <!-- Structured Data - FAQ -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Care este cea mai rapidă cale să ajung la NEXX GSM?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cea mai rapidă opțiune este metroul M2. Coborâți la Piața Unirii sau Eroii Revoluției și mergeți 3 minute pe jos. Timp total: 15-25 minute din majoritatea zonelor Bucureștiului."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ce linii de transport trec lângă NEXX GSM?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Metroul M2 (Piața Unirii, Eroii Revoluției), Autobuz 116 (circulă 24/7), Tramvai 19 (stația Adesgo), plus liniile 232, 141, 312 și autobuze de noapte N101-N119."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Este parcare disponibilă lângă NEXX GSM?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Da, există parcare pe stradă pe Calea Șerban Vodă (0.50-1.00 RON/oră) și parcare subterană în U-Center 2 la 200m distanță."
+              }
+            }
+          ]
+        }
+        </script>
+        
+        <style>
+          html { scroll-behavior: smooth; }
+        </style>
+    </head>
+    <body class="bg-white">
+        <div id="header"></div>
+        <div id="app"></div>
+        <div id="footer"></div>
+        
+        <!-- i18n + UI Components -->
+        <script src="/static/i18n.js?v=11.0.0"></script>
+        <script src="/static/ui-components.min.js?v=10.0.3"></script>
+        <script>
+          // Render Header & Footer if available
+          if (window.NEXXDesign) {
+            const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
+            headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: 'directions' }));
+            const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
+            footerRoot.render(React.createElement(window.NEXXDesign.Footer));
+          }
+        </script>
+        
+        <!-- Directions Page -->
+        <script src="/static/directions.js?v=1.0.0"></script>
+    </body>
+    </html>
+  `);
+})
+
+// Alternative Romanian URL
+app.get('/cum-sa-ajungi', (c) => c.redirect('/directions'))
 
 // Main page - excluded from worker, served directly as static index.html
 // This route is handled by Cloudflare Pages static file serving

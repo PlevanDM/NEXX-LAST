@@ -28,21 +28,34 @@ export default {
 
     try {
       const body = await request.json();
-      const { prompt, gatewayId } = body;
+      const { prompt, messages, gatewayId, max_tokens = 512, temperature = 0.7 } = body;
 
-      if (!prompt || typeof prompt !== 'string') {
+      // Support both prompt (simple) and messages (chat) formats
+      let aiOptions;
+      
+      if (messages && Array.isArray(messages)) {
+        // Chat style input with messages
+        aiOptions = {
+          messages: messages,
+          max_tokens: max_tokens,
+          temperature: temperature,
+        };
+      } else if (prompt && typeof prompt === 'string') {
+        // Simple completion style input with prompt
+        aiOptions = {
+          prompt: prompt,
+          max_tokens: max_tokens,
+          temperature: temperature,
+        };
+      } else {
         return new Response(
-          JSON.stringify({ success: false, error: 'Prompt is required' }),
+          JSON.stringify({ 
+            success: false, 
+            error: 'Either "prompt" (string) or "messages" (array) is required' 
+          }),
           { status: 400, headers: corsHeaders }
         );
       }
-
-      // Use Cloudflare AI Gateway
-      const aiOptions = {
-        prompt: prompt,
-        max_tokens: 512,
-        temperature: 0.7,
-      };
 
       const gatewayOptions = gatewayId ? {
         gateway: {
@@ -56,11 +69,16 @@ export default {
         gatewayOptions
       );
 
+      // Extract response text (handle both formats)
+      const responseText = response?.response || response || 'No response generated';
+
       return new Response(
         JSON.stringify({
           success: true,
-          response: response,
-          model: '@cf/meta/llama-3.1-8b-instruct'
+          response: responseText,
+          model: '@cf/meta/llama-3.1-8b-instruct',
+          format: messages ? 'messages' : 'prompt',
+          usage: response?.usage || null
         }),
         { headers: corsHeaders }
       );

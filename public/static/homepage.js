@@ -12,20 +12,27 @@ const { useState, useEffect } = React;
 
 const SITE_CONFIG = {
   name: 'NEXX',
-  tagline: 'Професійний ремонт Apple',
+  tagline: 'Service Profesional Reparații',
   phone: {
-    display: '+40 721 234 567',
-    tel: '+40721234567',
+    display: '0XXX XXX XXX',  // TODO: Add real phone number
+    tel: '',  // TODO: Add real phone number
   },
   email: 'info@nexxgsm.ro',
+  whatsapp: '',  // TODO: Add real WhatsApp number
   address: {
-    line1: 'Str. Victoriei 22',
-    line2: 'București, România 010061',
+    line1: 'Calea Șerban Vodă 47',
+    line2: 'Sector 4, București 040215',
   },
   hours: {
     weekdays: '10:00 - 19:00',
     saturday: '11:00 - 17:00',
-    sunday: 'Вихідний',
+    sunday: 'Închis',
+  },
+  social: {
+    telegram: 'https://t.me/nexx_support',
+    instagram: 'https://instagram.com/nexx_service',
+    facebook: 'https://facebook.com/nexx.service.center',
+    whatsapp: '#',  // TODO: Add real WhatsApp link
   },
   services: [
     { icon: 'fa-mobile-screen', name: 'Ремонт Телефонів', desc: 'iPhone та Android' },
@@ -293,8 +300,12 @@ const StatsSection = () => {
   return h('section', { className: 'py-20 bg-slate-50' },
     h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
       h('div', { className: 'text-center mb-16' },
-        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 'Чому обирають нас'),
-        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 'Професійний підхід до кожного клієнта та прозорість на всіх етапах ремонту')
+        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 
+          window.i18n?.t('whyUs.title') || 'Чому обирають нас'
+        ),
+        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 
+          'Професійний підхід до кожного клієнта та прозорість на всіх етапах ремонту'
+        )
       ),
       h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' },
         ...stats.map(stat =>
@@ -319,8 +330,12 @@ const ServicesSection = () => {
   return h('section', { id: 'services', className: 'py-20 bg-white' },
     h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
       h('div', { className: 'text-center mb-16' },
-        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 'Наші послуги'),
-        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 'Повний спектр послуг з ремонту та обслуговування Apple техніки')
+        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 
+          window.i18n?.t('services.title') || 'Наші послуги'
+        ),
+        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 
+          window.i18n?.t('services.subtitle') || 'Повний спектр послуг з ремонту та обслуговування Apple техніки'
+        )
       ),
       h('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' },
         ...SITE_CONFIG.services.map(service =>
@@ -334,9 +349,11 @@ const ServicesSection = () => {
         )
       ),
       h('div', { className: 'mt-12 text-center' },
-        h('p', { className: 'text-slate-600 mb-4' }, 'Не знайшли потрібну послугу?'),
+        h('p', { className: 'text-slate-600 mb-4' }, 
+          window.i18n?.t('services.notFound') || 'Не знайшли потрібну послугу?'
+        ),
         h('a', { href: '#contact', className: 'inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg' },
-          'Зв\'яжіться з нами',
+          window.i18n?.t('contact.title') || 'Зв\'яжіться з нами',
           h('i', { className: 'fa fa-arrow-right' })
         )
       )
@@ -352,8 +369,12 @@ const PricingSection = () => {
   return h('section', { className: 'py-20 bg-gradient-to-br from-slate-50 to-blue-50' },
     h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
       h('div', { className: 'text-center mb-16' },
-        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 'Тарифні плани'),
-        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 'Виберіть план, який підходить саме вам')
+        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 
+          'Тарифні плани'
+        ),
+        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 
+          'Виберіть план, який підходить саме вам'
+        )
       ),
       h('div', { className: 'grid md:grid-cols-2 gap-8 max-w-5xl mx-auto' },
         h(Card, { className: 'relative' },
@@ -485,84 +506,314 @@ const CoursesSection = () => {
 };
 
 // ============================================
-// CONTACT SECTION (Simplified)
+// CONTACT SECTION - Full Redesign
 // ============================================
 
 const ContactSection = () => {
-  return h('section', { id: 'contact', className: 'py-20 bg-slate-50' },
-    h('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.phone || formData.phone.length < 9) {
+      setSubmitStatus({ type: 'error', message: 'Introduceți un număr de telefon valid' });
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name || 'Client Website',
+          phone: formData.phone,
+          problem: formData.message || 'Solicitare de pe website'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitStatus({ type: 'success', message: 'Mulțumim! Vă vom contacta în câteva minute!' });
+        setFormData({ name: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Eroare. Încercați din nou.' });
+      }
+    } catch (err) {
+      setSubmitStatus({ type: 'error', message: 'Eroare de conexiune. Sunați-ne direct!' });
+    }
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus(null), 5000);
+  };
+
+  // Social media links (no phone-based services until real number added)
+  const socialLinks = [
+    { icon: 'fa-brands fa-telegram', href: 'https://t.me/nexx_support', label: 'Telegram', color: 'bg-sky-500 hover:bg-sky-600' },
+    { icon: 'fa-brands fa-instagram', href: 'https://instagram.com/nexx_service', label: 'Instagram', color: 'bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 hover:from-purple-700 hover:via-pink-600 hover:to-orange-500' },
+    { icon: 'fa-brands fa-facebook', href: 'https://facebook.com/nexx.service.center', label: 'Facebook', color: 'bg-blue-600 hover:bg-blue-700' },
+  ];
+
+  return h('section', { id: 'contact', className: 'py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden' },
+    // Background decoration
+    h('div', { className: 'absolute inset-0' },
+      h('div', { className: 'absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl' }),
+      h('div', { className: 'absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl' })
+    ),
+    
+    h('div', { className: 'relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+      // Header
       h('div', { className: 'text-center mb-16' },
-        h('h2', { className: 'text-4xl md:text-5xl font-bold text-slate-900 mb-4' }, 'Зв\'яжіться з нами'),
-        h('p', { className: 'text-xl text-slate-600 max-w-3xl mx-auto' }, 'Записатися на ремонт або задати питання - ми завжди на зв\'язку')
+        h('h2', { className: 'text-4xl md:text-5xl font-bold text-white mb-4' }, 'Contactează-ne'),
+        h('p', { className: 'text-xl text-blue-200 max-w-3xl mx-auto' }, 
+          'Suntem aici să te ajutăm. Alege metoda preferată de contact.'
+        )
       ),
-      h('div', { className: 'grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto' },
-        h('div', { className: 'space-y-6' },
-          h(Card, {},
-            h('div', { className: 'flex items-start gap-4' },
-              h('div', { className: 'w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0' },
-                h('i', { className: 'fa fa-phone text-blue-600 text-xl' })
-              ),
-              h('div', { className: 'flex-1' },
-                h('h3', { className: 'font-semibold text-slate-900 mb-1' }, 'Телефон'),
-                h('a', { href: `tel:${SITE_CONFIG.phone.tel}`, className: 'text-blue-600 hover:text-blue-700 font-medium text-lg' }, SITE_CONFIG.phone.display),
-                h('p', { className: 'text-sm text-slate-600 mt-1' }, `Дзвоніть щодня з ${SITE_CONFIG.hours.weekdays}`)
-              )
-            )
-          ),
-          h(Card, {},
-            h('div', { className: 'flex items-start gap-4' },
-              h('div', { className: 'w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0' },
-                h('i', { className: 'fa fa-envelope text-green-600 text-xl' })
-              ),
-              h('div', { className: 'flex-1' },
-                h('h3', { className: 'font-semibold text-slate-900 mb-1' }, 'Email'),
-                h('a', { href: `mailto:${SITE_CONFIG.email}`, className: 'text-green-600 hover:text-green-700 font-medium' }, SITE_CONFIG.email),
-                h('p', { className: 'text-sm text-slate-600 mt-1' }, 'Відповідаємо протягом години')
-              )
-            )
-          ),
-          h(Card, {},
-            h('div', { className: 'flex items-start gap-4' },
-              h('div', { className: 'w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0' },
-                h('i', { className: 'fa fa-location-dot text-purple-600 text-xl' })
-              ),
-              h('div', { className: 'flex-1' },
-                h('h3', { className: 'font-semibold text-slate-900 mb-1' }, 'Адреса'),
-                h('p', { className: 'text-slate-700' }, SITE_CONFIG.address.line1, h('br'), SITE_CONFIG.address.line2)
-              )
-            )
-          ),
-          h(Card, {},
-            h('div', { className: 'flex items-start gap-4' },
-              h('div', { className: 'w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0' },
-                h('i', { className: 'fa fa-clock text-orange-600 text-xl' })
-              ),
-              h('div', { className: 'flex-1' },
-                h('h3', { className: 'font-semibold text-slate-900 mb-2' }, 'Графік роботи'),
-                h('div', { className: 'space-y-1 text-sm' },
-                  h('div', { className: 'flex justify-between' },
-                    h('span', { className: 'text-slate-600' }, 'Пн-Пт:'),
-                    h('span', { className: 'text-slate-900 font-medium' }, SITE_CONFIG.hours.weekdays)
-                  ),
-                  h('div', { className: 'flex justify-between' },
-                    h('span', { className: 'text-slate-600' }, 'Сб:'),
-                    h('span', { className: 'text-slate-900 font-medium' }, SITE_CONFIG.hours.saturday)
-                  ),
-                  h('div', { className: 'flex justify-between' },
-                    h('span', { className: 'text-slate-600' }, 'Нд:'),
-                    h('span', { className: 'text-red-600 font-medium' }, SITE_CONFIG.hours.sunday)
-                  )
+      
+      h('div', { className: 'grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto' },
+        // Left side - Contact Info (3 columns)
+        h('div', { className: 'lg:col-span-3 space-y-6' },
+          
+          // Main contact cards grid
+          h('div', { className: 'grid sm:grid-cols-2 gap-4' },
+            // Phone Card - placeholder until real number is added
+            h('div', { 
+              className: 'group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 transition-all duration-300'
+            },
+              h('div', { className: 'flex items-center gap-4' },
+                h('div', { className: 'w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform' },
+                  h('i', { className: 'fa fa-phone text-white text-2xl' })
+                ),
+                h('div', {},
+                  h('p', { className: 'text-green-300 text-sm font-medium mb-1' }, 'Telefon'),
+                  h('p', { className: 'text-white text-xl font-bold' }, 'În curând')
                 )
+              ),
+              h('div', { className: 'mt-4 flex items-center gap-2 text-green-300 text-sm' },
+                h('i', { className: 'fa fa-clock' }),
+                h('span', {}, 'L-V: 10:00-19:00 • S: 11:00-17:00')
+              )
+            ),
+            
+            // Telegram Card (instead of WhatsApp)
+            h('a', { 
+              href: 'https://t.me/nexx_support',
+              target: '_blank',
+              className: 'group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 hover:border-sky-400/50 transition-all duration-300 cursor-pointer'
+            },
+              h('div', { className: 'flex items-center gap-4' },
+                h('div', { className: 'w-14 h-14 bg-sky-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform' },
+                  h('i', { className: 'fa-brands fa-telegram text-white text-3xl' })
+                ),
+                h('div', {},
+                  h('p', { className: 'text-sky-300 text-sm font-medium mb-1' }, 'Scrie pe Telegram'),
+                  h('p', { className: 'text-white text-lg font-bold' }, 'Răspuns rapid')
+                )
+              ),
+              h('div', { className: 'mt-4 flex items-center gap-2 text-sky-300 text-sm' },
+                h('i', { className: 'fa fa-check-circle' }),
+                h('span', {}, 'Răspundem în câteva minute')
+              )
+            ),
+            
+            // Email Card
+            h('a', { 
+              href: 'mailto:info@nexxgsm.ro',
+              className: 'group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer'
+            },
+              h('div', { className: 'flex items-center gap-4' },
+                h('div', { className: 'w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform' },
+                  h('i', { className: 'fa fa-envelope text-white text-2xl' })
+                ),
+                h('div', {},
+                  h('p', { className: 'text-blue-300 text-sm font-medium mb-1' }, 'Email'),
+                  h('p', { className: 'text-white text-lg font-bold' }, 'info@nexxgsm.ro')
+                )
+              ),
+              h('div', { className: 'mt-4 flex items-center gap-2 text-blue-300 text-sm' },
+                h('i', { className: 'fa fa-reply' }),
+                h('span', {}, 'Răspundem în maxim 1 oră')
+              )
+            ),
+            
+            // Location Card
+            h('a', { 
+              href: '/directions',
+              className: 'group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/20 hover:border-purple-400/50 transition-all duration-300 cursor-pointer'
+            },
+              h('div', { className: 'flex items-center gap-4' },
+                h('div', { className: 'w-14 h-14 bg-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform' },
+                  h('i', { className: 'fa fa-location-dot text-white text-2xl' })
+                ),
+                h('div', {},
+                  h('p', { className: 'text-purple-300 text-sm font-medium mb-1' }, 'Adresa noastră'),
+                  h('p', { className: 'text-white text-lg font-bold' }, 'Calea Șerban Vodă 47'),
+                  h('p', { className: 'text-purple-200 text-sm' }, 'Sector 4, București')
+                )
+              ),
+              h('div', { className: 'mt-4 flex items-center gap-2 text-purple-300 text-sm' },
+                h('i', { className: 'fa fa-route' }),
+                h('span', {}, 'Vezi cum să ajungi →')
+              )
+            )
+          ),
+          
+          // Social Media Section
+          h('div', { className: 'bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10' },
+            h('h3', { className: 'text-white font-semibold mb-4 flex items-center gap-2' },
+              h('i', { className: 'fa fa-share-nodes text-blue-400' }),
+              'Urmărește-ne pe rețelele sociale'
+            ),
+            h('div', { className: 'flex flex-wrap gap-3' },
+              ...socialLinks.map(link =>
+                h('a', {
+                  key: link.label,
+                  href: link.href,
+                  target: '_blank',
+                  className: `inline-flex items-center gap-2 px-5 py-3 ${link.color} text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg`
+                },
+                  h('i', { className: `${link.icon} text-xl` }),
+                  link.label
+                )
+              )
+            )
+          ),
+          
+          // Working Hours
+          h('div', { className: 'bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10' },
+            h('h3', { className: 'text-white font-semibold mb-4 flex items-center gap-2' },
+              h('i', { className: 'fa fa-clock text-orange-400' }),
+              'Program de lucru'
+            ),
+            h('div', { className: 'grid grid-cols-3 gap-4' },
+              h('div', { className: 'text-center p-3 bg-white/5 rounded-xl' },
+                h('p', { className: 'text-orange-300 text-sm mb-1' }, 'Luni - Vineri'),
+                h('p', { className: 'text-white font-bold text-lg' }, '10:00 - 19:00')
+              ),
+              h('div', { className: 'text-center p-3 bg-white/5 rounded-xl' },
+                h('p', { className: 'text-orange-300 text-sm mb-1' }, 'Sâmbătă'),
+                h('p', { className: 'text-white font-bold text-lg' }, '11:00 - 17:00')
+              ),
+              h('div', { className: 'text-center p-3 bg-white/5 rounded-xl' },
+                h('p', { className: 'text-orange-300 text-sm mb-1' }, 'Duminică'),
+                h('p', { className: 'text-red-400 font-bold text-lg' }, 'Închis')
               )
             )
           )
         ),
-        h(Card, { className: 'lg:h-full flex items-center justify-center' },
-          h('div', { className: 'text-center py-12' },
-            h('i', { className: 'fa fa-clipboard-list text-6xl text-blue-600 mb-6' }),
-            h('h3', { className: 'text-2xl font-bold text-slate-900 mb-4' }, 'Форма запису'),
-            h('p', { className: 'text-slate-600 mb-6' }, 'Заповніть форму і ми зв\'яжемося з вами протягом 5 хвилин'),
-            h(Button, { variant: 'primary', size: 'lg', icon: 'fa-calendar-check', onClick: () => alert('Форма в розробці. Телефонуйте: ' + SITE_CONFIG.phone.display) }, 'Записатися зараз')
+        
+        // Right side - Contact Form (2 columns)
+        h('div', { className: 'lg:col-span-2' },
+          h('div', { className: 'bg-white rounded-2xl p-8 shadow-2xl h-full' },
+            h('div', { className: 'text-center mb-6' },
+              h('div', { className: 'w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg' },
+                h('i', { className: 'fa fa-headset text-white text-2xl' })
+              ),
+              h('h3', { className: 'text-2xl font-bold text-slate-900 mb-2' }, 'Solicită un apel'),
+              h('p', { className: 'text-slate-600 text-sm' }, 'Completează formularul și te sunăm noi în câteva minute')
+            ),
+            
+            h('form', { onSubmit: handleSubmit, className: 'space-y-4' },
+              // Name input
+              h('div', {},
+                h('label', { className: 'block text-sm font-medium text-slate-700 mb-1' }, 'Numele tău'),
+                h('input', {
+                  type: 'text',
+                  value: formData.name,
+                  onChange: (e) => setFormData({ ...formData, name: e.target.value }),
+                  placeholder: 'ex: Ion Popescu',
+                  className: 'w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors'
+                })
+              ),
+              
+              // Phone input
+              h('div', {},
+                h('label', { className: 'block text-sm font-medium text-slate-700 mb-1' }, 
+                  'Număr de telefon ', 
+                  h('span', { className: 'text-red-500' }, '*')
+                ),
+                h('input', {
+                  type: 'tel',
+                  value: formData.phone,
+                  onChange: (e) => setFormData({ ...formData, phone: e.target.value }),
+                  placeholder: '07XX XXX XXX',
+                  required: true,
+                  className: 'w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors'
+                })
+              ),
+              
+              // Message input
+              h('div', {},
+                h('label', { className: 'block text-sm font-medium text-slate-700 mb-1' }, 'Mesaj (opțional)'),
+                h('textarea', {
+                  value: formData.message,
+                  onChange: (e) => setFormData({ ...formData, message: e.target.value }),
+                  placeholder: 'Descrie pe scurt problema sau întrebarea ta...',
+                  rows: 3,
+                  className: 'w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors resize-none'
+                })
+              ),
+              
+              // Status message
+              submitStatus && h('div', { 
+                className: `p-4 rounded-xl ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} flex items-center gap-2`
+              },
+                h('i', { className: `fa ${submitStatus.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}` }),
+                submitStatus.message
+              ),
+              
+              // Submit button
+              h('button', {
+                type: 'submit',
+                disabled: isSubmitting,
+                className: 'w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2'
+              },
+                isSubmitting ? 
+                  h('span', {}, h('i', { className: 'fa fa-spinner fa-spin mr-2' }), 'Se trimite...') :
+                  h('span', {}, h('i', { className: 'fa fa-paper-plane mr-2' }), 'Trimite solicitarea')
+              ),
+              
+              // Privacy note
+              h('p', { className: 'text-xs text-slate-500 text-center mt-4' },
+                h('i', { className: 'fa fa-shield-halved mr-1' }),
+                'Datele tale sunt în siguranță. Nu le partajăm cu terți.'
+              )
+            ),
+            
+            // Quick action buttons
+            h('div', { className: 'mt-6 pt-6 border-t border-slate-200' },
+              h('p', { className: 'text-sm text-slate-600 text-center mb-3' }, 'Sau contactează-ne direct:'),
+              h('div', { className: 'flex gap-3' },
+                h('a', {
+                  href: 'https://t.me/nexx_support',
+                  target: '_blank',
+                  className: 'flex-1 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl text-center transition-colors flex items-center justify-center gap-2'
+                },
+                  h('i', { className: 'fa-brands fa-telegram' }),
+                  'Telegram'
+                ),
+                h('a', {
+                  href: 'https://instagram.com/nexx_service',
+                  target: '_blank',
+                  className: 'flex-1 py-3 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-semibold rounded-xl text-center transition-colors flex items-center justify-center gap-2'
+                },
+                  h('i', { className: 'fa-brands fa-instagram' }),
+                  'Instagram'
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      // Bottom CTA - Directions
+      h('div', { className: 'mt-12 text-center' },
+        h('a', {
+          href: '/directions',
+          className: 'inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white rounded-2xl font-semibold transition-all duration-300 hover:scale-105'
+        },
+          h('i', { className: 'fa fa-map-location-dot text-2xl text-blue-400' }),
+          h('div', { className: 'text-left' },
+            h('p', { className: 'text-lg' }, 'Calea Șerban Vodă 47, Sector 4'),
+            h('p', { className: 'text-sm text-blue-300' }, 'Vezi indicații detaliate cum să ajungi →')
           )
         )
       )

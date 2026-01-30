@@ -52,6 +52,7 @@ desktop.ini
 coverage/
 .nyc_output/
 *.lcov
+test-results/
 
 # Temporary Files
 *.tmp

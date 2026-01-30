@@ -203,6 +203,22 @@ if (fs.existsSync(staticSource) && fs.existsSync(staticDest)) {
   if (minified > 0) {
     console.log(`✅ Copied ${minified} minified JS files\n`);
   }
+  
+  // Copy non-minified JS files that need to override minified versions
+  console.log('📄 Copying source JS files...');
+  const sourceJsFiles = ['homepage.js', 'directions.js', 'price-calculator.js', 'i18n.js', 'ui-components.js'];
+  let sourceJsCopied = 0;
+  for (const jsFile of sourceJsFiles) {
+    const srcPath = path.join(staticSource, jsFile);
+    const destPath = path.join(staticDest, jsFile);
+    if (fs.existsSync(srcPath)) {
+      fs.copyFileSync(srcPath, destPath);
+      sourceJsCopied++;
+    }
+  }
+  if (sourceJsCopied > 0) {
+    console.log(`✅ Copied ${sourceJsCopied} source JS files\n`);
+  }
 }
 
 console.log('✨ All assets copied successfully!');

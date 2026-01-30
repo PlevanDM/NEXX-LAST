@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politica de Confidențialitate | NEXX Service Center</title>
+    <link rel="icon" type="image/png" href="/static/nexx-logo.png">
     
     <script crossorigin src="/static/vendor/react.production.min.js"></script>
     <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
@@ -15,79 +16,91 @@
     <div id="app"></div>
     <div id="footer"></div>
     
-    <script src="/static/utils.js"></script>
-    <script src="/static/database.js"></script>
+    <script src="/static/utils.min.js"></script>
+    <script src="/static/database.min.js"></script>
     <script src="/static/i18n.js"></script>
     <script src="/static/ui-components.js"></script>
     
     <script>
-        const { createElement: h } = React;
+        const { createElement: h, useState, useEffect } = React;
         
         const PrivacyPage = () => {
+            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+            
+            useEffect(() => {
+                if (window.i18n?.subscribe) {
+                    return window.i18n.subscribe(() => {
+                        setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+                    });
+                }
+            }, []);
+            
+            const content = {
+                ro: {
+                    title: 'Politica de Confidențialitate',
+                    updated: 'Ultima actualizare: 20 ianuarie 2026',
+                    sections: [
+                        { title: '1. Informații colectate', text: 'Colectăm următoarele date personale când utilizați serviciile noastre:', items: ['Nume și prenume', 'Număr de telefon', 'Adresă email (opțional)', 'Informații despre dispozitiv (model, problemă)'] },
+                        { title: '2. Utilizarea datelor', text: 'Utilizăm datele dvs. exclusiv pentru:', items: ['Procesarea comenzilor de reparații', 'Comunicarea despre statusul reparației', 'Îmbunătățirea serviciilor noastre', 'Contactare în caz de necesitate'] },
+                        { title: '3. Protecția datelor', text: 'Datele dvs. sunt stocate securizat și nu sunt partajate cu terțe părți fără consimțământul dvs. explicit.' },
+                        { title: '4. Drepturile dvs.', text: 'Aveți dreptul să:', items: ['Accesați datele personale', 'Solicitați corectarea datelor', 'Solicitați ștergerea datelor', 'Vă opuneți prelucrării'] },
+                        { title: '5. Contact', text: 'Pentru întrebări despre confidențialitate, contactați-ne: info@nexxgsm.ro sau Telegram @nexx_support' }
+                    ]
+                },
+                ru: {
+                    title: 'Политика Конфиденциальности',
+                    updated: 'Последнее обновление: 20 января 2026',
+                    sections: [
+                        { title: '1. Собираемая информация', text: 'Мы собираем следующие персональные данные:', items: ['Имя и фамилия', 'Номер телефона', 'Email (опционально)', 'Информация об устройстве (модель, проблема)'] },
+                        { title: '2. Использование данных', text: 'Мы используем ваши данные исключительно для:', items: ['Обработки заказов на ремонт', 'Связи по статусу ремонта', 'Улучшения наших услуг', 'Связи при необходимости'] },
+                        { title: '3. Защита данных', text: 'Ваши данные хранятся безопасно и не передаются третьим лицам без вашего согласия.' },
+                        { title: '4. Ваши права', text: 'Вы имеете право:', items: ['Получить доступ к своим данным', 'Запросить исправление данных', 'Запросить удаление данных', 'Отказаться от обработки'] },
+                        { title: '5. Контакт', text: 'По вопросам конфиденциальности: info@nexxgsm.ro или Telegram @nexx_support' }
+                    ]
+                },
+                uk: {
+                    title: 'Політика Конфіденційності',
+                    updated: 'Останнє оновлення: 20 січня 2026',
+                    sections: [
+                        { title: '1. Інформація, що збирається', text: 'Ми збираємо наступні персональні дані:', items: ['Ім\'я та прізвище', 'Номер телефону', 'Email (опціонально)', 'Інформація про пристрій (модель, проблема)'] },
+                        { title: '2. Використання даних', text: 'Ми використовуємо ваші дані виключно для:', items: ['Обробки замовлень на ремонт', 'Зв\'язку щодо статусу ремонту', 'Покращення наших послуг', 'Зв\'язку при необхідності'] },
+                        { title: '3. Захист даних', text: 'Ваші дані зберігаються безпечно і не передаються третім особам без вашої згоди.' },
+                        { title: '4. Ваші права', text: 'Ви маєте право:', items: ['Отримати доступ до своїх даних', 'Запросити виправлення даних', 'Запросити видалення даних', 'Відмовитись від обробки'] },
+                        { title: '5. Контакт', text: 'З питань конфіденційності: info@nexxgsm.ro або Telegram @nexx_support' }
+                    ]
+                },
+                en: {
+                    title: 'Privacy Policy',
+                    updated: 'Last updated: January 20, 2026',
+                    sections: [
+                        { title: '1. Information Collected', text: 'We collect the following personal data when you use our services:', items: ['Name', 'Phone number', 'Email address (optional)', 'Device information (model, problem)'] },
+                        { title: '2. Data Usage', text: 'We use your data exclusively for:', items: ['Processing repair orders', 'Communicating about repair status', 'Improving our services', 'Contacting when necessary'] },
+                        { title: '3. Data Protection', text: 'Your data is stored securely and is not shared with third parties without your explicit consent.' },
+                        { title: '4. Your Rights', text: 'You have the right to:', items: ['Access your personal data', 'Request data correction', 'Request data deletion', 'Object to processing'] },
+                        { title: '5. Contact', text: 'For privacy questions, contact us: info@nexxgsm.ro or Telegram @nexx_support' }
+                    ]
+                }
+            };
+            
+            const text = content[lang] || content.ro;
+            
             return h('div', { className: 'min-h-screen bg-gray-50' },
                 h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-20 px-4' },
                     h('div', { className: 'max-w-4xl mx-auto' },
-                        h('h1', { className: 'text-5xl font-bold mb-4' }, 'Politica de Confidențialitate'),
-                        h('p', { className: 'text-gray-300' }, 'Ultima actualizare: 20 ianuarie 2026')
+                        h('h1', { className: 'text-5xl font-bold mb-4' }, text.title),
+                        h('p', { className: 'text-gray-300' }, text.updated)
                     )
                 ),
                 
                 h('section', { className: 'py-16 px-4' },
                     h('div', { className: 'max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm' },
-                        h('div', { className: 'prose max-w-none' },
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900' }, '1. Informații colectate'),
-                            h('p', { className: 'text-gray-700 mb-4' }, 
-                                'Colectăm următoarele date personale când utilizați serviciile noastre:'
-                            ),
-                            h('ul', { className: 'list-disc pl-6 mb-6 text-gray-700' },
-                                h('li', null, 'Nume și prenume'),
-                                h('li', null, 'Număr de telefon'),
-                                h('li', null, 'Adresă email (opțional)'),
-                                h('li', null, 'Informații despre dispozitiv (model, problemă)')
-                            ),
-                            
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900 mt-8' }, '2. Utilizarea datelor'),
-                            h('p', { className: 'text-gray-700 mb-4' }, 
-                                'Datele dumneavoastră sunt utilizate exclusiv pentru:'
-                            ),
-                            h('ul', { className: 'list-disc pl-6 mb-6 text-gray-700' },
-                                h('li', null, 'Procesarea comenzilor de reparație'),
-                                h('li', null, 'Contactarea în legătură cu serviciile'),
-                                h('li', null, 'Emiterea garanției'),
-                                h('li', null, 'Îmbunătățirea serviciilor noastre')
-                            ),
-                            
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900 mt-8' }, '3. Protecția datelor'),
-                            h('p', { className: 'text-gray-700 mb-6' }, 
-                                'Implementăm măsuri tehnice și organizatorice pentru protecția datelor personale. Datele sunt stocate securizat și nu sunt partajate cu terțe părți fără consimțământul dumneavoastră.'
-                            ),
-                            
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900 mt-8' }, '4. Drepturile dumneavoastră (GDPR)'),
-                            h('p', { className: 'text-gray-700 mb-4' }, 'Aveți dreptul să:'),
-                            h('ul', { className: 'list-disc pl-6 mb-6 text-gray-700' },
-                                h('li', null, 'Accesați datele personale'),
-                                h('li', null, 'Rectificați datele incorecte'),
-                                h('li', null, 'Ștergeți datele ("dreptul de a fi uitat")'),
-                                h('li', null, 'Limitați prelucrarea datelor'),
-                                h('li', null, 'Portabilitatea datelor')
-                            ),
-                            
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900 mt-8' }, '5. Cookies'),
-                            h('p', { className: 'text-gray-700 mb-6' }, 
-                                'Utilizăm cookies doar pentru funcționalitatea tehnică (preferințe limbă, salvare formulare). Nu utilizăm cookies de tracking fără consimțământ.'
-                            ),
-                            
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900 mt-8' }, '6. Contact'),
-                            h('p', { className: 'text-gray-700' }, 
-                                'Pentru orice întrebări despre datele personale, contactați-ne:'
-                            ),
-                            h('p', { className: 'text-gray-700 font-semibold mt-2' },
-                                'Email: info@nexx.ro'
-                            ),
-                            h('p', { className: 'text-gray-700 font-semibold' },
-                                'Telefon: +40 721 234 567'
+                        ...text.sections.map((section, idx) => h('div', { key: idx, className: 'mb-8' },
+                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900' }, section.title),
+                            h('p', { className: 'text-gray-700 mb-4' }, section.text),
+                            section.items && h('ul', { className: 'list-disc pl-6 text-gray-700' },
+                                ...section.items.map((item, i) => h('li', { key: i }, item))
                             )
-                        )
+                        ))
                     )
                 )
             );

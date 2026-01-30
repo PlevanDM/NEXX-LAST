@@ -1,6 +1,6 @@
 /**
  * NEXX Internationalization System - ПОЛНАЯ ВЕРСИЯ
- * Підтримка: Українська, Румунська, Англійська
+ * Підтримка: Українська (ua), Румунська (ro), Англійська (en), Російська (ru)
  * ВСЕ елементи для повної локалізації
  */
 
@@ -32,7 +32,7 @@
       // Hero Section
       hero: {
         title: 'Ремонт iPhone, MacBook, Samsung',
-        subtitle: 'Сервіс 30-60 хв • Гарантія 30 днів',
+        subtitle: 'Експрес Сервіс • Гарантія Включена',
         description: 'Професійний ремонт Apple, Samsung, Xiaomi, Huawei. Безкоштовна діагностика. Оригінальні запчастини.',
       },
       
@@ -74,17 +74,20 @@
         sending: 'Відправляємо...',
         submit: 'Надіслати запит',
         orCall: 'або зателефонуйте: ',
+        orContact: 'Або напишіть нам в ',
         thanks: 'Дякуємо!',
         callingNow: '📞 AI передзвонить зараз...',
         confirmDetails: 'Наш віртуальний асистент зв\'яжеться з вами за кілька секунд для підтвердження.',
         freeIncluded: '🎁 Безкоштовна діагностика включена в замовлення!',
         close: 'Закрити',
+        toastSuccess: '🤖 Наш AI передзвонить зараз!',
       },
       
       // Services Section
       services: {
         title: 'Послуги Ремонту',
         subtitle: 'Мультибрендний сервіс з сертифікованими фахівцями',
+        notFound: 'Не знайшли потрібну послугу?',
         items: {
           battery: { 
             title: 'Ремонт Батарей', 
@@ -172,9 +175,10 @@
         }
       },
       
-      // Gallery
+      // Gallery (об'єднано: галерея + робочий процес)
       gallery: {
         title: 'Галерея',
+        subtitle: 'Професійне обладнання та сертифіковані фахівці',
         recentWorks: 'Останні роботи',
         works: {
           displayOLED: 'Заміна OLED дисплею',
@@ -189,26 +193,7 @@
           satisfied: 'Клієнт задоволений',
           warranty: 'Гарантія 12 місяців',
           repaired: 'Відремонтовано за 2 години'
-        }
-      },
-      
-      // Why Us Section
-      whyUs: {
-        title: 'Чому обирають NEXX',
-        multibrand: { title: 'Мультибренд', desc: 'Apple, Samsung, Xiaomi, Huawei та інші' },
-        fast: { title: 'Швидкий Сервіс', desc: 'Більшість ремонтів за 30-60 хвилин' },
-        warranty: { title: 'Гарантія 30 днів', desc: 'На всі види ремонту' },
-        honest: { title: 'Чесні ціни', desc: 'Без прихованих платежів' },
-        original: { title: 'Оригінальні деталі', desc: 'Перевірені та протестовані' },
-        diagnostic: { title: 'Діагностика безкоштовна', desc: 'Професійна під мікроскопом' },
-        transparent: { title: 'Прозоро', desc: 'Фото/відео звіт ремонту' },
-        support: { title: 'Онлайн підтримка', desc: 'Консультації після ремонту' }
-      },
-      
-      // Work Process Gallery
-      gallery: {
-        title: 'Наш Робочий Процес',
-        subtitle: 'Професійне обладнання та сертифіковані фахівці',
+        },
         items: {
           tools: 'Професійні інструменти для точного ремонту',
           battery: 'Заміна батареї з тестуванням якості',
@@ -217,11 +202,32 @@
         }
       },
       
+      // Reviews Section
+      reviews: {
+        title: 'Що кажуть клієнти',
+        subtitle: 'Перевірені відгуки від наших задоволених клієнтів',
+        count: 'відгуків',
+        verified: 'Підтверджено'
+      },
+      
+      // Why Us Section
+      whyUs: {
+        title: 'Чому обирають NEXX',
+        multibrand: { title: 'Мультибренд', desc: 'Apple, Samsung, Xiaomi, Huawei та інші' },
+        fast: { title: 'Експрес Сервіс', desc: 'Швидкий ремонт без очікування' },
+        warranty: { title: 'Гарантія Включена', desc: 'Гарантована якість' },
+        honest: { title: 'Чесні ціни', desc: 'Без прихованих платежів' },
+        original: { title: 'Оригінальні деталі', desc: 'Перевірені та протестовані' },
+        diagnostic: { title: 'Діагностика безкоштовна', desc: 'Професійна під мікроскопом' },
+        transparent: { title: 'Прозоро', desc: 'Фото/відео звіт ремонту' },
+        support: { title: 'Онлайн підтримка', desc: 'Консультації після ремонту' }
+      },
+      
       // About/Office Section
       office: {
         title: 'Наш Сервісний Центр',
         subtitle: 'Професійний ремонт техніки в центрі Бухареста',
-        address: 'Str. Victoriei 15, București',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
         visit: 'Відвідайте нас'
       },
       
@@ -236,6 +242,7 @@
         selectModel: 'Виберіть модель:',
         selectIssue: 'Яка проблема?',
         back: 'Назад',
+        calculate: 'Розрахувати ціну',
         estimatedPrice: 'Приблизна ціна',
         time: 'Час ремонту',
         noHiddenFees: 'Без прихованих витрат',
@@ -247,6 +254,38 @@
         deviceWatch: 'Смарт-годинник',
         popular: 'Популярно',
         gallery: 'Галерея',
+        continueWithoutModel: 'Продовжити без моделі',
+        selectMultiple: 'Можна вибрати кілька проблем',
+        selectAtLeastOne: 'Виберіть хоча б одну проблему',
+        stepBrand: 'Марка',
+        stepDevice: 'Пристрій',
+        stepModel: 'Модель',
+        stepIssue: 'Проблема',
+        stepPrice: 'Ціна',
+        errorTitle: 'Упс! Щось пішло не так',
+        errorMessage: 'Виникла помилка. Будь ласка, перезавантажте сторінку.',
+        reloadPage: 'Перезавантажити сторінку',
+        selectOneIssue: 'Виберіть хоча б одну проблему',
+        priceError: 'Не вдалося розрахувати ціну. Спробуйте ще раз.',
+        loadingDatabase: 'Завантаження бази даних...',
+        loadingModels: 'Завантаження моделей...',
+        noModels: 'Немає моделей для цієї комбінації',
+        noModelsHint: 'не виробляє цей тип пристрою.',
+        continueWithoutModelBtn: 'Продовжити без моделі',
+      },
+      // Calculator issues
+      calc: {
+        issue: {
+          screen: 'Розбитий екран',
+          battery: 'Батарея (швидко розряджається)',
+          charging: 'Не заряджається',
+          camera: 'Камера не працює',
+          motherboard: 'Проблема з платою',
+          keyboard: 'Клавіатура',
+        },
+        continueWithoutModel: 'Продовжити без моделі',
+        selectMultiple: 'Можна вибрати кілька проблем',
+        selectIssue: 'Виберіть хоча б одну проблему',
       },
       
       // Booking Form
@@ -272,19 +311,21 @@
         },
         errors: {
           nameRequired: 'Ім\'я обов\'язкове (мін. 2 символи)',
+          phone: 'Введіть коректний номер телефону',
           phoneInvalid: 'Телефон недійсний',
           deviceRequired: 'Виберіть пристрій',
-          submitError: 'Помилка відправки. Спробуйте ще раз або зателефонуйте: +40 721 234 567'
+          submitError: 'Помилка відправки. Напишіть нам в Telegram: @nexx_support',
+          timeout: 'Час очікування вичерпано. Перевірте інтернет і спробуйте знову.'
         }
       },
       
       // Contact
       contact: {
         title: "Зв'яжіться з нами",
-        hours: 'Працюємо Пн-Пт 10:00-19:00',
-        address: 'Бухарест, Str. Victoriei 15',
-        phone: '+40 721 234 567',
-        email: 'info@nexx.ro',
+        hours: 'Пн-Пт 10:00-19:00 • Сб 11:00-17:00',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
+        telegram: '@nexx_support',
+        email: 'info@nexxgsm.ro',
       },
       
       // Footer
@@ -330,6 +371,141 @@
         installButton: 'Додати',
         installed: '🎉 NEXX GSM встановлено!'
       },
+      
+      // ============================================
+      // REMONLINE FORMS & DOCUMENTS
+      // ============================================
+      
+      forms: {
+        repairOrder: {
+          title: 'Форма замовлення ремонту',
+          subtitle: 'Відправте пристрій на ремонт',
+          device: 'Пристрій',
+          brand: 'Марка',
+          model: 'Модель',
+          serialNumber: 'Серійний номер',
+          problem: 'Опис проблеми',
+          problemDetails: 'Додаткові деталі',
+          estimatedCost: 'Орієнтовна вартість',
+          preferredDate: 'Бажана дата',
+          preferredTime: 'Бажаний час',
+          comments: 'Коментарі',
+          status: 'Статус',
+          submit: 'Відправити замовлення',
+          submitting: 'Відправляємо...',
+          success: 'Замовлення успішно відправлено!'
+        },
+        callback: {
+          title: 'Запит на передзвін',
+          subtitle: 'Ми передзвоним в найближчий час',
+          device: 'Тип пристрою',
+          problem: 'Опишіть вашу проблему',
+          preferredTime: 'Бажаний час дзвінка',
+          aiCallEnabled: 'Дозволити AI помічнику подзвонити',
+          submit: 'Запит на дзвінок',
+          submitting: 'Відправляємо...',
+          success: 'Дзвінок запрошений! Ми скоро передзвоним.',
+          aiWillCall: 'AI помічник подзвонить через 10 секунд'
+        },
+        diagnostic: {
+          title: 'Запит на діагностику',
+          subtitle: 'Отримайте професійну діагностику пристрою',
+          device: 'Пристрій',
+          brand: 'Марка',
+          model: 'Модель',
+          findings: 'Результати діагностики',
+          status: 'Статус',
+          estimatedRepairCost: 'Орієнтовна вартість ремонту',
+          estimatedRepairTime: 'Орієнтовний час ремонту',
+          submit: 'Відправити діагностику',
+          success: 'Діагностика відправлена!'
+        },
+        document: {
+          title: 'Запит на документ',
+          subtitle: 'Запросити офіційні документи ремонту',
+          type: 'Тип документа',
+          orderId: 'ID замовлення',
+          address: 'Адреса доставки',
+          includeDetails: 'Включити повні деталі',
+          submit: 'Запросити документ',
+          success: 'Запит на документ відправлений!'
+        }
+      },
+      
+      documents: {
+        types: {
+          invoice: 'Рахунок',
+          act: 'Акт ремонту',
+          contract: 'Договір обслуговування',
+          estimate: 'Кошторис',
+          receipt: 'Квитанція',
+          warranty: 'Гарантійний талон'
+        },
+        fields: {
+          documentNumber: 'Номер документа',
+          issueDate: 'Дата видачі',
+          dueDate: 'Термін оплати',
+          subtotal: 'Сума без податку',
+          tax: 'Податок',
+          total: 'Всього',
+          currency: 'Валюта',
+          notes: 'Примітки',
+          terms: 'Умови та положення'
+        },
+        sections: {
+          customerInfo: 'Інформація клієнта',
+          orderDetails: 'Деталі замовлення',
+          items: 'Товари та послуги',
+          summary: 'Підсумок',
+          signature: 'Підпис авторизованої особи'
+        },
+        actions: {
+          generate: 'Створити документ',
+          download: 'Завантажити',
+          preview: 'Попередній перегляд',
+          print: 'Друк',
+          email: 'Відправити поштою'
+        }
+      },
+      
+      validation: {
+        required: 'Це поле обов\'язкове',
+        invalidEmail: 'Неправильна адреса електронної пошти',
+        invalidPhone: 'Неправильний номер телефону',
+        minLength: 'Мінімальна довжина: {length}',
+        maxLength: 'Максимальна довжина: {length}',
+        invalidFormat: 'Неправильний формат',
+        orderNotFound: 'Замовлення не знайдено',
+        documentNotFound: 'Документ не знайдено'
+      },
+      
+      // ============================================
+      // NEXX GSM DOCUMENT TEMPLATES
+      // ============================================
+      
+      nexxTemplates: {
+        intake: {
+          title: 'Акт прийому пристрою',
+          sections: ['Інформація про пристрій', 'Стан та комплектація', 'Облікові записи', 'Підписи'],
+          description: 'Device intake form for repair service'
+        },
+        release: {
+          title: 'Акт видачі пристрою',
+          sections: ['Інформація про ремонт', 'Виконані роботи', 'Вартість', 'Гарантія', 'Підписи'],
+          description: 'Device release / completion form'
+        },
+        buyback: {
+          title: 'Акт виконання послуги',
+          sections: ['Старий пристрій', 'Новий пристрій', 'Розрахунок', 'Оплата', 'Підписи'],
+          description: 'Device buyback / trade-in form'
+        },
+        recycling: {
+          title: 'Акт прийому на утилізацію',
+          sections: ['Відправник', 'Приймаючий', 'Обладнання', 'Матеріали', 'Транспорт', 'Підписи'],
+          description: 'Equipment disposal / recycling form'
+        }
+      },
+      
       meta: { title: 'Ремонт iPhone, MacBook, Samsung Київ | Швидкий Сервіс 30 хв | NEXX ⭐' }
     },
     
@@ -357,7 +533,7 @@
       // Hero Section
       hero: {
         title: 'Reparații iPhone, MacBook, Samsung',
-        subtitle: 'Service 30-60 min • Garanție 30 zile',
+        subtitle: 'Service Express • Garanție Inclusă',
         description: 'Service profesional Apple, Samsung, Xiaomi, Huawei. Diagnostic gratuit. Piese originale.',
       },
       
@@ -404,12 +580,14 @@
         confirmDetails: 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.',
         freeIncluded: '🎁 Diagnostic GRATUIT inclus în comandă!',
         close: 'Închide',
+        toastSuccess: '🤖 AI-ul nostru vă sună acum!',
       },
       
       // Services Section
       services: {
         title: 'Ce reparăm',
         subtitle: 'Apple, Samsung, Xiaomi, Huawei - toate sub un singur acoperiș',
+        notFound: 'Nu ați găsit serviciul? Contactați-ne.',
         items: {
           battery: { 
             title: 'Reparații Baterii', 
@@ -497,9 +675,10 @@
         }
       },
       
-      // Gallery
+      // Gallery (unite: galerie + proces lucru)
       gallery: {
         title: 'Galerie',
+        subtitle: 'Echipament profesional și tehnicieni certificați',
         recentWorks: 'Lucrări Recente',
         works: {
           displayOLED: 'Înlocuire display OLED',
@@ -514,26 +693,7 @@
           satisfied: 'Client mulțumit',
           warranty: 'Garanție 12 luni',
           repaired: 'Reparat în 2 ore'
-        }
-      },
-      
-      // Why Us Section
-      whyUs: {
-        title: 'De ce NEXX',
-        multibrand: { title: 'Multibrand', desc: 'Apple, Samsung, Xiaomi, Huawei și alții' },
-        fast: { title: 'Service rapid', desc: 'Majoritatea reparațiilor în 30-60 minute' },
-        warranty: { title: 'Garanție 30 zile', desc: 'Pentru toate reparațiile' },
-        honest: { title: 'Prețuri corecte', desc: 'Fără costuri ascunse' },
-        original: { title: 'Piese originale', desc: 'Verificate și testate' },
-        diagnostic: { title: 'Diagnostic gratuit', desc: 'Profesional sub microscop' },
-        transparent: { title: 'Transparent', desc: 'Raport foto/video' },
-        support: { title: 'Suport Online', desc: 'Consultații după reparație' }
-      },
-      
-      // Work Process Gallery
-      gallery: {
-        title: 'Procesul Nostru de Lucru',
-        subtitle: 'Echipament profesional și tehnicieni certificați',
+        },
         items: {
           tools: 'Instrumente profesionale pentru reparații precise',
           battery: 'Înlocuire baterie cu testare calitate',
@@ -542,11 +702,32 @@
         }
       },
       
+      // Reviews Section
+      reviews: {
+        title: 'Ce spun clienții',
+        subtitle: 'Recenzii verificate de la clienții noștri mulțumiți',
+        count: 'recenzii',
+        verified: 'Verificat'
+      },
+      
+      // Why Us Section
+      whyUs: {
+        title: 'De ce NEXX',
+        multibrand: { title: 'Multibrand', desc: 'Apple, Samsung, Xiaomi, Huawei și alții' },
+        fast: { title: 'Service Express', desc: 'Reparații rapide, fără așteptare' },
+        warranty: { title: 'Garanție Inclusă', desc: 'Calitate garantată' },
+        honest: { title: 'Prețuri corecte', desc: 'Fără costuri ascunse' },
+        original: { title: 'Piese originale', desc: 'Verificate și testate' },
+        diagnostic: { title: 'Diagnostic gratuit', desc: 'Profesional sub microscop' },
+        transparent: { title: 'Transparent', desc: 'Raport foto/video' },
+        support: { title: 'Suport Online', desc: 'Consultații după reparație' }
+      },
+      
       // About/Office Section
       office: {
         title: 'Centrul Nostru de Service',
         subtitle: 'Reparații profesionale în centrul Bucureștiului',
-        address: 'Str. Victoriei 15, București',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
         visit: 'Vizitează-ne'
       },
       
@@ -561,6 +742,7 @@
         selectModel: 'Alegeți modelul:',
         selectIssue: 'Ce problemă aveți?',
         back: 'Înapoi',
+        calculate: 'Calculează prețul',
         estimatedPrice: 'Preț estimat',
         time: 'Timp reparație',
         noHiddenFees: 'Fără taxe ascunse',
@@ -572,6 +754,39 @@
         deviceWatch: 'Smartwatch',
         popular: 'Popular',
         gallery: 'Galerie',
+        continueWithoutModel: 'Continuă fără model',
+        selectMultiple: 'Puteți selecta mai multe probleme',
+        selectAtLeastOne: 'Selectați cel puțin o problemă',
+        stepBrand: 'Marcă',
+        stepDevice: 'Dispozitiv',
+        stepModel: 'Model',
+        stepIssue: 'Problemă',
+        stepPrice: 'Preț',
+        errorTitle: 'Oops! Ceva nu a mers bine',
+        errorMessage: 'A apărut o eroare. Vă rugăm reîncărcați pagina.',
+        reloadPage: 'Reîncărcați pagina',
+        selectOneIssue: 'Selectați cel puțin o problemă',
+        priceError: 'Nu s-a putut calcula prețul. Încercați din nou.',
+        loadingDatabase: 'Se încarcă baza de date...',
+        loadingModels: 'Se încarcă modelele...',
+        noModels: 'Nu avem modele pentru această combinație',
+        noModelsHint: 'nu produce acest tip de dispozitiv.',
+        continueWithoutModelBtn: 'Continuați fără model',
+        chooseOtherType: 'Alegeți alt tip',
+      },
+      // Calculator issues
+      calc: {
+        issue: {
+          screen: 'Ecran spart/defect',
+          battery: 'Baterie (se descarcă rapid)',
+          charging: 'Nu se încarcă',
+          camera: 'Cameră nu funcționează',
+          motherboard: 'Problemă la placă',
+          keyboard: 'Tastatură',
+        },
+        continueWithoutModel: 'Continuă fără model',
+        selectMultiple: 'Puteți selecta mai multe probleme',
+        selectIssue: 'Selectați cel puțin o problemă',
       },
       
       // Booking Form
@@ -597,26 +812,27 @@
         },
         errors: {
           nameRequired: 'Numele este obligatoriu (min. 2 caractere)',
+          phone: 'Introduceți un număr de telefon valid',
           phoneInvalid: 'Telefonul este invalid',
           deviceRequired: 'Selectați dispozitivul',
-          submitError: 'Eroare la trimitere. Încercați din nou sau sunați: +40 721 234 567'
+          submitError: 'Eroare la trimitere. Contactați-ne pe Telegram: @nexx_support'
         }
       },
       
       // Contact
       contact: {
         title: 'Contactează-ne',
-        hours: 'Program: Lun-Vin 10:00-19:00',
-        address: 'București, Str. Victoriei 15',
-        phone: '+40 721 234 567',
-        email: 'info@nexx.ro',
+        hours: 'Lun-Vin 10:00-19:00 • Sâm 11:00-17:00',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
+        email: 'info@nexxgsm.ro',
+        telegram: '@nexx_support',
       },
       
       // Footer
       footer: {
         skipToContent: 'Treci la conținut',
         ariaLabel: 'Secțiunea principală',
-        tagline: 'Service profesional multibrand. Garanție 30 zile. Diagnostic gratuit. București.',
+        tagline: 'Service profesional multibrand. Garanție inclusă. Diagnostic gratuit. București.',
         company: 'Companie',
         about: 'Despre noi',
         jobs: 'Joburi',
@@ -655,7 +871,109 @@
         installButton: 'Adaugă',
         installed: '🎉 NEXX GSM instalat!'
       },
-      meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' }
+      meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' },
+      
+      // Remonline Forms
+      forms: {
+        repairOrder: {
+          title: 'Formular de Comandă de Reparație',
+          subtitle: 'Trimiteți dispozitivul pentru reparație',
+          device: 'Dispozitiv',
+          brand: 'Marcă',
+          model: 'Model',
+          serialNumber: 'Numărul de serie',
+          problem: 'Descrierea problemei',
+          problemDetails: 'Detalii suplimentare',
+          estimatedCost: 'Cost estimat',
+          preferredDate: 'Data preferată',
+          preferredTime: 'Ora preferată',
+          comments: 'Comentarii',
+          status: 'Status',
+          submit: 'Trimiteți Comanda',
+          submitting: 'Se trimite...',
+          success: 'Comanda trimisă cu succes!'
+        },
+        callback: {
+          title: 'Solicitați Reapelare',
+          subtitle: 'Vă vom suna în curând',
+          device: 'Tipul dispozitivului',
+          problem: 'Descrieți problema dvs.',
+          preferredTime: 'Ora preferată pentru apel',
+          aiCallEnabled: 'Permiteți asistentului AI să sune',
+          submit: 'Solicitați Apel',
+          submitting: 'Se trimite...',
+          success: 'Apel solicitat! Vă vom suna în curând.',
+          aiWillCall: 'Asistentul AI va suna în 10 secunde'
+        },
+        diagnostic: {
+          title: 'Solicitare Diagnostic',
+          subtitle: 'Obțineți un diagnostic profesional al dispozitivului',
+          device: 'Dispozitiv',
+          brand: 'Marcă',
+          model: 'Model',
+          findings: 'Constatările diagnosticului',
+          status: 'Status',
+          estimatedRepairCost: 'Costul estimat al reparației',
+          estimatedRepairTime: 'Timpul estimat de reparație',
+          submit: 'Trimiteți Diagnostic',
+          success: 'Diagnostic trimis!'
+        },
+        document: {
+          title: 'Solicitare Document',
+          subtitle: 'Solicitați documente oficiale de reparație',
+          type: 'Tipul documentului',
+          orderId: 'ID Comandă',
+          address: 'Adresa de livrare',
+          includeDetails: 'Includeți detalii complete',
+          submit: 'Solicitați Document',
+          success: 'Solicitare document trimisă!'
+        }
+      },
+      documents: {
+        types: {
+          invoice: 'Factură',
+          act: 'Act de Reparație',
+          contract: 'Contract de Service',
+          estimate: 'Deviz',
+          receipt: 'Chitanță',
+          warranty: 'Certificat de Garanție'
+        },
+        fields: {
+          documentNumber: 'Număr document',
+          issueDate: 'Data emiterii',
+          dueDate: 'Data scadentă',
+          subtotal: 'Subtotal',
+          tax: 'TVA',
+          total: 'Total',
+          currency: 'Monedă',
+          notes: 'Note',
+          terms: 'Termeni și condiții'
+        },
+        sections: {
+          customerInfo: 'Informații Client',
+          orderDetails: 'Detalii Comandă',
+          items: 'Articole și Servicii',
+          summary: 'Rezumat',
+          signature: 'Semnătura Reprezentantului Autorizat'
+        },
+        actions: {
+          generate: 'Generați Document',
+          download: 'Descărcați',
+          preview: 'Previzualizare',
+          print: 'Imprimați',
+          email: 'Trimiteți prin Email'
+        }
+      },
+      validation: {
+        required: 'Acest câmp este obligatoriu',
+        invalidEmail: 'Adresă email invalidă',
+        invalidPhone: 'Număr de telefon invalid',
+        minLength: 'Lungime minimă: {length}',
+        maxLength: 'Lungime maximă: {length}',
+        invalidFormat: 'Format invalid',
+        orderNotFound: 'Comanda nu a fost găsită',
+        documentNotFound: 'Documentul nu a fost găsit'
+      }
     },
     
     // ============================================
@@ -664,7 +982,7 @@
     ru: {
       code: 'ru',
       name: 'Русский',
-      flag: '⚪', // Білий без прапора
+      flag: '🇷🇺',
       direction: 'ltr',
       
       // Navigation & Header
@@ -682,7 +1000,7 @@
       // Hero Section
       hero: {
         title: 'Ремонт iPhone, MacBook, Samsung',
-        subtitle: 'Сервис 30-60 мин • Гарантия 30 дней',
+        subtitle: 'Экспресс Сервис • Гарантия Включена',
         description: 'Профессиональный ремонт Apple, Samsung, Xiaomi, Huawei. Бесплатная диагностика. Оригинальные запчасти.',
       },
       
@@ -724,17 +1042,20 @@
         sending: 'Отправляется...',
         submit: 'Отправить запрос',
         orCall: 'или позвоните напрямую: ',
+        orContact: 'Или напишите нам в ',
         thanks: 'Спасибо!',
         callingNow: '📞 AI перезванивает сейчас...',
         confirmDetails: 'Наш виртуальный ассистент свяжется с вами через несколько секунд для подтверждения деталей.',
         freeIncluded: '🎁 Бесплатная диагностика включена в заказ!',
         close: 'Закрыть',
+        toastSuccess: '🤖 Наш AI перезвонит сейчас!',
       },
       
       // Services Section
       services: {
         title: 'Что мы ремонтируем',
         subtitle: 'Все бренды под одной крышей',
+        notFound: 'Не нашли нужную услугу? Свяжитесь с нами.',
         items: {
           battery: { 
             title: 'Ремонт Батарей', 
@@ -822,9 +1143,10 @@
         }
       },
       
-      // Gallery
+      // Gallery (объединено: галерея + рабочий процесс)
       gallery: {
         title: 'Галерея',
+        subtitle: 'Профессиональное оборудование и сертифицированные специалисты',
         recentWorks: 'Последние работы',
         works: {
           displayOLED: 'Замена OLED дисплея',
@@ -839,26 +1161,7 @@
           satisfied: 'Клиент доволен',
           warranty: 'Гарантия 12 месяцев',
           repaired: 'Отремонтировано за 2 часа'
-        }
-      },
-      
-      // Why Us Section
-      whyUs: {
-        title: 'Почему выбирают NEXX',
-        multibrand: { title: 'Мультибренд', desc: 'Apple, Samsung, Xiaomi, Huawei и другие' },
-        fast: { title: 'Быстрый Сервис', desc: 'Большинство ремонтов за 30-60 минут' },
-        warranty: { title: 'Гарантия 30 дней', desc: 'На все виды ремонта' },
-        honest: { title: 'Честные цены', desc: 'Без скрытых платежей' },
-        original: { title: 'Оригинальные детали', desc: 'Проверенные и протестированные' },
-        diagnostic: { title: 'Диагностика бесплатна', desc: 'Профессиональная под микроскопом' },
-        transparent: { title: 'Прозрачно', desc: 'Фото/видео отчёт ремонта' },
-        support: { title: 'Онлайн поддержка', desc: 'Консультации после ремонта' }
-      },
-      
-      // Work Process Gallery
-      gallery: {
-        title: 'Наш Рабочий Процесс',
-        subtitle: 'Профессиональное оборудование и сертифицированные специалисты',
+        },
         items: {
           tools: 'Профессиональные инструменты для точного ремонта',
           battery: 'Замена батареи с тестированием качества',
@@ -867,11 +1170,32 @@
         }
       },
       
+      // Reviews Section
+      reviews: {
+        title: 'Что говорят клиенты',
+        subtitle: 'Проверенные отзывы от наших довольных клиентов',
+        count: 'отзывов',
+        verified: 'Подтверждено'
+      },
+      
+      // Why Us Section
+      whyUs: {
+        title: 'Почему выбирают NEXX',
+        multibrand: { title: 'Мультибренд', desc: 'Apple, Samsung, Xiaomi, Huawei и другие' },
+        fast: { title: 'Экспресс Сервис', desc: 'Быстрый ремонт без ожидания' },
+        warranty: { title: 'Гарантия Включена', desc: 'Гарантированное качество' },
+        honest: { title: 'Честные цены', desc: 'Без скрытых платежей' },
+        original: { title: 'Оригинальные детали', desc: 'Проверенные и протестированные' },
+        diagnostic: { title: 'Диагностика бесплатна', desc: 'Профессиональная под микроскопом' },
+        transparent: { title: 'Прозрачно', desc: 'Фото/видео отчёт ремонта' },
+        support: { title: 'Онлайн поддержка', desc: 'Консультации после ремонта' }
+      },
+      
       // About/Office Section
       office: {
         title: 'Наш Сервисный Центр',
         subtitle: 'Профессиональный ремонт в центре Бухареста',
-        address: 'Str. Victoriei 15, București',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
         visit: 'Посетите нас'
       },
       
@@ -886,6 +1210,7 @@
         selectModel: 'Выберите модель:',
         selectIssue: 'Какая у вас проблема?',
         back: 'Назад',
+        calculate: 'Рассчитать цену',
         estimatedPrice: 'Примерная цена',
         time: 'Время ремонта',
         noHiddenFees: 'Без скрытых платежей',
@@ -897,6 +1222,39 @@
         deviceWatch: 'Смарт-часы',
         popular: 'Популярно',
         gallery: 'Галерея',
+        continueWithoutModel: 'Продолжить без модели',
+        selectMultiple: 'Можно выбрать несколько проблем',
+        selectAtLeastOne: 'Выберите хотя бы одну проблему',
+        stepBrand: 'Марка',
+        stepDevice: 'Устройство',
+        stepModel: 'Модель',
+        stepIssue: 'Проблема',
+        stepPrice: 'Цена',
+        errorTitle: 'Упс! Что-то пошло не так',
+        errorMessage: 'Произошла ошибка. Пожалуйста, перезагрузите страницу.',
+        reloadPage: 'Перезагрузить страницу',
+        selectOneIssue: 'Выберите хотя бы одну проблему',
+        priceError: 'Не удалось рассчитать цену. Попробуйте снова.',
+        loadingDatabase: 'Загрузка базы данных...',
+        loadingModels: 'Загрузка моделей...',
+        noModels: 'Нет моделей для этой комбинации',
+        noModelsHint: 'не производит этот тип устройства.',
+        continueWithoutModelBtn: 'Продолжить без модели',
+        chooseOtherType: 'Выбрать другой тип',
+      },
+      // Calculator issues
+      calc: {
+        issue: {
+          screen: 'Разбитый экран',
+          battery: 'Батарея (быстро разряжается)',
+          charging: 'Не заряжается',
+          camera: 'Камера не работает',
+          motherboard: 'Проблема с платой',
+          keyboard: 'Клавиатура',
+        },
+        continueWithoutModel: 'Продолжить без модели',
+        selectMultiple: 'Можно выбрать несколько проблем',
+        selectIssue: 'Выберите хотя бы одну проблему',
       },
       
       // Booking Form
@@ -906,56 +1264,56 @@
         form: {
           name: 'Ваше имя',
           namePlaceholder: 'Александр',
-          phone: 'Телефон *',
-          phonePlaceholder: '+40 7XX XXX XXX',
+          phone: 'Телефон',
+          phonePlaceholder: '+40 XXX XXX XXX',
           device: 'Устройство',
-          devicePlaceholder: 'ex: iPhone 14 Pro, Samsung S24',
-          problem: 'Проблема',
-          problemPlaceholder: 'Опишите проблему...',
+          devicePlaceholder: 'Выберите устройство',
+          problem: 'Описание проблемы',
+          problemPlaceholder: 'Не заряжается, треснутый экран...',
           submit: 'Отправить заявку',
-          sending: 'Отправляется...',
-          success: 'Спасибо! Мы перезвоним в ближайшее время',
-          errors: {
-            nameRequired: 'Имя обязательно (мин. 2 символа)',
-            phoneInvalid: 'Телефон недействителен',
-            deviceRequired: 'Выберите устройство'
-          }
+          submitting: 'Отправляем...'
+        },
+        success: {
+          title: 'Заявка отправлена!',
+          message: 'Мы свяжемся с вами в ближайшее время',
+          newRequest: 'Новая заявка'
+        },
+        errors: {
+          nameRequired: 'Имя обязательно (мин. 2 символа)',
+          phone: 'Введите корректный номер телефона',
+          phoneInvalid: 'Телефон недействителен',
+          deviceRequired: 'Выберите устройство',
+          submitError: 'Ошибка отправки. Напишите нам в Telegram: @nexx_support',
+          timeout: 'Время ожидания истекло. Проверьте интернет и попробуйте снова.'
         }
       },
       
-      // Contact Section
+      // Contact
       contact: {
         title: 'Свяжитесь с нами',
-        subtitle: 'Программа: Пн-Пт 10:00-19:00',
-        address: 'București, Str. Victoriei 15',
-        phone: '+40 721 234 567',
-        email: 'info@nexx.ro',
-        social: {
-          telegram: 'Telegram',
-          whatsapp: 'WhatsApp',
-          instagram: 'Instagram'
-        }
+        hours: 'Пн-Пт 10:00-19:00 • Сб 11:00-17:00',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
+        telegram: '@nexx_support',
+        email: 'info@nexxgsm.ro',
       },
       
       // Footer
       footer: {
         skipToContent: 'Перейти к содержимому',
-        description: 'Профессиональный мультибрендовый сервис. Гарантия 30 дней. Бесплатная диагностика. Бухарест.',
+        ariaLabel: 'Главная секция',
+        tagline: 'Профессиональный ремонт техники. Опыт 10+ лет',
         company: 'Компания',
-        services: 'Услуги',
-        info: 'Информация',
         about: 'О нас',
-        contacts: 'Контакты',
         jobs: 'Вакансии',
-        phoneRepair: 'Ремонт телефонов',
-        laptopRepair: 'Ремонт ноутбуков',
-        priceCalculator: 'Примерная стоимость ремонта',
+        services: 'Услуги',
+        servicePhone: 'Ремонт телефонов',
+        serviceLaptop: 'Ремонт ноутбуков',
+        info: 'Информация',
         faq: 'FAQ',
         privacy: 'Конфиденциальность',
         terms: 'Условия',
-        rights: '© 2026 NEXX Service Center. Все права защищены.',
-        secure: 'Безопасный сайт',
-        ssl: 'SSL Зашифрован'
+        copyright: 'NEXX Service Center. Все права защищены.',
+        security: 'Безопасный сайт • SSL шифрование'
       },
       
       // Quick Actions (Floating Menu)
@@ -985,7 +1343,109 @@
       // Meta
       meta: {
         title: 'Ремонт iPhone, MacBook, Samsung Бухарест | Быстрый Сервис 30 мин | NEXX ⭐',
-        description: 'Профессиональный сервис ремонта iPhone, MacBook, Samsung в Бухаресте ⭐ Гарантия 30 дней • Бесплатная диагностика • От 60 lei • Быстрый сервис 30-60 мин • Все сектора • Звоните: 0721 234 567'
+        description: 'Профессиональный сервис ремонта iPhone, MacBook, Samsung в Бухаресте ⭐ Гарантия включена • Бесплатная диагностика • От 60 lei • Экспресс сервис • Все сектора'
+      },
+      
+      // Remonline Forms
+      forms: {
+        repairOrder: {
+          title: 'Форма заказа ремонта',
+          subtitle: 'Отправьте устройство на ремонт',
+          device: 'Устройство',
+          brand: 'Марка',
+          model: 'Модель',
+          serialNumber: 'Серийный номер',
+          problem: 'Описание проблемы',
+          problemDetails: 'Дополнительные детали',
+          estimatedCost: 'Предполагаемая стоимость',
+          preferredDate: 'Предпочитаемая дата',
+          preferredTime: 'Предпочитаемое время',
+          comments: 'Комментарии',
+          status: 'Статус',
+          submit: 'Отправить заказ',
+          submitting: 'Отправляется...',
+          success: 'Заказ успешно отправлен!'
+        },
+        callback: {
+          title: 'Запросить обратный звонок',
+          subtitle: 'Мы свяжемся с вами в ближайшее время',
+          device: 'Тип устройства',
+          problem: 'Опишите вашу проблему',
+          preferredTime: 'Предпочитаемое время звонка',
+          aiCallEnabled: 'Разрешить AI помощнику позвонить',
+          submit: 'Запросить звонок',
+          submitting: 'Отправляется...',
+          success: 'Звонок запрошен! Мы скоро позвоним.',
+          aiWillCall: 'AI помощник позвонит в течение 10 секунд'
+        },
+        diagnostic: {
+          title: 'Запрос диагностики',
+          subtitle: 'Получите профессиональную диагностику устройства',
+          device: 'Устройство',
+          brand: 'Марка',
+          model: 'Модель',
+          findings: 'Результаты диагностики',
+          status: 'Статус',
+          estimatedRepairCost: 'Предполагаемая стоимость ремонта',
+          estimatedRepairTime: 'Предполагаемое время ремонта',
+          submit: 'Отправить диагностику',
+          success: 'Диагностика отправлена!'
+        },
+        document: {
+          title: 'Запрос документа',
+          subtitle: 'Запросить официальные документы ремонта',
+          type: 'Тип документа',
+          orderId: 'ID заказа',
+          address: 'Адрес доставки',
+          includeDetails: 'Включить полные детали',
+          submit: 'Запросить документ',
+          success: 'Запрос на документ отправлен!'
+        }
+      },
+      documents: {
+        types: {
+          invoice: 'Счет-фактура',
+          act: 'Акт ремонта',
+          contract: 'Договор обслуживания',
+          estimate: 'Смета',
+          receipt: 'Квитанция',
+          warranty: 'Гарантийный талон'
+        },
+        fields: {
+          documentNumber: 'Номер документа',
+          issueDate: 'Дата выдачи',
+          dueDate: 'Срок оплаты',
+          subtotal: 'Сумма без налога',
+          tax: 'Налог',
+          total: 'Итого',
+          currency: 'Валюта',
+          notes: 'Примечания',
+          terms: 'Условия и положения'
+        },
+        sections: {
+          customerInfo: 'Информация клиента',
+          orderDetails: 'Детали заказа',
+          items: 'Товары и услуги',
+          summary: 'Итого',
+          signature: 'Подпись уполномоченного лица'
+        },
+        actions: {
+          generate: 'Создать документ',
+          download: 'Скачать',
+          preview: 'Предпросмотр',
+          print: 'Печать',
+          email: 'Отправить по Email'
+        }
+      },
+      validation: {
+        required: 'Это поле обязательно',
+        invalidEmail: 'Неправильный адрес электронной почты',
+        invalidPhone: 'Неправильный номер телефона',
+        minLength: 'Минимальная длина: {length}',
+        maxLength: 'Максимальная длина: {length}',
+        invalidFormat: 'Неправильный формат',
+        orderNotFound: 'Заказ не найден',
+        documentNotFound: 'Документ не найден'
       }
     },
     
@@ -1013,7 +1473,7 @@
       // Hero Section
       hero: {
         title: 'iPhone, MacBook, Samsung Repair',
-        subtitle: '30-60 min service • 30-day warranty',
+        subtitle: 'Express Service • Warranty Included',
         description: 'Professional Apple, Samsung, Xiaomi, Huawei repair. Free diagnostics. Original parts.',
       },
       
@@ -1055,17 +1515,20 @@
         sending: 'Sending...',
         submit: 'Send request',
         orCall: 'or call directly: ',
+        orContact: 'Or contact us on ',
         thanks: 'Thank you!',
         callingNow: '📞 AI is calling you now...',
         confirmDetails: 'Our virtual assistant will contact you in a few seconds to confirm details.',
         freeIncluded: '🎁 FREE diagnostic included with your order!',
         close: 'Close',
+        toastSuccess: '🤖 Our AI is calling you now!',
       },
       
       // Services Section
       services: {
         title: 'What we repair',
         subtitle: 'All brands under one roof',
+        notFound: 'Can\'t find the service? Contact us.',
         items: {
           battery: { 
             title: 'Battery Repair', 
@@ -1156,6 +1619,7 @@
       // Gallery
       gallery: {
         title: 'Gallery',
+        subtitle: 'Professional equipment and certified technicians',
         recentWorks: 'Recent Work',
         works: {
           displayOLED: 'OLED display replacement',
@@ -1170,15 +1634,29 @@
           satisfied: 'Satisfied customer',
           warranty: '12-month warranty',
           repaired: 'Repaired in 2 hours'
+        },
+        items: {
+          tools: 'Professional tools for precise repairs',
+          battery: 'Battery replacement with quality testing',
+          screen: 'Screen repairs under microscope',
+          storefront: 'Our NEXX GSM service center'
         }
+      },
+      
+      // Reviews Section
+      reviews: {
+        title: 'What customers say',
+        subtitle: 'Verified reviews from our satisfied customers',
+        count: 'reviews',
+        verified: 'Verified'
       },
       
       // Why Us Section
       whyUs: {
         title: 'Why NEXX',
         multibrand: { title: 'Multibrand', desc: 'Apple, Samsung, Xiaomi, Huawei and more' },
-        fast: { title: 'Fast Service', desc: 'Most repairs in 30-60 minutes' },
-        warranty: { title: '30-day warranty', desc: 'For all repairs' },
+        fast: { title: 'Express Service', desc: 'Fast repairs, no long waits' },
+        warranty: { title: 'Warranty Included', desc: 'Quality guaranteed' },
         honest: { title: 'Fair prices', desc: 'No hidden fees' },
         original: { title: 'Original parts', desc: 'Verified and tested' },
         diagnostic: { title: 'Free diagnostics', desc: 'Professional microscopy' },
@@ -1202,7 +1680,7 @@
       office: {
         title: 'Our Service Center',
         subtitle: 'Professional repairs in central Bucharest',
-        address: 'Str. Victoriei 15, București',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
         visit: 'Visit us'
       },
       
@@ -1217,6 +1695,7 @@
         selectModel: 'Select model:',
         selectIssue: 'What\'s the problem?',
         back: 'Back',
+        calculate: 'Calculate price',
         estimatedPrice: 'Estimated price',
         time: 'Repair time',
         noHiddenFees: 'No hidden fees',
@@ -1228,6 +1707,39 @@
         deviceWatch: 'Smartwatch',
         popular: 'Popular',
         gallery: 'Gallery',
+        continueWithoutModel: 'Continue without model',
+        selectMultiple: 'You can select multiple issues',
+        selectAtLeastOne: 'Select at least one issue',
+        stepBrand: 'Brand',
+        stepDevice: 'Device',
+        stepModel: 'Model',
+        stepIssue: 'Issue',
+        stepPrice: 'Price',
+        errorTitle: 'Oops! Something went wrong',
+        errorMessage: 'An error occurred. Please reload the page.',
+        reloadPage: 'Reload page',
+        selectOneIssue: 'Select at least one issue',
+        priceError: 'Could not calculate price. Please try again.',
+        loadingDatabase: 'Loading database...',
+        loadingModels: 'Loading models...',
+        noModels: 'No models for this combination',
+        noModelsHint: 'does not produce this device type.',
+        continueWithoutModelBtn: 'Continue without model',
+        chooseOtherType: 'Choose other type',
+      },
+      // Calculator issues
+      calc: {
+        issue: {
+          screen: 'Broken screen',
+          battery: 'Battery (drains quickly)',
+          charging: 'Not charging',
+          camera: 'Camera not working',
+          motherboard: 'Board issue',
+          keyboard: 'Keyboard',
+        },
+        continueWithoutModel: 'Continue without model',
+        selectMultiple: 'You can select multiple issues',
+        selectIssue: 'Select at least one issue',
       },
       
       // Booking Form
@@ -1253,9 +1765,10 @@
         },
         errors: {
           nameRequired: 'Name is required (min. 2 characters)',
+          phone: 'Please enter a valid phone number',
           phoneInvalid: 'Phone number is invalid',
           deviceRequired: 'Please select a device',
-          submitError: 'Submission error. Please try again or call: +40 721 234 567'
+          submitError: 'Submission error. Contact us on Telegram: @nexx_support'
         }
       },
       
@@ -1263,9 +1776,9 @@
       contact: {
         title: 'Contact us',
         hours: 'Working hours: Mon-Fri 10:00-19:00',
-        address: 'Bucharest, Str. Victoriei 15',
-        phone: '+40 721 234 567',
-        email: 'info@nexx.ro',
+        address: 'Calea Șerban Vodă 47, Sector 4, București',
+        telegram: '@nexx_support',
+        email: 'info@nexxgsm.ro',
       },
       
       // Footer
@@ -1311,7 +1824,114 @@
         installButton: 'Add',
         installed: '🎉 NEXX GSM installed!'
       },
-      meta: { title: 'iPhone, MacBook, Samsung Repair Bucharest | Fast Service 30 min | NEXX ⭐' }
+      meta: { title: 'iPhone, MacBook, Samsung Repair Bucharest | Fast Service 30 min | NEXX ⭐' },
+      
+      // ============================================
+      // REMONLINE FORMS & DOCUMENTS
+      // ============================================
+      
+      forms: {
+        repairOrder: {
+          title: 'Repair Order Form',
+          subtitle: 'Submit your device for repair',
+          device: 'Device',
+          brand: 'Brand',
+          model: 'Model',
+          serialNumber: 'Serial Number',
+          problem: 'Problem Description',
+          problemDetails: 'Additional Details',
+          estimatedCost: 'Estimated Cost',
+          preferredDate: 'Preferred Date',
+          preferredTime: 'Preferred Time',
+          comments: 'Comments',
+          status: 'Status',
+          submit: 'Submit Order',
+          submitting: 'Submitting...',
+          success: 'Order submitted successfully!'
+        },
+        callback: {
+          title: 'Request Callback',
+          subtitle: 'We will call you back shortly',
+          device: 'Device Type',
+          problem: 'Describe Your Problem',
+          preferredTime: 'Preferred Time to Call',
+          aiCallEnabled: 'Allow AI Assistant to call',
+          submit: 'Request Callback',
+          submitting: 'Sending...',
+          success: 'Callback requested! We\'ll call soon.',
+          aiWillCall: 'AI assistant will call within 10 seconds'
+        },
+        diagnostic: {
+          title: 'Diagnostic Request',
+          subtitle: 'Get professional device diagnostics',
+          device: 'Device',
+          brand: 'Brand',
+          model: 'Model',
+          findings: 'Diagnostic Findings',
+          status: 'Status',
+          estimatedRepairCost: 'Estimated Repair Cost',
+          estimatedRepairTime: 'Estimated Repair Time',
+          submit: 'Submit Diagnostic',
+          success: 'Diagnostic submitted!'
+        },
+        document: {
+          title: 'Document Request',
+          subtitle: 'Request official repair documents',
+          type: 'Document Type',
+          orderId: 'Order ID',
+          address: 'Shipping Address',
+          includeDetails: 'Include Full Details',
+          submit: 'Request Document',
+          success: 'Document request submitted!'
+        }
+      },
+      
+      documents: {
+        types: {
+          invoice: 'Invoice',
+          act: 'Repair Act',
+          contract: 'Service Contract',
+          estimate: 'Price Estimate',
+          receipt: 'Receipt',
+          warranty: 'Warranty Card'
+        },
+        fields: {
+          documentNumber: 'Document Number',
+          issueDate: 'Issue Date',
+          dueDate: 'Due Date',
+          subtotal: 'Subtotal',
+          tax: 'Tax',
+          total: 'Total',
+          currency: 'Currency',
+          notes: 'Notes',
+          terms: 'Terms & Conditions'
+        },
+        sections: {
+          customerInfo: 'Customer Information',
+          orderDetails: 'Order Details',
+          items: 'Items & Services',
+          summary: 'Summary',
+          signature: 'Authorized Signature'
+        },
+        actions: {
+          generate: 'Generate Document',
+          download: 'Download',
+          preview: 'Preview',
+          print: 'Print',
+          email: 'Send via Email'
+        }
+      },
+      
+      validation: {
+        required: 'This field is required',
+        invalidEmail: 'Invalid email address',
+        invalidPhone: 'Invalid phone number',
+        minLength: 'Minimum length: {length}',
+        maxLength: 'Maximum length: {length}',
+        invalidFormat: 'Invalid format',
+        orderNotFound: 'Order not found',
+        documentNotFound: 'Document not found'
+      }
     }
   };
   
@@ -1336,20 +1956,24 @@
     detectLanguage() {
       // 1. Проверяем URL параметр ?lang=
       const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
+      let urlLang = urlParams.get('lang');
+      // Алиас: ua -> uk (некоторые используют UA для украинского)
+      if (urlLang === 'ua') urlLang = 'uk';
       if (urlLang && translations[urlLang]) {
         localStorage.setItem('nexx_lang', urlLang);
         return urlLang;
       }
       
       // 2. Проверяем сохранённый язык
-      const saved = localStorage.getItem('nexx_lang');
+      let saved = localStorage.getItem('nexx_lang');
+      if (saved === 'ua') saved = 'uk';
       if (saved && translations[saved]) return saved;
       
       return 'ro'; // Default Romanian
     }
     
     setLanguage(lang) {
+      if (lang === 'ua') lang = 'uk';
       if (!translations[lang]) return false;
       
       this.currentLang = lang;
@@ -1394,33 +2018,60 @@
       }
       
       const keys = key.split('.');
-      let value = translations[this.currentLang];
+      const getByKey = (obj) => {
+        let v = obj;
+        for (const k of keys) {
+          v = v?.[k];
+          if (v === undefined) break;
+        }
+        return v;
+      };
       
-      for (const k of keys) {
-        value = value?.[k];
-        if (value === undefined) break;
+      let value = getByKey(translations[this.currentLang]);
+      // Fallback: ro -> en -> uk (ніколи не показувати ключ)
+      if ((value === undefined || value === null) && translations.ro) {
+        value = getByKey(translations.ro);
+      }
+      if ((value === undefined || value === null) && translations.en) {
+        value = getByKey(translations.en);
+      }
+      if ((value === undefined || value === null) && translations.uk) {
+        value = getByKey(translations.uk);
       }
       
-      // Якщо value є undefined або null, повертаємо key
-      // Але якщо value є порожнім рядком '', повертаємо його
       if (value === undefined || value === null) {
-        return key;
+        // Останній fallback: читабельний текст замість ключа (наприклад nav.home -> Home)
+        const last = key.split('.').pop() || key;
+        return last.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, s => s.toUpperCase());
+      }
+      // Никогда не возвращаем строку, совпадающую с ключом (например "nav.home")
+      if (typeof value === 'string' && value === key && key.includes('.')) {
+        const last = key.split('.').pop() || key;
+        return last.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, s => s.toUpperCase());
       }
       return value;
     }
     
     getAvailableLanguages() {
-      return Object.values(translations).map(t => ({
-        code: t.code,
-        name: t.name,
-        flag: t.flag
-      }));
+      // Порядок: ru, ua, en, ro
+      const order = ['ru', 'uk', 'en', 'ro'];
+      return order
+        .map(code => translations[code])
+        .filter(Boolean)
+        .map(t => ({
+          code: t.code,
+          name: t.name,
+          flag: t.flag
+        }));
     }
     
     getCurrentLanguage() {
+      const lang = translations[this.currentLang];
       return {
         code: this.currentLang,
-        ...translations[this.currentLang]
+        name: lang?.name || this.currentLang,
+        flag: lang?.flag || '🌐',
+        ...lang
       };
     }
     
@@ -1437,80 +2088,77 @@
   }
   
   // ============================================
-  // LANGUAGE SWITCHER COMPONENT
+  // LANGUAGE SWITCHER COMPONENT - Simple & Clean
   // ============================================
   
-  const LanguageSwitcher = ({ isScrolled = false, compact = false }) => {
+  const LanguageSwitcher = ({ isScrolled = false }) => {
     const h = React.createElement;
-    const [currentLang, setCurrentLang] = React.useState(window.i18n.getCurrentLanguage());
     const [isOpen, setIsOpen] = React.useState(false);
+    const [currentLang, setCurrentLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
     
+    // Close dropdown when clicking outside
     React.useEffect(() => {
-      return window.i18n.subscribe((lang) => {
-        setCurrentLang(window.i18n.getCurrentLanguage());
-      });
+      const close = (e) => {
+        if (!e.target.closest('.lang-switcher')) setIsOpen(false);
+      };
+      document.addEventListener('click', close);
+      return () => document.removeEventListener('click', close);
     }, []);
     
-    const languages = window.i18n.getAvailableLanguages();
-    const bgColor = isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-white/20 hover:bg-white/30 text-white';
+    // Subscribe to language changes
+    React.useEffect(() => {
+      if (window.i18n?.subscribe) {
+        return window.i18n.subscribe(() => {
+          setCurrentLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+        });
+      }
+    }, []);
     
-    // Compact mode for mobile - just flag button
-    if (compact) {
-      return h('div', { className: 'relative' },
-        h('button', {
-          onClick: () => setIsOpen(!isOpen),
-          className: `${bgColor} w-10 h-10 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center justify-center text-lg`,
-          title: `${currentLang.name} • Натисніть для зміни`
-        },
-          h('span', null, currentLang.flag)
-        ),
-        
-        isOpen && h('div', { 
-          className: 'absolute top-full right-0 mt-2 bg-gray-900 rounded-xl shadow-2xl overflow-hidden min-w-[180px] z-50 border border-gray-700'
-        },
-          ...languages.map((lang, idx) => h('button', {
-            key: lang.code,
-            onClick: () => { window.i18n.setLanguage(lang.code); setIsOpen(false); },
-            className: `w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-800 transition text-left ${
-              lang.code === currentLang.code ? 'bg-gray-700 text-white' : 'text-gray-300'
-            } ${idx > 0 ? 'border-t border-gray-700' : ''}`,
-          },
-            h('span', { className: 'text-xl' }, lang.flag),
-            h('span', { className: 'font-medium' }, lang.name),
-            lang.code === currentLang.code && h('i', { className: 'fas fa-check text-green-500 ml-auto' })
-          ))
-        )
-      );
-    }
+    const langs = [
+      { code: 'ro', name: 'Română', flag: '🇷🇴' },
+      { code: 'en', name: 'English', flag: '🇬🇧' },
+      { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+      { code: 'uk', name: 'Українська', flag: '🇺🇦' }
+    ];
     
-    // Full mode for desktop
-    return h('div', { className: 'relative' },
+    const current = langs.find(l => l.code === currentLang) || langs[0];
+    const btnStyle = isScrolled 
+      ? 'bg-gray-100 hover:bg-gray-200 text-gray-700' 
+      : 'bg-white/10 hover:bg-white/20 text-white';
+    
+    return h('div', { className: 'lang-switcher relative' },
+      // Button
       h('button', {
-        onClick: () => setIsOpen(!isOpen),
-        className: `${bgColor} px-3 py-2 rounded-lg transition-all duration-300 active:scale-95 focus:outline-none flex items-center gap-2 text-sm font-medium`,
-        title: `${currentLang.name} • Click to change`
+        onClick: (e) => { e.stopPropagation(); setIsOpen(!isOpen); },
+        className: `${btnStyle} px-3 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all`
       },
-        h('span', { className: 'text-base' }, currentLang.flag),
-        h('span', null, currentLang.code.toUpperCase()),
-        h('i', { className: `fas fa-chevron-down text-xs transition-transform ${isOpen ? 'rotate-180' : ''}` })
+        h('span', null, current.flag),
+        h('span', { className: 'hidden sm:inline' }, current.code.toUpperCase())
       ),
       
+      // Dropdown
       isOpen && h('div', { 
-        className: 'absolute top-full right-0 mt-2 bg-gray-900 rounded-xl shadow-2xl overflow-hidden min-w-[200px] z-50 border border-gray-700'
+        className: 'absolute top-full right-0 mt-2 bg-slate-800 rounded-lg shadow-xl overflow-hidden z-[100] min-w-[160px]'
       },
-        ...languages.map((lang, idx) => h('button', {
-          key: lang.code,
-          onClick: () => { window.i18n.setLanguage(lang.code); setIsOpen(false); },
-          className: `w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-800 transition text-left ${
-            lang.code === currentLang.code ? 'bg-gray-700 text-white' : 'text-gray-300'
-          } ${idx > 0 ? 'border-t border-gray-700' : ''}`,
-        },
-          h('span', { className: 'text-xl' }, lang.flag),
-          h('div', { className: 'flex-1' },
-            h('div', { className: 'font-medium' }, lang.name)
-          ),
-          lang.code === currentLang.code && h('i', { className: 'fas fa-check text-green-500 ml-auto' })
-        ))
+        langs.map(lang => 
+          h('button', {
+            key: lang.code,
+            onClick: () => { 
+              window.i18n?.setLanguage(lang.code); 
+              setCurrentLang(lang.code);
+              setIsOpen(false); 
+            },
+            className: `w-full px-4 py-2.5 flex items-center gap-3 text-left transition ${
+              lang.code === currentLang 
+                ? 'bg-blue-600 text-white' 
+                : 'text-gray-200 hover:bg-slate-700'
+            }`
+          },
+            h('span', null, lang.flag),
+            h('span', { className: 'flex-1' }, lang.name),
+            lang.code === currentLang && h('span', { className: 'text-xs' }, '✓')
+          )
+        )
       )
     );
   };

@@ -174,15 +174,17 @@ export const fetchAppData = async (): Promise<AppData> => {
     
     // Repair Knowledge / Guides
     const repairKnowledge = knowledge.repairKnowledge || [];
-    const guides: RepairGuide[] = repairKnowledge.map((item: any) => ({
-      title: item.title || item.name || 'Unknown',
-      description: item.description || '',
-      category: item.category || item.difficulty || 'General',
-      steps: item.steps || item.diagnostic_steps || []
-    }));
+    const guides: RepairGuide[] = Array.isArray(repairKnowledge) 
+      ? repairKnowledge.map((item: any) => ({
+          title: item.title || item.name || 'Unknown',
+          description: item.description || '',
+          category: item.category || item.difficulty || 'General',
+          steps: item.steps || item.diagnostic_steps || []
+        }))
+      : [];
     
     // Key Combinations (DFU/Recovery)
-    const keyCombinations = knowledge.keyCombinations || [];
+    const keyCombinations = knowledge.keyCombinations || {};
     
     // Measurements
     const measurementsData = knowledge.measurements || db.measurements || {};

@@ -1,20 +1,29 @@
-# Cloudflare Pages Configuration
-# https://developers.cloudflare.com/pages/platform/configuration/
+# Cloudflare Pages Configuration 2026
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+# Note: Pages projects do NOT support account_id, build, or other Workers-specific fields
 
-name = "nexx"
-compatibility_date = "2026-01-21"
+name = "nexx-gsm"
+compatibility_date = "2026-01-23"
 compatibility_flags = ["nodejs_compat"]
 
-# Pages configuration
+# Pages build output directory
 pages_build_output_dir = "dist"
 
-# Environment variables
+# Environment variables (optional, for Pages Functions)
 [vars]
-PROJECT_NAME = "nexx"
+PROJECT_NAME = "nexx-gsm"
 ENVIRONMENT = "production"
 ZONE_NAME = "nexxgsm.com"
 
-# AI Configuration
-# Cloudflare AI is available in Workers and Pages Functions
-# Models available: @cf/meta/llama-3.1-8b-instruct, @cf/meta/llama-3.1-70b-instruct, etc.
-# See: https://developers.cloudflare.com/workers-ai/models/
+# NOTE: Sensitive variables should be set in Cloudflare Dashboard:
+# Settings > Environment Variables:
+# - REMONLINE_API_KEY
+# - REMONLINE_BASE_URL
+# - REMONLINE_BRANCH_ID
+# - REMONLINE_ORDER_TYPE
+# - VAPI_API_KEY
+# - VAPI_PHONE_ID
+# - VAPI_ASSISTANT_ID
+# - EMAIL_API_KEY (Mailgun)
+# - TELEGRAM_BOT_TOKEN
+# - TELEGRAM_CHAT_ID

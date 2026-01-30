@@ -14,12 +14,67 @@
   
   const animationStyles = document.createElement('style');
   animationStyles.innerHTML = `
+    /* Logo Float Animation */
     @keyframes logoFloat {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-5px); }
     }
-    .logo-float {
-      animation: logoFloat 3s ease-in-out infinite;
+    
+    /* Logo Glow Pulse */
+    @keyframes logoGlow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 20px rgba(147, 51, 234, 0.3));
+      }
+      50% { 
+        filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 30px rgba(147, 51, 234, 0.5));
+      }
+    }
+    
+    /* Logo Shimmer Effect */
+    @keyframes logoShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    .logo-animated {
+      animation: logoFloat 4s ease-in-out infinite;
+    }
+    
+    .logo-glow {
+      animation: logoGlow 3s ease-in-out infinite;
+    }
+    
+    .logo-hover:hover {
+      animation: logoFloat 0.5s ease-in-out;
+      transform: scale(1.05);
+    }
+    
+    /* Logo Container with Gradient Border on Hover */
+    .logo-container {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-container::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+      background-size: 300% 300%;
+      border-radius: 12px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      animation: gradientShift 3s ease infinite;
+    }
+    
+    .logo-container:hover::before {
+      opacity: 0.7;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
   `;
   if (document.head) {
@@ -210,6 +265,16 @@
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [isLogoutModalOpen, setIsLogoutModalOpen] = React.useState(false);
+    const [lang, setLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+    
+    // Subscribe to language changes
+    React.useEffect(() => {
+      if (window.i18n?.subscribe) {
+        return window.i18n.subscribe(() => {
+          setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+        });
+      }
+    }, []);
     
     React.useEffect(() => {
       // Throttle scroll handler for better performance
@@ -265,44 +330,30 @@
       };
     }, [isMobileMenuOpen]);
     
-    // Dynamic navigation with translations
-    const getNavLinks = () => {
-      const t = (key) => {
-        // Используем window.t() который правильно привязан в i18n.init()
-        if (window.t && typeof window.t === 'function') {
-          return window.t(key);
-        }
-        // Fallback to Romanian if i18n not ready
-        const fallback = {
-          'nav.home': 'Acasă',
-          'nav.services': 'Servicii',
-          'nav.booking': 'Comandă',
-          'nav.contacts': 'Contacte',
-          'nav.database': 'Bază de date'
-        };
-        return fallback[key] || key;
-      };
-      
-      return {
-        client: [
-          { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
-          { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'calculator', label: t('nav.calculator') || 'Calculator', href: '/#calculator', icon: 'fa-calculator' },
-          { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
-        ],
-        service: [
-          { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
-          { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
-          { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
-        ]
-      };
+    // Translation helper: never show raw key; use fallback if i18n returns key or not ready
+    const t = (key) => {
+      let v = key;
+      if (window.i18n?.t) v = window.i18n.t(key);
+      else if (typeof window.t === 'function') v = window.t(key);
+      if (v && typeof v === 'string' && v !== key) return v;
+      return NAV_FALLBACKS[key] || (key.split('.').pop() || key);
     };
     
-    const navLinksData = getNavLinks();
-    const clientNavLinks = navLinksData.client;
-    const serviceNavLinks = navLinksData.service;
-    
-    const navLinks = currentPage === 'database' ? serviceNavLinks : clientNavLinks;
+    // Dynamic navigation with translations - reactive to language changes
+    const navLinks = React.useMemo(() => {
+      const client = [
+        { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
+        { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
+        { id: 'calculator', label: t('nav.calculator'), href: '/#calculator', icon: 'fa-calculator' },
+        { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
+      ];
+      const service = [
+        { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
+        { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
+        { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
+      ];
+      return currentPage === 'database' ? service : client;
+    }, [lang, currentPage]);
     
     const handleLogout = () => {
       setIsLogoutModalOpen(true);
@@ -320,27 +371,39 @@
     const iconColor = isScrolled ? 'text-gray-800' : 'text-white';
     
     return h(React.Fragment, null,
-      h('header', { className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg}` },
+      h('header', { 
+        className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
+        style: { opacity: 1 }
+      },
       h('div', { className: 'max-w-7xl mx-auto px-4 py-4' },
         h('div', { className: 'flex items-center justify-between' },
-          // Logo - Animated SVG logo on dark background, PNG on white
+          // Logo - Animated with glow and float effects
           h('a', { 
             href: '/', 
-            className: 'flex items-center group transition-all duration-300 hover:scale-105 cursor-pointer flex-shrink-0',
+            className: 'logo-container flex items-center group cursor-pointer flex-shrink-0 p-2 rounded-xl transition-all duration-300',
             'aria-label': 'NEXX GSM Home',
-            title: 'Перейти на головну'
+            title: 'NEXX GSM - Acasă'
           },
             h('img', {
-              src: '/static/nexx-logo-trimmed.png?v=1',
+              src: '/static/nexx-logo-trimmed.png?v=2',
               alt: 'NEXX GSM',
-              className: 'w-auto transition-all duration-500',
+              className: `w-auto transition-all duration-500 ${isScrolled ? '' : 'logo-animated logo-glow'}`,
               style: {
-                width: window.innerWidth < 640 ? '154px' : '243px',
+                width: window.innerWidth < 640 ? '140px' : '200px',
                 height: 'auto',
                 display: 'block',
                 objectFit: 'contain',
-                filter: isScrolled ? 'none' : 'invert(1) drop-shadow(0 0 10px rgba(100, 180, 255, 0.7))',
-                transition: 'filter 0.5s ease'
+                filter: isScrolled 
+                  ? 'none' 
+                  : 'invert(1) brightness(1.1)',
+                transition: 'all 0.5s ease',
+                opacity: 0
+              },
+              onLoad: function(e) {
+                e.target.style.opacity = '1';
+              },
+              onError: function(e) {
+                e.target.style.opacity = '1';
               }
             })
           ),
@@ -350,7 +413,7 @@
             ...navLinks.map(link => h('a', {
               key: link.id,
               href: link.href,
-              className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${currentPage === link.id ? `font-bold ${isScrolled ? 'bg-gray-100 text-gray-900' : 'bg-white/20 text-white'}` : `${textColor} hover:text-gray-500`}`
+              className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${currentPage === link.id ? `font-bold ${isScrolled ? 'bg-gray-100 text-gray-900' : 'bg-transparent border border-white/20 text-white'}` : `${textColor} hover:text-gray-500`}`
             },
               h('i', { className: `fas ${link.icon} text-sm` }),
               link.label
@@ -370,30 +433,22 @@
           // Service Mod Button (PIN protected) - Small, subtle, black/white
           h('button', {
             onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
-            className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
+            className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-transparent hover:bg-white/10 border border-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
             title: 'Service Mod (PIN)'
           },
             h('i', { className: 'fas fa-cog text-xs' }),
             h('span', null, 'Service')
           ),
           
-          // Language Switcher - visible on desktop
-          h('div', { className: 'hidden md:flex items-center' },
-            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled })
-          ),
+          // Language Switcher - one instance, responsive
+          window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
           
-          // Mobile: Language + Menu Button
-          h('div', { className: 'flex md:hidden items-center gap-2' },
-            // Language Switcher for mobile
-            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled, compact: true }),
-            // Mobile Menu Button - larger touch target
-            h('button', {
-              onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-              className: `w-12 h-12 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/20 hover:bg-white/30'} ${textColor} transition-all duration-300`,
-              'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu',
-              style: { touchAction: 'manipulation', minWidth: '48px', minHeight: '48px' }
-            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl` }))
-          )
+          // Mobile Menu Button
+          h('button', {
+            onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
+            className: `md:hidden w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-100 hover:bg-gray-200' : 'bg-white/10 hover:bg-white/20'} ${textColor} transition-all`,
+            'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu'
+          }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
         ),
         
         // Mobile Menu
@@ -448,62 +503,71 @@
   // FOOTER COMPONENT (Unified)
   // ============================================
   
+  // Fallbacks when i18n returns key or is not ready (RO default)
+  const FOOTER_FALLBACKS = {
+    'footer.tagline': 'Service profesional multibrand. Garanție inclusă. Diagnostic gratuit. București.',
+    'footer.company': 'Companie',
+    'footer.about': 'Despre noi',
+    'footer.jobs': 'Joburi',
+    'footer.services': 'Servicii',
+    'footer.servicePhone': 'Reparații telefoane',
+    'footer.serviceLaptop': 'Reparații laptopuri',
+    'footer.info': 'Informații',
+    'footer.faq': 'FAQ',
+    'footer.privacy': 'Confidențialitate',
+    'footer.terms': 'Termeni',
+    'footer.copyright': 'NEXX Service Center. Toate drepturile rezervate.',
+    'footer.security': 'Site Securizat • SSL Criptat',
+    'nav.contacts': 'Contacte',
+    'calculator.title': 'Calculator preț',
+  };
+  
   const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const [lang, setLang] = React.useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
     
-    // Define t at component level so it's accessible everywhere
-    const t = (key) => {
-      // Используем window.t() который правильно привязан в i18n.init()
-      if (window.t && typeof window.t === 'function') {
-        return window.t(key);
+    // Subscribe to language changes
+    React.useEffect(() => {
+      if (window.i18n?.subscribe) {
+        return window.i18n.subscribe(() => {
+          setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+        });
       }
-      // Fallback to Romanian if i18n not ready
-      const fallback = {
-        'footer.company': 'Companie',
-        'footer.about': 'Despre noi',
-        'nav.contacts': 'Contacte',
-        'footer.jobs': 'Joburi',
-        'footer.services': 'Servicii',
-        'footer.servicePhone': 'Reparații telefoane',
-        'footer.serviceLaptop': 'Reparații laptopuri',
-        'calculator.title': 'Calculator preț',
-        'footer.info': 'Informații',
-        'footer.faq': 'FAQ',
-        'footer.privacy': 'Confidențialitate',
-        'footer.terms': 'Termeni',
-        'footer.tagline': 'Service profesional pentru dispozitive Apple'
-      };
-      return fallback[key] || key;
+    }, []);
+    
+    // Translation helper: never show raw key; use fallback if i18n returns key or not ready
+    const t = (key) => {
+      let v = key;
+      if (window.i18n?.t) v = window.i18n.t(key);
+      else if (typeof window.t === 'function') v = window.t(key);
+      if (v && typeof v === 'string' && v !== key) return v;
+      return FOOTER_FALLBACKS[key] || NAV_FALLBACKS[key] || (key.split('.').pop() || key);
     };
     
-    const getFooterLinks = () => {
-      
-      return [
-        { title: t('footer.company'), links: [
-          { label: t('footer.about'), href: '/about.html' },
-          { label: t('nav.contacts'), href: '/#contacts' },
-          { label: t('footer.jobs'), href: '#' },
-        ]},
-        { title: t('footer.services'), links: [
-          { label: t('footer.servicePhone'), href: '/#services' },
-          { label: t('footer.serviceLaptop'), href: '/#services' },
-          { label: t('calculator.title'), href: '/#calculator' },
-        ]},
-        { title: t('footer.info'), links: [
-          { label: t('footer.faq'), href: '/faq.html' },
-          { label: t('footer.privacy'), href: '/privacy.html' },
-          { label: t('footer.terms'), href: '/terms.html' },
-        ]},
-      ];
-    };
-    
-    const footerLinks = getFooterLinks();
+    // Footer links - reactive to language changes
+    const footerLinks = React.useMemo(() => [
+      { title: t('footer.company'), links: [
+        { label: t('footer.about'), href: '/about.html' },
+        { label: t('nav.contacts'), href: '/#contacts' },
+        { label: t('footer.jobs'), href: '#' },
+      ]},
+      { title: t('footer.services'), links: [
+        { label: t('footer.servicePhone'), href: '/#services' },
+        { label: t('footer.serviceLaptop'), href: '/#services' },
+        { label: t('calculator.title'), href: '/#calculator' },
+      ]},
+      { title: t('footer.info'), links: [
+        { label: t('footer.faq'), href: '/faq.html' },
+        { label: t('footer.privacy'), href: '/privacy.html' },
+        { label: t('footer.terms'), href: '/terms.html' },
+      ]},
+    ], [lang]);
     
     const socialLinks = [
-      { icon: 'fa-instagram', href: '#', label: 'Instagram' },
-      { icon: 'fa-telegram', href: '#', label: 'Telegram' },
-      { icon: 'fa-facebook', href: '#', label: 'Facebook' },
-      { icon: 'fa-tiktok', href: '#', label: 'TikTok' },
+      { icon: 'fa-instagram', href: 'https://instagram.com/nexx_gsm', label: 'Instagram' },
+      { icon: 'fa-telegram', href: 'https://t.me/nexx_support', label: 'Telegram' },
+      { icon: 'fa-facebook', href: 'https://facebook.com/nexxgsm', label: 'Facebook' },
+      { icon: 'fa-tiktok', href: 'https://tiktok.com/@nexxgsm', label: 'TikTok' },
     ];
     
     return h('footer', { className: 'bg-gradient-to-br from-gray-900 to-black text-white' },
@@ -668,14 +732,15 @@
       className: 'fixed top-20 right-6 z-50 animate-slide-down'
     },
       h('div', { 
-        className: `bg-gradient-to-r ${colors[type]} text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 min-w-[300px]`
+        className: `bg-gradient-to-r ${colors[type]} text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 min-w-[280px] max-w-[90vw]`
       },
-        h('i', { className: `fas ${icons[type]} text-2xl` }),
-        h('span', { className: 'flex-1 font-medium' }, message),
+        h('i', { className: `fas ${icons[type]} text-lg` }),
+        h('span', { className: 'flex-1 font-medium text-sm' }, message),
         onClose && h('button', {
           onClick: onClose,
-          className: 'hover:bg-white/20 rounded-full p-1 transition'
-        }, h('i', { className: 'fas fa-xmark' }))
+          className: 'hover:bg-white/20 rounded-full p-1 transition flex-shrink-0',
+          'aria-label': 'Close'
+        }, h('i', { className: 'fas fa-xmark text-sm' }))
       )
     );
   };

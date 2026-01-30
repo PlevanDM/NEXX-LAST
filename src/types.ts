@@ -183,11 +183,16 @@ export interface OfficialServiceData {
 
 export interface ICComponent {
   name: string;
+  type?: string;
   designation?: string;
+  description?: string;
+  datasheet_url?: string | null;
+  voltage?: string | null;
   package?: string;
   price_range?: string;
   difficulty?: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
   functions?: string[];
+  alternatives?: string[];
   diagnostics?: {
     diode_mode?: Record<string, string>;
     pp5v0_usb?: string;

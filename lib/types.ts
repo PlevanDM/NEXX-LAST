@@ -233,3 +233,154 @@ export const DEVICES: Device[] = [
   { id: 'ipad', name: 'iPad', emoji: '📱', icon: 'fa-tablet-screen-button' },
   { id: 'watch', name: 'Apple Watch', emoji: '⌚', icon: 'fa-clock' },
 ];
+
+// ============================================
+// REMONLINE FORMS & DOCUMENTS TYPES
+// ============================================
+
+// Form types
+export type RemonlineFormType = 'repair_order' | 'callback' | 'diagnostic' | 'document' | 'document_request';
+export type DocumentType = 'invoice' | 'act' | 'contract' | 'estimate' | 'receipt' | 'warranty_card';
+export type Language = 'uk' | 'ru' | 'en' | 'ro';
+
+// Repair Order Form
+export interface RepairOrderForm {
+  id?: string;
+  customerId?: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail?: string;
+  device: {
+    type: string; // iPhone, MacBook, etc.
+    brand: string;
+    model: string;
+    serialNumber?: string;
+  };
+  problem: string;
+  problemDetails?: string;
+  estimatedCost?: number;
+  preferredDate?: string;
+  preferredTime?: string;
+  comments?: string;
+  source: string; // 'website_form', 'callback', etc.
+  language: Language;
+  status?: 'pending' | 'confirmed' | 'in_progress' | 'completed';
+  createdAt?: string;
+}
+
+// Callback Form
+export interface CallbackForm {
+  id?: string;
+  customerName: string;
+  customerPhone: string;
+  device?: string;
+  problem?: string;
+  preferredTime?: string;
+  language: Language;
+  aiCallEnabled?: boolean;
+  timestamp?: string;
+}
+
+// Diagnostic Form
+export interface DiagnosticForm {
+  id?: string;
+  orderId?: string;
+  customerId?: string;
+  device: {
+    type: string;
+    brand: string;
+    model: string;
+  };
+  diagnosticResults: {
+    status: string; // 'working', 'defective', 'needs_repair'
+    findings: string;
+    estimatedRepairCost?: number;
+    estimatedRepairTime?: number;
+  };
+  technician?: string;
+  timestamp?: string;
+  language: Language;
+}
+
+// Document Form (for requesting documents)
+export interface DocumentRequestForm {
+  id?: string;
+  orderId: string;
+  documentType: DocumentType;
+  customerId?: string;
+  customerName: string;
+  customerEmail: string;
+  customerAddress?: string;
+  language: Language;
+  includeDetails?: boolean;
+  timestamp?: string;
+}
+
+// Document Structure
+export interface RemonlineDocument {
+  id: string;
+  type: DocumentType;
+  documentNumber: string;
+  issueDate: string;
+  dueDate?: string;
+  order: {
+    id: string;
+    customerId?: string;
+  };
+  customer: {
+    name: string;
+    phone: string;
+    email?: string;
+    address?: string;
+    taxId?: string;
+  };
+  items: DocumentItem[];
+  subtotal: number;
+  tax?: number;
+  total: number;
+  currency: string;
+  language: Language;
+  notes?: string;
+  signature?: string;
+  terms?: string;
+  watermark?: string;
+}
+
+export interface DocumentItem {
+  id: string;
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  total: number;
+  taxRate?: number;
+}
+
+// Unified Response from Remonline API
+export interface RemonlineFormResponse {
+  success: boolean;
+  id?: string;
+  formId?: string;
+  documentId?: string;
+  message: string;
+  warning?: string;
+  error?: string;
+  redirectUrl?: string;
+  data?: any;
+}
+
+// Document generation response
+export interface DocumentGenerationResponse {
+  success: boolean;
+  documentId?: string;
+  downloadUrl?: string;
+  previewUrl?: string;
+  format: string; // 'pdf', 'html', 'docx'
+  message: string;
+}
+
+// Form validation result
+export interface FormValidationResult {
+  isValid: boolean;
+  errors: Record<string, string[]>;
+  warnings?: Record<string, string[]>;
+}
