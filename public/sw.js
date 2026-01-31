@@ -3,9 +3,7 @@ const CACHE_NAME = 'nexx-gsm-v2.2-20260201';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/static/nexx-logo.png',
-  '/static/nexx-logo-animated.svg',
-  '/static/nexx-logo-dark-transparent.png'
+  '/static/nexx-logo.png'
 ];
 
 // Install

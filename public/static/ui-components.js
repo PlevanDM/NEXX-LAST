@@ -21,6 +21,9 @@
     .logo-container {
       position: relative;
       transition: opacity 0.2s ease;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
     .logo-container:hover {
       opacity: 0.9;
@@ -327,28 +330,21 @@
         className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
         style: { opacity: 1 }
       },
-      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4', style: { paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
-        h('div', { className: 'flex items-center justify-between gap-2 min-w-0' },
-          // Logo 2026 — SVG: белый на прозрачном хедере, основной на белом фоне
+      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 flex items-center', style: { height: '56px', minHeight: '56px', paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
+        h('div', { className: 'flex items-center justify-between gap-2 min-w-0 w-full' },
+          // Logo — одно лого везде: nexx-logo.png, анимация pulse
           h('a', {
             href: '/',
-            className: 'logo-container flex items-center group cursor-pointer flex-shrink-0 p-1 sm:p-2 rounded-xl transition-all duration-300 min-w-0',
+            className: 'logo-container flex items-center cursor-pointer flex-shrink-0 min-w-0',
+            style: { background: 'transparent', border: 'none' },
             'aria-label': 'NEXX GSM Home',
             title: 'NEXX GSM - Acasă'
           },
             h('img', {
-              src: isScrolled ? '/static/nexx-logo.svg?v=3' : '/static/nexx-logo-white.svg?v=3',
+              src: '/static/nexx-logo.png?v=5',
               alt: 'NEXX GSM',
-              className: 'w-auto max-w-[144px] sm:max-w-[192px] md:max-w-none transition-opacity duration-200 ' + (!isScrolled ? 'logo-pulse' : ''),
-              style: {
-                width: window.innerWidth < 640 ? 'min(144px, 42vw)' : (window.innerWidth < 768 ? '168px' : '240px'),
-                maxWidth: '100%',
-                height: 'auto',
-                display: 'block',
-                objectFit: 'contain',
-                transition: 'all 0.5s ease',
-                opacity: 0
-              },
+              className: 'object-contain block logo-pulse',
+              style: { display: 'block', opacity: 0, height: '40px', width: 'auto', background: 'transparent' },
               onLoad: function(e) {
                 e.target.style.opacity = '1';
               },

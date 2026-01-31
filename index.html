@@ -655,7 +655,7 @@
             }
             
             if (initAttempts >= MAX_INIT_ATTEMPTS) {
-                console.error('❌ Failed to initialize app: dependencies not loaded');
+                console.warn('NEXX: dependencies not loaded in time');
                 return;
             }
             
@@ -677,6 +677,7 @@
             // Mark as initialized BEFORE rendering
             isInitialized = true;
             initAttempts = 0; // Reset on success
+            if (window._pendingToasts) window._pendingToasts.length = 0; // не показывать старые ошибки при загрузке
             
             const { useState, useEffect, createElement: h } = React;
             const { Header, Footer, ToastContainer } = window.NEXXDesign;
@@ -2736,37 +2737,40 @@
         // Create root and render app (only once)
         if (!window.__NEXX_ROOT_CREATED) {
             window.__NEXX_ROOT_CREATED = true;
-            
-            // Render Header in separate container (always visible)
-            const headerContainer = document.getElementById('header-root');
-            if (headerContainer) {
-                const headerRoot = ReactDOM.createRoot(headerContainer);
-                headerRoot.render(h(Header, { currentPage: 'home' }));
-            }
-            
-            // Render Footer in separate container
-            const footerContainer = document.getElementById('footer-root');
-            if (footerContainer) {
-                const footerRoot = ReactDOM.createRoot(footerContainer);
-                footerRoot.render(h(Footer));
-            }
-            
-            // Render main app content
-            const appContainer = document.getElementById('app');
-            if (appContainer) {
-                const root = ReactDOM.createRoot(appContainer);
-                root.render(h(App));
+            try {
+                // Render Header in separate container (always visible)
+                const headerContainer = document.getElementById('header-root');
+                if (headerContainer) {
+                    const headerRoot = ReactDOM.createRoot(headerContainer);
+                    headerRoot.render(h(Header, { currentPage: 'home' }));
+                }
                 
-                // Show app after React renders to prevent FOUC
-                requestAnimationFrame(() => {
+                // Render Footer in separate container
+                const footerContainer = document.getElementById('footer-root');
+                if (footerContainer) {
+                    const footerRoot = ReactDOM.createRoot(footerContainer);
+                    footerRoot.render(h(Footer));
+                }
+                
+                // Render main app content
+                const appContainer = document.getElementById('app');
+                if (appContainer) {
+                    const root = ReactDOM.createRoot(appContainer);
+                    root.render(h(App));
+                    
+                    // Show app after React renders to prevent FOUC
                     requestAnimationFrame(() => {
-                        const appEl = document.getElementById('app');
-                        if (appEl) {
-                            document.body.classList.add('react-loaded');
-                            appEl.classList.add('react-ready');
-                        }
+                        requestAnimationFrame(() => {
+                            const appEl = document.getElementById('app');
+                            if (appEl) {
+                                document.body.classList.add('react-loaded');
+                                appEl.classList.add('react-ready');
+                            }
+                        });
                     });
-                });
+                }
+            } catch (err) {
+                console.error('NEXX init render error:', err);
             }
         }
         };

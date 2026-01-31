@@ -39,6 +39,9 @@ console.log('📦 Copying assets to dist/...\n');
 const publicDir = path.join(__dirname, '..', 'public');
 const distDir = path.join(__dirname, '..', 'dist');
 
+// Build version: unique per deploy so cache always invalidates (deploy = immediate update)
+const BUILD_VERSION = process.env.BUILD_VERSION || new Date().toISOString().replace(/[-:T.Z]/g, '').slice(0, 14);
+
 // Ensure dist exists
 if (!fs.existsSync(distDir)) {
   console.error('❌ dist/ folder not found. Run build first.');
@@ -83,12 +86,14 @@ if (fs.existsSync(manifestSource)) {
   console.log(`✅ Copied: manifest.json (PWA)\n`);
 }
 
-// Copy sw.js (Service Worker)
+// Copy sw.js (Service Worker) and inject BUILD_VERSION into CACHE_NAME
 const swSource = path.join(publicDir, 'sw.js');
 const swDest = path.join(distDir, 'sw.js');
 if (fs.existsSync(swSource)) {
-  fs.copyFileSync(swSource, swDest);
-  console.log(`✅ Copied: sw.js (Service Worker)\n`);
+  let swContent = fs.readFileSync(swSource, 'utf8');
+  swContent = swContent.replace(/const CACHE_NAME = '[^']+';/, `const CACHE_NAME = 'nexx-gsm-${BUILD_VERSION}';`);
+  fs.writeFileSync(swDest, swContent);
+  console.log(`✅ Copied: sw.js (CACHE_NAME=nexx-gsm-${BUILD_VERSION})\n`);
 }
 
 // Copy HTML pages (including main index.html from root)
@@ -109,7 +114,12 @@ const indexDest = path.join(distDir, 'index.html');
 if (fs.existsSync(indexSource)) {
   fs.copyFileSync(indexSource, indexDest);
   htmlCopied++;
-  console.log(`✅ Copied: index.html\n`);
+  // Inject BUILD_VERSION so every deploy gets fresh scripts (no stale cache)
+  let indexHtml = fs.readFileSync(indexDest, 'utf8');
+  indexHtml = indexHtml.replace(/<meta name="version" content="[^"]*">/, `<meta name="version" content="${BUILD_VERSION}">`);
+  indexHtml = indexHtml.replace(/\?v=[^"'\s&]+/g, `?v=${BUILD_VERSION}`);
+  fs.writeFileSync(indexDest, indexHtml);
+  console.log(`✅ Copied: index.html (version=${BUILD_VERSION})\n`);
 }
 
 if (htmlCopied > 0) {
@@ -146,10 +156,9 @@ if (!fs.existsSync(staticDestDir)) {
   fs.mkdirSync(staticDestDir, { recursive: true });
 }
 
+// Один лого везде
 const logos = [
-  { name: 'nexx-logo-white.svg', desc: 'White logo (for dark header)' },
-  { name: 'nexx-logo-blue.svg', desc: 'Blue logo (for white header)' },
-  { name: 'nexx-logo.svg', desc: 'Default logo' }
+  { name: 'nexx-logo.png', desc: 'NEXX GSM logo (единственный)' }
 ];
 
 let logosCopied = 0;

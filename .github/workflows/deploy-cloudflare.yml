@@ -35,6 +35,8 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          # Unique version per deploy → scripts always reload (deploy = immediate update)
+          BUILD_VERSION: ${{ github.run_id }}-${{ github.sha }}
       
       - name: Verify build output
         run: |
@@ -98,5 +100,5 @@ jobs:
           echo "📋 Troubleshooting steps:"
           echo "1. Check Cloudflare API token permissions"
           echo "2. Verify account ID is correct"
-          echo "3. Check if project 'nexx' exists in Cloudflare Pages"
+          echo "3. Check if project 'nexx-gsm' exists in Cloudflare Pages"
           echo "4. Review wrangler logs above for specific errors"

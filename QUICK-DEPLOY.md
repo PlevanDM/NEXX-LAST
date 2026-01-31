@@ -13,7 +13,7 @@ wrangler login
 
 # Step 2: Build and deploy
 npm run build
-wrangler pages deploy dist --project-name nexx
+wrangler pages deploy dist --project-name nexx-gsm-gsm
 ```
 
 ### Option 2: Use Global API Key
@@ -31,7 +31,7 @@ Global API Key doesn't work directly with Wrangler. You need to:
    ```powershell
    $env:CLOUDFLARE_API_TOKEN = "your_new_api_token_here"
    npm run build
-   wrangler pages deploy dist --project-name nexx
+   wrangler pages deploy dist --project-name nexx-gsm-gsm
    ```
 
 ### Option 3: Manual Upload

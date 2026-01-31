@@ -381,29 +381,15 @@ export const App = () => {
       {/* Navbar — на всю ширину, компактнее */}
       <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
         <div className="w-full px-3 sm:px-4 lg:px-6">
-          <div className="flex justify-between items-center gap-2 sm:gap-4 min-h-[52px] sm:min-h-[56px] py-1.5 sm:py-2">
-            {/* Logo 2026 — реальный логотип + kinetic typography, клик = выход на лендинг */}
+          <div className="flex justify-between items-center gap-2 sm:gap-4" style={{ height: 56, minHeight: 56 }}>
+            {/* Logo — то же лого что на лендинге: nexx-logo.png */}
             <a
               href="/"
-              className="nexx-logo-link flex items-center gap-3 flex-shrink-0 hover:opacity-90 transition-opacity"
+              className="nexx-logo-link flex items-center gap-2 flex-shrink-0 hover:opacity-90 transition-opacity"
               title="На головну (лендинг)"
             >
-              <div className="nexx-logo-icon w-9 h-9 flex items-center justify-center shrink-0 rounded-lg overflow-hidden bg-slate-800">
-                <img src="/static/nexx-logo-white.svg" alt="NEXX" className="w-6 h-6 object-contain" />
-              </div>
-              <span className="font-bold text-xl tracking-tight hidden lg:flex items-center" aria-hidden="false">
-                <span className="nexx-logo-letter">N</span>
-                <span className="nexx-logo-letter">E</span>
-                <span className="nexx-logo-letter">X</span>
-                <span className="nexx-logo-letter">X</span>
-                <span className="nexx-logo-suffix"> Database</span>
-              </span>
-              <span className="font-bold text-xl tracking-tight lg:hidden flex items-center" aria-hidden="false">
-                <span className="nexx-logo-letter">N</span>
-                <span className="nexx-logo-letter">E</span>
-                <span className="nexx-logo-letter">X</span>
-                <span className="nexx-logo-letter">X</span>
-              </span>
+              <img src="/static/nexx-logo.png?v=5" alt="NEXX GSM" className="h-10 w-auto object-contain logo-pulse" style={{ background: 'transparent' }} />
+              <span className="font-bold text-lg tracking-tight hidden sm:inline text-white">Database</span>
             </a>
             {/* Кнопка выход на лендинг — всегда видна */}
             <a

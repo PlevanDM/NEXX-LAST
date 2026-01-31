@@ -1,12 +1,12 @@
 # Delete all Cloudflare Pages deployments
 # Удаление всех деплоев Cloudflare Pages
-# По умолчанию: nexx (старый проект). Основной продакшен: nexx-gsm.
+# Единственный продакшен: nexx-gsm. Деплой всегда идёт в nexx-gsm.
 
 param(
     [string]$Email = $env:CLOUDFLARE_EMAIL,
     [string]$GlobalApiKey = $env:CLOUDFLARE_GLOBAL_API_KEY,
     [string]$AccountId = "ad170d773e79a037e28f4530fd5305a5",
-    [string]$ProjectName = "nexx"
+    [string]$ProjectName = "nexx-gsm"
 )
 
 if (-not $GlobalApiKey) {

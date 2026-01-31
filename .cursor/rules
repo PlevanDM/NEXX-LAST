@@ -12,11 +12,11 @@
 - Global API Key: 853487a6a39bd7f6f8128b4caf420ac22de33
 - Email: dmitro.plevan@gmail.com
 - Account ID: ad170d773e79a037e28f4530fd5305a5
-- Project Name: nexx
+- Project Name: nexx-gsm (единственный проект для деплоя)
 - Zone: nexxgsm.com
 
 ### Available Cloudflare Services
-- ✅ Cloudflare Pages (active) - Project: nexx, Branch: main
+- ✅ Cloudflare Pages (active) - Project: nexx-gsm, Branch: main. Сайт: https://nexxgsm.com
 - ✅ Cloudflare Workers (available) - 4 API functions configured
 - ✅ Security: Medium level, TLS 1.2+, SSL Full, Always HTTPS
 - ✅ Cache: Aggressive level, optimized headers
