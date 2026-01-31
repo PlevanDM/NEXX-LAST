@@ -1,4 +1,4 @@
-﻿# Cloudflare Pages Headers Configuration
+# Cloudflare Pages Headers Configuration
 # Optimized for maximum performance
 
 # Global security headers
@@ -25,6 +25,10 @@
 
 /static/i18n.min.js
   Cache-Control: public, max-age=3600, must-revalidate
+
+# UI/JS with version query - short cache for updates
+/static/ui-components.js
+  Cache-Control: public, max-age=300, must-revalidate
 
 # Static assets - long cache (1 year)
 /static/*

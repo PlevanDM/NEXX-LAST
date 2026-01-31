@@ -431,7 +431,7 @@ app.get('/nexx/*', (c) => {
 
             const script = document.createElement('script');
             script.id = 'nexx-db-script';
-            script.src = '/static/client-v2.js?v=2.0.2';
+            script.src = '/static/client-v2.js?v=2.0.3';
             script.async = true;
             script.onload = () => {
               container.innerHTML = '';

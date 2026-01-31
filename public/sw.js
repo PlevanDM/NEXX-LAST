@@ -1,5 +1,5 @@
 // NEXX GSM Service Worker v2.1 - PWA: не кешируем client-v2.js (база NEXX)
-const CACHE_NAME = 'nexx-gsm-v2.1-20260131';
+const CACHE_NAME = 'nexx-gsm-v2.2-20260201';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -49,6 +49,7 @@ self.addEventListener('fetch', event => {
   
   // Don't cache app scripts: NEXX Database (client-v2.js), i18n, database, etc.
   const isDynamicAsset = url.pathname.includes('client-v2.js') ||
+                         url.pathname.includes('ui-components.js') ||
                          url.pathname.includes('i18n.js') || 
                          url.pathname.includes('database.js') || 
                          url.pathname.includes('.min.js') ||

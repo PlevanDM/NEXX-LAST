@@ -368,16 +368,12 @@
         @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
         @keyframes slide-down { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-slide-down { animation: slide-down 0.3s ease-out; }
-        @keyframes pulse-glow { 
-          0%, 100% { box-shadow: 0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3); transform: scale(1); } 
-          50% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.8), 0 0 40px rgba(147, 51, 234, 0.5); transform: scale(1.02); } 
-        }
-        .animate-pulse-slow { animation: pulse-glow 2s ease-in-out infinite; }
         
         .animate-fade-in { animation: fadeIn 0.6s ease-out; }
         .animate-float { animation: float 3s ease-in-out infinite; }
         .hero-bg { 
-            background: linear-gradient(135deg, #0f172a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            /* Сверху светлее — не сливается с тёмным хедером до скролла */
+            background: linear-gradient(180deg, #1e293b 0%, #172033 15%, #0f172a 35%, #1a1a1a 60%, #2d2d2d 100%);
             position: relative;
         }
         
@@ -386,8 +382,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(128, 128, 128, 0.08), transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(64, 64, 64, 0.08), transparent 50%);
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(59, 130, 246, 0.06), transparent 50%),
+                        radial-gradient(circle at 30% 50%, rgba(128, 128, 128, 0.06), transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(64, 64, 64, 0.06), transparent 50%);
             animation: gradient-shift 8s ease-in-out infinite alternate;
         }
         
@@ -586,7 +583,7 @@
     <script src="/static/database.min.js?v=20260130"></script>
     <script src="/static/nexx-core.min.js?v=20260130"></script>
     <script src="/static/i18n.js?v=17.0.1"></script>
-    <script src="/static/ui-components.js?v=12.0.1"></script>
+    <script src="/static/ui-components.js?v=13.0.0"></script>
     <script src="/static/navigation-system.min.js?v=2.1"></script>
     <script src="/static/analytics.min.js?v=20260130"></script>
     <style>

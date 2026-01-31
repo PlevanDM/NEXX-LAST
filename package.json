@@ -35,7 +35,7 @@
     "build": "vite build --config vite.client.config.ts && vite build",
     "build:client": "vite build --config vite.client.config.ts",
     "build:server": "vite build",
-    "postbuild": "npm run copy-assets && npm run split-db",
+    "postbuild": "npm run split-db && npm run copy-assets",
     "copy-assets": "node scripts/copy-assets.cjs",
     "split-db": "node scripts/split-database.cjs",
     "import:exchange-ua": "node scripts/import-exchange-ua-xlsx.cjs",

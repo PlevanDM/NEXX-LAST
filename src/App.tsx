@@ -382,17 +382,28 @@ export const App = () => {
       <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
         <div className="w-full px-3 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center gap-2 sm:gap-4 min-h-[52px] sm:min-h-[56px] py-1.5 sm:py-2">
-            {/* Logo — клик = выход на лендинг */}
+            {/* Logo 2026 — реальный логотип + kinetic typography, клик = выход на лендинг */}
             <a
               href="/"
-              className="flex items-center gap-3 flex-shrink-0 hover:opacity-90 transition-opacity"
+              className="nexx-logo-link flex items-center gap-3 flex-shrink-0 hover:opacity-90 transition-opacity"
               title="На головну (лендинг)"
             >
-              <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-xl">
-                N
+              <div className="nexx-logo-icon w-9 h-9 flex items-center justify-center shrink-0 rounded-lg overflow-hidden bg-slate-800">
+                <img src="/static/nexx-logo-white.svg" alt="NEXX" className="w-6 h-6 object-contain" />
               </div>
-              <span className="font-bold text-xl tracking-tight hidden lg:block">NEXX Database</span>
-              <span className="font-bold text-xl tracking-tight lg:hidden">NEXX</span>
+              <span className="font-bold text-xl tracking-tight hidden lg:flex items-center" aria-hidden="false">
+                <span className="nexx-logo-letter">N</span>
+                <span className="nexx-logo-letter">E</span>
+                <span className="nexx-logo-letter">X</span>
+                <span className="nexx-logo-letter">X</span>
+                <span className="nexx-logo-suffix"> Database</span>
+              </span>
+              <span className="font-bold text-xl tracking-tight lg:hidden flex items-center" aria-hidden="false">
+                <span className="nexx-logo-letter">N</span>
+                <span className="nexx-logo-letter">E</span>
+                <span className="nexx-logo-letter">X</span>
+                <span className="nexx-logo-letter">X</span>
+              </span>
             </a>
             {/* Кнопка выход на лендинг — всегда видна */}
             <a

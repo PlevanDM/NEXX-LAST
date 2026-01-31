@@ -4,6 +4,30 @@ import { useTranslation } from '../hooks/useTranslation';
 
 const STORAGE_KEY = 'nexx_power_price_history';
 
+/** Параметри розрахунку ціни для України: НДС, доставка, наша прибуток */
+const UA_VAT_PERCENT = 20;
+const UA_DELIVERY_USD = 20;
+const UA_PROFIT_PERCENT = 15;
+const EUR_TO_USD = 1.08;
+
+/** Ціна для UA: (база ЄС + НДС) + доставка $20 в євро + наша прибуток */
+function calcUaPrice(priceEur: number): { total: number; breakdown: { base: number; vat: number; deliveryEur: number; profit: number } } {
+  const baseWithVat = priceEur * (1 + UA_VAT_PERCENT / 100);
+  const deliveryEur = UA_DELIVERY_USD / EUR_TO_USD;
+  const beforeProfit = baseWithVat + deliveryEur;
+  const profitAmount = beforeProfit * (UA_PROFIT_PERCENT / 100);
+  const total = beforeProfit + profitAmount;
+  return {
+    total: Math.round(total * 100) / 100,
+    breakdown: {
+      base: priceEur,
+      vat: Math.round((priceEur * UA_VAT_PERCENT / 100) * 100) / 100,
+      deliveryEur: Math.round(deliveryEur * 100) / 100,
+      profit: Math.round(profitAmount * 100) / 100
+    }
+  };
+}
+
 export interface PowerStationOffer {
   supplier: string;
   price: number;
@@ -257,19 +281,23 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
     });
   };
 
-  const { totalFromBest, totalAtEuBase, savings } = React.useMemo(() => {
+  const { totalFromBest, totalAtEuBase, totalUa, savings } = React.useMemo(() => {
     let fromBest = 0;
     let atEu = 0;
+    let uaTotal = 0;
     filteredStations.forEach(s => {
       if (!selectedIds.has(s.id)) return;
       const offers = normalizeOffers(s);
       const best = minOffer(offers);
+      const priceEur = best?.price ?? s.price_eu;
       if (best) fromBest += best.price;
       atEu += s.price_eu;
+      uaTotal += calcUaPrice(priceEur).total;
     });
     return {
       totalFromBest: fromBest,
       totalAtEuBase: atEu,
+      totalUa: Math.round(uaTotal * 100) / 100,
       savings: atEu - fromBest
     };
   }, [filteredStations, selectedIds]);
@@ -435,17 +463,22 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
           </div>
         </div>
         {selectedIds.size > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-2 px-3 bg-emerald-50 rounded-xl border border-emerald-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 py-2 px-3 bg-emerald-50 rounded-xl border border-emerald-200">
             <div>
               <div className="text-[10px] font-bold text-emerald-600 uppercase">Обрано</div>
               <div className="text-sm font-black text-emerald-800">{selectedIds.size} товарів</div>
             </div>
             <div>
-              <div className="text-[10px] font-bold text-emerald-600 uppercase">Разом (по мін.)</div>
+              <div className="text-[10px] font-bold text-emerald-600 uppercase">Разом ЄС (мін.)</div>
               <div className="text-lg font-black text-emerald-700">{totalFromBest} €</div>
             </div>
             <div>
-              <div className="text-[10px] font-bold text-amber-600 uppercase">Економія</div>
+              <div className="text-[10px] font-bold text-slate-600 uppercase">Разом UA (НДС, доставка, прибуток)</div>
+              <div className="text-lg font-black text-slate-800">{totalUa} €</div>
+              <div className="text-[10px] text-slate-500">НДС {UA_VAT_PERCENT}%, доставка ${UA_DELIVERY_USD}, прибуток {UA_PROFIT_PERCENT}%</div>
+            </div>
+            <div>
+              <div className="text-[10px] font-bold text-amber-600 uppercase">Економія ЄС</div>
               <div className="text-lg font-black text-amber-700">{savings > 0 ? `−${savings} €` : '0 €'}</div>
               {totalAtEuBase > 0 && (
                 <div className="text-[10px] text-slate-500">було б {totalAtEuBase} € по EU</div>
@@ -660,14 +693,24 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                     </table>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-dashed border-slate-100 grid grid-cols-2 gap-3">
-                  <div className="bg-slate-50 rounded-xl p-2 border border-slate-100">
-                    <div className="text-[9px] text-slate-500 font-bold uppercase">Локально (орієнт.)</div>
-                    <div className="text-sm font-bold text-slate-700">{Math.round(station.price_eu * 1.15)} €</div>
-                    <div className="text-[9px] text-slate-400">+15% імпорт</div>
+                <div className="mt-3 pt-3 border-t border-dashed border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                    <div className="text-[9px] text-slate-500 font-bold uppercase">Ціна UA (з НДС, доставка, прибуток)</div>
+                    {(() => {
+                      const base = best?.price ?? station.price_eu;
+                      const ua = calcUaPrice(base);
+                      return (
+                        <>
+                          <div className="text-lg font-black text-slate-800 mt-1">{ua.total.toFixed(0)} €</div>
+                          <div className="text-[10px] text-slate-500 mt-1">
+                            база {ua.breakdown.base} + НДС {UA_VAT_PERCENT}% + доставка ${UA_DELIVERY_USD} + прибуток {UA_PROFIT_PERCENT}%
+                          </div>
+                        </>
+                      );
+                    })()}
                   </div>
                   <div className="bg-amber-50 rounded-xl p-2 border border-amber-100">
-                    <div className="text-[9px] text-amber-600 font-bold uppercase">Економія від мін.</div>
+                    <div className="text-[9px] text-amber-600 font-bold uppercase">Економія від мін. ЄС</div>
                     <div className="text-sm font-bold text-amber-700">{best ? Math.round(station.price_eu - best.price) : 0} €</div>
                   </div>
                 </div>
@@ -735,7 +778,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
           <span className="text-xs font-bold uppercase tracking-widest">{t('tracker.liveStatus', 'База поставщиків')}</span>
         </div>
         <p className="text-[11px] text-slate-400 leading-relaxed">
-          {t('tracker.disclaimer', 'Ціни з офіційних та маркетплейсів (EU). Обирайте товари — підсумок рахується по мінімальній ціні у кожного.')}
+          Ціни ЄС з офіційних та маркетплейсів. Для UA завжди враховано: НДС {UA_VAT_PERCENT}%, доставка ${UA_DELIVERY_USD}, наша прибуток {UA_PROFIT_PERCENT}%.
         </p>
       </div>
     </div>

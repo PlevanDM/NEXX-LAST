@@ -14,67 +14,19 @@
   
   const animationStyles = document.createElement('style');
   animationStyles.innerHTML = `
-    /* Logo Pulse (scale) Animation */
-    @keyframes logoPulse {
+    @keyframes logo-pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.04); opacity: 0.95; }
     }
-    
-    /* Logo Glow Pulse (kept subtle) */
-    @keyframes logoGlow {
-      0%, 100% { 
-        filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
-      }
-      50% { 
-        filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
-      }
-    }
-    
-    /* Logo Shimmer Effect */
-    @keyframes logoShimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    
-    .logo-animated {
-      animation: logoPulse 2.5s ease-in-out infinite;
-    }
-    
-    .logo-glow {
-      animation: logoGlow 2.5s ease-in-out infinite;
-    }
-    
-    .logo-hover:hover {
-      animation: logoPulse 0.4s ease-out forwards;
-      transform: scale(1.06);
-    }
-    
-    /* Logo Container with Gradient Border on Hover */
     .logo-container {
       position: relative;
-      transition: all 0.3s ease;
+      transition: opacity 0.2s ease;
     }
-    
-    .logo-container::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-      background-size: 300% 300%;
-      border-radius: 12px;
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.3s ease;
-      animation: gradientShift 3s ease infinite;
+    .logo-container:hover {
+      opacity: 0.9;
     }
-    
-    .logo-container:hover::before {
-      opacity: 0.7;
-    }
-    
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .logo-pulse {
+      animation: logo-pulse 2.5s ease-in-out infinite;
     }
   `;
   if (document.head) {
@@ -366,7 +318,7 @@
     
     const isAuthenticated = localStorage.getItem('nexx_auth') === 'true';
     
-    const headerBg = isScrolled ? 'bg-white shadow-lg border-b border-gray-200 transition-colors duration-300' : 'bg-transparent transition-colors duration-300';
+    const headerBg = isScrolled ? 'bg-white shadow-lg border-b border-gray-200 transition-colors duration-300' : 'bg-gradient-to-b from-slate-900/70 to-transparent transition-colors duration-300';
     const textColor = isScrolled ? 'text-gray-900' : 'text-white';
     const iconColor = isScrolled ? 'text-gray-800' : 'text-white';
     
@@ -377,7 +329,7 @@
       },
       h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4', style: { paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
         h('div', { className: 'flex items-center justify-between gap-2 min-w-0' },
-          // Logo - Animated, responsive on mobile
+          // Logo 2026 — SVG: белый на прозрачном хедере, основной на белом фоне
           h('a', {
             href: '/',
             className: 'logo-container flex items-center group cursor-pointer flex-shrink-0 p-1 sm:p-2 rounded-xl transition-all duration-300 min-w-0',
@@ -385,18 +337,15 @@
             title: 'NEXX GSM - Acasă'
           },
             h('img', {
-              src: '/static/nexx-logo-trimmed.png?v=2',
+              src: isScrolled ? '/static/nexx-logo.svg?v=3' : '/static/nexx-logo-white.svg?v=3',
               alt: 'NEXX GSM',
-              className: `w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-500 ${isScrolled ? '' : 'logo-animated logo-glow'}`,
+              className: 'w-auto max-w-[144px] sm:max-w-[192px] md:max-w-none transition-opacity duration-200 ' + (!isScrolled ? 'logo-pulse' : ''),
               style: {
-                width: window.innerWidth < 640 ? 'min(120px, 35vw)' : (window.innerWidth < 768 ? '140px' : '200px'),
+                width: window.innerWidth < 640 ? 'min(144px, 42vw)' : (window.innerWidth < 768 ? '168px' : '240px'),
                 maxWidth: '100%',
                 height: 'auto',
                 display: 'block',
                 objectFit: 'contain',
-                filter: isScrolled
-                  ? 'none'
-                  : 'invert(1) brightness(1.1)',
                 transition: 'all 0.5s ease',
                 opacity: 0
               },
