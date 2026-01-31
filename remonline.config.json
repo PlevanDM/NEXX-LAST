@@ -2,7 +2,7 @@
   "apiKey": "49b16db2d181c5a486a181769e2c82d9",
   "baseUrl": "https://api.remonline.app",
   "branchId": "1",
-  "testMode": true,
+  "testMode": false,
   "endpoints": {
     "orders": "/api/orders",
     "inquiries": "/api/inquiries",

@@ -177,7 +177,7 @@ Write-Host ""
 
 # Deploy new project
 Write-Host "Deploying new project..." -ForegroundColor Cyan
-wrangler pages deploy dist --project-name nexx
+wrangler pages deploy dist --project-name nexx-gsm --branch main
 if ($LASTEXITCODE -ne 0) {
     Write-Host "   ERROR: Deployment failed!" -ForegroundColor Red
     exit 1

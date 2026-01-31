@@ -14,19 +14,19 @@
   
   const animationStyles = document.createElement('style');
   animationStyles.innerHTML = `
-    /* Logo Float Animation */
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
+    /* Logo Pulse (scale) Animation */
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.04); opacity: 0.95; }
     }
     
-    /* Logo Glow Pulse */
+    /* Logo Glow Pulse (kept subtle) */
     @keyframes logoGlow {
       0%, 100% { 
-        filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 20px rgba(147, 51, 234, 0.3));
+        filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
       }
       50% { 
-        filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 30px rgba(147, 51, 234, 0.5));
+        filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
       }
     }
     
@@ -37,16 +37,16 @@
     }
     
     .logo-animated {
-      animation: logoFloat 4s ease-in-out infinite;
+      animation: logoPulse 2.5s ease-in-out infinite;
     }
     
     .logo-glow {
-      animation: logoGlow 3s ease-in-out infinite;
+      animation: logoGlow 2.5s ease-in-out infinite;
     }
     
     .logo-hover:hover {
-      animation: logoFloat 0.5s ease-in-out;
-      transform: scale(1.05);
+      animation: logoPulse 0.4s ease-out forwards;
+      transform: scale(1.06);
     }
     
     /* Logo Container with Gradient Border on Hover */
@@ -375,26 +375,27 @@
         className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
         style: { opacity: 1 }
       },
-      h('div', { className: 'max-w-7xl mx-auto px-4 py-4' },
-        h('div', { className: 'flex items-center justify-between' },
-          // Logo - Animated with glow and float effects
-          h('a', { 
-            href: '/', 
-            className: 'logo-container flex items-center group cursor-pointer flex-shrink-0 p-2 rounded-xl transition-all duration-300',
+      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4', style: { paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
+        h('div', { className: 'flex items-center justify-between gap-2 min-w-0' },
+          // Logo - Animated, responsive on mobile
+          h('a', {
+            href: '/',
+            className: 'logo-container flex items-center group cursor-pointer flex-shrink-0 p-1 sm:p-2 rounded-xl transition-all duration-300 min-w-0',
             'aria-label': 'NEXX GSM Home',
             title: 'NEXX GSM - Acasă'
           },
             h('img', {
               src: '/static/nexx-logo-trimmed.png?v=2',
               alt: 'NEXX GSM',
-              className: `w-auto transition-all duration-500 ${isScrolled ? '' : 'logo-animated logo-glow'}`,
+              className: `w-auto max-w-[120px] sm:max-w-[160px] md:max-w-none transition-all duration-500 ${isScrolled ? '' : 'logo-animated logo-glow'}`,
               style: {
-                width: window.innerWidth < 640 ? '140px' : '200px',
+                width: window.innerWidth < 640 ? 'min(120px, 35vw)' : (window.innerWidth < 768 ? '140px' : '200px'),
+                maxWidth: '100%',
                 height: 'auto',
                 display: 'block',
                 objectFit: 'contain',
-                filter: isScrolled 
-                  ? 'none' 
+                filter: isScrolled
+                  ? 'none'
                   : 'invert(1) brightness(1.1)',
                 transition: 'all 0.5s ease',
                 opacity: 0

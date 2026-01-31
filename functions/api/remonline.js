@@ -9,8 +9,8 @@
  *   - Inquiry/Leads
  * 
  * Endpoints:
- *   POST /api/remonline - Handle various form types
- *   GET /api/remonline - Query orders and data
+ *   POST /api/remonline - Handle various form types (repair_order, callback, diagnostic, document, inquiry, generate_document, send_document_email)
+ *   GET /api/remonline?action=... - get_order (id=), get_branches, get_statuses, get_prices (device_type, issue_type)
  */
 
 export async function onRequestPost(context) {
@@ -84,6 +84,13 @@ export async function onRequestPost(context) {
     // ============================================
     if (formType === 'send_document_email' || action === 'send_document_email') {
       return await handleDocumentEmail(body, REMONLINE_API_KEY);
+    }
+
+    // ============================================
+    // BOOKING / APPOINTMENT (record on visit)
+    // ============================================
+    if (formType === 'booking' || formType === 'appointment' || action === 'create_booking') {
+      return await handleBooking(body, REMONLINE_BASE_URL, REMONLINE_API_KEY, BRANCH_ID);
     }
     
     // Unknown action
@@ -630,6 +637,85 @@ async function handleInquiry(body, baseUrl, apiKey, branchId) {
 }
 
 /**
+ * Validate booking/appointment
+ */
+function validateBooking(body) {
+  const errors = [];
+  const required = validateRequiredFields(body, ['customerName', 'customerPhone']);
+  errors.push(...required);
+  if (body.customerPhone && !isValidPhone(body.customerPhone)) errors.push('Invalid phone format');
+  return errors;
+}
+
+/**
+ * Handle booking / appointment (record on visit)
+ * Creates an order in Remonline with type "Appointment" so manager can schedule.
+ */
+async function handleBooking(body, baseUrl, apiKey, branchId) {
+  try {
+    const validationErrors = validateBooking(body);
+    if (validationErrors.length > 0) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Validation failed',
+        validationErrors,
+        message: 'Invalid form data'
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
+    const token = await getRemonlineToken(baseUrl, apiKey);
+    const cleanPhone = (body.customerPhone || '').replace(/[^0-9+]/g, '');
+    const clientId = await getOrCreateClient(baseUrl, token, (body.customerName || '').trim(), cleanPhone);
+
+    const now = new Date().toISOString();
+    const preferredDate = body.preferredDate || body.preferred_date || '';
+    const preferredTime = body.preferredTime || body.preferred_time || body.comment || '';
+
+    const orderRes = await fetch(`${baseUrl}/order/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        branch_id: parseInt(branchId),
+        client_id: clientId,
+        kindof_good: 'Vizită',
+        brand: '',
+        model: '',
+        malfunction: body.comment || 'Programare vizită',
+        manager_notes: `📅 PROGRAMARE VIZITĂ\n👤 ${body.customerName}\n📞 ${cleanPhone}\n📆 Preferat: ${preferredDate || 'N/A'} ${preferredTime ? preferredTime : ''}\n📝 ${body.comment || ''}\n⏰ ${now}\n🌐 Source: website_booking`
+      })
+    });
+
+    const orderData = await orderRes.json();
+    if (!orderData.success) {
+      throw new Error(orderData.message || 'Failed to create booking');
+    }
+
+    return new Response(JSON.stringify({
+      success: true,
+      id: orderData.data?.id,
+      message: 'Booking request created successfully',
+      data: orderData.data
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    });
+  } catch (error) {
+    console.error('handleBooking error:', error);
+    return new Response(JSON.stringify({
+      success: false,
+      error: error.message,
+      message: 'Failed to create booking request'
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    });
+  }
+}
+
+/**
  * Handle document generation request
  */
 async function handleDocumentGeneration(body, REMONLINE_BASE_URL, REMONLINE_API_KEY, BRANCH_ID) {
@@ -788,87 +874,104 @@ async function handleDocumentEmail(body, REMONLINE_API_KEY) {
 
 export async function onRequestGet(context) {
   const { request, env } = context;
-  
+  const cors = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');
-    
+
     const REMONLINE_API_KEY = env.REMONLINE_API_KEY || '';
     const REMONLINE_BASE_URL = env.REMONLINE_BASE_URL || 'https://api.remonline.app';
-    
+
     if (!REMONLINE_API_KEY) {
-      return new Response(JSON.stringify({ 
-        error: 'Remonline API not configured' 
-      }), { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(JSON.stringify({ error: 'Remonline API not configured' }), { status: 500, headers: cors });
     }
-    
-    // Get Prices
-    if (action === 'get_prices') {
-      const deviceType = url.searchParams.get('device_type');
-      const issueType = url.searchParams.get('issue_type');
-      
-      const response = await fetch(
-        `${REMONLINE_BASE_URL}/prices?device_type=${deviceType}&issue_type=${issueType}`,
-        {
-          headers: {
-            'Authorization': `Bearer ${REMONLINE_API_KEY}`
-          }
-        }
-      );
-      
-      const prices = await response.json();
-      
-      return new Response(JSON.stringify(prices), {
-        status: 200,
-        headers: { 
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'public, max-age=3600'
-        }
-      });
+
+    // Remonline uses token from token/new for read requests (not Bearer api_key)
+    let token;
+    const needToken = ['get_order', 'get_branches', 'get_statuses', 'get_services'].includes(action);
+    if (needToken) {
+      token = await getRemonlineToken(REMONLINE_BASE_URL, REMONLINE_API_KEY);
     }
-    
-    // Get Order Status
+
+    // Get Order by ID (Remonline: GET order/?token=...&ids[]=id)
     if (action === 'get_order') {
       const orderId = url.searchParams.get('id');
-      
-      const response = await fetch(
-        `${REMONLINE_BASE_URL}/orders/${orderId}`,
-        {
-          headers: {
-            'Authorization': `Bearer ${REMONLINE_API_KEY}`
-          }
-        }
+      if (!orderId) {
+        return new Response(JSON.stringify({ error: 'Missing id' }), { status: 400, headers: cors });
+      }
+      const res = await fetch(
+        `${REMONLINE_BASE_URL}/order/?token=${token}&ids[]=${encodeURIComponent(orderId)}`,
+        { headers: { 'Content-Type': 'application/json' } }
       );
-      
-      const order = await response.json();
-      
-      return new Response(JSON.stringify(order), {
+      const data = await res.json();
+      const order = data.data && data.data[0] ? data.data[0] : (data.data || data);
+      return new Response(JSON.stringify({ success: data.success !== false, data: order }), {
         status: 200,
-        headers: { 
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
+        headers: { ...cors, 'Cache-Control': 'private, max-age=60' }
       });
     }
-    
-    return new Response(JSON.stringify({ 
-      error: 'Unknown action' 
-    }), { 
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
-    
+
+    // Get Branches (addresses, phones — for contact page or branch selector)
+    if (action === 'get_branches') {
+      const res = await fetch(`${REMONLINE_BASE_URL}/branches/?token=${token}`, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      const branches = data.data || data;
+      return new Response(JSON.stringify({ success: true, data: branches }), {
+        status: 200,
+        headers: { ...cors, 'Cache-Control': 'public, max-age=3600' }
+      });
+    }
+
+    // Get Statuses (order status list — for "track order" human-readable labels)
+    if (action === 'get_statuses') {
+      const res = await fetch(`${REMONLINE_BASE_URL}/statuses/?token=${token}`, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      const statuses = data.data || data;
+      return new Response(JSON.stringify({ success: true, data: statuses }), {
+        status: 200,
+        headers: { ...cors, 'Cache-Control': 'public, max-age=3600' }
+      });
+    }
+
+    // Get Services (list of services — for "our services" block, no prices)
+    if (action === 'get_services') {
+      const res = await fetch(`${REMONLINE_BASE_URL}/services/?token=${token}`, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json().catch(() => ({}));
+      const list = data.data || data.services || (Array.isArray(data) ? data : []);
+      return new Response(JSON.stringify({ success: true, data: list }), {
+        status: 200,
+        headers: { ...cors, 'Cache-Control': 'public, max-age=3600' }
+      });
+    }
+
+    // Get Prices (if Remonline exposes /prices; otherwise may 404)
+    if (action === 'get_prices') {
+      const deviceType = url.searchParams.get('device_type') || '';
+      const issueType = url.searchParams.get('issue_type') || '';
+      const res = await fetch(
+        `${REMONLINE_BASE_URL}/prices?device_type=${encodeURIComponent(deviceType)}&issue_type=${encodeURIComponent(issueType)}`,
+        { headers: { 'Authorization': `Bearer ${REMONLINE_API_KEY}` } }
+      );
+      const prices = await res.json().catch(() => ({}));
+      return new Response(JSON.stringify(prices), {
+        status: 200,
+        headers: { ...cors, 'Cache-Control': 'public, max-age=3600' }
+      });
+    }
+
+    return new Response(JSON.stringify({
+      error: 'Unknown action',
+      supported: ['get_order', 'get_branches', 'get_statuses', 'get_services', 'get_prices']
+    }), { status: 400, headers: cors });
   } catch (error) {
-    return new Response(JSON.stringify({ 
-      error: error.message 
-    }), { 
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: cors });
   }
 }
 

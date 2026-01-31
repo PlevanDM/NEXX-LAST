@@ -36,9 +36,14 @@
             
             // Subscribe to language changes
             useEffect(() => {
+                // Update meta for this page initially
+                if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('faq');
+
                 if (window.i18n?.subscribe) {
                     return window.i18n.subscribe(() => {
-                        setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+                        const newLang = window.i18n.getCurrentLanguage()?.code || 'ro';
+                        setLang(newLang);
+                        if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('faq');
                     });
                 }
             }, []);

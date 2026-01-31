@@ -30,6 +30,7 @@ export interface DeviceSpecs {
 
 export interface Device {
   name: string;
+  type?: string; // e.g. Telefon, iPad (for Remonline forms)
   brand?: string;
   category?: string;
   model?: string;
@@ -80,6 +81,10 @@ export interface Device {
   price_uah?: number;
   price_usd?: number;
   article?: string;
+  
+  // For Remonline forms
+  serialNumber?: string;
+  serial_number?: string;
 }
 
 export interface OfficialPart {
@@ -160,6 +165,8 @@ export interface ExchangePrice {
   description: string;
   price_stock_uah: number;
   price_exchange_uah: number;
+  /** Полная цена (розница), ₴ — опционально */
+  price_full_uah?: number;
 }
 
 export interface ServiceModel {
@@ -210,4 +217,116 @@ export interface ErrorDetail {
   hardware?: boolean;
   severity?: string;
   component?: string;
+}
+
+// Language (i18n)
+export type Language = 'ro' | 'en' | 'ru' | 'uk';
+
+// Remonline specific types
+export type RemonlineFormType = 'repair_order' | 'callback' | 'diagnostic' | 'document';
+export type DocumentType = 'invoice' | 'act' | 'contract' | 'estimate' | 'receipt' | 'warranty';
+
+export interface RepairOrderForm {
+  customerName: string;
+  customerPhone: string;
+  customerEmail?: string;
+  device: Device;
+  problem: string;
+  problemDetails?: string;
+  source?: string;
+  language?: Language;
+  customer_name?: string;
+  customer_phone?: string;
+  customer_email?: string;
+  problem_details?: string;
+}
+
+export interface CallbackForm {
+  customerName: string;
+  customerPhone: string;
+  device?: string;
+  problem?: string;
+  language?: Language;
+  aiCallEnabled?: boolean;
+  customer_name?: string;
+  customer_phone?: string;
+  ai_call_enabled?: boolean;
+}
+
+export interface DiagnosticForm {
+  device: Device;
+  diagnosticResults: {
+    status: string;
+    findings: string;
+    estimatedRepairCost?: number;
+    estimated_repair_cost?: number;
+  };
+  language?: Language;
+  diagnostic_results?: unknown;
+}
+
+export interface DocumentRequestForm {
+  orderId: string;
+  documentType: DocumentType;
+  customerName: string;
+  customerEmail: string;
+  customerAddress?: string;
+  includeDetails?: boolean;
+  language?: Language;
+  order_id?: string;
+  document_type?: string;
+  customer_name?: string;
+  customer_email?: string;
+  customer_address?: string;
+  include_details?: boolean;
+}
+
+export interface RemonlineFormResponse {
+  success: boolean;
+  message?: string;
+  error?: string;
+  orderId?: string;
+  order_id?: string;
+  id?: string;
+  redirectUrl?: string;
+}
+
+export interface FormValidationResult {
+  isValid: boolean;
+  errors: Record<string, string[]>;
+}
+
+export interface RemonlineDocument {
+  id: string;
+  documentNumber: string;
+  issueDate: string;
+  dueDate?: string;
+  customer: { name: string; phone: string; email?: string };
+  order: { id: string };
+  items: Array<DocumentItem>;
+  subtotal: number;
+  tax?: number;
+  total: number;
+  currency: string;
+  notes?: string;
+  terms?: string;
+}
+
+export interface DocumentItem {
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  total: number;
+  id?: string;
+  name?: string;
+  price?: number;
+}
+
+export interface DocumentGenerationResponse {
+  success: boolean;
+  pdfUrl?: string;
+  pdf_url?: string;
+  downloadUrl?: string;
+  error?: string;
+  message?: string;
 }

@@ -394,7 +394,7 @@ app.get('/nexx', (c) => {
 
             const script = document.createElement('script');
             script.id = 'nexx-db-script';
-            script.src = '/static/client-v2.js?v=2.0.1';
+            script.src = '/static/client-v2.js?v=2.0.2';
             script.async = true;
             script.onload = () => {
               container.innerHTML = '';
@@ -736,12 +736,12 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
   `;
 };
 
-// Calculator page
+// Calculator page (тот же скрипт, что и на главной)
 app.get('/calculator', (c) => {
   return c.html(createPageTemplate(
     'Calculator preț reparații - NEXX',
     'Calculează prețul reparației dispozitivului tău online. iPhone, Android, MacBook, iPad, Apple Watch.',
-    'calculator.js',
+    'price-calculator.js',
     'bg-slate-50'
   ));
 })

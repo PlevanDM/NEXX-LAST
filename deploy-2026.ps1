@@ -1,5 +1,6 @@
 # ================================
 # NEXX Cloudflare Deploy Script 2026
+# Единственный продакшен: nexx-gsm (branch main). Домен: nexxgsm.com
 # ================================
 
 param(
@@ -126,11 +127,11 @@ if ($Force) {
 }
 
 Write-Host ""
-Write-Host "Running: wrangler pages deploy dist --project-name=nexx --branch=main" -ForegroundColor Gray
+Write-Host "Running: wrangler pages deploy dist --project-name=nexx-gsm --branch=main" -ForegroundColor Gray
 Write-Host ""
 
 try {
-    & wrangler pages deploy dist --project-name=nexx --branch=main
+    & wrangler pages deploy dist --project-name=nexx-gsm --branch=main
     
     if ($LASTEXITCODE -eq 0) {
         Write-Host ""

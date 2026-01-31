@@ -13,6 +13,8 @@ import { DeviceDetailModal } from './components/DeviceDetailModal';
 import { MacBoardList } from './components/MacBoardList';
 import { ServicePriceList } from './components/ServicePriceList'; // NEW
 import { KeyCombinations } from './components/KeyCombinations'; // NEW: DFU/Recovery
+import { PowerStationTracker } from './components/PowerStationTracker'; // EcoFlow / Power Tracker
+import { ExchangePriceListModal } from './components/ExchangePriceListModal'; // Apple Official UA
 import { Device, PriceData, ErrorDetail, ICComponent, OfficialServiceData, MacBoard, SchematicResource, RepairGuide, ConnectorPinout, LogicBoard, BootSequence, DiodeMeasurement, ExchangePrice, ServicePrices } from './types';
 import { convertPrice, formatPrice } from './utils';
 
@@ -37,6 +39,7 @@ export const App = () => {
   const [bootSequences, setBootSequences] = React.useState<Record<string, BootSequence[]>>({});
   const [measurements, setMeasurements] = React.useState<Record<string, DiodeMeasurement[]>>({});
   const [exchangePrices, setExchangePrices] = React.useState<Record<string, ExchangePrice>>({});
+  const [appleExchangeMeta, setAppleExchangeMeta] = React.useState<{ lastUpdated: string; source: string } | undefined>(undefined);
   const [servicePrices, setServicePrices] = React.useState<ServicePrices | null>(null);
   const [services, setServices] = React.useState<Record<string, any>>({});
   
@@ -55,7 +58,9 @@ export const App = () => {
   const [showMacBoards, setShowMacBoards] = React.useState(false);
   const [showKnowledge, setShowKnowledge] = React.useState(false);
   const [showServicePrices, setShowServicePrices] = React.useState(false);
+  const [showExchangeUA, setShowExchangeUA] = React.useState(false); // Прайс Apple Official UA
   const [showKeyCombo, setShowKeyCombo] = React.useState(false); // NEW: DFU/Recovery
+  const [showPowerTracker, setShowPowerTracker] = React.useState(false); // Power Tracker (EcoFlow, Bluetti, DJI)
   
   // Новое состояние
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -81,16 +86,18 @@ export const App = () => {
         closeAllModals();
       }
       
-      // Ctrl+1-6 - быстрое переключение разделов
-      if (e.ctrlKey && e.key >= '1' && e.key <= '6') {
+      // Ctrl+1-8 - быстрое переключение разделов (Прайс Украина = 3, Power Tracker = 8)
+      if (e.ctrlKey && e.key >= '1' && e.key <= '8') {
         e.preventDefault();
         const sections = [
-          () => setShowCalculator(true),
-          () => setShowServicePrices(true),
-          () => setShowMacBoards(true),
-          () => setShowKnowledge(true),
-          () => setShowICs(true),
-          () => setShowErrors(true)
+          () => setShowCalculator(true),      // 1
+          () => setShowServicePrices(true),   // 2
+          () => setShowExchangeUA(true),      // 3 Прайс Украина
+          () => setShowMacBoards(true),       // 4
+          () => setShowKnowledge(true),       // 5
+          () => setShowICs(true),             // 6
+          () => setShowErrors(true),          // 7
+          () => setShowPowerTracker(true)     // 8 Power Tracker (EcoFlow)
         ];
         sections[parseInt(e.key) - 1]?.();
       }
@@ -141,7 +148,9 @@ export const App = () => {
     setShowMacBoards(false);
     setShowKnowledge(false);
     setShowServicePrices(false);
+    setShowExchangeUA(false);
     setShowKeyCombo(false);
+    setShowPowerTracker(false);
     setShowMobileMenu(false);
     setSelectedDevice(null);
     setSelectedIC(null);
@@ -171,6 +180,7 @@ export const App = () => {
       switch(previousSection) {
         case 'calculator': setShowCalculator(true); break;
         case 'services': setShowServicePrices(true); break;
+        case 'exchangeUA': setShowExchangeUA(true); break;
         case 'boards': setShowMacBoards(true); break;
         case 'knowledge': setShowKnowledge(true); break;
         case 'keycombo': setShowKeyCombo(true); break;
@@ -191,6 +201,7 @@ export const App = () => {
   const loadData = async () => {
     try {
       setLoading(true);
+      setError(null);
       const data = await fetchAppData();
       setDevices(data.devices);
       setPrices(data.prices);
@@ -207,6 +218,7 @@ export const App = () => {
       setBootSequences(data.bootSequences || {});
       setMeasurements(data.measurements || {});
       setExchangePrices(data.exchangePrices || {});
+      setAppleExchangeMeta(data.appleExchangeMeta);
       setServicePrices(data.servicePrices || null);
       setServices(data.services || {});
       
@@ -231,23 +243,7 @@ export const App = () => {
     }
   };
 
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 text-red-600 p-4">
-        <Icons.Error />
-        <h1 className="text-xl font-bold mt-2">Ошибка загрузки</h1>
-        <p>{error}</p>
-        <button 
-          onClick={loadData}
-          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-        >
-          Попробовать снова
-        </button>
-      </div>
-    );
-  }
-
-  // Преобразуем объект цен в массив для таблицы
+  // Преобразуем объект цен в массив для таблицы (hooks must run before any early return)
   const priceListArray = React.useMemo(() => {
     return Object.values(prices);
   }, [prices]);
@@ -255,7 +251,7 @@ export const App = () => {
   // Блокировка скролла body при открытии модальных окон
   React.useEffect(() => {
     const isAnyModalOpen = showPriceTable || showErrors || showICs || showCalculator || 
-                           showMacBoards || showKnowledge || showServicePrices || showKeyCombo || 
+                           showMacBoards || showKnowledge || showServicePrices || showExchangeUA || showKeyCombo || showPowerTracker || 
                            selectedDevice || selectedIC || selectedPart;
     
     if (isAnyModalOpen) {
@@ -267,7 +263,7 @@ export const App = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, showKeyCombo, selectedDevice, selectedIC, selectedPart]);
+  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, showExchangeUA, showKeyCombo, showPowerTracker, selectedDevice, selectedIC, selectedPart]);
   
   // Глобальный поиск
   const globalSearchResults = React.useMemo(() => {
@@ -319,23 +315,63 @@ export const App = () => {
     boards: macBoards.length
   }), [devices, ics, errors, macBoards]);
 
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 text-red-600 p-4">
+        <Icons.Error />
+        <h1 className="text-xl font-bold mt-2">Ошибка загрузки</h1>
+        <p>{error}</p>
+        <button 
+          onClick={loadData}
+          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+        >
+          Попробовать снова
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
-      {/* Navbar */}
+      {/* Navbar — на всю ширину, компактнее */}
       <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center gap-4">
-            {/* Logo */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-xl">
+        <div className="w-full px-3 sm:px-4 lg:px-6">
+          <div className="flex justify-between items-center gap-2 sm:gap-4 min-h-[52px] sm:min-h-[56px] py-1.5 sm:py-2">
+            {/* Logo — клик = выход на лендинг */}
+            <a
+              href="/"
+              className="flex items-center gap-3 flex-shrink-0 hover:opacity-90 transition-opacity"
+              title="На головну (лендинг)"
+            >
+              <div className="w-9 h-9 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-xl">
                 N
               </div>
               <span className="font-bold text-xl tracking-tight hidden lg:block">NEXX Database</span>
               <span className="font-bold text-xl tracking-tight lg:hidden">NEXX</span>
-            </div>
+            </a>
+            {/* Кнопка выход на лендинг — всегда видна */}
+            <a
+              href="/"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-xs font-medium transition-colors flex-shrink-0 min-h-[40px] lg:min-h-0"
+              title="На головну (лендинг)"
+            >
+              <span className="lg:hidden">🏠</span>
+              <span>На сайт</span>
+            </a>
+            
+            {/* EcoFlow — в навбаре на мобиле (lg:hidden), всегда видна без меню */}
+            <button
+              type="button"
+              onClick={() => openModal(setShowPowerTracker, 'powerTracker')}
+              className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors flex-shrink-0 min-h-[40px]"
+              title="EcoFlow — ціни станцій"
+            >
+              <span>⚡</span>
+              <span>EcoFlow</span>
+            </button>
             
             {/* Глобальный поиск */}
-            <div className="relative flex-1 max-w-md hidden md:block">
+            <div className="relative flex-1 min-w-0 max-w-md hidden md:block mx-1 lg:mx-2">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Icons.Search />
               </div>
@@ -416,102 +452,102 @@ export const App = () => {
               )}
             </div>
             
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-2">
-              <button 
+            {/* Desktop Navigation — компактные кнопки, в одну строку */}
+            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 overflow-x-auto max-w-full custom-scrollbar shrink-0 flex-nowrap justify-end">
+              <button
                 onClick={() => openModal(setShowCalculator, 'calculator')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
-                  activeSection === 'calculator' 
-                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500 ring-2 ring-blue-400' 
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
+                  activeSection === 'calculator'
+                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500 ring-2 ring-blue-400'
                     : 'bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/50 border border-blue-500'
                 }`}
               >
                 <Icons.Calculator />
                 <span>Калькулятор</span>
               </button>
-
-              <button 
+              <button
                 onClick={() => openModal(setShowServicePrices, 'services')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap shadow-lg shadow-orange-900/50 border border-orange-500 ${
-                  activeSection === 'services'
-                    ? 'bg-orange-600 ring-2 ring-orange-400'
-                    : 'bg-orange-600 hover:bg-orange-500'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-orange-900/50 border border-orange-500 ${
+                  activeSection === 'services' ? 'bg-orange-600 ring-2 ring-orange-400' : 'bg-orange-600 hover:bg-orange-500'
                 }`}
               >
                 <Icons.Price />
                 <span>Услуги</span>
               </button>
-
-              <button 
+              <button
+                onClick={() => openModal(setShowExchangeUA, 'exchangeUA')}
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-amber-900/50 border border-amber-500 ${
+                  activeSection === 'exchangeUA' ? 'bg-amber-600 ring-2 ring-amber-400' : 'bg-amber-600 hover:bg-amber-500'
+                }`}
+              >
+                <Icons.Price />
+                <span>Прайс UA</span>
+              </button>
+              <button
+                onClick={() => openModal(setShowPowerTracker, 'powerTracker')}
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-emerald-900/50 border border-emerald-500 ${
+                  activeSection === 'powerTracker' ? 'bg-emerald-600 ring-2 ring-emerald-400' : 'bg-emerald-600 hover:bg-emerald-500'
+                }`}
+              >
+                <span>⚡</span>
+                <span>EcoFlow</span>
+              </button>
+              <button
                 onClick={() => openModal(setShowMacBoards, 'boards')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
-                  activeSection === 'boards'
-                    ? 'bg-slate-700 ring-2 ring-blue-400'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
+                  activeSection === 'boards' ? 'bg-slate-700 ring-2 ring-blue-400' : 'bg-slate-800 hover:bg-slate-700'
                 }`}
               >
                 <span className="text-blue-400"><Icons.Board /></span>
                 <span>MacBook</span>
                 {counts.boards > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 bg-blue-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                     {counts.boards}
                   </span>
                 )}
               </button>
-
-              <button 
+              <button
                 onClick={() => openModal(setShowKnowledge, 'knowledge')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
-                  activeSection === 'knowledge'
-                    ? 'bg-slate-700 ring-2 ring-indigo-400'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
+                  activeSection === 'knowledge' ? 'bg-slate-700 ring-2 ring-indigo-400' : 'bg-slate-800 hover:bg-slate-700'
                 }`}
               >
                 <span className="text-indigo-400"><Icons.Book /></span>
                 <span>Инфо</span>
               </button>
-
-              <button 
+              <button
                 onClick={() => openModal(setShowKeyCombo, 'keycombo')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${
-                  activeSection === 'keycombo'
-                    ? 'bg-slate-700 ring-2 ring-purple-400'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
+                  activeSection === 'keycombo' ? 'bg-slate-700 ring-2 ring-purple-400' : 'bg-slate-800 hover:bg-slate-700'
                 }`}
               >
                 <span className="text-purple-400">⌨️</span>
                 <span>DFU</span>
               </button>
-
-              <button 
+              <button
                 onClick={() => openModal(setShowICs, 'ics')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
-                  activeSection === 'ics'
-                    ? 'bg-slate-700 ring-2 ring-violet-400'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
+                  activeSection === 'ics' ? 'bg-slate-700 ring-2 ring-violet-400' : 'bg-slate-800 hover:bg-slate-700'
                 }`}
               >
                 <span className="text-violet-400"><Icons.Chip /></span>
                 <span>IC</span>
                 {counts.ics > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-violet-500 text-white text-xs rounded-full px-1.5 py-0.5 text-[10px] font-bold">
+                  <span className="absolute -top-0.5 -right-0.5 bg-violet-500 text-white text-[10px] rounded-full px-1 min-w-[1rem] h-4 flex items-center justify-center font-bold">
                     {counts.ics}
                   </span>
                 )}
               </button>
-
-              <button 
+              <button
                 onClick={() => openModal(setShowErrors, 'errors')}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm font-medium whitespace-nowrap relative ${
-                  activeSection === 'errors'
-                    ? 'bg-slate-700 ring-2 ring-red-400'
-                    : 'bg-slate-800 hover:bg-slate-700'
+                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
+                  activeSection === 'errors' ? 'bg-slate-700 ring-2 ring-red-400' : 'bg-slate-800 hover:bg-slate-700'
                 }`}
               >
                 <span className="text-red-400"><Icons.Error /></span>
                 <span>Ошибки</span>
                 {counts.errors > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 text-[10px] font-bold">
+                  <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[10px] rounded-full px-1 min-w-[1rem] h-4 flex items-center justify-center font-bold">
                     {counts.errors}
                   </span>
                 )}
@@ -528,10 +564,20 @@ export const App = () => {
           </div>
         </div>
         
-        {/* Mobile Menu */}
+        {/* Mobile Menu — прокручиваемый, EcoFlow вверху */}
         {showMobileMenu && (
-          <div className="lg:hidden bg-slate-800 border-t border-slate-700">
+          <div className="lg:hidden bg-slate-800 border-t border-slate-700 max-h-[85vh] overflow-y-auto">
             <div className="px-4 py-3 space-y-2">
+              <a href="/" className="w-full flex items-center justify-between px-4 py-3 bg-slate-600 hover:bg-slate-500 rounded-lg text-left text-white font-medium" onClick={() => setShowMobileMenu(false)}>
+                <span className="flex items-center gap-3">🏠 На сайт (головна)</span>
+              </a>
+              {/* EcoFlow — сразу под «На сайт», зелёная кнопка */}
+              <button onClick={() => { openModal(setShowPowerTracker, 'powerTracker'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-left text-white font-medium">
+                <span className="flex items-center gap-3">
+                  <span className="text-xl">⚡</span>
+                  <span>EcoFlow — ціни станцій</span>
+                </span>
+              </button>
               {/* Mobile Search */}
               <div className="relative mb-3">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -557,6 +603,13 @@ export const App = () => {
                 <span className="flex items-center gap-3">
                   <Icons.Price />
                   <span>Услуги</span>
+                </span>
+              </button>
+              
+              <button onClick={() => { openModal(setShowExchangeUA, 'exchangeUA'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-amber-600 hover:bg-amber-500 rounded-lg text-left">
+                <span className="flex items-center gap-3">
+                  <Icons.Price />
+                  <span>Прайс Украина (Apple)</span>
                 </span>
               </button>
               
@@ -602,76 +655,79 @@ export const App = () => {
         )}
       </nav>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumbs & Stats */}
-        <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-2 text-sm text-slate-600">
-            {navigationHistory.length > 1 && (
-              <button 
-                onClick={navigateBack}
-                className="flex items-center gap-1 px-2 py-1 bg-slate-200 hover:bg-slate-300 rounded transition-colors text-slate-700 font-medium"
-              >
-                ← Назад
-              </button>
-            )}
-            <span className="font-bold text-slate-900">Главная</span>
-            {activeSection !== 'devices' && (
-              <>
-                <span>›</span>
-                <span className="capitalize">
-                  {activeSection === 'calculator' && 'Калькулятор'}
-                  {activeSection === 'services' && 'Услуги'}
-                  {activeSection === 'boards' && 'MacBook платы'}
-                  {activeSection === 'knowledge' && 'База знаний'}
-                  {activeSection === 'keycombo' && 'DFU/Recovery'}
-                  {activeSection === 'ics' && 'Микросхемы'}
-                  {activeSection === 'errors' && 'Коды ошибок'}
-                  {activeSection === 'prices' && 'Прайс-лист'}
-                  {activeSection === 'device-detail' && 'Устройство'}
-                </span>
-              </>
-            )}
-            {selectedDevice && (
-              <>
-                <span>›</span>
-                <span className="font-medium text-blue-600">{selectedDevice.name}</span>
-              </>
-            )}
-          </div>
-          
-          <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-200">
-              <Icons.Phone />
-              <span className="font-bold">{counts.devices}</span>
-              <span className="hidden sm:inline">устройств</span>
+      {/* Main Content — ограниченная ширина для удобства чтения */}
+      <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6">
+        {/* Breadcrumbs & Stats — карточка для визуальной иерархии */}
+        <div className="mb-6 bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 min-w-0">
+              {navigationHistory.length > 1 && (
+                <button 
+                  onClick={navigateBack}
+                  className="flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors text-slate-700 font-medium text-xs sm:text-sm"
+                >
+                  ← Назад
+                </button>
+              )}
+              <span className="font-bold text-slate-900">Главная</span>
+              {activeSection !== 'devices' && (
+                <>
+                  <span className="text-slate-400">›</span>
+                  <span className="capitalize text-slate-700">
+                    {activeSection === 'calculator' && 'Калькулятор'}
+                    {activeSection === 'services' && 'Услуги'}
+                    {activeSection === 'exchangeUA' && 'Прайс Украина'}
+                    {activeSection === 'boards' && 'MacBook платы'}
+                    {activeSection === 'knowledge' && 'База знаний'}
+                    {activeSection === 'keycombo' && 'DFU/Recovery'}
+                    {activeSection === 'powerTracker' && 'Power Tracker'}
+                    {activeSection === 'ics' && 'Микросхемы'}
+                    {activeSection === 'errors' && 'Коды ошибок'}
+                    {activeSection === 'prices' && 'Прайс-лист'}
+                    {activeSection === 'device-detail' && 'Устройство'}
+                  </span>
+                </>
+              )}
+              {selectedDevice && (
+                <>
+                  <span className="text-slate-400">›</span>
+                  <span className="font-medium text-blue-600 truncate max-w-[200px] sm:max-w-none">{selectedDevice.name}</span>
+                </>
+              )}
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-violet-50 text-violet-700 rounded-lg border border-violet-200">
-              <Icons.Chip />
-              <span className="font-bold">{counts.ics}</span>
-              <span className="hidden sm:inline">IC</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-700 rounded-lg border border-red-200">
-              <Icons.Error />
-              <span className="font-bold">{counts.errors}</span>
-              <span className="hidden sm:inline">ошибок</span>
+            <div className="flex items-center gap-2 sm:gap-3 text-sm flex-shrink-0">
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-100">
+                <Icons.Phone className="w-4 h-4 text-blue-500" />
+                <span className="font-bold">{counts.devices}</span>
+                <span className="hidden sm:inline text-blue-600">устр.</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-violet-50 text-violet-700 rounded-lg border border-violet-100">
+                <Icons.Chip className="w-4 h-4 text-violet-500" />
+                <span className="font-bold">{counts.ics}</span>
+                <span className="hidden sm:inline text-violet-600">IC</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-50 text-red-700 rounded-lg border border-red-100">
+                <Icons.Error className="w-4 h-4 text-red-500" />
+                <span className="font-bold">{counts.errors}</span>
+                <span className="hidden sm:inline text-red-600">ошиб.</span>
+              </div>
             </div>
           </div>
         </div>
         
-        {/* Recent Devices */}
+        {/* Recent Devices — компактные карточки */}
         {recentDevices.length > 0 && !selectedDevice && (
-          <div className="mb-6">
+          <div className="mb-6 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
             <div className="flex items-center gap-2 mb-3">
-              <Icons.Info />
+              <Icons.Info className="w-4 h-4 text-slate-500" />
               <h3 className="text-sm font-bold text-slate-700">Недавно просмотренные</h3>
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+            <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
               {recentDevices.map((device) => (
                 <button
                   key={device.name}
                   onClick={() => handleDeviceSelect(device)}
-                  className="flex-shrink-0 px-4 py-2 bg-white border-2 border-blue-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all text-sm"
+                  className="flex-shrink-0 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 hover:shadow transition-all text-sm text-left"
                 >
                   <div className="font-medium text-slate-800">{device.name}</div>
                   <div className="text-xs text-slate-500">{device.model_number}</div>
@@ -681,66 +737,20 @@ export const App = () => {
           </div>
         )}
         
-        {/* Keyboard Shortcuts Hint */}
-        <div className="mb-4 p-3 bg-slate-100 rounded-lg border border-slate-200 text-xs text-slate-600 hidden md:block">
-          <span className="font-bold">Шорткаты:</span>
-          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Ctrl+K</kbd> Поиск</span>
-          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Esc</kbd> Закрыть</span>
-          <span className="ml-3"><kbd className="px-2 py-1 bg-white border border-slate-300 rounded">Ctrl+1-6</kbd> Разделы</span>
-        </div>
-        
-        {/* Quick Actions - показываем только на главной странице */}
-        {activeSection === 'devices' && !selectedDevice && (
-          <div className="mb-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            <button 
-              onClick={() => openModal(setShowPriceTable, 'prices')}
-              className="p-4 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-2xl">💰</span>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">4846</span>
-              </div>
-              <div className="font-bold text-sm">Прайс-лист</div>
-              <div className="text-xs opacity-80">Все цены</div>
-            </button>
-            
-            <button 
-              onClick={() => openModal(setShowCalculator, 'calculator')}
-              className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <Icons.Calculator />
-                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">NEW</span>
-              </div>
-              <div className="font-bold text-sm">Калькулятор</div>
-              <div className="text-xs opacity-80">Стоимость ремонта</div>
-            </button>
-            
-            <button 
-              onClick={() => openModal(setShowKnowledge, 'knowledge')}
-              className="p-4 bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <Icons.Book />
-                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">10</span>
-              </div>
-              <div className="font-bold text-sm">База знаний</div>
-              <div className="text-xs opacity-80">Гайды и схемы</div>
-            </button>
-            
-            <button 
-              onClick={() => openModal(setShowKeyCombo, 'keycombo')}
-              className="p-4 bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-all text-left group"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-2xl">⌨️</span>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded-full">DFU</span>
-              </div>
-              <div className="font-bold text-sm">DFU/Recovery</div>
-              <div className="text-xs opacity-80">Комбинации клавиш</div>
-            </button>
+        {/* Keyboard Shortcuts — сворачиваемая подсказка */}
+        <details className="mb-4 group hidden md:block">
+          <summary className="cursor-pointer list-none p-2 -m-2 rounded-lg hover:bg-slate-100 text-xs text-slate-500 hover:text-slate-700 transition-colors">
+            <span className="font-medium">⌨️ Шорткаты</span>
+            <span className="ml-2 text-slate-400 group-open:inline">▼</span>
+          </summary>
+          <div className="mt-2 p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-600">
+            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Ctrl+K</kbd> Поиск
+            <span className="mx-2 text-slate-400">·</span>
+            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Esc</kbd> Закрыть
+            <span className="mx-2 text-slate-400">·</span>
+            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Ctrl+1–8</kbd> Разделы
           </div>
-        )}
+        </details>
         
         <DeviceList 
           devices={devices} 
@@ -842,6 +852,19 @@ export const App = () => {
         </div>
       )}
 
+      {/* Apple Official UA Exchange Price List Modal */}
+      {showExchangeUA && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden flex flex-col">
+             <ExchangePriceListModal
+               exchangePrices={exchangePrices}
+               meta={appleExchangeMeta}
+               onClose={() => setShowExchangeUA(false)}
+             />
+          </div>
+        </div>
+      )}
+
       {/* Repair Calculator Modal */}
       {showCalculator && officialPrices && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
@@ -865,6 +888,15 @@ export const App = () => {
                data={keyCombinations}
                onClose={() => setShowKeyCombo(false)} 
              />
+          </div>
+        </div>
+      )}
+
+      {/* Power Tracker Modal (EcoFlow, Bluetti, DJI) */}
+      {showPowerTracker && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
+             <PowerStationTracker onClose={() => setShowPowerTracker(false)} />
           </div>
         </div>
       )}

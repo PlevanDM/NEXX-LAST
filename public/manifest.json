@@ -33,6 +33,18 @@
   "scope": "/",
   "shortcuts": [
     {
+      "name": "База NEXX",
+      "short_name": "База",
+      "description": "База пристроїв, IC, EcoFlow",
+      "url": "/nexx",
+      "icons": [
+        {
+          "src": "/static/nexx-logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
       "name": "Calculator Preț",
       "short_name": "Calculator",
       "description": "Calculează prețul reparației",

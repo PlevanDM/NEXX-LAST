@@ -4,7 +4,7 @@ param(
     [string]$Email = "dmitro.plevan@gmail.com",
     [string]$GlobalApiKey = "853487a6a39bd7f6f8128b4caf420ac22de33",
     [string]$AccountId = "ad170d773e79a037e28f4530fd5305a5",
-    [string]$ProjectName = "nexx"
+    [string]$ProjectName = "nexx-gsm"
 )
 
 Write-Host "Creating new Cloudflare Pages project and deploying..." -ForegroundColor Yellow

@@ -32,14 +32,17 @@
     "dev": "vite",
     "dev:host": "vite --host",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
-    "build": "vite build --config vite.client.config.ts && vite build && npm run postbuild",
+    "build": "vite build --config vite.client.config.ts && vite build",
     "build:client": "vite build --config vite.client.config.ts",
     "build:server": "vite build",
     "postbuild": "npm run copy-assets",
     "copy-assets": "node scripts/copy-assets.cjs",
+    "import:exchange-ua": "node scripts/import-exchange-ua-xlsx.cjs",
+    "import:exchange-ua:desktop": "powershell -ExecutionPolicy Bypass -File scripts/import-exchange-ua-from-desktop.ps1",
+    "sample:exchange-ua": "node scripts/create-sample-exchange-ua.cjs",
     "preview": "wrangler pages dev dist",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name nexx-gsm",
-    "deploy:prod": "npm run build && wrangler pages deploy dist --project-name nexx-gsm --branch main",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name nexx-gsm --branch main",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name nexx-gsm",
     "deploy:api": "powershell -ExecutionPolicy Bypass -File deploy-direct-api.ps1",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "type-check": "tsc --noEmit",
@@ -91,6 +94,7 @@
     "tweetnacl": "^1.0.3",
     "typescript": "^5.7.2",
     "vite": "^7.3.1",
-    "wrangler": "^4.59.2"
+    "wrangler": "^4.59.2",
+    "xlsx": "^0.18.5"
   }
 }

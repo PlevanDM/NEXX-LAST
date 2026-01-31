@@ -1,8 +1,15 @@
 # Purge Cloudflare Cache for nexxgsm.com
 # Очищає кеш Cloudflare для швидкого оновлення
+# Set CLOUDFLARE_GLOBAL_API_KEY and CLOUDFLARE_EMAIL in environment (never commit keys).
 
-$GlobalApiKey = "853487a6a39bd7f6f8128b4caf420ac22de33"
-$Email = "dmitro.plevan@gmail.com"
+$GlobalApiKey = $env:CLOUDFLARE_GLOBAL_API_KEY
+$Email = $env:CLOUDFLARE_EMAIL
+if (-not $GlobalApiKey) {
+    Write-Host "ERROR: Set CLOUDFLARE_GLOBAL_API_KEY in environment. Never commit API keys." -ForegroundColor Red
+    exit 1
+}
+if (-not $Email) { $Email = "dmitro.plevan@gmail.com" }
+
 $ZoneName = "nexxgsm.com"
 $API_BASE = "https://api.cloudflare.com/client/v4"
 

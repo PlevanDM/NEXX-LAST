@@ -113,6 +113,7 @@ yarn-error.log*
 *.sqlite
 *.sqlite3
 backup/
+_archive/
 
 # Validation reports (temporary)
 *-validation-report.json

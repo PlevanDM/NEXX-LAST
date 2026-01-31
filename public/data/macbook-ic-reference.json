@@ -1,0 +1,791 @@
+{
+  "version": "1.0",
+  "source": "NEXX IC refs from master-db 2026",
+  "description": "MacBook PMIC/Audio reference. Fill power_ics/audio_ics via apply-audit-ic.",
+  "byName": {
+    "MacBook Air 11\" Early 2014": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 11\" Early 2015": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" Early 2014": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" Early 2015": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" 2017": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" 2018 Retina": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" 2019 Retina": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" 2020 Intel": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" M1 2020": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" M2 2022": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 15\" M2 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13\" M3 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 15\" M3 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" Late 2013": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" Mid 2014": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" Early 2015": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2016 Two Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2016 Four Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2017 Two Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2017 Four Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2018 Four Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2019 Two Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2019 Four Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2020 Two Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" 2020 Four Thunderbolt 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" M1 2020": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 13\" M2 2022": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M1 Pro 2021": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M1 Pro 2021": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M2 Pro 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M2 Pro 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M3 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M3 Pro 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M3 Pro 2023": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" Late 2013": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" Mid 2014": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" Mid 2015": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" 2016": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" 2017": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" 2018": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 15\" 2019": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" 2019": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13-inch M4 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 15-inch M4 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14-inch M5 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M4 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M4 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M4 Pro 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M4 Pro 2024": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M5 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14\" M5 Pro 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16\" M5 Pro 2025": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 13-inch M4": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Air 15-inch M4": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 14-inch M5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "MacBook Pro 16-inch M5 Max": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    }
+  }
+}

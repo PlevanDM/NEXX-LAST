@@ -109,7 +109,7 @@ try {
         "Content-Type" = "application/json"
     }
     $accountId = "ad170d773e79a037e28f4530fd5305a5"
-    $deployments = Invoke-RestMethod -Uri "https://api.cloudflare.com/client/v4/accounts/$accountId/pages/projects/nexx/deployments?per_page=1" -Method Get -Headers $cfHeaders
+    $deployments = Invoke-RestMethod -Uri "https://api.cloudflare.com/client/v4/accounts/$accountId/pages/projects/nexx-gsm/deployments?per_page=1" -Method Get -Headers $cfHeaders
     if ($deployments.result -and $deployments.result.Count -gt 0) {
         $latest = $deployments.result[0]
         Write-Host "   OK Latest deployment: $($latest.id)" -ForegroundColor Green

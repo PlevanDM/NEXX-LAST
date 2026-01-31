@@ -122,16 +122,16 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
 
   return (
     <div className="space-y-6">
-      {/* Filters */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200 sticky top-0 z-10 backdrop-blur-md bg-white/95">
-        <div className="relative w-full md:w-96">
+      {/* Filters — фиксированная панель при скролле */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-slate-200 sticky top-[52px] sm:top-[56px] z-10">
+        <div className="relative w-full md:max-w-md">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <Icons.Search />
           </div>
           <input
             type="text"
             placeholder="Поиск (A2338, 820-02020, EMC...)"
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all font-mono text-sm"
+            className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-mono text-sm placeholder-slate-400"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -140,10 +140,10 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
         <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`px-3 py-1.5 rounded-md text-sm font-bold uppercase tracking-wide transition-all ${
+            className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide transition-all flex-shrink-0 ${
               selectedCategory === null 
-                ? 'bg-slate-800 text-white' 
-                : 'bg-white text-slate-600 border border-slate-300 hover:border-slate-500'
+                ? 'bg-slate-800 text-white shadow-sm' 
+                : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400 hover:bg-slate-100'
             }`}
           >
             Все
@@ -152,10 +152,10 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat as string)}
-              className={`px-3 py-1.5 rounded-md text-sm font-bold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 ${
+              className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 ${
                 selectedCategory === cat 
-                  ? 'bg-blue-700 text-white' 
-                  : 'bg-white text-slate-600 border border-slate-300 hover:border-blue-500'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-900/20' 
+                  : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
               }`}
             >
               <span>{getCategoryIcon(cat as string)}</span>
@@ -172,7 +172,7 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
             <div
               key={device.name}
               onClick={() => onSelect(device)}
-              className="bg-white rounded-lg border border-slate-300 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer overflow-hidden flex flex-col h-full group"
+              className="bg-white rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-900/5 active:scale-[0.99] transition-all cursor-pointer overflow-hidden flex flex-col h-full group"
             >
               {/* Device Image */}
               <DeviceImage device={device} />
@@ -270,12 +270,12 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center py-20 text-slate-400">
-          <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-            <Icons.Search />
+        <div className="flex flex-col items-center justify-center py-16 px-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mb-4 text-slate-400">
+            <Icons.Search className="w-10 h-10" />
           </div>
-          <h3 className="text-lg font-medium text-slate-600">Ничего не найдено</h3>
-          <p>Попробуйте ввести номер модели (Axxxx) или платы (820-xxxx)</p>
+          <h3 className="text-lg font-semibold text-slate-700 mb-1">Ничего не найдено</h3>
+          <p className="text-sm text-slate-500 text-center max-w-sm">Измените фильтр категории или введите номер модели (Axxxx), платы (820-xxxx) или EMC</p>
         </div>
       )}
     </div>

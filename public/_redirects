@@ -1,12 +1,10 @@
 # Cloudflare Pages Redirects
 # https://developers.cloudflare.com/pages/platform/redirects/
 
-# Homepage
-/home              /                 301
-/index             /                 301
-/index.html        /                 301
+# Главная / — лендинг (index.html), база — по /nexx
+# / и /index.html отдаются статикой (index.html)
 
-# Database - rewrite to serve nexx.html
+# База NEXX — rewrite на nexx.html
 /nexx              /nexx.html        200!
 /nexx.html         /nexx.html        200!
 /database          /nexx.html        301

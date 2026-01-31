@@ -101,40 +101,38 @@ npm run deploy
 
 ---
 
-## 📁 Структура проекту
+## 📁 Структура проекту (чистий репозиторій)
+
+- **Без дублів**: один архів `_archive/` (ігнорується git), стара документація в `docs-archive/`.
+- **База даних**: усе в `public/data/` — без втрат.
 
 ```
 nexx-webapp/
 ├── index.html              # Клієнтський лендінг
 ├── public/
-│   ├── nexx.html          # База знань (з PIN)
-│   ├── static/
-│   │   ├── ui-components.js       # UI library
-│   │   ├── navigation-system.js   # Navigation system
-│   │   ├── app.js                 # NEXX Database app (124KB)
-│   │   └── ...
-│   ├── data/
-│   │   ├── devices.json           # 134 пристрої
-│   │   ├── ic_compatibility.json  # 115+ IC
-│   │   ├── error_codes.json       # 167 кодів
-│   │   └── ...
-│   ├── images/            # 7 images
-│   ├── robots.txt         # SEO
-│   └── sitemap.xml        # SEO
+│   ├── data/               # База даних (JSON)
+│   │   ├── master-db.json       # Пристрої, плати, IC
+│   │   ├── power-stations.json  # EcoFlow / BLUETTI / DJI
+│   │   ├── apple-exchange-ua.json
+│   │   └── *-ic-reference.json   # PMIC/Audio довідники
+│   ├── static/             # JS, CSS, assets
+│   ├── images/
+│   ├── _headers, _redirects, _routes.json
+│   └── robots.txt, sitemap.xml
 ├── src/
-│   ├── index.tsx          # Hono API server
-│   ├── App.tsx            # Main React app
-│   ├── client.tsx         # Client entry
-│   └── components/        # 32 React components
-├── lib/
-│   ├── design-system.ts   # Complete design tokens
-│   ├── site-config.ts     # Site configuration
-│   └── types.ts           # TypeScript types
-└── scripts/               # Utility scripts
-    ├── enhance_database_2026.cjs
-    ├── fix_missing_data.cjs
-    ├── copy-assets.cjs
-    └── show_stats.cjs
+│   ├── index.tsx           # Hono API (Cloudflare)
+│   ├── App.tsx             # NEXX Database (React)
+│   ├── client.tsx          # Client entry
+│   ├── global.css
+│   └── components/         # React компоненти
+├── functions/api/          # Cloudflare Functions (remonline, callback, …)
+├── scripts/                # Валідація, оновлення даних, copy-assets
+├── docs-archive/           # Вся документація (звіти, гайди)
+├── deploy/                 # Nginx, Vultr
+├── README.md, SETUP-GUIDE.md, QUICK-DEPLOY.md
+├── DOCUMENTATION-INDEX.md  # Індекс усієї документації
+├── package.json, wrangler.toml, vite.config.ts, tsconfig.json
+└── .gitignore              # dist/, node_modules/, _archive/, .env
 ```
 
 ---

@@ -443,12 +443,17 @@
       { id: 1, name: window.i18n?.t('calculator.stepBrand') || 'Marcă', icon: 'fa-tags' },
       { id: 2, name: window.i18n?.t('calculator.stepDevice') || 'Dispozitiv', icon: 'fa-mobile-alt' },
       { id: 3, name: window.i18n?.t('calculator.stepModel') || 'Model', icon: 'fa-list-ul' },
-      { id: 4, name: window.i18n?.t('calculator.stepIssue') || 'Problemă', icon: 'fa-wrench' },
+      { id: 4, name: window.i18n?.t('calculator.stepParts') || 'Piese / Prețuri', icon: 'fa-euro-sign' },
+      { id: 5, name: window.i18n?.t('calculator.stepIssue') || 'Problemă', icon: 'fa-wrench' },
       { id: 6, name: window.i18n?.t('calculator.stepPrice') || 'Preț', icon: 'fa-calculator' }
     ];
     
+    const hasPartsData = (model) => model && (model.service_parts || model.official_service_prices);
+    const USD_TO_EUR = 0.92;
+    const USD_TO_RON = 4.65;
+    
     const handleNext = () => {
-      if (step < 6) {
+      if (step < 7) {
         setDirection(1);
         setStep(step + 1);
       }
@@ -592,7 +597,7 @@
             
             console.log(`✅ Итого за ${issues.length} дефект(ов): ${totalAvg} lei (${totalMin}-${totalMax})`);
             setResult(resultData);
-            // Go to step 5 to collect contact data BEFORE showing full result
+            // Остаёмся на шаге 5 — показывается форма контакта (step === 5 && result)
             setStep(5);
           } else {
             if (window.showToast) {
@@ -870,30 +875,27 @@
       setErrors({});
     };
     
-    return h('div', { id: 'calculator', className: 'max-w-3xl mx-auto' },
-      h('div', { className: 'bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950/95 border border-zinc-700/80 rounded-2xl p-5 md:p-8 shadow-2xl shadow-black/20 backdrop-blur-sm' },
-        // Clean Header — fără pill, doar titlu + descriere
-        h('div', { className: 'text-center mb-6' },
-          h('h2', { className: 'text-2xl md:text-3xl font-bold text-white mb-1.5 tracking-tight' }, 
+    return h('div', { id: 'calculator', className: 'max-w-3xl mx-auto px-0.5 sm:px-0' },
+      h('div', { className: 'bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950/95 border border-zinc-700/80 rounded-lg sm:rounded-2xl p-2 sm:p-5 md:p-8 shadow-2xl shadow-black/20 backdrop-blur-sm' },
+        // Header — очень компактно на мобильном
+        h('div', { className: 'text-center mb-2 sm:mb-6' },
+          h('h2', { className: 'text-lg sm:text-2xl md:text-3xl font-bold text-white mb-0.5 sm:mb-1.5 tracking-tight leading-tight' },
             window.i18n?.t('calculator.title') || 'Estimare gratuită online'
           ),
-          h('p', { className: 'text-zinc-400 text-sm max-w-md mx-auto' }, 
+          h('p', { className: 'text-zinc-400 text-xs sm:text-sm max-w-md mx-auto leading-snug hidden sm:block' },
             window.i18n?.t('calculator.subtitle') || 'Răspundeți la câteva întrebări pentru a afla prețul aproximativ'
           )
         ),
         
-        // Step indicator — numere + icoane, linie de progres clară
-        step < 6 && h('div', { className: 'mb-6 px-1' },
-          h('div', { className: 'flex items-start justify-between relative gap-1' },
-            // Linie de fundal
+        // Step indicator — одна строка, мелко на мобильном
+        step < 7 && h('div', { className: 'mb-2 sm:mb-6 px-0' },
+          h('div', { className: 'flex items-center justify-between relative' },
+            h('div', { className: 'absolute top-3 left-0 right-0 h-0.5 bg-zinc-700 rounded-full z-0 sm:top-5' }),
             h('div', { 
-              className: 'absolute top-5 left-0 right-0 h-0.5 bg-zinc-700 rounded-full z-0'
-            }),
-            h('div', { 
-              className: 'absolute top-5 left-0 h-0.5 bg-gradient-to-r from-blue-500 via-blue-400 to-purple-500 rounded-full z-10 transition-all duration-400',
+              className: 'absolute top-3 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 transition-all duration-400 sm:top-5',
               style: { width: `${((step - 1) / (steps.length - 1)) * 100}%` }
             }),
-            ...steps.map((s, idx) => {
+            ...steps.map((s) => {
               const isActive = step === s.id;
               const isDone = step > s.id;
               return h('div', {
@@ -901,40 +903,39 @@
                 className: 'relative z-20 flex flex-col items-center flex-1 min-w-0'
               },
                 h('div', {
-                  className: `w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${
+                  className: `w-6 h-6 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 border border-zinc-600 sm:border-2 ${
                     isDone 
-                      ? 'bg-emerald-500/90 border-emerald-400 text-white shadow-md' 
+                      ? 'bg-emerald-500/90 border-emerald-400 text-white' 
                       : isActive 
-                        ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-400 text-white shadow-lg shadow-blue-500/40 scale-105' 
-                        : 'bg-zinc-800 border-zinc-600 text-zinc-500'
+                        ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-400 text-white shadow-lg scale-105' 
+                        : 'bg-zinc-800 text-zinc-500'
                   }`
                 },
                   isDone 
-                    ? h('i', { className: 'fas fa-check text-sm' })
-                    : h('i', { className: `fas ${s.icon} text-sm ${isActive ? 'text-white' : ''}` })
+                    ? h('i', { className: 'fas fa-check text-[10px] sm:text-sm' })
+                    : h('i', { className: `fas ${s.icon} text-[10px] sm:text-sm ${isActive ? 'text-white' : ''}` })
                 ),
                 h('span', {
-                  className: `text-[10px] sm:text-xs mt-2 text-center font-medium max-w-[4rem] truncate sm:max-w-none ${isActive || isDone ? 'text-white' : 'text-zinc-500'}`
+                  className: `text-[8px] sm:text-xs mt-0.5 sm:mt-2 text-center font-medium max-w-[2.5rem] sm:max-w-[4rem] truncate leading-tight ${isActive || isDone ? 'text-white' : 'text-zinc-500'}`
                 }, s.name)
               );
             })
           )
         ),
         
-        // Step Content with Animation
-        h('div', { className: 'min-h-[220px] relative' },
-          // Step 1: Brand Selection
-          step === 1 && !result && h('div', { className: 'space-y-4 ' },
-            h('h3', { className: 'text-lg font-bold text-white mb-3 text-center' }, 
+        // Step Content — компактная высота
+        h('div', { className: 'min-h-[100px] sm:min-h-[220px] relative' },
+          // Step 1: Brand Selection — compact squares, more columns on mobile
+          step === 1 && !result && h('div', { className: 'space-y-1 sm:space-y-3' },
+            h('h3', { className: 'text-xs sm:text-lg font-bold text-white mb-1 sm:mb-3 text-center' },
               window.i18n?.t('calculator.selectBrand') || 'Alegeți marca:'
             ),
-            h('div', { className: 'grid grid-cols-3 md:grid-cols-5 gap-2' },
+            h('div', { className: 'grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 sm:gap-2' },
               ...brands.map(brand => h('button', {
                 key: brand.id,
                 onClick: () => {
                   setData({ ...data, brand });
                   handleNext();
-                  // Скролл к калькулятору
                   setTimeout(() => {
                     const calcEl = document.getElementById('calculator');
                     if (calcEl) {
@@ -942,13 +943,13 @@
                     }
                   }, 100);
                 },
-                className: 'group relative p-3 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20 overflow-hidden cursor-pointer'
+                className: 'group relative aspect-square max-w-[72px] max-h-[72px] sm:max-w-none sm:max-h-none mx-auto w-full flex flex-col items-center justify-center p-1 sm:p-2 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg sm:rounded-xl transition-all duration-200 hover:scale-[1.05] overflow-hidden cursor-pointer'
               },
                 h('div', { 
                   className: `absolute inset-0 bg-gradient-to-br ${brand.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`
                 }),
                 h('div', { 
-                  className: `w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-br ${brand.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md p-2`
+                  className: `w-7 h-7 sm:w-9 sm:h-9 flex-shrink-0 rounded-lg bg-gradient-to-br ${brand.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md p-1`
                 },
                   h('img', { 
                     src: brand.svg, 
@@ -958,24 +959,23 @@
                     loading: 'lazy'
                   })
                 ),
-                h('div', { className: 'font-medium text-white text-xs relative z-10' }, brand.name)
+                h('span', { className: 'font-medium text-white text-[9px] sm:text-xs relative z-10 leading-tight truncate max-w-full mt-0.5' }, brand.name)
               ))
             )
           ),
           
           // Step 2: Device Type
-          step === 2 && !result && h('div', { className: 'space-y-4 ' },
-            h('h3', { className: 'text-lg font-bold text-white mb-4 text-center' }, 
+          step === 2 && !result && h('div', { className: 'space-y-1 sm:space-y-4' },
+            h('h3', { className: 'text-sm sm:text-lg font-bold text-white mb-1 sm:mb-4 text-center leading-tight' },
               `${data.brand?.name || data.brand?.id || 'Brand'} - ${window.i18n?.t('calculator.selectDevice') || 'Alegeți tipul:'}`
             ),
-            // Показываем индикатор загрузки базы данных
-            !dbReady && h('div', { className: 'text-center py-4' },
-              h('div', { className: 'inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg' },
-                h('div', { className: 'w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin' }),
-                h('span', { className: 'text-sm text-blue-400' }, 'Se încarcă baza de date...')
+            !dbReady && h('div', { className: 'text-center py-2 sm:py-4' },
+              h('div', { className: 'inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg text-xs sm:text-sm' },
+                h('div', { className: 'w-3 h-3 sm:w-4 sm:h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin' }),
+                h('span', { className: 'text-blue-400' }, 'Se încarcă baza de date...')
               )
             ),
-            h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-2' },
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2' },
               ...getAvailableDeviceTypes().map(type => h('button', {
                 key: type.id,
                 onClick: () => {
@@ -990,10 +990,10 @@
                     if (calcEl) calcEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }, 100);
                 },
-                className: 'group p-3 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg transition-all duration-200 hover:scale-[1.02] cursor-pointer'
+                className: 'group p-2 sm:p-3 bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 hover:border-blue-500 rounded-lg transition-all duration-200 hover:scale-[1.02] cursor-pointer'
               },
                 h('div', { 
-                  className: `w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-br ${type.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md`
+                  className: `w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2 rounded-lg bg-gradient-to-br ${type.color} flex items-center justify-center group-hover:scale-110 transition-all duration-200 shadow-md`
                 },
                   h('i', { className: `fas ${type.icon} text-lg text-white` })
                 ),
@@ -1002,7 +1002,7 @@
             ),
             h('button', {
               onClick: handlePrevious,
-              className: 'mt-6 text-zinc-400 hover:text-white transition flex items-center gap-2 mx-auto'
+              className: 'mt-2 sm:mt-6 text-zinc-400 hover:text-white transition flex items-center gap-1.5 mx-auto text-xs sm:text-sm'
             },
               h('i', { className: 'fas fa-arrow-left' }),
               window.i18n?.t('calculator.back') || 'Înapoi'
@@ -1010,41 +1010,37 @@
           ),
           
           // Step 3: Model Selection with Search
-          step === 3 && !result && h('div', { className: 'space-y-4 ' },
-            h('h3', { className: 'text-lg font-bold text-white mb-3 text-center' }, 
+          step === 3 && !result && h('div', { className: 'space-y-1 sm:space-y-4' },
+            h('h3', { className: 'text-sm sm:text-lg font-bold text-white mb-1 sm:mb-3 text-center' },
               window.i18n?.t('calculator.selectModel') || 'Alegeți modelul:'
             ),
-            // Показываем информацию о выборе
-            h('div', { className: 'text-center mb-4' },
-              h('span', { className: 'inline-flex items-center gap-2 px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-400' },
-                h('i', { className: 'fas fa-info-circle' }),
+            h('div', { className: 'text-center mb-1 sm:mb-4' },
+              h('span', { className: 'inline-flex items-center gap-1 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-[10px] sm:text-xs text-blue-400' },
+                h('i', { className: 'fas fa-info-circle text-[8px] sm:text-xs' }),
                 `${data.brand?.name || ''} / ${deviceTypeName(deviceTypes.find(t => t.id === data.deviceType) || {}) || ''}`
               )
             ),
-            // Индикатор загрузки моделей
-            loadingModels && h('div', { className: 'text-center py-8' },
-              h('div', { className: 'w-10 h-10 mx-auto mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
-              h('p', { className: 'text-zinc-400' }, (window.i18n?.t('calculator.loadingModels') || 'Se încarcă modelele...'))
+            // Индикатор загрузки моделей (compact on mobile)
+            loadingModels && h('div', { className: 'text-center py-5 sm:py-8' },
+              h('div', { className: 'w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
+              h('p', { className: 'text-zinc-400 text-sm' }, (window.i18n?.t('calculator.loadingModels') || 'Se încarcă modelele...'))
             ),
-            // Поле поиска
-            !loadingModels && h('div', { className: 'relative mb-6' },
-              h('div', { className: 'absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500' },
-                h('i', { className: 'fas fa-search' })
+            !loadingModels && h('div', { className: 'relative mb-2 sm:mb-6' },
+              h('div', { className: 'absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 text-zinc-500' },
+                h('i', { className: 'fas fa-search text-xs sm:text-base' })
               ),
               h('input', {
                 type: 'text',
                 placeholder: 'Căutați model...',
                 value: searchQuery,
                 onChange: (e) => setSearchQuery(e.target.value),
-                className: 'w-full pl-12 pr-4 py-3 bg-zinc-800/50 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all'
+                className: 'w-full pl-8 sm:pl-12 pr-2 sm:pr-4 py-2 sm:py-3 bg-zinc-800/50 border border-zinc-700 rounded-lg sm:rounded-xl text-white placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm sm:text-base'
               }),
-              // Показываем количество найденных моделей
-              h('div', { className: 'absolute right-4 top-1/2 -translate-y-1/2 text-xs text-zinc-500' },
+              h('div', { className: 'absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-[9px] sm:text-xs text-zinc-500' },
                 `${getFilteredModels().length} modele`
               )
             ),
-            // Список моделей
-            !loadingModels && h('div', { className: 'space-y-1 max-h-60 overflow-y-auto pr-1 custom-scrollbar' },
+            !loadingModels && h('div', { className: 'space-y-0.5 sm:space-y-1 max-h-32 sm:max-h-60 overflow-y-auto pr-0.5 custom-scrollbar' },
               getFilteredModels()
                 .slice(0, 30)
                 .map(model => h('button', {
@@ -1054,11 +1050,11 @@
                     setData({ ...data, model });
                     setStep(4);
                   },
-                  className: 'w-full p-2 bg-zinc-800/40 hover:bg-zinc-800/70 border border-zinc-700 hover:border-blue-500/50 rounded-lg transition-all text-left flex items-center justify-between group'
+                  className: 'w-full p-1.5 sm:p-2.5 bg-zinc-800/40 hover:bg-zinc-800/70 border border-zinc-700 hover:border-blue-500/50 rounded-md sm:rounded-lg transition-all text-left flex items-center justify-between group'
                 },
                   h('div', { className: 'flex-1 min-w-0' },
-                    h('div', { className: 'text-white font-medium text-sm truncate' }, model.name),
-                    h('div', { className: 'text-zinc-500 text-xs flex items-center gap-1' }, 
+                    h('div', { className: 'text-white font-medium text-[11px] sm:text-sm truncate' }, model.name),
+                    h('div', { className: 'text-zinc-500 text-[10px] sm:text-xs flex items-center gap-0.5' }, 
                       h('span', null, model.year || 'N/A'),
                       h('span', { className: 'text-zinc-600' }, '•'),
                       h('span', null, model.category || 'N/A')
@@ -1067,13 +1063,13 @@
                   h('i', { className: 'fas fa-chevron-right text-zinc-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0 ml-2' })
                 ))
             ),
-            // Сообщение если нет моделей для этой комбинации бренд/тип
-            !loadingModels && getFilteredModels().length === 0 && h('div', { className: 'text-center py-6' },
-              h('div', { className: 'w-14 h-14 mx-auto mb-4 bg-zinc-800/50 rounded-full flex items-center justify-center' },
-                h('i', { className: 'fas fa-box-open text-2xl text-zinc-500' })
+            // Сообщение если нет моделей (compact on mobile)
+            !loadingModels && getFilteredModels().length === 0 && h('div', { className: 'text-center py-4 sm:py-6' },
+              h('div', { className: 'w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 bg-zinc-800/50 rounded-full flex items-center justify-center' },
+                h('i', { className: 'fas fa-box-open text-xl sm:text-2xl text-zinc-500' })
               ),
-              h('p', { className: 'text-base text-white mb-1' }, (window.i18n?.t('calculator.noModels') || 'Nu avem modele pentru această combinație')),
-              h('p', { className: 'text-zinc-400 mb-6' }, 
+              h('p', { className: 'text-sm sm:text-base text-white mb-1' }, (window.i18n?.t('calculator.noModels') || 'Nu avem modele pentru această combinație')),
+              h('p', { className: 'text-zinc-400 text-xs sm:text-sm mb-4 sm:mb-6' }, 
                 `${data.brand?.name || ''} ${window.i18n?.t('calculator.noModelsHint') || 'nu produce'} ${(deviceTypeName(deviceTypes.find(t => t.id === data.deviceType) || {}) || '').toLowerCase() || 'acest tip'}.`
               ),
               h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
@@ -1086,7 +1082,6 @@
                 ),
                 h('button', {
                   onClick: () => {
-                    // Продолжаем без конкретной модели
                     setData({ ...data, model: { name: `${data.brand?.name || 'Dispozitiv'} (general)`, year: null, category: data.deviceType } });
                     setStep(4);
                   },
@@ -1097,8 +1092,7 @@
                 )
               )
             ),
-            // Кнопки навигации
-            h('div', { className: 'flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 pt-4 border-t border-zinc-800' },
+            h('div', { className: 'flex flex-row items-center justify-center gap-2 sm:gap-4 mt-2 sm:mt-6 pt-2 sm:pt-4 border-t border-zinc-800' },
               h('button', {
                 onClick: () => {
                   setStep(2);
@@ -1111,9 +1105,8 @@
               ),
               h('button', {
                 onClick: () => {
-                  console.log('➡️ Продолжаем без модели');
                   setData({ ...data, model: null });
-                  setStep(4);
+                  setStep(5);
                 },
                 className: 'px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all flex items-center gap-2 shadow-lg'
               },
@@ -1123,15 +1116,58 @@
             )
           ),
           
-          // Step 4: Issue Selection (множественный выбор)
-          step === 4 && !result && h('div', { className: 'space-y-4 ' },
-            h('h3', { className: 'text-lg font-bold text-white mb-2 text-center' }, 
+          // Step 4: Parts & prices (EUR, RON) — всегда после выбора модели
+          step === 4 && !result && data.model && (function() {
+            const sp = data.model.service_parts || {};
+            const pricesRON = data.model.service_prices_ron || {};
+            const pricesUSD = data.model.official_service_prices || {};
+            const rows = Object.keys(sp).length ? Object.entries(sp) : Object.entries(pricesUSD).filter(([k, v]) => typeof v === 'number').map(([k, v]) => [k, { description: (k.charAt(0).toUpperCase() + k.slice(1)).replace(/_/g, ' '), price_usd: v }]);
+            const hasRows = rows.length > 0;
+            return h('div', { className: 'space-y-2 sm:space-y-4' },
+              h('h3', { className: 'text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 text-center' },
+                (window.i18n?.t('calculator.partsAndPrices') || 'Запчасти и цены') + ' — ' + (data.model?.name || '')
+              ),
+              hasRows ? h('p', { className: 'text-zinc-400 text-xs text-center mb-2' },
+                window.i18n?.t('calculator.partsHint') || 'Цены в EUR и Lei (RON)'
+              ) : h('p', { className: 'text-zinc-500 text-xs text-center mb-2' },
+                window.i18n?.t('calculator.noPartsData') || 'Нет данных по запчастям для этой модели.'
+              ),
+              hasRows ? h('div', { className: 'overflow-x-auto rounded-lg border border-zinc-700' },
+                h('table', { className: 'w-full text-sm' },
+                  h('thead', { className: 'bg-zinc-800' },
+                    h('tr', null,
+                      h('th', { className: 'text-left p-2 text-zinc-300 font-semibold' }, window.i18n?.t('calculator.partName') || 'Запчасть'),
+                      h('th', { className: 'text-right p-2 text-zinc-300 font-semibold' }, 'EUR'),
+                      h('th', { className: 'text-right p-2 text-zinc-300 font-semibold' }, 'RON (Lei)')
+                    )
+                  ),
+                  h('tbody', { className: 'divide-y divide-zinc-700' },
+                    ...rows.map(([key, val]) => {
+                      const desc = (val && val.description) ? val.description : (key.replace(/_/g, ' '));
+                      const usd = (val && typeof val.price_usd === 'number') ? val.price_usd : (typeof val === 'number' ? val : 0);
+                      const eur = Math.round(usd * USD_TO_EUR);
+                      const ron = pricesRON[key] || Math.round(usd * USD_TO_RON);
+                      return h('tr', { key }, h('td', { className: 'p-2 text-white' }, desc), h('td', { className: 'p-2 text-right text-emerald-400' }, eur + ' €'), h('td', { className: 'p-2 text-right text-amber-400' }, ron + ' Lei'));
+                    })
+                  )
+                )
+              ) : null,
+              h('div', { className: 'flex items-center justify-center gap-2 mt-4' },
+                h('button', { onClick: () => { setDirection(-1); setStep(3); }, className: 'text-zinc-400 hover:text-white transition flex items-center gap-2 text-xs sm:text-sm' }, h('i', { className: 'fas fa-arrow-left' }), window.i18n?.t('calculator.back') || 'Назад'),
+                h('button', { onClick: () => { setDirection(1); setStep(5); }, className: 'px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm' }, window.i18n?.t('calculator.nextToIssue') || 'Далее — выбор проблемы')
+              )
+            );
+          })(),
+          
+          // Step 5: Issue Selection (множественный выбор) — compact on mobile
+          step === 5 && !result && h('div', { className: 'space-y-2 sm:space-y-4' },
+            h('h3', { className: 'text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 text-center' },
               `${data.model?.name || data.brand?.name || ''} - ${window.i18n?.t('calculator.selectIssue') || 'Ce problemă aveți?'}`
             ),
-            h('p', { className: 'text-zinc-400 text-sm text-center mb-4' },
+            h('p', { className: 'text-zinc-400 text-xs sm:text-sm text-center mb-2 sm:mb-4' },
               t('calc.selectMultiple', `Select multiple issues (${data.issues?.length || 0} selected)`)
             ),
-            h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-2' },
+            h('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-1.5 sm:gap-2' },
               ...((function() {
                 // Получаем тип устройства
                 const deviceType = typeof data.deviceType === 'string' ? data.deviceType : (data.deviceType?.id || 'phone');
@@ -1151,31 +1187,30 @@
                       : [...currentIssues, issue];  // Добавляем
                     setData({ ...data, issues: newIssues });
                   },
-                  className: `group p-3 border rounded-lg transition-all text-left flex items-center gap-2 hover:scale-[1.02] ${
+                  className: `group p-1.5 sm:p-3 border rounded-md sm:rounded-lg transition-all text-left flex items-center gap-1 sm:gap-2 hover:scale-[1.02] ${
                     isSelected 
                       ? 'bg-blue-600/30 border-blue-500 ring-2 ring-blue-500/50' 
                       : 'bg-zinc-800/40 hover:bg-zinc-800/70 border-zinc-700 hover:border-blue-500/50'
                   }`
                 },
-                  h('div', { className: `w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 ${
+                  h('div', { className: `w-6 h-6 sm:w-8 sm:h-8 rounded flex items-center justify-center flex-shrink-0 ${
                     isSelected ? 'bg-blue-500' : 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
                   }` },
                     isSelected 
-                      ? h('i', { className: 'fas fa-check text-white text-sm' })
-                      : h('i', { className: `fas ${issue.icon || 'fa-wrench'} text-blue-400 text-sm` })
+                      ? h('i', { className: 'fas fa-check text-white text-[10px] sm:text-sm' })
+                      : h('i', { className: `fas ${issue.icon || 'fa-wrench'} text-blue-400 text-[10px] sm:text-sm` })
                   ),
-                  h('span', { className: `font-medium text-xs ${isSelected ? 'text-blue-300' : 'text-white'}` }, issue.name)
+                  h('span', { className: `font-medium text-[10px] sm:text-xs leading-tight ${isSelected ? 'text-blue-300' : 'text-white'}` }, issue.name)
                 );
               }))
             ),
             // Показываем выбранные проблемы
-            data.issues && data.issues.length > 0 && h('div', { className: 'mt-4 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg' },
-              h('p', { className: 'text-sm text-blue-300' },
+            data.issues && data.issues.length > 0 && h('div', { className: 'mt-2 sm:mt-4 p-2 sm:p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg' },
+              h('p', { className: 'text-xs sm:text-sm text-blue-300' },
                 `✓ Selectate: ${data.issues.map(i => i.name).join(', ')}`
               )
             ),
-            // Кнопки: Назад и Рассчитать
-            h('div', { className: 'flex items-center justify-center gap-4 mt-6' },
+            h('div', { className: 'flex items-center justify-center gap-2 sm:gap-4 mt-2 sm:mt-6' },
               h('button', {
                 onClick: handlePrevious,
                 className: 'text-zinc-400 hover:text-white transition flex items-center gap-2'
@@ -1204,19 +1239,17 @@
             )
           ),
           
-          // Loading State
-          loading && h('div', { className: 'text-center py-8' },
-            h('div', { className: 'w-12 h-12 mx-auto mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
-            h('p', { className: 'text-zinc-400 text-sm' }, 'Calculăm prețul...')
+          loading && h('div', { className: 'text-center py-3 sm:py-8' },
+            h('div', { className: 'w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-4 border-3 border-zinc-700 border-t-blue-500 rounded-full animate-spin' }),
+            h('p', { className: 'text-zinc-400 text-xs sm:text-sm' }, 'Calculăm prețul...')
           ),
           
-          // Step 5: Contact Data Collection with Price Preview
-          step === 5 && result && h('div', { className: 'space-y-6 ' },
-            // Price Preview Box
-            h('div', { className: 'bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/30 rounded-xl p-4 mb-4' },
+          // Step 5: Contact + Price (компактно)
+          step === 5 && result && h('div', { className: 'space-y-2 sm:space-y-6' },
+            h('div', { className: 'bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/30 rounded-lg sm:rounded-xl p-2 sm:p-4 mb-2 sm:mb-4' },
               h('div', { className: 'text-center' },
-                h('p', { className: 'text-zinc-400 text-sm mb-1' }, 'Preț estimativ pentru reparația dvs:'),
-                h('div', { className: 'text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent' },
+                h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm mb-0.5 sm:mb-1' }, 'Preț estimativ pentru reparația dvs:'),
+                h('div', { className: 'text-xl sm:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent' },
                   `${result.min} - ${result.max} lei`
                 ),
                 h('p', { className: 'text-zinc-500 text-xs mt-1' }, 
@@ -1225,18 +1258,15 @@
               )
             ),
             
-            // Form Header
             h('div', { className: 'text-center' },
-              h('h3', { className: 'text-xl font-bold text-white mb-1' }, 
+              h('h3', { className: 'text-sm sm:text-xl font-bold text-white mb-0.5 sm:mb-1 leading-tight' },
                 '📞 Lăsați datele pentru preț exact'
               ),
-              h('p', { className: 'text-zinc-400 text-sm' }, 
+              h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm hidden sm:block' },
                 'Vă contactăm în 5 minute cu oferta finală + BONUS diagnostic gratuit!'
               )
             ),
-            
-            // Contact Form
-            h('div', { className: 'space-y-3 max-w-md mx-auto' },
+            h('div', { className: 'space-y-1.5 sm:space-y-3 max-w-md mx-auto' },
               h('div', null,
                 h('input', {
                   type: 'text',
@@ -1246,11 +1276,11 @@
                     if (errors.name) setErrors({ ...errors, name: '' });
                   },
                   placeholder: '👤 Numele dvs.',
-                  className: `w-full px-4 py-3 bg-zinc-800/50 border-2 rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all ${
+                  className: `w-full px-2.5 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm sm:text-base ${
                     errors.name ? 'border-red-500' : 'border-zinc-700'
                   }`
                 }),
-                errors.name && h('p', { className: 'text-red-400 text-xs mt-1' }, errors.name)
+                errors.name && h('p', { className: 'text-red-400 text-[10px] mt-0.5' }, errors.name)
               ),
               h('div', null,
                 h('input', {
@@ -1261,7 +1291,7 @@
                     if (errors.phone) setErrors({ ...errors, phone: '' });
                   },
                   placeholder: '📱 Telefon: 07XX XXX XXX',
-                  className: `w-full px-4 py-3 bg-zinc-800/50 border-2 rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all ${
+                  className: `w-full px-2.5 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm sm:text-base ${
                     errors.phone ? 'border-red-500' : 'border-zinc-700'
                   }`
                 }),
@@ -1302,53 +1332,48 @@
                   }
                   
                   // Go to final result step
-                  setStep(6);
+                  setStep(7);
                 },
-                className: 'w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2'
+                className: 'w-full px-3 py-2.5 sm:px-6 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-1.5 text-xs sm:text-base'
               },
-                h('i', { className: 'fas fa-paper-plane' }),
+                h('i', { className: 'fas fa-paper-plane text-sm sm:text-base' }),
                 'Trimite și obține preț exact'
               ),
-              
-              // Privacy note
-              h('p', { className: 'text-zinc-500 text-xs text-center mt-2' },
+              h('p', { className: 'text-zinc-500 text-[9px] sm:text-xs text-center mt-1 sm:mt-2' },
                 '🔒 Datele sunt protejate. Nu facem spam.'
               )
             ),
             
-            // Back button
             h('button', {
-              onClick: () => setStep(4),
-              className: 'mt-4 text-zinc-400 hover:text-white transition flex items-center gap-2 mx-auto text-sm'
+              onClick: () => setStep(5),
+              className: 'mt-2 sm:mt-4 text-zinc-400 hover:text-white transition flex items-center gap-1.5 mx-auto text-[10px] sm:text-sm'
             },
               h('i', { className: 'fas fa-arrow-left' }),
               'Modifică selecția'
             )
           ),
           
-          // Step 6: Result
-          step === 6 && result && h('div', { className: 'text-center space-y-4 ' },
-            h('div', { className: 'inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 mb-3' },
-              h('i', { className: 'fas fa-circle-check text-3xl text-green-400' })
+          // Step 7: Result — компактно
+          step === 7 && result && h('div', { className: 'text-center space-y-2 sm:space-y-4' },
+            h('div', { className: 'inline-flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 mb-1 sm:mb-3' },
+              h('i', { className: 'fas fa-circle-check text-xl sm:text-3xl text-green-400' })
             ),
-            
             h('div', null,
-              h('h3', { className: 'text-xl font-bold text-white mb-2' }, 
+              h('h3', { className: 'text-sm sm:text-xl font-bold text-white mb-0.5 sm:mb-2' },
                 window.i18n?.t('calculator.estimatedPrice') || 'Preț estimat'
               ),
-              result.model && h('p', { className: 'text-zinc-400 text-sm mb-3' }, result.model),
+              result.model && h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm mb-1 sm:mb-3' }, result.model),
               result.min === result.max
-                ? h('div', { className: 'text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
+                ? h('div', { className: 'text-2xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
                     result.avg === 0 ? 'GRATUIT' : `${result.avg} lei`
                   )
-                : h('div', { className: 'text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
+                : h('div', { className: 'text-xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' },
                     `${result.min}-${result.max} lei`
                   )
             ),
             
-            // Показываем выбранные проблемы
-            result.issues && result.issues.length > 0 && h('div', { className: 'bg-blue-500/10 rounded-xl p-4 mb-4 border border-blue-500/30 max-w-sm mx-auto' },
-              h('p', { className: 'text-sm font-medium text-blue-300 mb-2' }, 
+            result.issues && result.issues.length > 0 && h('div', { className: 'bg-blue-500/10 rounded-lg sm:rounded-xl p-2 sm:p-4 mb-2 sm:mb-4 border border-blue-500/30 max-w-sm mx-auto' },
+              h('p', { className: 'text-[10px] sm:text-sm font-medium text-blue-300 mb-1 sm:mb-2' }, 
                 `Probleme selectate (${result.issues.length}):`
               ),
               h('ul', { className: 'space-y-1' },
@@ -1364,7 +1389,7 @@
               )
             ),
             
-            h('div', { className: 'bg-zinc-800/50 rounded-xl p-4 space-y-2 text-left max-w-sm mx-auto border border-zinc-700/50' },
+            h('div', { className: 'bg-zinc-800/50 rounded-lg sm:rounded-xl p-2 sm:p-4 space-y-1 sm:space-y-2 text-left max-w-sm mx-auto border border-zinc-700/50' },
               h('div', { className: 'flex items-center gap-2 text-xs text-zinc-400' },
                 h('i', { className: 'fas fa-clock text-blue-400' }),
                 `Timp estimat: ${result.time || '30-60 min'}`
@@ -1379,7 +1404,7 @@
               )
             ),
             
-            h('div', { className: 'flex flex-col sm:flex-row gap-2 justify-center mt-4' },
+            h('div', { className: 'flex flex-col sm:flex-row gap-1.5 sm:gap-2 justify-center mt-2 sm:mt-4' },
               // TODO: Add real WhatsApp number in site-config.ts
               // (() => {
               //   const whatsappNumber = window.SITE_CONFIG?.contact?.phoneWhatsApp || '';

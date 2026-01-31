@@ -70,6 +70,10 @@
 - `/api/ai-chat` - AI Chat (Cloudflare AI)
 - `/api/ai-assistant` - AI Assistant for NEXX service
 
+## Site tools and data updates
+- **Single reference**: [SITE-TOOLS-AND-UPDATES.md](../SITE-TOOLS-AND-UPDATES.md) — lists every site function (Прайс Украина, база моделей, IC, ошибки, услуги, калькулятор, и т.д.), its data file(s), update script(s), and component(s).
+- When adding or changing any site feature or data source: update SITE-TOOLS-AND-UPDATES.md (add row or edit Data / Script / Component). Прайс Украина (product buttons + parts table + Excel upload) is the reference pattern for similar tools.
+
 ## When Making Changes
 1. Update version in `index.html` for cache busting
 2. Run `npm run build` to build

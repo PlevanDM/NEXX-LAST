@@ -41,6 +41,7 @@ interface AppData {
   bootSequences: Record<string, BootSequence[]>;
   measurements: Record<string, DiodeMeasurement[]>;
   exchangePrices: Record<string, ExchangePrice>;
+  appleExchangeMeta?: { lastUpdated: string; source: string };
   servicePrices: ServicePrices | null;
   keyCombinations: any;
   services: Record<string, ServiceItem>;
@@ -62,9 +63,20 @@ export const fetchAppData = async (): Promise<AppData> => {
     const db = await response.json();
     const knowledge = db.knowledge || {};
     
-    // Devices
-    const devices = db.devices || [];
-    
+    // Devices: normalize for UI (model_number, power_ic, audio_codec, board_number)
+    const rawDevices = db.devices || [];
+    const devices: Device[] = rawDevices.map((d: any) => ({
+      ...d,
+      model_number: d.model_number ?? d.model ?? undefined,
+      board_number: d.board_number ?? (Array.isArray(d.board_numbers) && d.board_numbers[0] ? d.board_numbers[0] : undefined),
+      power_ic: d.power_ic ?? (Array.isArray(d.power_ics) && d.power_ics[0])
+        ? { main: d.power_ics[0].name || d.power_ics[0].function || String(d.power_ics[0]) }
+        : undefined,
+      audio_codec: d.audio_codec ?? (Array.isArray(d.audio_ics) && d.audio_ics[0])
+        ? { main: typeof d.audio_ics[0] === 'string' ? d.audio_ics[0] : (d.audio_ics[0].name || d.audio_ics[0].function) }
+        : (d.audio_ic && ((d.audio_ic as any).name || (d.audio_ic as any).main)) ? { main: (d.audio_ic as any).name || (d.audio_ic as any).main } : undefined,
+    }));
+
     // Prices (from services)
     const prices = db.prices || {};
     
@@ -214,6 +226,68 @@ export const fetchAppData = async (): Promise<AppData> => {
     // Services - это объект { diagnostic: {...}, screen: {...} }
     const services: Record<string, ServiceItem> = db.services || {};
 
+    // Compatibility for DeviceDetailModal: cameras, displays, batteries
+    const camCompat = knowledge.cameraCompatibility || {};
+    const camerasList = (camCompat.rear_cameras && typeof camCompat.rear_cameras === 'object')
+      ? Object.entries(camCompat.rear_cameras).map(([key, v]: [string, any]) => ({
+          part_type: key.replace(/_/g, ' '),
+          models: v?.compatible || [],
+          cross_compatible: v?.compatible || [],
+          note: v?.notes || v?.note,
+        }))
+      : [];
+    const displaysList = (camCompat.display_compatibility && typeof camCompat.display_compatibility === 'object')
+      ? Object.entries(camCompat.display_compatibility).map(([key, v]: [string, any]) => ({
+          part_type: key.replace(/_/g, ' '),
+          models: v?.compatible || [],
+          cross_compatible: v?.compatible || [],
+          note: v?.notes || v?.note,
+        }))
+      : [];
+    const compatibility: Record<string, any> = {
+      cameras: camerasList,
+      displays: displaysList,
+      batteries: (camCompat.batteries && Array.isArray(camCompat.batteries)) ? camCompat.batteries
+        : (camCompat.battery_compatibility && typeof camCompat.battery_compatibility === 'object')
+          ? Object.entries(camCompat.battery_compatibility).map(([key, v]: [string, any]) => ({
+              part_type: key.replace(/_/g, ' '),
+              models: (v as any)?.compatible || [],
+              cross_compatible: (v as any)?.compatible || [],
+            }))
+          : [],
+    };
+
+    // Boot sequences for diagnostics tab (from knowledge.measurements.boot_sequence)
+    const meas = knowledge.measurements || {};
+    const bootSeqSteps = (meas.boot_sequence && meas.boot_sequence.steps) || [];
+    const bootSequencesList: BootSequence[] = Array.isArray(bootSeqSteps)
+      ? bootSeqSteps.map((s: any) => ({
+          stage: s.name || s.stage || `Step ${s.step || ''}`,
+          current_consumption: s.current_draw || s.current_consumption || '—',
+          description: s.description || '',
+          components_involved: s.rails_active || s.components_involved || [],
+        }))
+      : [];
+    const bootSequences: Record<string, BootSequence[]> = bootSequencesList.length > 0
+      ? { 'iPhone': bootSequencesList, 'iPad': bootSequencesList }
+      : (db.boot_sequences || {});
+
+    // Apple Official Ukraine Exchange — merge from separate JSON (updated via import-exchange-ua-xlsx.cjs)
+    let exchangePrices: Record<string, ExchangePrice> = db.exchange_prices || {};
+    let appleExchangeMeta: { lastUpdated: string; source: string } | undefined;
+    try {
+      const uaRes = await fetch('/data/apple-exchange-ua.json');
+      if (uaRes.ok) {
+        const uaData = await uaRes.json();
+        if (uaData?.prices && typeof uaData.prices === 'object') {
+          exchangePrices = { ...exchangePrices, ...uaData.prices };
+        }
+        if (uaData?.lastUpdated || uaData?.source) {
+          appleExchangeMeta = { lastUpdated: uaData.lastUpdated || '', source: uaData.source || '' };
+        }
+      }
+    } catch (_) {}
+
     return {
       devices,
       prices,
@@ -225,10 +299,11 @@ export const fetchAppData = async (): Promise<AppData> => {
       schematics: db.schematics || [],
       guides,
       pinouts: db.pinouts || [],
-      compatibility: knowledge.cameraCompatibility || {},
-      bootSequences: db.boot_sequences || {},
+      compatibility,
+      bootSequences,
       measurements: measurementsData,
-      exchangePrices: db.exchange_prices || {},
+      exchangePrices,
+      appleExchangeMeta,
       servicePrices: null, // Используем services напрямую
       keyCombinations: keyCombinations,
       services: services, // Добавляем services

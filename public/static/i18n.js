@@ -1,7 +1,7 @@
 /**
- * NEXX Internationalization System - ПОЛНАЯ ВЕРСИЯ
- * Підтримка: Українська (ua), Румунська (ro), Англійська (en), Російська (ru)
- * ВСЕ елементи для повної локалізації
+ * NEXX Internationalization System - FULL VERSION
+ * Support: Romanian (ro), English (en), Russian (ru), Ukrainian (uk)
+ * All elements for full localization
  */
 
 (function() {
@@ -13,11 +13,94 @@
     // ============================================
     uk: {
       code: 'uk',
+      ui: {
+        errorTitle: 'Щось пішло не так',
+        emptyTitle: 'Немає даних',
+        searchPlaceholder: 'Пошук...',
+        retry: 'Спробувати ще раз'
+      },
       name: 'Українська',
       flag: '🇺🇦',
       direction: 'ltr',
       
       // Navigation & Header
+      db: {
+        databaseTitle: 'База NEXX',
+        searchPlaceholder: 'Пошук за моделлю, серійним номером...',
+        searchAxxxx: 'Пошук Axxxx...',
+        device: 'Пристрій',
+        devices: 'Пристрої',
+        microchips: 'Мікросхеми',
+        errors: 'Помилки',
+        errorsCount: 'Ошибок',
+        price: 'Ціна',
+        priceList: 'Прайс-лист',
+        noResults: 'Нічого не знайдено',
+        calculator: 'Калькулятор',
+        services: 'Послуги',
+        boards: 'Плати',
+        boardsPlates: 'Материнські плати',
+        info: 'Інфо',
+        knowledgeBase: 'База знань',
+        dfu: 'DFU',
+        dfuRecovery: 'DFU / Відновлення',
+        ic: 'IC',
+        globalSearch: 'Глобальний пошук',
+        back: 'Назад',
+        home: 'Головна',
+        recentlyViewed: 'Ви нещодавно переглядали',
+        shortcuts: 'Шорткати',
+        close: 'Закрити',
+        sections: 'Розділи',
+        allPrices: 'Всі актуальні ціни',
+        repairCost: 'Розрахунок вартості',
+        guidesAndSchemes: 'Інструкції та схеми',
+        keyCombinations: 'Комбінації клавіш',
+        all: 'Всі',
+        searchHint: 'Спробуйте інший запит',
+        brand: 'Бренд',
+        model: 'Модель',
+        serialNumber: 'Серійний номер',
+        boardId: 'ID Плати',
+        chargingIc: 'U2/USB',
+        powerIc: 'PMIC',
+        audioIc: 'Аудіо',
+        information: 'Інформація',
+        diagnostics: 'Діагностика',
+        specifications: 'Специфікації',
+        architecture: 'Архітектура',
+        emc: 'EMC',
+        description: 'Опис',
+        commonIssues: 'Типові несправності',
+        approximatePrices: 'Орієнтовні ціни',
+        marketPrice: 'Ринкова ціна',
+        tools: 'Інструменти',
+        noData: 'Немає даних',
+        compatibleWith: 'Сумісно з:',
+        noCompatibilityInfo: 'Інформація про сумісність відсутня',
+        bootSequence: 'Послідовність завантаження',
+        currentConsumption: 'Споживання струму',
+        noBootSequenceData: 'Дані про споживання відсутні',
+        cameras: 'Камери',
+        displays: 'Дисплеї',
+        batteries: 'Акумулятори',
+        compatibility: 'Сумісність',
+        errorCodes: 'Коди помилок',
+        more: 'Більше',
+        note: 'Примітка',
+        selectDevice: 'Оберіть пристрій...',
+        selectModelPlaceholder: 'Напр. iPhone 15',
+        databaseLoadError: 'Помилка завантаження бази даних',
+        loadingError: 'Помилка завантаження',
+        tryAgain: 'Спробувати ще раз',
+        laborCost: 'Вартість робіт',
+        markup: 'Націнка (%)',
+        partsAndPrices: 'Запчастини та ціни',
+        purchase: 'Закупівля',
+        totalToClient: 'Разом для клієнта',
+        profit: 'Прибуток',
+        selectDeviceModel: 'Будь ласка, виберіть модель пристрою',
+      },
       nav: {
         home: 'Головна',
         services: 'Послуги',
@@ -34,6 +117,10 @@
         title: 'Ремонт iPhone, MacBook, Samsung',
         subtitle: 'Експрес Сервіс • Гарантія Включена',
         description: 'Професійний ремонт Apple, Samsung, Xiaomi, Huawei. Безкоштовна діагностика. Оригінальні запчастини.',
+        onlineLabel: 'клієнтів на сайті',
+        yearsExperience: 'років досвіду',
+        mastersCount: 'майстрів',
+        repairsCount: 'ремонтів',
       },
       
       // Prices
@@ -273,6 +360,13 @@
         noModelsHint: 'не виробляє цей тип пристрою.',
         continueWithoutModelBtn: 'Продовжити без моделі',
       },
+      tracker: {
+        powerTitle: 'Відстеження цін Power',
+        marketAnalysis: 'Аналіз ринку: ЄС vs Локальний',
+        searchPlaceholder: 'Пошук EcoFlow, Bluetti...',
+        liveStatus: 'Статус ринку в реальному часі',
+        disclaimer: 'Ціни в Європі зазвичай зростають за 2-3 тижні до локальних ринків. Використовуйте цей інструмент для прогнозування майбутніх коригувань цін.',
+      },
       // Calculator issues
       calc: {
         issue: {
@@ -329,6 +423,18 @@
       },
       
       // Footer
+      about: {
+        missionTitle: 'Наша Місія',
+        missionDesc: 'Забезпечити швидкий, якісний та доступний ремонт Apple техніки з використанням найсучасніших технологій та оригінальних компонентів.',
+        visionTitle: 'Наше Бачення',
+        visionDesc: 'Стати найнадійнішим партнером для власників Apple техніки, встановлюючи нові стандарти якості обслуговування.',
+        valuesTitle: 'Наші Цінності',
+        valuesDesc: 'Чесність, професіоналізм, відповідальність та прагнення до досконалості у кожній деталі нашої роботи.',
+        whyTitle: 'Чому обирають NEXX?',
+        whySubtitle: 'Ми створили унікальну систему, яка робить ремонт максимально зручним та прозорим',
+        ctaTitle: 'Готові довірити нам свою техніку?',
+        ctaSubtitle: 'Зателефонуйте або залиште заявку — ми вже готові допомогти!',
+      },
       footer: {
         skipToContent: 'Перейти до змісту',
         ariaLabel: 'Головна секція',
@@ -376,6 +482,15 @@
       // REMONLINE FORMS & DOCUMENTS
       // ============================================
       
+      account: {
+        tracking: 'Стеження',
+        trackingTitle: 'Стеження за замовленням',
+        trackingDesc: 'Перевірте статус та орієнтовний час виконання вашого замовлення в реальному часі.',
+        orderNumber: 'Номер замовлення (напр. 12345)',
+        phoneNumber: 'Номер телефону',
+        trackButton: 'Перевірити статус',
+        checkStatus: 'Статус та терміни'
+      },
       forms: {
         repairOrder: {
           title: 'Форма замовлення ремонту',
@@ -506,7 +621,7 @@
         }
       },
       
-      meta: { title: 'Ремонт iPhone, MacBook, Samsung Київ | Швидкий Сервіс 30 хв | NEXX ⭐' }
+      meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' }
     },
     
     // ============================================
@@ -514,10 +629,93 @@
     // ============================================
     ro: {
       code: 'ro',
+      ui: {
+        errorTitle: 'Ceva nu a mers bine',
+        emptyTitle: 'Nu există date',
+        searchPlaceholder: 'Căutare...',
+        retry: 'Încercați din nou'
+      },
       name: 'Română',
       flag: '🇷🇴',
       direction: 'ltr',
       
+      db: {
+        databaseTitle: 'Baza NEXX',
+        searchPlaceholder: 'Căutare după model, serie...',
+        searchAxxxx: 'Căutare Axxxx...',
+        device: 'Dispozitiv',
+        devices: 'Dispozitive',
+        microchips: 'Microcipuri',
+        errors: 'Erori',
+        errorsCount: 'Erori',
+        price: 'Preț',
+        priceList: 'Listă de prețuri',
+        noResults: 'Niciun rezultat găsit',
+        calculator: 'Calculator',
+        services: 'Servicii',
+        boards: 'Plăci',
+        boardsPlates: 'Plăci de bază',
+        info: 'Info',
+        knowledgeBase: 'Baza de cunoștințe',
+        dfu: 'DFU',
+        dfuRecovery: 'DFU / Recuperare',
+        ic: 'IC',
+        globalSearch: 'Căutare globală',
+        back: 'Înapoi',
+        home: 'Acasă',
+        recentlyViewed: 'Vizualizate recent',
+        shortcuts: 'Scurtături',
+        close: 'Închide',
+        sections: 'Secțiuni',
+        allPrices: 'Toate prețurile actuale',
+        repairCost: 'Calcul cost',
+        guidesAndSchemes: 'Ghiduri și scheme',
+        keyCombinations: 'Combinații taste',
+        all: 'Toate',
+        searchHint: 'Încercați altă căutare',
+        brand: 'Brand',
+        model: 'Model',
+        serialNumber: 'Serie',
+        boardId: 'ID Placă',
+        chargingIc: 'U2/USB',
+        powerIc: 'PMIC',
+        audioIc: 'Audio',
+        information: 'Informație',
+        diagnostics: 'Diagnostic',
+        specifications: 'Specificații',
+        architecture: 'Arhitectură',
+        emc: 'EMC',
+        description: 'Descriere',
+        commonIssues: 'Defecțiuni comune',
+        approximatePrices: 'Prețuri orientative',
+        marketPrice: 'Preț piață',
+        tools: 'Instrumente',
+        noData: 'Nu există date',
+        compatibleWith: 'Compatibil cu:',
+        noCompatibilityInfo: 'Nu există informații despre compatibilitate',
+        bootSequence: 'Secvență pornire',
+        currentConsumption: 'Consum curent',
+        noBootSequenceData: 'Nu există date despre consum',
+        cameras: 'Camere',
+        displays: 'Display-uri',
+        batteries: 'Baterii',
+        compatibility: 'Compatibilitate',
+        errorCodes: 'Coduri erori',
+        more: 'Mai mult',
+        note: 'Notă',
+        selectDevice: 'Alegeți dispozitivul...',
+        selectModelPlaceholder: 'ex. iPhone 15',
+        databaseLoadError: 'Eroare la încărcarea bazei de date',
+        loadingError: 'Eroare de încărcare',
+        tryAgain: 'Reîncercați',
+        laborCost: 'Cost manoperă',
+        markup: 'Adaos (%)',
+        partsAndPrices: 'Piese și prețuri',
+        purchase: 'Achiziție',
+        totalToClient: 'Total client',
+        profit: 'Profit',
+        selectDeviceModel: 'Vă rugăm selectați un model de dispozitiv',
+      },
       // Navigation & Header
       nav: {
         home: 'Acasă',
@@ -535,6 +733,10 @@
         title: 'Reparații iPhone, MacBook, Samsung',
         subtitle: 'Service Express • Garanție Inclusă',
         description: 'Service profesional Apple, Samsung, Xiaomi, Huawei. Diagnostic gratuit. Piese originale.',
+        onlineLabel: 'clienți online',
+        yearsExperience: 'ani experiență',
+        mastersCount: 'tehnicieni',
+        repairsCount: 'reparații',
       },
       
       // Prices
@@ -774,6 +976,13 @@
         continueWithoutModelBtn: 'Continuați fără model',
         chooseOtherType: 'Alegeți alt tip',
       },
+      tracker: {
+        powerTitle: 'Urmărire Prețuri Power',
+        marketAnalysis: 'Analiză Piață: UE vs Local',
+        searchPlaceholder: 'Căutare EcoFlow, Bluetti...',
+        liveStatus: 'Status Piață în Timp Real',
+        disclaimer: 'Prețurile din Europa tind să crească cu 2-3 săptămâni înainte de piețele locale. Folosiți acest instrument pentru a prezice ajustările viitoare ale prețurilor locale.',
+      },
       // Calculator issues
       calc: {
         issue: {
@@ -829,6 +1038,18 @@
       },
       
       // Footer
+      about: {
+        missionTitle: 'Misiunea Noastră',
+        missionDesc: 'Să oferim reparații Apple rapide, calitative și accesibile, folosind cele mai noi tehnologii și componente originale.',
+        visionTitle: 'Viziunea Noastră',
+        visionDesc: 'Să devenim cel mai de încredere partener pentru posesorii de dispozitive Apple, stabilind noi standarde de calitate în service.',
+        valuesTitle: 'Valorile Noastre',
+        valuesDesc: 'Onestitate, profesionalism, responsabilitate și dorința de perfecțiune în fiecare detaliu al muncii noastre.',
+        whyTitle: 'De ce să alegi NEXX?',
+        whySubtitle: 'Am creat un sistem unic care face reparația cât mai convenabilă și transparentă.',
+        ctaTitle: 'Ești gata să ne încredințezi dispozitivul tău?',
+        ctaSubtitle: 'Sună-ne sau lasă o cerere — suntem gata să te ajutăm!',
+      },
       footer: {
         skipToContent: 'Treci la conținut',
         ariaLabel: 'Secțiunea principală',
@@ -873,6 +1094,15 @@
       },
       meta: { title: 'Reparații iPhone, MacBook, Samsung București | Service Rapid 30 min | NEXX ⭐' },
       
+      account: {
+        tracking: 'Urmărire',
+        trackingTitle: 'Urmărire Comandă',
+        trackingDesc: 'Verificați statusul în timp real și timpul estimat de finalizare pentru reparația dvs.',
+        orderNumber: 'Număr Comandă (ex. 12345)',
+        phoneNumber: 'Număr de Telefon',
+        trackButton: 'Verifică Status',
+        checkStatus: 'Status și termen'
+      },
       // Remonline Forms
       forms: {
         repairOrder: {
@@ -981,10 +1211,102 @@
     // ============================================
     ru: {
       code: 'ru',
+      account: {
+        tracking: 'Отслеживание',
+        trackingTitle: 'Отслеживание заказа',
+        trackingDesc: 'Проверьте статус и ориентировочное время выполнения вашего заказа в реальном времени.',
+        orderNumber: 'Номер заказа (напр. 12345)',
+        phoneNumber: 'Номер телефона',
+        trackButton: 'Проверить статус',
+        checkStatus: 'Статус и сроки'
+      },
+      ui: {
+        errorTitle: 'Что-то пошло не так',
+        emptyTitle: 'Нет данных',
+        searchPlaceholder: 'Поиск...',
+        retry: 'Попробовать еще раз'
+      },
       name: 'Русский',
       flag: '🇷🇺',
       direction: 'ltr',
       
+      db: {
+        databaseTitle: 'База NEXX',
+        searchPlaceholder: 'Поиск по модели, серийнику...',
+        searchAxxxx: 'Поиск Axxxx...',
+        device: 'Устройство',
+        devices: 'Устройства',
+        microchips: 'Микросхемы',
+        errors: 'Ошибки',
+        errorsCount: 'Ошибок',
+        price: 'Цена',
+        priceList: 'Прайс-лист',
+        noResults: 'Ничего не найдено',
+        calculator: 'Калькулятор',
+        services: 'Услуги',
+        boards: 'Платы',
+        boardsPlates: 'Материнские платы',
+        info: 'Инфо',
+        knowledgeBase: 'База знаний',
+        dfu: 'DFU',
+        dfuRecovery: 'DFU / Восстановление',
+        ic: 'IC',
+        globalSearch: 'Глобальный поиск',
+        back: 'Назад',
+        home: 'Главная',
+        recentlyViewed: 'Вы недавно смотрели',
+        shortcuts: 'Шорткаты',
+        close: 'Закрыть',
+        sections: 'Разделы',
+        allPrices: 'Все актуальные цены',
+        repairCost: 'Расчет стоимости',
+        guidesAndSchemes: 'Инструкции и схемы',
+        keyCombinations: 'Комбинации клавиш',
+        all: 'Все',
+        searchHint: 'Попробуйте другой запрос',
+        brand: 'Бренд',
+        model: 'Модель',
+        serialNumber: 'Серийный номер',
+        boardId: 'ID Платы',
+        chargingIc: 'U2/USB',
+        powerIc: 'PMIC',
+        audioIc: 'Аудио',
+        information: 'Информация',
+        diagnostics: 'Диагностика',
+        specifications: 'Спецификации',
+        architecture: 'Архитектура',
+        emc: 'EMC',
+        description: 'Описание',
+        commonIssues: 'Типичные неисправности',
+        approximatePrices: 'Ориентировочные цены',
+        marketPrice: 'Рыночная цена',
+        tools: 'Инструменты',
+        noData: 'Нет данных',
+        compatibleWith: 'Совместимо с:',
+        noCompatibilityInfo: 'Информация о совместимости отсутствует',
+        bootSequence: 'Последовательность загрузки',
+        currentConsumption: 'Потребление тока',
+        noBootSequenceData: 'Данные о потреблении отсутствуют',
+        cameras: 'Камеры',
+        displays: 'Дисплеи',
+        batteries: 'Аккумуляторы',
+        compatibility: 'Совместимость',
+        errorCodes: 'Коды ошибок',
+        more: 'Больше',
+        note: 'Примечание',
+        selectDevice: 'Выберите устройство...',
+        selectModelPlaceholder: 'Напр. iPhone 15',
+        databaseLoadError: 'Ошибка загрузки базы данных',
+        loadingError: 'Ошибка загрузки',
+        tryAgain: 'Попробовать еще раз',
+        laborCost: 'Стоимость работ',
+        markup: 'Наценка (%)',
+        partsAndPrices: 'Запчасти и цены',
+        purchase: 'Закупка',
+        totalToClient: 'Итого для клиента',
+        profit: 'Прибыль',
+        selectDeviceModel: 'Пожалуйста, выберите модель устройства',
+      },
       // Navigation & Header
       nav: {
         home: 'Главная',
@@ -1002,6 +1324,10 @@
         title: 'Ремонт iPhone, MacBook, Samsung',
         subtitle: 'Экспресс Сервис • Гарантия Включена',
         description: 'Профессиональный ремонт Apple, Samsung, Xiaomi, Huawei. Бесплатная диагностика. Оригинальные запчасти.',
+        onlineLabel: 'клиентов на сайте',
+        yearsExperience: 'лет опыта',
+        mastersCount: 'мастеров',
+        repairsCount: 'ремонтов',
       },
       
       // Prices
@@ -1242,6 +1568,13 @@
         continueWithoutModelBtn: 'Продолжить без модели',
         chooseOtherType: 'Выбрать другой тип',
       },
+      tracker: {
+        powerTitle: 'Отслеживание цен Power',
+        marketAnalysis: 'Анализ рынка: ЕС vs Локальный',
+        searchPlaceholder: 'Поиск EcoFlow, Bluetti...',
+        liveStatus: 'Статус рынка в реальном времени',
+        disclaimer: 'Цены в Европе обычно растут за 2-3 недели до локальных рынков. Используйте этот инструмент для прогнозирования будущих корректировок цен.',
+      },
       // Calculator issues
       calc: {
         issue: {
@@ -1298,6 +1631,18 @@
       },
       
       // Footer
+      about: {
+        missionTitle: 'Наша Миссия',
+        missionDesc: 'Обеспечить быстрый, качественный и доступный ремонт Apple техники с использованием современных технологий и оригинальных запчастей.',
+        visionTitle: 'Наше Видение',
+        visionDesc: 'Стать самым надежным партнером для владельцев Apple техники, устанавливая новые стандарты качества обслуживания.',
+        valuesTitle: 'Наши Ценности',
+        valuesDesc: 'Честность, профессионализм, ответственность и стремление к совершенству в каждой детали нашей работы.',
+        whyTitle: 'Почему выбирают NEXX?',
+        whySubtitle: 'Мы создали уникальную систему, которая делает ремонт максимально удобным и прозрачным.',
+        ctaTitle: 'Готовы доверить нам свою технику?',
+        ctaSubtitle: 'Позвоните или оставьте заявку — мы уже готовы помочь!',
+      },
       footer: {
         skipToContent: 'Перейти к содержимому',
         ariaLabel: 'Главная секция',
@@ -1454,10 +1799,93 @@
     // ============================================
     en: {
       code: 'en',
+      ui: {
+        errorTitle: 'Something went wrong',
+        emptyTitle: 'No data',
+        searchPlaceholder: 'Search...',
+        retry: 'Try again'
+      },
       name: 'English',
       flag: '🇬🇧',
       direction: 'ltr',
       
+      db: {
+        databaseTitle: 'NEXX Database',
+        searchPlaceholder: 'Search by model, serial...',
+        searchAxxxx: 'Search Axxxx...',
+        device: 'Device',
+        devices: 'Devices',
+        microchips: 'Chips',
+        errors: 'Errors',
+        errorsCount: 'Errors',
+        price: 'Price',
+        priceList: 'Price List',
+        noResults: 'No results found',
+        calculator: 'Calculator',
+        services: 'Services',
+        boards: 'Boards',
+        boardsPlates: 'Motherboards',
+        info: 'Info',
+        knowledgeBase: 'Knowledge Base',
+        dfu: 'DFU',
+        dfuRecovery: 'DFU / Recovery',
+        ic: 'IC',
+        globalSearch: 'Global Search',
+        back: 'Back',
+        home: 'Home',
+        recentlyViewed: 'Recently viewed',
+        shortcuts: 'Shortcuts',
+        close: 'Close',
+        sections: 'Sections',
+        allPrices: 'All current prices',
+        repairCost: 'Cost calculation',
+        guidesAndSchemes: 'Guides & Schematics',
+        keyCombinations: 'Key combinations',
+        all: 'All',
+        searchHint: 'Try another search',
+        brand: 'Brand',
+        model: 'Model',
+        serialNumber: 'Serial',
+        boardId: 'Board ID',
+        chargingIc: 'U2/USB',
+        powerIc: 'PMIC',
+        audioIc: 'Audio',
+        information: 'Information',
+        diagnostics: 'Diagnostics',
+        specifications: 'Specifications',
+        architecture: 'Architecture',
+        emc: 'EMC',
+        description: 'Description',
+        commonIssues: 'Common Issues',
+        approximatePrices: 'Estimated Prices',
+        marketPrice: 'Market Price',
+        tools: 'Tools',
+        noData: 'No data',
+        compatibleWith: 'Compatible with:',
+        noCompatibilityInfo: 'No compatibility information available',
+        bootSequence: 'Boot Sequence',
+        currentConsumption: 'Current Consumption',
+        noBootSequenceData: 'No boot sequence data available',
+        cameras: 'Cameras',
+        displays: 'Displays',
+        batteries: 'Batteries',
+        compatibility: 'Compatibility',
+        errorCodes: 'Error Codes',
+        more: 'More',
+        note: 'Note',
+        selectDevice: 'Select device...',
+        selectModelPlaceholder: 'e.g. iPhone 15',
+        databaseLoadError: 'Database load error',
+        loadingError: 'Loading error',
+        tryAgain: 'Try again',
+        laborCost: 'Labor Cost',
+        markup: 'Markup (%)',
+        partsAndPrices: 'Parts & Prices',
+        purchase: 'Purchase',
+        totalToClient: 'Total to Client',
+        profit: 'Profit',
+        selectDeviceModel: 'Please select a device model',
+      },
       // Navigation & Header
       nav: {
         home: 'Home',
@@ -1475,6 +1903,10 @@
         title: 'iPhone, MacBook, Samsung Repair',
         subtitle: 'Express Service • Warranty Included',
         description: 'Professional Apple, Samsung, Xiaomi, Huawei repair. Free diagnostics. Original parts.',
+        onlineLabel: 'clients online',
+        yearsExperience: 'years experience',
+        mastersCount: 'technicians',
+        repairsCount: 'repairs',
       },
       
       // Prices
@@ -1727,6 +2159,13 @@
         continueWithoutModelBtn: 'Continue without model',
         chooseOtherType: 'Choose other type',
       },
+      tracker: {
+        powerTitle: 'Power Tracker',
+        marketAnalysis: 'Market Analysis: EU vs Local',
+        searchPlaceholder: 'Search EcoFlow, Bluetti...',
+        liveStatus: 'Live Market Status',
+        disclaimer: 'Prices in Europe tend to rise 2-3 weeks before local markets. Use this tool to predict upcoming local price adjustments.',
+      },
       // Calculator issues
       calc: {
         issue: {
@@ -1782,6 +2221,18 @@
       },
       
       // Footer
+      about: {
+        missionTitle: 'Our Mission',
+        missionDesc: 'To provide fast, high-quality, and affordable Apple repairs using the latest technologies and original components.',
+        visionTitle: 'Our Vision',
+        visionDesc: 'To become the most trusted partner for Apple device owners, setting new standards of service quality.',
+        valuesTitle: 'Our Values',
+        valuesDesc: 'Honesty, professionalism, responsibility, and the pursuit of excellence in every detail of our work.',
+        whyTitle: 'Why Choose NEXX?',
+        whySubtitle: 'We have created a unique system that makes repairs as convenient and transparent as possible.',
+        ctaTitle: 'Ready to entrust us with your device?',
+        ctaSubtitle: 'Call us or leave a request — we are ready to help!',
+      },
       footer: {
         skipToContent: 'Skip to content',
         ariaLabel: 'Main section',
@@ -1829,7 +2280,15 @@
       // ============================================
       // REMONLINE FORMS & DOCUMENTS
       // ============================================
-      
+      account: {
+        tracking: 'Tracking',
+        trackingTitle: 'Order Tracking',
+        trackingDesc: 'Check the real-time status and estimated completion time for your repair order.',
+        orderNumber: 'Order Number (e.g. 12345)',
+        phoneNumber: 'Phone Number',
+        trackButton: 'Track Order',
+        checkStatus: 'Status & timeline'
+      },
       forms: {
         repairOrder: {
           title: 'Repair Order Form',
@@ -2170,5 +2629,5 @@
   window.i18n = new I18N();
   window.LanguageSwitcher = LanguageSwitcher;
   
-  console.log('✅ NEXX i18n ПОЛНА система загружена -', window.i18n.getCurrentLanguage().name);
+  console.log('✅ NEXX i18n system loaded -', window.i18n.getCurrentLanguage().name);
 })();

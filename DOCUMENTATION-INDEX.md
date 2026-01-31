@@ -9,13 +9,13 @@
 ## 🚀 START HERE
 
 ### For Quick Understanding (5 min read)
-👉 **[FINAL-SUMMARY.md](./FINAL-SUMMARY.md)** - What was accomplished today
+👉 **[FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md)** - What was accomplished today
 
 ### For Team Handoff (10 min read)
-👉 **[WORK-COMPLETE.md](./WORK-COMPLETE.md)** - Detailed work report with metrics
+👉 **[WORK-COMPLETE.md](./docs-archive/WORK-COMPLETE.md)** - Detailed work report with metrics
 
 ### For Project Status (5 min read)
-👉 **[SESSION-COMPLETE.md](./SESSION-COMPLETE.md)** - Session summary and next steps
+👉 **[SESSION-COMPLETE.md](./docs-archive/SESSION-COMPLETE.md)** - Session summary and next steps
 
 ---
 
@@ -29,7 +29,7 @@
 
 **Deep Dive** (30 min)
 1. [REMONLINE-FORMS-GUIDE.md](./REMONLINE-FORMS-GUIDE.md) - Complete API docs
-2. [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md) - What changed in code
+2. [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md) - What changed in code
 
 **Implementation** (1-2 hours)
 1. Study DocumentGenerator.tsx for document rendering patterns
@@ -38,22 +38,28 @@
 
 ### 🧪 For QA/Testing
 
+**Checklist проверки после деплоя** (15 min)
+1. [DEPLOY-VERIFY-CHECKLIST.md](./docs-archive/DEPLOY-VERIFY-CHECKLIST.md) - Чеклист проверки после деплоя
+
 **Testing Checklist** (15 min)
 1. [IMPLEMENTATION-CHECKLIST.md](./IMPLEMENTATION-CHECKLIST.md) - What to test and how
 
 **Deployment Testing** (30 min)
-1. [DEPLOYMENT-BETA.md](./DEPLOYMENT-BETA.md) - Testing procedures section
+1. [DEPLOYMENT-BETA.md](./docs-archive/DEPLOYMENT-BETA.md) - Testing procedures section
 
 **What Was Fixed** (20 min)
-1. [CRITICAL-FIXES-COMPLETED.md](./CRITICAL-FIXES-COMPLETED.md) - Details of fixes
+1. [CRITICAL-FIXES-COMPLETED.md](./docs-archive/CRITICAL-FIXES-COMPLETED.md) - Details of fixes
 
 ### 🚀 For DevOps/Deployment
 
 **Deployment Steps** (15 min)
-1. [DEPLOYMENT-BETA.md](./DEPLOYMENT-BETA.md) - Step-by-step guide
+1. [DEPLOYMENT-BETA.md](./docs-archive/DEPLOYMENT-BETA.md) - Step-by-step guide
+
+**Checklist после деплоя** (обязательно)
+1. [DEPLOY-VERIFY-CHECKLIST.md](./docs-archive/DEPLOY-VERIFY-CHECKLIST.md) - Чеклист проверки после деплоя (nexx-gsm)
 
 **Git Changes** (10 min)
-1. [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md) - What was changed
+1. [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md) - What was changed
 
 **Checklist** (5 min)
 1. [IMPLEMENTATION-CHECKLIST.md](./IMPLEMENTATION-CHECKLIST.md) - Pre-deployment checklist
@@ -78,14 +84,14 @@
 |----------|---------|-----------|
 | [NEXX-GSM-TEMPLATES.md](./NEXX-GSM-TEMPLATES.md) | Template overview | 15 min |
 | [REMONLINE-FORMS-GUIDE.md](./REMONLINE-FORMS-GUIDE.md) | API reference | 20 min |
-| [CRITICAL-FIXES-COMPLETED.md](./CRITICAL-FIXES-COMPLETED.md) | Document generation updates | 10 min |
+| [CRITICAL-FIXES-COMPLETED.md](./docs-archive/CRITICAL-FIXES-COMPLETED.md) | Document generation updates | 10 min |
 
 ### API Integration
 | Document | Purpose | Read Time |
 |----------|---------|-----------|
 | [REMONLINE-QUICK-START.md](./REMONLINE-QUICK-START.md) | Quick API reference | 10 min |
 | [REMONLINE-FORMS-GUIDE.md](./REMONLINE-FORMS-GUIDE.md) | Complete API docs | 30 min |
-| [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md) | API changes made | 15 min |
+| [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md) | API changes made | 15 min |
 
 ### Deployment & Testing
 | Document | Purpose | Read Time |
@@ -97,15 +103,28 @@
 ### Project Status
 | Document | Purpose | Read Time |
 |----------|---------|-----------|
-| [FINAL-SUMMARY.md](./FINAL-SUMMARY.md) | Project overview | 10 min |
-| [WORK-COMPLETE.md](./WORK-COMPLETE.md) | Detailed report | 20 min |
-| [SESSION-COMPLETE.md](./SESSION-COMPLETE.md) | Session summary | 10 min |
+| [FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md) | Project overview | 10 min |
+| [WORK-COMPLETE.md](./docs-archive/WORK-COMPLETE.md) | Detailed report | 20 min |
+| [SESSION-COMPLETE.md](./docs-archive/SESSION-COMPLETE.md) | Session summary | 10 min |
 
 ### Code References
 | Document | Purpose | Read Time |
 |----------|---------|-----------|
-| [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md) | What changed | 15 min |
+| [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md) | What changed | 15 min |
 | Examples in `src/components/NEXX-TEMPLATES-EXAMPLES.tsx` | Working code | 20 min |
+
+### Database & Audit
+| Document / Asset | Purpose |
+|------------------|---------|
+| [docs-archive/AUDIT-REPORT-2026-01-31.md](./docs-archive/AUDIT-REPORT-2026-01-31.md) | Full audit: model numbers, PMIC, Audio IC (iPhone 16–11, iPad, MacBook, Watch, Samsung) |
+| `public/data/audit-ic-reference.json` | PMIC/Audio reference for apply script |
+| `scripts/fill-model-numbers.cjs` | Fill/update MODEL from Apple & Samsung reference (`--update-apple`) |
+| `scripts/apply-audit-ic.cjs` | Apply audit IC data to master-db (optional `--overwrite`) |
+
+### Инструменты сайта и обновления данных
+| Document | Purpose |
+|----------|---------|
+| **[SITE-TOOLS-AND-UPDATES.md](./docs-archive/SITE-TOOLS-AND-UPDATES.md)** | Единая схема: какая функция (Прайс Украина, база моделей, IC, услуги и т.д.) откуда берёт данные и **какой файл/скрипт обновлять** при изменениях. |
 
 ---
 
@@ -114,14 +133,14 @@
 ### I want to...
 
 #### Deploy the application
-1. Read: [DEPLOYMENT-BETA.md](./DEPLOYMENT-BETA.md)
+1. Read: [DEPLOYMENT-BETA.md](./docs-archive/DEPLOYMENT-BETA.md)
 2. Follow: Step-by-step deployment section
 3. Check: Pre-deployment checklist
 
 #### Understand what was done
-1. Read: [FINAL-SUMMARY.md](./FINAL-SUMMARY.md)
-2. Then: [WORK-COMPLETE.md](./WORK-COMPLETE.md)
-3. Details: [CRITICAL-FIXES-COMPLETED.md](./CRITICAL-FIXES-COMPLETED.md)
+1. Read: [FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md)
+2. Then: [WORK-COMPLETE.md](./docs-archive/WORK-COMPLETE.md)
+3. Details: [CRITICAL-FIXES-COMPLETED.md](./docs-archive/CRITICAL-FIXES-COMPLETED.md)
 
 #### Test the application
 1. Read: [IMPLEMENTATION-CHECKLIST.md](./IMPLEMENTATION-CHECKLIST.md)
@@ -139,12 +158,12 @@
 3. Study: DocumentGenerator.tsx for implementation
 
 #### Get project status
-1. Read: [FINAL-SUMMARY.md](./FINAL-SUMMARY.md) (5 min)
-2. Or: [WORK-COMPLETE.md](./WORK-COMPLETE.md) (20 min)
+1. Read: [FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md) (5 min)
+2. Or: [WORK-COMPLETE.md](./docs-archive/WORK-COMPLETE.md) (20 min)
 3. Timeline: See next steps section
 
 #### See what code changed
-1. Read: [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md)
+1. Read: [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md)
 2. Review: git diff output in terminal
 3. Study: Modified files listed in report
 
@@ -194,10 +213,10 @@
 
 Before proceeding to next phase:
 
-- [ ] Read [FINAL-SUMMARY.md](./FINAL-SUMMARY.md) for overview
-- [ ] Read [DEPLOYMENT-BETA.md](./DEPLOYMENT-BETA.md) for deployment steps
-- [ ] Check [IMPLEMENTATION-CHECKLIST.md](./IMPLEMENTATION-CHECKLIST.md) for testing
-- [ ] Review [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md) for code changes
+- [ ] Read [FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md) for overview
+- [ ] Read [DEPLOYMENT-BETA.md](./docs-archive/DEPLOYMENT-BETA.md) for deployment steps
+- [ ] Check [IMPLEMENTATION-CHECKLIST.md](./docs-archive/IMPLEMENTATION-CHECKLIST.md) for testing
+- [ ] Review [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md) for code changes
 - [ ] Understand [REMONLINE-FORMS-GUIDE.md](./REMONLINE-FORMS-GUIDE.md) for API
 
 ---
@@ -210,16 +229,16 @@ Before proceeding to next phase:
 → See [REMONLINE-FORMS-GUIDE.md](./REMONLINE-FORMS-GUIDE.md)
 
 **Deployment**
-→ See [DEPLOYMENT-BETA.md](./DEPLOYMENT-BETA.md)
+→ See [DEPLOYMENT-BETA.md](./docs-archive/DEPLOYMENT-BETA.md)
 
 **Testing**
-→ See [IMPLEMENTATION-CHECKLIST.md](./IMPLEMENTATION-CHECKLIST.md)
+→ See [IMPLEMENTATION-CHECKLIST.md](./docs-archive/IMPLEMENTATION-CHECKLIST.md)
 
 **Project Status**
-→ See [FINAL-SUMMARY.md](./FINAL-SUMMARY.md)
+→ See [FINAL-SUMMARY.md](./docs-archive/FINAL-SUMMARY.md)
 
 **Code Changes**
-→ See [GIT-CHANGES-SUMMARY.md](./GIT-CHANGES-SUMMARY.md)
+→ See [GIT-CHANGES-SUMMARY.md](./docs-archive/GIT-CHANGES-SUMMARY.md)
 
 **Template System**
 → See [NEXX-GSM-TEMPLATES.md](./NEXX-GSM-TEMPLATES.md)

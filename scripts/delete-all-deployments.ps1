@@ -1,12 +1,19 @@
 # Delete all Cloudflare Pages deployments
 # Удаление всех деплоев Cloudflare Pages
+# По умолчанию: nexx (старый проект). Основной продакшен: nexx-gsm.
 
 param(
-    [string]$Email = "dmitro.plevan@gmail.com",
-    [string]$GlobalApiKey = "853487a6a39bd7f6f8128b4caf420ac22de33",
+    [string]$Email = $env:CLOUDFLARE_EMAIL,
+    [string]$GlobalApiKey = $env:CLOUDFLARE_GLOBAL_API_KEY,
     [string]$AccountId = "ad170d773e79a037e28f4530fd5305a5",
     [string]$ProjectName = "nexx"
 )
+
+if (-not $GlobalApiKey) {
+    Write-Host "ERROR: Set CLOUDFLARE_GLOBAL_API_KEY in environment (or pass -GlobalApiKey). Never commit API keys to git." -ForegroundColor Red
+    exit 1
+}
+if (-not $Email) { $Email = "dmitro.plevan@gmail.com" }
 
 Write-Host "Deleting all deployments from project '$ProjectName'..." -ForegroundColor Yellow
 Write-Host ""
