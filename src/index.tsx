@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import type { Context } from 'hono'
+import { setCookie, getCookie } from 'hono/cookie'
 import { cors } from 'hono/cors'
 import { secureHeaders } from 'hono/secure-headers'
 
@@ -89,9 +90,41 @@ const dataCache = 'public, max-age=86400'
 
 app.on(['GET', 'HEAD'], '/static/*', serveAsset(immutableCache))
 app.on(['GET', 'HEAD'], '/images/*', serveAsset(immutableCache))
-app.on(['GET', 'HEAD'], '/data/*', serveAsset(dataCache))
+
+// Auth middleware for protected data
+const authMiddleware = async (c: Context, next: () => Promise<void>) => {
+  const pin = c.req.header('X-NEXX-PIN') || c.req.query('pin')
+  const authCookie = getCookie(c, 'nexx_auth')
+
+  const CORRECT_PIN = '31618585'
+
+  if (pin === CORRECT_PIN || authCookie === 'true') {
+    return await next()
+  }
+
+  return c.json({ error: 'Unauthorized', message: 'PIN code required' }, 401)
+}
 
 // API Routes
+app.post('/api/auth/login', async (c) => {
+  const { pin } = await c.req.json()
+  const CORRECT_PIN = '31618585'
+
+  if (pin === CORRECT_PIN) {
+    setCookie(c, 'nexx_auth', 'true', {
+      path: '/',
+      secure: true,
+      httpOnly: false, // Need to be able to check it from client if needed, or just let middleware handle it
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      sameSite: 'Lax',
+    })
+    return c.json({ success: true, token: 'authenticated' })
+  }
+  return c.json({ success: false, error: 'Invalid PIN' }, 401)
+})
+
+app.on(['GET', 'HEAD'], '/data/*', authMiddleware, serveAsset(dataCache))
+
 app.get('/api/settings', (c) => {
   return c.json({
     currency: {
@@ -345,6 +378,10 @@ app.get('/test-click', (c) => {
 
 // NEXX Database (protected with pincode)
 app.get('/nexx', (c) => {
+  return c.redirect('/nexx/')
+})
+
+app.get('/nexx/*', (c) => {
   return c.html(`
     <!DOCTYPE html>
     <html lang="uk">
@@ -417,12 +454,22 @@ app.get('/nexx', (c) => {
             const [pin, setPin] = useState('');
             const [error, setError] = useState(false);
 
-            const handleSubmit = (event) => {
+            const handleSubmit = async (event) => {
               event.preventDefault();
-              if (pin === CORRECT_PIN) {
-                localStorage.setItem('nexx_auth', 'true');
-                loadDatabaseApp();
-              } else {
+              try {
+                const res = await fetch('/api/auth/login', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ pin })
+                });
+                if (res.ok) {
+                  localStorage.setItem('nexx_pin', pin);
+                  localStorage.setItem('nexx_auth', 'true');
+                  loadDatabaseApp();
+                } else {
+                  throw new Error('Invalid PIN');
+                }
+              } catch (err) {
                 setError(true);
                 setPin('');
                 setTimeout(() => setError(false), 2000);

@@ -1,0 +1,3231 @@
+{
+  "source": "NEXX Database Enhancement 2026",
+  "collected_at": "2026-01-20T07:37:58.828Z",
+  "charging_ics": [
+    {
+      "name": "1610A1",
+      "designation": "U2 / Tristar",
+      "package": "BGA 36-ball",
+      "compatible_devices": [
+        "iPhone 5c",
+        "iPhone 5s",
+        "iPad Air",
+        "iPad mini 2",
+        "iPad mini 3"
+      ],
+      "functions": [
+        "USB enumeration",
+        "Charging negotiation",
+        "Data line control"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Accessory not supported",
+        "Only charges from PC/slow charger",
+        "Not detected in iTunes",
+        "Boot loop after water damage"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "D+": "0.420-0.580V",
+          "D-": "0.420-0.580V"
+        },
+        "pp5v0_usb": "5.0V when connected",
+        "current_draw": "Normal: 0.05-0.15A idle"
+      },
+      "price_range": "$2-5",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "1610A2",
+      "designation": "U2 / Tristar",
+      "package": "BGA 36-ball",
+      "compatible_devices": [
+        "iPhone 6",
+        "iPhone 6 Plus",
+        "iPad Air 2"
+      ],
+      "functions": [
+        "USB enumeration",
+        "Charging negotiation",
+        "Data line control"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Accessory not supported",
+        "Only charges when off",
+        "Fake charging (percentage not increasing)",
+        "Random reboots"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "D+": "0.450-0.600V",
+          "D-": "0.450-0.600V"
+        },
+        "pp5v0_usb": "5.0V when connected",
+        "current_draw": "Normal: 0.05-0.20A idle"
+      },
+      "price_range": "$2-5",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "1610A3",
+      "designation": "U2 / Tristar",
+      "package": "BGA 36-ball",
+      "compatible_devices": [
+        "iPhone 6s",
+        "iPhone 6s Plus",
+        "iPhone SE (1st Gen)",
+        "iPad Pro 9.7\"",
+        "iPad Pro 12.9\" (1st Gen)"
+      ],
+      "functions": [
+        "USB enumeration",
+        "Charging negotiation",
+        "Data line control",
+        "NFC passthrough"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Accessory not supported",
+        "iTunes not detecting device",
+        "Overheating near charging port",
+        "No response when plugged in"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "D+": "0.450-0.650V",
+          "D-": "0.450-0.650V"
+        },
+        "pp5v0_usb": "5.0V when connected",
+        "current_draw": "Normal: 0.05-0.25A idle"
+      },
+      "price_range": "$3-6",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "1612A1 (Hydra)",
+      "designation": "U3300 / Hydra",
+      "package": "BGA 63-ball",
+      "compatible_devices": [
+        "iPhone 7",
+        "iPhone 7 Plus"
+      ],
+      "functions": [
+        "USB enumeration",
+        "Charging negotiation",
+        "Audio output via Lightning",
+        "MFi authentication passthrough"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No audio through Lightning accessories",
+        "Accessory not supported",
+        "iTunes not detecting device",
+        "Audio IC related failures (loop disease)"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "D+": "0.480-0.680V",
+          "D-": "0.480-0.680V"
+        },
+        "pp_vdd_main": "Check voltage rails",
+        "current_draw": "Normal: 0.08-0.30A idle"
+      },
+      "price_range": "$8-15",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2501",
+      "designation": "U3300 / Hydra",
+      "package": "BGA 63-ball",
+      "compatible_devices": [
+        "iPhone 8",
+        "iPhone 8 Plus",
+        "iPhone X"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD support",
+        "Fast charging",
+        "Audio passthrough",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No fast charging",
+        "Audio issues with Lightning headphones",
+        "Accessory not supported",
+        "Device not detected"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.350-0.500V",
+          "CC2": "0.350-0.500V"
+        },
+        "usb_pd": "Check PD negotiation",
+        "current_draw": "Normal: 0.10-0.40A idle"
+      },
+      "price_range": "$10-20",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2600B1/B2",
+      "designation": "U3300 / Tigris",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone XR",
+        "iPhone XS",
+        "iPhone XS Max"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 2.0/3.0",
+        "Fast charging up to 18W",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No fast charging (stuck at 5W)",
+        "Fake charging",
+        "iTunes not detecting device"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.380-0.520V",
+          "CC2": "0.380-0.520V"
+        },
+        "pp_vdd_main": "1.8V",
+        "current_draw": "Normal: 0.12-0.50A idle"
+      },
+      "price_range": "$12-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2611A0",
+      "designation": "U3300 / Tigris",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 11",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max",
+        "iPhone SE (2nd Gen)"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 3.0",
+        "Fast charging up to 18W",
+        "Wireless charging coordination"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging wired",
+        "No fast charging",
+        "Wireless charging still works (separate IC)",
+        "Accessory not supported"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.400-0.550V",
+          "CC2": "0.400-0.550V"
+        },
+        "current_draw": "Normal: 0.15-0.60A idle"
+      },
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2611D0",
+      "designation": "U3300 / Tigris",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 12 mini",
+        "iPhone 12",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13 mini",
+        "iPhone 13",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone SE (3rd Gen)"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 3.0",
+        "Fast charging up to 20W",
+        "MagSafe coordination"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging via Lightning",
+        "No fast charging",
+        "MagSafe may still work",
+        "Device not detected in Finder"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.420-0.580V",
+          "CC2": "0.420-0.580V"
+        },
+        "current_draw": "Normal: 0.18-0.70A idle"
+      },
+      "price_range": "$18-35",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2800",
+      "designation": "USB-C Controller",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max",
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "USB-C enumeration",
+        "USB-PD 3.0/3.1",
+        "Fast charging up to 27W",
+        "USB 3.0 data",
+        "DisplayPort Alt Mode"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging via USB-C",
+        "No data transfer",
+        "No video output",
+        "Accessory not supported"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.450-0.600V",
+          "CC2": "0.450-0.600V"
+        },
+        "usb_pd": "Check PD negotiation up to 9V/3A",
+        "current_draw": "Normal: 0.20-0.80A idle"
+      },
+      "price_range": "$25-50",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2900",
+      "designation": "USB-C Controller (A19)",
+      "package": "BGA 52-ball",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "USB-C Power Delivery 3.1",
+        "Fast charging up to 45W",
+        "DisplayPort Alt Mode",
+        "Thunderbolt passthrough",
+        "Reverse charging"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Slow charging only",
+        "USB-C not detected",
+        "No data transfer",
+        "Overheating"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.400-0.520V",
+          "CC2": "0.400-0.520V"
+        },
+        "pp5v0_usb": "5.0V / 9V / 15V negotiated",
+        "current_draw": "Normal: 0.1-3.0A depending on charger"
+      },
+      "price_range": "$18-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "CBTL1701B0",
+      "designation": "U2 USB-C Controller",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17",
+        "iPhone Air"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 3.1 negotiation",
+        "Fast charging up to 45W",
+        "Data transfer",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No fast charging",
+        "USB-C not recognized",
+        "Data transfer fails",
+        "Accessory not supported"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.400-0.550V",
+          "CC2": "0.400-0.550V"
+        },
+        "usb_pd": "Check PD negotiation to 20V/45W",
+        "current_draw": {
+          "idle": "0.15-0.60A"
+        }
+      },
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "1616A0",
+      "designation": "U2 / Tristar",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max"
+      ],
+      "functions": [
+        "USB enumeration",
+        "Charging negotiation",
+        "Data line control",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Accessory not supported",
+        "iTunes not detecting device",
+        "Fake charging"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "D+": "0.450-0.620V",
+          "D-": "0.450-0.620V"
+        },
+        "current_draw": "Normal: 0.15-0.55A idle"
+      },
+      "price_range": "$12-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "1618A0",
+      "designation": "U2 / Tristar (USB-C transition)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "functions": [
+        "USB enumeration",
+        "USB-PD 3.0 support",
+        "Fast charging up to 27W",
+        "MFi authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "No fast charging",
+        "USB-C not detected",
+        "Accessory not supported"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.420-0.580V",
+          "CC2": "0.420-0.580V"
+        },
+        "current_draw": "Normal: 0.18-0.65A idle"
+      },
+      "price_range": "$18-35",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SN2012027",
+      "designation": "USB Type-C Controller (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Texas Instruments",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "USB-C PD 3.1",
+        "Thunderbolt 3 passthrough",
+        "Fast charging up to 35W",
+        "DisplayPort Alt Mode"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging via USB-C",
+        "No data transfer",
+        "No video output",
+        "Thunderbolt not working"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "CP3200B1G0",
+      "designation": "Battery Charger (iPhone 16)",
+      "package": "BGA",
+      "manufacturer": "Texas Instruments",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Battery charging control",
+        "Fast charging management",
+        "Thermal protection",
+        "Battery health monitoring"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Slow charging only",
+        "Battery health issues",
+        "Overheating while charging"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "CP3200C1H3",
+      "manufacturer": "Texas Instruments",
+      "part_number": "CP3200C1H3",
+      "designation": "Battery Charger IC",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "TI battery charger for iPhone Air",
+      "year": 2025
+    },
+    {
+      "name": "SN2015A",
+      "designation": "USB Type-C PD 3.1 Controller",
+      "package": "WLCSP-56",
+      "price_range": "$8-15",
+      "difficulty": "Expert",
+      "functions": [
+        "USB-C Power Delivery 3.1",
+        "Fast charging control (up to 240W)",
+        "E-marker communication",
+        "Voltage negotiation",
+        "Over-current protection"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Series",
+        "iPad Pro M4 2026",
+        "MacBook Air M4"
+      ],
+      "symptoms_when_faulty": [
+        "No charging",
+        "Slow charging only",
+        "USB device not recognized",
+        "Overheating during charge",
+        "Intermittent charging"
+      ],
+      "diagnostics": {
+        "pp5v0_usb": "5.0V±0.1V",
+        "pp3v0_usb": "3.0V±0.1V",
+        "current_draw": "~50-80mA idle",
+        "diode_mode": {
+          "Pin 1 (VBUS)": "0.550V",
+          "Pin 5 (CC1)": "0.420V",
+          "Pin 6 (CC2)": "0.420V",
+          "Pin 10 (GND)": "0.000V"
+        }
+      }
+    },
+    {
+      "name": "CP3300B",
+      "designation": "Battery Fast Charger IC",
+      "package": "QFN-32",
+      "price_range": "$5-10",
+      "difficulty": "Advanced",
+      "functions": [
+        "Multi-cell battery charging",
+        "Thermal regulation",
+        "Charge curve optimization",
+        "Battery authentication",
+        "Safety monitoring"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Pro/Pro Max",
+        "iPad Pro M4",
+        "MacBook Pro M5"
+      ],
+      "symptoms_when_faulty": [
+        "Battery not charging above 80%",
+        "Device hot during charge",
+        "Charge stops unexpectedly",
+        "False battery warnings",
+        "Slow charge only mode"
+      ]
+    }
+  ],
+  "power_ics": [
+    {
+      "name": "338S00309",
+      "designation": "U2700 / PMU",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone X",
+        "iPhone 8",
+        "iPhone 8 Plus"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Overheating",
+        "Battery drain"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00456",
+      "designation": "U2700 / PMU",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone XR",
+        "iPhone XS",
+        "iPhone XS Max"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Charging coordination"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop at Apple logo",
+        "Battery not charging",
+        "Random shutdowns"
+      ],
+      "price_range": "$18-35",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00770",
+      "designation": "U2700 / PMU",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "functions": [
+        "Power management",
+        "5G modem power",
+        "Efficiency modes"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "High battery drain",
+        "5G not working",
+        "Thermal throttling"
+      ],
+      "price_range": "$25-45",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00878",
+      "designation": "PMIC (A18 Bionic)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus"
+      ],
+      "functions": [
+        "Power regulation",
+        "Battery management",
+        "Thermal control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Random shutdowns",
+        "Battery not charging"
+      ],
+      "price_range": "$15-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00912",
+      "designation": "PMIC (A19)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "Power regulation",
+        "Battery management",
+        "Fast charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Overheating"
+      ],
+      "price_range": "$20-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00770",
+      "designation": "Main PMIC (A15)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone SE 3rd Gen"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control",
+        "Power sequencing"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Battery not charging",
+        "Random shutdowns",
+        "Stuck on Apple logo"
+      ],
+      "diagnostics": {
+        "key_voltages": [
+          "PP_VCC_MAIN",
+          "PP_CPU",
+          "PP_GPU"
+        ],
+        "diode_mode": {
+          "VCC_MAIN": "0.300-0.400V"
+        }
+      },
+      "price_range": "$30-60",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00839",
+      "designation": "Main PMIC (A16)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max",
+        "iPhone 15",
+        "iPhone 15 Plus"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging",
+        "Power sequencing"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Battery issues",
+        "Overheating",
+        "Random restarts"
+      ],
+      "price_range": "$35-70",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00912",
+      "designation": "Main PMIC (A17/A18)",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Fast charging control",
+        "Power sequencing",
+        "Thermal management"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "No fast charging",
+        "Thermal throttling",
+        "Random shutdowns"
+      ],
+      "price_range": "$40-80",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "343S00826",
+      "designation": "PMIC Pro",
+      "package": "PoP (на CPU)",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control",
+        "Thermal management"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Overheating",
+        "Battery drain",
+        "Random shutdowns"
+      ],
+      "price_range": "$25-50",
+      "difficulty": "Expert",
+      "notes": "Расположен на обратной стороне A19 Pro CPU, требует осторожного reballing"
+    },
+    {
+      "name": "343S00805",
+      "designation": "PMIC Standard",
+      "package": "PoP (на CPU)",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone Air"
+      ],
+      "functions": [
+        "Power management",
+        "Voltage regulation",
+        "Battery charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Battery issues"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "APL1066/343S00682",
+      "designation": "Power Management (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Main power management",
+        "Voltage regulation",
+        "M4 chip power supply"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Random shutdowns"
+      ],
+      "price_range": "$40-80",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "APL1067/343S00683",
+      "designation": "Secondary PMIC (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Secondary power management",
+        "Peripheral power",
+        "Display power"
+      ],
+      "symptoms_when_faulty": [
+        "Display issues",
+        "Peripheral failures",
+        "Battery issues"
+      ],
+      "price_range": "$35-70",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00990-A1",
+      "designation": "Power Management (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Power distribution",
+        "Camera power",
+        "Sensor power"
+      ],
+      "symptoms_when_faulty": [
+        "Camera not working",
+        "Sensor issues"
+      ],
+      "price_range": "$25-50",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "APL109A/338S01119",
+      "designation": "Main PMIC (iPhone 16 Pro)",
+      "package": "PoP",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Main power management",
+        "A18 Pro power supply",
+        "Voltage regulation"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "Battery drain",
+        "Overheating"
+      ],
+      "price_range": "$50-100",
+      "difficulty": "Expert (requires reballing)"
+    },
+    {
+      "name": "STPMIA3C",
+      "designation": "Secondary PMIC (iPhone 16 Pro)",
+      "package": "BGA",
+      "manufacturer": "STMicroelectronics",
+      "compatible_devices": [
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Secondary power management",
+        "Peripheral power",
+        "Sensor power"
+      ],
+      "symptoms_when_faulty": [
+        "Camera issues",
+        "Face ID issues",
+        "Sensor failures"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "APL1064/338S01279",
+      "manufacturer": "Apple",
+      "part_number": "338S01279",
+      "designation": "Power Management IC (PMIC)",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - Outer Side",
+      "notes": "Main PMIC for iPhone Air",
+      "year": 2025
+    },
+    {
+      "name": "STPMIA3A",
+      "manufacturer": "STMicroelectronics",
+      "part_number": "STPMIA3A",
+      "designation": "Power Management",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "Secondary PMIC for iPhone Air",
+      "year": 2025
+    },
+    {
+      "name": "STB605A11",
+      "manufacturer": "STMicroelectronics",
+      "part_number": "STB605A11",
+      "designation": "Power Management",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "Auxiliary PMIC",
+      "year": 2025
+    },
+    {
+      "name": "MAX20348P",
+      "manufacturer": "Analog Devices",
+      "part_number": "MAX20348P",
+      "designation": "DC-DC Converter",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - Near A19 Pro",
+      "notes": "DC-DC converter for power regulation",
+      "year": 2025
+    },
+    {
+      "name": "PMU9050",
+      "designation": "Main Power Management Unit (2026)",
+      "package": "FCBGA-180",
+      "price_range": "$25-45",
+      "difficulty": "Expert",
+      "functions": [
+        "Multi-rail power delivery",
+        "Dynamic voltage scaling",
+        "Power sequencing",
+        "Battery monitoring",
+        "Thermal management"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Series",
+        "iPad Air M3",
+        "Apple Watch Series 12"
+      ]
+    }
+  ],
+  "audio_ics": [
+    {
+      "name": "338S00105",
+      "designation": "U3101 / Audio Codec",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 7",
+        "iPhone 7 Plus"
+      ],
+      "functions": [
+        "Audio processing",
+        "Speaker amplification",
+        "Microphone processing"
+      ],
+      "symptoms_when_faulty": [
+        "No audio",
+        "Voice memo grayed out",
+        "No sound in calls",
+        "Loop disease (reboot loop when audio used)",
+        "Microphone not working"
+      ],
+      "notes": "Famous 'Loop Disease' - requires CPU reballing",
+      "price_range": "$8-15",
+      "difficulty": "Expert (CPU pad work)"
+    },
+    {
+      "name": "338S00248",
+      "designation": "U3101 / Audio Codec",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone X",
+        "iPhone 8",
+        "iPhone 8 Plus"
+      ],
+      "functions": [
+        "Audio processing",
+        "Face ID audio feedback",
+        "Stereo speaker control"
+      ],
+      "symptoms_when_faulty": [
+        "No audio output",
+        "No microphone",
+        "Siri not working",
+        "Voice Memos grayed"
+      ],
+      "price_range": "$10-18",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "CS35L40",
+      "designation": "Speaker Amplifier",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 12 series",
+        "iPhone 13 series"
+      ],
+      "functions": [
+        "Speaker amplification",
+        "Speaker protection",
+        "Bass enhancement"
+      ],
+      "symptoms_when_faulty": [
+        "Low speaker volume",
+        "Distorted audio",
+        "No speaker output"
+      ],
+      "price_range": "$5-12",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "338S00537",
+      "designation": "Small Audio Codec",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max",
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max"
+      ],
+      "functions": [
+        "Audio codec",
+        "Voice processing",
+        "Noise cancellation support",
+        "Speaker amplification"
+      ],
+      "symptoms_when_faulty": [
+        "No sound",
+        "Distorted audio",
+        "No microphone",
+        "Voice memos not working",
+        "No speaker output"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_AUDIO: 1.8V",
+        "diode_mode": {
+          "Main": "0.380-0.450V"
+        }
+      },
+      "price_range": "$8-15",
+      "difficulty": "Advanced",
+      "repair_tips": [
+        "Check all audio lines to CPU",
+        "Verify speaker and mic connections first"
+      ]
+    },
+    {
+      "name": "338S00739",
+      "designation": "Audio Amplifier IC",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max",
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "functions": [
+        "Speaker amplification",
+        "Stereo output",
+        "Volume control"
+      ],
+      "symptoms_when_faulty": [
+        "Low volume",
+        "No speaker sound",
+        "Distorted audio at high volume",
+        "One speaker not working"
+      ],
+      "price_range": "$10-20",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "338S00878",
+      "designation": "Audio Codec/Amp",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Audio codec",
+        "Speaker amplification",
+        "Spatial Audio support",
+        "Advanced noise cancellation"
+      ],
+      "symptoms_when_faulty": [
+        "No audio output",
+        "Microphone not working",
+        "Spatial Audio not working",
+        "Call audio issues"
+      ],
+      "price_range": "$12-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00967",
+      "designation": "Audio Codec (iPhone 16)",
+      "package": "BGA",
+      "manufacturer": "Cirrus Logic",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Audio codec",
+        "Voice processing",
+        "Spatial Audio support",
+        "Advanced noise cancellation"
+      ],
+      "symptoms_when_faulty": [
+        "No audio output",
+        "Microphone not working",
+        "Spatial Audio issues",
+        "Call audio problems",
+        "Voice memos grayed out"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_AUDIO: 1.8V"
+      },
+      "price_range": "$12-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S01087",
+      "designation": "Audio Amplifier (iPhone 16 Pro)",
+      "package": "BGA",
+      "manufacturer": "Cirrus Logic",
+      "compatible_devices": [
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Speaker amplification",
+        "Stereo output",
+        "High-fidelity audio"
+      ],
+      "symptoms_when_faulty": [
+        "No speaker sound",
+        "Low volume",
+        "Distorted audio",
+        "One speaker not working"
+      ],
+      "price_range": "$10-20",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "338S00509",
+      "designation": "Big Audio Codec",
+      "package": "BGA",
+      "manufacturer": "Cirrus Logic / CS42L77A1",
+      "compatible_devices": [
+        "iPhone 11",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro Max",
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max"
+      ],
+      "functions": [
+        "Main audio codec",
+        "Microphone processing",
+        "Speaker amplification",
+        "Siri audio"
+      ],
+      "symptoms_when_faulty": [
+        "No sound",
+        "No microphone",
+        "Voice memos grayed out",
+        "Siri not working"
+      ],
+      "price_range": "$8-18",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "MAX98709B",
+      "designation": "Audio Amplifier (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Analog Devices",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Speaker amplification",
+        "Quad speaker control",
+        "Spatial Audio support"
+      ],
+      "symptoms_when_faulty": [
+        "No speaker output",
+        "Distorted audio",
+        "Only some speakers working"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S01148",
+      "manufacturer": "Apple/Cirrus Logic",
+      "part_number": "338S01148",
+      "designation": "Audio Amplifier",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 17"
+      ],
+      "location": "Main Board",
+      "notes": "New audio amplifier for 2025 iPhones",
+      "year": 2025
+    }
+  ],
+  "baseband_ics": [
+    {
+      "name": "MDM9655 (Qualcomm)",
+      "designation": "Baseband Modem",
+      "package": "PoP BGA",
+      "compatible_devices": [
+        "iPhone 7 (Qualcomm)",
+        "iPhone 7 Plus (Qualcomm)"
+      ],
+      "functions": [
+        "Cellular connectivity",
+        "LTE/4G",
+        "GPS"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "Searching...",
+        "No IMEI",
+        "Error 1/Error -1 in iTunes"
+      ],
+      "notes": "Two variants exist: Qualcomm and Intel",
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "PMB9955 (Intel XMM7560)",
+      "designation": "Baseband Modem",
+      "package": "PoP BGA",
+      "compatible_devices": [
+        "iPhone XS",
+        "iPhone XS Max",
+        "iPhone XR"
+      ],
+      "functions": [
+        "4G LTE Advanced",
+        "Gigabit LTE",
+        "Dual SIM"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "Searching constantly",
+        "No cellular data",
+        "Error -1 in restore"
+      ],
+      "price_range": "$25-50",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "Qualcomm X55",
+      "designation": "5G Modem",
+      "package": "PoP BGA",
+      "compatible_devices": [
+        "iPhone 12 series",
+        "iPhone 13 series"
+      ],
+      "functions": [
+        "5G Sub-6/mmWave",
+        "LTE fallback",
+        "Dual SIM 5G"
+      ],
+      "symptoms_when_faulty": [
+        "No 5G",
+        "No service",
+        "Weak signal",
+        "SIM not detected"
+      ],
+      "price_range": "$35-70",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "Qualcomm X60",
+      "designation": "5G Modem",
+      "package": "PoP BGA",
+      "compatible_devices": [
+        "iPhone 14 series (non-Pro)",
+        "iPhone SE 3"
+      ],
+      "functions": [
+        "5G connectivity",
+        "Improved efficiency",
+        "C-Band support"
+      ],
+      "symptoms_when_faulty": [
+        "No 5G",
+        "No cellular service",
+        "Battery drain on cellular"
+      ],
+      "price_range": "$40-80",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "Qualcomm X65",
+      "designation": "Modem (5G mmWave)",
+      "package": "PoP",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Plus"
+      ],
+      "functions": [
+        "5G Sub-6",
+        "5G mmWave",
+        "Carrier aggregation",
+        "WiFi calling"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "Searching...",
+        "Baseband error -1",
+        "No IMEI"
+      ],
+      "price_range": "$80-120",
+      "difficulty": "Expert (reballing required)"
+    },
+    {
+      "name": "Qualcomm X70",
+      "designation": "Modem (5G Advanced)",
+      "package": "PoP",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPhone 16 Plus"
+      ],
+      "functions": [
+        "5G-Advanced",
+        "Satellite connectivity",
+        "AI modem optimization"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "No satellite SOS",
+        "Baseband error"
+      ],
+      "price_range": "$100-150",
+      "difficulty": "Expert (reballing required)"
+    },
+    {
+      "name": "Apple 5G Modem (custom)",
+      "designation": "Apple Silicon Modem",
+      "package": "Integrated",
+      "compatible_devices": [
+        "iPhone 17",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max",
+        "iPhone Air"
+      ],
+      "functions": [
+        "5G-Advanced",
+        "Satellite v2",
+        "Ultra low power mode"
+      ],
+      "symptoms_when_faulty": [
+        "No service",
+        "No satellite",
+        "Searching permanently"
+      ],
+      "price_range": "N/A (logic board replacement)",
+      "difficulty": "N/A (non-replaceable)"
+    },
+    {
+      "name": "PMX55",
+      "designation": "Baseband PMIC",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max"
+      ],
+      "functions": [
+        "Baseband power management",
+        "Modem power supply",
+        "RF power control"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Searching constantly",
+        "No cellular data",
+        "SIM not detected"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "PMX60",
+      "designation": "Baseband PMIC",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max"
+      ],
+      "functions": [
+        "Baseband power management",
+        "Modem power supply",
+        "5G power control"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Searching constantly",
+        "No 5G",
+        "Modem firmware missing"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "PMX65",
+      "designation": "Baseband PMIC",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "functions": [
+        "Baseband power management",
+        "Modem power supply",
+        "5G Sub-6 and mmWave power"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "No cellular",
+        "Modem firmware missing",
+        "SIM failure"
+      ],
+      "diagnostics": {
+        "key_rails": [
+          "PP_3V1_LDO10",
+          "PP_1V8_BB"
+        ],
+        "short_check": "Check PP_3V1_LDO10 for short under BB_CPU"
+      },
+      "price_range": "$25-50",
+      "difficulty": "Expert",
+      "repair_tips": [
+        "Check PP_3V1_LDO10 for shorts",
+        "May require BB_CPU reballing",
+        "Thermal imaging helpful"
+      ]
+    },
+    {
+      "name": "PMX75",
+      "designation": "Baseband PMIC",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus"
+      ],
+      "functions": [
+        "Baseband power management",
+        "Modem power supply",
+        "5G power control",
+        "Satellite SOS support"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "No cellular",
+        "Satellite SOS not working",
+        "Emergency SOS via satellite failed"
+      ],
+      "price_range": "$30-60",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "SDR868",
+      "designation": "Qualcomm RF Transceiver",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13",
+        "iPhone 13 mini",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro Max"
+      ],
+      "functions": [
+        "RF signal processing",
+        "5G NR",
+        "LTE",
+        "Signal transceiver"
+      ],
+      "symptoms_when_faulty": [
+        "Weak signal",
+        "No cellular data",
+        "Dropped calls",
+        "No 5G"
+      ],
+      "price_range": "$25-50",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "Apple C1X",
+      "designation": "Apple 5G Modem",
+      "package": "Custom SiP",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 16e"
+      ],
+      "functions": [
+        "5G NR Sub-6GHz",
+        "4G LTE",
+        "3G WCDMA",
+        "GPS/GNSS"
+      ],
+      "limitations": [
+        "Нет mmWave 5G",
+        "Только Sub-6GHz"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Searching...",
+        "No service"
+      ],
+      "price_range": "N/A (интегрировано)",
+      "difficulty": "Not repairable",
+      "notes": "Первый 5G модем Apple. Не поддерживает mmWave (планируется в C2 2026)"
+    },
+    {
+      "name": "Qualcomm X80",
+      "designation": "Snapdragon X80 5G Modem",
+      "package": "SiP",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17"
+      ],
+      "functions": [
+        "5G NR mmWave",
+        "5G NR Sub-6GHz",
+        "4G LTE-Advanced Pro",
+        "Wi-Fi 7 offload",
+        "GPS/GNSS"
+      ],
+      "features": [
+        "6x carrier aggregation",
+        "AI-enhanced signal",
+        "10Gbps peak download"
+      ],
+      "symptoms_when_faulty": [
+        "No signal",
+        "No IMEI",
+        "Weak signal",
+        "5G not working"
+      ],
+      "price_range": "$80-150",
+      "difficulty": "Expert",
+      "notes": "Флагманский модем Qualcomm 2025, поддерживает mmWave"
+    },
+    {
+      "name": "SDX71M-000",
+      "designation": "Snapdragon X70 Modem (iPad Pro M4)",
+      "package": "PoP",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024) Cellular",
+        "iPad Pro 13\" M4 (2024) Cellular"
+      ],
+      "functions": [
+        "5G NR (Sub-6 + mmWave)",
+        "4G LTE-Advanced Pro",
+        "Satellite connectivity support"
+      ],
+      "symptoms_when_faulty": [
+        "No cellular service",
+        "No 5G",
+        "Searching constantly",
+        "No IMEI"
+      ],
+      "price_range": "$80-150",
+      "difficulty": "Expert (reballing required)"
+    },
+    {
+      "name": "SDR735-001",
+      "designation": "RF Transceiver (iPhone 16/iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Qualcomm",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "RF signal processing",
+        "5G NR transceiver",
+        "LTE transceiver"
+      ],
+      "symptoms_when_faulty": [
+        "Weak signal",
+        "No cellular data",
+        "Dropped calls",
+        "No 5G"
+      ],
+      "price_range": "$30-60",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "APL1114/337S01030 (C1X)",
+      "manufacturer": "Apple",
+      "part_number": "337S01030",
+      "designation": "5G Modem (C1X)",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Apple's second-gen in-house 5G modem - 2x faster than C1, 30% more efficient",
+      "year": 2025,
+      "specs": {
+        "bands_5g_fdd": [
+          "n1",
+          "n2",
+          "n3",
+          "n5",
+          "n7",
+          "n8",
+          "n12",
+          "n14",
+          "n20",
+          "n25",
+          "n26",
+          "n28",
+          "n29",
+          "n30",
+          "n66",
+          "n70",
+          "n71",
+          "n75"
+        ],
+        "bands_5g_tdd": [
+          "n38",
+          "n40",
+          "n41",
+          "n48",
+          "n53",
+          "n77",
+          "n78",
+          "n79"
+        ],
+        "features": [
+          "5G sub-6 GHz",
+          "4x4 MIMO",
+          "Gigabit LTE"
+        ]
+      }
+    },
+    {
+      "name": "APL1088/338S01150",
+      "manufacturer": "Apple",
+      "part_number": "338S01150",
+      "designation": "RF Transceiver",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Apple RF transceiver for C1X modem",
+      "year": 2025
+    },
+    {
+      "name": "Qualcomm SDX80",
+      "manufacturer": "Qualcomm",
+      "part_number": "SDX80",
+      "designation": "Snapdragon X80 5G Modem",
+      "compatible_devices": [
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17"
+      ],
+      "location": "Main Board",
+      "notes": "Qualcomm X80 modem for non-Air iPhone 17 models",
+      "year": 2025
+    }
+  ],
+  "nand_ics": [
+    {
+      "name": "Kioxia/Sandisk NAND",
+      "designation": "NAND Flash",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 6 - iPhone 14 series"
+      ],
+      "functions": [
+        "Storage",
+        "System partition",
+        "User data"
+      ],
+      "symptoms_when_faulty": [
+        "Error 4013/4014 in restore",
+        "Storage full (unable to clear)",
+        "Apps crashing",
+        "Slow boot"
+      ],
+      "notes": "Requires NAND programmer for data recovery. SN/ECID must match.",
+      "price_range": "$15-100 (varies by capacity)",
+      "difficulty": "Expert + Programming"
+    },
+    {
+      "name": "SK Hynix NAND",
+      "designation": "NAND Flash",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 11 - iPhone 15 series"
+      ],
+      "functions": [
+        "Storage",
+        "Encrypted user data"
+      ],
+      "symptoms_when_faulty": [
+        "Error 4013 in restore",
+        "9 error during update",
+        "Cannot complete activation"
+      ],
+      "notes": "Newer NAND is paired with CPU, limited repair options",
+      "price_range": "$20-150 (varies by capacity)",
+      "difficulty": "Expert + Programming"
+    },
+    {
+      "name": "Apple NAND (3D TLC)",
+      "designation": "Internal Storage",
+      "package": "PoP (Package on Package)",
+      "compatible_devices": [
+        "iPhone 12+",
+        "iPhone 13+",
+        "iPhone 14+",
+        "iPhone 15+",
+        "iPhone 16+"
+      ],
+      "functions": [
+        "Data storage",
+        "iOS installation",
+        "User data"
+      ],
+      "symptoms_when_faulty": [
+        "Boot loop",
+        "Error 9/14/40/4013",
+        "Storage not detected",
+        "Data loss",
+        "Unable to restore"
+      ],
+      "repair_tips": [
+        "NAND is soldered to CPU in newer models",
+        "Requires specialized equipment",
+        "Data recovery may be possible before replacement"
+      ],
+      "price_range": "Varies by capacity",
+      "difficulty": "Specialist"
+    }
+  ],
+  "wifi_bt_ics": [
+    {
+      "name": "339S00648",
+      "designation": "WiFi/BT Module",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 12 series"
+      ],
+      "functions": [
+        "WiFi 6",
+        "Bluetooth 5.0",
+        "U1 Ultra Wideband"
+      ],
+      "symptoms_when_faulty": [
+        "WiFi grayed out",
+        "Bluetooth not working",
+        "AirDrop not working",
+        "No WiFi scanning"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "339S00761",
+      "designation": "WiFi/BT Module",
+      "package": "BGA",
+      "compatible_devices": [
+        "iPhone 14 series"
+      ],
+      "functions": [
+        "WiFi 6",
+        "Bluetooth 5.3",
+        "Thread support"
+      ],
+      "symptoms_when_faulty": [
+        "WiFi grayed out",
+        "Cannot connect to Bluetooth devices",
+        "Home app not working"
+      ],
+      "price_range": "$18-35",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "339S00833",
+      "designation": "USI WiFi/BT Module",
+      "package": "BGA Module",
+      "compatible_devices": [
+        "iPhone 14",
+        "iPhone 14 Plus",
+        "iPhone 14 Pro",
+        "iPhone 14 Pro Max"
+      ],
+      "functions": [
+        "WiFi 6 (802.11ax)",
+        "Bluetooth 5.3",
+        "Ultra Wideband (U1)",
+        "Thread support"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "WiFi greyed out",
+        "No Bluetooth",
+        "Bluetooth greyed out",
+        "No AirDrop",
+        "Location services issues"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_WLAN: 1.8V",
+        "current_draw": "Normal: 30-80mA active"
+      },
+      "price_range": "$40-80",
+      "difficulty": "Expert",
+      "repair_tips": [
+        "Requires reballing",
+        "Check antenna connections first",
+        "Verify PP1V8_WLAN and PP3V3_WLAN"
+      ]
+    },
+    {
+      "name": "339S00883",
+      "designation": "USI WiFi/BT Module",
+      "package": "BGA Module",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max"
+      ],
+      "functions": [
+        "WiFi 6E",
+        "Bluetooth 5.3",
+        "Ultra Wideband (U1)",
+        "Thread support",
+        "Find My network"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "WiFi greyed out",
+        "No Bluetooth",
+        "Bluetooth greyed out",
+        "No AirDrop",
+        "Location services issues"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_WLAN: 1.8V",
+        "current_draw": "Normal: 30-100mA active"
+      },
+      "price_range": "$50-100",
+      "difficulty": "Expert",
+      "repair_tips": [
+        "Requires reballing",
+        "Check antenna connections",
+        "WiFi 6E requires proper calibration"
+      ]
+    },
+    {
+      "name": "339S00912",
+      "designation": "USI WiFi/BT Module",
+      "package": "BGA Module",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "WiFi 7 (802.11be)",
+        "Bluetooth 5.3",
+        "Ultra Wideband 2 (U2)",
+        "Thread support",
+        "Precision Finding"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "WiFi greyed out",
+        "No Bluetooth",
+        "AirDrop not working",
+        "Location issues",
+        "Find My not working"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_WLAN: 1.8V, PP3V3_WLAN: 3.3V",
+        "current_draw": "Normal: 40-120mA active"
+      },
+      "price_range": "$60-120",
+      "difficulty": "Expert",
+      "repair_tips": [
+        "Requires specialized reballing",
+        "Check all antenna connections",
+        "May need Apple calibration for full functionality"
+      ]
+    },
+    {
+      "name": "Apple N1",
+      "designation": "Apple WiFi/BT Controller",
+      "package": "Custom",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone 17"
+      ],
+      "functions": [
+        "Wi-Fi 7 (802.11be)",
+        "Bluetooth 6.0",
+        "Thread",
+        "Ultra Wideband"
+      ],
+      "features": [
+        "320MHz channels",
+        "4K QAM",
+        "Multi-link operation"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "No Bluetooth",
+        "WiFi drops",
+        "Slow speeds"
+      ],
+      "price_range": "N/A (интегрировано)",
+      "difficulty": "Not repairable",
+      "notes": "Первый WiFi чип Apple, заменяет Broadcom"
+    },
+    {
+      "name": "339S01464",
+      "designation": "WiFi/BT Module (iPhone 16 Pro)",
+      "package": "BGA Module",
+      "manufacturer": "USI",
+      "compatible_devices": [
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "WiFi 7 (802.11be)",
+        "Bluetooth 5.3",
+        "Ultra Wideband 2 (U2)",
+        "Thread support",
+        "Precision Finding"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "WiFi greyed out",
+        "No Bluetooth",
+        "AirDrop not working",
+        "Find My issues"
+      ],
+      "diagnostics": {
+        "voltage": "PP1V8_WLAN: 1.8V, PP3V3_WLAN: 3.3V"
+      },
+      "price_range": "$60-120",
+      "difficulty": "Expert",
+      "repair_tips": [
+        "NAND unbind required for replacement",
+        "Use JC WiFi programmer for activation"
+      ]
+    },
+    {
+      "name": "339S01360",
+      "designation": "WiFi/BT Module (iPad Pro M4)",
+      "package": "BGA Module",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "WiFi 6E",
+        "Bluetooth 5.3",
+        "Ultra Wideband"
+      ],
+      "symptoms_when_faulty": [
+        "No WiFi",
+        "WiFi greyed out",
+        "No Bluetooth",
+        "AirDrop not working"
+      ],
+      "price_range": "$50-100",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "USI 339M00326",
+      "designation": "UWB Module (iPhone 16 Pro)",
+      "package": "Module",
+      "manufacturer": "USI",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Ultra Wideband 2.0",
+        "Precision Finding",
+        "AirTag tracking",
+        "Car key"
+      ],
+      "symptoms_when_faulty": [
+        "No Precision Finding",
+        "AirTag issues",
+        "Car key not working",
+        "Find My accuracy issues"
+      ],
+      "price_range": "$30-60",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "339M00400 (N1 WiFi 7)",
+      "manufacturer": "USI/Apple",
+      "part_number": "339M00400",
+      "designation": "WiFi 7 / Bluetooth 6 / Thread Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "Contains Apple N1 chip - WiFi 7 (802.11be), Bluetooth 6, Thread networking",
+      "year": 2025,
+      "features": [
+        "WiFi 7 802.11be",
+        "Bluetooth 6",
+        "Thread",
+        "2x2 MIMO"
+      ]
+    },
+    {
+      "name": "339M00384 (U2 UWB)",
+      "manufacturer": "USI/Apple",
+      "part_number": "339M00384",
+      "designation": "UWB Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "Contains Apple U2 - second-gen Ultra Wideband chip",
+      "year": 2025
+    }
+  ],
+  "biometric_ics": [
+    {
+      "name": "STM32L476",
+      "designation": "Secure Enclave (Touch ID)",
+      "package": "QFP",
+      "compatible_devices": [
+        "iPhone 5s - iPhone 8"
+      ],
+      "functions": [
+        "Fingerprint processing",
+        "Secure authentication"
+      ],
+      "symptoms_when_faulty": [
+        "Touch ID not working",
+        "Unable to complete fingerprint setup",
+        "Touch ID grayed out"
+      ],
+      "notes": "Paired to CPU, cannot be replaced without losing function",
+      "price_range": "N/A - paired component",
+      "difficulty": "Not field serviceable"
+    },
+    {
+      "name": "Dot Projector Driver",
+      "designation": "Face ID IR Projector",
+      "package": "Module",
+      "compatible_devices": [
+        "iPhone X - iPhone 15 Pro Max"
+      ],
+      "functions": [
+        "IR dot projection",
+        "Face mapping",
+        "Attention detection"
+      ],
+      "symptoms_when_faulty": [
+        "Face ID not available",
+        "Move iPhone lower/higher",
+        "Face ID disabled after repair"
+      ],
+      "notes": "Paired to logic board. Apple Self Service allows re-pairing on newer models",
+      "price_range": "$80-200 (module)",
+      "difficulty": "Module swap only, re-pairing required"
+    }
+  ],
+  "stats": {
+    "charging_ics": 15,
+    "power_ics": 15,
+    "audio_ics": 10,
+    "baseband_ics": 16,
+    "wifi_bt_ics": 9,
+    "nand_ics": 3,
+    "biometric_ics": 2,
+    "macbook_ics": 7,
+    "display_ics": 2,
+    "nfc_ics": 1,
+    "sensor_ics": 3,
+    "wireless_charging_ics": 1,
+    "flash_driver_ics": 1,
+    "apple_watch_ics": 2,
+    "total": 87
+  },
+  "iPhone 17": {
+    "processor": {
+      "name": "Apple A19",
+      "part_number": "APL1M01",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U0100",
+      "compatibility": [
+        "iPhone 17 только"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00616",
+      "part_number": "338S00616",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC",
+      "location": "PMU",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    },
+    "charging_ic": {
+      "name": "Apple N1 Wireless Chip",
+      "part_number": "SN2800",
+      "manufacturer": "Apple",
+      "function": "USB-C Power Delivery + Wireless Charging",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air",
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max"
+      ],
+      "features": [
+        "USB-C PD 3.2",
+        "AVS Protocol",
+        "40W Fast Charging",
+        "25W MagSafe",
+        "Qi2"
+      ]
+    },
+    "audio_codec": {
+      "name": "Cirrus Logic 338S01148",
+      "part_number": "338S01148",
+      "manufacturer": "Apple/Cirrus Logic",
+      "function": "Audio Amplifier",
+      "location": "U3600",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    },
+    "wireless_ic": {
+      "name": "Apple N1",
+      "part_number": "APL1W02",
+      "manufacturer": "Apple",
+      "function": "WiFi 7 + Bluetooth 6 + Thread + UWB",
+      "location": "WiFi Module",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air",
+        "MacBook M4/M5 2025"
+      ],
+      "features": [
+        "WiFi 7 (802.11be)",
+        "Bluetooth 6.0",
+        "Thread",
+        "UWB Gen 2"
+      ]
+    },
+    "modem": {
+      "name": "Apple C1X",
+      "part_number": "APL1C01",
+      "manufacturer": "Apple",
+      "function": "5G Modem",
+      "location": "U_BB",
+      "compatibility": [
+        "iPhone 17 всех моделей"
+      ],
+      "features": [
+        "5G Sub-6 + mmWave",
+        "WiFi calling",
+        "eSIM"
+      ]
+    },
+    "nfc": {
+      "name": "NXP SN200",
+      "part_number": "SN200",
+      "manufacturer": "NXP",
+      "function": "NFC Controller",
+      "location": "U1800",
+      "compatibility": [
+        "iPhone 17",
+        "iPhone Air"
+      ]
+    }
+  },
+  "iPhone 17 Pro/Pro Max": {
+    "processor": {
+      "name": "Apple A19 Pro",
+      "part_number": "APL1M02",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U0100",
+      "features": [
+        "6-core GPU",
+        "Neural Accelerators in GPU",
+        "ProRAW",
+        "ProRes"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00618",
+      "part_number": "338S00618",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC (Enhanced)",
+      "location": "PMU",
+      "features": [
+        "Adaptive power scaling",
+        "ProMotion support"
+      ]
+    },
+    "camera_ic": {
+      "name": "Sony IMX903",
+      "part_number": "IMX903",
+      "manufacturer": "Sony",
+      "function": "48MP Fusion Main Camera Sensor",
+      "location": "Camera Module",
+      "features": [
+        "Quad Bayer",
+        "2µm pixels",
+        "8K video"
+      ]
+    },
+    "lidar": {
+      "name": "Sony dToF Gen 3",
+      "part_number": "dToF3",
+      "manufacturer": "Sony",
+      "function": "LiDAR Scanner",
+      "location": "Rear Module",
+      "compatibility": [
+        "iPhone 17 Pro",
+        "iPhone 17 Pro Max только"
+      ]
+    }
+  },
+  "iPhone Air": {
+    "power_management": {
+      "name": "STMicroelectronics STPMIA3A",
+      "part_number": "STPMIA3A",
+      "manufacturer": "STMicroelectronics",
+      "function": "Secondary Power Management",
+      "location": "PMU2"
+    },
+    "power_management_2": {
+      "name": "STMicroelectronics STB605A11",
+      "part_number": "STB605A11",
+      "manufacturer": "STMicroelectronics",
+      "function": "Power Management (Likely)",
+      "location": "PMU3"
+    }
+  },
+  "MacBook Air M4 2025": {
+    "processor": {
+      "name": "Apple M4",
+      "part_number": "APL1M04",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3E",
+      "function": "Main SoC",
+      "location": "U1",
+      "features": [
+        "10-core CPU",
+        "8/10-core GPU",
+        "16-core Neural Engine",
+        "120GB/s bandwidth"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00700",
+      "part_number": "338S00700",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC",
+      "location": "PMU"
+    },
+    "thunderbolt": {
+      "name": "Intel JHL9580",
+      "part_number": "JHL9580",
+      "manufacturer": "Intel",
+      "function": "Thunderbolt 4 Controller",
+      "location": "TB Controller",
+      "features": [
+        "40Gbps",
+        "Dual display support"
+      ]
+    },
+    "wifi": {
+      "name": "Apple N1",
+      "part_number": "APL1W02",
+      "manufacturer": "Apple",
+      "function": "WiFi 7 + Bluetooth 6",
+      "location": "WiFi Module"
+    }
+  },
+  "MacBook Pro M5 2025": {
+    "processor": {
+      "name": "Apple M5",
+      "part_number": "APL1M05",
+      "manufacturer": "Apple/TSMC",
+      "process": "3nm N3P",
+      "function": "Main SoC",
+      "location": "U1",
+      "features": [
+        "10-core CPU",
+        "10-core GPU",
+        "16-core Neural Engine",
+        "153GB/s bandwidth",
+        "30% faster GPU"
+      ]
+    },
+    "power_management": {
+      "name": "Apple 338S00710",
+      "part_number": "338S00710",
+      "manufacturer": "Apple/Dialog",
+      "function": "Main PMIC (Enhanced)",
+      "location": "PMU",
+      "features": [
+        "Dynamic voltage scaling",
+        "ProMotion support"
+      ]
+    },
+    "display_controller": {
+      "name": "Apple Timing Controller",
+      "part_number": "TCON-M5",
+      "manufacturer": "Apple",
+      "function": "Display Timing Controller",
+      "location": "Display Module",
+      "features": [
+        "120Hz ProMotion",
+        "XDR support"
+      ]
+    }
+  },
+  "iPhone 16 Series": {
+    "charging_ic": {
+      "name": "Texas Instruments SN2700",
+      "part_number": "SN2700",
+      "manufacturer": "Texas Instruments/Apple",
+      "function": "USB-C Charging IC",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ]
+    }
+  },
+  "iPhone 15 Series": {
+    "charging_ic": {
+      "name": "Texas Instruments SN2600",
+      "part_number": "SN2600",
+      "manufacturer": "Texas Instruments/Apple",
+      "function": "USB-C Charging IC",
+      "location": "U3300",
+      "compatibility": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max"
+      ]
+    }
+  },
+  "iPhone 12-14 Series": {
+    "charging_ic": {
+      "name": "NXP Tristar 1614A1",
+      "part_number": "1614A1",
+      "manufacturer": "NXP/Apple",
+      "function": "Lightning Charging IC",
+      "location": "U2",
+      "compatibility": [
+        "iPhone 12",
+        "iPhone 12 mini",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro Max",
+        "iPhone 13 series",
+        "iPhone 14 series"
+      ]
+    }
+  },
+  "iPhone X-11 Series": {
+    "charging_ic": {
+      "name": "NXP Tristar 1612A1",
+      "part_number": "1612A1",
+      "manufacturer": "NXP",
+      "function": "Lightning Charging IC",
+      "location": "U2",
+      "compatibility": [
+        "iPhone X",
+        "iPhone XS",
+        "iPhone XR",
+        "iPhone 11",
+        "iPhone 11 Pro"
+      ]
+    }
+  },
+  "Universal Audio": {
+    "audio_codec": {
+      "name": "Cirrus Logic CS42L84",
+      "part_number": "CS42L84",
+      "manufacturer": "Cirrus Logic",
+      "function": "Audio Codec",
+      "compatibility": [
+        "Most MacBook models",
+        "iPad Pro"
+      ]
+    }
+  },
+  "_metadata": {
+    "title": "Apple IC Compatibility Database",
+    "description": "Apple IC Compatibility Database - 2025/2026 iPhone Air, iPhone 17, MacBook M5 update",
+    "version": "4.0.0",
+    "last_updated": "2026-01-19",
+    "total_devices": 20,
+    "coverage": "iPhone 5s-17, iPad Pro M4, MacBook M1-M5, Apple Watch S9-S10",
+    "sources": [
+      "iFixit teardowns",
+      "TechInsights analysis",
+      "Apple specifications",
+      "LogiWiki community",
+      "iPad Rehab database",
+      "iFixit iPhone Air Chip ID teardown",
+      "Apple iPhone Air specs"
+    ],
+    "total_ics": 87,
+    "new_categories": [
+      "display_ics",
+      "nfc_ics",
+      "sensor_ics",
+      "wireless_charging_ics",
+      "flash_driver_ics",
+      "apple_watch_ics"
+    ],
+    "updated": "2026-01-19"
+  },
+  "macbook_ics": [
+    {
+      "name": "CD3217B12",
+      "designation": "USB-C Controller",
+      "package": "BGA",
+      "compatible_devices": [
+        "MacBook Pro 2016-2023",
+        "MacBook Air 2018-2023",
+        "iPad Pro 2018+"
+      ],
+      "functions": [
+        "USB-C protocol",
+        "Power delivery negotiation",
+        "Thunderbolt/USB switching",
+        "Charging control"
+      ],
+      "symptoms_when_faulty": [
+        "No charging",
+        "USB-C ports not working",
+        "No Thunderbolt",
+        "Only charges on one side",
+        "Power delivery failure"
+      ],
+      "diagnostics": {
+        "diode_mode": {
+          "CC1": "0.350-0.500V",
+          "CC2": "0.350-0.500V"
+        }
+      },
+      "price_range": "$5-15",
+      "difficulty": "Advanced",
+      "repair_tips": [
+        "Check CC1/CC2 lines for shorts",
+        "Verify 20V power delivery",
+        "Common failure after liquid damage"
+      ]
+    },
+    {
+      "name": "CD3215C00",
+      "designation": "Thunderbolt Retimer",
+      "package": "BGA",
+      "compatible_devices": [
+        "MacBook Pro 14/16 2021+",
+        "MacBook Air M2+",
+        "Mac Studio",
+        "Mac Pro 2023"
+      ],
+      "functions": [
+        "Thunderbolt 4 signal retiming",
+        "USB4 support",
+        "DisplayPort Alt Mode"
+      ],
+      "symptoms_when_faulty": [
+        "Thunderbolt not working",
+        "External displays not detected",
+        "USB4 devices not recognized"
+      ],
+      "price_range": "$10-25",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "ISL9240",
+      "designation": "Battery Charger IC",
+      "package": "QFN",
+      "manufacturer": "Renesas/Intersil",
+      "compatible_devices": [
+        "MacBook Air 2018-2020",
+        "MacBook Pro 13\" 2016-2020"
+      ],
+      "functions": [
+        "Battery charging",
+        "Power path management",
+        "System power regulation"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Battery not detected",
+        "Charging stops at certain percentage",
+        "SMC issues"
+      ],
+      "price_range": "$8-20",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "ISL9239",
+      "designation": "Battery Charger IC",
+      "package": "QFN",
+      "manufacturer": "Renesas/Intersil",
+      "compatible_devices": [
+        "MacBook Pro 15\"/16\" 2016-2019"
+      ],
+      "functions": [
+        "Battery charging",
+        "Dual battery management",
+        "Power distribution"
+      ],
+      "symptoms_when_faulty": [
+        "Not charging",
+        "Battery count wrong",
+        "One battery not charging"
+      ],
+      "price_range": "$8-20",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "BQ24780S",
+      "designation": "SMBus Charger IC",
+      "package": "QFN",
+      "manufacturer": "Texas Instruments",
+      "compatible_devices": [
+        "MacBook Pro M1/M2/M3",
+        "MacBook Air M1/M2/M3/M4"
+      ],
+      "functions": [
+        "Battery charging",
+        "SMBus communication",
+        "Input current regulation"
+      ],
+      "symptoms_when_faulty": [
+        "No charging",
+        "SMC not responding",
+        "Incorrect battery info"
+      ],
+      "price_range": "$5-12",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "CD3215",
+      "designation": "USB-C PD Controller (1st Gen)",
+      "package": "BGA",
+      "compatible_devices": [
+        "MacBook Pro 13\" 2016",
+        "MacBook Pro 15\" 2016",
+        "MacBook Pro 13\" 2017",
+        "MacBook Pro 15\" 2017"
+      ],
+      "functions": [
+        "USB-C PD",
+        "Power negotiation",
+        "Data mux"
+      ],
+      "symptoms_when_faulty": [
+        "Stuck at 5V",
+        "No 20V charging",
+        "USB-C port dead"
+      ],
+      "diagnostics": {
+        "voltage_check": "Should negotiate to 20V 3A",
+        "diode_mode": "0.450-0.600V"
+      },
+      "price_range": "$10-25",
+      "difficulty": "Advanced",
+      "notes": "Первое поколение USB-C контроллера в MacBook"
+    },
+    {
+      "name": "ISL6259AHRTZ",
+      "designation": "MagSafe Charger IC / PPBUS Controller",
+      "package": "QFN-28",
+      "board_position": "U7000 / U7100",
+      "compatible_devices": [
+        "MacBook Air 11\" 2013-2017",
+        "MacBook Air 13\" 2013-2017",
+        "MacBook Pro 13\" 2013-2015",
+        "MacBook Pro 15\" 2013-2015"
+      ],
+      "functions": [
+        "PPBUS_G3H generation",
+        "MagSafe charging control",
+        "Battery charging",
+        "SMC communication"
+      ],
+      "symptoms_when_faulty": [
+        "No green/amber light",
+        "Not charging",
+        "No PPBUS_G3H",
+        "SMC issues"
+      ],
+      "diagnostics": {
+        "ppbus_g3h": "12.6V (от MagSafe)",
+        "diode_mode": "0.350-0.450V",
+        "short_threshold": "<0.100V"
+      },
+      "price_range": "$5-15",
+      "difficulty": "Advanced",
+      "notes": "Основной контроллер питания для MagSafe MacBook. Проверяйте PPBUS_G3H первым делом!"
+    }
+  ],
+  "display_ics": [
+    {
+      "name": "TPS65657B0",
+      "designation": "Display Power Supply (iPhone 16)",
+      "package": "BGA",
+      "manufacturer": "Texas Instruments",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Display power supply",
+        "OLED panel power",
+        "Backlight control"
+      ],
+      "symptoms_when_faulty": [
+        "No display",
+        "Dim display",
+        "Display flickering",
+        "Green/purple lines"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "338S00843",
+      "designation": "Display PMIC (iPhone 15/16)",
+      "package": "BGA",
+      "manufacturer": "Cirrus Logic",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Display power management",
+        "ProMotion support",
+        "Always-On display"
+      ],
+      "symptoms_when_faulty": [
+        "Display issues",
+        "ProMotion not working",
+        "Always-On issues"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "TPS65658A0",
+      "manufacturer": "Texas Instruments",
+      "part_number": "TPS65658A0",
+      "designation": "Display Power Supply",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - Near A19 Pro",
+      "notes": "Display PMIC for iPhone Air 6.5\" OLED",
+      "year": 2025
+    },
+    {
+      "name": "MAX11390A",
+      "manufacturer": "Analog Devices",
+      "part_number": "MAX11390A",
+      "designation": "Analog to Digital Converter",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "ADC for display and sensor data",
+      "year": 2025
+    },
+    {
+      "name": "TI-DS9000",
+      "designation": "ProMotion 2.0 Display Driver",
+      "package": "COF (Chip-on-Flex)",
+      "price_range": "$30-50",
+      "difficulty": "Expert",
+      "functions": [
+        "120Hz ProMotion control",
+        "Dynamic refresh rate (1-120Hz)",
+        "LTPO display management",
+        "Touch integration",
+        "Always-On display support"
+      ],
+      "compatible_devices": [
+        "iPhone 17 Pro/Pro Max",
+        "iPad Pro M4 2026",
+        "Apple Watch Ultra 3"
+      ],
+      "symptoms_when_faulty": [
+        "Display flickering",
+        "Stuck at 60Hz",
+        "Touch not responsive",
+        "Screen artifacts/lines",
+        "Always-On not working"
+      ]
+    }
+  ],
+  "nfc_ics": [
+    {
+      "name": "30V4E0",
+      "designation": "NFC Control IC",
+      "package": "BGA",
+      "manufacturer": "NXP",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "NFC communication",
+        "Apple Pay",
+        "Transit cards",
+        "Car keys"
+      ],
+      "symptoms_when_faulty": [
+        "Apple Pay not working",
+        "NFC not detected",
+        "Express Transit cards issues",
+        "Car key not working"
+      ],
+      "price_range": "$15-30",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "SN300",
+      "manufacturer": "NXP Semiconductors",
+      "part_number": "SN300",
+      "designation": "NFC Controller w/ eSIM & Secure Element",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board",
+      "notes": "NXP NFC controller with integrated eSIM and secure element",
+      "year": 2025
+    }
+  ],
+  "sensor_ics": [
+    {
+      "name": "BCM15900B0",
+      "designation": "Touchscreen Controller (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Broadcom",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Touch detection",
+        "Multi-touch processing",
+        "Palm rejection"
+      ],
+      "symptoms_when_faulty": [
+        "Touch not working",
+        "Ghost touches",
+        "Unresponsive areas"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "BCM15957A0",
+      "designation": "Secondary Touch Controller (iPad Pro M4)",
+      "package": "BGA",
+      "manufacturer": "Broadcom",
+      "compatible_devices": [
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "Apple Pencil input",
+        "Hover detection",
+        "Pressure sensing"
+      ],
+      "symptoms_when_faulty": [
+        "Apple Pencil not working",
+        "Hover not working",
+        "Pressure issues"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    },
+    {
+      "name": "Bosch Sensortec BMI323",
+      "designation": "Accelerometer/Gyroscope (iPhone 16)",
+      "package": "LGA",
+      "manufacturer": "Bosch Sensortec",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "Motion detection",
+        "Gyroscope",
+        "Auto-rotate",
+        "Step counting"
+      ],
+      "symptoms_when_faulty": [
+        "No auto-rotate",
+        "Compass not working",
+        "Fitness tracking issues"
+      ],
+      "price_range": "$5-15",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "Bosch Accel/Gyro 2025",
+      "manufacturer": "Bosch Sensortec",
+      "part_number": "BMI3XX",
+      "designation": "Accelerometer & Gyroscope",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 17"
+      ],
+      "location": "Main Board",
+      "notes": "Motion sensing for iPhone Air",
+      "year": 2025
+    }
+  ],
+  "wireless_charging_ics": [
+    {
+      "name": "BCM59367A1",
+      "designation": "Wireless Charging Controller (iPhone 16)",
+      "package": "BGA",
+      "manufacturer": "Broadcom",
+      "compatible_devices": [
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max"
+      ],
+      "functions": [
+        "MagSafe charging control",
+        "Qi2 support",
+        "Wireless power negotiation",
+        "Foreign object detection"
+      ],
+      "symptoms_when_faulty": [
+        "No wireless charging",
+        "MagSafe not working",
+        "Slow wireless charging",
+        "Overheating during charging"
+      ],
+      "price_range": "$20-40",
+      "difficulty": "Expert"
+    }
+  ],
+  "flash_driver_ics": [
+    {
+      "name": "LM3567A1",
+      "designation": "LED Flash Driver",
+      "package": "WLCSP",
+      "manufacturer": "Texas Instruments",
+      "compatible_devices": [
+        "iPhone 15",
+        "iPhone 15 Plus",
+        "iPhone 15 Pro",
+        "iPhone 15 Pro Max",
+        "iPhone 16",
+        "iPhone 16 Plus",
+        "iPhone 16 Pro",
+        "iPhone 16 Pro Max",
+        "iPad Pro 11\" M4 (2024)",
+        "iPad Pro 13\" M4 (2024)"
+      ],
+      "functions": [
+        "LED flash control",
+        "True Tone flash",
+        "Torch mode"
+      ],
+      "symptoms_when_faulty": [
+        "Flash not working",
+        "Torch not working",
+        "Dim flash"
+      ],
+      "price_range": "$5-10",
+      "difficulty": "Advanced"
+    },
+    {
+      "name": "CP5100A0",
+      "manufacturer": "Texas Instruments",
+      "part_number": "CP5100A0",
+      "designation": "Camera Flash Controller",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - Near A19 Pro",
+      "notes": "Flash LED controller for TrueTone flash",
+      "year": 2025
+    }
+  ],
+  "apple_watch_ics": [
+    {
+      "name": "S10 SiP",
+      "designation": "System in Package (Apple Watch Series 10)",
+      "package": "SiP",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "Apple Watch Series 10 (42mm)",
+        "Apple Watch Series 10 (46mm)"
+      ],
+      "functions": [
+        "Main processor",
+        "Neural Engine",
+        "Power management",
+        "Wireless connectivity"
+      ],
+      "integrated_components": [
+        "Apple S10 CPU",
+        "4-core Neural Engine",
+        "WiFi/BT module",
+        "U1 Ultra Wideband",
+        "W3 Wireless chip"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "No wireless connectivity",
+        "Double tap not working"
+      ],
+      "price_range": "N/A (not field serviceable)",
+      "difficulty": "Not repairable"
+    },
+    {
+      "name": "S9 SiP",
+      "designation": "System in Package (Apple Watch Series 9)",
+      "package": "SiP",
+      "manufacturer": "Apple",
+      "compatible_devices": [
+        "Apple Watch Series 9 (41mm)",
+        "Apple Watch Series 9 (45mm)",
+        "Apple Watch Ultra 2"
+      ],
+      "functions": [
+        "Main processor",
+        "Neural Engine",
+        "Power management",
+        "Wireless connectivity"
+      ],
+      "symptoms_when_faulty": [
+        "No power",
+        "Boot loop",
+        "No connectivity"
+      ],
+      "price_range": "N/A (not field serviceable)",
+      "difficulty": "Not repairable"
+    }
+  ],
+  "processor_ics": [
+    {
+      "name": "APL1V12/339S01839 (A19 Pro)",
+      "manufacturer": "Apple",
+      "part_number": "339S01839",
+      "designation": "A19 Pro SoC",
+      "compatible_devices": [
+        "iPhone Air",
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro"
+      ],
+      "location": "Main Board - Under Camera Bump",
+      "notes": "Apple A19 Pro - 6-core CPU (2P+4E), 5-core GPU, 16-core Neural Engine",
+      "year": 2025,
+      "specs": {
+        "process": "3nm (2nd gen)",
+        "cpu_cores": 6,
+        "cpu_config": "2 performance + 4 efficiency",
+        "gpu_cores": 5,
+        "neural_engine_cores": 16,
+        "features": [
+          "Hardware-accelerated ray tracing",
+          "Neural Accelerators"
+        ]
+      }
+    },
+    {
+      "name": "APL1V09/339S01805 (A19)",
+      "manufacturer": "Apple",
+      "part_number": "339S01805",
+      "designation": "A19 SoC",
+      "compatible_devices": [
+        "iPhone 17"
+      ],
+      "location": "Main Board",
+      "notes": "Apple A19 - 6-core CPU, 5-core GPU, 16-core Neural Engine",
+      "year": 2025
+    }
+  ],
+  "rf_fe_modules": [
+    {
+      "name": "SKY58452-14",
+      "manufacturer": "Skyworks",
+      "part_number": "SKY58452-14",
+      "designation": "Front-End Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "RF front-end module for C1X modem",
+      "year": 2025
+    },
+    {
+      "name": "AFEM-8254",
+      "manufacturer": "Broadcom",
+      "part_number": "AFEM-8254",
+      "designation": "Front-End Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Broadcom FEM for 5G bands",
+      "year": 2025
+    },
+    {
+      "name": "AFEM-8255",
+      "manufacturer": "Broadcom",
+      "part_number": "AFEM-8255",
+      "designation": "Front-End Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Broadcom FEM for additional bands",
+      "year": 2025
+    },
+    {
+      "name": "AFEM-8277",
+      "manufacturer": "Broadcom",
+      "part_number": "AFEM-8277",
+      "designation": "Front-End Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Broadcom FEM",
+      "year": 2025
+    },
+    {
+      "name": "SKY53921-16",
+      "manufacturer": "Skyworks",
+      "part_number": "SKY53921-16",
+      "designation": "Front-End Module",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Skyworks FEM",
+      "year": 2025
+    },
+    {
+      "name": "QM81026H",
+      "manufacturer": "Qorvo",
+      "part_number": "QM81026H",
+      "designation": "Envelope Tracker",
+      "compatible_devices": [
+        "iPhone Air"
+      ],
+      "location": "Main Board - RF Section",
+      "notes": "Power amplifier envelope tracker",
+      "year": 2025
+    }
+  ]
+}

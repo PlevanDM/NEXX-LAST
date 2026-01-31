@@ -54,17 +54,32 @@ interface AppData {
 }
 
 export const fetchAppData = async (): Promise<AppData> => {
+  const pin = localStorage.getItem('nexx_pin') || '';
+  const headers = { 'X-NEXX-PIN': pin };
+
   try {
-    const response = await fetch('/data/master-db.json');
-    if (!response.ok) {
-      throw new Error('Failed to load master-db.json');
-    }
+    const fetchChunk = async (name: string) => {
+      const response = await fetch(`/data/chunks/${name}.json`, { headers });
+      if (!response.ok) {
+        // Fallback to master-db if chunks not found (migration period)
+        const masterRes = await fetch('/data/master-db.json', { headers });
+        const masterDb = await masterRes.json();
+        return masterDb[name === 'logic_boards' ? 'logic_boards' : name] || (name === 'devices' || name === 'logic_boards' ? [] : {});
+      }
+      return response.json();
+    };
+
+    const [config, rawDevices, prices, services, knowledge, dbLogicBoards, measurementsData, dbPinouts] = await Promise.all([
+      fetchChunk('config'),
+      fetchChunk('devices'),
+      fetchChunk('prices'),
+      fetchChunk('services'),
+      fetchChunk('knowledge'),
+      fetchChunk('logic_boards'),
+      fetchChunk('measurements'),
+      fetchChunk('pinouts')
+    ]);
     
-    const db = await response.json();
-    const knowledge = db.knowledge || {};
-    
-    // Devices: normalize for UI (model_number, power_ic, audio_codec, board_number)
-    const rawDevices = db.devices || [];
     const devices: Device[] = rawDevices.map((d: any) => ({
       ...d,
       model_number: d.model_number ?? d.model ?? undefined,
@@ -77,8 +92,7 @@ export const fetchAppData = async (): Promise<AppData> => {
         : (d.audio_ic && ((d.audio_ic as any).name || (d.audio_ic as any).main)) ? { main: (d.audio_ic as any).name || (d.audio_ic as any).main } : undefined,
     }));
 
-    // Prices (from services)
-    const prices = db.prices || {};
+    // Prices (already loaded as chunk)
     
     // Error Codes - from knowledge.errorCodes
     const errorCodes = knowledge.errorCodes || {};
@@ -185,7 +199,7 @@ export const fetchAppData = async (): Promise<AppData> => {
     });
     
     // Repair Knowledge / Guides
-    const repairKnowledge = knowledge.repairKnowledge || [];
+    const repairKnowledge = knowledge.repairKnowledge || knowledge.guides || [];
     const guides: RepairGuide[] = Array.isArray(repairKnowledge) 
       ? repairKnowledge.map((item: any) => ({
           title: item.title || item.name || 'Unknown',
@@ -198,8 +212,7 @@ export const fetchAppData = async (): Promise<AppData> => {
     // Key Combinations (DFU/Recovery)
     const keyCombinations = knowledge.keyCombinations || {};
     
-    // Measurements
-    const measurementsData = knowledge.measurements || db.measurements || {};
+    // Measurements (already loaded as chunk)
     
     // Logic Boards from knowledge.logicBoards.specs.boards
     const logicBoardsSpecs = knowledge.logicBoards?.specs?.boards || {};
@@ -215,7 +228,6 @@ export const fetchAppData = async (): Promise<AppData> => {
     }));
     
     // Config & Rates
-    const config = db.config || {};
     const rates = {
       USD_TO_RON: config.exchange_rates?.RON || 4.65,
       USD_TO_EUR: config.exchange_rates?.EUR || 0.92,
@@ -223,8 +235,7 @@ export const fetchAppData = async (): Promise<AppData> => {
       EUR_TO_USD: 1 / (config.exchange_rates?.EUR || 0.92)
     };
     
-    // Services - это объект { diagnostic: {...}, screen: {...} }
-    const services: Record<string, ServiceItem> = db.services || {};
+    // Services (already loaded as chunk)
 
     // Compatibility for DeviceDetailModal: cameras, displays, batteries
     const camCompat = knowledge.cameraCompatibility || {};
@@ -270,13 +281,15 @@ export const fetchAppData = async (): Promise<AppData> => {
       : [];
     const bootSequences: Record<string, BootSequence[]> = bootSequencesList.length > 0
       ? { 'iPhone': bootSequencesList, 'iPad': bootSequencesList }
-      : (db.boot_sequences || {});
+      : ((knowledge as any).boot_sequences || {});
 
     // Apple Official Ukraine Exchange — merge from separate JSON (updated via import-exchange-ua-xlsx.cjs)
-    let exchangePrices: Record<string, ExchangePrice> = db.exchange_prices || {};
+    let exchangePrices: Record<string, ExchangePrice> = (knowledge as any).exchange_prices || {};
     let appleExchangeMeta: { lastUpdated: string; source: string } | undefined;
     try {
-      const uaRes = await fetch('/data/apple-exchange-ua.json');
+      const uaRes = await fetch('/data/apple-exchange-ua.json', {
+        headers: { 'X-NEXX-PIN': pin }
+      });
       if (uaRes.ok) {
         const uaData = await uaRes.json();
         if (uaData?.prices && typeof uaData.prices === 'object') {
@@ -294,11 +307,11 @@ export const fetchAppData = async (): Promise<AppData> => {
       errors,
       ics,
       officialPrices: null,
-      macBoards: db.mac_boards || [],
+      macBoards: dbLogicBoards || [],
       logicBoards: logicBoards,
-      schematics: db.schematics || [],
+      schematics: (knowledge as any).schematics || [],
       guides,
-      pinouts: db.pinouts || [],
+      pinouts: dbPinouts || [],
       compatibility,
       bootSequences,
       measurements: measurementsData,

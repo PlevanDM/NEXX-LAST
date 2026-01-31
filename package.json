@@ -35,8 +35,9 @@
     "build": "vite build --config vite.client.config.ts && vite build",
     "build:client": "vite build --config vite.client.config.ts",
     "build:server": "vite build",
-    "postbuild": "npm run copy-assets",
+    "postbuild": "npm run copy-assets && npm run split-db",
     "copy-assets": "node scripts/copy-assets.cjs",
+    "split-db": "node scripts/split-database.cjs",
     "import:exchange-ua": "node scripts/import-exchange-ua-xlsx.cjs",
     "import:exchange-ua:desktop": "powershell -ExecutionPolicy Bypass -File scripts/import-exchange-ua-from-desktop.ps1",
     "sample:exchange-ua": "node scripts/create-sample-exchange-ua.cjs",
@@ -79,6 +80,7 @@
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "react-router-dom": "^7.13.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
@@ -88,6 +90,7 @@
     "@hono/vite-dev-server": "^0.24.1",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
+    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^5.1.2",
     "blake2b": "^2.1.4",
     "terser": "^5.46.0",

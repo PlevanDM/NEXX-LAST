@@ -223,14 +223,22 @@
         const [pin, setPin] = useState('');
         const [error, setError] = useState(false);
 
-        const handleSubmit = (event) => {
+        const handleSubmit = async (event) => {
           event.preventDefault();
-          if (pin === CORRECT_PIN) {
-            console.log('✅ Correct PIN entered');
-            localStorage.setItem('nexx_auth', 'true');
-            loadDatabaseApp();
-          } else {
-            console.log('❌ Wrong PIN:', pin, 'Expected:', CORRECT_PIN);
+          try {
+            const res = await fetch('/api/auth/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ pin })
+            });
+            if (res.ok) {
+              localStorage.setItem('nexx_pin', pin);
+              localStorage.setItem('nexx_auth', 'true');
+              loadDatabaseApp();
+            } else {
+              throw new Error('Invalid PIN');
+            }
+          } catch (err) {
             setError(true);
             setPin('');
             setTimeout(() => setError(false), 2000);

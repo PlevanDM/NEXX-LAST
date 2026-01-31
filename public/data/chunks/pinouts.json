@@ -1,0 +1,27 @@
+[
+  {
+    "name": "iPhone 13 Battery Connector",
+    "pins": [
+      {
+        "pin": "1",
+        "signal": "PP_BATT_VCC",
+        "description": "Positive Terminal"
+      },
+      {
+        "pin": "2",
+        "signal": "BATT_CON_SWI",
+        "description": "Single Wire Interface"
+      },
+      {
+        "pin": "3",
+        "signal": "BATT_CON_NTC",
+        "description": "Temperature Sensor"
+      },
+      {
+        "pin": "4",
+        "signal": "GND",
+        "description": "Ground"
+      }
+    ]
+  }
+]

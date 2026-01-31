@@ -1,0 +1,23 @@
+[
+  {
+    "model": "820-02020",
+    "name": "MacBook Air (M1, 2020)",
+    "cpu": "Apple M1",
+    "ram": "8GB/16GB (Unified)",
+    "storage": "SSD (Soldered)"
+  },
+  {
+    "model": "820-02536",
+    "name": "MacBook Air (M2, 2022)",
+    "cpu": "Apple M2",
+    "ram": "8GB/16GB/24GB",
+    "storage": "SSD (Soldered)"
+  },
+  {
+    "model": "820-00165",
+    "name": "MacBook Air (13-inch, Early 2015-2017)",
+    "cpu": "Intel Core i5/i7",
+    "ram": "4GB/8GB",
+    "storage": "SSD (Removable)"
+  }
+]

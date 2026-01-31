@@ -6,6 +6,7 @@
 
 # База NEXX — rewrite на nexx.html
 /nexx              /nexx.html        200!
+/nexx/*            /nexx.html        200!
 /nexx.html         /nexx.html        200!
 /database          /nexx.html        301
 /db                /nexx.html        301

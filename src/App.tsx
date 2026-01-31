@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { fetchAppData } from './api';
 import { DeviceList } from './components/DeviceList';
 import { PriceTable } from './components/PriceTable';
@@ -19,6 +20,8 @@ import { Device, PriceData, ErrorDetail, ICComponent, OfficialServiceData, MacBo
 import { convertPrice, formatPrice } from './utils';
 
 export const App = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   
@@ -134,13 +137,43 @@ export const App = () => {
   
   const handleDeviceSelect = React.useCallback((device: Device) => {
     addToRecent(device);
-    setSelectedDevice(device);
-    setActiveSection('device-detail');
-    setNavigationHistory(prev => [...prev, 'device-detail']);
-  }, [addToRecent]);
+    navigate(`/nexx/device/${encodeURIComponent(device.name)}`);
+  }, [addToRecent, navigate]);
 
   // Функция для закрытия всех модальных окон
   const closeAllModals = () => {
+    navigate('/nexx');
+  };
+
+  // Функция для открытия модального окна с учетом истории
+  const openModal = (modalSetter: any, sectionName: string) => {
+    // Mapping section names to routes
+    const routeMap: Record<string, string> = {
+      'calculator': '/nexx/calculator',
+      'services': '/nexx/services',
+      'exchangeUA': '/nexx/exchange-ua',
+      'boards': '/nexx/boards',
+      'knowledge': '/nexx/knowledge',
+      'ics': '/nexx/ics',
+      'errors': '/nexx/errors',
+      'powerTracker': '/nexx/power-tracker',
+      'keycombo': '/nexx/key-combo',
+      'prices': '/nexx/prices'
+    };
+    navigate(routeMap[sectionName] || '/nexx');
+    setShowMobileMenu(false);
+  };
+
+  // Функция навигации назад
+  const navigateBack = () => {
+    navigate(-1);
+  };
+
+  // Sync state with URL
+  React.useEffect(() => {
+    const path = location.pathname;
+
+    // Reset all modals first
     setShowPriceTable(false);
     setShowErrors(false);
     setShowICs(false);
@@ -151,48 +184,60 @@ export const App = () => {
     setShowExchangeUA(false);
     setShowKeyCombo(false);
     setShowPowerTracker(false);
-    setShowMobileMenu(false);
     setSelectedDevice(null);
     setSelectedIC(null);
     setSelectedPart(null);
     setActiveSection('devices');
-  };
 
-  // Функция для открытия модального окна с учетом истории
-  const openModal = (modalSetter: (value: boolean) => void, sectionName: string) => {
-    closeAllModals();
-    modalSetter(true);
-    setActiveSection(sectionName);
-    setNavigationHistory(prev => [...prev, sectionName]);
-  };
-
-  // Функция навигации назад
-  const navigateBack = () => {
-    if (navigationHistory.length > 1) {
-      const newHistory = [...navigationHistory];
-      newHistory.pop(); // Удаляем текущий
-      const previousSection = newHistory[newHistory.length - 1];
-      setNavigationHistory(newHistory);
-      
-      // Открываем предыдущий раздел
-      closeAllModals();
-      setActiveSection(previousSection);
-      switch(previousSection) {
-        case 'calculator': setShowCalculator(true); break;
-        case 'services': setShowServicePrices(true); break;
-        case 'exchangeUA': setShowExchangeUA(true); break;
-        case 'boards': setShowMacBoards(true); break;
-        case 'knowledge': setShowKnowledge(true); break;
-        case 'keycombo': setShowKeyCombo(true); break;
-        case 'ics': setShowICs(true); break;
-        case 'errors': setShowErrors(true); break;
-        case 'prices': setShowPriceTable(true); break;
-        default: break;
+    if (path.startsWith('/nexx/device/')) {
+      const deviceName = decodeURIComponent(path.replace('/nexx/device/', ''));
+      const device = devices.find(d => d.name === deviceName);
+      if (device) {
+        setSelectedDevice(device);
+        setActiveSection('device-detail');
       }
-    } else {
-      closeAllModals();
+    } else if (path === '/nexx/calculator') {
+      setShowCalculator(true);
+      setActiveSection('calculator');
+    } else if (path === '/nexx/services') {
+      setShowServicePrices(true);
+      setActiveSection('services');
+    } else if (path === '/nexx/exchange-ua') {
+      setShowExchangeUA(true);
+      setActiveSection('exchangeUA');
+    } else if (path === '/nexx/boards') {
+      setShowMacBoards(true);
+      setActiveSection('boards');
+    } else if (path === '/nexx/knowledge') {
+      setShowKnowledge(true);
+      setActiveSection('knowledge');
+    } else if (path === '/nexx/ics') {
+      setShowICs(true);
+      setActiveSection('ics');
+    } else if (path === '/nexx/errors') {
+      setShowErrors(true);
+      setActiveSection('errors');
+    } else if (path === '/nexx/power-tracker') {
+      setShowPowerTracker(true);
+      setActiveSection('powerTracker');
+    } else if (path === '/nexx/key-combo') {
+      setShowKeyCombo(true);
+      setActiveSection('keycombo');
+    } else if (path === '/nexx/prices') {
+      setShowPriceTable(true);
+      setActiveSection('prices');
+    } else if (path.startsWith('/nexx/ic/')) {
+      const icName = decodeURIComponent(path.replace('/nexx/ic/', ''));
+      if (ics[icName]) {
+        setSelectedIC(ics[icName]);
+      }
+    } else if (path.startsWith('/nexx/part/')) {
+      const partArticle = decodeURIComponent(path.replace('/nexx/part/', ''));
+      if (prices[partArticle]) {
+        setSelectedPart(prices[partArticle]);
+      }
     }
-  };
+  }, [location.pathname, devices, ics, prices]);
 
   React.useEffect(() => {
     loadData();
@@ -405,7 +450,7 @@ export const App = () => {
                       <div className="text-xs text-slate-400 mb-2 font-bold">Микросхемы ({globalSearchResults.ics.length})</div>
                       {globalSearchResults.ics.map((ic: ICComponent) => (
                         <div key={ic.name} 
-                             onClick={() => { setSelectedIC(ic); setGlobalSearch(''); }}
+                             onClick={() => { navigate(`/nexx/ic/${encodeURIComponent(ic.name)}`); setGlobalSearch(''); }}
                              className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{ic.name}</div>
                           <div className="text-xs text-slate-400">{ic.designation}</div>
@@ -432,7 +477,7 @@ export const App = () => {
                       {globalSearchResults.prices.map((price: PriceData) => (
                         <div 
                           key={price.article} 
-                          onClick={() => { setSelectedPart(price); setGlobalSearch(''); }}
+                          onClick={() => { navigate(`/nexx/part/${encodeURIComponent(price.article)}`); setGlobalSearch(''); }}
                           className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm"
                         >
                           <div className="font-medium">{price.article}</div>
@@ -763,7 +808,7 @@ export const App = () => {
       {selectedDevice && (
         <DeviceDetailModal
           device={selectedDevice}
-          onClose={() => setSelectedDevice(null)}
+          onClose={closeAllModals}
           rates={rates}
           compatibility={compatibility}
           bootSequences={bootSequences}
@@ -776,7 +821,7 @@ export const App = () => {
         <PartDetailModal 
           item={selectedPart} 
           rates={rates} 
-          onClose={() => setSelectedPart(null)} 
+          onClose={closeAllModals}
         />
       )}
 
@@ -784,7 +829,7 @@ export const App = () => {
       {selectedIC && (
         <ICDetailModal 
           item={selectedIC} 
-          onClose={() => setSelectedIC(null)} 
+          onClose={closeAllModals}
         />
       )}
 
@@ -794,8 +839,8 @@ export const App = () => {
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[85vh] overflow-hidden">
              <PriceTable 
                items={priceListArray} 
-               onClose={() => setShowPriceTable(false)} 
-               onSelectItem={setSelectedPart}
+               onClose={closeAllModals}
+               onSelectItem={(item) => navigate(`/nexx/part/${encodeURIComponent(item.article)}`)}
              />
           </div>
         </div>
@@ -807,7 +852,7 @@ export const App = () => {
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[85vh] overflow-hidden">
              <ErrorCodes 
                errors={errors} 
-               onClose={() => setShowErrors(false)} 
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -819,8 +864,8 @@ export const App = () => {
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[85vh] overflow-hidden">
              <ICList 
                ics={ics} 
-               onClose={() => setShowICs(false)} 
-               onSelect={setSelectedIC}
+               onClose={closeAllModals}
+               onSelect={(ic) => navigate(`/nexx/ic/${encodeURIComponent(ic.name)}`)}
              />
           </div>
         </div>
@@ -833,7 +878,7 @@ export const App = () => {
              <MacBoardList 
                boards={macBoards} 
                logicBoards={logicBoards}
-               onClose={() => setShowMacBoards(false)} 
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -846,7 +891,7 @@ export const App = () => {
              <ServicePriceList 
                services={services}
                rates={rates}
-               onClose={() => setShowServicePrices(false)} 
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -859,7 +904,7 @@ export const App = () => {
              <ExchangePriceListModal
                exchangePrices={exchangePrices}
                meta={appleExchangeMeta}
-               onClose={() => setShowExchangeUA(false)}
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -874,7 +919,7 @@ export const App = () => {
                exchangePrices={exchangePrices}
                devices={devices}
                rates={rates}
-               onClose={() => setShowCalculator(false)} 
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -886,7 +931,7 @@ export const App = () => {
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
              <KeyCombinations 
                data={keyCombinations}
-               onClose={() => setShowKeyCombo(false)} 
+               onClose={closeAllModals}
              />
           </div>
         </div>
@@ -896,7 +941,7 @@ export const App = () => {
       {showPowerTracker && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
-             <PowerStationTracker onClose={() => setShowPowerTracker(false)} />
+             <PowerStationTracker onClose={closeAllModals} />
           </div>
         </div>
       )}
