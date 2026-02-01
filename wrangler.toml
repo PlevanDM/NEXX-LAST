@@ -15,12 +15,12 @@ PROJECT_NAME = "nexx-gsm"
 ENVIRONMENT = "production"
 ZONE_NAME = "nexxgsm.com"
 
-# NOTE: Sensitive variables should be set in Cloudflare Dashboard:
-# Settings > Environment Variables:
-# - REMONLINE_API_KEY
-# - REMONLINE_BASE_URL
-# - REMONLINE_BRANCH_ID
-# - REMONLINE_ORDER_TYPE
+# RemOnline - set in Cloudflare Dashboard (Pages > nexx-gsm > Settings > Environment variables):
+#   REMONLINE_API_KEY (required)
+#   REMONLINE_BASE_URL = https://api.remonline.app
+#   REMONLINE_BRANCH_ID = 218970
+#   REMONLINE_ORDER_TYPE = 334611
+# Local dev: use .dev.vars (gitignored)
 # - VAPI_API_KEY
 # - VAPI_PHONE_ID
 # - VAPI_ASSISTANT_ID

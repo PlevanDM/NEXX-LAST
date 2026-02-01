@@ -5,7 +5,7 @@ import { NEXX_TEMPLATES } from '@/templates/nexx-document-templates';
 
 type TemplateType = 'intake' | 'release' | 'buyback' | 'recycling';
 
-interface DocumentGeneratorProps {
+export interface DocumentGeneratorProps {
   templateType: TemplateType;
   formData?: Record<string, any>;
   onGenerate?: (template: TemplateType, format: 'pdf' | 'html') => void;
@@ -81,7 +81,7 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         {/* Customer Information */}
         <div>
-          <h3 className="font-bold text-sm mb-2 underline">{template.sections[0]}</h3>
+          <h3 className="font-bold text-sm mb-2 underline">{Object.values(template.sections)[0]}</h3>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <label className="font-semibold text-xs">Name:</label>
@@ -96,7 +96,7 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         {/* Device Information */}
         <div>
-          <h3 className="font-bold text-sm mb-2 underline">{template.sections[1]}</h3>
+          <h3 className="font-bold text-sm mb-2 underline">{Object.values(template.sections)[1]}</h3>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
               <label className="font-semibold text-xs">Device Type:</label>
@@ -214,7 +214,7 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         {/* Work Performed */}
         <div>
-          <h3 className="font-bold text-sm mb-2 underline">{template.sections[1]}</h3>
+          <h3 className="font-bold text-sm mb-2 underline">{Object.values(template.sections)[1]}</h3>
           <p className="border-b border-gray-400 min-h-16 text-sm">{data.repairWork}</p>
         </div>
 
@@ -274,12 +274,12 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         <div className="grid grid-cols-2 gap-8 text-sm">
           <div>
-            <h3 className="font-bold mb-3 underline">{template.sections[0]}</h3>
+            <h3 className="font-bold mb-3 underline">{Object.values(template.sections)[0]}</h3>
             <p>Device: {data.oldDevice}</p>
             <p className="border-b border-gray-400 mt-2">Value: {data.deviceValue}</p>
           </div>
           <div>
-            <h3 className="font-bold mb-3 underline">{template.sections[1]}</h3>
+            <h3 className="font-bold mb-3 underline">{Object.values(template.sections)[1]}</h3>
             <p>Device: {data.newDevice}</p>
             <p className="border-b border-gray-400 mt-2">Trade-in Discount: {data.discount}</p>
           </div>
@@ -334,17 +334,17 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <h3 className="font-bold mb-2">{template.sections[0]}</h3>
+            <h3 className="font-bold mb-2">{Object.values(template.sections)[0]}</h3>
             <p className="border-b border-gray-400 min-h-12">{data.sender}</p>
           </div>
           <div>
-            <h3 className="font-bold mb-2">{template.sections[1]}</h3>
+            <h3 className="font-bold mb-2">{Object.values(template.sections)[1]}</h3>
             <p className="border-b border-gray-400 min-h-12">{data.receiver}</p>
           </div>
         </div>
 
         <div>
-          <h3 className="font-bold text-sm mb-2 underline">{template.sections[2]}</h3>
+          <h3 className="font-bold text-sm mb-2 underline">{Object.values(template.sections)[2]}</h3>
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="border-b-2 border-black">

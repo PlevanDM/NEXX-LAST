@@ -1,11 +1,20 @@
 # Purge Cloudflare Cache for nexxgsm.com
-# Очищає кеш Cloudflare для швидкого оновлення
-# Set CLOUDFLARE_GLOBAL_API_KEY and CLOUDFLARE_EMAIL in environment (never commit keys).
+# Set CLOUDFLARE_GLOBAL_API_KEY and CLOUDFLARE_EMAIL in env, or use .env
 
-$GlobalApiKey = $env:CLOUDFLARE_GLOBAL_API_KEY
+$root = $PSScriptRoot
+if (-not $root) { $root = Get-Location }
+$envPath = Join-Path $root '.env'
+if ((Test-Path $envPath) -and -not $env:CLOUDFLARE_GLOBAL_API_KEY) {
+    Get-Content $envPath | ForEach-Object {
+        if ($_ -match '^\s*CLOUDFLARE_GLOBAL_API_KEY\s*=\s*(.+)$') { $env:CLOUDFLARE_GLOBAL_API_KEY = $matches[1].Trim().Trim('"') }
+        if ($_ -match '^\s*CLOUDFLARE_API_KEY\s*=\s*(.+)$' -and -not $env:CLOUDFLARE_GLOBAL_API_KEY) { $env:CLOUDFLARE_GLOBAL_API_KEY = $matches[1].Trim().Trim('"') }
+        if ($_ -match '^\s*CLOUDFLARE_EMAIL\s*=\s*(.+)$') { $env:CLOUDFLARE_EMAIL = $matches[1].Trim().Trim('"') }
+    }
+}
+$GlobalApiKey = if ($env:CLOUDFLARE_GLOBAL_API_KEY) { $env:CLOUDFLARE_GLOBAL_API_KEY } else { $env:CLOUDFLARE_API_KEY }
 $Email = $env:CLOUDFLARE_EMAIL
 if (-not $GlobalApiKey) {
-    Write-Host "ERROR: Set CLOUDFLARE_GLOBAL_API_KEY in environment. Never commit API keys." -ForegroundColor Red
+    Write-Host "ERROR: Set CLOUDFLARE_GLOBAL_API_KEY in .env or environment" -ForegroundColor Red
     exit 1
 }
 if (-not $Email) { $Email = "dmitro.plevan@gmail.com" }

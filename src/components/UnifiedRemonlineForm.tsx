@@ -46,6 +46,7 @@ export const UnifiedRemonlineForm: React.FC<UnifiedRemonlineFormProps> = ({
     customerPhone: '',
     customerEmail: '',
     device: {
+      name: '',
       type: '',
       brand: '',
       model: '',
@@ -66,6 +67,7 @@ export const UnifiedRemonlineForm: React.FC<UnifiedRemonlineFormProps> = ({
 
   const [diagnostic, setDiagnostic] = useState<DiagnosticForm>({
     device: {
+      name: '',
       type: '',
       brand: '',
       model: '',

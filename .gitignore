@@ -93,6 +93,9 @@ pids/
 .yarn/install-state.gz
 .pnp.*
 
+# Git deploy output
+deploy-git-output/
+
 # Misc
 .turbo
 *.pem

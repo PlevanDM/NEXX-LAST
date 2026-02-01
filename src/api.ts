@@ -53,18 +53,28 @@ interface AppData {
   };
 }
 
+const AUTH_OPTIONS = { credentials: 'include' as RequestCredentials, mode: 'same-origin' as RequestMode };
+
 export const fetchAppData = async (): Promise<AppData> => {
   const pin = localStorage.getItem('nexx_pin') || '';
   const headers = { 'X-NEXX-PIN': pin };
 
   try {
     const fetchChunk = async (name: string) => {
-      const response = await fetch(`/data/chunks/${name}.json`, { headers });
+      const response = await fetch(`/data/chunks/${name}.json`, { headers, ...AUTH_OPTIONS });
+      if (response.status === 401) {
+        throw new Error('UNAUTHORIZED');
+      }
       if (!response.ok) {
         // Fallback to master-db if chunks not found (migration period)
-        const masterRes = await fetch('/data/master-db.json', { headers });
+        const masterRes = await fetch('/data/master-db.json', { headers, ...AUTH_OPTIONS });
+        if (!masterRes.ok) {
+          if (masterRes.status === 401) throw new Error('UNAUTHORIZED');
+          throw new Error(`Failed to load ${name}: ${masterRes.status}`);
+        }
         const masterDb = await masterRes.json();
-        return masterDb[name === 'logic_boards' ? 'logic_boards' : name] || (name === 'devices' || name === 'logic_boards' ? [] : {});
+        const value = masterDb[name === 'logic_boards' ? 'logic_boards' : name];
+        return value ?? (name === 'devices' || name === 'logic_boards' ? [] : {});
       }
       return response.json();
     };
@@ -79,8 +89,9 @@ export const fetchAppData = async (): Promise<AppData> => {
       fetchChunk('measurements'),
       fetchChunk('pinouts')
     ]);
-    
-    const devices: Device[] = rawDevices.map((d: any) => ({
+
+    const rawDevicesList = Array.isArray(rawDevices) ? rawDevices : [];
+    const devices: Device[] = rawDevicesList.map((d: any) => ({
       ...d,
       model_number: d.model_number ?? d.model ?? undefined,
       board_number: d.board_number ?? (Array.isArray(d.board_numbers) && d.board_numbers[0] ? d.board_numbers[0] : undefined),
@@ -288,7 +299,8 @@ export const fetchAppData = async (): Promise<AppData> => {
     let appleExchangeMeta: { lastUpdated: string; source: string } | undefined;
     try {
       const uaRes = await fetch('/data/apple-exchange-ua.json', {
-        headers: { 'X-NEXX-PIN': pin }
+        headers: { 'X-NEXX-PIN': pin },
+        ...AUTH_OPTIONS
       });
       if (uaRes.ok) {
         const uaData = await uaRes.json();

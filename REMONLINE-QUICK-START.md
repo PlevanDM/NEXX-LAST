@@ -1,5 +1,18 @@
 # NEXX Remonline Forms - Quick Start Guide
 
+## ⚙️ Setup API Key
+
+- **Local dev**: create `.dev.vars` (gitignored) with:
+  ```
+  REMONLINE_API_KEY=your_key
+  REMONLINE_BASE_URL=https://api.remonline.app
+  REMONLINE_BRANCH_ID=218970
+  REMONLINE_ORDER_TYPE=334611
+  ```
+- **Production**: Cloudflare Dashboard → Pages → nexx-gsm → Settings → Environment variables → Add `REMONLINE_API_KEY` (and optional overrides)
+
+---
+
 ## 🚀 Быстрый Старт (Quick Start)
 
 ### 1. Использование унифицированной формы

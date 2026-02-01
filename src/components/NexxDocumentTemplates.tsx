@@ -84,8 +84,8 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
         {/* Header */}
         <div className="border-b border-slate-300 pb-4">
           <h1 className="text-3xl font-bold text-blue-600 mb-2">{content.title}</h1>
-          {content.subtitle && (
-            <p className={`text-sm ${textMutedTheme}`}>{content.subtitle}</p>
+          {(content as { subtitle?: string }).subtitle && (
+            <p className={`text-sm ${textMutedTheme}`}>{(content as { subtitle?: string }).subtitle}</p>
           )}
           <p className={`text-xs ${textMutedTheme} mt-2`}>
             NEXX GSM Service Center • {new Date().toLocaleDateString()}

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXX Database - База знань для ремонту Apple</title>
-    <meta name="description" content="NEXX Database - Професійна база знань: 134 пристрої, 167 кодів помилок, IC compatibility, діагностика">
+    <meta name="description" content="NEXX Database - Професійна база знань: 680 пристроїв, 167 кодів помилок, 115 IC, діагностика">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
     <link rel="stylesheet" href="/static/client.css?v=2.0.3">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +45,7 @@
             padding-top: 0; /* Will be set dynamically when authenticated */
         }
         #database-wrapper.with-header {
-            padding-top: 72px; /* Header height */
+            padding-top: 64px; /* Header height (unified design) */
         }
     </style>
 </head>
@@ -135,7 +135,7 @@
               <div class="flex items-center justify-center gap-3 text-sm text-gray-400">
                 <span class="flex items-center gap-1">
                   <i class="fas fa-mobile-screen-button text-gray-500"></i>
-                  134 пристрої
+                  680 пристроїв
                 </span>
                 <span class="flex items-center gap-1">
                   <i class="fas fa-triangle-exclamation text-gray-500"></i>
@@ -230,12 +230,13 @@
             const res = await fetch('/api/auth/login', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ pin })
+              body: JSON.stringify({ pin }),
+              credentials: 'include'
             });
             if (res.ok) {
               localStorage.setItem('nexx_pin', pin);
               localStorage.setItem('nexx_auth', 'true');
-              loadDatabaseApp();
+              requestAnimationFrame(() => requestAnimationFrame(() => loadDatabaseApp()));
             } else {
               throw new Error('Invalid PIN');
             }
@@ -259,7 +260,7 @@
               h('p', { className: 'text-gray-400 mb-3' }, 'База знань для професіоналів'),
               h('div', { className: 'inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800 text-gray-300 rounded-full text-xs font-semibold border border-gray-700' },
                 h('i', { className: 'fas fa-circle-check text-gray-500' }),
-                '134 пристрої • 167 кодів • 2026'
+                '680 пристроїв • 167 кодів • 115 IC • 2026'
               )
             ),
             

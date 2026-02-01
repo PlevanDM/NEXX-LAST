@@ -280,9 +280,18 @@ export const App = () => {
         services: Object.keys(data.services || {}).length,
         guides: data.guides?.length || 0
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError('Не удалось загрузить базу данных. Проверьте соединение.');
+      const isUnauth = err?.message === 'UNAUTHORIZED';
+      if (isUnauth) {
+        try {
+          localStorage.removeItem('nexx_auth');
+          localStorage.removeItem('nexx_pin');
+        } catch (_) {}
+        setError('Сесія закінчилась. Оновіть сторінку та увійдіть з пінкодом знову.');
+      } else {
+        setError('Не вдалося завантажити базу даних. Перевірте зʼєднання.');
+      }
     } finally {
       setLoading(false);
     }
@@ -388,7 +397,7 @@ export const App = () => {
               className="nexx-logo-link flex items-center gap-2 flex-shrink-0 hover:opacity-90 transition-opacity"
               title="На головну (лендинг)"
             >
-              <img src="/static/nexx-logo.png?v=5" alt="NEXX GSM" className="h-10 w-auto object-contain logo-pulse" style={{ background: 'transparent' }} />
+              <img src="/static/nexx-logo.png?v=5" alt="NEXX GSM" className="w-auto object-contain logo-pulse" style={{ height: 48, background: 'transparent' }} />
               <span className="font-bold text-lg tracking-tight hidden sm:inline text-white">Database</span>
             </a>
             {/* Кнопка выход на лендинг — всегда видна */}

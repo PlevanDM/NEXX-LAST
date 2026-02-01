@@ -1,61 +1,47 @@
 # Quick Deploy Guide
 
-## Problem
-Your site has an old version, but GitHub has the latest version with translation fixes.
+## Setup (.env)
 
-## Solution
+Copy `.env.example` to `.env` and fill values. **Never commit .env** (gitignored).
 
-### Option 1: Use Wrangler Login (Recommended)
-
-```powershell
-# Step 1: Login through browser
-wrangler login
-
-# Step 2: Build and deploy
-npm run build
-wrangler pages deploy dist --project-name nexx-gsm-gsm
+```env
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+CLOUDFLARE_API_TOKEN=your_api_token   # For GitHub Actions + wrangler
+CLOUDFLARE_GLOBAL_API_KEY=...         # For purge scripts (cache)
+CLOUDFLARE_EMAIL=your@email.com
+REMONLINE_API_KEY=...
 ```
 
-### Option 2: Use Global API Key
+## Deploy Options
 
-Global API Key doesn't work directly with Wrangler. You need to:
+### Option 1: wrangler login (local)
 
-1. **Create an API Token instead:**
-   - Go to: https://dash.cloudflare.com/profile/api-tokens
-   - Click "Create Token"
-   - Use template "Edit Cloudflare Workers"
-   - Set permissions: **Account → Cloudflare Pages → Edit**
-   - Copy the token
+```powershell
+wrangler login
+npm run build
+wrangler pages deploy dist --project-name nexx-gsm
+```
 
-2. **Use the token:**
-   ```powershell
-   $env:CLOUDFLARE_API_TOKEN = "your_new_api_token_here"
-   npm run build
-   wrangler pages deploy dist --project-name nexx-gsm-gsm
-   ```
+### Option 2: deploy-2026.ps1 (uses .env)
 
-### Option 3: Manual Upload
+```powershell
+.\deploy-2026.ps1
+```
 
-1. Build the project: `npm run build`
-2. Go to: https://dash.cloudflare.com/
-3. Select **Pages** → **nexx** project
-4. Click **"Upload assets"**
-5. Upload the `dist/` folder
+### Option 3: GitHub Actions
 
-## Current Status
+1. Set secrets: `.\scripts\set-github-cloudflare-secrets.ps1` (reads .env, requires gh CLI)
+2. Or manually: GitHub → Settings → Secrets → CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN
+3. Push to main or: Actions → Deploy to Cloudflare Pages → Run
 
-- ✅ Project synced with GitHub (latest translation fixes)
-- ✅ Build completed successfully
-- ⚠️ Need authentication for deployment
+**Note:** GitHub Actions needs API Token (not Global Key). Create at: https://dash.cloudflare.com/profile/api-tokens (template: Edit Cloudflare Workers)
 
-## After Deployment
+## Cache Purge
 
-Your site will be updated with:
-- ✅ Fixed translations (i18n)
-- ✅ Updated client-v2.js
-- ✅ Fixed buttons and interface
-- ✅ PWA improvements
+```powershell
+.\purge-cloudflare-cache.ps1   # Loads from .env
+```
 
 ---
 
-**Recommended:** Use `wrangler login` - it's the easiest way!
+**Recommended:** `wrangler login` for local deploy; API Token in GitHub secrets for CI.

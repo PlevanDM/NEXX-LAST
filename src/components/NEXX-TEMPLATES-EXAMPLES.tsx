@@ -27,8 +27,9 @@ export function SimpleDocumentViewer() {
 // EXAMPLE 2: Document Generation with Form Data
 // ============================================
 
+type FormDataShape = Record<string, string | undefined>;
 export function DocumentWithFormData() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataShape>({
     orderNumber: 'ORD-2026-001',
     date: new Date().toLocaleDateString(),
     customerName: 'John Doe',
@@ -179,7 +180,7 @@ export async function batchGenerateDocuments() {
 
 export function IntakeFormExample() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<Record<string, string>>({});
   const [showPreview, setShowPreview] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

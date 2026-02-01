@@ -330,12 +330,12 @@
         className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
         style: { opacity: 1 }
       },
-      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 flex items-center', style: { height: '56px', minHeight: '56px', paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
-        h('div', { className: 'flex items-center justify-between gap-2 min-w-0 w-full' },
-          // Logo — одно лого везде: nexx-logo.png, анимация pulse
+      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center', style: { height: '64px', minHeight: '64px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
+        h('div', { className: 'flex items-center justify-between gap-4 min-w-0 w-full' },
+          // Логотип слева, крупный и читабельный (64px)
           h('a', {
             href: '/',
-            className: 'logo-container flex items-center cursor-pointer flex-shrink-0 min-w-0',
+            className: 'logo-container flex items-center cursor-pointer flex-shrink-0',
             style: { background: 'transparent', border: 'none' },
             'aria-label': 'NEXX GSM Home',
             title: 'NEXX GSM - Acasă'
@@ -344,7 +344,7 @@
               src: '/static/nexx-logo.png?v=5',
               alt: 'NEXX GSM',
               className: 'object-contain block logo-pulse',
-              style: { display: 'block', opacity: 0, height: '40px', width: 'auto', background: 'transparent' },
+              style: { display: 'block', opacity: 0, height: '64px', width: 'auto', background: 'transparent' },
               onLoad: function(e) {
                 e.target.style.opacity = '1';
               },
@@ -354,8 +354,8 @@
             })
           ),
           
-          // Desktop Navigation
-          h('nav', { className: 'hidden md:flex items-center gap-4' },
+          // Навигация справа от лого
+          h('nav', { className: 'hidden md:flex items-center flex-1 justify-end gap-4 xl:gap-6' },
             ...navLinks.map(link => h('a', {
               key: link.id,
               href: link.href,
@@ -364,8 +364,6 @@
               h('i', { className: `fas ${link.icon} text-sm` }),
               link.label
             )),
-            
-            // Logout Button (only when authenticated in database)
             isAuthenticated && currentPage === 'database' && h('button', {
               onClick: handleLogout,
               className: `flex items-center gap-2 px-3 py-2 ${isScrolled ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-500/20 hover:bg-gray-500/30 text-white'} rounded-lg transition-all duration-300 font-medium`,
@@ -376,31 +374,29 @@
             )
           ),
           
-          // Service Mod Button (PIN protected) - Small, subtle, black/white
-          h('button', {
-            onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
-            className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-transparent hover:bg-white/10 border border-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
-            title: 'Service Mod (PIN)'
-          },
-            h('i', { className: 'fas fa-cog text-xs' }),
-            h('span', null, 'Service')
-          ),
-          
-          // Language Switcher - one instance, responsive
-          window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
-          
-          // Mobile Menu Button
-          h('button', {
-            onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-            className: `md:hidden w-10 h-10 flex items-center justify-center rounded-lg ${isScrolled ? 'bg-gray-100 hover:bg-gray-200' : 'bg-white/10 hover:bg-white/20'} ${textColor} transition-all`,
-            'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu'
-          }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
+          // Service + язык + мобильное меню
+          h('div', { className: 'flex items-center gap-3' },
+            h('button', {
+              onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
+              className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-transparent hover:bg-white/10 border border-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
+              title: 'Service Mod (PIN)'
+            },
+              h('i', { className: 'fas fa-cog text-xs' }),
+              h('span', null, 'Service')
+            ),
+            window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
+            h('button', {
+              onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
+              className: `md:hidden w-11 h-11 flex items-center justify-center rounded-lg flex-shrink-0 min-h-[44px] ${isScrolled ? 'bg-gray-100 hover:bg-gray-200' : 'bg-white/10 hover:bg-white/20'} ${textColor} transition-all`,
+              'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu'
+            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl` }))
+          )
         ),
         
-        // Mobile Menu
+        // Mobile Menu Dropdown (positioned below 64px header)
         isMobileMenuOpen && h('div', { 
-          className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down border-t border-gray-200',
-          style: { maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }
+          className: 'md:hidden absolute top-[64px] left-4 right-4 py-4 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-50',
+          style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }
         },
           ...navLinks.map(link => h('a', {
             key: link.id,

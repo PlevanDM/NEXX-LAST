@@ -1,7 +1,23 @@
-/* NEXX Database — глобальные стили для удобства и красоты */
+/* NEXX Database — глобальные стили, design tokens, accessibility */
+
+:root {
+  --section-py-mobile: 4rem;  /* 64px */
+  --section-py-desktop: 6rem; /* 96px */
+  --container-max-width: 80rem; /* 1280px - max-w-7xl */
+}
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Скрытый скроллбар (горизонтальные полосы категорий, недавние) */
@@ -60,4 +76,62 @@ html {
 }
 .logo-pulse {
   animation: logo-pulse 2.5s ease-in-out infinite;
+}
+
+/* Layout utilities (design system) */
+.section-padding {
+  padding-top: var(--section-py-mobile);
+  padding-bottom: var(--section-py-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--section-py-desktop);
+    padding-bottom: var(--section-py-desktop);
+  }
+}
+
+.content-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Typography contrast and readability */
+h1, h2, h3 {
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+p {
+  color: #94a3b8; /* slate-400 */
+}
+
+.text-high-contrast {
+  color: #f8fafc; /* slate-50 */
+}
+
+/* Accessibility: Touch targets (min 44px) & Focus */
+button, a, input, select, textarea {
+  min-height: 44px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3b82f6; /* blue-500 */
+  outline-offset: 2px;
+}
+
+.icon-button {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

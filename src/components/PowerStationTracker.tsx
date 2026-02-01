@@ -3,6 +3,7 @@ import { Icons } from './Icons';
 import { useTranslation } from '../hooks/useTranslation';
 
 const STORAGE_KEY = 'nexx_power_price_history';
+const STORAGE_KEY_TODOS = 'nexx_power_todos';
 
 /** Параметри розрахунку ціни для України: НДС, доставка, наша прибуток */
 const UA_VAT_PERCENT = 20;

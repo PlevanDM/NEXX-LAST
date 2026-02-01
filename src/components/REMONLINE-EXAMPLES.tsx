@@ -13,7 +13,7 @@ import { RemonlineFormResponse } from '@/types';
 export function RepairOrderExample() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSubmit = async (formData) => {
+  const handleSubmit = async (formData: Record<string, unknown>) => {
     try {
       const response = await fetch('/api/remonline', {
         method: 'POST',
@@ -35,7 +35,7 @@ export function RepairOrderExample() {
       console.error('Submission error:', error);
       return {
         success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       };
     }
   };
@@ -95,7 +95,7 @@ export function CallbackFormExample() {
 
       return data;
     } catch (error) {
-      return { success: false, error: error.message };
+      return { success: false, error: error instanceof Error ? error.message : String(error) };
     }
   };
 
@@ -157,7 +157,7 @@ export function DiagnosticFormExample() {
 export function DocumentRequestExample({ orderId }: { orderId: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDocumentRequest = async (formData) => {
+  const handleDocumentRequest = async (formData: Record<string, unknown>) => {
     return await fetch('/api/remonline', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -224,7 +224,7 @@ export function DocumentTemplatesExample({ document }: { document: RemonlineDocu
       return {
         success: false,
         format: format,
-        message: error.message,
+        message: error instanceof Error ? error.message : String(error),
       };
     }
   };

@@ -456,8 +456,10 @@ export const exportPDF = async (
   filename: string = 'document.pdf'
 ) => {
   try {
-    // Try to use jsPDF if available
+    // Try to use jsPDF if available (bundler may provide require)
+    // @ts-expect-error - optional dependency
     const { jsPDF } = require('jspdf');
+    // @ts-expect-error - optional dependency
     const html2Canvas = require('html2canvas');
     
     // Get HTML element
@@ -500,7 +502,7 @@ export const exportPDF = async (
     // Save PDF
     doc.save(filename);
   } catch (error) {
-    console.warn('PDF export error:', error.message);
+    console.warn('PDF export error:', error instanceof Error ? error.message : String(error));
     console.log('Fallback: Use browser print to save as PDF');
     
     // Fallback: Use browser print dialog

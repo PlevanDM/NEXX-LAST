@@ -95,10 +95,11 @@ app.on(['GET', 'HEAD'], '/images/*', serveAsset(immutableCache))
 const authMiddleware = async (c: Context, next: () => Promise<void>) => {
   const pin = c.req.header('X-NEXX-PIN') || c.req.query('pin')
   const authCookie = getCookie(c, 'nexx_auth')
+  const cookieVal = typeof authCookie === 'string' ? authCookie : ''
 
   const CORRECT_PIN = '31618585'
 
-  if (pin === CORRECT_PIN || authCookie === 'true') {
+  if (pin === CORRECT_PIN || cookieVal === 'true') {
     return await next()
   }
 
@@ -114,7 +115,7 @@ app.post('/api/auth/login', async (c) => {
     setCookie(c, 'nexx_auth', 'true', {
       path: '/',
       secure: true,
-      httpOnly: false, // Need to be able to check it from client if needed, or just let middleware handle it
+      httpOnly: false,
       maxAge: 60 * 60 * 24 * 30, // 30 days
       sameSite: 'Lax',
     })
@@ -526,28 +527,83 @@ app.get('/nexx/*', (c) => {
 })
 
 
-// Booking API endpoint
+// Booking API - creates order in RemOnline
 app.post('/api/booking', async (c) => {
+  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || '';
+  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app';
+  const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970');
+  const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611');
+  if (!REMONLINE_API_KEY) {
+    return c.json({ success: false, message: 'Service temporar indisponibil' }, 503);
+  }
   try {
     const body = await c.req.json();
-    
-    // TODO: Integrate with RO App API
-    // For now, just return success
-    console.log('Booking received:', body);
-    
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
+    const getBrand = (d: string) => {
+      if (!d) return '';
+      const dl = (d as string).toLowerCase();
+      if (dl.includes('iphone') || dl.includes('macbook') || dl.includes('ipad')) return 'Apple';
+      if (dl.includes('samsung') || dl.includes('galaxy')) return 'Samsung';
+      if (dl.includes('xiaomi') || dl.includes('redmi') || dl.includes('poco')) return 'Xiaomi';
+      return '';
+    };
+    let cleanPhone = (body.phone || '').replace(/[^0-9+]/g, '');
+    if (cleanPhone.startsWith('07')) cleanPhone = '+40' + cleanPhone.substring(1);
+    else if (cleanPhone.startsWith('40') && !cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
+    else if (!cleanPhone.startsWith('+') && cleanPhone.length >= 9) cleanPhone = '+40' + cleanPhone;
+    const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `api_key=${REMONLINE_API_KEY}`
+    });
+    const tokenJson = await tokenRes.json() as { success?: boolean; token?: string };
+    if (!tokenJson.success || !tokenJson.token) {
+      return c.json({ success: false, message: 'Eroare autentificare RemOnline' }, 500);
+    }
+    const token = tokenJson.token;
+    const createClientRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: body.name || 'Client Website', phone: [cleanPhone] })
+    });
+    const createClientData = await createClientRes.json() as { data?: { id: number }; success?: boolean };
+    let clientId = createClientData.data?.id;
+    if (!clientId) {
+      const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(cleanPhone)}`);
+      const searchData = await searchRes.json() as { data?: Array<{ id: number }> };
+      if (searchData.data?.length) clientId = searchData.data[0].id;
+    }
+    if (!clientId) {
+      return c.json({ success: false, message: 'Nu s-a putut crea clientul' }, 500);
+    }
+    const brand = getBrand(body.device);
+    const model = body.device || '';
+    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        branch_id: BRANCH_ID,
+        order_type: ORDER_TYPE,
+        client_id: clientId,
+        kindof_good: 'Telefon',
+        brand,
+        model,
+        malfunction: body.problem || 'Cerere website',
+        manager_notes: `[WEBSITE BOOKING] ${body.name}\nDevice: ${model}\nProblem: ${body.problem || 'N/A'}\n${new Date().toISOString()}`
+      })
+    });
+    const orderData = await orderRes.json() as { success?: boolean; data?: { id: number }; message?: string };
+    if (!orderData.success) {
+      return c.json({ success: false, message: orderData.message || 'Eroare creare comandă' }, 500);
+    }
     return c.json({
       success: true,
-      message: 'Заявка успішно відправлена! Ми зв\'яжемося з вами найближчим часом.',
-      orderId: 'TEST-' + Date.now()
+      message: 'Cerere trimisă! Vă vom contacta în curând.',
+      order_id: orderData.data?.id,
+      orderId: orderData.data?.id
     });
   } catch (error) {
-    return c.json({
-      success: false,
-      message: 'Помилка при обробці заявки. Спробуйте ще раз.'
-    }, 500);
+    console.error('Booking/RemOnline error:', error);
+    return c.json({ success: false, message: 'Eroare la trimitere. Încercați din nou.' }, 500);
   }
 });
 
@@ -672,13 +728,15 @@ app.post('/api/remonline', async (c) => {
       if (!cleanPhone && !customerName) {
         return c.json({ success: true, message: 'Price calculated (no contact)' });
       }
-      // Map device type to Romanian
       const typeMap: Record<string, string> = { 'phone': 'Telefon', 'tablet': 'Tablet', 'laptop': 'Laptop', 'watch': 'Smartwatch' };
       deviceType = typeMap[body.device?.type] || body.device?.type || 'Telefon';
       brand = body.device?.brand || '';
       model = body.device?.model || '';
       malfunction = body.issue || 'Calculator inquiry';
       notes = `[CALCULATOR LEAD] ${customerName}\nDevice: ${brand} ${model}\nIssue: ${body.issue || 'N/A'}\nEstimate: ${body.estimated_price || body.estimatedPrice || 'N/A'}\nDate: ${now}`;
+    } else if (formType === 'booking' || formType === 'appointment') {
+      malfunction = body.comment || 'Programare vizită';
+      notes = `[BOOKING] ${customerName}\nPhone: ${body.customerPhone || body.phone || cleanPhone}\nDate: ${body.preferredDate || 'N/A'}\nComment: ${body.comment || 'N/A'}\n${now}`;
     } else {
       malfunction = body.problem || 'Website inquiry';
       notes = `[WEBSITE] ${customerName}\nDevice: ${body.device || 'N/A'}\nProblem: ${body.problem || 'N/A'}\nDate: ${now}`;
@@ -729,13 +787,70 @@ app.post('/api/remonline', async (c) => {
 });
 
 app.get('/api/remonline', async (c) => {
-  const action = new URL(c.req.url).searchParams.get('action');
-  
+  const url = new URL(c.req.url);
+  const action = url.searchParams.get('action');
+  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || '';
+  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app';
+
   if (action === 'health') {
     return c.json({ success: true, status: 'ok' });
   }
-  
-  return c.json({ success: false, error: 'GET not supported for this endpoint' }, 400);
+  if (!REMONLINE_API_KEY) {
+    return c.json({ error: 'Remonline API not configured' }, 500);
+  }
+
+  const needToken = ['get_order', 'get_branches', 'get_statuses', 'get_services'].includes(action || '');
+  let token = '';
+  if (needToken) {
+    const tokenRes = await fetch(`${REMONLINE_BASE}/token/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `api_key=${REMONLINE_API_KEY}`
+    });
+    const tokenJson = await tokenRes.json() as { success?: boolean; token?: string };
+    if (!tokenJson.success || !tokenJson.token) {
+      return c.json({ error: 'Failed to authenticate with Remonline' }, 500);
+    }
+    token = tokenJson.token;
+  }
+
+  if (action === 'get_order') {
+    const orderId = url.searchParams.get('id');
+    if (!orderId) return c.json({ error: 'Missing id' }, 400);
+    const res = await fetch(`${REMONLINE_BASE}/order/?token=${token}&ids[]=${encodeURIComponent(orderId)}`);
+    const data = await res.json() as { data?: any[]; success?: boolean };
+    const order = data.data?.[0] ?? data.data ?? data;
+    return c.json({ success: data.success !== false, data: order }, 200, {
+      'Cache-Control': 'private, max-age=60'
+    });
+  }
+  if (action === 'get_branches') {
+    const res = await fetch(`${REMONLINE_BASE}/branches/?token=${token}`);
+    const data = await res.json() as { data?: any };
+    return c.json({ success: true, data: data.data ?? data }, 200, {
+      'Cache-Control': 'public, max-age=3600'
+    });
+  }
+  if (action === 'get_statuses') {
+    const res = await fetch(`${REMONLINE_BASE}/statuses/?token=${token}`);
+    const data = await res.json() as { data?: any };
+    return c.json({ success: true, data: data.data ?? data }, 200, {
+      'Cache-Control': 'public, max-age=3600'
+    });
+  }
+  if (action === 'get_services') {
+    const res = await fetch(`${REMONLINE_BASE}/services/?token=${token}`);
+    const data = await res.json().catch(() => ({})) as { data?: any; services?: any };
+    const list = data.data ?? data.services ?? (Array.isArray(data) ? data : []);
+    return c.json({ success: true, data: list }, 200, {
+      'Cache-Control': 'public, max-age=3600'
+    });
+  }
+
+  return c.json({
+    error: 'Unknown action',
+    supported: ['get_order', 'get_branches', 'get_statuses', 'get_services', 'health']
+  }, 400);
 });
 
 // Helper function to generate page template
