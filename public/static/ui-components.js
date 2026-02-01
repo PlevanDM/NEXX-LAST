@@ -330,7 +330,7 @@
         className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
         style: { opacity: 1 }
       },
-      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 flex items-center', style: { height: '56px', minHeight: '56px', paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
+      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center', style: { height: '64px', minHeight: '64px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
         h('div', { className: 'flex items-center justify-between gap-4 min-w-0 w-full' },
           // Логотип слева, крупный и читабельный (64px)
           h('a', {
@@ -387,16 +387,16 @@
             window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
             h('button', {
               onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-              className: `md:hidden w-10 h-10 flex items-center justify-center rounded-lg flex-shrink-0 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200' : 'bg-white/10 hover:bg-white/20'} ${textColor} transition-all`,
+              className: `md:hidden w-11 h-11 flex items-center justify-center rounded-lg flex-shrink-0 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200' : 'bg-white/10 hover:bg-white/20'} ${textColor} transition-all`,
               'aria-label': isMobileMenuOpen ? 'Close menu' : 'Open menu'
-            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'}` }))
+            }, h('i', { className: `fas ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl` }))
           )
         ),
         
-        // Mobile Menu
+        // Mobile Menu Dropdown
         isMobileMenuOpen && h('div', { 
-          className: 'md:hidden mt-4 py-4 bg-white rounded-xl shadow-xl animate-slide-down border-t border-gray-200',
-          style: { maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }
+          className: 'md:hidden absolute top-[64px] left-4 right-4 py-4 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-50',
+          style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }
         },
           ...navLinks.map(link => h('a', {
             key: link.id,
@@ -512,8 +512,8 @@
       { icon: 'fa-tiktok', href: 'https://tiktok.com/@nexxgsm', label: 'TikTok' },
     ];
     
-    return h('footer', { className: 'bg-gradient-to-br from-gray-900 to-black text-white' },
-      h('div', { className: 'max-w-7xl mx-auto px-4 py-12' },
+    return h('footer', { className: 'bg-gradient-to-br from-gray-900 to-black text-white section-padding' },
+      h('div', { className: 'content-container' },
         // Main Footer
         h('div', { className: 'grid md:grid-cols-3 gap-8 mb-8' },
           // Brand

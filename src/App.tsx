@@ -707,7 +707,7 @@ export const App = () => {
       </nav>
 
       {/* Main Content — ограниченная ширина для удобства чтения */}
-      <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6">
+      <main className="w-full content-container py-6">
         {/* Breadcrumbs & Stats — карточка для визуальной иерархии */}
         <div className="mb-6 bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-4">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">

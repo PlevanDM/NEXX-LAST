@@ -1276,7 +1276,7 @@
                     if (errors.name) setErrors({ ...errors, name: '' });
                   },
                   placeholder: '👤 Numele dvs.',
-                  className: `w-full px-2.5 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm sm:text-base ${
+                  className: `w-full px-3 py-3 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-base ${
                     errors.name ? 'border-red-500' : 'border-zinc-700'
                   }`
                 }),
@@ -1291,7 +1291,7 @@
                     if (errors.phone) setErrors({ ...errors, phone: '' });
                   },
                   placeholder: '📱 Telefon: 07XX XXX XXX',
-                  className: `w-full px-2.5 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm sm:text-base ${
+                  className: `w-full px-3 py-3 sm:px-4 sm:py-3 bg-zinc-800/50 border-2 rounded-lg sm:rounded-xl text-white placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-base ${
                     errors.phone ? 'border-red-500' : 'border-zinc-700'
                   }`
                 }),
@@ -1334,7 +1334,7 @@
                   // Go to final result step
                   setStep(7);
                 },
-                className: 'w-full px-3 py-2.5 sm:px-6 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-1.5 text-xs sm:text-base'
+                className: 'w-full px-3 py-4 sm:px-6 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-1.5 text-base'
               },
                 h('i', { className: 'fas fa-paper-plane text-sm sm:text-base' }),
                 'Trimite și obține preț exact'

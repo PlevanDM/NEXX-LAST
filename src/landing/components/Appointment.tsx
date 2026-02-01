@@ -42,8 +42,8 @@ const Appointment: React.FC = () => {
 
   if (success) {
     return (
-      <section id="appointment" className="py-16 md:py-24 px-4 bg-gray-900/80 overflow-x-hidden">
-        <div className="max-w-2xl mx-auto text-center bg-gray-800 p-12 rounded-3xl border border-green-500/20 shadow-2xl animate-fade-in">
+      <section id="appointment" className="section-padding bg-gray-900/80 overflow-x-hidden">
+        <div className="max-w-2xl mx-auto text-center bg-gray-800 p-8 md:p-12 rounded-3xl border border-green-500/20 shadow-2xl animate-fade-in">
           <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <i className="fas fa-check text-4xl text-green-500"></i>
           </div>
@@ -60,11 +60,11 @@ const Appointment: React.FC = () => {
   }
 
   return (
-    <section id="appointment" className="py-16 md:py-24 px-4 bg-gray-900/80 overflow-x-hidden">
-      <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section id="appointment" className="section-padding bg-gray-900/80 overflow-x-hidden">
+      <div className="content-container grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t('appointment.title')}</h2>
-          <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+          <p className="text-slate-400 text-lg mb-8 leading-relaxed max-w-xl">
             {t('appointment.subtitle')}
           </p>
           <div className="space-y-6">

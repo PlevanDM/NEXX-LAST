@@ -153,7 +153,7 @@ const CallbackModal: React.FC = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-400 text-sm font-bold mb-2 ml-1">{t('callback.name')}</label>
                   <input

@@ -109,12 +109,12 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contacts" className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section id="contacts" className="section-padding bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
+      <div className="content-container">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{txt.title}</h2>
-          <p className="text-gray-400 text-lg">{txt.subtitle}</p>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">{txt.subtitle}</p>
         </div>
         
         {/* Main Grid */}

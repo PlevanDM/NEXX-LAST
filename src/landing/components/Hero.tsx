@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section 
       id="main-content"
-      className="relative min-h-[85vh] flex items-center justify-center hero-bg text-white overflow-hidden pt-24 py-16 md:py-24"
+      className="relative min-h-[85vh] flex items-center justify-center hero-bg text-white overflow-hidden pt-24 section-padding"
       aria-label={t('footer.ariaLabel')}
     >
       {/* Animated dots background */}
@@ -25,21 +25,22 @@ const Hero: React.FC = () => {
         ))}
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-in w-full">
+      <div className="relative z-10 content-container text-center animate-fade-in w-full">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 md:mb-6 leading-tight">
           <span className="block">{t('hero.title')}</span>
-          <span className="block mt-1 md:mt-2 text-gray-300 text-3xl sm:text-4xl md:text-5xl">
+          <span className="block mt-1 md:mt-2 text-slate-300 text-3xl sm:text-4xl md:text-5xl">
             {t('hero.subtitle')}
           </span>
         </h1>
         
-        <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-10 text-blue-100 max-w-3xl mx-auto px-4">
+        <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-10 text-blue-100 max-w-3xl mx-auto px-4 leading-relaxed">
           {t('hero.description')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto w-full px-4">
           <a
             href="#calculator"
+            aria-label={t('buttons.calculate')}
             className="group relative px-8 py-5 md:py-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-size-200 hover:bg-right text-white text-lg md:text-xl font-bold rounded-2xl shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 active:scale-95 flex items-center justify-center gap-3 overflow-hidden min-h-[64px]"
             style={{ backgroundSize: '200% 100%' }}
           >
@@ -51,6 +52,7 @@ const Hero: React.FC = () => {
           </a>
           <button
             onClick={() => (window as any).openCallbackModal?.()}
+            aria-label={t('buttons.callBack')}
             className="relative px-8 py-5 md:py-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 border-2 border-green-400 text-white text-lg md:text-xl font-bold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-3 shadow-lg shadow-green-500/30 group min-h-[64px]"
           >
             {/* Bonus badge */}

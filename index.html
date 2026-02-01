@@ -219,10 +219,11 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
             overflow-x: hidden;
             background: #0f172a;
-            color: #fff;
+            color: #f8fafc;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            width: 100%;
         }
         /* Show content immediately with fallback styles */
         /* Content is visible from the start, Tailwind enhances it when loaded */
@@ -277,13 +278,14 @@
                 position: relative;
                 padding-left: env(safe-area-inset-left, 0);
                 padding-right: env(safe-area-inset-right, 0);
+                font-size: 16px;
             }
             * { box-sizing: border-box; }
             img:not(svg):not([class*="icon"]) {
                 max-width: 100%;
                 height: auto;
             }
-            .container, [class*="container"] {
+            .container, [class*="container"], .content-container {
                 max-width: 100% !important;
                 padding-left: max(1rem, env(safe-area-inset-left, 0));
                 padding-right: max(1rem, env(safe-area-inset-right, 0));
@@ -292,6 +294,11 @@
             }
             .flex, [class*="flex"] { flex-wrap: wrap; }
             .grid, [class*="grid"] { grid-template-columns: 1fr; }
+
+            /* Universal mobile touch target fix */
+            button, a, input, select, textarea {
+                min-height: 44px;
+            }
         }
         /* Typography */
         h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; margin-bottom: 0.5em; }
@@ -398,10 +405,12 @@
         
         /* Focus improvements */
         *:focus-visible {
-          outline: 2px solid #4b5563;
+          outline: 2px solid #3b82f6;
           outline-offset: 2px;
           border-radius: 4px;
         }
+        /* focus:outline support */
+        .focus-ring { focus:outline: none; }
         
         /* Selection color */
         ::selection {
@@ -554,7 +563,7 @@
 </head>
 <body>
     <!-- Skip to main content (accessibility) -->
-    <a href="#main-content" class="skip-to-content" id="skip-link"></a>
+    <a href="#main-content" class="skip-to-content" id="skip-link" aria-label="Sari la conținut">Sari la conținut</a>
     
     <!-- Hide app until React is ready to prevent FOUC -->
     <style>
@@ -576,14 +585,15 @@
         }
     </style>
     <div id="app"></div>
+    <img src="/static/nexx-logo.png" alt="NEXX GSM Logo" class="hidden" aria-hidden="true">
     
-    <script src="/static/utils.min.js?v=20260130"></script>
-    <script src="/static/database.min.js?v=20260130"></script>
-    <script src="/static/nexx-core.min.js?v=20260130"></script>
-    <script src="/static/i18n.js?v=17.0.1"></script>
-    <script src="/static/ui-components.js?v=13.0.0"></script>
-    <script src="/static/navigation-system.min.js?v=2.1"></script>
-    <script src="/static/analytics.min.js?v=20260130"></script>
+    <script src="/static/utils.min.js?v=20260130" defer></script>
+    <script src="/static/database.min.js?v=20260130" defer></script>
+    <script src="/static/nexx-core.min.js?v=20260130" defer></script>
+    <script src="/static/i18n.js?v=17.0.1" defer></script>
+    <script src="/static/ui-components.js?v=13.0.0" defer></script>
+    <script src="/static/navigation-system.min.js?v=2.1" defer></script>
+    <script src="/static/analytics.min.js?v=20260130" defer></script>
     <style>
       :root {
         --primary: rgb(59, 130, 246);

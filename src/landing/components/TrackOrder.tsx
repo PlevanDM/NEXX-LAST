@@ -41,14 +41,14 @@ const TrackOrder: React.FC = () => {
   };
 
   return (
-    <section id="track-order" className="py-16 md:py-24 px-4 bg-gray-900/90 overflow-x-hidden">
-      <div className="max-w-3xl mx-auto">
+    <section id="track-order" className="section-padding bg-gray-900/90 overflow-x-hidden">
+      <div className="content-container max-w-3xl">
         <div className="text-center mb-12">
           <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <i className="fas fa-search-location text-3xl text-blue-500"></i>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t('trackOrder.title')}</h2>
-          <p className="text-gray-400 text-lg">{t('trackOrder.subtitle')}</p>
+          <p className="text-slate-400 text-lg">{t('trackOrder.subtitle')}</p>
         </div>
         
         <div className="bg-gray-800 border border-gray-700 p-8 rounded-3xl shadow-2xl">

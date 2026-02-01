@@ -32,8 +32,8 @@ const LandingApp: React.FC = () => {
       <ServiceModAuth />
       <Hero />
       <Services />
-      <section id="calculator" className="py-16 md:py-24 px-4 bg-gray-950">
-        <div className="max-w-7xl mx-auto">
+      <section id="calculator" className="section-padding bg-gray-950">
+        <div className="content-container">
           {/* @ts-ignore */}
           {window.PriceCalculator ? React.createElement(window.PriceCalculator) : null}
         </div>

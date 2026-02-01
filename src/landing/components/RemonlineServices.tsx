@@ -19,10 +19,10 @@ const RemonlineServices: React.FC = () => {
 
   if (loading) {
     return (
-      <section id="remonline-services" className="py-16 md:py-24 px-4 bg-black overflow-x-hidden">
-        <div className="max-w-7xl mx-auto text-center py-12">
+      <section id="remonline-services" className="section-padding bg-black overflow-x-hidden">
+        <div className="content-container text-center py-12">
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-400 font-medium">{t('remonlineServices.loading')}</p>
+          <p className="text-slate-400 font-medium">{t('remonlineServices.loading')}</p>
         </div>
       </section>
     );
@@ -47,11 +47,11 @@ const RemonlineServices: React.FC = () => {
   }).filter(Boolean);
 
   return (
-    <section id="remonline-services" className="py-16 md:py-24 px-4 bg-black overflow-x-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="remonline-services" className="section-padding bg-black overflow-x-hidden">
+      <div className="content-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t('remonlineServices.title')}</h2>
-          <p className="text-gray-400 text-lg">{t('remonlineServices.subtitle')}</p>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">{t('remonlineServices.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

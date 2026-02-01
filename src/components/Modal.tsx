@@ -39,9 +39,10 @@ export const Modal: React.FC<ModalProps> = ({
             </div>
             <button 
               onClick={onClose} 
-              className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+              className="w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors flex-shrink-0"
+              aria-label="Close modal"
             >
-              <Icons.Close />
+              <Icons.Close className="w-6 h-6" />
             </button>
           </div>
         </div>

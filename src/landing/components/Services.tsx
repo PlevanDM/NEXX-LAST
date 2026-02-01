@@ -124,13 +124,13 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 px-4 bg-gray-900 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="section-padding bg-gray-900 overflow-x-hidden">
+      <div className="content-container">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             {t('services.title')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             {t('services.subtitle')}
           </p>
         </div>
@@ -144,7 +144,7 @@ const Services: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-6 md:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full min-h-[440px]"
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-6 md:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full min-h-[380px] sm:min-h-[440px]"
               >
                 {/* Gradient hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />

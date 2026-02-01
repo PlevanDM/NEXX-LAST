@@ -52,12 +52,12 @@ const Reviews: React.FC = () => {
   }, [lang]);
 
   return (
-    <section id="reviews" className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="reviews" className="section-padding bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-x-hidden">
+      <div className="content-container">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">{t('reviews.title')}</h2>
-          <p className="text-gray-400 text-lg">{t('reviews.subtitle')}</p>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">{t('reviews.subtitle')}</p>
           {/* Rating summary */}
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="flex text-yellow-400 text-2xl">

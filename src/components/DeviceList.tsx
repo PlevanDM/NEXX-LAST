@@ -123,7 +123,7 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
   return (
     <div className="space-y-6">
       {/* Filters — фиксированная панель при скролле */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-slate-200 sticky top-[52px] sm:top-[56px] z-10">
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white/95 backdrop-blur-sm p-3 sm:p-4 rounded-xl shadow-sm border border-slate-200 sticky top-[52px] sm:top-[56px] z-10">
         <div className="relative w-full md:max-w-md">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <Icons.Search />
@@ -137,10 +137,10 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
           />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
+        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar py-1">
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide transition-all flex-shrink-0 ${
+            className={`px-4 py-2.5 rounded-lg text-sm font-semibold uppercase tracking-wide transition-all flex-shrink-0 min-h-[44px] flex items-center justify-center ${
               selectedCategory === null 
                 ? 'bg-slate-800 text-white shadow-sm' 
                 : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400 hover:bg-slate-100'
@@ -152,13 +152,13 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat as string)}
-              className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 ${
+              className={`px-4 py-2.5 rounded-lg text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 min-h-[44px] ${
                 selectedCategory === cat 
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-900/20' 
                   : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
               }`}
             >
-              <span>{getCategoryIcon(cat as string)}</span>
+              <span className="text-lg">{getCategoryIcon(cat as string)}</span>
               {cat}
             </button>
           ))}

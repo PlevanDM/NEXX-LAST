@@ -41,28 +41,28 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
       color="blue"
     >
       {/* Tabs */}
-      <div className="flex bg-slate-50 border-b border-slate-200 overflow-x-auto p-2 gap-2">
+      <div className="flex bg-slate-50 border-b border-slate-200 overflow-x-auto p-2 gap-2 no-scrollbar">
         <button 
           onClick={() => setActiveTab('info')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'info' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}
+          className={`px-4 py-3 min-h-[44px] rounded-lg text-sm font-bold whitespace-nowrap transition-all ${activeTab === 'info' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:bg-slate-200'}`}
         >
           Инфо & Цены
         </button>
         <button 
           onClick={() => setActiveTab('chips')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'chips' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}
+          className={`px-4 py-3 min-h-[44px] rounded-lg text-sm font-bold whitespace-nowrap transition-all ${activeTab === 'chips' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:bg-slate-200'}`}
         >
           Микросхемы
         </button>
         <button 
           onClick={() => setActiveTab('compatibility')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'compatibility' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}
+          className={`px-4 py-3 min-h-[44px] rounded-lg text-sm font-bold whitespace-nowrap transition-all ${activeTab === 'compatibility' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:bg-slate-200'}`}
         >
           Совместимость
         </button>
         <button 
           onClick={() => setActiveTab('diag')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === 'diag' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}
+          className={`px-4 py-3 min-h-[44px] rounded-lg text-sm font-bold whitespace-nowrap transition-all ${activeTab === 'diag' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500 hover:bg-slate-200'}`}
         >
           Диагностика
         </button>

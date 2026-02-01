@@ -46,14 +46,14 @@ const Gallery: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-950 to-black overflow-x-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-padding bg-gradient-to-br from-gray-950 to-black overflow-x-hidden">
+      <div className="content-container">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             {t('gallery.title')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             {t('gallery.subtitle')}
           </p>
         </div>

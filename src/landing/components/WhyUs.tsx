@@ -47,13 +47,13 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gray-950 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-padding bg-gray-950 relative overflow-hidden">
+      <div className="content-container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             {t('whyUs.title')}
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             {t('hero.description')}
           </p>
         </div>
@@ -81,7 +81,7 @@ const WhyUs: React.FC = () => {
               </div>
               
               {/* Description */}
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 relative z-10 pl-5 transition-colors duration-300 leading-relaxed">
+              <p className="text-sm text-slate-400 group-hover:text-slate-200 relative z-10 pl-5 transition-colors duration-300 leading-relaxed">
                 {feature.desc}
               </p>
             </div>
