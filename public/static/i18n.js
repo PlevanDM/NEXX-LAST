@@ -105,11 +105,31 @@
         home: 'Головна',
         services: 'Послуги',
         calculator: 'Калькулятор',
+        cabinet: 'Особистий кабінет',
         booking: 'Замовити',
         contacts: 'Контакти',
         serviceMod: 'Service Mod',
         logout: 'Вийти',
         search: 'Пошук',
+      },
+      cabinet: {
+        title: 'Особистий кабінет',
+        login: 'Увійти за телефоном',
+        phonePlaceholder: 'Номер телефону',
+        submit: 'Увійти',
+        myOrders: 'Мої замовлення',
+        orderNumber: 'Номер',
+        status: 'Статус',
+        date: 'Дата',
+        logout: 'Вийти',
+        notFound: 'Клієнт не знайдений. Залиште заявку на сайті.',
+        error: 'Помилка. Спробуйте пізніше.',
+        loginSuccess: 'Вхід виконано',
+        loading: 'Завантаження...',
+        noOrdersYet: 'У вас ще немає замовлень.',
+        backToHome: 'На головну',
+        trackOrder: 'Відстежити замовлення',
+        refresh: 'Оновити',
       },
       
       // Hero Section
@@ -121,6 +141,16 @@
         yearsExperience: 'років досвіду',
         mastersCount: 'майстрів',
         repairsCount: 'ремонтів',
+      },
+      trackOrder: {
+        title: 'Скучаєте за вашим пристроєм?',
+        subtitle: 'Введіть код замовлення та перевірте статус у реальному часі.',
+        placeholder: 'Код замовлення (напр. 12345)',
+        button: 'Перевірити',
+        loading: 'Перевірка...',
+        notFound: 'Замовлення не знайдено. Перевірте код або зв’яжіться з нами.',
+        device: 'Пристрій',
+        status: 'Статус',
       },
       
       // Prices
@@ -255,7 +285,7 @@
         time: 'Час',
         specs: {
           battery: ['Оригінальні батареї', 'Гарантія 12 місяців', 'Тест ємності', 'Калібрування BMS', 'Преміум якість', 'Регенерація елементів'],
-          board: ['Мікроскоп 45x', 'BGA реболінг', 'Пайка IC', 'Діагностика', 'Професійна станція', 'Оригінальні компоненти'],
+          board: ['Точна діагностика — знаходимо причину', 'Ремонт мікросхем і чипів', 'Заміна BGA-чипів', 'Безкоштовна діагностика', 'Професійне обладнання', 'Оригінальні компоненти'],
           display: ['Оригінальний OLED', 'Преміум LCD', 'Гарантія на битий піксель', 'Сенсорний екран', 'Ламінування', 'Калібрування True Tone'],
           port: ['Оригінальні роз\'єми', 'Професійна чистка', 'Тест зарядки', 'Ремонт доріжок', 'Новий шлейф', 'Гарантія 6 місяців'],
           modular: ['Оригінальні модулі', 'Тест HD камери', 'Калібрування аудіо', 'Перевірені сенсори', 'Ремонт Face ID', 'Парінг Touch ID']
@@ -284,7 +314,7 @@
         items: {
           tools: 'Професійні інструменти для точного ремонту',
           battery: 'Заміна батареї з тестуванням якості',
-          screen: 'Ремонт екранів під мікроскопом',
+          screen: 'Ремонт та заміна екранів з гарантією',
           storefront: 'Наш сервісний центр NEXX GSM'
         }
       },
@@ -305,7 +335,7 @@
         warranty: { title: 'Гарантія Включена', desc: 'Гарантована якість' },
         honest: { title: 'Чесні ціни', desc: 'Без прихованих платежів' },
         original: { title: 'Оригінальні деталі', desc: 'Перевірені та протестовані' },
-        diagnostic: { title: 'Діагностика безкоштовна', desc: 'Професійна під мікроскопом' },
+        diagnostic: { title: 'Діагностика безкоштовна', desc: 'Точна перевірка — знаходимо причину' },
         transparent: { title: 'Прозоро', desc: 'Фото/відео звіт ремонту' },
         support: { title: 'Онлайн підтримка', desc: 'Консультації після ремонту' }
       },
@@ -329,6 +359,7 @@
         selectModel: 'Виберіть модель:',
         selectIssue: 'Яка проблема?',
         back: 'Назад',
+        changeSelection: 'Змінити вибір',
         calculate: 'Розрахувати ціну',
         estimatedPrice: 'Приблизна ціна',
         time: 'Час ремонту',
@@ -721,22 +752,55 @@
         home: 'Acasă',
         services: 'Servicii',
         calculator: 'Calculator',
+        cabinet: 'Contul meu',
         booking: 'Comandă',
         contacts: 'Contacte',
         serviceMod: 'Service Mod',
         logout: 'Ieșire',
         search: 'Căutare',
       },
+      cabinet: {
+        title: 'Contul meu',
+        login: 'Autentificare cu telefonul',
+        phonePlaceholder: 'Număr de telefon',
+        submit: 'Intră',
+        myOrders: 'Comenzile mele',
+        orderNumber: 'Număr',
+        status: 'Status',
+        date: 'Data',
+        logout: 'Ieșire',
+        notFound: 'Client negăsit. Lăsați o cerere pe site.',
+        error: 'Eroare. Încercați mai târziu.',
+        loginSuccess: 'Autentificare reușită',
+        loading: 'Se încarcă...',
+        noOrdersYet: 'Nu aveți comenzi încă.',
+        backToHome: 'Acasă',
+        trackOrder: 'Urmăriți comanda',
+        refresh: 'Actualizează',
+      },
       
-      // Hero Section
+      // Hero Section (ton local, emoțional — inspirat din Depanero)
       hero: {
         title: 'Reparații iPhone, MacBook, Samsung',
         subtitle: 'Service Express • Garanție Inclusă',
-        description: 'Service profesional Apple, Samsung, Xiaomi, Huawei. Diagnostic gratuit. Piese originale.',
+        description: 'Noi reparăm, cât tu te ocupi de alte treburi. Diagnostic gratuit. Piese originale.',
+        subline: 'Doar nu-ți strici ziua — îți returnăm dispozitivul ca nou.',
         onlineLabel: 'clienți online',
         yearsExperience: 'ani experiență',
         mastersCount: 'tehnicieni',
         repairsCount: 'reparații',
+      },
+      
+      // Urmărire comandă (emoțional — „Ți-e dor de dispozitiv?”)
+      trackOrder: {
+        title: 'Ți-e dor de dispozitivul tău?',
+        subtitle: 'Completează codul și vezi ce mai face! Status în timp real.',
+        placeholder: 'Cod comandă (ex. 12345)',
+        button: 'Verifică',
+        loading: 'Se verifică...',
+        notFound: 'Comandă negăsită. Verifică codul sau contactează-ne.',
+        device: 'Dispozitiv',
+        status: 'Status',
       },
       
       // Prices
@@ -748,7 +812,7 @@
         calculator: 'Calculator gratuit online'
       },
       
-      // CTA Buttons
+      // CTA Buttons (ton local — Depanero: Află mai multe, Verifică)
       buttons: {
         calculate: 'Calculează prețul',
         bookRepair: 'Comandă reparație',
@@ -763,6 +827,8 @@
         callBack: 'Sună-mă înapoi',
         freeDiagnostic: 'Diagnostic gratuit inclus!',
         freeLabel: '🎁 GRATUIT',
+        learnMore: 'Află mai multe',
+        seeDetails: 'Vezi detalii',
       },
       
       // Callback Modal
@@ -870,7 +936,7 @@
         time: 'Timp',
         specs: {
           battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Calitate premium', 'Regenerare celule'],
-          board: ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale'],
+          board: ['Diagnostic precis — găsim cauza', 'Reparare chipuri și microcipuri', 'Înlocuire BGA', 'Diagnostic gratuit', 'Echipament profesional', 'Componente originale'],
           display: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Ecran tactil', 'Laminare', 'Calibrare True Tone'],
           port: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'],
           modular: ['Module originale', 'Cameră HD test', 'Calibrare audio', 'Senzori verificați', 'Reparație Face ID', 'Pereche Touch ID']
@@ -899,7 +965,7 @@
         items: {
           tools: 'Instrumente profesionale pentru reparații precise',
           battery: 'Înlocuire baterie cu testare calitate',
-          screen: 'Reparații ecrane sub microscop',
+          screen: 'Reparații și înlocuire ecrane cu garanție',
           storefront: 'Centrul nostru de service NEXX GSM'
         }
       },
@@ -920,7 +986,7 @@
         warranty: { title: 'Garanție Inclusă', desc: 'Calitate garantată' },
         honest: { title: 'Prețuri corecte', desc: 'Fără costuri ascunse' },
         original: { title: 'Piese originale', desc: 'Verificate și testate' },
-        diagnostic: { title: 'Diagnostic gratuit', desc: 'Profesional sub microscop' },
+        diagnostic: { title: 'Diagnostic gratuit', desc: 'Verificare precisă — găsim cauza' },
         transparent: { title: 'Transparent', desc: 'Raport foto/video' },
         support: { title: 'Suport Online', desc: 'Consultații după reparație' }
       },
@@ -944,6 +1010,7 @@
         selectModel: 'Alegeți modelul:',
         selectIssue: 'Ce problemă aveți?',
         back: 'Înapoi',
+        changeSelection: 'Modifică selecția',
         calculate: 'Calculează prețul',
         estimatedPrice: 'Preț estimat',
         time: 'Timp reparație',
@@ -1312,11 +1379,31 @@
         home: 'Главная',
         services: 'Услуги',
         calculator: 'Калькулятор',
+        cabinet: 'Личный кабинет',
         booking: 'Заказать',
         contacts: 'Контакты',
         serviceMod: 'Service Mod',
         logout: 'Выйти',
         search: 'Поиск',
+      },
+      cabinet: {
+        title: 'Личный кабинет',
+        login: 'Вход по телефону',
+        phonePlaceholder: 'Номер телефона',
+        submit: 'Войти',
+        myOrders: 'Мои заказы',
+        orderNumber: 'Номер',
+        status: 'Статус',
+        date: 'Дата',
+        logout: 'Выйти',
+        notFound: 'Клиент не найден. Оставьте заявку на сайте.',
+        error: 'Ошибка. Попробуйте позже.',
+        loginSuccess: 'Вход выполнен',
+        loading: 'Загрузка...',
+        noOrdersYet: 'У вас пока нет заказов.',
+        backToHome: 'На главную',
+        trackOrder: 'Отследить заказ',
+        refresh: 'Обновить',
       },
       
       // Hero Section
@@ -1328,6 +1415,16 @@
         yearsExperience: 'лет опыта',
         mastersCount: 'мастеров',
         repairsCount: 'ремонтов',
+      },
+      trackOrder: {
+        title: 'Скучаете по вашему устройству?',
+        subtitle: 'Введите код заказа и узнайте статус в реальном времени.',
+        placeholder: 'Код заказа (напр. 12345)',
+        button: 'Проверить',
+        loading: 'Проверка...',
+        notFound: 'Заказ не найден. Проверьте код или свяжитесь с нами.',
+        device: 'Устройство',
+        status: 'Статус',
       },
       
       // Prices
@@ -1462,7 +1559,7 @@
         time: 'Время',
         specs: {
           battery: ['Оригинальные батареи', 'Гарантия 12 месяцев', 'Тест ёмкости', 'Калибровка BMS', 'Премиум качество', 'Регенерация элементов'],
-          board: ['Микроскоп 45x', 'BGA реболлинг', 'Пайка IC', 'Диагностика', 'Профессиональная станция', 'Оригинальные компоненты'],
+          board: ['Точная диагностика — найдём причину', 'Ремонт микросхем и чипов', 'Замена BGA-чипов', 'Бесплатная диагностика', 'Профессиональное оборудование', 'Оригинальные компоненты'],
           display: ['Оригинальный OLED', 'Премиум LCD', 'Гарантия на битый пиксель', 'Сенсорный экран', 'Ламинирование', 'Калибровка True Tone'],
           port: ['Оригинальные разъёмы', 'Профессиональная чистка', 'Тест зарядки', 'Ремонт дорожек', 'Новый шлейф', 'Гарантия 6 месяцев'],
           modular: ['Оригинальные модули', 'Тест HD камеры', 'Калибровка аудио', 'Проверенные сенсоры', 'Ремонт Face ID', 'Парование Touch ID']
@@ -1491,7 +1588,7 @@
         items: {
           tools: 'Профессиональные инструменты для точного ремонта',
           battery: 'Замена батареи с тестированием качества',
-          screen: 'Ремонт экранов под микроскопом',
+          screen: 'Ремонт и замена экранов с гарантией',
           storefront: 'Наш сервисный центр NEXX GSM'
         }
       },
@@ -1512,7 +1609,7 @@
         warranty: { title: 'Гарантия Включена', desc: 'Гарантированное качество' },
         honest: { title: 'Честные цены', desc: 'Без скрытых платежей' },
         original: { title: 'Оригинальные детали', desc: 'Проверенные и протестированные' },
-        diagnostic: { title: 'Диагностика бесплатна', desc: 'Профессиональная под микроскопом' },
+        diagnostic: { title: 'Диагностика бесплатна', desc: 'Точная проверка — найдём причину' },
         transparent: { title: 'Прозрачно', desc: 'Фото/видео отчёт ремонта' },
         support: { title: 'Онлайн поддержка', desc: 'Консультации после ремонта' }
       },
@@ -1536,6 +1633,7 @@
         selectModel: 'Выберите модель:',
         selectIssue: 'Какая у вас проблема?',
         back: 'Назад',
+        changeSelection: 'Изменить выбор',
         calculate: 'Рассчитать цену',
         estimatedPrice: 'Примерная цена',
         time: 'Время ремонта',
@@ -1891,11 +1989,31 @@
         home: 'Home',
         services: 'Services',
         calculator: 'Calculator',
+        cabinet: 'My account',
         booking: 'Book',
         contacts: 'Contact',
         serviceMod: 'Service Mod',
         logout: 'Logout',
         search: 'Search',
+      },
+      cabinet: {
+        title: 'My account',
+        login: 'Sign in with phone',
+        phonePlaceholder: 'Phone number',
+        submit: 'Sign in',
+        myOrders: 'My orders',
+        orderNumber: 'Order #',
+        status: 'Status',
+        date: 'Date',
+        logout: 'Log out',
+        notFound: 'Client not found. Leave a request on the site.',
+        error: 'Error. Try again later.',
+        loginSuccess: 'Signed in',
+        loading: 'Loading...',
+        noOrdersYet: 'You have no orders yet.',
+        backToHome: 'Home',
+        trackOrder: 'Track order',
+        refresh: 'Refresh',
       },
       
       // Hero Section
@@ -1907,6 +2025,16 @@
         yearsExperience: 'years experience',
         mastersCount: 'technicians',
         repairsCount: 'repairs',
+      },
+      trackOrder: {
+        title: 'Missing your device?',
+        subtitle: 'Enter your order code and see how it\'s doing. Real-time status.',
+        placeholder: 'Order code (e.g. 12345)',
+        button: 'Check',
+        loading: 'Checking...',
+        notFound: 'Order not found. Check the code or contact us.',
+        device: 'Device',
+        status: 'Status',
       },
       
       // Prices
@@ -2041,7 +2169,7 @@
         time: 'Time',
         specs: {
           battery: ['Original batteries', '12-month warranty', 'Capacity test', 'BMS calibration', 'Premium quality', 'Cell regeneration'],
-          board: ['45x microscope', 'BGA reballing', 'IC soldering', 'Diagnostics', 'Professional station', 'Original components'],
+          board: ['Precise diagnostics — we find the cause', 'Chip and microchip repair', 'BGA replacement', 'Free diagnostics', 'Professional equipment', 'Original components'],
           display: ['Original OLED', 'Premium LCD', 'Dead pixel warranty', 'Touchscreen', 'Lamination', 'True Tone calibration'],
           port: ['Original connectors', 'Professional cleaning', 'Charging test', 'Track repair', 'New flex cable', '6-month warranty'],
           modular: ['Original modules', 'HD camera test', 'Audio calibration', 'Verified sensors', 'Face ID repair', 'Touch ID pairing']
@@ -2070,7 +2198,7 @@
         items: {
           tools: 'Professional tools for precise repairs',
           battery: 'Battery replacement with quality testing',
-          screen: 'Screen repairs under microscope',
+          screen: 'Screen repair and replacement with warranty',
           storefront: 'Our NEXX GSM service center'
         }
       },
@@ -2091,7 +2219,7 @@
         warranty: { title: 'Warranty Included', desc: 'Quality guaranteed' },
         honest: { title: 'Fair prices', desc: 'No hidden fees' },
         original: { title: 'Original parts', desc: 'Verified and tested' },
-        diagnostic: { title: 'Free diagnostics', desc: 'Professional microscopy' },
+        diagnostic: { title: 'Free diagnostics', desc: 'Precise check — we find the cause' },
         transparent: { title: 'Transparent', desc: 'Photo/video reports' },
         support: { title: 'Online support', desc: 'Post-repair consultations' }
       },
@@ -2103,7 +2231,7 @@
         items: {
           tools: 'Professional tools for precise repairs',
           battery: 'Battery replacement with quality testing',
-          screen: 'Screen repairs under microscope',
+          screen: 'Screen repair and replacement with warranty',
           storefront: 'Our NEXX GSM service center'
         }
       },
@@ -2127,6 +2255,7 @@
         selectModel: 'Select model:',
         selectIssue: 'What\'s the problem?',
         back: 'Back',
+        changeSelection: 'Change selection',
         calculate: 'Calculate price',
         estimatedPrice: 'Estimated price',
         time: 'Repair time',

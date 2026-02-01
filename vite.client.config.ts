@@ -21,6 +21,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // R3F/drei need real react/jsx-runtime — point to node_modules
+      'react/jsx-runtime': path.resolve(__dirname, 'node_modules/react/jsx-runtime'),
       'react-dom/client': path.resolve(__dirname, './src/react-shim.ts'),
       'react-dom': path.resolve(__dirname, './src/react-shim.ts'),
       'react': path.resolve(__dirname, './src/react-shim.ts')

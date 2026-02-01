@@ -80,6 +80,10 @@ class ErrorBoundary extends React.Component<{children: React.ReactNode}, ErrorBo
 }
 
 if (container) {
+  // На nexx.html путь /nexx.html — заменяем на /nexx, чтобы App показывал базу (форумы: blank page после PIN)
+  if (typeof window !== 'undefined' && window.location.pathname === '/nexx.html') {
+    window.history.replaceState({}, '', '/nexx')
+  }
   const root = createRoot(container)
   console.log('Root created, rendering...')
   root.render(

@@ -41,5 +41,12 @@ export const {
   startTransition,
   Children,
   isValidElement,
-  cloneElement
+  cloneElement,
+  StrictMode,
+  createRef
 } = React;
+
+// @ts-ignore — React 19
+export const use = (React as any)?.use;
+// @ts-ignore — R3F/its-fine
+export const act = ReactDOM?.act;

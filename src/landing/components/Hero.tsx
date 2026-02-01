@@ -1,31 +1,32 @@
 import React from 'react';
 
+/** Фон Hero: точечная сетка + лёгкая анимация — только CSS, без Three.js */
+const HeroBackground = () => (
+  <div
+    className="hero-dots-bg"
+    aria-hidden="true"
+  />
+);
+
 const Hero: React.FC = () => {
   const t = (key: string) => window.i18n?.t(key) || key;
 
   return (
     <section 
       id="main-content"
-      className="relative min-h-[85vh] flex items-center justify-center hero-bg text-white overflow-hidden pt-24 py-16 md:py-24"
+      className="relative isolate min-h-[85vh] flex items-center justify-center hero-bg text-white overflow-hidden pt-24 py-16 md:py-24"
       aria-label={t('footer.ariaLabel')}
     >
-      {/* Animated dots background */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gray-500 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 3}s`,
-              animationDelay: `${Math.random() * 2}s`
-            }}
-          />
-        ))}
+      {/* Background: точечная сетка (CSS), только в Hero */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        style={{ width: '100%', height: '100%', minHeight: '85vh' }}
+      >
+        <HeroBackground />
       </div>
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-in w-full">
+
+      {/* Контент поверх фона */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center animate-fade-in w-full flex flex-col items-center justify-center pointer-events-auto">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 md:mb-6 leading-tight">
           <span className="block">{t('hero.title')}</span>
           <span className="block mt-1 md:mt-2 text-gray-300 text-3xl sm:text-4xl md:text-5xl">
@@ -33,10 +34,14 @@ const Hero: React.FC = () => {
           </span>
         </h1>
         
-        <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-10 text-blue-100 max-w-3xl mx-auto px-4">
+        <p className="text-lg sm:text-xl md:text-2xl mb-2 md:mb-4 text-blue-100 max-w-3xl mx-auto px-4">
           {t('hero.description')}
         </p>
-        
+        {t('hero.subline') !== 'hero.subline' && t('hero.subline') && (
+          <p className="text-base sm:text-lg mb-6 md:mb-10 text-slate-400 max-w-2xl mx-auto px-4">
+            {t('hero.subline')}
+          </p>
+        )}
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto w-full px-4">
           <a
             href="#calculator"

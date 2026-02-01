@@ -86,22 +86,30 @@ const CallbackModal: React.FC = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div 
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4"
+      style={{ paddingLeft: 'max(0.5rem, env(safe-area-inset-left))', paddingRight: 'max(0.5rem, env(safe-area-inset-right))', paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
+    >
       <div 
         className="absolute inset-0 bg-black/80 backdrop-blur-md"
         onClick={closeModal}
       />
       <div 
-        className="relative bg-gray-900 rounded-[2.5rem] p-8 md:p-10 w-full max-w-md shadow-2xl border border-gray-800 animate-scale-in"
+        className="relative bg-gray-900 rounded-t-3xl sm:rounded-[2.5rem] w-full max-w-md shadow-2xl border border-gray-800 animate-scale-in flex flex-col max-h-[90dvh] sm:max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={closeModal}
-          className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded-full transition-all duration-300"
-        >
-          <i className="fas fa-times text-xl"></i>
-        </button>
+        {/* Кнопка закрытия всегда видна */}
+        <div className="flex-shrink-0 flex justify-end p-4 pb-0 sm:absolute sm:top-6 sm:right-6 sm:p-0 z-10">
+          <button
+            onClick={closeModal}
+            className="w-12 h-12 min-h-[44px] flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded-full transition-all duration-300"
+            aria-label={t('callback.close') || 'Закрити'}
+          >
+            <i className="fas fa-times text-xl"></i>
+          </button>
+        </div>
         
+        <div className="flex-1 overflow-y-auto overscroll-contain px-6 pb-6 pt-2 sm:p-8 sm:pt-10">
         {isSuccess ? (
           <div className="text-center py-10">
             <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/10">
@@ -212,6 +220,7 @@ const CallbackModal: React.FC = () => {
             </div>
           </form>
         )}
+        </div>
       </div>
     </div>
   );

@@ -301,7 +301,7 @@
           }
         }, 200);
         
-        // Fallback через 3 секунды - загружаем из единой базы master-db.json
+        // Fallback через 3 секунды - загружаем устройства из чанков
         fallbackTimeout = setTimeout(() => {
           if (!isMounted) return;
           
@@ -311,17 +311,16 @@
           }
           
           if (!dbReady) {
-            console.warn('⚠️ База не загружена, используем fallback');
-            fetch('/data/master-db.json')
-              .then(r => r.json())
-              .then(db => {
-                if (isMounted && db && Array.isArray(db.devices)) {
-                  setModels(db.devices);
+            console.warn('⚠️ База не загружена, используем fallback (chunks)');
+            fetch('/data/chunks/devices.json', { credentials: 'include' })
+              .then(r => r.ok ? r.json() : [])
+              .then(list => {
+                if (isMounted && Array.isArray(list)) {
+                  setModels(list);
                   setDbReady(true);
                   setLoadingModels(false);
-                  // Only log in development
                   if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
-                    console.log(`✅ Fallback: загружено ${db.devices.length} моделей из master-db.json`);
+                    console.log(`✅ Fallback: загружено ${list.length} моделей из /data/chunks/devices.json`);
                   }
                 }
               })
@@ -443,7 +442,6 @@
       { id: 1, name: window.i18n?.t('calculator.stepBrand') || 'Marcă', icon: 'fa-tags' },
       { id: 2, name: window.i18n?.t('calculator.stepDevice') || 'Dispozitiv', icon: 'fa-mobile-alt' },
       { id: 3, name: window.i18n?.t('calculator.stepModel') || 'Model', icon: 'fa-list-ul' },
-      { id: 4, name: window.i18n?.t('calculator.stepParts') || 'Piese / Prețuri', icon: 'fa-euro-sign' },
       { id: 5, name: window.i18n?.t('calculator.stepIssue') || 'Problemă', icon: 'fa-wrench' },
       { id: 6, name: window.i18n?.t('calculator.stepPrice') || 'Preț', icon: 'fa-calculator' }
     ];
@@ -462,7 +460,7 @@
     const handlePrevious = () => {
       if (step > 1) {
         setDirection(-1);
-        setStep(step - 1);
+        if (step === 5) setStep(3); else setStep(step - 1);
       }
     };
     
@@ -875,8 +873,8 @@
       setErrors({});
     };
     
-    return h('div', { id: 'calculator', className: 'max-w-3xl mx-auto px-0.5 sm:px-0' },
-      h('div', { className: 'bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950/95 border border-zinc-700/80 rounded-lg sm:rounded-2xl p-2 sm:p-5 md:p-8 shadow-2xl shadow-black/20 backdrop-blur-sm' },
+    return h('div', { id: 'calculator', className: 'max-w-3xl mx-auto px-0.5 sm:px-0 w-full min-w-0 overflow-hidden' },
+      h('div', { className: 'bg-gradient-to-br from-zinc-900/95 via-zinc-900 to-zinc-950/95 border border-zinc-700/80 rounded-lg sm:rounded-2xl p-2 sm:p-5 md:p-8 shadow-2xl shadow-black/20 backdrop-blur-sm w-full min-w-0' },
         // Header — очень компактно на мобильном
         h('div', { className: 'text-center mb-2 sm:mb-6' },
           h('h2', { className: 'text-lg sm:text-2xl md:text-3xl font-bold text-white mb-0.5 sm:mb-1.5 tracking-tight leading-tight' },
@@ -887,23 +885,23 @@
           )
         ),
         
-        // Step indicator — одна строка, мелко на мобильном
-        step < 7 && h('div', { className: 'mb-2 sm:mb-6 px-0' },
-          h('div', { className: 'flex items-center justify-between relative' },
-            h('div', { className: 'absolute top-3 left-0 right-0 h-0.5 bg-zinc-700 rounded-full z-0 sm:top-5' }),
+        // Step indicator — одна строка, не вываливается на MacBook/узких экранах
+        step < 7 && h('div', { className: 'mb-2 sm:mb-6 px-0 w-full min-w-0 overflow-x-auto overflow-y-hidden' },
+          h('div', { className: 'flex items-center justify-between relative w-full', style: { minWidth: 'max-content' } },
+            h('div', { className: 'absolute top-3 left-0 right-0 h-0.5 bg-zinc-700 rounded-full z-0 sm:top-5 pointer-events-none' }),
             h('div', { 
-              className: 'absolute top-3 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 transition-all duration-400 sm:top-5',
-              style: { width: `${((step - 1) / (steps.length - 1)) * 100}%` }
+              className: 'absolute top-3 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 transition-all duration-400 sm:top-5 pointer-events-none',
+              style: { width: `${((step <= 3 ? step - 1 : step === 5 ? 3 : 4) / Math.max(steps.length - 1, 1)) * 100}%` }
             }),
             ...steps.map((s) => {
               const isActive = step === s.id;
               const isDone = step > s.id;
               return h('div', {
                 key: s.id,
-                className: 'relative z-20 flex flex-col items-center flex-1 min-w-0'
+                className: 'relative z-20 flex flex-col items-center flex-shrink-0 w-8 sm:w-14 min-w-0'
               },
                 h('div', {
-                  className: `w-6 h-6 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 border border-zinc-600 sm:border-2 ${
+                  className: `w-6 h-6 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 border border-zinc-600 sm:border-2 flex-shrink-0 ${
                     isDone 
                       ? 'bg-emerald-500/90 border-emerald-400 text-white' 
                       : isActive 
@@ -916,15 +914,15 @@
                     : h('i', { className: `fas ${s.icon} text-[10px] sm:text-sm ${isActive ? 'text-white' : ''}` })
                 ),
                 h('span', {
-                  className: `text-[8px] sm:text-xs mt-0.5 sm:mt-2 text-center font-medium max-w-[2.5rem] sm:max-w-[4rem] truncate leading-tight ${isActive || isDone ? 'text-white' : 'text-zinc-500'}`
+                  className: `text-[8px] sm:text-xs mt-0.5 sm:mt-2 text-center font-medium w-full truncate leading-tight px-0.5 ${isActive || isDone ? 'text-white' : 'text-zinc-500'}`
                 }, s.name)
               );
             })
           )
         ),
         
-        // Step Content — компактная высота
-        h('div', { className: 'min-h-[100px] sm:min-h-[220px] relative' },
+        // Step Content — компактная высота, прайс не вываливается
+        h('div', { className: 'min-h-[100px] sm:min-h-[220px] relative w-full min-w-0 overflow-hidden' },
           // Step 1: Brand Selection — compact squares, more columns on mobile
           step === 1 && !result && h('div', { className: 'space-y-1 sm:space-y-3' },
             h('h3', { className: 'text-xs sm:text-lg font-bold text-white mb-1 sm:mb-3 text-center' },
@@ -1048,7 +1046,7 @@
                   onClick: () => {
                     console.log('✅ Выбрана модель:', model.name);
                     setData({ ...data, model });
-                    setStep(4);
+                    setStep(5);
                   },
                   className: 'w-full p-1.5 sm:p-2.5 bg-zinc-800/40 hover:bg-zinc-800/70 border border-zinc-700 hover:border-blue-500/50 rounded-md sm:rounded-lg transition-all text-left flex items-center justify-between group'
                 },
@@ -1083,7 +1081,7 @@
                 h('button', {
                   onClick: () => {
                     setData({ ...data, model: { name: `${data.brand?.name || 'Dispozitiv'} (general)`, year: null, category: data.deviceType } });
-                    setStep(4);
+                    setStep(5);
                   },
                   className: 'px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl transition-all flex items-center justify-center gap-2'
                 },
@@ -1115,49 +1113,6 @@
               )
             )
           ),
-          
-          // Step 4: Parts & prices (EUR, RON) — всегда после выбора модели
-          step === 4 && !result && data.model && (function() {
-            const sp = data.model.service_parts || {};
-            const pricesRON = data.model.service_prices_ron || {};
-            const pricesUSD = data.model.official_service_prices || {};
-            const rows = Object.keys(sp).length ? Object.entries(sp) : Object.entries(pricesUSD).filter(([k, v]) => typeof v === 'number').map(([k, v]) => [k, { description: (k.charAt(0).toUpperCase() + k.slice(1)).replace(/_/g, ' '), price_usd: v }]);
-            const hasRows = rows.length > 0;
-            return h('div', { className: 'space-y-2 sm:space-y-4' },
-              h('h3', { className: 'text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 text-center' },
-                (window.i18n?.t('calculator.partsAndPrices') || 'Запчасти и цены') + ' — ' + (data.model?.name || '')
-              ),
-              hasRows ? h('p', { className: 'text-zinc-400 text-xs text-center mb-2' },
-                window.i18n?.t('calculator.partsHint') || 'Цены в EUR и Lei (RON)'
-              ) : h('p', { className: 'text-zinc-500 text-xs text-center mb-2' },
-                window.i18n?.t('calculator.noPartsData') || 'Нет данных по запчастям для этой модели.'
-              ),
-              hasRows ? h('div', { className: 'overflow-x-auto rounded-lg border border-zinc-700' },
-                h('table', { className: 'w-full text-sm' },
-                  h('thead', { className: 'bg-zinc-800' },
-                    h('tr', null,
-                      h('th', { className: 'text-left p-2 text-zinc-300 font-semibold' }, window.i18n?.t('calculator.partName') || 'Запчасть'),
-                      h('th', { className: 'text-right p-2 text-zinc-300 font-semibold' }, 'EUR'),
-                      h('th', { className: 'text-right p-2 text-zinc-300 font-semibold' }, 'RON (Lei)')
-                    )
-                  ),
-                  h('tbody', { className: 'divide-y divide-zinc-700' },
-                    ...rows.map(([key, val]) => {
-                      const desc = (val && val.description) ? val.description : (key.replace(/_/g, ' '));
-                      const usd = (val && typeof val.price_usd === 'number') ? val.price_usd : (typeof val === 'number' ? val : 0);
-                      const eur = Math.round(usd * USD_TO_EUR);
-                      const ron = pricesRON[key] || Math.round(usd * USD_TO_RON);
-                      return h('tr', { key }, h('td', { className: 'p-2 text-white' }, desc), h('td', { className: 'p-2 text-right text-emerald-400' }, eur + ' €'), h('td', { className: 'p-2 text-right text-amber-400' }, ron + ' Lei'));
-                    })
-                  )
-                )
-              ) : null,
-              h('div', { className: 'flex items-center justify-center gap-2 mt-4' },
-                h('button', { onClick: () => { setDirection(-1); setStep(3); }, className: 'text-zinc-400 hover:text-white transition flex items-center gap-2 text-xs sm:text-sm' }, h('i', { className: 'fas fa-arrow-left' }), window.i18n?.t('calculator.back') || 'Назад'),
-                h('button', { onClick: () => { setDirection(1); setStep(5); }, className: 'px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm' }, window.i18n?.t('calculator.nextToIssue') || 'Далее — выбор проблемы')
-              )
-            );
-          })(),
           
           // Step 5: Issue Selection (множественный выбор) — compact on mobile
           step === 5 && !result && h('div', { className: 'space-y-2 sm:space-y-4' },
@@ -1345,11 +1300,12 @@
             ),
             
             h('button', {
-              onClick: () => setStep(5),
+              onClick: () => { setResult(null); setStep(5); },
+              type: 'button',
               className: 'mt-2 sm:mt-4 text-zinc-400 hover:text-white transition flex items-center gap-1.5 mx-auto text-[10px] sm:text-sm'
             },
               h('i', { className: 'fas fa-arrow-left' }),
-              'Modifică selecția'
+              window.i18n?.t('calculator.changeSelection') || 'Modifică selecția'
             )
           ),
           

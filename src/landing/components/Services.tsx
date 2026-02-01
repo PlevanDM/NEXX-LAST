@@ -45,7 +45,7 @@ const Services: React.FC = () => {
           { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
           { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
         ],
-        specs: t('services.specs.board') as any || ['Microscop 45x', 'BGA reballing', 'Lipire IC', 'Diagnostic', 'Stație profesională', 'Componente originale']
+        specs: t('services.specs.board') as any || ['Diagnostic precis — găsim cauza', 'Reparare chipuri și microcipuri', 'Înlocuire BGA', 'Diagnostic gratuit', 'Echipament profesional', 'Componente originale']
       },
       { 
         icon: 'fa-mobile-screen',

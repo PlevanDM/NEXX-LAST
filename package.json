@@ -52,6 +52,7 @@
     "setup:all": "powershell -ExecutionPolicy Bypass -File scripts/setup-all.ps1",
     "setup:cf-secrets": "powershell -ExecutionPolicy Bypass -File scripts/setup-cloudflare-secrets.ps1",
     "test:apis": "node scripts/test-apis.cjs",
+    "test:cabinet": "node scripts/test-cabinet.cjs",
     "test:deployed": "node scripts/test-deployed-site.cjs",
     "stats": "node scripts/show_stats.cjs",
     "enhance": "node scripts/enhance_database_2026.cjs",
@@ -79,16 +80,20 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "@tabler/icons-react": "^3.36.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.27.1",
+    "framer-motion": "^12.29.2",
     "hono": "^4.11.4",
     "lucide-react": "^0.562.0",
+    "next-themes": "^0.4.6",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.13.0",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260120.0",

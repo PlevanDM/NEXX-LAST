@@ -76,6 +76,25 @@ jobs:
           [ -d "dist/static" ] && echo "✅ static/ directory exists" || echo "❌ static/ directory missing"
           [ -d "dist/functions" ] && echo "✅ functions/ directory exists" || echo "⚠️  functions/ directory missing (optional)"
       
+      - name: Verify data chunks (new DB)
+        run: |
+          echo "📊 Checking data/chunks..."
+          CHUNKS="config devices prices services knowledge logic_boards measurements pinouts version brands"
+          MISSING=""
+          for c in $CHUNKS; do
+            if [ -f "dist/data/chunks/${c}.json" ]; then
+              echo "  ✅ chunks/${c}.json"
+            else
+              echo "  ❌ chunks/${c}.json missing"
+              MISSING="${MISSING} ${c}.json"
+            fi
+          done
+          if [ -n "$MISSING" ]; then
+            echo "❌ Missing chunks:$MISSING — run scripts/split-database.cjs and copy-assets"
+            exit 1
+          fi
+          echo "✅ All required chunks present"
+      
       - name: Test wrangler command
         run: |
           echo "🧪 Testing wrangler installation..."

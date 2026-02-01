@@ -36,7 +36,7 @@ const SITE_CONFIG = {
   },
   services: [
     { icon: 'fa-mobile-screen', name: 'Ремонт Телефонів', desc: 'iPhone та Android' },
-    { icon: 'fa-microscope', name: 'Діагностика', desc: 'Під мікроскопом' },
+    { icon: 'fa-microscope', name: 'Діагностика', desc: 'Безкоштовно — знаходимо причину' },
     { icon: 'fa-broom', name: 'Професійна Чистка', desc: 'Після залиття' },
     { icon: 'fa-wand-magic-sparkles', name: 'Кастомізація', desc: 'Унікальний дизайн' },
     { icon: 'fa-arrows-rotate', name: 'Trade-In', desc: 'Обмін пристроїв' },

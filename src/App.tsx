@@ -169,6 +169,14 @@ export const App = () => {
     navigate(-1);
   };
 
+  // На nexx.html путь /nexx.html — заменяем на /nexx, чтобы контент базы отображался (пустая страница после PIN)
+  React.useEffect(() => {
+    if (location.pathname === '/nexx.html') {
+      navigate('/nexx', { replace: true });
+      return;
+    }
+  }, [location.pathname, navigate]);
+
   // Sync state with URL
   React.useEffect(() => {
     const path = location.pathname;
@@ -410,9 +418,9 @@ export const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans" style={{ minHeight: '100vh', backgroundColor: '#f8fafc', color: '#0f172a' }}>
       {/* Navbar — на всю ширину, компактнее */}
-      <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
+      <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30" style={{ backgroundColor: '#0f172a', color: '#fff' }}>
         <div className="w-full px-3 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center gap-2 sm:gap-4" style={{ height: 56, minHeight: 56 }}>
             {/* Logo — то же лого что на лендинге: nexx-logo.png */}
@@ -744,7 +752,13 @@ export const App = () => {
                   ← Назад
                 </button>
               )}
-              <span className="font-bold text-slate-900">Главная</span>
+              <button
+                type="button"
+                onClick={() => navigate('/nexx')}
+                className="font-bold text-slate-900 hover:text-blue-600 transition-colors"
+              >
+                Главная
+              </button>
               {activeSection !== 'devices' && (
                 <>
                   <span className="text-slate-400">›</span>

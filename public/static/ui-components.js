@@ -36,6 +36,9 @@
     .logo-container img {
       display: block;
       background: transparent !important;
+      filter: brightness(0) invert(1) !important;
+    }
+    header[data-scrolled="true"] .logo-container img {
       filter: brightness(0) !important;
     }
     .logo-pulse {
@@ -310,11 +313,13 @@
         { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
         { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
         { id: 'calculator', label: t('nav.calculator'), href: '/#calculator', icon: 'fa-calculator' },
+        { id: 'cabinet', label: t('nav.cabinet'), href: '/cabinet', icon: 'fa-user' },
         { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
       ];
       const service = [
         { id: 'home', label: t('nav.home'), href: '/', icon: 'fa-house' },
         { id: 'services', label: t('nav.services'), href: '/#services', icon: 'fa-screwdriver-wrench' },
+        { id: 'cabinet', label: t('nav.cabinet'), href: '/cabinet', icon: 'fa-user' },
         { id: 'contacts', label: t('nav.contacts'), href: '/#contacts', icon: 'fa-phone' },
       ];
       return currentPage === 'database' ? service : client;
@@ -337,13 +342,13 @@
     
     return h(React.Fragment, null,
       h('header', { 
-        className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
+        className: `fixed top-0 left-0 right-0 z-[100] transition-colors duration-300 ${headerBg} loaded`,
         style: { opacity: 1 },
         'data-scrolled': isScrolled ? 'true' : 'false'
       },
-      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center', style: { height: '104px', minHeight: '104px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
-        h('div', { className: 'flex items-center justify-between gap-4 min-w-0 w-full' },
-          // Логотип: крупный, читаемый на тёмном фоне (контраст + размер)
+      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center justify-center', style: { height: '104px', minHeight: '104px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
+        h('div', { className: 'flex items-center justify-center gap-6 xl:gap-10 min-w-0 w-full max-w-5xl' },
+          // Логотип: белый на тёмном фоне, по центру с нав
           h('a', {
             href: '/',
             className: 'logo-container flex items-center cursor-pointer flex-shrink-0',
@@ -360,8 +365,7 @@
                 height: '99px',
                 width: 'auto',
                 maxWidth: '340px',
-                background: 'transparent',
-                filter: 'brightness(0)'
+                background: 'transparent'
               },
               onLoad: function(e) {
                 e.target.style.opacity = '1';
@@ -372,8 +376,8 @@
             })
           ),
           
-          // Навигация справа от лого
-          h('nav', { className: 'hidden md:flex items-center flex-1 justify-end gap-4 xl:gap-6' },
+          // Навигация рядом с лого (всё по центру)
+          h('nav', { className: 'hidden md:flex items-center justify-center gap-4 xl:gap-6 flex-shrink-0' },
             ...navLinks.map(link => h('a', {
               key: link.id,
               href: link.href,
@@ -413,7 +417,7 @@
         
         // Mobile Menu Dropdown (below 104px header, compact margins)
         isMobileMenuOpen && h('div', { 
-          className: 'md:hidden absolute top-[104px] left-2 right-2 sm:left-4 sm:right-4 py-3 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-50',
+          className: 'md:hidden absolute top-[104px] left-2 right-2 sm:left-4 sm:right-4 py-3 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-[100]',
           style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto', paddingLeft: 'max(0.5rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.5rem, env(safe-area-inset-right, 0))' }
         },
           ...navLinks.map(link => h('a', {
@@ -479,6 +483,7 @@
     'footer.copyright': 'NEXX Service Center. Toate drepturile rezervate.',
     'footer.security': 'Site Securizat • SSL Criptat',
     'nav.contacts': 'Contacte',
+    'nav.cabinet': 'Contul meu',
     'calculator.title': 'Calculator preț',
   };
   

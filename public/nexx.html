@@ -1,5 +1,5 @@
-<!-- Build: 1769097986-260277861 -->
-<!-- NEXX Database v2.0.1 - 2026-01-22 -->
+<!-- Build: 20260131 -->
+<!-- NEXX Database v2.0.2 - один хедер, без дубля Tailwind -->
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -61,6 +61,21 @@
                 padding-right: max(0.5rem, env(safe-area-inset-right, 0));
             }
         }
+        /* Критический CSS для базы: без него контент после PIN белый (Tailwind CDN не сканирует динамический React) */
+        #app .min-h-screen { min-height: 100vh !important; background-color: #f8fafc !important; color: #0f172a !important; }
+        #app nav.bg-slate-900 { background-color: #0f172a !important; color: #fff !important; }
+        #app .bg-slate-50 { background-color: #f8fafc !important; }
+        #app .bg-slate-900 { background-color: #0f172a !important; }
+        #app .bg-white { background-color: #fff !important; }
+        #app .text-white { color: #fff !important; }
+        #app .text-slate-900 { color: #0f172a !important; }
+        #app .text-slate-700 { color: #334155 !important; }
+        #app .text-slate-600 { color: #475569 !important; }
+        #app .border-slate-200 { border-color: #e2e8f0 !important; }
+        #app .rounded-xl { border-radius: 0.75rem !important; }
+        #app .shadow-sm { box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important; }
+        #app .sticky { position: sticky !important; }
+        #app .z-30 { z-index: 30 !important; }
     </style>
 </head>
 <body>
@@ -191,9 +206,9 @@
         script.async = true;
         script.onload = () => {
           console.log('✅ NEXX Database loaded');
-          // Note: client-v2.js will render itself, don't clear container here
-          renderHeader(true); // Show header after authentication
-          renderFooter(true); // Show footer after authentication
+          // Не рендеримо unified Header/Footer — у React App вже є власний nav у #app. Один хедер, без дубля.
+          renderHeader(false);
+          renderFooter(false);
         };
         script.onerror = (e) => {
           console.error('❌ Failed to load NEXX Database:', e);

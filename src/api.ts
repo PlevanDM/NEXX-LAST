@@ -4,7 +4,7 @@ import {
   LogicBoard, BootSequence, DiodeMeasurement, ExchangePrice, ServicePrices
 } from './types';
 
-// Service type from master-db.json
+// Service type (from chunks/services.json)
 interface ServiceItem {
   name: string;
   price?: number;
@@ -66,15 +66,7 @@ export const fetchAppData = async (): Promise<AppData> => {
         throw new Error('UNAUTHORIZED');
       }
       if (!response.ok) {
-        // Fallback to master-db if chunks not found (migration period)
-        const masterRes = await fetch('/data/master-db.json', { headers, ...AUTH_OPTIONS });
-        if (!masterRes.ok) {
-          if (masterRes.status === 401) throw new Error('UNAUTHORIZED');
-          throw new Error(`Failed to load ${name}: ${masterRes.status}`);
-        }
-        const masterDb = await masterRes.json();
-        const value = masterDb[name === 'logic_boards' ? 'logic_boards' : name];
-        return value ?? (name === 'devices' || name === 'logic_boards' ? [] : {});
+        throw new Error(`Failed to load chunk ${name}: ${response.status} ${response.statusText}`);
       }
       return response.json();
     };

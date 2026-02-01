@@ -10,6 +10,73 @@ type Bindings = {
   REMONLINE_BASE_URL?: string
   REMONLINE_BRANCH_ID?: string
   REMONLINE_ORDER_TYPE?: string
+  /** Optional; fallback: REMONLINE_API_KEY. Used to sign cabinet JWT. */
+  CABINET_JWT_SECRET?: string
+}
+
+// --- Cabinet JWT (HMAC-SHA256) ---
+const b64url = (buf: ArrayBuffer | Uint8Array): string => {
+  const u = buf instanceof Uint8Array ? buf : new Uint8Array(buf)
+  let binary = ''
+  for (let i = 0; i < u.length; i++) binary += String.fromCharCode(u[i])
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+}
+
+async function signJWT (payload: Record<string, unknown>, secret: string): Promise<string> {
+  const s = String(secret || '')
+  if (!s) throw new Error('JWT secret required')
+  const header = { alg: 'HS256', typ: 'JWT' }
+  const enc = new TextEncoder()
+  const part1 = b64url(enc.encode(JSON.stringify(header)))
+  const part2 = b64url(enc.encode(JSON.stringify(payload)))
+  const message = enc.encode(`${part1}.${part2}`)
+  const keyBytes = enc.encode(s)
+  const key = await crypto.subtle.importKey(
+    'raw',
+    keyBytes.buffer.slice(keyBytes.byteOffset, keyBytes.byteOffset + keyBytes.byteLength),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  )
+  const sig = await crypto.subtle.sign('HMAC', key, message)
+  return `${part1}.${part2}.${b64url(sig)}`
+}
+
+async function verifyJWT (token: string, secret: string): Promise<Record<string, unknown> | null> {
+  try {
+    const s = String(secret || '')
+    if (!s) return null
+    const parts = token.split('.')
+    if (parts.length !== 3) return null
+    const [part1, part2, sigB64] = parts
+    const enc = new TextEncoder()
+    const message = enc.encode(`${part1}.${part2}`)
+    const keyBytes = enc.encode(s)
+    const key = await crypto.subtle.importKey(
+      'raw',
+      keyBytes.buffer.slice(keyBytes.byteOffset, keyBytes.byteOffset + keyBytes.byteLength),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['verify']
+    )
+    const sigBin = Uint8Array.from(atob(sigB64.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0))
+    const ok = await crypto.subtle.verify('HMAC', key, sigBin.buffer.slice(sigBin.byteOffset, sigBin.byteOffset + sigBin.byteLength), message)
+    if (!ok) return null
+    const payloadJson = atob(part2.replace(/-/g, '+').replace(/_/g, '/'))
+    const payload = JSON.parse(payloadJson) as Record<string, unknown>
+    if (payload.exp != null && Number(payload.exp) * 1000 < Date.now()) return null
+    return payload
+  } catch {
+    return null
+  }
+}
+
+function normalizePhone (raw: string): string {
+  let clean = (raw || '').replace(/[^0-9+]/g, '')
+  if (clean.startsWith('07')) clean = '+40' + clean.substring(1)
+  else if (clean.startsWith('40') && !clean.startsWith('+')) clean = '+' + clean
+  else if (!clean.startsWith('+') && clean.length >= 9) clean = '+40' + clean
+  return clean
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -125,6 +192,25 @@ app.post('/api/auth/login', async (c) => {
   return c.json({ success: false, error: 'Invalid PIN' }, 401)
 })
 
+// Public chunks (calculator, landing) — no PIN; rest of /data/* requires auth
+// Use wildcard so path like /data/chunks/devices.json always matches; then parse filename
+const PUBLIC_CHUNKS = ['config', 'devices', 'prices', 'services', 'version', 'brands']
+app.on(['GET', 'HEAD'], '/data/chunks/*', async (c) => {
+  const path = c.req.path.replace(/^\/data\/chunks\//, '').replace(/\/$/, '')
+  const name = path.replace(/\.json$/, '') // "devices.json" -> "devices"
+  if (!path.endsWith('.json') || !name) {
+    return c.json({ error: 'Not found' }, 404)
+  }
+  const isPublic = PUBLIC_CHUNKS.includes(name)
+  if (!isPublic) {
+    const pin = c.req.header('X-NEXX-PIN') || c.req.query('pin')
+    const authCookie = getCookie(c, 'nexx_auth')
+    if (pin !== '31618585' && authCookie !== 'true') {
+      return c.json({ error: 'Unauthorized', message: 'PIN code required' }, 401)
+    }
+  }
+  return serveAsset(dataCache)(c)
+})
 app.on(['GET', 'HEAD'], '/data/*', authMiddleware, serveAsset(dataCache))
 
 app.get('/api/settings', (c) => {
@@ -295,11 +381,12 @@ app.get('/test-click', (c) => {
             
             useEffect(() => {
                 console.log('Loading devices...');
-                fetch('/data/devices.json')
-                    .then(r => r.json())
+                fetch('/data/chunks/devices.json', { credentials: 'include' })
+                    .then(r => { if (!r.ok) throw new Error(r.status === 401 ? 'Auth required' : r.statusText); return r.json(); })
                     .then(data => {
-                        console.log('Loaded', data.length, 'devices');
-                        setDevices(data.slice(0, 6));
+                        const list = Array.isArray(data) ? data : [];
+                        console.log('Loaded', list.length, 'devices');
+                        setDevices(list.slice(0, 6));
                         setLoading(false);
                     })
                     .catch(err => {
@@ -378,154 +465,10 @@ app.get('/test-click', (c) => {
   `)
 })
 
-// NEXX Database (protected with pincode)
-app.get('/nexx', (c) => {
-  return c.redirect('/nexx/')
-})
-
-app.get('/nexx/*', (c) => {
-  return c.html(`
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NEXX Database - Apple Repair</title>
-        <meta name="description" content="NEXX Database - База данных для ремонта устройств Apple: цены, платы, микросхемы">
-        <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-        
-        <!-- React 19 Production -->
-        <script crossorigin src="/static/vendor/react.production.min.js"></script>
-        <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
-    </head>
-    <body class="bg-gray-50">
-        <div id="app"></div>
-        
-        <!-- Pincode Protection + NEXX Database App -->
-        <script>
-        (() => {
-          const { useState, createElement: h } = React;
-          const { createRoot } = ReactDOM;
-          const CORRECT_PIN = '31618585';
-          const container = document.getElementById('app');
-          let root = null;
-          let isDatabaseLoading = false;
-
-          const setLoader = (message) => {
-            const text = message || 'Загрузка базы данных...';
-            container.innerHTML = '<div class="min-h-screen bg-gray-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-2xl px-8 py-6 text-center"><div class="w-12 h-12 mx-auto mb-4 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div><p class="text-slate-600 font-semibold">' + text + '</p></div></div>';
-          };
-
-          const loadDatabaseApp = () => {
-            if (isDatabaseLoading || document.getElementById('nexx-db-script')) {
-              return;
-            }
-            isDatabaseLoading = true;
-
-            if (root) {
-              root.unmount();
-              root = null;
-            }
-
-            setLoader();
-
-            const script = document.createElement('script');
-            script.id = 'nexx-db-script';
-            script.src = '/static/client-v2.js?v=2.0.3';
-            script.async = true;
-            script.onload = () => {
-              container.innerHTML = '';
-            };
-            script.onerror = () => {
-              isDatabaseLoading = false;
-              container.innerHTML = '<div class="min-h-screen bg-red-50 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl px-8 py-6 text-center"><p class="text-red-600 font-semibold mb-3">Не удалось загрузить базу данных</p><button id="retry-load" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">Повторить</button></div></div>';
-              script.remove();
-              const retry = document.getElementById('retry-load');
-              if (retry) {
-                retry.addEventListener('click', () => {
-                  loadDatabaseApp();
-                }, { once: true });
-              }
-            };
-            document.body.appendChild(script);
-          };
-
-          const PincodeScreen = () => {
-            const [pin, setPin] = useState('');
-            const [error, setError] = useState(false);
-
-            const handleSubmit = async (event) => {
-              event.preventDefault();
-              try {
-                const res = await fetch('/api/auth/login', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ pin })
-                });
-                if (res.ok) {
-                  localStorage.setItem('nexx_pin', pin);
-                  localStorage.setItem('nexx_auth', 'true');
-                  loadDatabaseApp();
-                } else {
-                  throw new Error('Invalid PIN');
-                }
-              } catch (err) {
-                setError(true);
-                setPin('');
-                setTimeout(() => setError(false), 2000);
-              }
-            };
-
-            return h('div', { className: 'min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 flex items-center justify-center p-4' },
-              h('div', { className: 'bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md' },
-                h('div', { className: 'text-center mb-8' },
-                  h('div', { className: 'text-6xl mb-4' }, '🔐'),
-                  h('h1', { className: 'text-2xl font-bold text-slate-800 mb-2' }, 'NEXX Database'),
-                  h('p', { className: 'text-slate-600' }, 'Введите пинкод для доступа')
-                ),
-                h('form', { onSubmit: handleSubmit },
-                  h('input', {
-                    type: 'password',
-                    value: pin,
-                    onChange: (event) => setPin(event.target.value),
-                    placeholder: 'Пинкод',
-                    maxLength: 8,
-                    className: 'w-full px-4 py-3 text-center text-2xl tracking-widest rounded-lg border-2 ' + 
-                      (error ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-indigo-500') + 
-                      ' focus:outline-none transition-all',
-                    autoFocus: true
-                  }),
-                  error && h('p', { className: 'text-red-500 text-sm mt-2 text-center' }, '❌ Неверный пинкод'),
-                  h('button', {
-                    type: 'submit',
-                    className: 'w-full mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl'
-                  }, 'Войти')
-                ),
-                h('div', { className: 'mt-6 text-center text-xs text-slate-500' },
-                  'Protected access only'
-                )
-              )
-            );
-          };
-
-          const init = () => {
-            if (localStorage.getItem('nexx_auth') === 'true') {
-              loadDatabaseApp();
-            } else {
-              root = createRoot(container);
-              root.render(h(PincodeScreen));
-            }
-          };
-
-          init();
-        })();
-        </script>
-    </body>
-    </html>
-  `)
-})
+// NEXX Database — один источник: nexx.html (без дубля в воркере)
+app.get('/nexx', (c) => c.redirect('/nexx.html', 302))
+app.get('/nexx/', (c) => c.redirect('/nexx.html', 302))
+app.get('/nexx/*', (c) => c.redirect('/nexx.html', 302))
 
 
 // Booking API - creates order in RemOnline
@@ -854,6 +797,105 @@ app.get('/api/remonline', async (c) => {
   }, 400);
 });
 
+// --- Cabinet (personal account): login by phone, list orders from Remonline ---
+async function getRemonlineToken (c: Context<{ Bindings: Bindings }>): Promise<string | null> {
+  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+  if (!REMONLINE_API_KEY) return null
+  const res = await fetch(`${REMONLINE_BASE}/token/new`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `api_key=${REMONLINE_API_KEY}`
+  })
+  const json = await res.json() as { success?: boolean; token?: string }
+  return (json.success && json.token) ? json.token : null
+}
+
+app.post('/api/cabinet/login', async (c) => {
+  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  if (!secret) return c.json({ success: false, error: 'Cabinet not configured' }, 503)
+  try {
+    const body = await c.req.json() as { phone?: string }
+    const raw = (body.phone || '').trim()
+    if (!raw || raw.length < 8) return c.json({ success: false, error: 'Invalid phone' }, 400)
+    const phone = normalizePhone(raw)
+    if (!phone || phone.length < 10 || !/^\+[0-9]{10,15}$/.test(phone)) {
+      return c.json({ success: false, error: 'Invalid phone' }, 400)
+    }
+    const token = await getRemonlineToken(c)
+    if (!token) return c.json({ success: false, error: 'Service unavailable' }, 503)
+    const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(phone)}`)
+    const searchData = await searchRes.json() as { data?: Array<{ id: number }> }
+    const clientId = searchData.data?.[0]?.id
+    if (!clientId) {
+      return c.json({ success: false, error: 'Client not found', code: 'NOT_FOUND' }, 404)
+    }
+    const jwtPayload = {
+      client_id: clientId,
+      phone,
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7 // 7 days
+    }
+    let jwt: string
+    try {
+      jwt = await signJWT(jwtPayload, secret)
+    } catch (jwtErr) {
+      console.error('Cabinet JWT sign error:', jwtErr)
+      return c.json({ success: false, error: 'Server error' }, 500)
+    }
+    return c.json({ success: true, token: jwt, client_id: clientId })
+  } catch (e) {
+    console.error('Cabinet login error:', e)
+    return c.json({ success: false, error: 'Server error' }, 500)
+  }
+})
+
+app.get('/api/cabinet/orders', async (c) => {
+  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  if (!secret) return c.json({ success: false, error: 'Cabinet not configured' }, 503)
+  const auth = c.req.header('Authorization')
+  const bearer = auth?.startsWith('Bearer ') ? auth.slice(7) : ''
+  if (!bearer) return c.json({ success: false, error: 'Unauthorized' }, 401)
+  const payload = await verifyJWT(bearer, secret)
+  if (!payload || payload.client_id == null) return c.json({ success: false, error: 'Unauthorized' }, 401)
+  const clientId = Number(payload.client_id)
+  try {
+    const token = await getRemonlineToken(c)
+    if (!token) return c.json({ success: false, error: 'Service unavailable' }, 503)
+    let orders: any[] = []
+    let url = `${REMONLINE_BASE}/order/?token=${token}&client_id=${clientId}`
+    let res = await fetch(url)
+    let data: { data?: any[]; success?: boolean }
+    try {
+      data = (await res.json()) as { data?: any[]; success?: boolean }
+    } catch {
+      return c.json({ success: false, error: 'Service unavailable' }, 503)
+    }
+    orders = Array.isArray(data.data) ? data.data : (data.data && !Array.isArray(data.data) ? [data.data] : [])
+    if (orders.length === 0) {
+      url = `${REMONLINE_BASE}/order/?token=${token}`
+      res = await fetch(url)
+      try {
+        data = (await res.json()) as { data?: any[] }
+      } catch {
+        return c.json({ success: true, data: [] }, 200, { 'Cache-Control': 'private, max-age=60' })
+      }
+      const all = Array.isArray(data.data) ? data.data : []
+      orders = all.filter((o: any) => o.client_id === clientId || o.client?.id === clientId)
+    }
+    return c.json({ success: true, data: orders }, 200, { 'Cache-Control': 'private, max-age=60' })
+  } catch (e) {
+    console.error('Cabinet orders error:', e)
+    return c.json({ success: false, error: 'Server error' }, 500)
+  }
+})
+
+app.post('/api/cabinet/logout', (c) => {
+  return c.json({ success: true })
+})
+
 // Helper function to generate page template
 const createPageTemplate = (title: string, description: string, scriptFile: string, bodyClass = 'bg-white', useJSX = false) => {
   return `
@@ -891,6 +933,9 @@ const createPageTemplate = (title: string, description: string, scriptFile: stri
           const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
           footerRoot.render(React.createElement(window.NEXXShared.Footer));
         </script>
+        
+        <!-- Database (required for calculator models) -->
+        <script src="/static/database.min.js"></script>
         
         <!-- Page-specific content -->
         <script ${useJSX ? 'type="text/babel"' : ''} src="/static/${scriptFile}"></script>

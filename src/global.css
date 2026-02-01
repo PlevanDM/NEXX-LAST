@@ -135,3 +135,24 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
 }
+
+/* Hero: точечный фон (только CSS), анимация через transform + пульс */
+.hero-dots-bg {
+  position: absolute;
+  inset: -32px;
+  width: calc(100% + 64px);
+  height: calc(100% + 64px);
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.22) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0;
+  animation: hero-dots-slide 12s linear infinite, hero-dots-pulse 4s ease-in-out infinite;
+  opacity: 1;
+}
+@keyframes hero-dots-slide {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(32px, 32px); }
+}
+@keyframes hero-dots-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}

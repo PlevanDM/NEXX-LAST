@@ -14,6 +14,11 @@ import ServiceModAuth from './components/ServiceModAuth';
 const LandingApp: React.FC = () => {
   const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
 
+  // При загрузке/обновлении страницы — всегда в начало (не восстанавливать старую позицию)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     if (window.i18n?.subscribe) {
       return window.i18n.subscribe((newLang: string) => {
@@ -22,15 +27,16 @@ const LandingApp: React.FC = () => {
     }
   }, []);
 
-  // После монтирования — прокрутка к якорю при обновлении (например #contacts, #calculator)
+  // Прокрутка к якорю при клике по ссылке с hash (например #calculator, #contacts)
   useEffect(() => {
-    const hash = window.location.hash?.replace('#', '');
-    if (!hash) return;
-    const timer = setTimeout(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash?.replace('#', '');
+      if (!hash) return;
       const el = document.getElementById(hash);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-    return () => clearTimeout(timer);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
   return (

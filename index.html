@@ -366,11 +366,12 @@
             position: relative;
         }
         
-        /* Animated gradient overlay */
+        /* Animated gradient overlay — под канвасом шейдера */
         .hero-bg::before {
             content: '';
             position: absolute;
             inset: 0;
+            z-index: 0;
             background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(59, 130, 246, 0.06), transparent 50%),
                         radial-gradient(circle at 30% 50%, rgba(128, 128, 128, 0.06), transparent 50%),
                         radial-gradient(circle at 70% 50%, rgba(64, 64, 64, 0.06), transparent 50%);
@@ -380,6 +381,27 @@
         @keyframes gradient-shift {
             0% { opacity: 0.5; transform: scale(1); }
             100% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        /* Hero: точечный фон + анимация (transform надёжнее background-position) */
+        .hero-dots-bg {
+            position: absolute;
+            inset: -32px;
+            width: calc(100% + 64px);
+            height: calc(100% + 64px);
+            background-image: radial-gradient(circle, rgba(255,255,255,0.22) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            background-position: 0 0;
+            animation: hero-dots-slide 12s linear infinite, hero-dots-pulse 4s ease-in-out infinite;
+            opacity: 1;
+        }
+        @keyframes hero-dots-slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(32px, 32px); }
+        }
+        @keyframes hero-dots-pulse {
+            0%, 100% { opacity: 0.75; }
+            50% { opacity: 1; }
         }
         
         /* Smooth scrolling */
@@ -551,6 +573,12 @@
     
     <script type="module" src="/static/landing.min.js?v=20260130"></script>
     <script>
+      // Страховка: показать приложение через 2 с, если React не добавил классы (ошибка или долгая загрузка)
+      setTimeout(function() {
+        document.body && document.body.classList.add('react-loaded');
+        var app = document.getElementById('app');
+        if (app) app.classList.add('react-ready');
+      }, 2000);
       if ('serviceWorker' in navigator && location.protocol === 'https:') {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('/sw.js').then(function(r) { r.update(); }).catch(function() {});

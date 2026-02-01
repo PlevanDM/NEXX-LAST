@@ -38,6 +38,13 @@ const checklist = {
     { test: 'Currency conversion works (if applicable)', critical: false },
     { test: 'Form validation works', critical: true }
   ],
+  'Cabinet (Personal account)': [
+    { test: 'Cabinet link visible in nav', critical: false },
+    { test: '/cabinet loads login form', critical: false },
+    { test: 'Login with invalid phone returns error', critical: false },
+    { test: 'After login, orders list or empty state shows', critical: false },
+    { test: 'Logout clears session', critical: false }
+  ],
   'Forms & Interactions': [
     { test: 'Callback form opens modal', critical: true },
     { test: 'Phone number validation works', critical: true },
