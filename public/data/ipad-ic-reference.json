@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "source": "NEXX iPad PMIC/Audio fill 2026",
+  "description": "PMIC and Audio IC reference for iPad devices in master-db. Fill missing power_ics/audio_ics via apply-audit-ic (iPad ref merged).",
+  "byName": {
+    "iPad Air 2": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 1st Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "338S1213", "function": "Audio Codec" }]
+    },
+    "iPad Pro 9.7\"": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 5th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 2nd Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 10.5\"": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 6th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11\" 1st Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "98728B", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 3rd Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "98728B", "function": "Audio Codec" }]
+    },
+    "iPad Air 3rd Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad mini 5th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 7th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11\" 2nd Gen": {
+      "power_ics": [{ "name": "343S00288", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "98728B", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 4th Gen": {
+      "power_ics": [{ "name": "343S00328", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "338S1213", "function": "Audio Codec" }]
+    },
+    "iPad 8th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Air 4th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11\" 3rd Gen M1": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 5th Gen M1": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 9th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad mini 6th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Air 5th Gen M1": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 10th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11\" 4th Gen M2": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 12.9\" 6th Gen M2": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Air 6th Gen M2 11\"": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Air 6th Gen M2 13\"": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11\" M4": {
+      "power_ics": [
+        { "name": "APL1066/343S00682", "function": "Main PMIC" },
+        { "name": "APL1067/343S00683", "function": "Secondary PMIC" }
+      ],
+      "audio_ics": [{ "name": "MAX98709B", "function": "Audio Codec" }]
+    },
+    "iPad Pro 13\" M4": {
+      "power_ics": [
+        { "name": "APL1066/343S00682", "function": "Main PMIC" },
+        { "name": "APL1067/343S00683", "function": "Secondary PMIC" }
+      ],
+      "audio_ics": [{ "name": "MAX98709B", "function": "Audio Codec" }]
+    },
+    "iPad mini 7th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad 11th Gen": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Pro 11-inch M4": {
+      "power_ics": [{ "name": "APL1066/343S00682", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "MAX98709B", "function": "Audio Codec" }]
+    },
+    "iPad Pro 13-inch M4": {
+      "power_ics": [{ "name": "APL1066/343S00682", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "MAX98709B", "function": "Audio Codec" }]
+    },
+    "iPad Air 11-inch M3": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPad Air 13-inch M3": {
+      "power_ics": [{ "name": "—", "function": "Main PMIC" }],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    }
+  }
+}

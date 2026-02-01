@@ -1,0 +1,57 @@
+# Cloudflare Pages Headers Configuration
+# Optimized for maximum performance
+
+# Global security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# HTML - no cache (always fresh)
+/
+  Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+
+# i18n.js - short cache for updates (1 hour)
+/static/i18n.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/static/i18n.min.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# UI/JS with version query - short cache for updates
+/static/ui-components.js
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Static assets - long cache (1 year)
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Data files - 24 hours
+/data/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# API endpoints - no cache
+/api/*
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+# PWA manifest - 1 week
+/manifest.json
+  Cache-Control: public, max-age=604800
+
+# Robots & Sitemap - 1 day
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400

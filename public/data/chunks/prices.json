@@ -1,0 +1,171 @@
+{
+  "lastUpdated": "2026-01-21",
+  "currency": "RON",
+  "byCategory": {
+    "phone": {
+      "screen": {
+        "min": 695,
+        "max": 2999,
+        "avg": 1400
+      },
+      "battery": {
+        "min": 299,
+        "max": 899,
+        "avg": 550
+      },
+      "charging": {
+        "min": 299,
+        "max": 799,
+        "avg": 450
+      },
+      "camera": {
+        "min": 249,
+        "max": 1649,
+        "avg": 700
+      },
+      "motherboard": {
+        "min": 599,
+        "max": 1999,
+        "avg": 1100
+      },
+      "software": {
+        "min": 50,
+        "max": 250,
+        "avg": 150
+      },
+      "diagnostic": {
+        "min": 0,
+        "max": 0,
+        "avg": 0
+      }
+    },
+    "tablet": {
+      "screen": {
+        "min": 699,
+        "max": 2999,
+        "avg": 1500
+      },
+      "battery": {
+        "min": 499,
+        "max": 999,
+        "avg": 700
+      },
+      "charging": {
+        "min": 349,
+        "max": 699,
+        "avg": 500
+      },
+      "camera": {
+        "min": 299,
+        "max": 599,
+        "avg": 400
+      },
+      "motherboard": {
+        "min": 699,
+        "max": 1499,
+        "avg": 1000
+      },
+      "software": {
+        "min": 50,
+        "max": 250,
+        "avg": 150
+      },
+      "diagnostic": {
+        "min": 0,
+        "max": 0,
+        "avg": 0
+      }
+    },
+    "laptop": {
+      "screen": {
+        "min": 2299,
+        "max": 5499,
+        "avg": 3500
+      },
+      "battery": {
+        "min": 849,
+        "max": 1600,
+        "avg": 1100
+      },
+      "charging": {
+        "min": 749,
+        "max": 999,
+        "avg": 850
+      },
+      "keyboard": {
+        "min": 749,
+        "max": 1199,
+        "avg": 950
+      },
+      "motherboard": {
+        "min": 1299,
+        "max": 1999,
+        "avg": 1600
+      },
+      "software": {
+        "min": 150,
+        "max": 500,
+        "avg": 300
+      },
+      "diagnostic": {
+        "min": 0,
+        "max": 199,
+        "avg": 0
+      }
+    }
+  },
+  "appleWatch": {
+    "Apple Watch Series 11": {
+      "display": 750,
+      "battery": 400
+    },
+    "Apple Watch Ultra 3": {
+      "display": 950,
+      "battery": 450
+    },
+    "Apple Watch SE 3": {
+      "display": 500,
+      "battery": 400
+    },
+    "Apple Watch Series 10": {
+      "display": 750,
+      "battery": 400
+    },
+    "Apple Watch Series 9": {
+      "display": 750,
+      "battery": 400
+    },
+    "Apple Watch Ultra 2": {
+      "display": 900,
+      "battery": 450
+    },
+    "Apple Watch SE 2": {
+      "display": 500,
+      "battery": 400
+    },
+    "Apple Watch SE": {
+      "display": 400,
+      "battery": 400
+    },
+    "Apple Watch Series 8": {
+      "display": 550,
+      "battery": 400
+    },
+    "Apple Watch Series 7": {
+      "display": 550,
+      "battery": 400
+    },
+    "Apple Watch Series 6": {
+      "display": 450,
+      "battery": 400
+    },
+    "Apple Watch Series 5": {
+      "display": 400,
+      "battery": 350
+    },
+    "Apple Watch Series 4": {
+      "display": 350,
+      "battery": 350
+    }
+  }
+}

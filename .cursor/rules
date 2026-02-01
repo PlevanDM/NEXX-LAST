@@ -1,0 +1,88 @@
+# Cursor AI Rules for NEXX WebApp
+
+## Project Structure
+- Frontend: React + Vite
+- Backend: Cloudflare Pages + Workers
+- Hosting: Cloudflare Pages (nexxgsm.com)
+- Repository: https://github.com/PlevanDM/nexx-webapp
+
+## Cloudflare Configuration
+
+### Credentials (stored in scripts, not committed)
+- Global API Key: 853487a6a39bd7f6f8128b4caf420ac22de33
+- Email: dmitro.plevan@gmail.com
+- Account ID: ad170d773e79a037e28f4530fd5305a5
+- Project Name: nexx-gsm (единственный проект для деплоя)
+- Zone: nexxgsm.com
+
+### Available Cloudflare Services
+- ✅ Cloudflare Pages (active) - Project: nexx-gsm, Branch: main. Сайт: https://nexxgsm.com
+- ✅ Cloudflare Workers (available) - 4 API functions configured
+- ✅ Security: Medium level, TLS 1.2+, SSL Full, Always HTTPS
+- ✅ Cache: Aggressive level, optimized headers
+- ⚠️ R2 Storage (available but not configured)
+- ⚠️ KV Storage (available but not configured)
+- ⚠️ D1 Database (available but not configured)
+
+## Deployment
+
+### Automatic Deployment
+- GitHub Actions: `.github/workflows/deploy-cloudflare.yml`
+- Requires: CLOUDFLARE_API_TOKEN secret in GitHub
+
+### Manual Deployment Scripts
+- `deploy-global-api.ps1` - Uses Global API Key (requires manifest)
+- `deploy-wrangler-auto.ps1` - Uses wrangler (requires API Token)
+- `deploy-with-manifest.ps1` - Auto-generates manifest
+
+### Cache Management
+- `purge-cloudflare-cache.ps1` - Purge CDN cache
+- `check-deployment.ps1` - Check deployment status
+
+## File Structure
+- `public/` - Static assets
+- `src/` - React source code
+- `dist/` - Build output (deployed to Cloudflare)
+- `functions/` - Cloudflare Workers functions
+- `scripts/` - Build and utility scripts
+
+## Important Files
+- `public/_headers` - Cloudflare Pages headers (cache control)
+- `public/_redirects` - URL redirects
+- `wrangler.toml` - Cloudflare Workers/Pages config
+- `index.html` - Main HTML file
+
+## Build Commands
+- `npm run build` - Build for production
+- `npm run dev` - Development server
+- `npm run deploy` - Build and deploy
+
+## i18n Configuration
+- Translation files: `public/static/i18n.js`
+- Languages: uk, ro, en
+- Cache: 1 hour (configured in `_headers`)
+
+## API Endpoints
+- `/api/booking` - Booking API
+- `/api/callback` - Callback API
+- `/api/price-estimate` - Price estimation
+- `/api/remonline` - RemOnline integration
+- `/api/ai-chat` - AI Chat (Cloudflare AI)
+- `/api/ai-assistant` - AI Assistant for NEXX service
+
+## Site tools and data updates
+- **Single reference**: [SITE-TOOLS-AND-UPDATES.md](../SITE-TOOLS-AND-UPDATES.md) — lists every site function (Прайс Украина, база моделей, IC, ошибки, услуги, калькулятор, и т.д.), its data file(s), update script(s), and component(s).
+- When adding or changing any site feature or data source: update SITE-TOOLS-AND-UPDATES.md (add row or edit Data / Script / Component). Прайс Украина (product buttons + parts table + Excel upload) is the reference pattern for similar tools.
+
+## When Making Changes
+1. Update version in `index.html` for cache busting
+2. Run `npm run build` to build
+3. Use deployment script or GitHub Actions
+4. Clear cache with `purge-cloudflare-cache.ps1`
+5. Wait 1-2 minutes for CDN propagation
+
+## Context7 MCP Server
+- Installed: Context7 MCP for up-to-date code documentation
+- Configuration: `.cursor/mcp.json`
+- Usage: Add "use context7" to prompts for library/API documentation
+- Auto-invoke: Context7 is automatically used for code-related questions

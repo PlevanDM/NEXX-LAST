@@ -1,0 +1,36 @@
+{
+  "diagnostic": {
+    "name": "Diagnoză",
+    "price": 0,
+    "free": true,
+    "icon": "fa-microscope"
+  },
+  "screen": {
+    "name": "Ecran",
+    "icon": "fa-mobile-screen"
+  },
+  "battery": {
+    "name": "Baterie",
+    "icon": "fa-battery-full"
+  },
+  "charging": {
+    "name": "Port încărcare",
+    "icon": "fa-plug"
+  },
+  "camera": {
+    "name": "Cameră",
+    "icon": "fa-camera"
+  },
+  "motherboard": {
+    "name": "Placă de bază",
+    "icon": "fa-microchip"
+  },
+  "software": {
+    "name": "Software",
+    "icon": "fa-code"
+  },
+  "keyboard": {
+    "name": "Tastatură",
+    "icon": "fa-keyboard"
+  }
+}

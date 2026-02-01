@@ -1,0 +1,32 @@
+# robots.txt for NEXX Service Center
+# https://nexx.com.ua
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /faq
+Allow: /calculator
+Allow: /privacy
+Allow: /terms
+
+# Disallow private/admin areas
+Disallow: /nexx
+Disallow: /api/
+Disallow: /static/app.js
+Disallow: /data/
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://nexx.com.ua/sitemap.xml
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /

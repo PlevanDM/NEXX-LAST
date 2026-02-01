@@ -1,0 +1,42 @@
+# CI: type-check, validate, build on every push and PR
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Validate database
+        run: npm run validate
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+          BUILD_VERSION: ci-${{ github.run_id }}

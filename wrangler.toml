@@ -1,0 +1,29 @@
+# Cloudflare Pages Configuration 2026
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+# Note: Pages projects do NOT support account_id, build, or other Workers-specific fields
+
+name = "nexx-gsm"
+compatibility_date = "2026-01-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Pages build output directory
+pages_build_output_dir = "dist"
+
+# Environment variables (optional, for Pages Functions)
+[vars]
+PROJECT_NAME = "nexx-gsm"
+ENVIRONMENT = "production"
+ZONE_NAME = "nexxgsm.com"
+
+# RemOnline - set in Cloudflare Dashboard (Pages > nexx-gsm > Settings > Environment variables):
+#   REMONLINE_API_KEY (required)
+#   REMONLINE_BASE_URL = https://api.remonline.app
+#   REMONLINE_BRANCH_ID = 218970
+#   REMONLINE_ORDER_TYPE = 334611
+# Local dev: use .dev.vars (gitignored)
+# - VAPI_API_KEY
+# - VAPI_PHONE_ID
+# - VAPI_ASSISTANT_ID
+# - EMAIL_API_KEY (Mailgun)
+# - TELEGRAM_BOT_TOKEN
+# - TELEGRAM_CHAT_ID

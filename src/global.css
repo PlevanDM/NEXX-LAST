@@ -1,0 +1,63 @@
+/* NEXX Database — глобальные стили для удобства и красоты */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Скрытый скроллбар (горизонтальные полосы категорий, недавние) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Тонкий скроллбар для навбара и модалок */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Подсветка выделения текста */
+::selection {
+  background-color: rgba(59, 130, 246, 0.25);
+  color: inherit;
+}
+
+/* Плавное появление модалок (если нет Tailwind animate-in) */
+@keyframes nexx-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-in.fade-in {
+  animation: nexx-fade-in 0.2s ease-out forwards;
+}
+
+@keyframes nexx-zoom-in {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-in.zoom-in {
+  animation: nexx-zoom-in 0.2s ease-out forwards;
+}
+
+/* Лого — одна анимация везде (лендинг + база) */
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.95; }
+}
+.logo-pulse {
+  animation: logo-pulse 2.5s ease-in-out infinite;
+}

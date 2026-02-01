@@ -1,0 +1,196 @@
+{
+  "version": "1.0",
+  "source": "AUDIT-REPORT-2026-01-31",
+  "description": "PMIC and Audio IC data from full audit for NEXX GSM master-db",
+  "byName": {
+    "iPhone 16 Pro Max": {
+      "power_ics": [
+        { "name": "APL109A/338S01119", "function": "Main PMIC" },
+        { "name": "STMicroelectronics STPMIA3C", "function": "Secondary PMIC" },
+        { "name": "Qualcomm PMX65-000", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00967", "function": "Audio Codec" },
+        { "name": "338S01087", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 16 Pro": {
+      "power_ics": [
+        { "name": "APL109A/338S01119", "function": "Main PMIC" },
+        { "name": "STMicroelectronics STPMIA3C", "function": "Secondary PMIC" },
+        { "name": "Qualcomm PMX65-000", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00967", "function": "Audio Codec" },
+        { "name": "338S01087", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 16 Plus": {
+      "power_ics": [
+        { "name": "APL109A/338S01119", "function": "Main PMIC" },
+        { "name": "STMicroelectronics STPMIA3A426AEQ", "function": "Secondary PMIC" },
+        { "name": "Qualcomm PMX65-000", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S01087", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 16": {
+      "power_ics": [
+        { "name": "APL109A/338S01119", "function": "Main PMIC" },
+        { "name": "STMicroelectronics STPMIA3A426AEQ", "function": "Secondary PMIC" },
+        { "name": "Qualcomm PMX65-000", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S01087", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 15 Pro Max": {
+      "power_ics": [
+        { "name": "338S01023", "function": "Main PMIC" },
+        { "name": "338S01022", "function": "Alt PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00739", "function": "Audio Codec" },
+        { "name": "338S00537", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 15 Pro": {
+      "power_ics": [
+        { "name": "338S01023", "function": "Main PMIC" },
+        { "name": "338S01022", "function": "Alt PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00739", "function": "Audio Codec" },
+        { "name": "338S00537", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 15 Plus": {
+      "power_ics": [
+        { "name": "338S01023", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00739", "function": "Audio Codec" },
+        { "name": "338S00537", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 15": {
+      "power_ics": [
+        { "name": "338S01023", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [
+        { "name": "338S00739", "function": "Audio Codec" },
+        { "name": "338S00537", "function": "Audio Amplifier" }
+      ]
+    },
+    "iPhone 14 Pro Max": {
+      "power_ics": [
+        { "name": "338S00942", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 14 Pro": {
+      "power_ics": [
+        { "name": "338S00942", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 14 Plus": {
+      "power_ics": [
+        { "name": "343S00572", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 14": {
+      "power_ics": [
+        { "name": "343S00572", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX65", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 13 Pro Max": {
+      "power_ics": [
+        { "name": "343S00511", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX60", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 13 Pro": {
+      "power_ics": [
+        { "name": "343S00511", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX60", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 13 mini": {
+      "power_ics": [
+        { "name": "343S00511", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX60", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 13": {
+      "power_ics": [
+        { "name": "343S00511", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX60", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 12 Pro Max": {
+      "power_ics": [
+        { "name": "343S00437", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX55", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 12 Pro": {
+      "power_ics": [
+        { "name": "343S00437", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX55", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 12 mini": {
+      "power_ics": [
+        { "name": "343S00437", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX55", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 12": {
+      "power_ics": [
+        { "name": "343S00437", "function": "Main PMIC" },
+        { "name": "Qualcomm PMX55", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 11 Pro Max": {
+      "power_ics": [
+        { "name": "343S00355", "function": "Main PMIC" },
+        { "name": "PMB6840", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 11 Pro": {
+      "power_ics": [
+        { "name": "343S00355", "function": "Main PMIC" },
+        { "name": "PMB6840", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    },
+    "iPhone 11": {
+      "power_ics": [
+        { "name": "343S00354", "function": "Main PMIC" },
+        { "name": "PMB6840", "function": "Baseband PMIC" }
+      ],
+      "audio_ics": [{ "name": "—", "function": "Audio Codec" }]
+    }
+  }
+}

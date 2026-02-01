@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despre Noi - NEXX Service Center | Reparații Profesionale București</title>
+    <meta name="description" content="NEXX Service Center - service profesional multibrand în București. Experiență 10+ ani. Garanție 30 zile. Tehnicieni certificați.">
+    <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+    
+    <script crossorigin src="/static/vendor/react.production.min.js"></script>
+    <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div id="header"></div>
+    <div id="app"></div>
+    <div id="footer"></div>
+    
+    <script src="/static/utils.min.js"></script>
+    <script src="/static/database.min.js"></script>
+    <script src="/static/i18n.js"></script>
+    <script src="/static/ui-components.js"></script>
+    
+    <script>
+        const { createElement: h, useState, useEffect } = React;
+        
+        const AboutPage = () => {
+            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+            
+            // Subscribe to language changes
+            useEffect(() => {
+                // Update meta for this page initially
+                if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('about');
+                
+                if (window.i18n?.subscribe) {
+                    return window.i18n.subscribe(() => {
+                        const newLang = window.i18n.getCurrentLanguage()?.code || 'ro';
+                        setLang(newLang);
+                        if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('about');
+                    });
+                }
+            }, []);
+            
+            const content = {
+                ro: {
+                    title: 'Despre NEXX Service Center',
+                    subtitle: 'Service profesional multibrand în București din 2014',
+                    story: 'NEXX Service Center este un service profesional de reparații pentru dispozitive electronice în București. Oferim servicii de calitate pentru Apple, Samsung, Xiaomi, Huawei și alte mărci populare.',
+                    mission: 'Misiunea noastră este să oferim reparații rapide, de calitate și la prețuri corecte. Fiecare dispozitiv este tratat cu atenție maximă, iar fiecare client primește servicii personalizate.',
+                    values: [
+                        { icon: 'fa-star', title: 'Calitate', desc: 'Piese originale și compatibile premium. Testare riguroasă.' },
+                        { icon: 'fa-clock', title: 'Rapiditate', desc: 'Majoritatea reparațiilor în 30-60 minute.' },
+                        { icon: 'fa-shield-check', title: 'Garanție', desc: '30 zile garanție pentru toate reparațiile.' },
+                        { icon: 'fa-heart', title: 'Transparență', desc: 'Raport foto/video complet al procesului.' }
+                    ],
+                    team: 'Echipa noastră',
+                    teamDesc: 'Tehnicieni certificați cu experiență 5-15 ani în reparații de nivel micro-componente. Toate reparațiile sunt efectuate sub microscop profesional.',
+                    cta: 'Vino să ne cunoști!'
+                },
+                ru: {
+                    title: 'О NEXX Service Center',
+                    subtitle: 'Профессиональный мультибрендовый сервис в Бухаресте с 2014 года',
+                    story: 'NEXX Service Center - профессиональный сервис по ремонту электронных устройств в Бухаресте. Мы предоставляем качественные услуги для Apple, Samsung, Xiaomi, Huawei и других популярных брендов.',
+                    mission: 'Наша миссия - обеспечить быстрый и качественный ремонт по справедливым ценам. Каждое устройство обрабатывается с максимальным вниманием, а каждый клиент получает персонализированное обслуживание.',
+                    values: [
+                        { icon: 'fa-star', title: 'Качество', desc: 'Оригинальные и премиум совместимые детали. Тщательное тестирование.' },
+                        { icon: 'fa-clock', title: 'Скорость', desc: 'Большинство ремонтов за 30-60 минут.' },
+                        { icon: 'fa-shield-check', title: 'Гарантия', desc: '30 дней гарантии на все ремонты.' },
+                        { icon: 'fa-heart', title: 'Прозрачность', desc: 'Полный фото/видео отчёт о процессе.' }
+                    ],
+                    team: 'Наша команда',
+                    teamDesc: 'Сертифицированные техники с опытом 5-15 лет в ремонте на уровне микрокомпонентов. Все ремонты выполняются под профессиональным микроскопом.',
+                    cta: 'Приходите к нам!'
+                },
+                uk: {
+                    title: 'Про NEXX Service Center',
+                    subtitle: 'Професійний мультибрендовий сервіс у Бухаресті з 2014',
+                    story: 'NEXX Service Center - професійний сервіс з ремонту електронних пристроїв у Бухаресті. Надаємо якісні послуги для Apple, Samsung, Xiaomi, Huawei та інших популярних марок.',
+                    mission: 'Наша місія - надавати швидкий, якісний ремонт за чесними цінами. Кожен пристрій обробляється з максимальною увагою, кожен клієнт отримує персоналізоване обслуговування.',
+                    values: [
+                        { icon: 'fa-star', title: 'Якість', desc: 'Оригінальні та сумісні преміум деталі. Ретельне тестування.' },
+                        { icon: 'fa-clock', title: 'Швидкість', desc: 'Більшість ремонтів за 30-60 хвилин.' },
+                        { icon: 'fa-shield-check', title: 'Гарантія', desc: '30 днів гарантії на всі ремонти.' },
+                        { icon: 'fa-heart', title: 'Прозорість', desc: 'Повний фото/відео звіт процесу.' }
+                    ],
+                    team: 'Наша команда',
+                    teamDesc: 'Сертифіковані техніки з досвідом 5-15 років у ремонті на рівні мікрокомпонентів. Всі ремонти виконуються під професійним мікроскопом.',
+                    cta: 'Завітайте до нас!'
+                },
+                en: {
+                    title: 'About NEXX Service Center',
+                    subtitle: 'Professional multibrand service in Bucharest since 2014',
+                    story: 'NEXX Service Center is a professional repair service for electronic devices in Bucharest. We offer quality services for Apple, Samsung, Xiaomi, Huawei and other popular brands.',
+                    mission: 'Our mission is to provide fast, quality repairs at fair prices. Each device is treated with maximum attention, and each client receives personalized service.',
+                    values: [
+                        { icon: 'fa-star', title: 'Quality', desc: 'Original and premium compatible parts. Rigorous testing.' },
+                        { icon: 'fa-clock', title: 'Speed', desc: 'Most repairs in 30-60 minutes.' },
+                        { icon: 'fa-shield-check', title: 'Warranty', desc: '30-day warranty on all repairs.' },
+                        { icon: 'fa-heart', title: 'Transparency', desc: 'Complete photo/video process report.' }
+                    ],
+                    team: 'Our team',
+                    teamDesc: 'Certified technicians with 5-15 years experience in micro-component repairs. All repairs are performed under professional microscope.',
+                    cta: 'Come visit us!'
+                }
+            };
+            
+            const text = content[lang] || content.ro;
+            
+            return h('div', { className: 'min-h-screen' },
+                // Hero
+                h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-24 px-4' },
+                    h('div', { className: 'max-w-4xl mx-auto text-center' },
+                        h('h1', { className: 'text-5xl md:text-6xl font-bold mb-6' }, text.title),
+                        h('p', { className: 'text-xl text-gray-300 mb-8' }, text.subtitle)
+                    )
+                ),
+                
+                // Story
+                h('section', { className: 'py-16 px-4 bg-white' },
+                    h('div', { className: 'max-w-4xl mx-auto' },
+                        h('p', { className: 'text-lg text-gray-700 leading-relaxed mb-6' }, text.story),
+                        h('p', { className: 'text-lg text-gray-700 leading-relaxed' }, text.mission)
+                    )
+                ),
+                
+                // Values
+                h('section', { className: 'py-16 px-4 bg-gray-50' },
+                    h('div', { className: 'max-w-6xl mx-auto' },
+                        h('div', { className: 'grid md:grid-cols-2 lg:grid-cols-4 gap-6' },
+                            ...text.values.map((value, idx) => h('div', {
+                                key: idx,
+                                className: 'bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-gray-900 transition text-center'
+                            },
+                                h('i', { className: `fas ${value.icon} text-4xl text-gray-900 mb-4` }),
+                                h('h3', { className: 'text-xl font-bold mb-2 text-gray-900' }, value.title),
+                                h('p', { className: 'text-gray-600' }, value.desc)
+                            ))
+                        )
+                    )
+                ),
+                
+                // Team
+                h('section', { className: 'py-16 px-4 bg-white' },
+                    h('div', { className: 'max-w-4xl mx-auto text-center' },
+                        h('h2', { className: 'text-4xl font-bold mb-6 text-gray-900' }, text.team),
+                        h('p', { className: 'text-lg text-gray-700 leading-relaxed mb-8' }, text.teamDesc),
+                        h('a', {
+                            href: '/#contacts',
+                            className: 'inline-block px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition'
+                        },
+                            h('i', { className: 'fas fa-arrow-right mr-2' }),
+                            text.cta
+                        )
+                    )
+                )
+            );
+        };
+        
+        // Render
+        const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
+        headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: 'about' }));
+        
+        const appRoot = ReactDOM.createRoot(document.getElementById('app'));
+        appRoot.render(React.createElement(AboutPage));
+        
+        const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
+        footerRoot.render(React.createElement(window.NEXXDesign.Footer));
+    </script>
+</body>
+</html>

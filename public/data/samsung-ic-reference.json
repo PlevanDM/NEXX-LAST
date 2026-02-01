@@ -1,0 +1,1379 @@
+{
+  "version": "1.0",
+  "source": "NEXX IC refs from master-db 2026",
+  "description": "Samsung/Galaxy PMIC/Audio reference. Fill power_ics/audio_ics via apply-audit-ic.",
+  "byName": {
+    "Samsung Galaxy S24 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S24+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S24": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S23 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S23+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S23": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S22 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S22+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S22": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A54": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A34": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Fold 5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Flip 5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S26": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S26+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S26 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S25": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S25+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S25 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A56": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A36": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S10": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Watch 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S24": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S24+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S24 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S24 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 6": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip 6": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A55": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A35": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A25": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A15": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S9 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Watch 6": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Watch Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Book4 Pro": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S23": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S23+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S23 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S23 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip 5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A54": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A34": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S9": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S9+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Watch 5": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Book3 Pro": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S22": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S22+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S22 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 4": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip 4": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A53": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A33": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S8": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Watch 4": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Book2 Pro": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S21": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S21+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S21 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S21 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A52": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A72": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Tab S7 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S20": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S20+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S20 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy S20 FE": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Note 20": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Note 20 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Fold 2": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy Z Flip": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A51": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Galaxy A71": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S25 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S25+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy S25": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Fold 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Flip 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A56 5G": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A36 5G": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Fold 6": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Z Flip 6": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Tab S10+": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Tab S10 Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Watch 7": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy Watch Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A12": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A13": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A14": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A15": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Samsung Galaxy A04s": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    }
+  }
+}

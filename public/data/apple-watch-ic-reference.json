@@ -1,0 +1,231 @@
+{
+  "version": "1.0",
+  "source": "NEXX IC refs from master-db 2026",
+  "description": "Apple Watch PMIC/Audio reference. Fill power_ics/audio_ics via apply-audit-ic.",
+  "byName": {
+    "Apple Watch Series 11 45mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 11 41mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 10 46mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 10 42mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 9 45mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 9 41mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Ultra 3": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Ultra 2": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Ultra": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch SE 3 44mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch SE 3 40mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch SE 2 44mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch SE 2 40mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 8 45mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 7 45mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    },
+    "Apple Watch Series 6 44mm": {
+      "power_ics": [
+        {
+          "name": "—",
+          "function": "Main PMIC"
+        }
+      ],
+      "audio_ics": [
+        {
+          "name": "—",
+          "function": "Audio Codec"
+        }
+      ]
+    }
+  }
+}

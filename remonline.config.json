@@ -1,0 +1,90 @@
+{
+  "baseUrl": "https://api.remonline.app",
+  "branchId": "218970",
+  "orderType": "334611",
+  "orderTypeName": "Carry-in repair",
+  "testMode": false,
+  "note": "REMONLINE_API_KEY in env (.dev.vars local, Cloudflare secrets prod). Auto-configured by scripts/configure-remonline-api.cjs",
+  "endpoints": {
+    "orders": "/order",
+    "inquiries": "/inquiries",
+    "services": "/services",
+    "people": "/people",
+    "branches": "/branches",
+    "statuses": "/statuses",
+    "clients": "/clients"
+  },
+  "branches": [
+    {
+      "id": 219237,
+      "name": "Apple Plus Odessa"
+    },
+    {
+      "id": 218970,
+      "name": "NEXX GSM Bucharest"
+    }
+  ],
+  "statuses": [
+    {
+      "id": 4136961,
+      "name": "New"
+    },
+    {
+      "id": 4136986,
+      "name": "Diagnostic"
+    },
+    {
+      "id": 4136987,
+      "name": "In progress"
+    },
+    {
+      "id": 4136988,
+      "name": "Accepted"
+    },
+    {
+      "id": 4136976,
+      "name": "Approval"
+    },
+    {
+      "id": 4136973,
+      "name": "Waiting for parts"
+    },
+    {
+      "id": 4136974,
+      "name": "Invoiced"
+    },
+    {
+      "id": 4136972,
+      "name": "Rejected"
+    },
+    {
+      "id": 4136977,
+      "name": "Delivery"
+    },
+    {
+      "id": 4136957,
+      "name": "Done"
+    },
+    {
+      "id": 4136958,
+      "name": "Waiting for collection"
+    },
+    {
+      "id": 4136979,
+      "name": "Closed"
+    },
+    {
+      "id": 4136981,
+      "name": "Archived"
+    },
+    {
+      "id": 4136964,
+      "name": "Dropped off - price"
+    },
+    {
+      "id": 4136969,
+      "name": "Dropped off - quality"
+    }
+  ],
+  "lastConfigured": "2026-02-01T00:59:33.723Z"
+}

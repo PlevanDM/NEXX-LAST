@@ -1,0 +1,152 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production Build
+dist/
+build/
+.output/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+.dev.vars
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# Wrangler
+.wrangler/
+wrangler.toml.backup
+
+# PM2
+.pm2/
+pids/
+*.pid
+*.seed
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Git deploy output
+deploy-git-output/
+
+# Misc
+.turbo
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local Netlify folder
+.netlify
+
+# Sentry
+.sentryclirc
+
+# Database backups (keep archive in git but not large backups)
+*.db
+*.sqlite
+*.sqlite3
+backup/
+_archive/
+
+# Validation reports (temporary)
+*-validation-report.json
+*-validation.json
+*-report.json
+missing-data-report.json
+
+# Screenshots (from browser tools)
+screenshots/
+*.png.tmp
+
+# Old configuration files
+wrangler.jsonc
+wrangler.toml.backup
+
+# Temporary deployment files
+deploy-*.zip
+manifest-*.json
+deploy-response-*.txt
+nexx-deploy.zip
+
+# GitHub secrets helper (local only)
+.github-secrets-helper/
+auto-setup-github-secrets.ps1
+
+# Repository sync tools (temporary)
+REPOSITORY-COMPARISON.md
+sync-repositories.ps1
+
+# Docker
+# .dockerignore - держим в репозитории
+# Dockerfile* - держим в репозитории
+# docker-compose*.yml - держим в репозитории

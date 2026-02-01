@@ -1,0 +1,106 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check Cloudflare secrets
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "❌ Error: CLOUDFLARE_API_TOKEN secret is not set"
+            echo "📋 Add it at: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "   Then: Actions → Deploy to Cloudflare Pages → Re-run all jobs"
+            exit 1
+          fi
+          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "❌ Error: CLOUDFLARE_ACCOUNT_ID secret is not set"
+            echo "📋 Add it at: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            echo "   Then: Actions → Deploy to Cloudflare Pages → Re-run all jobs"
+            exit 1
+          fi
+          echo "✅ Cloudflare secrets are configured"
+      
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Verify Node.js version
+        run: node --version && npm --version
+      
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+      
+      - name: Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+          # Unique version per deploy → scripts always reload (deploy = immediate update)
+          BUILD_VERSION: ${{ github.run_id }}-${{ github.sha }}
+      
+      - name: Verify build output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Error: dist directory not found after build"
+            exit 1
+          fi
+          echo "✅ Build output verified"
+          ls -la dist/ | head -20
+      
+      - name: Verify dist directory contents
+        run: |
+          echo "📦 Checking dist directory..."
+          ls -la dist/
+          echo ""
+          echo "📊 Directory size:"
+          du -sh dist/
+          echo ""
+          echo "📁 Key files check:"
+          [ -f "dist/index.html" ] && echo "✅ index.html exists" || echo "❌ index.html missing"
+          [ -d "dist/static" ] && echo "✅ static/ directory exists" || echo "❌ static/ directory missing"
+          [ -d "dist/functions" ] && echo "✅ functions/ directory exists" || echo "⚠️  functions/ directory missing (optional)"
+      
+      - name: Test wrangler command
+        run: |
+          echo "🧪 Testing wrangler installation..."
+          npx wrangler --version
+          echo ""
+          echo "🧪 Testing wrangler pages command..."
+          npx wrangler pages project list --account-id=${{ secrets.CLOUDFLARE_ACCOUNT_ID }} || echo "⚠️  Cannot list projects (may need auth)"
+      
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=nexx-gsm --compatibility-date=2026-01-21
+          workingDirectory: .
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      
+      - name: Check deployment status
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "📋 Troubleshooting steps:"
+          echo "1. Check Cloudflare API token permissions"
+          echo "2. Verify account ID is correct"
+          echo "3. Check if project 'nexx-gsm' exists in Cloudflare Pages"
+          echo "4. Review wrangler logs above for specific errors"
