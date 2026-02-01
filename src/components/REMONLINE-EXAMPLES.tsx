@@ -67,7 +67,7 @@ export function RepairOrderExample() {
 export function CallbackFormExample() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleCallbackSubmit = async (formData) => {
+  const handleCallbackSubmit = async (formData: Record<string, unknown>) => {
     const payload = {
       formType: 'callback',
       customerName: formData.customerName,
@@ -123,7 +123,7 @@ export function CallbackFormExample() {
 export function DiagnosticFormExample() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDiagnosticSubmit = async (formData) => {
+  const handleDiagnosticSubmit = async (formData: Record<string, unknown>) => {
     return await fetch('/api/remonline', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -194,7 +194,7 @@ import { DocumentTemplates } from '@/components/DocumentTemplates';
 import { RemonlineDocument, DocumentGenerationResponse } from '@/types';
 
 export function DocumentTemplatesExample({ document }: { document: RemonlineDocument }) {
-  const handleGenerateDocument = async (docType, format) => {
+  const handleGenerateDocument = async (docType: string, format: string) => {
     try {
       const response = await fetch('/api/remonline/documents/generate', {
         method: 'POST',

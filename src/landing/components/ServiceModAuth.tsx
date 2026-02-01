@@ -26,7 +26,7 @@ const ServiceModAuth: React.FC = () => {
         localStorage.setItem('nexx_auth_time', Date.now().toString());
         window.location.href = '/nexx';
       } else {
-        setError(window.i18n?.getCurrentLanguage()?.code === 'ro' ? 'PIN incorect. Încercați din nou.' : 'Incorrect PIN. Try again.');
+        setError(window.i18n?.getCurrentLanguage?.()?.code === 'ro' ? 'PIN incorect. Încercați din nou.' : 'Incorrect PIN. Try again.');
         setPin('');
       }
       setIsLoading(false);

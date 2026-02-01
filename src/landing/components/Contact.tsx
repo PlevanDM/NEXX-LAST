@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Contact: React.FC = () => {
-  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
   const [phone, setPhone] = useState('');
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
   useEffect(() => {
     if (window.i18n?.subscribe) {
       return window.i18n.subscribe(() => {
-        setLang(window.i18n.getCurrentLanguage()?.code || 'ro');
+        setLang(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
       });
     }
   }, []);

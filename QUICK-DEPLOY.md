@@ -12,6 +12,8 @@ CLOUDFLARE_EMAIL=your@email.com
 REMONLINE_API_KEY=...
 ```
 
+**First-time:** If GitHub Actions fails with "CLOUDFLARE_API_TOKEN secret is not set", see [SETUP-DEPLOY.md](SETUP-DEPLOY.md) to add secrets once.
+
 ## Deploy Options
 
 ### Option 1: wrangler login (local)

@@ -126,10 +126,10 @@ app.use('*', secureHeaders({
 
 // Enable CORS for API
 app.use('/api/*', cors({
-  origin: true,
+  origin: (origin: string) => origin || '*',
   allowMethods: ['GET', 'POST', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'X-NEXX-PIN'],
-  allowCredentials: true,
+  credentials: true,
   maxAge: 86400
 }))
 

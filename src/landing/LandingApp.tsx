@@ -12,7 +12,7 @@ import CallbackModal from './components/CallbackModal';
 import ServiceModAuth from './components/ServiceModAuth';
 
 const LandingApp: React.FC = () => {
-  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
 
   // При загрузке/обновлении страницы — всегда в начало (не восстанавливать старую позицию)
   useEffect(() => {
@@ -21,8 +21,8 @@ const LandingApp: React.FC = () => {
 
   useEffect(() => {
     if (window.i18n?.subscribe) {
-      return window.i18n.subscribe((newLang: string) => {
-        setLang(newLang);
+      return window.i18n.subscribe((newLang?: string) => {
+        setLang(newLang ?? window.i18n?.getCurrentLanguage?.()?.code ?? 'ro');
       });
     }
   }, []);

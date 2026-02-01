@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 const Gallery: React.FC = () => {
-  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
   
   const t = (key: string) => window.i18n?.t(key) || key;
 
   useEffect(() => {
     if (window.i18n?.subscribe) {
-      return window.i18n.subscribe((newLang: string) => {
-        setLang(newLang);
+      return window.i18n.subscribe((newLang?: string) => {
+        setLang(newLang ?? window.i18n?.getCurrentLanguage?.()?.code ?? 'ro');
       });
     }
   }, []);

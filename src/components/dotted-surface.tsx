@@ -79,6 +79,7 @@ export function DottedSurface({ className, contained, theme: themeProp = 'dark',
 		canvas.style.height = '100%';
 		canvas.style.maxWidth = '100%';
 		canvas.style.maxHeight = '100%';
+		if (!containerRef.current) return;
 		containerRef.current.appendChild(canvas);
 
 		const positions: number[] = [];

@@ -9,7 +9,7 @@ const CallbackModal: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
   
   const t = (key: string) => window.i18n?.t(key) || key;
 
@@ -34,9 +34,9 @@ const CallbackModal: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!window.i18n) return;
-    const unsubscribe = window.i18n.subscribe((newLang: string) => {
-      setLang(newLang);
+    if (!window.i18n?.subscribe) return;
+    const unsubscribe = window.i18n.subscribe((newLang?: string) => {
+      setLang(newLang ?? window.i18n?.getCurrentLanguage?.()?.code ?? 'ro');
     });
     return unsubscribe;
   }, []);

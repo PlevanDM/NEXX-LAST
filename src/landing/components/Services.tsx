@@ -2,14 +2,14 @@ import React, { useState, useEffect, useMemo } from 'react';
 
 const Services: React.FC = () => {
   const [activeCardIndex, setActiveCardIndex] = useState<Record<number, number>>({});
-  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
+  const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
   
   const t = (key: string) => window.i18n?.t(key) || key;
 
   useEffect(() => {
     if (window.i18n?.subscribe) {
-      return window.i18n.subscribe((newLang: string) => {
-        setLang(newLang);
+      return window.i18n.subscribe((newLang?: string) => {
+        setLang(newLang ?? window.i18n?.getCurrentLanguage?.()?.code ?? 'ro');
       });
     }
   }, []);
