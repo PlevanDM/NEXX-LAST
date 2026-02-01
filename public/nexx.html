@@ -4,11 +4,14 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>NEXX Database - База знань для ремонту Apple</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="NEXX Database - Професійна база знань: 680 пристроїв, 167 кодів помилок, 115 IC, діагностика">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-    <link rel="stylesheet" href="/static/client.css?v=2.0.3">
+    <link rel="stylesheet" href="/static/style.css?v=2.0.3">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
@@ -42,10 +45,21 @@
         .animate-spin { animation: spin 1s linear infinite; }
         
         #database-wrapper {
-            padding-top: 0; /* Will be set dynamically when authenticated */
+            padding-top: 0;
         }
         #database-wrapper.with-header {
-            padding-top: 64px; /* Header height (unified design) */
+            padding-top: 104px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-left: env(safe-area-inset-left, 0);
+                padding-right: env(safe-area-inset-right, 0);
+                padding-bottom: env(safe-area-inset-bottom, 0);
+            }
+            #app-header, #database-wrapper, #app-footer {
+                padding-left: max(0.5rem, env(safe-area-inset-left, 0));
+                padding-right: max(0.5rem, env(safe-area-inset-right, 0));
+            }
         }
     </style>
 </head>
@@ -64,7 +78,7 @@
     <!-- Load i18n, UI Components & Navigation -->
     <script src="/static/i18n.js"></script>
     <script src="/static/ui-components.js"></script>
-    <script src="/static/navigation-system.js"></script>
+    <script src="/static/navigation-system.min.js?v=2.1"></script>
     
     <script>
     (() => {
@@ -233,12 +247,13 @@
               body: JSON.stringify({ pin }),
               credentials: 'include'
             });
-            if (res.ok) {
+            const body = await res.json().catch(() => ({}));
+            if (res.ok && body.success === true) {
               localStorage.setItem('nexx_pin', pin);
               localStorage.setItem('nexx_auth', 'true');
               requestAnimationFrame(() => requestAnimationFrame(() => loadDatabaseApp()));
             } else {
-              throw new Error('Invalid PIN');
+              throw new Error(body.error || 'Invalid PIN');
             }
           } catch (err) {
             setError(true);

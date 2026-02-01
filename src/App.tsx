@@ -370,17 +370,41 @@ export const App = () => {
   }), [devices, ics, errors, macBoards]);
 
   if (error) {
+    const isSessionExpired = error.includes('Сесія закінчилась') || error.includes('пінкодом');
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 text-red-600 p-4">
-        <Icons.Error />
-        <h1 className="text-xl font-bold mt-2">Ошибка загрузки</h1>
-        <p>{error}</p>
-        <button 
-          onClick={loadData}
-          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-        >
-          Попробовать снова
-        </button>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900 text-slate-100 p-6">
+        <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
+          <Icons.Error className="w-8 h-8 text-red-400" />
+        </div>
+        <h1 className="text-xl font-bold mt-2 text-white">Помилка завантаження</h1>
+        <p className="text-slate-300 text-center mt-2 max-w-md">{error}</p>
+        <div className="flex flex-wrap gap-3 mt-6 justify-center">
+          {isSessionExpired && (
+            <button
+              type="button"
+              onClick={() => {
+                try { localStorage.removeItem('nexx_auth'); localStorage.removeItem('nexx_pin'); } catch (_) {}
+                window.location.reload();
+              }}
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition"
+            >
+              Увійти знову
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={loadData}
+            className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl transition"
+          >
+            Спробувати знову
+          </button>
+          <a
+            href="/"
+            className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl transition inline-flex items-center justify-center"
+          >
+            На головну
+          </a>
+        </div>
       </div>
     );
   }
@@ -397,7 +421,7 @@ export const App = () => {
               className="nexx-logo-link flex items-center gap-2 flex-shrink-0 hover:opacity-90 transition-opacity"
               title="На головну (лендинг)"
             >
-              <img src="/static/nexx-logo.png?v=5" alt="NEXX GSM" className="w-auto object-contain logo-pulse" style={{ height: 48, background: 'transparent' }} />
+              <img src="/static/nexx-logo.png?v=6" alt="NEXX GSM" className="w-auto object-contain logo-pulse" style={{ height: 48, background: 'transparent' }} />
               <span className="font-bold text-lg tracking-tight hidden sm:inline text-white">Database</span>
             </a>
             {/* Кнопка выход на лендинг — всегда видна */}

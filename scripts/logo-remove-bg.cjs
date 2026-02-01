@@ -28,16 +28,19 @@ async function removeWhiteBackground() {
   const meta = await image.metadata();
   const { data, info } = await image.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const { width, height, channels } = info;
-  const threshold = 248; // пиксели ярче этого считаем белым фоном
-  const fuzz = 12;      // допуск для почти белого (тень, антиалиас)
+  const threshold = 248; // пиксели ярче этого — белый фон
+  const fuzz = 12;      // допуск для почти белого
+  // светло-синий фон: B доминирует, R и G высокие (типичный #e0e8f0 и т.п.)
+  const isLightBlue = (r, g, b) => b >= 200 && r >= 180 && g >= 200 && b >= Math.max(r, g) - 20;
 
   for (let i = 0; i < data.length; i += channels) {
     const r = data[i];
     const g = data[i + 1];
     const b = data[i + 2];
     const a = data[i + 3] ?? 255;
-    const isWhite = r >= threshold - fuzz && g >= threshold - fuzz && b >= threshold - fuzz;
-    if (isWhite) {
+    const white = r >= threshold - fuzz && g >= threshold - fuzz && b >= threshold - fuzz;
+    const lightBlue = isLightBlue(r, g, b);
+    if (white || lightBlue) {
       data[i + 3] = 0;
     }
   }
@@ -46,7 +49,7 @@ async function removeWhiteBackground() {
     .png()
     .toFile(outPath);
 
-  console.log('✅ Фон логотипа убран (белый → прозрачный):', path.basename(outPath));
+  console.log('✅ Фон логотипа убран (белый и светло-синий → прозрачный):', path.basename(outPath));
 }
 
 removeWhiteBackground().catch((err) => {

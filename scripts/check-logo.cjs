@@ -17,7 +17,7 @@ const content = fs.readFileSync(uiPath, 'utf8');
 const checks = [
   { name: 'Один лого (nexx-logo.png)', ok: content.includes("src: '/static/nexx-logo.png") },
   { name: 'Нет других лого в img', ok: !content.includes('nexx-logo.svg') && !content.includes('nexx-logo-white') },
-  { name: 'Бар 64px', ok: content.includes("height: '64px'") || content.includes('minHeight: \'64px\'') || content.includes("height: '56px'") },
+  { name: 'Бар шапки (104px/99px)', ok: content.includes("height: '104px'") || content.includes("height: '99px'") || content.includes("height: '80px'") },
 ];
 
 let failed = false;

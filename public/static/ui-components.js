@@ -14,22 +14,32 @@
   
   const animationStyles = document.createElement('style');
   animationStyles.innerHTML = `
+    @keyframes logo-enter {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
     @keyframes logo-pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.04); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 0.97; }
     }
     .logo-container {
       position: relative;
-      transition: opacity 0.2s ease;
+      transition: transform 0.25s ease, opacity 0.2s ease;
       background: transparent !important;
       border: none !important;
       box-shadow: none !important;
     }
     .logo-container:hover {
-      opacity: 0.9;
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+    .logo-container img {
+      display: block;
+      background: transparent !important;
+      filter: brightness(0) !important;
     }
     .logo-pulse {
-      animation: logo-pulse 2.5s ease-in-out infinite;
+      animation: logo-enter 0.4s ease-out forwards, logo-pulse 3s ease-in-out 0.5s infinite;
     }
   `;
   if (document.head) {
@@ -328,11 +338,12 @@
     return h(React.Fragment, null,
       h('header', { 
         className: `fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg} loaded`,
-        style: { opacity: 1 }
+        style: { opacity: 1 },
+        'data-scrolled': isScrolled ? 'true' : 'false'
       },
-      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center', style: { height: '64px', minHeight: '64px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
+      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center', style: { height: '104px', minHeight: '104px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
         h('div', { className: 'flex items-center justify-between gap-4 min-w-0 w-full' },
-          // Логотип слева, крупный и читабельный (64px)
+          // Логотип: крупный, читаемый на тёмном фоне (контраст + размер)
           h('a', {
             href: '/',
             className: 'logo-container flex items-center cursor-pointer flex-shrink-0',
@@ -341,10 +352,17 @@
             title: 'NEXX GSM - Acasă'
           },
             h('img', {
-              src: '/static/nexx-logo.png?v=5',
+              src: '/static/nexx-logo.png?v=8',
               alt: 'NEXX GSM',
-              className: 'object-contain block logo-pulse',
-              style: { display: 'block', opacity: 0, height: '64px', width: 'auto', background: 'transparent' },
+              className: 'object-contain block logo-pulse logo-header-img',
+              style: {
+                display: 'block',
+                height: '99px',
+                width: 'auto',
+                maxWidth: '340px',
+                background: 'transparent',
+                filter: 'brightness(0)'
+              },
               onLoad: function(e) {
                 e.target.style.opacity = '1';
               },
@@ -359,7 +377,7 @@
             ...navLinks.map(link => h('a', {
               key: link.id,
               href: link.href,
-              className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${currentPage === link.id ? `font-bold ${isScrolled ? 'bg-gray-100 text-gray-900' : 'bg-transparent border border-white/20 text-white'}` : `${textColor} hover:text-gray-500`}`
+              className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${currentPage === link.id && link.id !== 'home' ? `font-bold ${isScrolled ? 'bg-gray-100 text-gray-900' : 'bg-transparent border border-white/20 text-white'}` : `${textColor} hover:text-gray-500`}`
             },
               h('i', { className: `fas ${link.icon} text-sm` }),
               link.label
@@ -393,15 +411,15 @@
           )
         ),
         
-        // Mobile Menu Dropdown (positioned below 64px header)
+        // Mobile Menu Dropdown (below 104px header, compact margins)
         isMobileMenuOpen && h('div', { 
-          className: 'md:hidden absolute top-[64px] left-4 right-4 py-4 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-50',
-          style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }
+          className: 'md:hidden absolute top-[104px] left-2 right-2 sm:left-4 sm:right-4 py-3 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-50',
+          style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto', paddingLeft: 'max(0.5rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.5rem, env(safe-area-inset-right, 0))' }
         },
           ...navLinks.map(link => h('a', {
             key: link.id,
             href: link.href,
-            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition min-h-[48px] ${currentPage === link.id ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
+            className: `flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 transition min-h-[48px] ${currentPage === link.id && link.id !== 'home' ? 'bg-blue-50 text-blue-700 font-semibold' : ''}`,
             onClick: () => setIsMobileMenuOpen(false),
             style: { touchAction: 'manipulation' }
           },

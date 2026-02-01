@@ -22,6 +22,17 @@ const LandingApp: React.FC = () => {
     }
   }, []);
 
+  // После монтирования — прокрутка к якорю при обновлении (например #contacts, #calculator)
+  useEffect(() => {
+    const hash = window.location.hash?.replace('#', '');
+    if (!hash) return;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="landing-app min-h-screen bg-slate-900 text-white">
       {/* @ts-ignore */}

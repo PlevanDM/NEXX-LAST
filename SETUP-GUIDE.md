@@ -4,7 +4,7 @@
 
 ### 1. GitHub Secrets (уже настроено автоматически)
 
-Секреты уже настроены через `auto-setup-github-secrets.ps1`:
+Секреты настраиваются через `scripts/set-github-cloudflare-secrets.ps1` (читает .env):
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 
@@ -17,7 +17,7 @@
 **Ручной:**
 ```powershell
 # Основной скрипт деплоя
-.\deploy-via-api-2026.ps1
+.\deploy-2026.ps1
 
 # Или через npm
 npm run build
@@ -33,30 +33,26 @@ npm run deploy
 ## 📁 Основные скрипты
 
 ### Деплой
-- `deploy-via-api-2026.ps1` - Основной скрипт деплоя через API
-- `deploy-cloudflare.ps1` - Альтернативный деплой
-- `deploy-simple.ps1` - Простой деплой
+- `deploy-2026.ps1` - Основной скрипт деплоя (build + wrangler + опционально purge)
+- `scripts/deploy-git-clean.ps1` - Чистый экспорт и push в другой репозиторий
+- `scripts/create-project-and-deploy.ps1` - Создание проекта Pages и деплой
 
 ### Утилиты
-- `aggressive-cache-purge.ps1` - Очистка кеша Cloudflare
-- `check-deployment.ps1` - Проверка статуса деплоя
-- `setup-cloudflare-env-vars.ps1` - Настройка environment variables
-
-### Git
-- `publish.ps1` - Публикация изменений
-- `update.ps1` - Обновление с GitHub
-- `sync.ps1` - Синхронизация
+- `aggressive-cache-purge.ps1` - Агрессивная очистка кеша Cloudflare
+- `purge-cloudflare-cache.ps1` - Очистка кеша Cloudflare
+- `scripts/setup-cloudflare-secrets.ps1` - Секреты для wrangler (локально)
+- `scripts/set-github-cloudflare-secrets.ps1` - Секреты для GitHub Actions (из .env)
 
 ## 🔧 Cloudflare Configuration
 
 - **Account ID:** `ad170d773e79a037e28f4530fd5305a5`
-- **Project Name:** `nexx`
+- **Project Name:** `nexx-gsm`
 - **Zone:** `nexxgsm.com`
 
 ## 📚 Дополнительная документация
 
 - `README.md` - Основная документация проекта
-- `TODO-REPAIR-LIST.md` - Список задач и исправлений
+- `docs-archive/TODO-REPAIR-LIST.md` - Список задач и исправлений (архив)
 - `GITHUB-SECRETS-SETUP.md` - Настройка GitHub Secrets
 
 ## ⚠️ Важно

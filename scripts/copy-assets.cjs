@@ -96,8 +96,8 @@ if (fs.existsSync(swSource)) {
   console.log(`✅ Copied: sw.js (CACHE_NAME=nexx-gsm-${BUILD_VERSION})\n`);
 }
 
-// Copy HTML pages (including main index.html from root)
-const htmlPages = ['nexx.html', 'faq.html', 'about.html', 'privacy.html', 'terms.html'];
+// Copy HTML pages (nexx.html gets version injection for fresh scripts after deploy)
+const htmlPages = ['faq.html', 'about.html', 'privacy.html', 'terms.html'];
 let htmlCopied = 0;
 htmlPages.forEach(page => {
   const source = path.join(publicDir, page);
@@ -107,6 +107,15 @@ htmlPages.forEach(page => {
     htmlCopied++;
   }
 });
+// nexx.html: inject BUILD_VERSION so /nexx always loads latest scripts after deploy
+const nexxSource = path.join(publicDir, 'nexx.html');
+const nexxDest = path.join(distDir, 'nexx.html');
+if (fs.existsSync(nexxSource)) {
+  let nexxHtml = fs.readFileSync(nexxSource, 'utf8');
+  nexxHtml = nexxHtml.replace(/\?v=[^"'\s&]+/g, `?v=${BUILD_VERSION}`);
+  fs.writeFileSync(nexxDest, nexxHtml);
+  htmlCopied++;
+}
 
 // Copy main index.html from root
 const indexSource = path.join(__dirname, '..', 'index.html');
@@ -215,7 +224,7 @@ if (fs.existsSync(staticSource) && fs.existsSync(staticDest)) {
   
   // Copy non-minified JS files that need to override minified versions
   console.log('📄 Copying source JS files...');
-  const sourceJsFiles = ['homepage.js', 'directions.js', 'price-calculator.js', 'i18n.js', 'ui-components.js'];
+  const sourceJsFiles = ['directions.js', 'price-calculator.js', 'i18n.js', 'ui-components.js'];
   let sourceJsCopied = 0;
   for (const jsFile of sourceJsFiles) {
     const srcPath = path.join(staticSource, jsFile);

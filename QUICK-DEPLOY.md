@@ -44,4 +44,34 @@ wrangler pages deploy dist --project-name nexx-gsm
 
 ---
 
+## Боевой режим: перезапуск, проверка, логи
+
+### Полный цикл перезапуска сайта
+
+```powershell
+# 1. Сборка
+npm run build
+
+# 2. Деплой на Cloudflare Pages
+npx wrangler pages deploy dist --project-name nexx-gsm --branch main
+# или: .\deploy-2026.ps1
+
+# 3. Проверка боевого сайта (9 проверок: главная, /nexx, API callback/booking, лого, данные)
+node scripts/test-deployed-site.cjs https://nexxgsm.com
+```
+
+### Проверка запуска
+
+- **Продакшен:** `node scripts/test-deployed-site.cjs https://nexxgsm.com`
+- **Превью деплоя:** `node scripts/test-deployed-site.cjs https://<deployment-id>.nexx-gsm.pages.dev`
+- Ожидаемый результат: **Result: 9/9 passed**
+
+### Логирование
+
+- **Логи Cloudflare (Functions / Worker):**  
+  [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **nexx-gsm** → **Logs** (Real-time Logs) или **Analytics**.
+- В коде Functions используется `console.log` / `console.error` — вывод попадает в Real-time Logs при запросах к `/api/*`.
+
+---
+
 **Recommended:** `wrangler login` for local deploy; API Token in GitHub secrets for CI.
