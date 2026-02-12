@@ -29,6 +29,7 @@ interface CompatibilityResult {
 }
 
 const MACBOOK_MODELS: MacBookModel[] = [
+  // MacBook Pro 13" Intel (2016-2020)
   {
     id: 'a1708-16',
     name: 'MacBook Pro 13" Fn (2016)',
@@ -44,8 +45,8 @@ const MACBOOK_MODELS: MacBookModel[] = [
       flex_cables: ['821-00516-03', '821-00517-05']
     },
     critical_notes: 'Flexgate! Короткие flex кабели',
-    compatible_donors: ['a1708-17', 'a1706-16', 'a1706-17'],
-    incompatible_donors: ['a2338-m1', 'a2338-m2']
+    compatible_donors: ['a1708-16'],
+    incompatible_donors: ['a2338-m1', 'a2338-m2', 'a2441-m1p', 'a2442-m1p']
   },
   {
     id: 'a1989-18',
@@ -62,7 +63,7 @@ const MACBOOK_MODELS: MacBookModel[] = [
       flex_cables: ['821-00602-03', '821-00603-03']
     },
     critical_notes: 'Удлинённые flex кабели',
-    compatible_donors: ['a1708-16', 'a1708-17', 'a1706-16', 'a1706-17', 'a1989-18', 'a2159-19', 'a2251-20', 'a2289-20'],
+    compatible_donors: ['a1989-18', 'a2159-19', 'a2251-20'],
     incompatible_donors: ['a2338-m1', 'a2338-m2']
   },
   {
@@ -79,7 +80,7 @@ const MACBOOK_MODELS: MacBookModel[] = [
       backlight_ic: 'U8400 (TPS65640A)',
       flex_cables: ['821-00732-02-B', '821-00733-02-B']
     },
-    compatible_donors: ['a1708-16', 'a1708-17', 'a1706-16', 'a1706-17', 'a1989-18', 'a2159-19', 'a2251-20', 'a2289-20'],
+    compatible_donors: ['a1989-18', 'a2159-19', 'a2251-20'],
     incompatible_donors: ['a2338-m1', 'a2338-m2']
   },
   {
@@ -96,9 +97,10 @@ const MACBOOK_MODELS: MacBookModel[] = [
       backlight_ic: 'U8400 (TPS65640A)',
       flex_cables: ['821-01228-A', '821-01229-A']
     },
-    compatible_donors: ['a1708-16', 'a1708-17', 'a1706-16', 'a1706-17', 'a1989-18', 'a2159-19', 'a2251-20', 'a2289-20'],
+    compatible_donors: ['a1989-18', 'a2159-19', 'a2251-20'],
     incompatible_donors: ['a2338-m1', 'a2338-m2']
   },
+  // MacBook Pro 13" M1 (2020)
   {
     id: 'a2338-m1',
     name: 'MacBook Pro 13" M1 (2020)',
@@ -115,8 +117,9 @@ const MACBOOK_MODELS: MacBookModel[] = [
     },
     critical_notes: 'UP800 часто корродирует при залитии',
     compatible_donors: ['a2338-m1'],
-    incompatible_donors: ['a1708-16', 'a1708-17', 'a1706-16', 'a1706-17', 'a1989-18', 'a2159-19', 'a2251-20', 'a2289-20']
+    incompatible_donors: ['a1708-16', 'a1989-18', 'a2159-19', 'a2251-20']
   },
+  // MacBook Pro 15" (2016-2019)
   {
     id: 'a1707-16',
     name: 'MacBook Pro 15" TB (2016)',
@@ -132,7 +135,24 @@ const MACBOOK_MODELS: MacBookModel[] = [
       flex_cables: ['821-00690-02', '821-00691-02']
     },
     critical_notes: 'Flexgate!',
-    compatible_donors: ['a1707-16', 'a1707-17', 'a1990-18', 'a1990-19'],
+    compatible_donors: ['a1707-16', 'a1990-18'],
+    incompatible_donors: ['a2141-19']
+  },
+  {
+    id: 'a1990-18',
+    name: 'MacBook Pro 15" TB (2018)',
+    a_number: 'A1990',
+    board_number: '820-01814',
+    year: 2018,
+    chip: 'Intel 8th/9th Gen + T2',
+    display: {
+      resolution: '2880×1800',
+      type: 'IPS, True Tone',
+      connector: 'J8500 (42-pin)',
+      backlight_ic: 'U8400 (TPS65640A)',
+      flex_cables: ['821-01270-01', '821-01271-01']
+    },
+    compatible_donors: ['a1707-16', 'a1990-18'],
     incompatible_donors: ['a2141-19']
   },
   {
@@ -149,9 +169,10 @@ const MACBOOK_MODELS: MacBookModel[] = [
       backlight_ic: 'U8400 (TPS65640A)',
       flex_cables: ['821-01270-01', '821-01271-01']
     },
-    compatible_donors: ['a1707-16', 'a1707-17', 'a1990-18', 'a1990-19'],
+    compatible_donors: ['a1707-16', 'a1990-19'],
     incompatible_donors: ['a2141-19']
   },
+  // MacBook Pro 16" (2019+)
   {
     id: 'a2141-19',
     name: 'MacBook Pro 16" (2019)',
@@ -166,28 +187,83 @@ const MACBOOK_MODELS: MacBookModel[] = [
       backlight_ic: 'U8400 (i2c control)',
       flex_cables: ['821-02032-03', '821-02034-03']
     },
-    critical_notes: '⚠️ НЕ используется PWM! Только i2c backlight control - несовместима с A1707/A1990!',
+    critical_notes: '⚠️ i2c-only backlight! Несовместима с A1707/A1990 (PWM)',
     compatible_donors: ['a2141-19'],
-    incompatible_donors: ['a1707-16', 'a1707-17', 'a1990-18', 'a1990-19']
+    incompatible_donors: ['a1707-16', 'a1990-18', 'a1990-19']
+  },
+  // MacBook Pro 14" M1 Pro/Max (2021)
+  {
+    id: 'a2442-m1p',
+    name: 'MacBook Pro 14" M1 Pro (2021)',
+    a_number: 'A2442',
+    board_number: '820-02020',
+    year: 2021,
+    chip: 'Apple M1 Pro',
+    display: {
+      resolution: '3024×1964',
+      type: 'Mini-LED XDR, 120Hz',
+      connector: 'New eDP',
+      backlight_ic: 'RAA209100B1',
+      flex_cables: ['821-03088-A']
+    },
+    critical_notes: '⚠️ Mini-LED XDR требует IC Transfer! Без IC - фиолетовые линии',
+    compatible_donors: ['a2442-m1p'],
+    incompatible_donors: ['a2485-m1p', 'a2779-m2p', 'a2992-m3p']
   },
   {
-    id: 'a2681-m2',
-    name: 'MacBook Air 13.6" M2 (2022)',
-    a_number: 'A2681',
-    board_number: '820-02536',
-    year: 2022,
-    chip: 'Apple M2',
+    id: 'a2485-m1p',
+    name: 'MacBook Pro 16" M1 Pro (2021)',
+    a_number: 'A2485',
+    board_number: '820-02021',
+    year: 2021,
+    chip: 'Apple M1 Pro/Max',
     display: {
-      resolution: '2560×1664',
-      type: 'Liquid Retina',
-      connector: 'LVDS (40-pin)',
-      backlight_ic: 'Unknown',
-      flex_cables: ['821-04129-02']
+      resolution: '3456×2234',
+      type: 'Mini-LED XDR, 120Hz',
+      connector: 'New eDP',
+      backlight_ic: 'RAA209100B1',
+      flex_cables: ['821-03088-A']
     },
-    critical_notes: 'Lid Angle Sensor',
-    compatible_donors: ['a2681-m2', 'a3113-m3', 'a3240-m4'],
-    incompatible_donors: ['a1932-18', 'a2179-20', 'a2337-m1']
+    critical_notes: '⚠️ Mini-LED XDR требует IC Transfer! 16" несовместима с 14"',
+    compatible_donors: ['a2485-m1p'],
+    incompatible_donors: ['a2442-m1p', 'a2779-m2p', 'a2991-m2p']
   },
+  // MacBook Air 13" Intel (2018-2020)
+  {
+    id: 'a1932-18',
+    name: 'MacBook Air 13" (2018)',
+    a_number: 'A1932',
+    board_number: '820-01516',
+    year: 2018,
+    chip: 'Intel 8th Gen',
+    display: {
+      resolution: '2560×1600',
+      type: 'IPS, True Tone',
+      connector: 'J8500 (42-pin)',
+      backlight_ic: 'U8400',
+      flex_cables: ['821-01552-A']
+    },
+    compatible_donors: ['a1932-18', 'a2179-20'],
+    incompatible_donors: ['a2337-m1', 'a2681-m2']
+  },
+  {
+    id: 'a2179-20',
+    name: 'MacBook Air 13" (2020)',
+    a_number: 'A2179',
+    board_number: '820-01721',
+    year: 2020,
+    chip: 'Intel 10th Gen',
+    display: {
+      resolution: '2560×1600',
+      type: 'IPS, True Tone',
+      connector: 'J8500 (42-pin)',
+      backlight_ic: 'U8400',
+      flex_cables: ['821-01552-A']
+    },
+    compatible_donors: ['a1932-18', 'a2179-20'],
+    incompatible_donors: ['a2337-m1', 'a2681-m2']
+  },
+  // MacBook Air 13" M1 (2020)
   {
     id: 'a2337-m1',
     name: 'MacBook Air 13" M1 (2020)',
@@ -202,9 +278,82 @@ const MACBOOK_MODELS: MacBookModel[] = [
       backlight_ic: 'UP800',
       flex_cables: ['821-02721-A']
     },
-    critical_notes: '⚠️ Кабель 821-02721-A выглядит как 821-01552-A но разный! Перепутать = не работает',
+    critical_notes: '⚠️ Кабель 821-02721-A выглядит как 821-01552-A но разный!',
     compatible_donors: ['a2337-m1'],
     incompatible_donors: ['a1932-18', 'a2179-20', 'a2681-m2', 'a3113-m3']
+  },
+  // MacBook Air 13" M2 (2022)
+  {
+    id: 'a2681-m2',
+    name: 'MacBook Air 13" M2 (2022)',
+    a_number: 'A2681',
+    board_number: '820-02536',
+    year: 2022,
+    chip: 'Apple M2',
+    display: {
+      resolution: '2560×1664',
+      type: 'Liquid Retina',
+      connector: 'LVDS (40-pin)',
+      backlight_ic: 'Unknown',
+      flex_cables: ['821-04129-02']
+    },
+    compatible_donors: ['a2681-m2', 'a3113-m3', 'a3240-m4'],
+    incompatible_donors: ['a1932-18', 'a2179-20', 'a2337-m1']
+  },
+  // MacBook Air 15" M2 (2023)
+  {
+    id: 'a2941-m2',
+    name: 'MacBook Air 15" M2 (2023)',
+    a_number: 'A2941',
+    board_number: '820-02682',
+    year: 2023,
+    chip: 'Apple M2',
+    display: {
+      resolution: '2880×1864',
+      type: 'Liquid Retina',
+      connector: 'LVDS (40-pin)',
+      backlight_ic: 'Unknown',
+      flex_cables: ['821-04129-02']
+    },
+    critical_notes: '15" несовместима с 13.6" воздухом!',
+    compatible_donors: ['a2941-m2'],
+    incompatible_donors: ['a2681-m2', 'a3113-m3', 'a3240-m4']
+  },
+  // MacBook Air 13" M3 (2024)
+  {
+    id: 'a3113-m3',
+    name: 'MacBook Air 13" M3 (2024)',
+    a_number: 'A3113',
+    board_number: '820-02843',
+    year: 2024,
+    chip: 'Apple M3',
+    display: {
+      resolution: '2560×1664',
+      type: 'Liquid Retina',
+      connector: 'LVDS (40-pin)',
+      backlight_ic: 'Unknown',
+      flex_cables: ['821-04129-02']
+    },
+    compatible_donors: ['a2681-m2', 'a3113-m3', 'a3240-m4'],
+    incompatible_donors: ['a1932-18', 'a2179-20', 'a2337-m1', 'a2941-m2']
+  },
+  // MacBook Air 13" M4 (2025)
+  {
+    id: 'a3240-m4',
+    name: 'MacBook Air 13" M4 (2025)',
+    a_number: 'A3240',
+    board_number: '820-03047',
+    year: 2025,
+    chip: 'Apple M4',
+    display: {
+      resolution: '2560×1664',
+      type: 'Liquid Retina',
+      connector: 'LVDS (40-pin)',
+      backlight_ic: 'Unknown',
+      flex_cables: ['821-04129-02']
+    },
+    compatible_donors: ['a2681-m2', 'a3113-m3', 'a3240-m4'],
+    incompatible_donors: ['a1932-18', 'a2179-20', 'a2337-m1']
   }
 ];
 
@@ -238,19 +387,39 @@ export const MacBookDisplayRepairTool: React.FC = () => {
   // Популярные модели для быстрого выбора
   const popularModels = useMemo(() => {
     return MACBOOK_MODELS.filter(m => 
-      ['a1708-16', 'a1989-18', 'a2338-m1', 'a1707-16', 'a2141-19', 'a2681-m2'].includes(m.id)
+      ['a1708-16', 'a1989-18', 'a2338-m1', 'a2141-19', 'a2681-m2', 'a2337-m1'].includes(m.id)
     );
   }, []);
 
   // Группировка моделей по категориям
   const groupedModels = useMemo(() => {
     const groups: Record<string, MacBookModel[]> = {
-      'MacBook Pro 13" (Intel)': MACBOOK_MODELS.filter(m => m.name.includes('13"') && m.chip.includes('Intel')),
-      'MacBook Pro 13" (Apple Silicon)': MACBOOK_MODELS.filter(m => m.name.includes('13"') && (m.chip.includes('M1') || m.chip.includes('M2'))),
-      'MacBook Pro 15/16"': MACBOOK_MODELS.filter(m => (m.name.includes('15"') || m.name.includes('16"'))),
-      'MacBook Air': MACBOOK_MODELS.filter(m => m.name.includes('Air')),
+      'MacBook Pro 13" (2016-2020 Intel)': MACBOOK_MODELS.filter(m => 
+        m.name.includes('13"') && m.chip.includes('Intel') && m.year <= 2020
+      ),
+      'MacBook Pro 13" M1 (2020)': MACBOOK_MODELS.filter(m => m.id === 'a2338-m1'),
+      'MacBook Pro 15"/16" (Intel)': MACBOOK_MODELS.filter(m => 
+        (m.name.includes('15"') || m.name.includes('16"')) && m.chip.includes('Intel')
+      ),
+      'MacBook Pro 14"/16" (2021+ M1/M2)': MACBOOK_MODELS.filter(m => 
+        (m.name.includes('14"') || m.name.includes('16"')) && m.year >= 2021 && (m.chip.includes('M1') || m.chip.includes('M2'))
+      ),
+      'MacBook Air 13" (2018-2020)': MACBOOK_MODELS.filter(m => 
+        m.name.includes('Air') && m.name.includes('13"') && m.year <= 2020
+      ),
+      'MacBook Air 13" M1 (2020)': MACBOOK_MODELS.filter(m => m.id === 'a2337-m1'),
+      'MacBook Air 13" M2-M4 (2022+)': MACBOOK_MODELS.filter(m => 
+        m.name.includes('Air') && m.name.includes('13"') && m.year >= 2022 && m.year < 2024
+      ),
+      'MacBook Air 13" M3-M4 (2024+)': MACBOOK_MODELS.filter(m => 
+        m.name.includes('Air') && m.name.includes('13"') && m.year >= 2024
+      ),
+      'MacBook Air 15" M2-M3 (2023-2024)': MACBOOK_MODELS.filter(m => 
+        m.name.includes('Air') && m.name.includes('15"')
+      ),
     };
-    return groups;
+    // Удалить пустые группы
+    return Object.fromEntries(Object.entries(groups).filter(([_, models]) => models.length > 0));
   }, []);
 
   const compatibility = useMemo((): CompatibilityResult | null => {
