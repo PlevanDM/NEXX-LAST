@@ -857,6 +857,8 @@ export const App = () => {
           compatibility={compatibility}
           bootSequences={bootSequences}
           measurements={measurements}
+          services={services}
+          servicePrices={servicePrices}
         />
       )}
 
@@ -934,6 +936,7 @@ export const App = () => {
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
              <ServicePriceList 
                services={services}
+               servicePrices={servicePrices}
                rates={rates}
                onClose={closeAllModals}
              />

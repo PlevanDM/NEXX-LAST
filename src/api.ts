@@ -321,9 +321,9 @@ export const fetchAppData = async (): Promise<AppData> => {
       measurements: measurementsData,
       exchangePrices,
       appleExchangeMeta,
-      servicePrices: null, // Используем services напрямую
+      servicePrices: prices as ServicePrices, // Загружаем категориальные цены
       keyCombinations: keyCombinations,
-      services: services, // Добавляем services
+      services: services, // Добавляем услуги (названия и иконки)
       rates: {
         ...rates,
         UAH_TO_USD: 0.024,

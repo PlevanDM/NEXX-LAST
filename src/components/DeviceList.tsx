@@ -240,32 +240,26 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
                     </div>
                   )}
                   
-                  {device.power_ic && (
+                  {(device.power_ic || device.power_ics?.[0]) && (
                     <div className="flex justify-between border-b border-slate-100 pb-1">
                       <span className="text-slate-500">PMIC:</span>
                       <span className="font-mono font-bold text-slate-700">
-                        {device.power_ic.main?.split(' ')[0] || '-'}
+                        {(device.power_ic?.main || device.power_ics?.[0]?.name)?.split(' ')[0] || '-'}
                       </span>
                     </div>
                   )}
 
-                  {device.audio_codec && (
+                  {(device.audio_codec || device.audio_ics?.[0] || device.audio_ic) && (
                     <div className="flex justify-between">
                       <span className="text-slate-500">Audio:</span>
                       <span className="font-mono font-bold text-slate-700">
-                        {device.audio_codec.main?.split(' ')[0] || '-'}
+                        {(device.audio_codec?.main || device.audio_ics?.[0]?.name || device.audio_ic?.name)?.split(' ')[0] || '-'}
                       </span>
                     </div>
                   )}
                 </div>
               </div>
               
-              {/* Footer: Issues Badge */}
-              {device.common_issues && device.common_issues.length > 0 && (
-                <div className="bg-red-50 p-2 text-[10px] text-red-700 font-medium border-t border-red-100 truncate">
-                  ⚠️ {device.common_issues[0]} {device.common_issues.length > 1 && `+${device.common_issues.length - 1}`}
-                </div>
-              )}
             </div>
           ))}
         </div>

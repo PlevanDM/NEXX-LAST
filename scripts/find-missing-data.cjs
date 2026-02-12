@@ -6,8 +6,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const devicesPath = path.join(__dirname, '..', 'public', 'data', 'devices.json');
-const devices = JSON.parse(fs.readFileSync(devicesPath, 'utf-8'));
+const devicesPath = path.join(__dirname, '..', 'public', 'data', 'master-db.json');
+const data = JSON.parse(fs.readFileSync(devicesPath, 'utf-8')); const devices = data.devices;
 
 console.log('🔍 Поиск пропущенных данных\n');
 

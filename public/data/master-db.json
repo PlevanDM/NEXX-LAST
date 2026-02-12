@@ -626,7 +626,8 @@
           "name": "338S00537",
           "function": "Audio Amplifier"
         }
-      ]
+      ],
+      "emc": "8303"
     },
     {
       "name": "iPhone 15 Pro",
@@ -725,7 +726,8 @@
           "name": "338S00537",
           "function": "Audio Amplifier"
         }
-      ]
+      ],
+      "emc": "8302"
     },
     {
       "name": "iPhone 15 Plus",
@@ -820,7 +822,8 @@
           "name": "338S00537",
           "function": "Audio Amplifier"
         }
-      ]
+      ],
+      "emc": "8301"
     },
     {
       "name": "iPhone 15",
@@ -915,7 +918,8 @@
           "name": "338S00537",
           "function": "Audio Amplifier"
         }
-      ]
+      ],
+      "emc": "8300"
     },
     {
       "name": "iPhone 14 Pro Max",
@@ -1405,10 +1409,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00770",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4235"
     },
     {
       "name": "iPhone 13 Pro",
@@ -1496,10 +1501,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00770",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4234"
     },
     {
       "name": "iPhone 13 mini",
@@ -1587,10 +1593,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00770",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4232"
     },
     {
       "name": "iPhone 13",
@@ -1678,10 +1685,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00770",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4233"
     },
     {
       "name": "iPhone 12 Pro Max",
@@ -1769,10 +1777,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00663",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4045"
     },
     {
       "name": "iPhone 12 Pro",
@@ -1860,10 +1869,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00663",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4044"
     },
     {
       "name": "iPhone 12 mini",
@@ -1951,10 +1961,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00663",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4042"
     },
     {
       "name": "iPhone 12",
@@ -2042,10 +2053,11 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00663",
           "function": "Audio Codec"
         }
-      ]
+      ],
+      "emc": "4043"
     },
     {
       "name": "iPhone 11 Pro Max",
@@ -2127,7 +2139,7 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00519",
           "function": "Audio Codec"
         }
       ]
@@ -2212,7 +2224,7 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00519",
           "function": "Audio Codec"
         }
       ]
@@ -2297,7 +2309,7 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
+          "name": "338S00519",
           "function": "Audio Codec"
         }
       ]
@@ -25128,6 +25140,16 @@
           "min": 99,
           "max": 149,
           "avg": 120
+        },
+        "back_glass": {
+          "min": 250,
+          "max": 800,
+          "avg": 450
+        },
+        "cleaning": {
+          "min": 100,
+          "max": 300,
+          "avg": 200
         }
       },
       "tablet": {
@@ -25195,6 +25217,11 @@
           "min": 99,
           "max": 149,
           "avg": 120
+        },
+        "cleaning": {
+          "min": 150,
+          "max": 400,
+          "avg": 250
         }
       },
       "laptop": {
@@ -25262,6 +25289,11 @@
           "min": 249,
           "max": 249,
           "avg": 249
+        },
+        "cleaning": {
+          "min": 200,
+          "max": 500,
+          "avg": 350
         }
       },
       "watch": {

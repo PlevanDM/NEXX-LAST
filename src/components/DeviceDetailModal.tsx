@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from './Modal';
 import { Icons } from './Icons';
-import { Device, CompatibilityItem, BootSequence, DiodeMeasurement } from '../types';
+import { Device, CompatibilityItem, BootSequence, DiodeMeasurement, ServicePrices } from '../types';
 import { formatPrice, convertPrice } from '../utils';
 
 interface DeviceDetailModalProps {
@@ -11,12 +11,15 @@ interface DeviceDetailModalProps {
   compatibility: Record<string, any>;
   bootSequences: Record<string, BootSequence[]>;
   measurements: Record<string, DiodeMeasurement[]>;
+  services: Record<string, any>;
+  servicePrices: ServicePrices | null;
 }
 
 export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({ 
-  device, onClose, rates, compatibility, bootSequences, measurements 
+  device, onClose, rates, compatibility, bootSequences, measurements, services, servicePrices
 }) => {
   const [activeTab, setActiveTab] = React.useState<'info' | 'chips' | 'compatibility' | 'diag'>('info');
+  const [selectedService, setSelectedService] = React.useState<string | null>(null);
 
   // Helper to find compatibility data for this device
   const getCompatibility = (type: string) => {
@@ -107,22 +110,6 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                 </div>
               )}
 
-              {/* Common Issues */}
-              {device.common_issues && device.common_issues.length > 0 && (
-                <div className="bg-red-50 rounded-xl p-4 border border-red-100">
-                  <h3 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
-                    <Icons.Error /> Типовые неисправности
-                  </h3>
-                  <ul className="space-y-2">
-                    {device.common_issues.map((issue, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-red-900">
-                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                        <span>{issue}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
 
             <div className="space-y-4">
@@ -159,6 +146,88 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
           </div>
         )}
 
+        {/* COMPATIBLE SERVICES SECTION (Always show in Info tab or as separate tab) */}
+        {activeTab === 'info' && (
+          <div className="mt-8 pt-8 border-t border-slate-200">
+            <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <Icons.Price className="text-orange-500" /> Совместимые услуги
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <p className="text-sm text-slate-500 mb-4">
+                  Выберите услугу, чтобы увидеть ориентировочную стоимость для этой категории устройств.
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {Object.entries(services).map(([id, service]: [string, any]) => {
+                    const isCompatible = !device.category || !service.categories || service.categories.includes(device.category.toLowerCase()) || service.categories.includes(device.device_type?.toLowerCase());
+                    if (!isCompatible && device.category) return null;
+
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => setSelectedService(id)}
+                        className={`p-3 rounded-xl border text-left transition-all ${
+                          selectedService === id
+                            ? 'bg-orange-600 border-orange-600 text-white shadow-lg'
+                            : 'bg-white border-slate-200 text-slate-700 hover:border-orange-300 hover:bg-orange-50'
+                        }`}
+                      >
+                        <div className="font-bold text-sm truncate">{service.name}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="bg-slate-900 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Icons.Calculator className="w-24 h-24" />
+                </div>
+
+                <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
+                  Быстрая оценка
+                </h4>
+
+                {selectedService ? (
+                  <div className="space-y-6 relative z-10">
+                    <div>
+                      <div className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-1">Выбрано:</div>
+                      <div className="text-xl font-bold text-orange-400">{services[selectedService]?.name}</div>
+                    </div>
+
+                    {servicePrices && device.category && servicePrices.byCategory[device.category.toLowerCase()]?.[selectedService] ? (
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="bg-white/10 rounded-xl p-4 border border-white/10">
+                          <div className="text-slate-400 text-xs mb-1">Ориентировочная цена</div>
+                          <div className="text-3xl font-bold text-white">
+                            {servicePrices.byCategory[device.category.toLowerCase()][selectedService].min} - {servicePrices.byCategory[device.category.toLowerCase()][selectedService].max} RON
+                          </div>
+                          <div className="text-sm text-slate-400 mt-1">Средняя: {servicePrices.byCategory[device.category.toLowerCase()][selectedService].avg} RON</div>
+                        </div>
+                        <p className="text-xs text-slate-500 italic">
+                          * Окончательная цена зависит от конкретной модели и сложности работы.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="bg-white/10 rounded-xl p-4 border border-white/10">
+                        <p className="text-slate-300 text-sm">Цена по запросу для данной категории.</p>
+                        <button className="mt-3 w-full py-2 bg-orange-600 hover:bg-orange-500 rounded-lg font-bold transition-colors">
+                          Уточнить цену
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="h-40 flex flex-col items-center justify-center text-slate-500 text-center">
+                    <Icons.Price className="w-12 h-12 mb-3 opacity-20" />
+                    <p className="text-sm">Выберите услугу слева для расчета стоимости</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* CHIPS TAB */}
         {activeTab === 'chips' && (
           <div className="space-y-4">
@@ -182,9 +251,20 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
               <div className="bg-violet-50 p-4 rounded-xl">
                 <h3 className="font-bold text-violet-800 mb-2">PMIC (Питание)</h3>
                 <div className="bg-white p-3 rounded-lg shadow-sm">
-                  {device.power_ic ? (
+                  {device.power_ic || device.power_ics?.[0] ? (
                     <div>
-                      <p className="font-mono text-lg text-violet-600 font-bold">{device.power_ic.main}</p>
+                      <p className="font-mono text-lg text-violet-600 font-bold">
+                        {device.power_ic?.main || device.power_ics?.[0]?.name}
+                      </p>
+                      {(device.power_ics?.length || 0) > 1 && (
+                        <div className="mt-2 pt-2 border-t border-slate-100">
+                          {device.power_ics?.slice(1).map((ic, i) => (
+                            <div key={i} className="text-xs text-slate-500 font-mono">
+                              {ic.name} {ic.function && `(${ic.function})`}
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ) : <p className="text-slate-400">Нет данных</p>}
                 </div>
@@ -193,9 +273,20 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
               <div className="bg-violet-50 p-4 rounded-xl">
                 <h3 className="font-bold text-violet-800 mb-2">Audio Codec</h3>
                 <div className="bg-white p-3 rounded-lg shadow-sm">
-                  {device.audio_codec ? (
+                  {device.audio_codec || device.audio_ics?.[0] || device.audio_ic ? (
                     <div>
-                      <p className="font-mono text-lg text-violet-600 font-bold">{device.audio_codec.main}</p>
+                      <p className="font-mono text-lg text-violet-600 font-bold">
+                        {device.audio_codec?.main || device.audio_ics?.[0]?.name || device.audio_ic?.name}
+                      </p>
+                      {(device.audio_ics?.length || 0) > 1 && (
+                        <div className="mt-2 pt-2 border-t border-slate-100">
+                          {device.audio_ics?.slice(1).map((ic, i) => (
+                            <div key={i} className="text-xs text-slate-500 font-mono">
+                              {ic.name} {ic.function && `(${ic.function})`}
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ) : <p className="text-slate-400">Нет данных</p>}
                 </div>

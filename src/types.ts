@@ -50,7 +50,6 @@ export interface Device {
   audio_codec?: { main: string };
   
   // Ремонт
-  common_issues?: string[];
   repair_difficulty?: string;
   repair_time?: string;
   connector_type?: string;
@@ -174,11 +173,17 @@ export interface ServiceModel {
   services: Record<string, string>;
 }
 
+export interface ServicePriceRange {
+  min: number;
+  max: number;
+  avg: number;
+}
+
 export interface ServicePrices {
-  iPhone: ServiceModel[];
-  iPad: ServiceModel[];
-  MacBook: ServiceModel[];
-  "Apple Watch": ServiceModel[];
+  lastUpdated: string;
+  currency: string;
+  byCategory: Record<string, Record<string, ServicePriceRange>>;
+  appleWatch?: Record<string, Record<string, number>>;
 }
 
 export interface OfficialServiceData {
