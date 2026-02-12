@@ -13,6 +13,7 @@ import { ICDetailModal } from './components/ICDetailModal';
 import { DeviceDetailModal } from './components/DeviceDetailModal';
 import { MacBoardList } from './components/MacBoardList';
 import { ServicePriceList } from './components/ServicePriceList'; // NEW
+import { MacBookDisplayRepairTool } from './components/MacBookDisplayRepairTool'; // NEW: Display Repair
 import { KeyCombinations } from './components/KeyCombinations'; // NEW: DFU/Recovery
 import { PowerStationTracker } from './components/PowerStationTracker'; // EcoFlow / Power Tracker
 import { ExchangePriceListModal } from './components/ExchangePriceListModal'; // Apple Official UA
@@ -64,6 +65,7 @@ export const App = () => {
   const [showExchangeUA, setShowExchangeUA] = React.useState(false); // Прайс Apple Official UA
   const [showKeyCombo, setShowKeyCombo] = React.useState(false); // NEW: DFU/Recovery
   const [showPowerTracker, setShowPowerTracker] = React.useState(false); // Power Tracker (EcoFlow, Bluetti, DJI)
+  const [showMacBookDisplay, setShowMacBookDisplay] = React.useState(false); // NEW: MacBook Display Repair Tool
   
   // Новое состояние
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -158,7 +160,8 @@ export const App = () => {
       'errors': '/nexx/errors',
       'powerTracker': '/nexx/power-tracker',
       'keycombo': '/nexx/key-combo',
-      'prices': '/nexx/prices'
+      'prices': '/nexx/prices',
+      'macbook_display': '/nexx/macbook-display-repair'
     };
     navigate(routeMap[sectionName] || '/nexx');
     setShowMobileMenu(false);
@@ -192,6 +195,7 @@ export const App = () => {
     setShowExchangeUA(false);
     setShowKeyCombo(false);
     setShowPowerTracker(false);
+    setShowMacBookDisplay(false);
     setSelectedDevice(null);
     setSelectedIC(null);
     setSelectedPart(null);
@@ -234,6 +238,9 @@ export const App = () => {
     } else if (path === '/nexx/prices') {
       setShowPriceTable(true);
       setActiveSection('prices');
+    } else if (path === '/nexx/macbook-display-repair') {
+      setShowMacBookDisplay(true);
+      setActiveSection('macbook_display');
     } else if (path.startsWith('/nexx/ic/')) {
       const icName = decodeURIComponent(path.replace('/nexx/ic/', ''));
       if (ics[icName]) {
@@ -558,6 +565,7 @@ export const App = () => {
                   <div className="absolute right-0 top-full mt-2 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in">
                     {[
                       { label: 'EcoFlow / PowerStation', icon: '⚡', section: 'powerTracker', setter: setShowPowerTracker },
+                      { label: 'MacBook Дисплей', icon: '🖥️', section: 'macbook_display', setter: setShowMacBookDisplay },
                       { label: 'MacBook платы', icon: null, iconEl: <Icons.Board />, section: 'boards', setter: setShowMacBoards, count: counts.boards },
                       { label: 'База знаний', icon: null, iconEl: <Icons.Book />, section: 'knowledge', setter: setShowKnowledge },
                       { label: 'DFU / Recovery', icon: '⌨️', section: 'keycombo', setter: setShowKeyCombo },
@@ -838,6 +846,23 @@ export const App = () => {
                rates={rates}
                onClose={closeAllModals}
              />
+          </div>
+        </div>
+      )}
+
+      {/* MacBook Display Repair Tool Modal (NEW) */}
+      {showMacBookDisplay && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl h-[90vh] overflow-hidden">
+             <div className="flex flex-col h-full">
+               <div className="flex justify-between items-center p-4 border-b">
+                 <h2 className="text-xl font-bold">🖥️ MacBook Display Repair Tool</h2>
+                 <button onClick={closeAllModals} className="text-2xl text-gray-500 hover:text-gray-700">×</button>
+               </div>
+               <div className="flex-1 overflow-auto p-4">
+                 <MacBookDisplayRepairTool />
+               </div>
+             </div>
           </div>
         </div>
       )}
