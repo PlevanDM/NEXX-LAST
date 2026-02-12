@@ -124,18 +124,18 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 px-4 bg-gray-900 overflow-x-hidden">
+    <section id="services" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-900 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white">
             {t('services.title')}
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-sm sm:text-lg">
             {t('services.subtitle')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 auto-rows-fr">
           {services.map((service, idx) => {
             const currentIndex = activeCardIndex[idx] || 0;
             const items = service.isGallery ? (service.works as any[]) : (service.subServices as any[]);
@@ -144,25 +144,25 @@ const Services: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-6 md:p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full min-h-[440px]"
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full"
               >
                 {/* Gradient hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
                 
                 {/* Badge */}
                 {(service.popular || service.featured) && (
-                  <div className={`absolute -top-3 right-6 ${service.popular ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'} text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg z-20 flex items-center gap-1.5`}>
+                  <div className={`absolute -top-3 right-4 sm:right-6 ${service.popular ? 'bg-gradient-to-r from-orange-500 to-red-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'} text-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold shadow-lg z-20 flex items-center gap-1 sm:gap-1.5`}>
                     <span>{service.popular ? '🔥' : '📸'}</span>
                     {service.popular ? t('services.popular') : t('gallery.title')}
                   </div>
                 )}
                 
                 {/* Header with icon and title */}
-                <div className="flex items-center gap-4 mb-6 relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white text-2xl shadow-lg">
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 relative z-10">
+                  <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg flex-shrink-0">
                     <i className={`fas ${service.icon}`}></i>
                   </div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"> 
+                  <h3 className="text-lg sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"> 
                     {service.title}
                   </h3>
                 </div>
@@ -187,20 +187,25 @@ const Services: React.FC = () => {
                     <div className="flex items-center justify-between mt-auto">
                       <button
                         onClick={() => prevSlide(idx, items.length)}
+                        aria-label="Предыдущий слайд"
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-left text-sm"></i>
                       </button>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2" role="tablist" aria-label="Слайды">
                         {items.map((_, i) => (
                           <div
                             key={i}
+                            role="tab"
+                            aria-selected={i === currentIndex}
+                            aria-label={`Слайд ${i + 1}`}
                             className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-blue-500 w-4' : 'bg-gray-600'}`}
                           />
                         ))}
                       </div>
                       <button
                         onClick={() => nextSlide(idx, items.length)}
+                        aria-label="Следующий слайд"
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-right text-sm"></i>
@@ -226,20 +231,25 @@ const Services: React.FC = () => {
                     <div className="flex items-center justify-between mb-6">
                       <button
                         onClick={() => prevSlide(idx, items.length)}
+                        aria-label="Предыдущий слайд"
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-left text-sm"></i>
                       </button>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2" role="tablist" aria-label="Слайды">
                         {items.map((_, i) => (
                           <div
                             key={i}
+                            role="tab"
+                            aria-selected={i === currentIndex}
+                            aria-label={`Слайд ${i + 1}`}
                             className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-blue-500 w-4' : 'bg-gray-600'}`}
                           />
                         ))}
                       </div>
                       <button
                         onClick={() => nextSlide(idx, items.length)}
+                        aria-label="Следующий слайд"
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-right text-sm"></i>
@@ -248,13 +258,13 @@ const Services: React.FC = () => {
                     
                     {/* Specs in 2 columns */}
                     {service.specs && (
-                      <div className="grid grid-cols-2 gap-x-3 gap-y-2 pt-4 border-t border-gray-700/50 mb-6">
+                      <div className="grid grid-cols-2 gap-x-2 sm:gap-x-3 gap-y-1.5 sm:gap-y-2 pt-3 sm:pt-4 border-t border-gray-700/50 mb-4 sm:mb-6">
                         {(service.specs as string[]).map((spec, sidx) => (
                           <div
                             key={sidx}
-                            className="flex items-center gap-2 text-xs text-gray-400"
+                            className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-gray-400"
                           >
-                            <i className="fas fa-check text-green-500/80 text-[10px]"></i>
+                            <i className="fas fa-check text-green-500/80 text-[10px] flex-shrink-0"></i>
                             <span className="truncate">{spec}</span>
                           </div>
                         ))}

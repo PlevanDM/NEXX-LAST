@@ -146,7 +146,7 @@ export const App = () => {
   };
 
   // Функция для открытия модального окна с учетом истории
-  const openModal = (modalSetter: any, sectionName: string) => {
+  const openModal = (_modalSetter: any, sectionName: string) => {
     // Mapping section names to routes
     const routeMap: Record<string, string> = {
       'calculator': '/nexx/calculator',
@@ -278,16 +278,7 @@ export const App = () => {
       setRates(data.rates);
       setKeyCombinations(data.keyCombinations);
       
-      // Debug logging
-      console.log('📊 Data loaded:', {
-        devices: data.devices?.length || 0,
-        errors: Object.keys(data.errors || {}).length,
-        ics: Object.keys(data.ics || {}).length,
-        logicBoards: data.logicBoards?.length || 0,
-        keyCombinations: Object.keys(data.keyCombinations || {}).length,
-        services: Object.keys(data.services || {}).length,
-        guides: data.guides?.length || 0
-      });
+      // Data loaded successfully
     } catch (err: any) {
       console.error(err);
       const isUnauth = err?.message === 'UNAUTHORIZED';
@@ -342,28 +333,28 @@ export const App = () => {
     // Поиск устройств
     results.devices = devices.filter(d => 
       d.name.toLowerCase().includes(query) ||
-      d.model_number?.toLowerCase().includes(query) ||
-      d.board_number?.toLowerCase().includes(query) ||
-      (d.board_numbers || []).some(bn => bn.toLowerCase().includes(query))
+      (d.model_number?.toLowerCase() ?? '').includes(query) ||
+      (d.board_number?.toLowerCase() ?? '').includes(query) ||
+      (d.board_numbers || []).some(bn => (bn ?? '').toLowerCase().includes(query))
     ).slice(0, 5);
     
     // Поиск IC
     results.ics = Object.values(ics).filter(ic => 
-      ic.name?.toLowerCase().includes(query) ||
-      ic.designation?.toLowerCase().includes(query) ||
-      (ic.functions || []).some(f => f.toLowerCase().includes(query))
+      (ic.name?.toLowerCase() ?? '').includes(query) ||
+      (ic.designation?.toLowerCase() ?? '').includes(query) ||
+      (ic.functions || []).some(f => (f ?? '').toLowerCase().includes(query))
     ).slice(0, 5);
     
     // Поиск ошибок
     results.errors = Object.values(errors).filter(err => 
-      String(err.code).toLowerCase().includes(query) ||
-      err.description?.toLowerCase().includes(query)
+      String(err.code ?? '').toLowerCase().includes(query) ||
+      (err.description?.toLowerCase() ?? '').includes(query)
     ).slice(0, 5);
     
     // Поиск по ценам
     results.prices = Object.values(prices).filter(price => 
-      price.article?.toLowerCase().includes(query) ||
-      price.description?.toLowerCase().includes(query)
+      (price.article?.toLowerCase() ?? '').includes(query) ||
+      (price.description?.toLowerCase() ?? '').includes(query)
     ).slice(0, 5);
     
     return results;
@@ -417,107 +408,88 @@ export const App = () => {
     );
   }
 
+  // Dropdown state for "Tools" menu
+  const [showToolsMenu, setShowToolsMenu] = React.useState(false);
+  const toolsMenuRef = React.useRef<HTMLDivElement>(null);
+
+  // Close tools dropdown on outside click
+  React.useEffect(() => {
+    if (!showToolsMenu) return;
+    const handleClick = (e: MouseEvent) => {
+      if (toolsMenuRef.current && !toolsMenuRef.current.contains(e.target as Node)) {
+        setShowToolsMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showToolsMenu]);
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans" style={{ minHeight: '100vh', backgroundColor: '#f8fafc', color: '#0f172a' }}>
-      {/* Navbar — на всю ширину, компактнее */}
-      <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30" style={{ backgroundColor: '#0f172a', color: '#fff' }}>
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+      {/* ═══ NAVBAR — clean, minimal, unified colors ═══ */}
+      <nav className="bg-slate-900 text-white shadow-lg sticky top-0 z-30">
         <div className="w-full px-3 sm:px-4 lg:px-6">
-          <div className="flex justify-between items-center gap-2 sm:gap-4" style={{ height: 56, minHeight: 56 }}>
-            {/* Logo — то же лого что на лендинге: nexx-logo.png */}
-            <a
-              href="/"
-              className="nexx-logo-link flex items-center gap-2 flex-shrink-0 hover:opacity-90 transition-opacity"
-              title="На головну (лендинг)"
-            >
-              <img src="/static/nexx-logo.png?v=6" alt="NEXX GSM" className="w-auto object-contain logo-pulse" style={{ height: 48, background: 'transparent' }} />
-              <span className="font-bold text-lg tracking-tight hidden sm:inline text-white">Database</span>
+          <div className="flex items-center gap-2 sm:gap-3" style={{ height: 56, minHeight: 56 }}>
+            {/* Logo */}
+            <a href="/" className="flex items-center gap-2 flex-shrink-0 hover:opacity-90 transition-opacity" title="На главную">
+              <img src="/static/nexx-logo.png?v=6" alt="NEXX GSM" className="w-auto object-contain logo-pulse" style={{ height: 40, background: 'transparent' }} />
+              <span className="font-bold text-base tracking-tight hidden sm:inline text-white">Database</span>
             </a>
-            {/* Кнопка выход на лендинг — всегда видна */}
-            <a
-              href="/"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-xs font-medium transition-colors flex-shrink-0 min-h-[40px] lg:min-h-0"
-              title="На головну (лендинг)"
-            >
-              <span className="lg:hidden">🏠</span>
-              <span>На сайт</span>
-            </a>
-            
-            {/* EcoFlow — в навбаре на мобиле (lg:hidden), всегда видна без меню */}
-            <button
-              type="button"
-              onClick={() => openModal(setShowPowerTracker, 'powerTracker')}
-              className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium transition-colors flex-shrink-0 min-h-[40px]"
-              title="EcoFlow — ціни станцій"
-            >
-              <span>⚡</span>
-              <span>EcoFlow</span>
-            </button>
-            
-            {/* Глобальный поиск */}
-            <div className="relative flex-1 min-w-0 max-w-md hidden md:block mx-1 lg:mx-2">
+
+            {/* Global Search — always visible */}
+            <div className="relative flex-1 min-w-0 max-w-lg mx-1 lg:mx-3">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Icons.Search />
               </div>
               <input
                 type="text"
-                placeholder="Поиск по всей базе..."
+                placeholder="Поиск... (Ctrl+K)"
+                aria-label="Глобальный поиск по базе данных"
                 value={globalSearch}
                 onChange={(e) => setGlobalSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-400 text-sm"
               />
-              
-              {/* Результаты глобального поиска */}
+              {/* Search Results Dropdown */}
               {globalSearchResults && globalSearch.length >= 2 && (
                 <div className="absolute top-full mt-2 w-full bg-slate-800 border border-slate-700 rounded-lg shadow-2xl max-h-96 overflow-auto z-50">
                   {globalSearchResults.devices.length > 0 && (
                     <div className="p-3 border-b border-slate-700">
-                      <div className="text-xs text-slate-400 mb-2 font-bold">Устройства ({globalSearchResults.devices.length})</div>
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Устройства</div>
                       {globalSearchResults.devices.map((device: Device) => (
-                        <div key={device.name} 
-                             onClick={() => { handleDeviceSelect(device); setGlobalSearch(''); }}
-                             className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
+                        <div key={device.name} onClick={() => { handleDeviceSelect(device); setGlobalSearch(''); }} className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{device.name}</div>
                           <div className="text-xs text-slate-400">{device.model_number}</div>
                         </div>
                       ))}
                     </div>
                   )}
-                  
                   {globalSearchResults.ics.length > 0 && (
                     <div className="p-3 border-b border-slate-700">
-                      <div className="text-xs text-slate-400 mb-2 font-bold">Микросхемы ({globalSearchResults.ics.length})</div>
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Микросхемы</div>
                       {globalSearchResults.ics.map((ic: ICComponent) => (
-                        <div key={ic.name} 
-                             onClick={() => { navigate(`/nexx/ic/${encodeURIComponent(ic.name)}`); setGlobalSearch(''); }}
-                             className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
+                        <div key={ic.name} onClick={() => { navigate(`/nexx/ic/${encodeURIComponent(ic.name)}`); setGlobalSearch(''); }} className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{ic.name}</div>
                           <div className="text-xs text-slate-400">{ic.designation}</div>
                         </div>
                       ))}
                     </div>
                   )}
-                  
                   {globalSearchResults.errors.length > 0 && (
                     <div className="p-3 border-b border-slate-700">
-                      <div className="text-xs text-slate-400 mb-2 font-bold">Ошибки ({globalSearchResults.errors.length})</div>
-                      {globalSearchResults.errors.map((error: ErrorDetail) => (
-                        <div key={error.code} className="p-2 hover:bg-slate-700 rounded text-sm">
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Ошибки</div>
+                      {globalSearchResults.errors.map((error: ErrorDetail, idx: number) => (
+                        <div key={`${error.code}-${idx}`} onClick={() => { navigate('/nexx/errors'); setGlobalSearch(''); }} className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{error.code}</div>
                           <div className="text-xs text-slate-400 truncate">{error.description}</div>
                         </div>
                       ))}
                     </div>
                   )}
-                  
                   {globalSearchResults.prices.length > 0 && (
                     <div className="p-3 border-b border-slate-700">
-                      <div className="text-xs text-slate-400 mb-2 font-bold">Цены ({globalSearchResults.prices.length})</div>
+                      <div className="text-xs text-slate-400 mb-2 font-bold">Цены</div>
                       {globalSearchResults.prices.map((price: PriceData) => (
-                        <div 
-                          key={price.article} 
-                          onClick={() => { navigate(`/nexx/part/${encodeURIComponent(price.article)}`); setGlobalSearch(''); }}
-                          className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm"
-                        >
+                        <div key={price.article} onClick={() => { navigate(`/nexx/part/${encodeURIComponent(price.article)}`); setGlobalSearch(''); }} className="p-2 hover:bg-slate-700 rounded cursor-pointer text-sm">
                           <div className="font-medium">{price.article}</div>
                           <div className="text-xs text-slate-400 truncate">{price.description}</div>
                           <div className="text-xs text-green-400 font-bold mt-1">{price.price_uah} ₴</div>
@@ -525,286 +497,206 @@ export const App = () => {
                       ))}
                     </div>
                   )}
-                  
                   {globalSearchResults.devices.length === 0 && globalSearchResults.ics.length === 0 && globalSearchResults.errors.length === 0 && globalSearchResults.prices.length === 0 && (
-                    <div className="p-4 text-center text-slate-400 text-sm">
-                      Ничего не найдено
-                    </div>
+                    <div className="p-4 text-center text-slate-400 text-sm">Ничего не найдено</div>
                   )}
                 </div>
               )}
             </div>
             
-            {/* Desktop Navigation — компактные кнопки, в одну строку */}
-            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 overflow-x-auto max-w-full custom-scrollbar shrink-0 flex-nowrap justify-end">
+            {/* ─── Desktop: Primary actions (3 buttons) + Tools dropdown ─── */}
+            <div className="hidden lg:flex items-center gap-1.5 flex-shrink-0">
+              {/* Primary: Calculator */}
               <button
                 onClick={() => openModal(setShowCalculator, 'calculator')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
                   activeSection === 'calculator'
-                    ? 'bg-blue-600 shadow-lg shadow-blue-900/50 border border-blue-500 ring-2 ring-blue-400'
-                    : 'bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/50 border border-blue-500'
+                    ? 'bg-blue-600 text-white ring-2 ring-blue-400'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white'
                 }`}
               >
                 <Icons.Calculator />
                 <span>Калькулятор</span>
               </button>
+              {/* Primary: Services */}
               <button
                 onClick={() => openModal(setShowServicePrices, 'services')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-orange-900/50 border border-orange-500 ${
-                  activeSection === 'services' ? 'bg-orange-600 ring-2 ring-orange-400' : 'bg-orange-600 hover:bg-orange-500'
+                className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+                  activeSection === 'services'
+                    ? 'bg-slate-600 text-white ring-2 ring-blue-400'
+                    : 'bg-slate-700 hover:bg-slate-600 text-white'
                 }`}
               >
                 <Icons.Price />
                 <span>Услуги</span>
               </button>
+              {/* Primary: Прайс UA */}
               <button
                 onClick={() => openModal(setShowExchangeUA, 'exchangeUA')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-amber-900/50 border border-amber-500 ${
-                  activeSection === 'exchangeUA' ? 'bg-amber-600 ring-2 ring-amber-400' : 'bg-amber-600 hover:bg-amber-500'
+                className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+                  activeSection === 'exchangeUA'
+                    ? 'bg-slate-600 text-white ring-2 ring-blue-400'
+                    : 'bg-slate-700 hover:bg-slate-600 text-white'
                 }`}
               >
                 <Icons.Price />
                 <span>Прайс UA</span>
               </button>
-              <button
-                onClick={() => openModal(setShowPowerTracker, 'powerTracker')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 shadow-lg shadow-emerald-900/50 border border-emerald-500 ${
-                  activeSection === 'powerTracker' ? 'bg-emerald-600 ring-2 ring-emerald-400' : 'bg-emerald-600 hover:bg-emerald-500'
-                }`}
-              >
-                <span>⚡</span>
-                <span>EcoFlow</span>
-              </button>
-              <button
-                onClick={() => openModal(setShowMacBoards, 'boards')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
-                  activeSection === 'boards' ? 'bg-slate-700 ring-2 ring-blue-400' : 'bg-slate-800 hover:bg-slate-700'
-                }`}
-              >
-                <span className="text-blue-400"><Icons.Board /></span>
-                <span>MacBook</span>
-                {counts.boards > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-blue-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
-                    {counts.boards}
-                  </span>
+
+              {/* ─── Tools Dropdown ─── */}
+              <div className="relative" ref={toolsMenuRef}>
+                <button
+                  onClick={() => setShowToolsMenu(!showToolsMenu)}
+                  className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+                    showToolsMenu ? 'bg-slate-600 text-white' : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
+                  }`}
+                >
+                  <span>Ещё</span>
+                  <svg className={`w-3.5 h-3.5 transition-transform ${showToolsMenu ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {showToolsMenu && (
+                  <div className="absolute right-0 top-full mt-2 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in">
+                    {[
+                      { label: 'EcoFlow / PowerStation', icon: '⚡', section: 'powerTracker', setter: setShowPowerTracker },
+                      { label: 'MacBook платы', icon: null, iconEl: <Icons.Board />, section: 'boards', setter: setShowMacBoards, count: counts.boards },
+                      { label: 'База знаний', icon: null, iconEl: <Icons.Book />, section: 'knowledge', setter: setShowKnowledge },
+                      { label: 'DFU / Recovery', icon: '⌨️', section: 'keycombo', setter: setShowKeyCombo },
+                      { label: 'Микросхемы (IC)', icon: null, iconEl: <Icons.Chip />, section: 'ics', setter: setShowICs, count: counts.ics },
+                      { label: 'Коды ошибок', icon: null, iconEl: <Icons.Error />, section: 'errors', setter: setShowErrors, count: counts.errors },
+                    ].map((item) => (
+                      <button
+                        key={item.section}
+                        onClick={() => { openModal(item.setter, item.section); setShowToolsMenu(false); }}
+                        className={`w-full flex items-center gap-3 px-4 py-3 text-sm text-left transition-colors ${
+                          activeSection === item.section ? 'bg-blue-600/20 text-blue-300' : 'text-slate-200 hover:bg-slate-700'
+                        }`}
+                      >
+                        <span className="w-5 text-center text-base flex-shrink-0">{item.icon || item.iconEl}</span>
+                        <span className="flex-1">{item.label}</span>
+                        {item.count ? (
+                          <span className="text-[10px] text-slate-400 bg-slate-700 px-1.5 py-0.5 rounded-full font-mono" title={`${item.count} записей в базе`}>{item.count}</span>
+                        ) : null}
+                      </button>
+                    ))}
+                    <div className="border-t border-slate-700">
+                      <a href="/" className="w-full flex items-center gap-3 px-4 py-3 text-sm text-slate-400 hover:bg-slate-700 hover:text-white transition-colors">
+                        <span className="w-5 text-center">🏠</span>
+                        <span>На сайт</span>
+                      </a>
+                    </div>
+                  </div>
                 )}
-              </button>
-              <button
-                onClick={() => openModal(setShowKnowledge, 'knowledge')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
-                  activeSection === 'knowledge' ? 'bg-slate-700 ring-2 ring-indigo-400' : 'bg-slate-800 hover:bg-slate-700'
-                }`}
-              >
-                <span className="text-indigo-400"><Icons.Book /></span>
-                <span>Инфо</span>
-              </button>
-              <button
-                onClick={() => openModal(setShowKeyCombo, 'keycombo')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 ${
-                  activeSection === 'keycombo' ? 'bg-slate-700 ring-2 ring-purple-400' : 'bg-slate-800 hover:bg-slate-700'
-                }`}
-              >
-                <span className="text-purple-400">⌨️</span>
-                <span>DFU</span>
-              </button>
-              <button
-                onClick={() => openModal(setShowICs, 'ics')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
-                  activeSection === 'ics' ? 'bg-slate-700 ring-2 ring-violet-400' : 'bg-slate-800 hover:bg-slate-700'
-                }`}
-              >
-                <span className="text-violet-400"><Icons.Chip /></span>
-                <span>IC</span>
-                {counts.ics > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-violet-500 text-white text-[10px] rounded-full px-1 min-w-[1rem] h-4 flex items-center justify-center font-bold">
-                    {counts.ics}
-                  </span>
-                )}
-              </button>
-              <button
-                onClick={() => openModal(setShowErrors, 'errors')}
-                className={`flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg transition-colors text-xs font-medium whitespace-nowrap shrink-0 relative ${
-                  activeSection === 'errors' ? 'bg-slate-700 ring-2 ring-red-400' : 'bg-slate-800 hover:bg-slate-700'
-                }`}
-              >
-                <span className="text-red-400"><Icons.Error /></span>
-                <span>Ошибки</span>
-                {counts.errors > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[10px] rounded-full px-1 min-w-[1rem] h-4 flex items-center justify-center font-bold">
-                    {counts.errors}
-                  </span>
-                )}
-              </button>
+              </div>
             </div>
             
-            {/* Mobile Menu Button */}
+            {/* ─── Mobile: Hamburger ─── */}
             <button 
               onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="lg:hidden flex items-center justify-center w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors flex-shrink-0"
             >
               {showMobileMenu ? <Icons.Close /> : '☰'}
             </button>
           </div>
         </div>
         
-        {/* Mobile Menu — прокручиваемый, EcoFlow вверху */}
+        {/* ═══ Mobile Menu — clean, grouped ═══ */}
         {showMobileMenu && (
           <div className="lg:hidden bg-slate-800 border-t border-slate-700 max-h-[85vh] overflow-y-auto">
-            <div className="px-4 py-3 space-y-2">
-              <a href="/" className="w-full flex items-center justify-between px-4 py-3 bg-slate-600 hover:bg-slate-500 rounded-lg text-left text-white font-medium" onClick={() => setShowMobileMenu(false)}>
-                <span className="flex items-center gap-3">🏠 На сайт (головна)</span>
-              </a>
-              {/* EcoFlow — сразу под «На сайт», зелёная кнопка */}
-              <button onClick={() => { openModal(setShowPowerTracker, 'powerTracker'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-left text-white font-medium">
-                <span className="flex items-center gap-3">
-                  <span className="text-xl">⚡</span>
-                  <span>EcoFlow — ціни станцій</span>
-                </span>
-              </button>
+            <div className="px-3 py-3 space-y-1">
               {/* Mobile Search */}
-              <div className="relative mb-3">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Icons.Search />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Поиск..."
-                  value={globalSearch}
-                  onChange={(e) => setGlobalSearch(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-400 text-sm"
-                />
+              <div className="relative mb-2">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icons.Search /></div>
+                <input type="text" placeholder="Поиск..." value={globalSearch} onChange={(e) => setGlobalSearch(e.target.value)} className="w-full pl-10 pr-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-400 text-sm" />
               </div>
+
+              {/* Primary tools */}
+              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2 pt-2">Инструменты</p>
+              {[
+                { label: 'Калькулятор', icon: <Icons.Calculator />, section: 'calculator', setter: setShowCalculator, primary: true },
+                { label: 'Услуги', icon: <Icons.Price />, section: 'services', setter: setShowServicePrices },
+                { label: 'Прайс Украина (Apple)', icon: <Icons.Price />, section: 'exchangeUA', setter: setShowExchangeUA },
+                { label: 'EcoFlow / PowerStation', icon: <span>⚡</span>, section: 'powerTracker', setter: setShowPowerTracker },
+              ].map((item) => (
+                <button key={item.section} onClick={() => { openModal(item.setter, item.section); setShowMobileMenu(false); }}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left font-medium transition-colors ${
+                    item.primary ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-slate-700 hover:bg-slate-600 text-white'
+                  }`}>
+                  <span className="w-5">{item.icon}</span>
+                  <span>{item.label}</span>
+                </button>
+              ))}
               
-              <button onClick={() => { openModal(setShowCalculator, 'calculator'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Calculator />
-                  <span>Калькулятор</span>
-                </span>
-              </button>
-              
-              <button onClick={() => { openModal(setShowServicePrices, 'services'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-orange-600 hover:bg-orange-500 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Price />
-                  <span>Услуги</span>
-                </span>
-              </button>
-              
-              <button onClick={() => { openModal(setShowExchangeUA, 'exchangeUA'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-amber-600 hover:bg-amber-500 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Price />
-                  <span>Прайс Украина (Apple)</span>
-                </span>
-              </button>
-              
-              <button onClick={() => { openModal(setShowMacBoards, 'boards'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Board />
-                  <span>MacBook платы</span>
-                </span>
-                {counts.boards > 0 && <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-1">{counts.boards}</span>}
-              </button>
-              
-              <button onClick={() => { openModal(setShowKnowledge, 'knowledge'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Book />
-                  <span>База знаний</span>
-                </span>
-              </button>
-              
-              <button onClick={() => { openModal(setShowKeyCombo, 'keycombo'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  ⌨️
-                  <span>DFU/Recovery</span>
-                </span>
-              </button>
-              
-              <button onClick={() => { openModal(setShowICs, 'ics'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Chip />
-                  <span>Микросхемы</span>
-                </span>
-                {counts.ics > 0 && <span className="bg-violet-500 text-white text-xs rounded-full px-2 py-1">{counts.ics}</span>}
-              </button>
-              
-              <button onClick={() => { openModal(setShowErrors, 'errors'); setShowMobileMenu(false); }} className="w-full flex items-center justify-between px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left">
-                <span className="flex items-center gap-3">
-                  <Icons.Error />
-                  <span>Коды ошибок</span>
-                </span>
-                {counts.errors > 0 && <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1">{counts.errors}</span>}
-              </button>
+              {/* Database sections */}
+              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2 pt-3">База данных</p>
+              {[
+                { label: 'MacBook платы', icon: <Icons.Board />, section: 'boards', setter: setShowMacBoards },
+                { label: 'База знаний', icon: <Icons.Book />, section: 'knowledge', setter: setShowKnowledge },
+                { label: 'DFU / Recovery', icon: <span>⌨️</span>, section: 'keycombo', setter: setShowKeyCombo },
+                { label: 'Микросхемы (IC)', icon: <Icons.Chip />, section: 'ics', setter: setShowICs },
+                { label: 'Коды ошибок', icon: <Icons.Error />, section: 'errors', setter: setShowErrors },
+              ].map((item) => (
+                <button key={item.section} onClick={() => { openModal(item.setter, item.section); setShowMobileMenu(false); }}
+                  className="w-full flex items-center gap-3 px-4 py-3 bg-slate-700/50 hover:bg-slate-600 rounded-lg text-left text-white transition-colors">
+                  <span className="w-5">{item.icon}</span>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+
+              {/* Back to site */}
+              <div className="border-t border-slate-700 mt-2 pt-2">
+                <a href="/" className="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-slate-700 hover:text-white rounded-lg transition-colors" onClick={() => setShowMobileMenu(false)}>
+                  <span className="w-5">🏠</span>
+                  <span>На сайт</span>
+                </a>
+              </div>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Main Content — ограниченная ширина для удобства чтения */}
+      {/* ═══ Main Content ═══ */}
       <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6">
-        {/* Breadcrumbs & Stats — карточка для визуальной иерархии */}
-        <div className="mb-6 bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-4">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 min-w-0">
-              {navigationHistory.length > 1 && (
-                <button 
-                  onClick={navigateBack}
-                  className="flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors text-slate-700 font-medium text-xs sm:text-sm"
-                >
-                  ← Назад
-                </button>
-              )}
-              <button
-                type="button"
-                onClick={() => navigate('/nexx')}
-                className="font-bold text-slate-900 hover:text-blue-600 transition-colors"
-              >
-                Главная
-              </button>
-              {activeSection !== 'devices' && (
-                <>
-                  <span className="text-slate-400">›</span>
-                  <span className="capitalize text-slate-700">
-                    {activeSection === 'calculator' && 'Калькулятор'}
-                    {activeSection === 'services' && 'Услуги'}
-                    {activeSection === 'exchangeUA' && 'Прайс Украина'}
-                    {activeSection === 'boards' && 'MacBook платы'}
-                    {activeSection === 'knowledge' && 'База знаний'}
-                    {activeSection === 'keycombo' && 'DFU/Recovery'}
-                    {activeSection === 'powerTracker' && 'Power Tracker'}
-                    {activeSection === 'ics' && 'Микросхемы'}
-                    {activeSection === 'errors' && 'Коды ошибок'}
-                    {activeSection === 'prices' && 'Прайс-лист'}
-                    {activeSection === 'device-detail' && 'Устройство'}
-                  </span>
-                </>
-              )}
-              {selectedDevice && (
-                <>
-                  <span className="text-slate-400">›</span>
-                  <span className="font-medium text-blue-600 truncate max-w-[200px] sm:max-w-none">{selectedDevice.name}</span>
-                </>
-              )}
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3 text-sm flex-shrink-0">
-              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-100">
-                <Icons.Phone className="w-4 h-4 text-blue-500" />
-                <span className="font-bold">{counts.devices}</span>
-                <span className="hidden sm:inline text-blue-600">устр.</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-violet-50 text-violet-700 rounded-lg border border-violet-100">
-                <Icons.Chip className="w-4 h-4 text-violet-500" />
-                <span className="font-bold">{counts.ics}</span>
-                <span className="hidden sm:inline text-violet-600">IC</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-red-50 text-red-700 rounded-lg border border-red-100">
-                <Icons.Error className="w-4 h-4 text-red-500" />
-                <span className="font-bold">{counts.errors}</span>
-                <span className="hidden sm:inline text-red-600">ошиб.</span>
-              </div>
-            </div>
+        {/* Breadcrumbs — clean, no duplicate stats */}
+        <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+          {navigationHistory.length > 1 && (
+            <button onClick={navigateBack} className="flex items-center gap-1 px-2.5 py-1.5 bg-white hover:bg-slate-100 rounded-lg transition-colors text-slate-700 font-medium text-xs border border-slate-200">← Назад</button>
+          )}
+          <button type="button" onClick={() => navigate('/nexx')} className="font-bold text-slate-900 hover:text-blue-600 transition-colors">Database</button>
+          {activeSection !== 'devices' && (
+            <>
+              <span className="text-slate-400">›</span>
+              <span className="text-slate-700">
+                {activeSection === 'calculator' && 'Калькулятор'}
+                {activeSection === 'services' && 'Услуги'}
+                {activeSection === 'exchangeUA' && 'Прайс Украина'}
+                {activeSection === 'boards' && 'MacBook платы'}
+                {activeSection === 'knowledge' && 'База знаний'}
+                {activeSection === 'keycombo' && 'DFU/Recovery'}
+                {activeSection === 'powerTracker' && 'Power Tracker'}
+                {activeSection === 'ics' && 'Микросхемы'}
+                {activeSection === 'errors' && 'Коды ошибок'}
+                {activeSection === 'prices' && 'Прайс-лист'}
+                {activeSection === 'device-detail' && 'Устройство'}
+              </span>
+            </>
+          )}
+          {selectedDevice && (
+            <>
+              <span className="text-slate-400">›</span>
+              <span className="font-medium text-blue-600 truncate max-w-[200px] sm:max-w-none">{selectedDevice.name}</span>
+            </>
+          )}
+          {/* Compact stats — non-intrusive, right-aligned */}
+          <div className="ml-auto flex items-center gap-1.5 text-xs text-slate-400">
+            <span title={`${counts.devices} устройств в базе`}>📱 {counts.devices}</span>
+            <span className="text-slate-300">·</span>
+            <span title={`${counts.ics} микросхем в базе`}>🔧 {counts.ics} IC</span>
+            <span className="text-slate-300">·</span>
+            <span title={`${counts.errors} кодов ошибок`}>⚠️ {counts.errors}</span>
           </div>
         </div>
         
-        {/* Recent Devices — компактные карточки */}
+        {/* Recent Devices — compact */}
         {recentDevices.length > 0 && !selectedDevice && (
           <div className="mb-6 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
             <div className="flex items-center gap-2 mb-3">
@@ -813,11 +705,7 @@ export const App = () => {
             </div>
             <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
               {recentDevices.map((device) => (
-                <button
-                  key={device.name}
-                  onClick={() => handleDeviceSelect(device)}
-                  className="flex-shrink-0 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 hover:shadow transition-all text-sm text-left"
-                >
+                <button key={device.name} onClick={() => handleDeviceSelect(device)} className="flex-shrink-0 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 hover:shadow transition-all text-sm text-left">
                   <div className="font-medium text-slate-800">{device.name}</div>
                   <div className="text-xs text-slate-500">{device.model_number}</div>
                 </button>
@@ -825,21 +713,6 @@ export const App = () => {
             </div>
           </div>
         )}
-        
-        {/* Keyboard Shortcuts — сворачиваемая подсказка */}
-        <details className="mb-4 group hidden md:block">
-          <summary className="cursor-pointer list-none p-2 -m-2 rounded-lg hover:bg-slate-100 text-xs text-slate-500 hover:text-slate-700 transition-colors">
-            <span className="font-medium">⌨️ Шорткаты</span>
-            <span className="ml-2 text-slate-400 group-open:inline">▼</span>
-          </summary>
-          <div className="mt-2 p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-600">
-            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Ctrl+K</kbd> Поиск
-            <span className="mx-2 text-slate-400">·</span>
-            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Esc</kbd> Закрыть
-            <span className="mx-2 text-slate-400">·</span>
-            <kbd className="px-2 py-1 bg-white border border-slate-300 rounded font-mono">Ctrl+1–8</kbd> Разделы
-          </div>
-        </details>
         
         <DeviceList 
           devices={devices} 

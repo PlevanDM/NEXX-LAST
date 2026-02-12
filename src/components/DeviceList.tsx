@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import { Icons } from './Icons';
 import { getCategoryIcon } from '../utils';
 import { Device } from '../types';
@@ -62,28 +62,48 @@ const DeviceImage: React.FC<{ device: Device }> = ({ device }) => {
   );
 };
 
+// Primary filters always visible, rest collapse behind "More"
+const PRIMARY_FILTERS = ['IPHONE', 'IPAD', 'MACBOOK', 'SAMSUNG'];
+
 export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoading = false }) => {
   const [search, setSearch] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const [showAllFilters, setShowAllFilters] = React.useState(false);
 
   const categories = React.useMemo(() => {
     const cats = new Set(devices.map(d => d.category).filter(Boolean));
     return Array.from(cats);
   }, [devices]);
 
+  const { primaryCats, secondaryCats } = React.useMemo(() => {
+    const primary: string[] = [];
+    const secondary: string[] = [];
+    categories.forEach(cat => {
+      if (PRIMARY_FILTERS.some(pf => (cat as string).toUpperCase().includes(pf))) {
+        primary.push(cat as string);
+      } else {
+        secondary.push(cat as string);
+      }
+    });
+    return { primaryCats: primary, secondaryCats: secondary };
+  }, [categories]);
+
+  // When user is actively searching (3+ chars), ignore category filter for broader results
   const filteredDevices = React.useMemo(() => {
+    const isActiveSearch = search.trim().length >= 2;
     return devices.filter(device => {
       const searchLower = search.toLowerCase();
-      const matchesSearch = 
+      const matchesSearch = !search ? true :
         device.name.toLowerCase().includes(searchLower) || 
-        device.model_number?.toLowerCase().includes(searchLower) ||
-        device.model?.toLowerCase().includes(searchLower) ||
-        (device.board_numbers || []).some(bn => bn.toLowerCase().includes(searchLower)) ||
-        device.board_number?.toLowerCase().includes(searchLower) ||
-        device.processor?.toLowerCase().includes(searchLower) ||
-        device.year?.toString().includes(search);
+        (device.model_number?.toLowerCase() ?? '').includes(searchLower) ||
+        (device.model?.toLowerCase() ?? '').includes(searchLower) ||
+        (device.board_numbers || []).some(bn => (bn ?? '').toLowerCase().includes(searchLower)) ||
+        (device.board_number?.toLowerCase() ?? '').includes(searchLower) ||
+        (device.processor?.toLowerCase() ?? '').includes(searchLower) ||
+        (device.year?.toString() ?? '').includes(search);
         
-      const matchesCategory = selectedCategory ? device.category === selectedCategory : true;
+      // If actively searching, show results across ALL categories
+      const matchesCategory = (isActiveSearch || !selectedCategory) ? true : device.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
   }, [devices, search, selectedCategory]);
@@ -122,22 +142,42 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
 
   return (
     <div className="space-y-6">
-      {/* Filters — фиксированная панель при скролле */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-slate-200 sticky top-[52px] sm:top-[56px] z-10">
-        <div className="relative w-full md:max-w-md">
+      {/* Filters — clean, collapsed secondary */}
+      <div className="flex flex-col gap-3 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-slate-200 sticky top-[52px] sm:top-[56px] z-10">
+        {/* Search row */}
+        <div className="relative w-full">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <Icons.Search />
           </div>
           <input
             type="text"
             placeholder="Поиск (A2338, 820-02020, EMC...)"
-            className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-mono text-sm placeholder-slate-400"
+            aria-label="Поиск устройств по модели, плате или процессору"
+            className="w-full pl-10 pr-10 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-mono text-sm placeholder-slate-400"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Escape') { setSearch(''); (e.target as HTMLInputElement).blur(); } }}
           />
+          {search && (
+            <button
+              onClick={() => setSearch('')}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
+              title="Очистить поиск (Esc)"
+              aria-label="Очистить поиск"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+          )}
+          {/* Cross-category search indicator */}
+          {search.trim().length >= 2 && selectedCategory && (
+            <div className="absolute -bottom-6 left-0 text-[10px] text-blue-500 font-medium">
+              Поиск по всем категориям
+            </div>
+          )}
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
+        {/* Primary filters + "More" button */}
+        <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => setSelectedCategory(null)}
             className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide transition-all flex-shrink-0 ${
@@ -148,21 +188,54 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
           >
             Все
           </button>
-          {categories.map(cat => (
+          {primaryCats.map(cat => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat as string)}
-              className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 ${
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3 py-2 rounded-lg text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-1.5 flex-shrink-0 ${
                 selectedCategory === cat 
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-900/20' 
                   : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
               }`}
             >
-              <span>{getCategoryIcon(cat as string)}</span>
+              <span className="text-base">{getCategoryIcon(cat)}</span>
               {cat}
             </button>
           ))}
+          {secondaryCats.length > 0 && (
+            <button
+              onClick={() => setShowAllFilters(!showAllFilters)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex-shrink-0 flex items-center gap-1 ${
+                showAllFilters || secondaryCats.includes(selectedCategory || '')
+                  ? 'bg-slate-700 text-white'
+                  : 'bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200'
+              }`}
+            >
+              <span>+ Ещё {secondaryCats.length}</span>
+              <svg className={`w-3.5 h-3.5 transition-transform ${showAllFilters ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+            </button>
+          )}
         </div>
+
+        {/* Secondary filters — collapsible */}
+        {showAllFilters && secondaryCats.length > 0 && (
+          <div className="flex gap-2 flex-wrap pt-1 border-t border-slate-100">
+            {secondaryCats.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-1.5 flex-shrink-0 ${
+                  selectedCategory === cat 
+                    ? 'bg-blue-600 text-white shadow-md' 
+                    : 'bg-slate-50 text-slate-500 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
+                }`}
+              >
+                <span>{getCategoryIcon(cat)}</span>
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Grid */}
@@ -260,12 +333,6 @@ export const DeviceList: React.FC<DeviceListProps> = ({ devices, onSelect, isLoa
                 </div>
               </div>
               
-              {/* Footer: Issues Badge */}
-              {device.common_issues && device.common_issues.length > 0 && (
-                <div className="bg-red-50 p-2 text-[10px] text-red-700 font-medium border-t border-red-100 truncate">
-                  ⚠️ {device.common_issues[0]} {device.common_issues.length > 1 && `+${device.common_issues.length - 1}`}
-                </div>
-              )}
             </div>
           ))}
         </div>

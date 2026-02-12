@@ -1,7 +1,7 @@
 {
   "name": "NEXX GSM - Service Reparații",
   "short_name": "NEXX GSM",
-  "description": "Reparații profesionale iPhone, MacBook, Samsung în București",
+  "description": "NEXX GSM SERVICE POINT SRL — Reparații profesionale iPhone, MacBook, Samsung în București. CUI: 53879866",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
@@ -33,9 +33,9 @@
   "scope": "/",
   "shortcuts": [
     {
-      "name": "База NEXX",
-      "short_name": "База",
-      "description": "База пристроїв, IC, EcoFlow",
+      "name": "Baza NEXX",
+      "short_name": "Baza",
+      "description": "Baza de date dispozitive, IC, diagnosticare",
       "url": "/nexx",
       "icons": [
         {

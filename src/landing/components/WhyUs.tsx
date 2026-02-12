@@ -47,41 +47,41 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gray-950 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-950 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white">
             {t('whyUs.title')}
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto">
             {t('hero.description')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-gray-800/50 rounded-3xl overflow-hidden border border-gray-800 shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px sm:gap-0.5 bg-gray-800/50 rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-800 shadow-2xl">
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="group relative bg-gray-900 p-8 md:p-10 hover:bg-gray-800/80 transition-all duration-300"
+              className="group relative bg-gray-900 p-4 sm:p-6 md:p-8 lg:p-10 hover:bg-gray-800/80 transition-all duration-300"
             >
               {/* Hover gradient effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-blue-600/5 to-transparent pointer-events-none" />
               
               {/* Icon */}
-              <div className="mb-6 relative z-10">
-                <i className={`fas ${feature.icon} text-4xl text-gray-500 group-hover:text-blue-400 transition-colors duration-300`} />
+              <div className="mb-3 sm:mb-6 relative z-10">
+                <i className={`fas ${feature.icon} text-2xl sm:text-4xl text-gray-500 group-hover:text-blue-400 transition-colors duration-300`} />
               </div>
               
               {/* Title with animated bar */}
-              <div className="relative mb-4 z-10 flex items-center">
+              <div className="relative mb-2 sm:mb-4 z-10 flex items-center">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600/40 group-hover:bg-blue-500 group-hover:w-1.5 transition-all duration-300 rounded-full" />
-                <h3 className="text-xl font-bold pl-5 text-white group-hover:translate-x-1 transition-transform duration-300">
+                <h3 className="text-sm sm:text-lg md:text-xl font-bold pl-3 sm:pl-5 text-white group-hover:translate-x-1 transition-transform duration-300">
                   {feature.title}
                 </h3>
               </div>
               
               {/* Description */}
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 relative z-10 pl-5 transition-colors duration-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 relative z-10 pl-3 sm:pl-5 transition-colors duration-300 leading-relaxed">
                 {feature.desc}
               </p>
             </div>

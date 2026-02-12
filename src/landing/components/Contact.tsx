@@ -109,26 +109,26 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contacts" className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
+    <section id="contacts" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{txt.title}</h2>
-          <p className="text-gray-400 text-lg">{txt.subtitle}</p>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">{txt.title}</h2>
+          <p className="text-gray-400 text-sm sm:text-lg">{txt.subtitle}</p>
         </div>
         
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Left: Quick Callback Form */}
-          <div className="bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-blue-500/20 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+          <div className="bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-blue-500/20 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/5 rounded-full -ml-16 -mb-16 blur-3xl"></div>
             
-            <div className="text-center mb-10 relative z-10">
-              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <i className="fas fa-phone-alt text-white text-3xl animate-pulse"></i>
+            <div className="text-center mb-6 sm:mb-10 relative z-10">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <i className="fas fa-phone-alt text-white text-2xl sm:text-3xl animate-pulse"></i>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{txt.callbackTitle}</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">{txt.callbackTitle}</h3>
               <p className="text-gray-300">{txt.callbackDesc}</p>
             </div>
 
@@ -165,52 +165,52 @@ const Contact: React.FC = () => {
           </div>
           
           {/* Right: Contact Info */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
             {/* Telegram */}
             <a 
               href="https://t.me/nexx_support" 
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-6 p-6 bg-gray-800/40 border border-gray-700 hover:border-blue-500/50 rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
+              className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-800/40 border border-gray-700 hover:border-blue-500/50 rounded-2xl sm:rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                <i className="fab fa-telegram text-white text-3xl"></i>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                <i className="fab fa-telegram text-white text-2xl sm:text-3xl"></i>
               </div>
-              <div className="flex-1">
-                <p className="text-white font-bold text-xl mb-1">{txt.telegram}</p>
-                <p className="text-gray-400 font-medium">@nexx_support</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-base sm:text-xl mb-0.5 sm:mb-1">{txt.telegram}</p>
+                <p className="text-gray-400 text-sm sm:text-base font-medium truncate">@nexx_support</p>
               </div>
-              <i className="fas fa-arrow-right text-gray-600 ml-auto group-hover:text-blue-400 group-hover:translate-x-2 transition-all"></i>
+              <i className="fas fa-arrow-right text-gray-600 group-hover:text-blue-400 group-hover:translate-x-2 transition-all flex-shrink-0"></i>
             </a>
             
             {/* Email */}
             <a 
               href="mailto:info@nexxgsm.ro"
-              className="flex items-center gap-6 p-6 bg-gray-800/40 border border-gray-700 hover:border-purple-500/50 rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
+              className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-800/40 border border-gray-700 hover:border-purple-500/50 rounded-2xl sm:rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                <i className="fas fa-envelope text-white text-3xl"></i>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                <i className="fas fa-envelope text-white text-2xl sm:text-3xl"></i>
               </div>
-              <div className="flex-1">
-                <p className="text-white font-bold text-xl mb-1">{txt.email}</p>
-                <p className="text-gray-400 font-medium">info@nexxgsm.ro</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-base sm:text-xl mb-0.5 sm:mb-1">{txt.email}</p>
+                <p className="text-gray-400 text-sm sm:text-base font-medium truncate">info@nexxgsm.ro</p>
               </div>
-              <i className="fas fa-arrow-right text-gray-600 ml-auto group-hover:text-purple-400 group-hover:translate-x-2 transition-all"></i>
+              <i className="fas fa-arrow-right text-gray-600 group-hover:text-purple-400 group-hover:translate-x-2 transition-all flex-shrink-0"></i>
             </a>
             
             {/* Address/Directions */}
             <a 
               href="/directions"
-              className="flex items-center gap-6 p-6 bg-gray-800/40 border border-gray-700 hover:border-green-500/50 rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
+              className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-800/40 border border-gray-700 hover:border-green-500/50 rounded-2xl sm:rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                <i className="fas fa-map-marker-alt text-white text-3xl"></i>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                <i className="fas fa-map-marker-alt text-white text-2xl sm:text-3xl"></i>
               </div>
-              <div className="flex-1">
-                <p className="text-white font-bold text-xl mb-1">{txt.directions}</p>
-                <p className="text-gray-400 font-medium leading-tight">{txt.address}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-base sm:text-xl mb-0.5 sm:mb-1">{txt.directions}</p>
+                <p className="text-gray-400 text-sm sm:text-base font-medium leading-tight truncate">{txt.address}</p>
               </div>
-              <i className="fas fa-arrow-right text-gray-600 ml-auto group-hover:text-green-400 group-hover:translate-x-2 transition-all"></i>
+              <i className="fas fa-arrow-right text-gray-600 group-hover:text-green-400 group-hover:translate-x-2 transition-all flex-shrink-0"></i>
             </a>
             
             {/* Instagram */}
@@ -218,16 +218,16 @@ const Contact: React.FC = () => {
               href="https://instagram.com/nexx_gsm"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-6 p-6 bg-gray-800/40 border border-gray-700 hover:border-pink-500/50 rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
+              className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-800/40 border border-gray-700 hover:border-pink-500/50 rounded-2xl sm:rounded-3xl transition-all hover:bg-gray-800 group shadow-lg"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-400 via-purple-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                <i className="fab fa-instagram text-white text-3xl"></i>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-400 via-purple-500 to-orange-400 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                <i className="fab fa-instagram text-white text-2xl sm:text-3xl"></i>
               </div>
-              <div className="flex-1">
-                <p className="text-white font-bold text-xl mb-1">{txt.instagram}</p>
-                <p className="text-gray-400 font-medium">@nexx_gsm</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-base sm:text-xl mb-0.5 sm:mb-1">{txt.instagram}</p>
+                <p className="text-gray-400 text-sm sm:text-base font-medium truncate">@nexx_gsm</p>
               </div>
-              <i className="fas fa-arrow-right text-gray-600 ml-auto group-hover:text-pink-400 group-hover:translate-x-2 transition-all"></i>
+              <i className="fas fa-arrow-right text-gray-600 group-hover:text-pink-400 group-hover:translate-x-2 transition-all flex-shrink-0"></i>
             </a>
           </div>
         </div>

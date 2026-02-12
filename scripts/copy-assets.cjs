@@ -126,6 +126,8 @@ if (fs.existsSync(indexSource)) {
   // Inject BUILD_VERSION so every deploy gets fresh scripts (no stale cache)
   let indexHtml = fs.readFileSync(indexDest, 'utf8');
   indexHtml = indexHtml.replace(/<meta name="version" content="[^"]*">/, `<meta name="version" content="${BUILD_VERSION}">`);
+  // Replace dev entry point with production bundle
+  indexHtml = indexHtml.replace(/src="\/src\/landing-client\.tsx"/, `src="/static/landing.min.js?v=${BUILD_VERSION}"`);
   indexHtml = indexHtml.replace(/\?v=[^"'\s&]+/g, `?v=${BUILD_VERSION}`);
   fs.writeFileSync(indexDest, indexHtml);
   console.log(`✅ Copied: index.html (version=${BUILD_VERSION})\n`);

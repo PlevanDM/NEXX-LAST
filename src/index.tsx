@@ -81,6 +81,12 @@ function normalizePhone (raw: string): string {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
+// Global error handler — never leak stack traces
+app.onError((err, c) => {
+  console.error('Unhandled error:', err)
+  return c.json({ success: false, error: 'Internal server error' }, 500)
+})
+
 // Security Headers - CSP, HSTS, X-Frame-Options, etc.
 app.use('*', secureHeaders({
   contentSecurityPolicy: {
@@ -135,6 +141,10 @@ app.use('/api/*', cors({
 
 const serveAsset = (cacheControl?: string) =>
   async (c: Context<{ Bindings: Bindings }>) => {
+    // In dev mode (Vite), ASSETS binding doesn't exist — return 404 so Vite can serve the file
+    if (!c.env?.ASSETS?.fetch) {
+      return c.notFound()
+    }
     const assetResponse = await c.env.ASSETS.fetch(c.req.raw)
 
     if (assetResponse.status === 404) {
@@ -176,19 +186,26 @@ const authMiddleware = async (c: Context, next: () => Promise<void>) => {
 
 // API Routes
 app.post('/api/auth/login', async (c) => {
-  const { pin } = await c.req.json()
+  const body = await c.req.json().catch(() => ({})) as { pin?: string }
+  const pin = body.pin || ''
   const CORRECT_PIN = '31618585'
+
+  if (!pin || pin.length < 4) {
+    return c.json({ success: false, error: 'PIN required' }, 400)
+  }
 
   if (pin === CORRECT_PIN) {
     setCookie(c, 'nexx_auth', 'true', {
       path: '/',
       secure: true,
-      httpOnly: false,
+      httpOnly: true,
       maxAge: 60 * 60 * 24 * 30, // 30 days
       sameSite: 'Lax',
     })
     return c.json({ success: true, token: 'authenticated' })
   }
+  // Slow down brute-force: 1s delay on wrong PIN
+  await new Promise(r => setTimeout(r, 1000))
   return c.json({ success: false, error: 'Invalid PIN' }, 401)
 })
 
@@ -225,7 +242,7 @@ app.get('/api/settings', (c) => {
       updated_at: new Date().toISOString()
     },
     service: {
-      name: "NEXX Repair",
+      name: "NEXX GSM SERVICE POINT SRL",
       phone: "+380 00 000 0000",
       working_hours: "10:00 - 19:00"
     }
@@ -1030,7 +1047,7 @@ app.get('/directions', (c) => {
         {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "NEXX GSM Service Center",
+          "name": "NEXX GSM SERVICE POINT SRL",
           "description": "Service profesional de reparații telefoane, tablete și electronice în București Sector 4",
           "image": "https://nexxgsm.com/images/reception.png",
           "telephone": "",

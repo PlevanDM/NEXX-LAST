@@ -52,31 +52,31 @@ const Reviews: React.FC = () => {
   }, [lang]);
 
   return (
-    <section id="reviews" className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-x-hidden">
+    <section id="reviews" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">{t('reviews.title')}</h2>
-          <p className="text-gray-400 text-lg">{t('reviews.subtitle')}</p>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white">{t('reviews.title')}</h2>
+          <p className="text-gray-400 text-sm sm:text-lg">{t('reviews.subtitle')}</p>
           {/* Rating summary */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="flex text-yellow-400 text-2xl">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <div className="flex text-yellow-400 text-lg sm:text-2xl">
               {Array(5).fill(0).map((_, i) => <span key={i}>★</span>)}
             </div>
-            <span className="text-white font-bold text-2xl ml-2">5.0</span>
-            <span className="text-gray-400 text-lg">({reviews.length} {t('reviews.count')})</span>
+            <span className="text-white font-bold text-lg sm:text-2xl ml-1 sm:ml-2">5.0</span>
+            <span className="text-gray-400 text-sm sm:text-lg">({reviews.length} {t('reviews.count')})</span>
           </div>
         </div>
         
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {reviews.map((review: any, idx: number) => (
             <div
               key={idx}
-              className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
+              className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               {/* Quote icon */}
-              <div className="absolute top-4 right-8 text-6xl text-blue-500/10 font-serif rotate-12">"</div>
+              <div className="absolute top-3 right-4 sm:top-4 sm:right-8 text-4xl sm:text-6xl text-blue-500/10 font-serif rotate-12">"</div>
               
               {/* Stars */}
               <div className="flex mb-4 text-yellow-400">

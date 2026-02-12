@@ -19,7 +19,7 @@
     <meta property="twitter:url" content="https://nexx.ro/">
     <meta property="twitter:title" content="NEXX - Reparații Apple, Samsung, Telefoane în București | Service Profesional">
     <meta property="twitter:description" content="Reparații urgent: iPhone, iPad, MacBook, Samsung. Experți 10+ ani. Diagnostic gratuit. Garanție inclusă. Preț transparent. Service Express.">
-    <meta property="twitter:image" content="https://nexx.com.ua/static/nexx-logo.png">
+    <meta property="twitter:image" content="https://nexx.ro/static/nexx-logo.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
@@ -42,8 +42,10 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "NEXX Service Center - Reparații iPhone, iPad, MacBook, Samsung",
-      "alternateName": "NEXX, Service NEXX",
+      "name": "NEXX GSM SERVICE POINT SRL - Reparații iPhone, iPad, MacBook, Samsung",
+      "alternateName": "NEXX GSM, NEXX Service, NEXX",
+      "taxID": "RO53879866",
+      "legalName": "NEXX GSM SERVICE POINT SRL",
       "description": "Service profesional multibrand cu experiență 10+ ani. Reparații Express iPhone, iPad, MacBook, Samsung. Diagnostic gratuit, garanție inclusă.",
       "image": "https://nexx.ro/static/nexx-logo.png",
       "@id": "https://nexx.ro",
@@ -119,9 +121,9 @@
       ],
       "founder": {
         "@type": "Organization",
-        "name": "NEXX Service Center"
+        "name": "NEXX GSM SERVICE POINT SRL"
       },
-      "foundingDate": "2014",
+      "foundingDate": "2024",
       "foundingLocation": "București"
     }
     </script>
@@ -459,12 +461,14 @@
             body {
                 padding-bottom: env(safe-area-inset-bottom, 0);
                 -webkit-font-smoothing: antialiased;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             }
             #app, .landing-app { width: 100%; max-width: 100vw; min-width: 0; overflow-x: hidden; box-sizing: border-box; }
             header { padding-left: max(1rem, env(safe-area-inset-left, 0)); padding-right: max(1rem, env(safe-area-inset-right, 0)); }
             button:not([class*="icon-only"]), input, select, textarea { min-height: 44px; }
             nav a { min-height: 48px; display: flex; align-items: center; padding: 12px 16px; }
-            html, body { overscroll-behavior-x: none; }
+            html, body { overscroll-behavior-x: none; -webkit-overflow-scrolling: touch; }
             input, textarea, select { font-size: 16px; max-width: 100%; box-sizing: border-box; }
             .fas, .far, .fab, .fal, .fad { font-size: 1.2em; line-height: 1; }
             footer, [class*="footer"] {
@@ -487,26 +491,34 @@
     <!-- Skip to main content (accessibility) -->
     <a href="#main-content" class="skip-to-content" id="skip-link"></a>
     
-    <!-- Hide app until React is ready to prevent FOUC -->
+    <!-- Show app progressively: invisible first, then fade in when React is ready -->
     <style>
-        /* Hide everything until React is ready */
-        body:not(.react-loaded) #app {
-            display: none !important;
+        /* App starts invisible (but in layout) — no display:none so noscript works */
+        #app { opacity: 0; transition: opacity 0.25s ease; }
+        /* React adds this class when mounted */
+        #app.react-ready { opacity: 1; }
+        /* Fallback: auto-show after timeout even if React fails */
+        @media (max-width: 768px) { #app { transition: opacity 0.15s ease; } }
+
+        /* Missing animations used by modals */
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
-        body.react-loaded #app {
-            display: block;
+        .animate-scale-in { animation: scale-in 0.3s ease-out; }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
         }
-        #app:not(.react-ready) {
-            opacity: 0;
-            visibility: hidden;
-        }
-        #app.react-ready {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.2s ease-in, visibility 0.2s;
-        }
+        .animate-shake { animation: shake 0.4s ease-out; }
     </style>
-    <div id="app"></div>
+    <div id="app" role="main" aria-busy="true" aria-live="polite">
+        <noscript><p style="padding:2rem;text-align:center;color:#94a3b8;">Pentru a vedea site-ul, activați JavaScript.</p></noscript>
+    </div>
     
     <script src="/static/utils.min.js?v=20260130"></script>
     <script src="/static/database.min.js?v=20260130"></script>
@@ -571,14 +583,13 @@
     </style>
     <script src="/static/price-calculator.js?v=4.0-20260130"></script>
     
-    <script type="module" src="/static/landing.min.js?v=20260130"></script>
+    <script type="module" src="/src/landing-client.tsx"></script>
     <script>
-      // Страховка: показать приложение через 2 с, если React не добавил классы (ошибка или долгая загрузка)
+      // Страховка: показать приложение через 1.5 с (на телефоне быстрее, чтобы не было пустого экрана)
       setTimeout(function() {
-        document.body && document.body.classList.add('react-loaded');
         var app = document.getElementById('app');
-        if (app) app.classList.add('react-ready');
-      }, 2000);
+        if (app) { app.classList.add('react-ready'); app.setAttribute('aria-busy', 'false'); }
+      }, 1500);
       if ('serviceWorker' in navigator && location.protocol === 'https:') {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('/sw.js').then(function(r) { r.update(); }).catch(function() {});

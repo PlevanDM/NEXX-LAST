@@ -107,22 +107,6 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                 </div>
               )}
 
-              {/* Common Issues */}
-              {device.common_issues && device.common_issues.length > 0 && (
-                <div className="bg-red-50 rounded-xl p-4 border border-red-100">
-                  <h3 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
-                    <Icons.Error /> Типовые неисправности
-                  </h3>
-                  <ul className="space-y-2">
-                    {device.common_issues.map((issue, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-red-900">
-                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                        <span>{issue}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
 
             <div className="space-y-4">

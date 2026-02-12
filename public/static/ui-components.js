@@ -480,7 +480,7 @@
     'footer.faq': 'FAQ',
     'footer.privacy': 'Confidențialitate',
     'footer.terms': 'Termeni',
-    'footer.copyright': 'NEXX Service Center. Toate drepturile rezervate.',
+    'footer.copyright': 'NEXX GSM SERVICE POINT SRL. CUI: 53879866. Toate drepturile rezervate.',
     'footer.security': 'Site Securizat • SSL Criptat',
     'nav.contacts': 'Contacte',
     'nav.cabinet': 'Contul meu',

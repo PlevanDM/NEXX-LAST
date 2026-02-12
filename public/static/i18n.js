@@ -426,6 +426,8 @@
           devicePlaceholder: 'Оберіть пристрій',
           problem: 'Опис проблеми',
           problemPlaceholder: 'Не заряджається, тріснутий екран...',
+          date: 'Бажана дата',
+          comment: 'Коментар',
           submit: 'Відправити заявку',
           submitting: 'Відправляємо...'
         },
@@ -444,6 +446,14 @@
         }
       },
       
+      // Remonline Services
+      remonlineServices: {
+        loading: 'Завантаження послуг...',
+        title: 'Наші послуги',
+        subtitle: 'Повний спектр послуг з ремонту техніки',
+        empty: 'Послуги тимчасово недоступні',
+      },
+
       // Contact
       contact: {
         title: "Зв'яжіться з нами",
@@ -480,7 +490,7 @@
         faq: 'FAQ',
         privacy: 'Конфіденційність',
         terms: 'Умови',
-        copyright: 'NEXX Service Center. Всі права захищені.',
+        copyright: 'NEXX GSM SERVICE POINT SRL. CUI: 53879866. Всі права захищені.',
         security: 'Безпечний сайт • SSL шифрування'
       },
       
@@ -1078,6 +1088,8 @@
           devicePlaceholder: 'Alege dispozitivul',
           problem: 'Descriere problemă',
           problemPlaceholder: 'Nu se încarcă, ecran spart...',
+          date: 'Data dorită',
+          comment: 'Comentariu',
           submit: 'Trimite cererea',
           submitting: 'Trimitere...'
         },
@@ -1095,6 +1107,14 @@
         }
       },
       
+      // Remonline Services
+      remonlineServices: {
+        loading: 'Se încarcă serviciile...',
+        title: 'Serviciile noastre',
+        subtitle: 'Gamă completă de servicii de reparare a tehnicii',
+        empty: 'Serviciile sunt temporar indisponibile',
+      },
+
       // Contact
       contact: {
         title: 'Contactează-ne',
@@ -1131,7 +1151,7 @@
         faq: 'FAQ',
         privacy: 'Confidențialitate',
         terms: 'Termeni',
-        copyright: 'NEXX Service Center. Toate drepturile rezervate.',
+        copyright: 'NEXX GSM SERVICE POINT SRL. CUI: 53879866. Toate drepturile rezervate.',
         security: 'Site Securizat • SSL Criptat'
       },
       
@@ -1701,6 +1721,8 @@
           devicePlaceholder: 'Выберите устройство',
           problem: 'Описание проблемы',
           problemPlaceholder: 'Не заряжается, треснутый экран...',
+          date: 'Желаемая дата',
+          comment: 'Комментарий',
           submit: 'Отправить заявку',
           submitting: 'Отправляем...'
         },
@@ -1719,6 +1741,14 @@
         }
       },
       
+      // Remonline Services
+      remonlineServices: {
+        loading: 'Загрузка услуг...',
+        title: 'Наши услуги',
+        subtitle: 'Полный спектр услуг по ремонту техники',
+        empty: 'Услуги временно недоступны',
+      },
+
       // Contact
       contact: {
         title: 'Свяжитесь с нами',
@@ -1755,7 +1785,7 @@
         faq: 'FAQ',
         privacy: 'Конфиденциальность',
         terms: 'Условия',
-        copyright: 'NEXX Service Center. Все права защищены.',
+        copyright: 'NEXX GSM SERVICE POINT SRL. CUI: 53879866. Все права защищены.',
         security: 'Безопасный сайт • SSL шифрование'
       },
       
@@ -2323,6 +2353,8 @@
           devicePlaceholder: 'Choose device',
           problem: 'Problem description',
           problemPlaceholder: 'Not charging, broken screen...',
+          date: 'Preferred date',
+          comment: 'Comment',
           submit: 'Send request',
           submitting: 'Sending...'
         },
@@ -2340,6 +2372,14 @@
         }
       },
       
+      // Remonline Services
+      remonlineServices: {
+        loading: 'Loading services...',
+        title: 'Our Services',
+        subtitle: 'Full range of device repair services',
+        empty: 'Services temporarily unavailable',
+      },
+
       // Contact
       contact: {
         title: 'Contact us',
@@ -2376,7 +2416,7 @@
         faq: 'FAQ',
         privacy: 'Privacy',
         terms: 'Terms',
-        copyright: 'NEXX Service Center. All rights reserved.',
+        copyright: 'NEXX GSM SERVICE POINT SRL. CUI: 53879866. All rights reserved.',
         security: 'Secure Site • SSL Encrypted'
       },
       

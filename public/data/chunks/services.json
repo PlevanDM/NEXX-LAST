@@ -3,34 +3,137 @@
     "name": "Diagnoză",
     "price": 0,
     "free": true,
-    "icon": "fa-microscope"
+    "icon": "fa-microscope",
+    "description": "Diagnosticare gratuită a dispozitivului"
   },
   "screen": {
-    "name": "Ecran",
-    "icon": "fa-mobile-screen"
+    "name": "Înlocuire ecran",
+    "icon": "fa-mobile-screen",
+    "description": "Display SWAP / Display Apple / Aftermarket"
+  },
+  "screen_glass": {
+    "name": "Înlocuire sticlă",
+    "icon": "fa-shield-halved",
+    "description": "Sticlă spate / Sticlă cameră"
   },
   "battery": {
-    "name": "Baterie",
-    "icon": "fa-battery-full"
+    "name": "Înlocuire baterie",
+    "icon": "fa-battery-full",
+    "description": "Baterie standard sau Apple programată"
   },
   "charging": {
-    "name": "Port încărcare",
-    "icon": "fa-plug"
+    "name": "Port încărcare / USB-C / Lightning",
+    "icon": "fa-plug",
+    "description": "Reparație sau înlocuire mufă de încărcare"
   },
-  "camera": {
-    "name": "Cameră",
-    "icon": "fa-camera"
+  "camera_rear": {
+    "name": "Cameră spate",
+    "icon": "fa-camera",
+    "description": "Înlocuire modul cameră spate"
+  },
+  "camera_front": {
+    "name": "Cameră față",
+    "icon": "fa-camera-retro",
+    "description": "Înlocuire cameră frontală / Face ID"
+  },
+  "camera_glass": {
+    "name": "Sticlă cameră",
+    "icon": "fa-circle-dot",
+    "description": "Înlocuire sticlă protecție cameră"
   },
   "motherboard": {
-    "name": "Placă de bază",
-    "icon": "fa-microchip"
+    "name": "Reparație placă de bază",
+    "icon": "fa-microchip",
+    "description": "Reparare placa logică / componente SMD"
   },
-  "software": {
-    "name": "Software",
-    "icon": "fa-code"
+  "housing": {
+    "name": "Carcasă / Corp",
+    "icon": "fa-box",
+    "description": "Înlocuire carcasă, sticlă spate"
+  },
+  "microphone": {
+    "name": "Microfon",
+    "icon": "fa-microphone",
+    "description": "Reparație sau înlocuire microfon"
+  },
+  "speaker": {
+    "name": "Difuzor / Ringer",
+    "icon": "fa-volume-high",
+    "description": "Înlocuire difuzor sau ringer"
   },
   "keyboard": {
     "name": "Tastatură",
-    "icon": "fa-keyboard"
+    "icon": "fa-keyboard",
+    "description": "Înlocuire sau reparație tastatură MacBook"
+  },
+  "trackpad": {
+    "name": "Trackpad",
+    "icon": "fa-hand-pointer",
+    "description": "Înlocuire trackpad MacBook"
+  },
+  "touchid": {
+    "name": "Touch ID / Face ID",
+    "icon": "fa-fingerprint",
+    "description": "Reparație Touch ID sau Face ID"
+  },
+  "topcase": {
+    "name": "Top Case MacBook",
+    "icon": "fa-laptop",
+    "description": "Înlocuire Top Case complet MacBook"
+  },
+  "flexcable": {
+    "name": "Reparație flex / cablu",
+    "icon": "fa-right-left",
+    "description": "Reparație cabluri flex interne"
+  },
+  "liquid_damage": {
+    "name": "Reparație după contact cu lichid",
+    "icon": "fa-droplet",
+    "description": "Curățare și reparație după udare"
+  },
+  "software": {
+    "name": "Software / Firmware",
+    "icon": "fa-code",
+    "description": "Actualizare, resetare, recuperare iOS / macOS"
+  },
+  "data_recovery": {
+    "name": "Recuperare date",
+    "icon": "fa-database",
+    "description": "Recuperare date de pe dispozitiv"
+  },
+  "cleaning": {
+    "name": "Curățare",
+    "icon": "fa-broom",
+    "description": "Curățare difuzoare, AirPods, internă"
+  },
+  "glass_protection": {
+    "name": "Folie / Sticlă protecție",
+    "icon": "fa-shield",
+    "description": "Aplicare sticlă protecție iPhone / iPad"
+  },
+  "apple_id": {
+    "name": "Configurare Apple ID",
+    "icon": "fa-user-shield",
+    "description": "Creare și configurare cont Apple ID"
+  },
+  "buttons": {
+    "name": "Butoane Power / Volum / Mute",
+    "icon": "fa-circle-play",
+    "description": "Reparație butoane fizice"
+  },
+  "polish": {
+    "name": "Polisare carcasă",
+    "icon": "fa-gem",
+    "description": "Polisare și eliminare zgârieturi"
+  },
+  "magsafe": {
+    "name": "MagSafe",
+    "icon": "fa-magnet",
+    "description": "Reparație port MagSafe"
+  },
+  "touchscreen": {
+    "name": "Touchscreen iPad",
+    "icon": "fa-hand-pointer",
+    "description": "Înlocuire touchscreen / digitizer iPad"
   }
 }

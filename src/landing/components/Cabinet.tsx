@@ -112,7 +112,7 @@ const Cabinet: React.FC = () => {
 
   if (token === 'pending') {
     return (
-      <div className="min-h-screen bg-slate-900 text-white pt-28 pb-16 px-4 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-900 text-white pt-20 sm:pt-28 pb-12 sm:pb-16 px-3 sm:px-4 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <span className="inline-block w-10 h-10 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" aria-hidden />
           <span className="text-gray-400">{t('loading')}</span>
@@ -123,9 +123,9 @@ const Cabinet: React.FC = () => {
 
   if (token === null) {
     return (
-      <div className="min-h-screen bg-slate-900 text-white pt-28 pb-16 px-4">
+      <div className="min-h-screen bg-slate-900 text-white pt-20 sm:pt-28 pb-12 sm:pb-16 px-3 sm:px-4">
         <div className="max-w-md mx-auto">
-          <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2">{t('title')}</h1>
           <p className="text-gray-400 mb-8">{t('login')}</p>
           <form onSubmit={handleLogin} className="space-y-4">
             <input
@@ -158,10 +158,10 @@ const Cabinet: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white pt-28 pb-16 px-4">
+    <div className="min-h-screen bg-slate-900 text-white pt-20 sm:pt-28 pb-12 sm:pb-16 px-3 sm:px-4">
       <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          <h1 className="text-3xl font-bold">{t('myOrders')}</h1>
+        <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold">{t('myOrders')}</h1>
           <div className="flex items-center gap-3">
             <button
               type="button"

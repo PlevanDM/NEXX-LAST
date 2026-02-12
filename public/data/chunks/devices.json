@@ -21,7 +21,13 @@
     "charging_ic": {
       "main": "SN2012027",
       "designation": "USB Type-C Controller",
-      "secondary": "CP3200B1G0 (Battery Charger)"
+      "secondary": "CP3200B1G0 (Battery Charger)",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller",
+      "eeprom": "8N"
     },
     "official_service_prices": {
       "battery": 99,
@@ -109,7 +115,9 @@
     },
     "baseband": {
       "modem": "Qualcomm SDX71M (X70)",
-      "pmic": "PMX75"
+      "pmic": "PMX75",
+      "part": "SDX71M",
+      "technology": "5G"
     },
     "display_ic": {
       "pmic": "TPS65657B0",
@@ -141,6 +149,17 @@
       "charging_port": 500,
       "rear_camera": 1100,
       "logic_board": 2700
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "minimal",
+        "notes": "Apple removed most pairing restrictions (Oregon law)",
+        "components": {
+          "most_parts": "Can be swapped via Repair Assistant",
+          "face_id": "Requires calibration",
+          "camera_pro_max": "Requires ~5 min calibration"
+        }
+      }
     }
   },
   {
@@ -165,7 +184,13 @@
     "charging_ic": {
       "main": "SN2012027",
       "designation": "USB Type-C Controller",
-      "secondary": "CP3200B1G0"
+      "secondary": "CP3200B1G0",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller",
+      "eeprom": "8N"
     },
     "official_service_prices": {
       "battery": 99,
@@ -244,7 +269,9 @@
     },
     "baseband": {
       "modem": "Qualcomm X70",
-      "pmic": "PMX75"
+      "pmic": "PMX75",
+      "part": "SDX71M",
+      "technology": "5G"
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
@@ -263,7 +290,18 @@
       "Back Glass": 200
     },
     "price_ron": 698,
-    "price_eur": 138
+    "price_eur": 138,
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "minimal",
+        "notes": "Apple removed most pairing restrictions (Oregon law)",
+        "components": {
+          "most_parts": "Can be swapped via Repair Assistant",
+          "face_id": "Requires calibration",
+          "camera_pro_max": "Requires ~5 min calibration"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 16 Plus",
@@ -286,7 +324,13 @@
     "processor": "Apple A18",
     "charging_ic": {
       "main": "SN2012027",
-      "designation": "USB Type-C Controller"
+      "designation": "USB Type-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller",
+      "eeprom": "8N"
     },
     "official_service_prices": {
       "battery": 79,
@@ -339,7 +383,9 @@
     },
     "baseband": {
       "modem": "Qualcomm X70",
-      "pmic": "PMX75"
+      "pmic": "PMX75",
+      "part": "SDX71M",
+      "technology": "5G"
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
@@ -378,7 +424,18 @@
         "name": "338S01087",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "minimal",
+        "notes": "Apple removed most pairing restrictions (Oregon law)",
+        "components": {
+          "most_parts": "Can be swapped via Repair Assistant",
+          "face_id": "Requires calibration",
+          "camera_pro_max": "Requires ~5 min calibration"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 16",
@@ -401,7 +458,13 @@
     "processor": "Apple A18",
     "charging_ic": {
       "main": "SN2012027",
-      "designation": "USB Type-C Controller"
+      "designation": "USB Type-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller",
+      "eeprom": "8N"
     },
     "official_service_prices": {
       "battery": 79,
@@ -454,7 +517,9 @@
     },
     "baseband": {
       "modem": "Qualcomm X70",
-      "pmic": "PMX75"
+      "pmic": "PMX75",
+      "part": "SDX71M",
+      "technology": "5G"
     },
     "display_ic": "TPS65657B0",
     "wireless_charging_ic": "BCM59367A1",
@@ -493,7 +558,18 @@
         "name": "338S01087",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "minimal",
+        "notes": "Apple removed most pairing restrictions (Oregon law)",
+        "components": {
+          "most_parts": "Can be swapped via Repair Assistant",
+          "face_id": "Requires calibration",
+          "camera_pro_max": "Requires ~5 min calibration"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 15 Pro Max",
@@ -515,7 +591,12 @@
     "processor": "A17 Pro",
     "charging_ic": {
       "main": "SN2800",
-      "designation": "USB-C Controller"
+      "designation": "USB-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller"
     },
     "official_service_prices": {
       "battery": 99,
@@ -605,7 +686,26 @@
         "name": "338S00537",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX70M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 15 Pro",
@@ -627,7 +727,12 @@
     "processor": "A17 Pro",
     "charging_ic": {
       "main": "SN2800",
-      "designation": "USB-C Controller"
+      "designation": "USB-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller"
     },
     "official_service_prices": {
       "battery": 99,
@@ -704,7 +809,26 @@
         "name": "338S00537",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX70M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 15 Plus",
@@ -726,7 +850,12 @@
     "processor": "A16 Bionic",
     "charging_ic": {
       "main": "SN2800",
-      "designation": "USB-C Controller"
+      "designation": "USB-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller"
     },
     "official_service_prices": {
       "battery": 79,
@@ -799,7 +928,26 @@
         "name": "338S00537",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX70M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 15",
@@ -821,7 +969,12 @@
     "processor": "A16 Bionic",
     "charging_ic": {
       "main": "SN2800",
-      "designation": "USB-C Controller"
+      "designation": "USB-C Controller",
+      "primary": "SN2012027",
+      "manufacturer": "TI",
+      "generation": null,
+      "position": "U2",
+      "type": "USB-C Controller"
     },
     "official_service_prices": {
       "battery": 79,
@@ -894,7 +1047,26 @@
         "name": "338S00537",
         "function": "Audio Amplifier"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX70M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 14 Pro Max",
@@ -917,7 +1089,11 @@
     "processor": "A16 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1618A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 89,
@@ -1000,7 +1176,26 @@
         "name": "338S00738",
         "function": "Audio Processor"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX65M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 14 Pro",
@@ -1023,7 +1218,11 @@
     "processor": "A16 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1618A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 89,
@@ -1104,7 +1303,26 @@
         "name": "338S00843",
         "function": "Voice Processor"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX65M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 14 Plus",
@@ -1127,7 +1345,11 @@
     "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1618A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 79,
@@ -1200,7 +1422,26 @@
         "name": "338S00537",
         "function": "Small Audio IC"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX65M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 14",
@@ -1223,7 +1464,11 @@
     "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1618A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 79,
@@ -1296,7 +1541,26 @@
         "name": "338S00537",
         "function": "Small Audio IC"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX65M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 13 Pro Max",
@@ -1318,7 +1582,11 @@
     "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1616A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 79,
@@ -1387,7 +1655,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX60M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 13 Pro",
@@ -1409,7 +1696,11 @@
     "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1616A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 79,
@@ -1478,7 +1769,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX60M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 13 mini",
@@ -1569,7 +1879,22 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 13",
@@ -1591,7 +1916,11 @@
     "processor": "A15 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1616A0",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -1660,7 +1989,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX60M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 12 Pro Max",
@@ -1682,7 +2030,11 @@
     "processor": "A14 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1614A1",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -1751,7 +2103,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX55M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 12 Pro",
@@ -1773,7 +2144,11 @@
     "processor": "A14 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1614A1",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -1842,7 +2217,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX55M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 12 mini",
@@ -1933,7 +2327,22 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 12",
@@ -1955,7 +2364,11 @@
     "processor": "A14 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1614A1",
+      "manufacturer": "NXP",
+      "generation": null,
+      "position": "U9300"
     },
     "official_service_prices": {
       "battery": 65,
@@ -2024,7 +2437,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "SDX55M",
+      "technology": "5G"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 11 Pro Max",
@@ -2046,7 +2478,11 @@
     "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2600B1",
-      "designation": "Tigris"
+      "designation": "Tigris",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -2109,7 +2545,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "XMM7660",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 11 Pro",
@@ -2131,7 +2586,11 @@
     "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2600B1",
-      "designation": "Tigris"
+      "designation": "Tigris",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -2194,7 +2653,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "XMM7660",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 11",
@@ -2216,7 +2694,11 @@
     "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2600B1",
-      "designation": "Tigris"
+      "designation": "Tigris",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 55,
@@ -2279,7 +2761,26 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "XMM7660",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone XS Max",
@@ -2302,7 +2803,11 @@
     "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -2361,7 +2866,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "PMB9960",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone XS",
@@ -2384,7 +2908,11 @@
     "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -2443,7 +2971,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "PMB9960",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone XR",
@@ -2466,7 +3013,11 @@
     "processor": "A12 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 49,
@@ -2525,7 +3076,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "PMB9960",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone X",
@@ -2548,7 +3118,11 @@
     "processor": "A11 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 69,
@@ -2607,7 +3181,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9655",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 8 Plus",
@@ -2629,7 +3222,11 @@
     "processor": "A11 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 49,
@@ -2688,7 +3285,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9655",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 8",
@@ -2710,7 +3326,11 @@
     "processor": "A11 Bionic",
     "charging_ic": {
       "main": "SN2501",
-      "designation": "Hydra U3300"
+      "designation": "Hydra U3300",
+      "primary": "1612A1",
+      "manufacturer": "NXP",
+      "generation": "Hydra",
+      "position": "U6300"
     },
     "official_service_prices": {
       "battery": 49,
@@ -2769,7 +3389,26 @@
         "name": "338S00309",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9655",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 7 Plus",
@@ -2791,7 +3430,11 @@
     "processor": "A10 Fusion",
     "charging_ic": {
       "main": "1612A1",
-      "designation": "Hydra"
+      "designation": "Hydra",
+      "primary": "610A3B",
+      "manufacturer": "NXP",
+      "generation": "Tristar 3B",
+      "position": "U4001"
     },
     "official_service_prices": {
       "battery": 49,
@@ -2844,7 +3487,26 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9645M",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 7",
@@ -2866,7 +3528,11 @@
     "processor": "A10 Fusion",
     "charging_ic": {
       "main": "1612A1",
-      "designation": "Hydra"
+      "designation": "Hydra",
+      "primary": "610A3B",
+      "manufacturer": "NXP",
+      "generation": "Tristar 3B",
+      "position": "U4001"
     },
     "official_service_prices": {
       "battery": 49,
@@ -2919,7 +3585,26 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9645M",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 6s Plus",
@@ -2988,7 +3673,22 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 6s",
@@ -3057,7 +3757,22 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 6 Plus",
@@ -3079,7 +3794,11 @@
     "processor": "A8",
     "charging_ic": {
       "main": "1610A2",
-      "designation": "Tristar U2"
+      "designation": "Tristar U2",
+      "primary": "1610A2",
+      "manufacturer": "NXP",
+      "generation": "Tristar 2 rev",
+      "position": "U1700"
     },
     "official_service_prices": {},
     "service_parts": {
@@ -3133,7 +3852,26 @@
         "name": "338S00097",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9635M",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone 6",
@@ -3155,7 +3893,11 @@
     "processor": "A8",
     "charging_ic": {
       "main": "1610A2",
-      "designation": "Tristar U2"
+      "designation": "Tristar U2",
+      "primary": "1610A2",
+      "manufacturer": "NXP",
+      "generation": "Tristar 2 rev",
+      "position": "U1700"
     },
     "official_service_prices": {},
     "service_parts": {
@@ -3209,7 +3951,26 @@
         "name": "338S00097",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9635M",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone SE",
@@ -3231,7 +3992,11 @@
     "processor": "A13 Bionic",
     "charging_ic": {
       "main": "SN2611D0",
-      "designation": "Tristar U3300"
+      "designation": "Tristar U3300",
+      "primary": "1610A3",
+      "manufacturer": "NXP",
+      "generation": "Tristar 3",
+      "position": "U4500"
     },
     "official_service_prices": {
       "battery": 99,
@@ -3301,7 +4066,26 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "baseband": {
+      "part": "MDM9635M",
+      "technology": "LTE"
+    },
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPad Air 2",
@@ -8968,7 +9752,22 @@
         "name": "—",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone SE 1st Gen",
@@ -9011,7 +9810,22 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone SE 2nd Gen",
@@ -9056,7 +9870,22 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPhone SE 3rd Gen",
@@ -9101,7 +9930,22 @@
         "name": "338S00105",
         "function": "Audio Codec"
       }
-    ]
+    ],
+    "repairs": {
+      "pairing_restrictions": {
+        "level": "strict",
+        "notes": "Most components are paired to SoC",
+        "components": {
+          "face_id": "Paired - loss of biometric",
+          "touch_id": "Paired - loss of biometric",
+          "baseband": "Paired to SoC",
+          "front_camera": "Paired (iPhone 12-15)",
+          "lidar": "Blocked (iPhone 15 Pro Max)",
+          "battery": "Warnings after replacement",
+          "display": "Warnings, True Tone lost"
+        }
+      }
+    }
   },
   {
     "name": "iPad mini 7th Gen",

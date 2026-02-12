@@ -11,7 +11,7 @@ const Appointment: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.customerName?.trim() || !form.customerPhone?.trim()) {
-      setErr(t('appointment.error'));
+      setErr(t('booking.errors.nameRequired'));
       return;
     }
     setLoading(true); setErr(null);
@@ -32,22 +32,22 @@ const Appointment: React.FC = () => {
         setSuccess(true);
         setForm({ customerName: '', customerPhone: '', preferredDate: '', comment: '' });
       } else {
-        setErr(data.message || data.error || t('appointment.error'));
+        setErr(data.message || data.error || t('booking.errors.submitError'));
       }
     } catch (e: any) {
-      setErr(e.message || t('appointment.error'));
+      setErr(e.message || t('booking.errors.submitError'));
     }
     setLoading(false);
   };
 
   if (success) {
     return (
-      <section id="appointment" className="py-16 md:py-24 px-4 bg-gray-900/80 overflow-x-hidden">
-        <div className="max-w-2xl mx-auto text-center bg-gray-800 p-12 rounded-3xl border border-green-500/20 shadow-2xl animate-fade-in">
+      <section id="appointment" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-900/80 overflow-x-hidden">
+        <div className="max-w-2xl mx-auto text-center bg-gray-800 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-green-500/20 shadow-2xl animate-fade-in">
           <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <i className="fas fa-check text-4xl text-green-500"></i>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('appointment.success')}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('booking.success.title')}</h2>
           <button 
             onClick={() => setSuccess(false)} 
             className="mt-6 px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-xl transition-all shadow-lg active:scale-95"
@@ -60,12 +60,12 @@ const Appointment: React.FC = () => {
   }
 
   return (
-    <section id="appointment" className="py-16 md:py-24 px-4 bg-gray-900/80 overflow-x-hidden">
-      <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section id="appointment" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-900/80 overflow-x-hidden">
+      <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t('appointment.title')}</h2>
-          <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-            {t('appointment.subtitle')}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">{t('booking.title')}</h2>
+          <p className="text-gray-400 text-sm sm:text-lg mb-6 sm:mb-8 leading-relaxed">
+            {t('booking.subtitle')}
           </p>
           <div className="space-y-6">
             <div className="flex items-center gap-4">
@@ -89,10 +89,10 @@ const Appointment: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gray-800 border border-gray-700 p-8 rounded-3xl shadow-2xl">
+        <div className="bg-gray-800 border border-gray-700 p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label className="block text-gray-400 text-sm font-bold px-1">{t('appointment.form.name')}</label>
+              <label className="block text-gray-400 text-sm font-bold px-1">{t('booking.form.name')}</label>
               <div className="relative">
                 <i className="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                 <input
@@ -106,7 +106,7 @@ const Appointment: React.FC = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="block text-gray-400 text-sm font-bold px-1">{t('appointment.form.phone')}</label>
+              <label className="block text-gray-400 text-sm font-bold px-1">{t('booking.form.phone')}</label>
               <div className="relative">
                 <i className="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                 <input
@@ -120,7 +120,7 @@ const Appointment: React.FC = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="block text-gray-400 text-sm font-bold px-1">{t('appointment.form.date')}</label>
+              <label className="block text-gray-400 text-sm font-bold px-1">{t('booking.form.date')}</label>
               <div className="relative">
                 <i className="fas fa-calendar-day absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                 <input
@@ -132,7 +132,7 @@ const Appointment: React.FC = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="block text-gray-400 text-sm font-bold px-1">{t('appointment.form.comment')}</label>
+              <label className="block text-gray-400 text-sm font-bold px-1">{t('booking.form.comment')}</label>
               <div className="relative">
                 <i className="fas fa-comment-alt absolute left-4 top-4 text-gray-500"></i>
                 <textarea
@@ -162,7 +162,7 @@ const Appointment: React.FC = () => {
               ) : (
                 <i className="fas fa-calendar-check"></i>
               )}
-              {loading ? t('appointment.form.submitting') : t('appointment.form.submit')}
+              {loading ? t('booking.form.submitting') : t('booking.form.submit')}
             </button>
           </form>
         </div>

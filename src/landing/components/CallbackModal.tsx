@@ -115,7 +115,7 @@ const CallbackModal: React.FC = () => {
             <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/10">
               <i className="fas fa-check text-5xl text-green-500"></i>
             </div>
-            <h3 className="text-3xl font-bold text-white mb-3">{t('callback.thanks')}</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">{t('callback.thanks')}</h3>
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
               <p className="text-green-400 font-bold text-lg">{t('callback.callingNow')}</p>
@@ -138,7 +138,7 @@ const CallbackModal: React.FC = () => {
                 <i className="fas fa-phone-alt text-white text-3xl"></i>
                 <span className="absolute -top-3 -right-3 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-lg shadow-lg border-4 border-gray-900">🎁</span>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">{t('callback.title')}</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{t('callback.title')}</h3>
               <p className="text-gray-400">{t('callback.aiCalls')}</p>
               <div className="mt-4 px-4 py-2 bg-yellow-500/10 border border-yellow-500/20 rounded-xl inline-block">
                 <p className="text-yellow-400 text-sm font-bold">{t('callback.bonus')}</p>
@@ -161,7 +161,7 @@ const CallbackModal: React.FC = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-gray-400 text-sm font-bold mb-2 ml-1">{t('callback.name')}</label>
                   <input

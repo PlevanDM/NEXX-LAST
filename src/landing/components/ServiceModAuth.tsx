@@ -6,8 +6,6 @@ const ServiceModAuth: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const CORRECT_PIN = '31618585';
-  
   const t = (key: string) => window.i18n?.t(key) || key;
 
   useEffect(() => {
@@ -15,22 +13,35 @@ const ServiceModAuth: React.FC = () => {
     return () => { delete (window as any).openServiceModAuth; };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
     
-    setTimeout(() => {
-      if (pin === CORRECT_PIN) {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin }),
+        credentials: 'include'
+      });
+      const data = await res.json();
+      
+      if (res.ok && data.success) {
         localStorage.setItem('nexx_auth', 'true');
         localStorage.setItem('nexx_auth_time', Date.now().toString());
+        localStorage.setItem('nexx_pin', pin);
         window.location.href = '/nexx';
       } else {
         setError(window.i18n?.getCurrentLanguage?.()?.code === 'ro' ? 'PIN incorect. Încercați din nou.' : 'Incorrect PIN. Try again.');
         setPin('');
       }
+    } catch {
+      setError('Eroare de conexiune. Încercați din nou.');
+      setPin('');
+    } finally {
       setIsLoading(false);
-    }, 500);
+    }
   };
 
   const handlePinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,6 +82,7 @@ const ServiceModAuth: React.FC = () => {
       <div className="relative bg-gray-900 rounded-[2.5rem] p-10 w-full max-w-sm shadow-2xl border border-purple-500/20 animate-scale-in">
         <button
           onClick={closeModal}
+          aria-label="Close"
           className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded-full transition-all duration-300"
         >
           <i className="fas fa-times text-xl"></i>
