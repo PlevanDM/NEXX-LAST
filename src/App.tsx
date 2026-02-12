@@ -637,6 +637,7 @@ export const App = () => {
               {/* Database sections */}
               <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2 pt-3">База данных</p>
               {[
+                { label: '🖥️ MacBook Дисплей', icon: '🖥️', section: 'macbook_display', setter: setShowMacBookDisplay },
                 { label: 'MacBook платы', icon: <Icons.Board />, section: 'boards', setter: setShowMacBoards },
                 { label: 'База знаний', icon: <Icons.Book />, section: 'knowledge', setter: setShowKnowledge },
                 { label: 'DFU / Recovery', icon: <span>⌨️</span>, section: 'keycombo', setter: setShowKeyCombo },
