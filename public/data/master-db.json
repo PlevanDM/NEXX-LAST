@@ -25,6 +25,7 @@
       "category": "iPhone",
       "model": "A3084/A3295/A3296/A3297",
       "year": 2024,
+      "emc": "4232",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_16_Pro_Max",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/5uhh2Qp5dYqSBm2d.standard",
       "repairability": null,
@@ -89,17 +90,6 @@
           "price_usd": 599
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "USB-C",
@@ -179,6 +169,7 @@
       "category": "iPhone",
       "model": "A3083/A3292/A3293/A3294",
       "year": 2024,
+      "emc": "4231",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_16_Pro",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/3rLXoQgLO25fHH5P.standard",
       "repairability": null,
@@ -189,7 +180,7 @@
         "charging_port"
       ],
       "board_numbers": [
-        "820-02850"
+        "820-02849"
       ],
       "processor": "Apple A18 Pro",
       "charging_ic": {
@@ -237,17 +228,6 @@
           "price_usd": 49
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "USB-C",
@@ -311,6 +291,7 @@
       "category": "iPhone",
       "model": "A3082/A3289/A3290/A3291",
       "year": 2024,
+      "emc": "4230",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_16_Plus",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/iILgmnpsB3gBB2Hv.standard",
       "repairability": null,
@@ -321,7 +302,7 @@
         "charging_port"
       ],
       "board_numbers": [
-        "820-02850"
+        "820-02848"
       ],
       "processor": "Apple A18",
       "charging_ic": {
@@ -362,16 +343,6 @@
           "price_usd": 55
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "USB-C",
@@ -435,6 +406,7 @@
       "category": "iPhone",
       "model": "A3081/A3286/A3287/A3288",
       "year": 2024,
+      "emc": "4229",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_16",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/uTJRLlTegRbyYti3.standard",
       "repairability": null,
@@ -445,7 +417,7 @@
         "charging_port"
       ],
       "board_numbers": [
-        "820-02850"
+        "820-02847"
       ],
       "processor": "Apple A18",
       "charging_ic": {
@@ -486,21 +458,11 @@
           "price_usd": 55
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "USB-C",
       "audio_ic": {
-        "name": "338S00967",
+        "name": "338S01087",
         "function": "Audio Codec"
       },
       "wifi_bt_ic": {
@@ -616,17 +578,6 @@
           "price_usd": 49
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "USB-C",
@@ -733,17 +684,6 @@
           "price_usd": 59
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "USB-C",
@@ -843,16 +783,6 @@
           "price_usd": 55
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "USB-C",
@@ -948,16 +878,6 @@
           "price_usd": 55
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "USB-C",
@@ -1002,6 +922,7 @@
       "category": "iPhone",
       "model": "A2651/A2893/A2894/A2895",
       "year": 2022,
+      "emc": "3852",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_14_Pro_Max",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/stsGu3TIrGqg5ocy.standard",
       "repairability": null,
@@ -1059,17 +980,6 @@
           "price_usd": 45
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "Lightning",
@@ -1100,8 +1010,16 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S00739",
+          "function": "Audio Codec (Cirrus Logic)"
+        },
+        {
+          "name": "338S00537",
+          "function": "Small Audio IC"
+        },
+        {
+          "name": "338S00738",
+          "function": "Audio Processor"
         }
       ]
     },
@@ -1110,6 +1028,7 @@
       "category": "iPhone",
       "model": "A2650/A2889/A2890/A2891",
       "year": 2022,
+      "emc": "3851",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_14_Pro",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/BNBpmDXHiiZIDKYY.standard",
       "repairability": null,
@@ -1161,17 +1080,6 @@
           "price_usd": 55
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "Lightning",
@@ -1202,8 +1110,20 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S00739",
+          "function": "Audio Codec (Cirrus Logic)"
+        },
+        {
+          "name": "338S00537",
+          "function": "Small Audio IC"
+        },
+        {
+          "name": "338S00738",
+          "function": "Audio Processor"
+        },
+        {
+          "name": "338S00843",
+          "function": "Voice Processor"
         }
       ]
     },
@@ -1212,6 +1132,7 @@
       "category": "iPhone",
       "model": "A2632/A2885/A2886/A2887/A2888",
       "year": 2022,
+      "emc": "3850",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_14_Plus",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/tHoGXqWZJW1iXgnC.standard",
       "repairability": null,
@@ -1263,16 +1184,6 @@
           "price_usd": 50
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -1303,8 +1214,12 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S00739",
+          "function": "Audio Codec (Cirrus Logic)"
+        },
+        {
+          "name": "338S00537",
+          "function": "Small Audio IC"
         }
       ]
     },
@@ -1313,6 +1228,7 @@
       "category": "iPhone",
       "model": "A2649/A2881/A2882/A2883/A2884",
       "year": 2022,
+      "emc": "3849",
       "ifixit_url": "https://www.ifixit.com/Device/iPhone_14",
       "ifixit_image": "https://guide-images.cdn.ifixit.com/igi/vHLAXd1OyVEBVZ5Q.standard",
       "repairability": null,
@@ -1364,16 +1280,6 @@
           "price_usd": 50
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -1404,8 +1310,12 @@
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S00739",
+          "function": "Audio Codec (Cirrus Logic)"
+        },
+        {
+          "name": "338S00537",
+          "function": "Small Audio IC"
         }
       ]
     },
@@ -1465,17 +1375,6 @@
           "price_usd": 45
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "Lightning",
@@ -1567,17 +1466,6 @@
           "price_usd": 45
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "Lightning",
@@ -1669,16 +1557,6 @@
           "price_usd": 40
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -1770,16 +1648,6 @@
           "price_usd": 40
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -1871,17 +1739,6 @@
           "price_usd": 40
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "Lightning",
@@ -1973,17 +1830,6 @@
           "price_usd": 40
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "Lightning",
@@ -2075,16 +1921,6 @@
           "price_usd": 35
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2176,16 +2012,6 @@
           "price_usd": 35
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2271,16 +2097,6 @@
           "price_usd": 99
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-3 часа",
       "connector_type": "Lightning",
@@ -2366,16 +2182,6 @@
           "price_usd": 99
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с камерой (OIS)",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя-Сложная",
       "repair_time": "1.5-2.5 часа",
       "connector_type": "Lightning",
@@ -2461,15 +2267,6 @@
           "price_usd": 89
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2556,15 +2353,6 @@
           "price_usd": 99
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2647,15 +2435,6 @@
           "price_usd": 99
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2738,15 +2517,6 @@
           "price_usd": 89
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2829,15 +2599,6 @@
           "price_usd": 89
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -2919,15 +2680,6 @@
           "price_usd": 49
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3009,15 +2761,6 @@
           "price_usd": 49
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3093,16 +2836,6 @@
           "price_usd": 89
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Audio IC (Loop Disease)",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3178,16 +2911,6 @@
           "price_usd": 69
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Audio IC (Loop Disease)",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3257,15 +2980,6 @@
           "price_usd": 129
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3335,15 +3049,6 @@
           "price_usd": 109
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3420,15 +3125,6 @@
           "price_usd": 7.03
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3505,15 +3201,6 @@
           "price_usd": 7.03
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Touch ID не работает",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3608,16 +3295,6 @@
           "price_usd": 74.24
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает микрофон",
-        "Проблемы с динамиком",
-        "Face ID не работает",
-        "Проблемы с 5G модемом",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Средняя",
       "repair_time": "1-2 часа",
       "connector_type": "Lightning",
@@ -3652,6 +3329,7 @@
       "category": "iPad",
       "model": "A1566/A1567",
       "year": 2014,
+      "emc": "2718",
       "board_numbers": [
         "820-3910"
       ],
@@ -3668,14 +3346,6 @@
           "price_usd": 192.97
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -3694,14 +3364,18 @@
       "price_eur": 138,
       "power_ics": [
         {
-          "name": "—",
-          "function": "Main PMIC"
+          "name": "343S0675",
+          "function": "Main PMIC (U8100)"
+        },
+        {
+          "name": "338S1216",
+          "function": "Secondary PMIC"
         }
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S1213",
+          "function": "Audio Codec (Cirrus Logic)"
         }
       ]
     },
@@ -3710,6 +3384,7 @@
       "category": "iPad",
       "model": "A1584/A1652",
       "year": 2015,
+      "emc": "2827",
       "board_numbers": [
         "820-4213"
       ],
@@ -3733,15 +3408,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -3760,14 +3426,14 @@
       "price_eur": 138,
       "power_ics": [
         {
-          "name": "—",
+          "name": "338S00155",
           "function": "Main PMIC"
         }
       ],
       "audio_ics": [
         {
           "name": "338S1213",
-          "function": "Audio Codec"
+          "function": "Audio Codec (Cirrus Logic)"
         }
       ]
     },
@@ -3776,6 +3442,7 @@
       "category": "iPad",
       "model": "A1673/A1674/A1675",
       "year": 2016,
+      "emc": "2890",
       "board_numbers": [
         "820-4388"
       ],
@@ -3792,15 +3459,6 @@
           "price_usd": 177.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -3819,14 +3477,14 @@
       "price_eur": 138,
       "power_ics": [
         {
-          "name": "—",
+          "name": "338S00223",
           "function": "Main PMIC"
         }
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S1213",
+          "function": "Audio Codec (Cirrus Logic)"
         }
       ]
     },
@@ -3835,6 +3493,7 @@
       "category": "iPad",
       "model": "A1822/A1823",
       "year": 2017,
+      "emc": "3017",
       "board_numbers": [
         "820-00703"
       ],
@@ -3856,14 +3515,6 @@
           "price_usd": 9.48
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -3882,14 +3533,14 @@
       "price_eur": 138,
       "power_ics": [
         {
-          "name": "—",
+          "name": "338S00225",
           "function": "Main PMIC"
         }
       ],
       "audio_ics": [
         {
-          "name": "—",
-          "function": "Audio Codec"
+          "name": "338S00248",
+          "function": "Audio Codec (Cirrus Logic)"
         }
       ]
     },
@@ -3921,15 +3572,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -3980,15 +3622,6 @@
           "price_usd": 209.02
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4039,14 +3672,6 @@
           "price_usd": 135.98
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4097,15 +3722,6 @@
           "price_usd": 192.65
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4163,15 +3779,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4229,14 +3836,6 @@
           "price_usd": 153.63
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4292,14 +3891,6 @@
           "price_usd": 9.48
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4350,14 +3941,6 @@
           "price_usd": 141.12
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4415,15 +3998,6 @@
           "price_usd": 21.1
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4488,15 +4062,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4554,14 +4119,6 @@
           "price_usd": 138.8
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4619,14 +4176,6 @@
           "price_usd": 52.78
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4691,15 +4240,6 @@
           "price_usd": 175.8
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4764,15 +4304,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4837,14 +4368,6 @@
           "price_usd": 195.34
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "Lightning",
@@ -4902,14 +4425,6 @@
           "price_usd": 135.98
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -4972,14 +4487,6 @@
           "price_usd": 9.48
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -5037,14 +4544,6 @@
           "price_usd": 192.65
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -5103,15 +4602,6 @@
           "price_usd": 52.78
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C / Thunderbolt",
@@ -5177,15 +4667,6 @@
           "price_usd": 107.25
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C / Thunderbolt",
@@ -5244,14 +4725,6 @@
           "price_usd": 135.98
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -5317,14 +4790,6 @@
           "price_usd": 135.98
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Lightning порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C",
@@ -5392,15 +4857,6 @@
           "price_usd": 499
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C / Thunderbolt 3",
@@ -5495,15 +4951,6 @@
           "price_usd": 599
         }
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Touch ID / Face ID",
-        "Проблемы с Apple Pencil",
-        "Bent frame (погнутый корпус)",
-        "USB-C порт повреждён"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-4 часа",
       "connector_type": "USB-C / Thunderbolt 3",
@@ -5615,17 +5062,6 @@
           "price_usd": 270.37
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -5691,17 +5127,6 @@
           "price_usd": 270.37
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 5th Gen",
@@ -5779,17 +5204,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -5867,17 +5281,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 5th Gen",
@@ -5955,18 +5358,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 5th Gen",
@@ -6044,19 +5435,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -6134,19 +5512,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -6232,17 +5597,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 10th Gen",
@@ -6327,15 +5681,6 @@
           "price_usd": 16.61
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M1",
@@ -6402,15 +5747,6 @@
           "price_usd": 399
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M2",
@@ -6483,15 +5819,6 @@
           "price_usd": 270.37
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M2",
@@ -6558,15 +5885,6 @@
           "price_usd": 399
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M3",
@@ -6633,15 +5951,6 @@
           "price_usd": 449
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M3",
@@ -6720,17 +6029,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -6808,17 +6106,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -6896,17 +6183,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 5th Gen",
@@ -6984,18 +6260,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 6th Gen",
@@ -7073,18 +6337,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 6th Gen",
@@ -7162,18 +6414,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 7th Gen",
@@ -7251,18 +6491,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 7th Gen",
@@ -7340,19 +6568,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -7430,19 +6645,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -7520,19 +6722,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -7617,15 +6806,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -7710,15 +6890,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 10th Gen",
@@ -7803,15 +6974,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M1",
@@ -7896,15 +7058,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M2",
@@ -7984,15 +7137,6 @@
           "price_usd": 20.25
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M1 Pro/Max",
@@ -8072,15 +7216,6 @@
           "price_usd": 14.24
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M1 Pro/Max",
@@ -8160,15 +7295,6 @@
           "price_usd": 20.25
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M2 Pro/Max",
@@ -8248,15 +7374,6 @@
           "price_usd": 14.24
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M2 Pro/Max",
@@ -8323,15 +7440,6 @@
           "price_usd": 549
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M3",
@@ -8410,15 +7518,6 @@
           "price_usd": 20.25
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M3 Pro/Max",
@@ -8497,15 +7596,6 @@
           "price_usd": 14.24
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Apple Silicon M3 Pro/Max",
@@ -8584,17 +7674,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -8672,17 +7751,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -8762,17 +7830,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 4th Gen",
@@ -8850,18 +7907,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 6th Gen",
@@ -8939,18 +7984,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "Intel Core 7th Gen",
@@ -9029,19 +8062,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 8th Gen",
@@ -9120,19 +8140,6 @@
           "price_usd": 48.46
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 9th Gen",
@@ -9204,19 +8211,6 @@
           "price_usd": 14.24
         }
       },
-      "common_issues": [
-        "Не включается",
-        "Не заряжается",
-        "Перегрев / громкий вентилятор",
-        "Проблемы с клавиатурой",
-        "Проблемы с трекпадом",
-        "Повреждён дисплей",
-        "Вздутая батарея",
-        "Flexgate (подсветка)",
-        "GPU артефакты",
-        "Butterfly keyboard (залипание)",
-        "T2 chip проблемы"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "2-6 часов",
       "architecture": "T2 + Intel 9th Gen",
@@ -9313,16 +8307,6 @@
         "main": "CBTL1701B0",
         "designation": "U2 USB-C Controller"
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Face ID",
-        "Проблемы с камерой",
-        "USB-C порт повреждён",
-        "Не работает динамик",
-        "Проблемы с 5G/6G модемом"
-      ],
       "power_ic": "343S00826",
       "baseband": {
         "modem": "Qualcomm SDX80 (X80)",
@@ -9429,16 +8413,6 @@
         "main": "CBTL1701B0",
         "designation": "U2 USB-C Controller"
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Face ID",
-        "Проблемы с камерой",
-        "USB-C порт повреждён",
-        "Не работает динамик",
-        "Проблемы с 5G/6G модемом"
-      ],
       "power_ic": "343S00826",
       "baseband": {
         "modem": "Qualcomm SDX80 (X80)",
@@ -9543,16 +8517,6 @@
         "main": "CBTL1701B0",
         "designation": "U2 USB-C Controller"
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Face ID",
-        "Проблемы с камерой",
-        "USB-C порт повреждён",
-        "Не работает динамик",
-        "Проблемы с 5G/6G модемом"
-      ],
       "power_ic": "343S00805",
       "baseband": {
         "modem": "Qualcomm SDX80 (X80)",
@@ -9665,16 +8629,6 @@
         "designation": "USB Type-C Port Controller (NXP)",
         "secondary": "CP3200C1H3 (TI Battery Charger)"
       },
-      "common_issues": [
-        "Разбитый экран",
-        "Не заряжается",
-        "Быстро разряжается батарея",
-        "Не работает Face ID",
-        "Проблемы с камерой",
-        "USB-C порт повреждён",
-        "Не работает динамик",
-        "Проблемы с 5G/6G модемом"
-      ],
       "power_ic": "343S00805",
       "baseband": {
         "modem": "Apple C1X (APL1114/337S01030)",
@@ -9791,11 +8745,6 @@
         "display",
         "keyboard"
       ],
-      "common_issues": [
-        "Battery degradation",
-        "Display issues",
-        "Keyboard problems"
-      ],
       "repair_difficulty": "Сложная",
       "repair_time": "3-4 часа",
       "service_parts": {
@@ -9868,11 +8817,6 @@
         "battery",
         "display",
         "keyboard"
-      ],
-      "common_issues": [
-        "Battery degradation",
-        "Display issues",
-        "Keyboard problems"
       ],
       "repair_difficulty": "Сложная",
       "repair_time": "3-4 часа",
@@ -9947,10 +8891,6 @@
         "display",
         "keyboard"
       ],
-      "common_issues": [
-        "Battery degradation",
-        "Display issues"
-      ],
       "repair_difficulty": "Очень сложная",
       "repair_time": "4-5 часов",
       "service_parts": {
@@ -10019,11 +8959,6 @@
       "board_numbers": [
         "820-3382"
       ],
-      "common_issues": [
-        "Touch ID issues",
-        "Battery degradation",
-        "Home button failure"
-      ],
       "official_service_prices": {
         "battery": 49,
         "display": 129
@@ -10069,10 +9004,6 @@
       "board_numbers": [
         "820-00134"
       ],
-      "common_issues": [
-        "Touch ID issues",
-        "Battery degradation"
-      ],
       "official_service_prices": {
         "battery": 49,
         "display": 129
@@ -10115,10 +9046,6 @@
       },
       "board_numbers": [
         "820-01700"
-      ],
-      "common_issues": [
-        "Touch ID issues",
-        "Battery health decline"
       ],
       "official_service_prices": {
         "battery": 49,
@@ -10165,10 +9092,6 @@
       "board_numbers": [
         "820-02195"
       ],
-      "common_issues": [
-        "Touch ID issues",
-        "5G connectivity"
-      ],
       "official_service_prices": {
         "battery": 49,
         "display": 179,
@@ -10209,10 +9132,6 @@
       "processor": "Apple A17 Pro",
       "board_numbers": [
         "820-02680"
-      ],
-      "common_issues": [
-        "Jelly scrolling",
-        "Battery drain"
       ],
       "official_service_prices": {
         "battery": 99,
@@ -10266,9 +9185,6 @@
       "board_numbers": [
         "820-02750"
       ],
-      "common_issues": [
-        "USB-C connectivity"
-      ],
       "official_service_prices": {
         "battery": 99,
         "display": 249
@@ -10315,10 +9231,6 @@
         "820-03129"
       ],
       "emc": "EMC3891",
-      "common_issues": [
-        "Thermal throttling under heavy load",
-        "Display flickering (rare)"
-      ],
       "official_service_prices": {
         "battery": 199,
         "display": 699,
@@ -10366,10 +9278,6 @@
         "820-03400"
       ],
       "emc": "EMC3892",
-      "common_issues": [
-        "Battery drain in sleep mode",
-        "Keyboard responsiveness"
-      ],
       "official_service_prices": {
         "battery": 249,
         "display": 799,
@@ -10417,9 +9325,6 @@
         "820-03400"
       ],
       "emc": "EMC3893",
-      "common_issues": [
-        "Thunderbolt compatibility"
-      ],
       "official_service_prices": {
         "battery": 199,
         "display": 699,
@@ -10467,9 +9372,6 @@
         "820-03400"
       ],
       "emc": "EMC3894",
-      "common_issues": [
-        "Fan noise under load"
-      ],
       "official_service_prices": {
         "battery": 249,
         "display": 799,
@@ -10517,9 +9419,6 @@
         "820-03906-A"
       ],
       "emc": "EMC3981",
-      "common_issues": [
-        "New device - no common issues yet"
-      ],
       "official_service_prices": {
         "battery": 249,
         "display": 899,
@@ -10567,9 +9466,6 @@
         "820-03907-A"
       ],
       "emc": "EMC3982",
-      "common_issues": [
-        "New device - no common issues yet"
-      ],
       "official_service_prices": {
         "battery": 199,
         "display": 799,
@@ -10617,9 +9513,6 @@
         "820-03908-A"
       ],
       "emc": "EMC3983",
-      "common_issues": [
-        "New device - no common issues yet"
-      ],
       "official_service_prices": {
         "battery": 249,
         "display": 899,
@@ -10667,11 +9560,6 @@
       ],
       "emc": "3250",
       "architecture": "ARM64",
-      "common_issues": [
-        "Display cable flex",
-        "Keyboard membrane failure",
-        "Battery capacity loss"
-      ],
       "repair_difficulty": "Medium",
       "repairability": 5,
       "available_repairs": [
@@ -10728,11 +9616,6 @@
       ],
       "emc": "3251",
       "architecture": "ARM64",
-      "common_issues": [
-        "Display backlight",
-        "SSD thermal issues",
-        "Speaker distortion"
-      ],
       "repair_difficulty": "Medium",
       "repairability": 5,
       "available_repairs": [
@@ -10790,11 +9673,6 @@
       ],
       "emc": "3260",
       "architecture": "ARM64",
-      "common_issues": [
-        "HDMI port failure",
-        "Thunderbolt controller issues",
-        "Fan noise"
-      ],
       "repair_difficulty": "Hard",
       "repairability": 4,
       "available_repairs": [
@@ -10852,11 +9730,6 @@
       ],
       "emc": "3261",
       "architecture": "ARM64",
-      "common_issues": [
-        "GPU thermal management",
-        "High power draw",
-        "Display flex cable"
-      ],
       "repair_difficulty": "Very Hard",
       "repairability": 3,
       "available_repairs": [
@@ -10912,11 +9785,6 @@
       "board_numbers": [
         "820-03180-A"
       ],
-      "common_issues": [
-        "Pencil charging issues",
-        "Display lamination separation",
-        "USB-C port wear"
-      ],
       "repair_difficulty": "Very Hard",
       "repairability": 3,
       "available_repairs": [
@@ -10969,11 +9837,6 @@
       "processor": "Apple M4 (3nm)",
       "board_numbers": [
         "820-03181-A"
-      ],
-      "common_issues": [
-        "Face ID module failure",
-        "LiDAR scanner issues",
-        "Battery swelling (thin design)"
       ],
       "repair_difficulty": "Very Hard",
       "repairability": 2,
@@ -11029,11 +9892,6 @@
       "board_numbers": [
         "820-03175-A"
       ],
-      "common_issues": [
-        "Touch digitizer ghost touches",
-        "Smart Connector pins oxidation",
-        "Charging slow/intermittent"
-      ],
       "repair_difficulty": "Hard",
       "repairability": 4,
       "available_repairs": [
@@ -11086,11 +9944,6 @@
       "processor": "Apple M3 (3nm)",
       "board_numbers": [
         "820-03176-A"
-      ],
-      "common_issues": [
-        "Display uniformity issues",
-        "Speaker crackling",
-        "Battery cycle count high"
       ],
       "repair_difficulty": "Hard",
       "repairability": 4,
@@ -26211,14 +25064,25 @@
     }
   ],
   "prices": {
-    "lastUpdated": "2026-01-21",
+    "lastUpdated": "2026-02-12",
     "currency": "RON",
+    "source": "iRestore Price List (Jan 2026)",
     "byCategory": {
       "phone": {
+        "diagnostic": {
+          "min": 0,
+          "max": 0,
+          "avg": 0
+        },
         "screen": {
-          "min": 695,
-          "max": 2999,
-          "avg": 1400
+          "min": 895,
+          "max": 3449,
+          "avg": 1800
+        },
+        "screen_glass": {
+          "min": 449,
+          "max": 599,
+          "avg": 520
         },
         "battery": {
           "min": 299,
@@ -26226,158 +25090,262 @@
           "avg": 550
         },
         "charging": {
-          "min": 299,
+          "min": 449,
           "max": 799,
-          "avg": 450
+          "avg": 580
         },
-        "camera": {
-          "min": 249,
+        "camera_rear": {
+          "min": 449,
           "max": 1649,
-          "avg": 700
+          "avg": 850
+        },
+        "camera_glass": {
+          "min": 299,
+          "max": 599,
+          "avg": 480
         },
         "motherboard": {
+          "min": 899,
+          "max": 1799,
+          "avg": 1200
+        },
+        "housing": {
           "min": 599,
-          "max": 1999,
+          "max": 1799,
           "avg": 1100
         },
+        "microphone": {
+          "min": 449,
+          "max": 799,
+          "avg": 580
+        },
         "software": {
-          "min": 50,
-          "max": 250,
+          "min": 99,
+          "max": 249,
           "avg": 150
         },
-        "diagnostic": {
-          "min": 0,
-          "max": 0,
-          "avg": 0
+        "glass_protection": {
+          "min": 99,
+          "max": 149,
+          "avg": 120
         }
       },
       "tablet": {
-        "screen": {
-          "min": 699,
-          "max": 2999,
-          "avg": 1500
-        },
-        "battery": {
-          "min": 499,
-          "max": 999,
-          "avg": 700
-        },
-        "charging": {
-          "min": 349,
-          "max": 699,
-          "avg": 500
-        },
-        "camera": {
-          "min": 299,
-          "max": 599,
-          "avg": 400
-        },
-        "motherboard": {
-          "min": 699,
-          "max": 1499,
-          "avg": 1000
-        },
-        "software": {
-          "min": 50,
-          "max": 250,
-          "avg": 150
-        },
         "diagnostic": {
           "min": 0,
           "max": 0,
           "avg": 0
+        },
+        "touchscreen": {
+          "min": 600,
+          "max": 2700,
+          "avg": 1400
+        },
+        "screen": {
+          "min": 899,
+          "max": 2499,
+          "avg": 1700
+        },
+        "battery": {
+          "min": 600,
+          "max": 1200,
+          "avg": 900
+        },
+        "charging": {
+          "min": 350,
+          "max": 700,
+          "avg": 500
+        },
+        "camera_rear": {
+          "min": 300,
+          "max": 600,
+          "avg": 400
+        },
+        "camera_front": {
+          "min": 250,
+          "max": 500,
+          "avg": 350
+        },
+        "housing": {
+          "min": 500,
+          "max": 1200,
+          "avg": 800
+        },
+        "buttons": {
+          "min": 200,
+          "max": 500,
+          "avg": 350
+        },
+        "speaker": {
+          "min": 200,
+          "max": 500,
+          "avg": 350
+        },
+        "motherboard": {
+          "min": 700,
+          "max": 1500,
+          "avg": 1000
+        },
+        "software": {
+          "min": 99,
+          "max": 249,
+          "avg": 150
+        },
+        "glass_protection": {
+          "min": 99,
+          "max": 149,
+          "avg": 120
         }
       },
       "laptop": {
-        "screen": {
-          "min": 2299,
-          "max": 5499,
-          "avg": 3500
+        "diagnostic": {
+          "min": 199,
+          "max": 299,
+          "avg": 249
         },
-        "battery": {
-          "min": 849,
-          "max": 1600,
-          "avg": 1100
-        },
-        "charging": {
-          "min": 749,
+        "liquid_damage": {
+          "min": 249,
           "max": 999,
-          "avg": 850
-        },
-        "keyboard": {
-          "min": 749,
-          "max": 1199,
-          "avg": 950
+          "avg": 700
         },
         "motherboard": {
-          "min": 1299,
+          "min": 499,
+          "max": 1499,
+          "avg": 1000
+        },
+        "screen": {
+          "min": 999,
+          "max": 5499,
+          "avg": 3200
+        },
+        "touchid": {
+          "min": 1249,
+          "max": 1249,
+          "avg": 1249
+        },
+        "flexcable": {
+          "min": 999,
           "max": 1999,
-          "avg": 1600
+          "avg": 1500
+        },
+        "topcase": {
+          "min": 499,
+          "max": 3999,
+          "avg": 2000
+        },
+        "keyboard": {
+          "min": 499,
+          "max": 1999,
+          "avg": 1000
+        },
+        "trackpad": {
+          "min": 299,
+          "max": 1499,
+          "avg": 800
+        },
+        "battery": {
+          "min": 499,
+          "max": 1999,
+          "avg": 1100
+        },
+        "speaker": {
+          "min": 299,
+          "max": 999,
+          "avg": 600
+        },
+        "magsafe": {
+          "min": 99,
+          "max": 749,
+          "avg": 400
         },
         "software": {
-          "min": 150,
-          "max": 500,
+          "min": 249,
+          "max": 249,
+          "avg": 249
+        }
+      },
+      "watch": {
+        "screen": {
+          "min": 749,
+          "max": 1099,
+          "avg": 900
+        },
+        "battery": {
+          "min": 399,
+          "max": 649,
+          "avg": 520
+        },
+        "speaker": {
+          "min": 199,
+          "max": 549,
+          "avg": 370
+        },
+        "software": {
+          "min": 199,
+          "max": 399,
           "avg": 300
         },
-        "diagnostic": {
-          "min": 0,
-          "max": 199,
-          "avg": 0
+        "polish": {
+          "min": 399,
+          "max": 399,
+          "avg": 399
+        },
+        "housing": {
+          "min": 500,
+          "max": 900,
+          "avg": 700
+        },
+        "cleaning": {
+          "min": 99,
+          "max": 99,
+          "avg": 99
         }
       }
     },
     "appleWatch": {
-      "Apple Watch Series 11": {
-        "display": 750,
-        "battery": 400
+      "Apple Watch SE 3 (2026)": {
+        "software": 840
       },
-      "Apple Watch Ultra 3": {
-        "display": 950,
-        "battery": 450
+      "Apple Watch Series 11 (2026)": {
+        "speaker": 199,
+        "battery": 399
       },
-      "Apple Watch SE 3": {
-        "display": 500,
-        "battery": 400
+      "Apple Watch Series 10 (2024)": {
+        "display": 749,
+        "speaker": 749,
+        "battery": 199,
+        "software": 399
       },
-      "Apple Watch Series 10": {
-        "display": 750,
-        "battery": 400
+      "Apple Watch Ultra 2 (2022-2023)": {
+        "display": 849,
+        "speaker": 999,
+        "battery": 649,
+        "software": 649,
+        "polish": 199,
+        "housing": 399
       },
-      "Apple Watch Series 9": {
-        "display": 750,
-        "battery": 400
+      "Apple Watch Series 9 (2023)": {
+        "display": 1099,
+        "speaker": 749,
+        "battery": 749,
+        "software": 199,
+        "polish": 399
       },
-      "Apple Watch Ultra 2": {
-        "display": 900,
-        "battery": 450
+      "Apple Watch Series 8 (2022)": {
+        "display": 749,
+        "speaker": 999,
+        "battery": 549,
+        "software": 549,
+        "polish": 199,
+        "housing": 399
       },
-      "Apple Watch SE 2": {
-        "display": 500,
-        "battery": 400
-      },
-      "Apple Watch SE": {
-        "display": 400,
-        "battery": 400
-      },
-      "Apple Watch Series 8": {
-        "display": 550,
-        "battery": 400
-      },
-      "Apple Watch Series 7": {
-        "display": 550,
-        "battery": 400
-      },
-      "Apple Watch Series 6": {
-        "display": 450,
-        "battery": 400
-      },
-      "Apple Watch Series 5": {
-        "display": 400,
-        "battery": 350
-      },
-      "Apple Watch Series 4": {
-        "display": 350,
-        "battery": 350
+      "Apple Watch Series 7 (2021)": {
+        "display": 749,
+        "speaker": 999,
+        "battery": 549,
+        "software": 499,
+        "polish": 199,
+        "housing": 399
       }
     }
   },
@@ -26556,35 +25524,138 @@
       "name": "Diagnoză",
       "price": 0,
       "free": true,
-      "icon": "fa-microscope"
+      "icon": "fa-microscope",
+      "description": "Diagnosticare gratuită a dispozitivului"
     },
     "screen": {
-      "name": "Ecran",
-      "icon": "fa-mobile-screen"
+      "name": "Înlocuire ecran",
+      "icon": "fa-mobile-screen",
+      "description": "Display SWAP / Display Apple / Aftermarket"
+    },
+    "screen_glass": {
+      "name": "Înlocuire sticlă",
+      "icon": "fa-shield-halved",
+      "description": "Sticlă spate / Sticlă cameră"
     },
     "battery": {
-      "name": "Baterie",
-      "icon": "fa-battery-full"
+      "name": "Înlocuire baterie",
+      "icon": "fa-battery-full",
+      "description": "Baterie standard sau Apple programată"
     },
     "charging": {
-      "name": "Port încărcare",
-      "icon": "fa-plug"
+      "name": "Port încărcare / USB-C / Lightning",
+      "icon": "fa-plug",
+      "description": "Reparație sau înlocuire mufă de încărcare"
     },
-    "camera": {
-      "name": "Cameră",
-      "icon": "fa-camera"
+    "camera_rear": {
+      "name": "Cameră spate",
+      "icon": "fa-camera",
+      "description": "Înlocuire modul cameră spate"
+    },
+    "camera_front": {
+      "name": "Cameră față",
+      "icon": "fa-camera-retro",
+      "description": "Înlocuire cameră frontală / Face ID"
+    },
+    "camera_glass": {
+      "name": "Sticlă cameră",
+      "icon": "fa-circle-dot",
+      "description": "Înlocuire sticlă protecție cameră"
     },
     "motherboard": {
-      "name": "Placă de bază",
-      "icon": "fa-microchip"
+      "name": "Reparație placă de bază",
+      "icon": "fa-microchip",
+      "description": "Reparare placa logică / componente SMD"
     },
-    "software": {
-      "name": "Software",
-      "icon": "fa-code"
+    "housing": {
+      "name": "Carcasă / Corp",
+      "icon": "fa-box",
+      "description": "Înlocuire carcasă, sticlă spate"
+    },
+    "microphone": {
+      "name": "Microfon",
+      "icon": "fa-microphone",
+      "description": "Reparație sau înlocuire microfon"
+    },
+    "speaker": {
+      "name": "Difuzor / Ringer",
+      "icon": "fa-volume-high",
+      "description": "Înlocuire difuzor sau ringer"
     },
     "keyboard": {
       "name": "Tastatură",
-      "icon": "fa-keyboard"
+      "icon": "fa-keyboard",
+      "description": "Înlocuire sau reparație tastatură MacBook"
+    },
+    "trackpad": {
+      "name": "Trackpad",
+      "icon": "fa-hand-pointer",
+      "description": "Înlocuire trackpad MacBook"
+    },
+    "touchid": {
+      "name": "Touch ID / Face ID",
+      "icon": "fa-fingerprint",
+      "description": "Reparație Touch ID sau Face ID"
+    },
+    "topcase": {
+      "name": "Top Case MacBook",
+      "icon": "fa-laptop",
+      "description": "Înlocuire Top Case complet MacBook"
+    },
+    "flexcable": {
+      "name": "Reparație flex / cablu",
+      "icon": "fa-right-left",
+      "description": "Reparație cabluri flex interne"
+    },
+    "liquid_damage": {
+      "name": "Reparație după contact cu lichid",
+      "icon": "fa-droplet",
+      "description": "Curățare și reparație după udare"
+    },
+    "software": {
+      "name": "Software / Firmware",
+      "icon": "fa-code",
+      "description": "Actualizare, resetare, recuperare iOS / macOS"
+    },
+    "data_recovery": {
+      "name": "Recuperare date",
+      "icon": "fa-database",
+      "description": "Recuperare date de pe dispozitiv"
+    },
+    "cleaning": {
+      "name": "Curățare",
+      "icon": "fa-broom",
+      "description": "Curățare difuzoare, AirPods, internă"
+    },
+    "glass_protection": {
+      "name": "Folie / Sticlă protecție",
+      "icon": "fa-shield",
+      "description": "Aplicare sticlă protecție iPhone / iPad"
+    },
+    "apple_id": {
+      "name": "Configurare Apple ID",
+      "icon": "fa-user-shield",
+      "description": "Creare și configurare cont Apple ID"
+    },
+    "buttons": {
+      "name": "Butoane Power / Volum / Mute",
+      "icon": "fa-circle-play",
+      "description": "Reparație butoane fizice"
+    },
+    "polish": {
+      "name": "Polisare carcasă",
+      "icon": "fa-gem",
+      "description": "Polisare și eliminare zgârieturi"
+    },
+    "magsafe": {
+      "name": "MagSafe",
+      "icon": "fa-magnet",
+      "description": "Reparație port MagSafe"
+    },
+    "touchscreen": {
+      "name": "Touchscreen iPad",
+      "icon": "fa-hand-pointer",
+      "description": "Înlocuire touchscreen / digitizer iPad"
     }
   },
   "contact": {

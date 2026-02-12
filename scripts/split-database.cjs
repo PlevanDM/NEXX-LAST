@@ -15,9 +15,15 @@ if (!fs.existsSync(dbPath)) {
 
 const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 
+// Strip common_issues from devices (user requested removal - redundant everywhere)
+const devices = (db.devices || []).map(d => {
+  const { common_issues, ...rest } = d;
+  return rest;
+});
+
 const chunks = {
     'config': db.config || {},
-    'devices': db.devices || [],
+    'devices': devices,
     'prices': db.prices || {},
     'services': db.services || {},
     'knowledge': db.knowledge || {},
