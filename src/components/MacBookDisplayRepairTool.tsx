@@ -502,7 +502,7 @@ export const MacBookDisplayRepairTool: React.FC = () => {
         {/* Donor Selection */}
         <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
           <h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-            📱 Донор (экран откуда)
+            📱 Донор (источник дисплея)
           </h2>
           
           {/* Search and Quick Select */}
@@ -573,7 +573,7 @@ export const MacBookDisplayRepairTool: React.FC = () => {
         {/* Target Selection */}
         <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
           <h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-            💻 Целевая (куда ставить)
+            💻 Целевая модель (в какой MacBook)
           </h2>
           
           {/* Search and Quick Select */}
@@ -680,15 +680,26 @@ export const MacBookDisplayRepairTool: React.FC = () => {
           )}
 
           {compatibility.status === 'compatible' && (
-            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-              <p className="text-emerald-800 font-semibold mb-2">✅ Рекомендации:</p>
-              <ul className="text-sm text-emerald-700 space-y-1">
-                <li>• Используйте оригинальные flex кабели</li>
-                <li>• Убедитесь что оба коннектора J8500/LVDS</li>
-                <li>• Отключайте батарею перед подключением eDP кабеля!</li>
-                <li>• Проверьте диод mode перед установкой</li>
-              </ul>
-            </div>
+            <>
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
+                <p className="text-emerald-800 font-semibold mb-2">✅ Рекомендации:</p>
+                <ul className="text-sm text-emerald-700 space-y-1">
+                  <li>• Используйте оригинальные flex кабели</li>
+                  <li>• Убедитесь что оба коннектора J8500/LVDS</li>
+                  <li>• Отключайте батарею перед подключением eDP кабеля!</li>
+                  <li>• Проверьте диод mode перед установкой</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-blue-800 font-semibold mb-2">ℹ️ Техническая информация:</p>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• Проверьте Board ID на донорском MacBook</li>
+                  <li>• Дисплеи M1/M2/M3 не совместимы с Intel моделями</li>
+                  <li>• LVDS коннекторы (40-pin) не совместимы с J8500 (42-pin)</li>
+                </ul>
+              </div>
+            </>
           )}
         </div>
       )}
