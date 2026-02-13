@@ -407,13 +407,13 @@ app.post('/api/callback', async (c) => {
         success: false,
         error: tokenError || 'Serviciul temporar indisponibil',
         code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'SERVICE_UNAVAILABLE'
-      }, tokenCode || 503)
+      }, (tokenCode || 503) as 200 | 400 | 401 | 403 | 404 | 500 | 503)
     }
     
     // Get or create client
     const { clientId, error: clientError } = await getOrCreateClient(token, REMONLINE_BASE, name || 'Client Website', cleanPhone)
         if (!clientId) {
-      return c.json({ success: false, error: clientError || 'Eroare creare client' }, 500)
+      return c.json({ success: false, error: clientError || 'Eroare creare client' }, 500 as const)
     }
     
           // Create order
