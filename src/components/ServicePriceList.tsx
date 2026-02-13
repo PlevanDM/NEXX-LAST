@@ -158,12 +158,18 @@ export const ServicePriceList: React.FC<ServicePriceListProps> = ({ services, ra
 
   return (
     <div className="flex flex-col h-full bg-white rounded-xl shadow-lg border border-slate-200">
-      {/* Header */}
-      <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-orange-600 rounded-t-xl text-white">
-        <h2 className="text-lg font-bold flex items-center gap-2">
-          <Icons.Price /> Servicii disponibile
-        </h2>
-        <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition-colors" aria-label="Închide">
+      {/* Header — такой же стиль как у Power Tracker: лого в градиенте + белый бар */}
+      <div className="flex items-center justify-between px-5 py-3.5 bg-white border-b border-slate-200 rounded-t-xl">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-sm">
+            <Icons.Price className="w-5 h-5" />
+          </div>
+          <div className="min-w-0">
+            <h2 className="text-[15px] font-bold text-slate-900 truncate">Servicii disponibile</h2>
+            <p className="text-xs text-slate-500 truncate">Prețuri reparații · Diagnostic gratuit</p>
+          </div>
+        </div>
+        <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-400 hover:text-slate-600" aria-label="Închide">
           <Icons.Close />
         </button>
       </div>
