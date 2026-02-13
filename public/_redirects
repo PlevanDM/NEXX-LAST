@@ -8,20 +8,23 @@
 /cabinet           /                 200
 /cabinet/          /                 200
 
-# База NEXX — rewrite на nexx.html (200 = serve content, URL unchanged)
-/nexx              /nexx.html        200
-/nexx/*            /nexx.html        200
-/nexx.html         /nexx.html        200
-/database          /nexx.html        301
-/db                /nexx.html        301
+# База NEXX — nexx.html served by Cloudflare Pretty URLs (/nexx → nexx.html)
+# /nexx and /nexx.html excluded from worker in _routes.json
+# /nexx/* subpaths — handled by Hono worker which fetches nexx.html via ASSETS
+/database          /nexx             301
+/db                /nexx             301
+
+# Clean URLs for static pages
+/about             /about.html       200
+/faq               /faq.html         200
+/terms             /terms.html       200
+/privacy           /privacy.html     200
 
 # Legacy routes
 /calculator.html   /calculator       301
-/about.html        /about            301
-/faq.html          /faq              301
 
-# API routes (handled by Hono _worker.js)
-/api/*             /api/:splat       200
+# API routes — handled by Cloudflare Pages Functions (functions/api/*)
+# Do NOT add redirect rules for /api/* — let Functions handle them
 
 # Static assets
 /static/*          /static/:splat    200

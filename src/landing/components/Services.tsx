@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 
 const Services: React.FC = () => {
   const [activeCardIndex, setActiveCardIndex] = useState<Record<number, number>>({});
   const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
   
   const t = (key: string) => window.i18n?.t(key) || key;
 
@@ -27,11 +29,12 @@ const Services: React.FC = () => {
         title: battery.title || 'Reparații Baterii',
         popular: true,
         subServices: battery.subServices || [
-          { name: 'iPhone 12-16', price: '150-250 lei', time: '30 min' },
-          { name: 'iPhone SE/11', price: '100-150 lei', time: '30 min' },
-          { name: 'Samsung S/Note', price: '120-200 lei', time: '45 min' },
-          { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
-          { name: 'iPad', price: '200-350 lei', time: '1 oră' }
+          { name: 'iPhone 17 / 17 Pro', price: 'de la 599 lei', time: '30 min' },
+          { name: 'iPhone 16 / 16 Pro', price: 'de la 499 lei', time: '30 min' },
+          { name: 'iPhone 15 / 14 / SE', price: 'de la 349 lei', time: '30 min' },
+          { name: 'Samsung S25 / S24', price: 'de la 399 lei', time: '45 min' },
+          { name: 'MacBook Pro / Air', price: 'de la 499 lei', time: '1-2 ore' },
+          { name: 'iPad Pro / Air / Mini', price: 'de la 600 lei', time: '1 oră' }
         ],
         specs: t('services.specs.battery') as any || ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Calitate premium', 'Regenerare celule']
       },
@@ -39,11 +42,11 @@ const Services: React.FC = () => {
         icon: 'fa-microchip',
         title: board.title || 'Reparații Plăci',
         subServices: board.subServices || [
-          { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 ore' },
-          { name: 'Reparare piste', price: '150-400 lei', time: '1-3 ore' },
-          { name: 'Înlocuire IC', price: '200-500 lei', time: '1-2 ore' },
-          { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
-          { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
+          { name: 'iPhone 17 (A19 Bionic)', price: 'de la 1199 lei', time: '3-6 ore' },
+          { name: 'iPhone 16/15 Pro', price: 'de la 999 lei', time: '2-4 ore' },
+          { name: 'Reballing CPU/GPU', price: 'de la 899 lei', time: '2-4 ore' },
+          { name: 'Deteriorare apă', price: 'de la 999 lei', time: '2-8 ore' },
+          { name: 'MacBook M4/M3 SoC', price: 'de la 499 lei', time: '1-3 zile' }
         ],
         specs: t('services.specs.board') as any || ['Diagnostic precis — găsim cauza', 'Reparare chipuri și microcipuri', 'Înlocuire BGA', 'Diagnostic gratuit', 'Echipament profesional', 'Componente originale']
       },
@@ -51,23 +54,24 @@ const Services: React.FC = () => {
         icon: 'fa-mobile-screen',
         title: display.title || 'Înlocuire Display',
         subServices: display.subServices || [
-          { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
-          { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
-          { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 oră' },
-          { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
-          { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
+          { name: 'iPhone 17 Pro / Pro Max', price: 'de la 1999 lei', time: '50-60 min' },
+          { name: 'iPhone 17 / 17 Plus', price: 'de la 1499 lei', time: '45 min' },
+          { name: 'iPhone 16 / 15 OLED', price: 'de la 895 lei', time: '45 min' },
+          { name: 'Samsung S25 / S24', price: 'de la 999 lei', time: '1 oră' },
+          { name: 'MacBook Retina', price: 'de la 999 lei', time: '2-3 ore' },
+          { name: 'iPad Pro / Air', price: 'de la 899 lei', time: '1-2 ore' }
         ],
-        specs: t('services.specs.display') as any || ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone']
+        specs: t('services.specs.display') as any || ['OLED/LTPO Original', 'LCD Premium', 'Garanție dead pixel', 'Touchscreen', 'Laminare', 'Calibrare True Tone']
       },
       { 
         icon: 'fa-bolt',
         title: port.title || 'Port Încărcare',
         subServices: port.subServices || [
-          { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
-          { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
-          { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
-          { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
-          { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
+          { name: 'iPhone 17 USB4', price: 'de la 599 lei', time: '45 min' },
+          { name: 'iPhone 16/15 USB-C', price: 'de la 499 lei', time: '45 min' },
+          { name: 'iPhone 14 Lightning', price: 'de la 449 lei', time: '30-45 min' },
+          { name: 'Samsung / Android', price: 'de la 449 lei', time: '30 min' },
+          { name: 'MacBook USB-C', price: 'de la 499 lei', time: '1-2 ore' }
         ],
         specs: t('services.specs.port') as any || ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni']
       },
@@ -75,11 +79,11 @@ const Services: React.FC = () => {
         icon: 'fa-screwdriver-wrench',
         title: modular.title || 'Service Modular',
         subServices: modular.subServices || [
-          { name: 'Cameră principală', price: '150-400 lei', time: '30-60 min' },
-          { name: 'Cameră frontală', price: '80-200 lei', time: '30 min' },
-          { name: 'Speaker/Microfon', price: '60-150 lei', time: '20-40 min' },
-          { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
-          { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
+          { name: 'Cameră iPhone 17 Pro', price: 'de la 999 lei', time: '45-60 min' },
+          { name: 'Cameră iPhone 16/15', price: 'de la 449 lei', time: '30-60 min' },
+          { name: 'Face ID / Touch ID', price: 'de la 599 lei', time: '1 oră' },
+          { name: 'Speaker / Microfon', price: 'de la 449 lei', time: '30 min' },
+          { name: 'Cameră Samsung S25', price: 'de la 499 lei', time: '45 min' }
         ],
         specs: t('services.specs.modular') as any || ['Module originale', 'Cameră HD test', 'Audio calibrare', 'Senzori verificați', 'Face ID repair', 'Touch ID pairing']
       },
@@ -123,8 +127,26 @@ const Services: React.FC = () => {
     }));
   };
 
+  // Sync active dot with scroll position
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.children[0]?.getBoundingClientRect().width || 0;
+    if (cardWidth === 0) return;
+    const gap = 16;
+    const idx = Math.round(el.scrollLeft / (cardWidth + gap));
+    setActiveServiceIdx(Math.max(0, Math.min(idx, services.length - 1)));
+  }, [services.length]);
+
+  // Scroll to a specific card when dot is clicked
+  const scrollToCard = useCallback((idx: number) => {
+    const el = scrollRef.current;
+    if (!el || !el.children[idx]) return;
+    (el.children[idx] as HTMLElement).scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  }, []);
+
   return (
-    <section id="services" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-900 overflow-x-hidden">
+    <section id="services" className="py-12 sm:py-16 md:py-24 bg-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white">
@@ -135,7 +157,35 @@ const Services: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 auto-rows-fr">
+        {/* Mobile swipe dots */}
+        <div className="flex sm:hidden justify-center gap-2 mb-4">
+          {services.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToCard(i)}
+              aria-label={`Card ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${i === activeServiceIdx ? 'w-6 bg-blue-500' : 'w-2 bg-gray-600'}`}
+            />
+          ))}
+        </div>
+
+        {/* Mobile: horizontal swipe | Desktop: grid */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="
+            flex sm:grid
+            sm:grid-cols-2 lg:grid-cols-3
+            gap-4 sm:gap-6 md:gap-8
+            sm:auto-rows-fr
+            overflow-x-auto sm:overflow-x-visible
+            snap-x snap-mandatory sm:snap-none
+            pb-4 sm:pb-0
+            -mx-3 px-3 sm:mx-0 sm:px-0
+            scrollbar-hide
+          "
+          style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {services.map((service, idx) => {
             const currentIndex = activeCardIndex[idx] || 0;
             const items = service.isGallery ? (service.works as any[]) : (service.subServices as any[]);
@@ -144,7 +194,7 @@ const Services: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full"
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 overflow-visible flex flex-col h-full min-w-[85vw] sm:min-w-0 snap-start flex-shrink-0 sm:flex-shrink"
               >
                 {/* Gradient hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
@@ -187,25 +237,25 @@ const Services: React.FC = () => {
                     <div className="flex items-center justify-between mt-auto">
                       <button
                         onClick={() => prevSlide(idx, items.length)}
-                        aria-label="Предыдущий слайд"
+                        aria-label={t('services.prevSlide')}
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-left text-sm"></i>
                       </button>
-                      <div className="flex gap-2" role="tablist" aria-label="Слайды">
+                      <div className="flex gap-2" role="tablist" aria-label={t('services.slides')}>
                         {items.map((_, i) => (
                           <div
                             key={i}
                             role="tab"
                             aria-selected={i === currentIndex}
-                            aria-label={`Слайд ${i + 1}`}
+                            aria-label={`${t('services.slide')} ${i + 1}`}
                             className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-blue-500 w-4' : 'bg-gray-600'}`}
                           />
                         ))}
                       </div>
                       <button
                         onClick={() => nextSlide(idx, items.length)}
-                        aria-label="Следующий слайд"
+                        aria-label={t('services.nextSlide')}
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-right text-sm"></i>
@@ -231,25 +281,25 @@ const Services: React.FC = () => {
                     <div className="flex items-center justify-between mb-6">
                       <button
                         onClick={() => prevSlide(idx, items.length)}
-                        aria-label="Предыдущий слайд"
+                        aria-label={t('services.prevSlide')}
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-left text-sm"></i>
                       </button>
-                      <div className="flex gap-2" role="tablist" aria-label="Слайды">
+                      <div className="flex gap-2" role="tablist" aria-label={t('services.slides')}>
                         {items.map((_, i) => (
                           <div
                             key={i}
                             role="tab"
                             aria-selected={i === currentIndex}
-                            aria-label={`Слайд ${i + 1}`}
+                            aria-label={`${t('services.slide')} ${i + 1}`}
                             className={`w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-blue-500 w-4' : 'bg-gray-600'}`}
                           />
                         ))}
                       </div>
                       <button
                         onClick={() => nextSlide(idx, items.length)}
-                        aria-label="Следующий слайд"
+                        aria-label={t('services.nextSlide')}
                         className="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow-lg"
                       >
                         <i className="fas fa-chevron-right text-sm"></i>
@@ -285,7 +335,19 @@ const Services: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Mobile swipe hint */}
+        <p className="sm:hidden text-center text-gray-500 text-xs mt-3 flex items-center justify-center gap-1.5">
+          <i className="fas fa-hand-pointer"></i>
+          {t('services.swipeHint') || 'Glisați pentru mai multe servicii'}
+        </p>
       </div>
+
+      {/* Hide scrollbar */}
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
     </section>
   );
 };

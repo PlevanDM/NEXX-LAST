@@ -2,123 +2,92 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politica de Confidențialitate | NEXX Service Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Politica de Confidențialitate | NEXX GSM Service București</title>
+    <meta name="description" content="Politica de confidențialitate NEXX GSM SERVICE POINT SRL. Cum colectăm, utilizăm și protejăm datele dumneavoastră personale.">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-    
-    <script crossorigin src="/static/vendor/react.production.min.js"></script>
-    <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+    <link rel="canonical" href="https://nexxgsm.com/privacy">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}</style>
 </head>
-<body>
-    <div id="header"></div>
-    <div id="app"></div>
-    <div id="footer"></div>
-    
-    <script src="/static/utils.min.js"></script>
-    <script src="/static/database.min.js"></script>
-    <script src="/static/i18n.js"></script>
-    <script src="/static/ui-components.js"></script>
-    
-    <script>
-        const { createElement: h, useState, useEffect } = React;
-        
-        const PrivacyPage = () => {
-            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
-            
-            useEffect(() => {
-                // Update meta for this page initially
-                if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('privacy');
+<body class="bg-slate-900 text-white">
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2"><img src="/static/nexx-logo.png" alt="NEXX GSM" class="h-8 w-auto"></a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="/" class="text-gray-300 hover:text-white transition">🏠 Acasă</a>
+                <a href="/#services" class="text-gray-300 hover:text-white transition">🔧 Servicii</a>
+                <a href="/#calculator" class="text-gray-300 hover:text-white transition">🧮 Calculator</a>
+                <a href="/about" class="text-gray-300 hover:text-white transition">ℹ️ Despre noi</a>
+                <a href="/#contacts" class="text-gray-300 hover:text-white transition">📞 Contacte</a>
+            </nav>
+            <a href="/#contacts" class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition"><i class="fas fa-phone"></i> Contacte</a>
+        </div>
+    </header>
 
-                if (window.i18n?.subscribe) {
-                    return window.i18n.subscribe(() => {
-                        const newLang = window.i18n.getCurrentLanguage()?.code || 'ro';
-                        setLang(newLang);
-                        if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('privacy');
-                    });
-                }
-            }, []);
-            
-            const content = {
-                ro: {
-                    title: 'Politica de Confidențialitate',
-                    updated: 'Ultima actualizare: 20 ianuarie 2026',
-                    sections: [
-                        { title: '1. Informații colectate', text: 'Colectăm următoarele date personale când utilizați serviciile noastre:', items: ['Nume și prenume', 'Număr de telefon', 'Adresă email (opțional)', 'Informații despre dispozitiv (model, problemă)'] },
-                        { title: '2. Utilizarea datelor', text: 'Utilizăm datele dvs. exclusiv pentru:', items: ['Procesarea comenzilor de reparații', 'Comunicarea despre statusul reparației', 'Îmbunătățirea serviciilor noastre', 'Contactare în caz de necesitate'] },
-                        { title: '3. Protecția datelor', text: 'Datele dvs. sunt stocate securizat și nu sunt partajate cu terțe părți fără consimțământul dvs. explicit.' },
-                        { title: '4. Drepturile dvs.', text: 'Aveți dreptul să:', items: ['Accesați datele personale', 'Solicitați corectarea datelor', 'Solicitați ștergerea datelor', 'Vă opuneți prelucrării'] },
-                        { title: '5. Contact', text: 'Pentru întrebări despre confidențialitate, contactați-ne: info@nexxgsm.ro sau Telegram @nexx_support' }
-                    ]
-                },
-                ru: {
-                    title: 'Политика Конфиденциальности',
-                    updated: 'Последнее обновление: 20 января 2026',
-                    sections: [
-                        { title: '1. Собираемая информация', text: 'Мы собираем следующие персональные данные:', items: ['Имя и фамилия', 'Номер телефона', 'Email (опционально)', 'Информация об устройстве (модель, проблема)'] },
-                        { title: '2. Использование данных', text: 'Мы используем ваши данные исключительно для:', items: ['Обработки заказов на ремонт', 'Связи по статусу ремонта', 'Улучшения наших услуг', 'Связи при необходимости'] },
-                        { title: '3. Защита данных', text: 'Ваши данные хранятся безопасно и не передаются третьим лицам без вашего согласия.' },
-                        { title: '4. Ваши права', text: 'Вы имеете право:', items: ['Получить доступ к своим данным', 'Запросить исправление данных', 'Запросить удаление данных', 'Отказаться от обработки'] },
-                        { title: '5. Контакт', text: 'По вопросам конфиденциальности: info@nexxgsm.ro или Telegram @nexx_support' }
-                    ]
-                },
-                uk: {
-                    title: 'Політика Конфіденційності',
-                    updated: 'Останнє оновлення: 20 січня 2026',
-                    sections: [
-                        { title: '1. Інформація, що збирається', text: 'Ми збираємо наступні персональні дані:', items: ['Ім\'я та прізвище', 'Номер телефону', 'Email (опціонально)', 'Інформація про пристрій (модель, проблема)'] },
-                        { title: '2. Використання даних', text: 'Ми використовуємо ваші дані виключно для:', items: ['Обробки замовлень на ремонт', 'Зв\'язку щодо статусу ремонту', 'Покращення наших послуг', 'Зв\'язку при необхідності'] },
-                        { title: '3. Захист даних', text: 'Ваші дані зберігаються безпечно і не передаються третім особам без вашої згоди.' },
-                        { title: '4. Ваші права', text: 'Ви маєте право:', items: ['Отримати доступ до своїх даних', 'Запросити виправлення даних', 'Запросити видалення даних', 'Відмовитись від обробки'] },
-                        { title: '5. Контакт', text: 'З питань конфіденційності: info@nexxgsm.ro або Telegram @nexx_support' }
-                    ]
-                },
-                en: {
-                    title: 'Privacy Policy',
-                    updated: 'Last updated: January 20, 2026',
-                    sections: [
-                        { title: '1. Information Collected', text: 'We collect the following personal data when you use our services:', items: ['Name', 'Phone number', 'Email address (optional)', 'Device information (model, problem)'] },
-                        { title: '2. Data Usage', text: 'We use your data exclusively for:', items: ['Processing repair orders', 'Communicating about repair status', 'Improving our services', 'Contacting when necessary'] },
-                        { title: '3. Data Protection', text: 'Your data is stored securely and is not shared with third parties without your explicit consent.' },
-                        { title: '4. Your Rights', text: 'You have the right to:', items: ['Access your personal data', 'Request data correction', 'Request data deletion', 'Object to processing'] },
-                        { title: '5. Contact', text: 'For privacy questions, contact us: info@nexxgsm.ro or Telegram @nexx_support' }
-                    ]
-                }
-            };
-            
-            const text = content[lang] || content.ro;
-            
-            return h('div', { className: 'min-h-screen bg-gray-50' },
-                h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-20 px-4' },
-                    h('div', { className: 'max-w-4xl mx-auto' },
-                        h('h1', { className: 'text-5xl font-bold mb-4' }, text.title),
-                        h('p', { className: 'text-gray-300' }, text.updated)
-                    )
-                ),
-                
-                h('section', { className: 'py-16 px-4' },
-                    h('div', { className: 'max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm' },
-                        ...text.sections.map((section, idx) => h('div', { key: idx, className: 'mb-8' },
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900' }, section.title),
-                            h('p', { className: 'text-gray-700 mb-4' }, section.text),
-                            section.items && h('ul', { className: 'list-disc pl-6 text-gray-700' },
-                                ...section.items.map((item, i) => h('li', { key: i }, item))
-                            )
-                        ))
-                    )
-                )
-            );
-        };
-        
-        const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
-        headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: 'privacy' }));
-        
-        const appRoot = ReactDOM.createRoot(document.getElementById('app'));
-        appRoot.render(React.createElement(PrivacyPage));
-        
-        const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
-        footerRoot.render(React.createElement(window.NEXXDesign.Footer));
-    </script>
+    <main class="pt-16">
+        <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Politica de <span class="text-blue-400">Confidențialitate</span></h1>
+                <p class="text-gray-400">Ultima actualizare: Februarie 2026</p>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 bg-slate-800">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">1. Cine suntem</h2>
+                    <p class="text-gray-300"><strong>NEXX GSM SERVICE POINT SRL</strong> (CUI: 53879866) cu sediul în Calea Șerban Vodă 47, Sector 4, București, România. Email: info@nexxgsm.ro</p>
+                </div>
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">2. Date Colectate</h2>
+                    <p class="text-gray-300">Colectăm doar datele necesare pentru prestarea serviciilor: nume, telefon, email (la completarea formularului de contact). Nu colectăm date de pe dispozitivele lăsate în service.</p>
+                </div>
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">3. Scopul Utilizării</h2>
+                    <p class="text-gray-300">Datele sunt utilizate exclusiv pentru: comunicarea cu clienții privind statusul reparației, trimiterea notificărilor despre finalizarea lucrărilor, emiterea documentelor fiscale.</p>
+                </div>
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">4. Protecția Datelor</h2>
+                    <p class="text-gray-300">Implementăm măsuri tehnice și organizatorice adecvate pentru protejarea datelor personale. Site-ul este securizat prin HTTPS/SSL. Nu transmitem datele către terți fără consimțământul dumneavoastră.</p>
+                </div>
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">5. Cookie-uri</h2>
+                    <p class="text-gray-300">Site-ul folosește cookie-uri esențiale pentru funcționarea corectă (preferințe de limbă, sesiune). Nu folosim cookie-uri de tracking sau publicitate.</p>
+                </div>
+                <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                    <h2 class="text-xl font-bold text-blue-400 mb-3">6. Drepturile Dvs. (GDPR)</h2>
+                    <p class="text-gray-300">Aveți dreptul de acces, rectificare, ștergere și portabilitate a datelor personale. Pentru exercitarea acestor drepturi, contactați-ne la <strong>info@nexxgsm.ro</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-white/10 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4"><img src="/static/nexx-logo.png" alt="NEXX GSM" class="h-8 w-auto"></div>
+                    <p class="text-gray-400 text-sm">Service profesional multibrand. Garanție inclusă. Diagnostic gratuit. București.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Companie</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/about" class="text-gray-400 hover:text-white transition">Despre noi</a></li><li><a href="/#contacts" class="text-gray-400 hover:text-white transition">Contacte</a></li></ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Servicii</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/#services" class="text-gray-400 hover:text-white transition">Reparații telefoane</a></li><li><a href="/#calculator" class="text-gray-400 hover:text-white transition">Calculator preț</a></li></ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Informații</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/faq" class="text-gray-400 hover:text-white transition">FAQ</a></li><li><a href="/privacy" class="text-gray-400 hover:text-white transition">Confidențialitate</a></li><li><a href="/terms" class="text-gray-400 hover:text-white transition">Termeni</a></li></ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">&copy; 2026 NEXX GSM SERVICE POINT SRL. CUI: 53879866. Toate drepturile rezervate.</div>
+        </div>
+    </footer>
 </body>
 </html>

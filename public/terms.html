@@ -2,128 +2,94 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termeni și Condiții | NEXX Service Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Termeni și Condiții | NEXX GSM Service București</title>
+    <meta name="description" content="Termenii și condițiile de utilizare a serviciilor NEXX GSM SERVICE POINT SRL. Garanție, responsabilități, drepturile clienților.">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
-    
-    <script crossorigin src="/static/vendor/react.production.min.js"></script>
-    <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
+    <link rel="canonical" href="https://nexxgsm.com/terms">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}</style>
 </head>
-<body>
-    <div id="header"></div>
-    <div id="app"></div>
-    <div id="footer"></div>
-    
-    <script src="/static/utils.min.js"></script>
-    <script src="/static/database.min.js"></script>
-    <script src="/static/i18n.js"></script>
-    <script src="/static/ui-components.js"></script>
-    
-    <script>
-        const { createElement: h, useState, useEffect } = React;
-        
-        const TermsPage = () => {
-            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
-            
-            useEffect(() => {
-                // Update meta for this page initially
-                if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('terms');
+<body class="bg-slate-900 text-white">
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2"><img src="/static/nexx-logo.png" alt="NEXX GSM" class="h-8 w-auto"></a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="/" class="text-gray-300 hover:text-white transition">🏠 Acasă</a>
+                <a href="/#services" class="text-gray-300 hover:text-white transition">🔧 Servicii</a>
+                <a href="/#calculator" class="text-gray-300 hover:text-white transition">🧮 Calculator</a>
+                <a href="/about" class="text-gray-300 hover:text-white transition">ℹ️ Despre noi</a>
+                <a href="/#contacts" class="text-gray-300 hover:text-white transition">📞 Contacte</a>
+            </nav>
+            <a href="/#contacts" class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition"><i class="fas fa-phone"></i> Contacte</a>
+        </div>
+    </header>
 
-                if (window.i18n?.subscribe) {
-                    return window.i18n.subscribe(() => {
-                        const newLang = window.i18n.getCurrentLanguage()?.code || 'ro';
-                        setLang(newLang);
-                        if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('terms');
-                    });
-                }
-            }, []);
-            
-            const content = {
-                ro: {
-                    title: 'Termeni și Condiții',
-                    updated: 'Ultima actualizare: 20 ianuarie 2026',
-                    sections: [
-                        { title: '1. Garanție', text: 'Oferim garanție de 30 zile pentru toate reparațiile efectuate. Garanția acoperă piesele înlocuite și manopera.', note: 'Garanția NU acoperă:', items: ['Deteriorări mecanice ulterioare (căderi, lovituri)', 'Deteriorări prin apă/lichide după reparație', 'Modificări efectuate de terțe părți', 'Uzura naturală a bateriei'] },
-                        { title: '2. Prețuri', text: 'Prețurile afișate sunt estimative. Prețul final este confirmat după diagnosticul gratuit. Nu există taxe ascunse.' },
-                        { title: '3. Timp de reparație', text: 'Timpul indicat este estimativ. Vom comunica întârzierile (dacă există) și vă oferim opțiuni alternative.' },
-                        { title: '4. Plata', text: 'Acceptăm: numerar, card bancar, transfer. Plata se face la finalizarea reparației.' },
-                        { title: '5. Responsabilitate', text: 'Nu suntem responsabili pentru pierderea datelor de pe dispozitiv. Recomandăm backup înainte de reparație.' },
-                        { title: '6. Contact', text: 'Pentru reclamații sau sugestii: info@nexxgsm.ro sau Telegram @nexx_support' }
-                    ]
-                },
-                ru: {
-                    title: 'Условия Использования',
-                    updated: 'Последнее обновление: 20 января 2026',
-                    sections: [
-                        { title: '1. Гарантия', text: 'Мы предоставляем гарантию 30 дней на все ремонты. Гарантия покрывает замененные детали и работу.', note: 'Гарантия НЕ покрывает:', items: ['Механические повреждения после ремонта', 'Повреждения водой после ремонта', 'Изменения третьими лицами', 'Естественный износ батареи'] },
-                        { title: '2. Цены', text: 'Указанные цены ориентировочные. Окончательная цена подтверждается после бесплатной диагностики. Скрытых платежей нет.' },
-                        { title: '3. Время ремонта', text: 'Указанное время ориентировочное. Мы сообщим о задержках и предложим альтернативы.' },
-                        { title: '4. Оплата', text: 'Принимаем: наличные, банковскую карту, перевод. Оплата по завершении ремонта.' },
-                        { title: '5. Ответственность', text: 'Мы не несём ответственности за потерю данных на устройстве. Рекомендуем сделать резервную копию.' },
-                        { title: '6. Контакт', text: 'Для жалоб или предложений: info@nexxgsm.ro или Telegram @nexx_support' }
-                    ]
-                },
-                uk: {
-                    title: 'Умови Використання',
-                    updated: 'Останнє оновлення: 20 січня 2026',
-                    sections: [
-                        { title: '1. Гарантія', text: 'Ми надаємо гарантію 30 днів на всі ремонти. Гарантія покриває замінені деталі та роботу.', note: 'Гарантія НЕ покриває:', items: ['Механічні пошкодження після ремонту', 'Пошкодження водою після ремонту', 'Зміни третіми особами', 'Природний знос батареї'] },
-                        { title: '2. Ціни', text: 'Вказані ціни орієнтовні. Остаточна ціна підтверджується після безкоштовної діагностики. Прихованих платежів немає.' },
-                        { title: '3. Час ремонту', text: 'Вказаний час орієнтовний. Ми повідомимо про затримки і запропонуємо альтернативи.' },
-                        { title: '4. Оплата', text: 'Приймаємо: готівку, банківську картку, переказ. Оплата по завершенні ремонту.' },
-                        { title: '5. Відповідальність', text: 'Ми не несемо відповідальності за втрату даних на пристрої. Рекомендуємо зробити резервну копію.' },
-                        { title: '6. Контакт', text: 'Для скарг або пропозицій: info@nexxgsm.ro або Telegram @nexx_support' }
-                    ]
-                },
-                en: {
-                    title: 'Terms and Conditions',
-                    updated: 'Last updated: January 20, 2026',
-                    sections: [
-                        { title: '1. Warranty', text: 'We offer 30-day warranty on all repairs. Warranty covers replaced parts and labor.', note: 'Warranty does NOT cover:', items: ['Subsequent mechanical damage (drops, impacts)', 'Water/liquid damage after repair', 'Modifications by third parties', 'Natural battery wear'] },
-                        { title: '2. Prices', text: 'Displayed prices are estimates. Final price is confirmed after free diagnostics. No hidden fees.' },
-                        { title: '3. Repair Time', text: 'Indicated time is estimated. We will communicate delays (if any) and offer alternatives.' },
-                        { title: '4. Payment', text: 'We accept: cash, bank card, transfer. Payment is made upon repair completion.' },
-                        { title: '5. Liability', text: 'We are not responsible for data loss on the device. We recommend backup before repair.' },
-                        { title: '6. Contact', text: 'For complaints or suggestions: info@nexxgsm.ro or Telegram @nexx_support' }
-                    ]
-                }
-            };
-            
-            const text = content[lang] || content.ro;
-            
-            return h('div', { className: 'min-h-screen bg-gray-50' },
-                h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-20 px-4' },
-                    h('div', { className: 'max-w-4xl mx-auto' },
-                        h('h1', { className: 'text-5xl font-bold mb-4' }, text.title),
-                        h('p', { className: 'text-gray-300' }, text.updated)
-                    )
-                ),
-                
-                h('section', { className: 'py-16 px-4' },
-                    h('div', { className: 'max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm' },
-                        ...text.sections.map((section, idx) => h('div', { key: idx, className: 'mb-8' },
-                            h('h2', { className: 'text-2xl font-bold mb-4 text-gray-900' }, section.title),
-                            h('p', { className: 'text-gray-700 mb-4' }, section.text),
-                            section.note && h('p', { className: 'text-gray-700 font-semibold mb-2' }, section.note),
-                            section.items && h('ul', { className: 'list-disc pl-6 text-gray-700' },
-                                ...section.items.map((item, i) => h('li', { key: i }, item))
-                            )
-                        ))
-                    )
-                )
-            );
-        };
-        
-        const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
-        headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: 'terms' }));
-        
-        const appRoot = ReactDOM.createRoot(document.getElementById('app'));
-        appRoot.render(React.createElement(TermsPage));
-        
-        const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
-        footerRoot.render(React.createElement(window.NEXXDesign.Footer));
-    </script>
+    <main class="pt-16">
+        <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Termeni și <span class="text-blue-400">Condiții</span></h1>
+                <p class="text-gray-400">Ultima actualizare: Februarie 2026</p>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 bg-slate-800">
+            <div class="max-w-3xl mx-auto prose prose-invert prose-lg">
+                <div class="space-y-8">
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">1. Informații Generale</h2>
+                        <p class="text-gray-300">Acești termeni și condiții reglementează utilizarea serviciilor oferite de <strong>NEXX GSM SERVICE POINT SRL</strong> (CUI: 53879866), cu sediul în Calea Șerban Vodă 47, Sector 4, București, România.</p>
+                    </div>
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">2. Servicii de Reparații</h2>
+                        <p class="text-gray-300">Oferim servicii de reparații pentru dispozitive electronice (telefoane, tablete, laptopuri). Diagnosticul inițial este gratuit. Prețul final este comunicat înainte de începerea lucrărilor și necesită acordul clientului.</p>
+                    </div>
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">3. Garanție</h2>
+                        <p class="text-gray-300">Toate reparațiile beneficiază de garanție. Garanția acoperă piesa înlocuită și manopera. Garanția nu acoperă defectele cauzate de utilizare necorespunzătoare, accidente sau intervenții ulterioare ale terților.</p>
+                    </div>
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">4. Responsabilități</h2>
+                        <p class="text-gray-300">Ne angajăm să tratăm fiecare dispozitiv cu maximă atenție. Nu ne asumăm responsabilitatea pentru datele personale stocate pe dispozitivele lăsate în service. Recomandăm efectuarea unui backup înainte de predare.</p>
+                    </div>
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">5. Preluare și Ridicare</h2>
+                        <p class="text-gray-300">Dispozitivele trebuie ridicate în termen de 30 de zile de la finalizarea reparației. După această perioadă, se poate aplica o taxă de depozitare.</p>
+                    </div>
+                    <div class="bg-slate-700/50 p-6 rounded-xl border border-white/10">
+                        <h2 class="text-xl font-bold text-blue-400 mb-3">6. Contact</h2>
+                        <p class="text-gray-300">Pentru întrebări legate de acești termeni, contactați-ne la <strong>info@nexxgsm.ro</strong> sau vizitați-ne la sediu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-white/10 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4"><img src="/static/nexx-logo.png" alt="NEXX GSM" class="h-8 w-auto"></div>
+                    <p class="text-gray-400 text-sm">Service profesional multibrand. Garanție inclusă. Diagnostic gratuit. București.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Companie</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/about" class="text-gray-400 hover:text-white transition">Despre noi</a></li><li><a href="/#contacts" class="text-gray-400 hover:text-white transition">Contacte</a></li></ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Servicii</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/#services" class="text-gray-400 hover:text-white transition">Reparații telefoane</a></li><li><a href="/#calculator" class="text-gray-400 hover:text-white transition">Calculator preț</a></li></ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Informații</h3>
+                    <ul class="space-y-2 text-sm"><li><a href="/faq" class="text-gray-400 hover:text-white transition">FAQ</a></li><li><a href="/privacy" class="text-gray-400 hover:text-white transition">Confidențialitate</a></li><li><a href="/terms" class="text-gray-400 hover:text-white transition">Termeni</a></li></ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">&copy; 2026 NEXX GSM SERVICE POINT SRL. CUI: 53879866. Toate drepturile rezervate.</div>
+        </div>
+    </footer>
 </body>
 </html>

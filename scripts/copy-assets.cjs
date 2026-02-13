@@ -86,6 +86,20 @@ if (fs.existsSync(manifestSource)) {
   console.log(`✅ Copied: manifest.json (PWA)\n`);
 }
 
+// Copy EcoFlow PWA manifest + service worker
+const ecoManifest = path.join(publicDir, 'ecoflow-manifest.json');
+if (fs.existsSync(ecoManifest)) {
+  fs.copyFileSync(ecoManifest, path.join(distDir, 'ecoflow-manifest.json'));
+  console.log(`✅ Copied: ecoflow-manifest.json (EcoFlow PWA)\n`);
+}
+const ecoSw = path.join(publicDir, 'ecoflow-sw.js');
+if (fs.existsSync(ecoSw)) {
+  let c = fs.readFileSync(ecoSw, 'utf8');
+  c = c.replace(/const CACHE_NAME = '[^']+';/, `const CACHE_NAME = 'ecoflow-tracker-${BUILD_VERSION}';`);
+  fs.writeFileSync(path.join(distDir, 'ecoflow-sw.js'), c);
+  console.log(`✅ Copied: ecoflow-sw.js (EcoFlow PWA SW)\n`);
+}
+
 // Copy sw.js (Service Worker) and inject BUILD_VERSION into CACHE_NAME
 const swSource = path.join(publicDir, 'sw.js');
 const swDest = path.join(distDir, 'sw.js');
@@ -167,9 +181,10 @@ if (!fs.existsSync(staticDestDir)) {
   fs.mkdirSync(staticDestDir, { recursive: true });
 }
 
-// Один лого везде
+// Один лого везде + EcoFlow PWA icon
 const logos = [
-  { name: 'nexx-logo.png', desc: 'NEXX GSM logo (единственный)' }
+  { name: 'nexx-logo.png', desc: 'NEXX GSM logo' },
+  { name: 'ecoflow-pwa-icon.svg', desc: 'EcoFlow PWA icon' }
 ];
 
 let logosCopied = 0;
@@ -184,6 +199,41 @@ for (const logo of logos) {
 
 if (logosCopied > 0) {
   console.log(`✅ Copied ${logosCopied} logo file(s)\n`);
+}
+
+// Copy vendor libraries (React, ReactDOM, etc.)
+const vendorSource = path.join(publicDir, 'static', 'vendor');
+const vendorDest = path.join(distDir, 'static', 'vendor');
+if (fs.existsSync(vendorSource)) {
+  copyDir(vendorSource, vendorDest);
+  console.log(`✅ Copied: static/vendor/ (React, ReactDOM, etc.)\n`);
+}
+
+// Copy brand logos
+const brandsSource = path.join(publicDir, 'static', 'brands');
+const brandsDest = path.join(distDir, 'static', 'brands');
+if (fs.existsSync(brandsSource)) {
+  copyDir(brandsSource, brandsDest);
+  console.log(`✅ Copied: static/brands/ (brand SVGs)\n`);
+}
+
+// Copy other static subdirectories (fonts, etc.)
+const staticSubDirs = ['fonts', 'icons'];
+for (const subDir of staticSubDirs) {
+  const subSource = path.join(publicDir, 'static', subDir);
+  const subDest = path.join(distDir, 'static', subDir);
+  if (fs.existsSync(subSource)) {
+    copyDir(subSource, subDest);
+    console.log(`✅ Copied: static/${subDir}/\n`);
+  }
+}
+
+// Copy enrichment ticker
+const tickerSource = path.join(publicDir, 'static', 'enrichment-ticker.js');
+const tickerDest = path.join(distDir, 'static', 'enrichment-ticker.js');
+if (fs.existsSync(tickerSource)) {
+  fs.copyFileSync(tickerSource, tickerDest);
+  console.log(`✅ Copied: enrichment-ticker.js\n`);
 }
 
 // Use minified JS if available
@@ -240,5 +290,8 @@ if (fs.existsSync(staticSource) && fs.existsSync(staticDest)) {
     console.log(`✅ Copied ${sourceJsCopied} source JS files\n`);
   }
 }
+
+// Note: _worker.js is built by `vite build` (Hono server) — do NOT overwrite it here
+// The Hono server handles auth, API routes, and static assets serving
 
 console.log('✨ All assets copied successfully!');

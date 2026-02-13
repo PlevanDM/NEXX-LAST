@@ -311,17 +311,20 @@
           }
           
           if (!dbReady) {
-            console.warn('⚠️ База не загружена, используем fallback (chunks)');
-            fetch('/data/chunks/devices.json', { credentials: 'include' })
-              .then(r => r.ok ? r.json() : [])
+            console.warn('⚠️ База не загружена, используем fallback (D1 → chunks)');
+            // Try D1 API first, fallback to static JSON
+            fetch('/api/d1/chunks/devices.json', { credentials: 'include' })
+              .then(r => r.ok ? r.json() : null)
+              .then(data => {
+                if (data && Array.isArray(data)) return data;
+                return fetch('/data/chunks/devices.json', { credentials: 'include' }).then(r => r.ok ? r.json() : []);
+              })
               .then(list => {
                 if (isMounted && Array.isArray(list)) {
                   setModels(list);
                   setDbReady(true);
                   setLoadingModels(false);
-                  if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
-                    console.log(`✅ Fallback: загружено ${list.length} моделей из /data/chunks/devices.json`);
-                  }
+                  console.log(`✅ Fallback: загружено ${list.length} моделей`);
                 }
               })
               .catch(e => {
@@ -451,17 +454,23 @@
     const USD_TO_RON = 4.65;
     
     const handleNext = () => {
-      if (step < 7) {
-        setDirection(1);
-        setStep(step + 1);
-      }
+      setStep(prev => {
+        if (prev < 7) {
+          setDirection(1);
+          return prev + 1;
+        }
+        return prev;
+      });
     };
     
     const handlePrevious = () => {
-      if (step > 1) {
-        setDirection(-1);
-        if (step === 5) setStep(3); else setStep(step - 1);
-      }
+      setStep(prev => {
+        if (prev > 1) {
+          setDirection(-1);
+          return prev === 5 ? 3 : prev - 1;
+        }
+        return prev;
+      });
     };
     
     const calculatePrice = async () => {
@@ -593,7 +602,6 @@
               issues: issues.map(i => i.name)  // Список выбранных проблем
             };
             
-            console.log(`✅ Итого за ${issues.length} дефект(ов): ${totalAvg} lei (${totalMin}-${totalMax})`);
             setResult(resultData);
             // Остаёмся на шаге 5 — показывается форма контакта (step === 5 && result)
             setStep(5);
@@ -866,7 +874,7 @@
     
     const reset = () => {
       setStep(1);
-      setData({ brand: null, deviceType: null, model: null, issue: null, name: '', phone: '' });
+      setData({ brand: null, deviceType: null, model: null, issue: null, issues: [], name: '', phone: '' });
       setResult(null);
       setSearchQuery('');
       setDirection(-1);
@@ -932,7 +940,7 @@
               ...brands.map(brand => h('button', {
                 key: brand.id,
                 onClick: () => {
-                  setData({ ...data, brand });
+                  setData(prev => ({ ...prev, brand, issues: [] }));
                   handleNext();
                   setTimeout(() => {
                     const calcEl = document.getElementById('calculator');
@@ -977,11 +985,11 @@
               ...getAvailableDeviceTypes().map(type => h('button', {
                 key: type.id,
                 onClick: () => {
-                  const newData = { ...data, deviceType: type.id, model: null };
-                  setData(newData);
+                  setData(prev => {
+                    console.log(`📱 Выбран тип: brand=${prev.brand?.id}, type=${type.id}, dbReady=${dbReady}, models=${models.length}`);
+                    return { ...prev, deviceType: type.id, model: null, issues: [] };
+                  });
                   setSearchQuery('');
-                  const n_brand = data.brand?.id?.toLowerCase();
-                  console.log(`📱 Выбран тип: brand=${n_brand}, type=${type.id}, dbReady=${dbReady}, models=${models.length}`);
                   setStep(3);
                   setTimeout(() => {
                     const calcEl = document.getElementById('calculator');
@@ -1045,7 +1053,7 @@
                   key: model.name + '-' + (model.year || ''),
                   onClick: () => {
                     console.log('✅ Выбрана модель:', model.name);
-                    setData({ ...data, model });
+                    setData(prev => ({ ...prev, model }));
                     setStep(5);
                   },
                   className: 'w-full p-1.5 sm:p-2.5 bg-zinc-800/40 hover:bg-zinc-800/70 border border-zinc-700 hover:border-blue-500/50 rounded-md sm:rounded-lg transition-all text-left flex items-center justify-between group'
@@ -1080,7 +1088,7 @@
                 ),
                 h('button', {
                   onClick: () => {
-                    setData({ ...data, model: { name: `${data.brand?.name || 'Dispozitiv'} (general)`, year: null, category: data.deviceType } });
+                    setData(prev => ({ ...prev, model: { name: `${prev.brand?.name || 'Dispozitiv'} (general)`, year: null, category: prev.deviceType } }));
                     setStep(5);
                   },
                   className: 'px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-xl transition-all flex items-center justify-center gap-2'
@@ -1103,7 +1111,7 @@
               ),
               h('button', {
                 onClick: () => {
-                  setData({ ...data, model: null });
+                  setData(prev => ({ ...prev, model: null }));
                   setStep(5);
                 },
                 className: 'px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all flex items-center gap-2 shadow-lg'
@@ -1140,7 +1148,7 @@
                     const newIssues = exists 
                       ? currentIssues.filter(i => i.id !== issue.id)  // Удаляем
                       : [...currentIssues, issue];  // Добавляем
-                    setData({ ...data, issues: newIssues });
+                    setData(prev => ({ ...prev, issues: newIssues }));
                   },
                   className: `group p-1.5 sm:p-3 border rounded-md sm:rounded-lg transition-all text-left flex items-center gap-1 sm:gap-2 hover:scale-[1.02] ${
                     isSelected 
@@ -1199,26 +1207,31 @@
             h('p', { className: 'text-zinc-400 text-xs sm:text-sm' }, 'Calculăm prețul...')
           ),
           
-          // Step 5: Contact + Price (компактно)
+          // Step 5: Contact form — price hidden until submit
           step === 5 && result && h('div', { className: 'space-y-2 sm:space-y-6' },
             h('div', { className: 'bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/30 rounded-lg sm:rounded-xl p-2 sm:p-4 mb-2 sm:mb-4' },
               h('div', { className: 'text-center' },
-                h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm mb-0.5 sm:mb-1' }, 'Preț estimativ pentru reparația dvs:'),
-                h('div', { className: 'text-xl sm:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent' },
-                  `${result.min} - ${result.max} lei`
+                h('div', { className: 'inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 mb-1 sm:mb-2' },
+                  h('i', { className: 'fas fa-lock text-lg sm:text-xl text-green-400' })
                 ),
-                h('p', { className: 'text-zinc-500 text-xs mt-1' }, 
+                h('p', { className: 'text-white font-bold text-sm sm:text-lg mb-0.5' }, 
+                  window.i18n?.t('calculator.priceReady') || 'Prețul este calculat!'
+                ),
+                h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm' }, 
                   `${data.brand?.name || ''} ${data.model?.name || ''} • ${(data.issues || []).map(i => i.name).join(', ')}`
+                ),
+                h('p', { className: 'text-zinc-500 text-[10px] sm:text-xs mt-1' }, 
+                  window.i18n?.t('calculator.unlockPrice') || 'Introduceți datele pentru a vedea prețul estimat'
                 )
               )
             ),
             
             h('div', { className: 'text-center' },
               h('h3', { className: 'text-sm sm:text-xl font-bold text-white mb-0.5 sm:mb-1 leading-tight' },
-                '📞 Lăsați datele pentru preț exact'
+                '📞 ' + (window.i18n?.t('calculator.contactForPrice') || 'Aflați prețul — lăsați datele')
               ),
               h('p', { className: 'text-zinc-400 text-[10px] sm:text-sm hidden sm:block' },
-                'Vă contactăm în 5 minute cu oferta finală + BONUS diagnostic gratuit!'
+                window.i18n?.t('calculator.contactBonus') || 'Vă contactăm în 5 minute cu oferta finală + BONUS diagnostic gratuit!'
               )
             ),
             h('div', { className: 'space-y-1.5 sm:space-y-3 max-w-md mx-auto' },
@@ -1227,7 +1240,7 @@
                   type: 'text',
                   value: data.name,
                   onChange: (e) => {
-                    setData({ ...data, name: e.target.value });
+                    setData(prev => ({ ...prev, name: e.target.value }));
                     if (errors.name) setErrors({ ...errors, name: '' });
                   },
                   placeholder: '👤 Numele dvs.',
@@ -1242,7 +1255,7 @@
                   type: 'tel',
                   value: data.phone,
                   onChange: (e) => {
-                    setData({ ...data, phone: e.target.value });
+                    setData(prev => ({ ...prev, phone: e.target.value }));
                     if (errors.phone) setErrors({ ...errors, phone: '' });
                   },
                   placeholder: '📱 Telefon: 07XX XXX XXX',
@@ -1291,8 +1304,8 @@
                 },
                 className: 'w-full px-3 py-2.5 sm:px-6 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-1.5 text-xs sm:text-base'
               },
-                h('i', { className: 'fas fa-paper-plane text-sm sm:text-base' }),
-                'Trimite și obține preț exact'
+                h('i', { className: 'fas fa-unlock text-sm sm:text-base' }),
+                window.i18n?.t('calculator.unlockBtn') || 'Vezi prețul estimat'
               ),
               h('p', { className: 'text-zinc-500 text-[9px] sm:text-xs text-center mt-1 sm:mt-2' },
                 '🔒 Datele sunt protejate. Nu facem spam.'

@@ -5,7 +5,7 @@
   "type": "module",
   "author": {
     "name": "Dmitry",
-    "email": "info@nexx.com.ua"
+    "email": "info@nexxgsm.ro"
   },
   "license": "MIT",
   "keywords": [
@@ -44,7 +44,7 @@
     "preview": "wrangler pages dev dist",
     "deploy": "npm run build && wrangler pages deploy dist --project-name nexx-gsm --branch main",
     "deploy:preview": "npm run build && wrangler pages deploy dist --project-name nexx-gsm",
-    "deploy:api": "powershell -ExecutionPolicy Bypass -File deploy-direct-api.ps1",
+    "deploy:api": "npm run build && wrangler pages deploy dist --project-name nexx-gsm",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "type-check": "tsc --noEmit",
     "validate": "node scripts/validate-database.cjs",

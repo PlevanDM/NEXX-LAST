@@ -3,169 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Despre Noi - NEXX Service Center | Reparații Profesionale București</title>
-    <meta name="description" content="NEXX Service Center - service profesional multibrand în București. Experiență 10+ ani. Garanție 30 zile. Tehnicieni certificați.">
+    <title>Despre Noi - NEXX GSM Service | Reparații Profesionale București</title>
+    <meta name="description" content="NEXX GSM SERVICE POINT SRL - service profesional multibrand în București. Experiență 5+ ani. Garanție inclusă. Tehnicieni certificați.">
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
+    <link rel="canonical" href="https://nexxgsm.com/about">
     
-    <script crossorigin src="/static/vendor/react.production.min.js"></script>
-    <script crossorigin src="/static/vendor/react-dom.production.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <div id="header"></div>
-    <div id="app"></div>
-    <div id="footer"></div>
-    
-    <script src="/static/utils.min.js"></script>
-    <script src="/static/database.min.js"></script>
-    <script src="/static/i18n.js"></script>
-    <script src="/static/ui-components.js"></script>
-    
-    <script>
-        const { createElement: h, useState, useEffect } = React;
-        
-        const AboutPage = () => {
-            const [lang, setLang] = useState(window.i18n?.getCurrentLanguage()?.code || 'ro');
-            
-            // Subscribe to language changes
-            useEffect(() => {
-                // Update meta for this page initially
-                if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('about');
-                
-                if (window.i18n?.subscribe) {
-                    return window.i18n.subscribe(() => {
-                        const newLang = window.i18n.getCurrentLanguage()?.code || 'ro';
-                        setLang(newLang);
-                        if (window.i18n?.updatePageMeta) window.i18n.updatePageMeta('about');
-                    });
-                }
-            }, []);
-            
-            const content = {
-                ro: {
-                    title: 'Despre NEXX Service Center',
-                    subtitle: 'Service profesional multibrand în București din 2014',
-                    story: 'NEXX Service Center este un service profesional de reparații pentru dispozitive electronice în București. Oferim servicii de calitate pentru Apple, Samsung, Xiaomi, Huawei și alte mărci populare.',
-                    mission: 'Misiunea noastră este să oferim reparații rapide, de calitate și la prețuri corecte. Fiecare dispozitiv este tratat cu atenție maximă, iar fiecare client primește servicii personalizate.',
-                    values: [
-                        { icon: 'fa-star', title: 'Calitate', desc: 'Piese originale și compatibile premium. Testare riguroasă.' },
-                        { icon: 'fa-clock', title: 'Rapiditate', desc: 'Majoritatea reparațiilor în 30-60 minute.' },
-                        { icon: 'fa-shield-check', title: 'Garanție', desc: '30 zile garanție pentru toate reparațiile.' },
-                        { icon: 'fa-heart', title: 'Transparență', desc: 'Raport foto/video complet al procesului.' }
-                    ],
-                    team: 'Echipa noastră',
-                    teamDesc: 'Tehnicieni certificați cu 5-15 ani experiență. Reparăm la nivel de microcip — găsim cauza și remediem problema cu echipament profesional.',
-                    cta: 'Vino să ne cunoști!'
-                },
-                ru: {
-                    title: 'О NEXX Service Center',
-                    subtitle: 'Профессиональный мультибрендовый сервис в Бухаресте с 2014 года',
-                    story: 'NEXX Service Center - профессиональный сервис по ремонту электронных устройств в Бухаресте. Мы предоставляем качественные услуги для Apple, Samsung, Xiaomi, Huawei и других популярных брендов.',
-                    mission: 'Наша миссия - обеспечить быстрый и качественный ремонт по справедливым ценам. Каждое устройство обрабатывается с максимальным вниманием, а каждый клиент получает персонализированное обслуживание.',
-                    values: [
-                        { icon: 'fa-star', title: 'Качество', desc: 'Оригинальные и премиум совместимые детали. Тщательное тестирование.' },
-                        { icon: 'fa-clock', title: 'Скорость', desc: 'Большинство ремонтов за 30-60 минут.' },
-                        { icon: 'fa-shield-check', title: 'Гарантия', desc: '30 дней гарантии на все ремонты.' },
-                        { icon: 'fa-heart', title: 'Прозрачность', desc: 'Полный фото/видео отчёт о процессе.' }
-                    ],
-                    team: 'Наша команда',
-                    teamDesc: 'Сертифицированные техники с опытом 5-15 лет. Ремонтируем на уровне микросхем — находим причину и устраняем её на профессиональном оборудовании.',
-                    cta: 'Приходите к нам!'
-                },
-                uk: {
-                    title: 'Про NEXX Service Center',
-                    subtitle: 'Професійний мультибрендовий сервіс у Бухаресті з 2014',
-                    story: 'NEXX Service Center - професійний сервіс з ремонту електронних пристроїв у Бухаресті. Надаємо якісні послуги для Apple, Samsung, Xiaomi, Huawei та інших популярних марок.',
-                    mission: 'Наша місія - надавати швидкий, якісний ремонт за чесними цінами. Кожен пристрій обробляється з максимальною увагою, кожен клієнт отримує персоналізоване обслуговування.',
-                    values: [
-                        { icon: 'fa-star', title: 'Якість', desc: 'Оригінальні та сумісні преміум деталі. Ретельне тестування.' },
-                        { icon: 'fa-clock', title: 'Швидкість', desc: 'Більшість ремонтів за 30-60 хвилин.' },
-                        { icon: 'fa-shield-check', title: 'Гарантія', desc: '30 днів гарантії на всі ремонти.' },
-                        { icon: 'fa-heart', title: 'Прозорість', desc: 'Повний фото/відео звіт процесу.' }
-                    ],
-                    team: 'Наша команда',
-                    teamDesc: 'Сертифіковані техніки з досвідом 5-15 років у ремонті на рівні мікрокомпонентів. Всі ремонти виконуються під професійним мікроскопом.',
-                    cta: 'Завітайте до нас!'
-                },
-                en: {
-                    title: 'About NEXX Service Center',
-                    subtitle: 'Professional multibrand service in Bucharest since 2014',
-                    story: 'NEXX Service Center is a professional repair service for electronic devices in Bucharest. We offer quality services for Apple, Samsung, Xiaomi, Huawei and other popular brands.',
-                    mission: 'Our mission is to provide fast, quality repairs at fair prices. Each device is treated with maximum attention, and each client receives personalized service.',
-                    values: [
-                        { icon: 'fa-star', title: 'Quality', desc: 'Original and premium compatible parts. Rigorous testing.' },
-                        { icon: 'fa-clock', title: 'Speed', desc: 'Most repairs in 30-60 minutes.' },
-                        { icon: 'fa-shield-check', title: 'Warranty', desc: '30-day warranty on all repairs.' },
-                        { icon: 'fa-heart', title: 'Transparency', desc: 'Complete photo/video process report.' }
-                    ],
-                    team: 'Our team',
-                    teamDesc: 'Certified technicians with 5-15 years experience. We repair at microchip level — find the cause and fix it with professional equipment.',
-                    cta: 'Come visit us!'
-                }
-            };
-            
-            const text = content[lang] || content.ro;
-            
-            return h('div', { className: 'min-h-screen' },
-                // Hero
-                h('section', { className: 'bg-gradient-to-br from-gray-900 to-black text-white py-24 px-4' },
-                    h('div', { className: 'max-w-4xl mx-auto text-center' },
-                        h('h1', { className: 'text-5xl md:text-6xl font-bold mb-6' }, text.title),
-                        h('p', { className: 'text-xl text-gray-300 mb-8' }, text.subtitle)
-                    )
-                ),
-                
-                // Story
-                h('section', { className: 'py-16 px-4 bg-white' },
-                    h('div', { className: 'max-w-4xl mx-auto' },
-                        h('p', { className: 'text-lg text-gray-700 leading-relaxed mb-6' }, text.story),
-                        h('p', { className: 'text-lg text-gray-700 leading-relaxed' }, text.mission)
-                    )
-                ),
-                
-                // Values
-                h('section', { className: 'py-16 px-4 bg-gray-50' },
-                    h('div', { className: 'max-w-6xl mx-auto' },
-                        h('div', { className: 'grid md:grid-cols-2 lg:grid-cols-4 gap-6' },
-                            ...text.values.map((value, idx) => h('div', {
-                                key: idx,
-                                className: 'bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-gray-900 transition text-center'
-                            },
-                                h('i', { className: `fas ${value.icon} text-4xl text-gray-900 mb-4` }),
-                                h('h3', { className: 'text-xl font-bold mb-2 text-gray-900' }, value.title),
-                                h('p', { className: 'text-gray-600' }, value.desc)
-                            ))
-                        )
-                    )
-                ),
-                
-                // Team
-                h('section', { className: 'py-16 px-4 bg-white' },
-                    h('div', { className: 'max-w-4xl mx-auto text-center' },
-                        h('h2', { className: 'text-4xl font-bold mb-6 text-gray-900' }, text.team),
-                        h('p', { className: 'text-lg text-gray-700 leading-relaxed mb-8' }, text.teamDesc),
-                        h('a', {
-                            href: '/#contacts',
-                            className: 'inline-block px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition'
-                        },
-                            h('i', { className: 'fas fa-arrow-right mr-2' }),
-                            text.cta
-                        )
-                    )
-                )
-            );
-        };
-        
-        // Render
-        const headerRoot = ReactDOM.createRoot(document.getElementById('header'));
-        headerRoot.render(React.createElement(window.NEXXDesign.Header, { currentPage: 'about' }));
-        
-        const appRoot = ReactDOM.createRoot(document.getElementById('app'));
-        appRoot.render(React.createElement(AboutPage));
-        
-        const footerRoot = ReactDOM.createRoot(document.getElementById('footer'));
-        footerRoot.render(React.createElement(window.NEXXDesign.Footer));
-    </script>
+<body class="bg-slate-950 text-white">
+
+    <!-- HEADER — same as landing -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <img src="/static/nexx-logo.png" alt="NEXX GSM" class="h-8 w-auto">
+                <span class="text-lg font-bold text-white hidden sm:inline">NEXX<span class="text-gray-400 text-sm font-normal">GSM</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm">
+                <a href="/" class="text-gray-300 hover:text-white transition">🏠 Acasă</a>
+                <a href="/#services" class="text-gray-300 hover:text-white transition">🔧 Servicii</a>
+                <a href="/#calculator" class="text-gray-300 hover:text-white transition">🧮 Calculator</a>
+                <a href="/#contacts" class="text-gray-300 hover:text-white transition">📞 Contacte</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="/#booking" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition hidden sm:inline-block">Programare</a>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-gray-300 p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-3">
+            <a href="/" class="block py-2 text-gray-300 hover:text-white">🏠 Acasă</a>
+            <a href="/#services" class="block py-2 text-gray-300 hover:text-white">🔧 Servicii</a>
+            <a href="/#calculator" class="block py-2 text-gray-300 hover:text-white">🧮 Calculator</a>
+            <a href="/#contacts" class="block py-2 text-gray-300 hover:text-white">📞 Contacte</a>
+            <a href="/#booking" class="block py-2 text-blue-400 hover:text-blue-300 font-medium">📋 Programare</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero -->
+        <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-1.5 mb-6">
+                    <i class="fas fa-star text-blue-400 text-sm"></i>
+                    <span class="text-blue-300 text-sm font-medium">5+ ani de experiență</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Despre <span class="text-blue-400">NEXX GSM</span></h1>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                    NEXX GSM SERVICE POINT SRL — service profesional multibrand în București.
+                    Reparăm iPhone, MacBook, Samsung, Xiaomi, Huawei și alte mărci populare.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission / Values -->
+        <section class="py-16 px-4 bg-slate-900">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center"><i class="fas fa-bullseye text-blue-400"></i></span>
+                            Misiunea noastră
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed">
+                            Oferim reparații rapide, de calitate și la prețuri corecte.
+                            Fiecare dispozitiv este tratat cu atenție maximă, iar fiecare client primește servicii personalizate.
+                            Diagnostic gratuit. Garanție inclusă.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center"><i class="fas fa-eye text-purple-400"></i></span>
+                            Viziunea noastră
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed">
+                            Să devenim cel mai de încredere partener pentru proprietarii de dispozitive electronice din București,
+                            stabilind noi standarde de calitate și transparență în domeniul reparațiilor.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-blue-500/50 transition">
+                        <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-bolt text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Rapiditate</h3>
+                        <p class="text-gray-400 text-sm">Reparații în 30-60 minute. Diagnosticul gratuit pe loc.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-green-500/50 transition">
+                        <div class="w-14 h-14 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-halved text-green-400 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Garanție</h3>
+                        <p class="text-gray-400 text-sm">Garanție inclusă pe toate reparațiile și piesele folosite.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-yellow-500/50 transition">
+                        <div class="w-14 h-14 bg-yellow-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-microchip text-yellow-400 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Piese originale</h3>
+                        <p class="text-gray-400 text-sm">Componente originale și premium compatibile, testate riguros.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-pink-500/50 transition">
+                        <div class="w-14 h-14 bg-pink-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-camera text-pink-400 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Transparență</h3>
+                        <p class="text-gray-400 text-sm">Raport foto/video complet al procesului de reparație.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team / Info -->
+        <section class="py-16 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Echipa noastră</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                    Tehnicieni certificați cu experiență de 5-15 ani. Reparăm la nivel de microcip —
+                    găsim cauza și remediem problema cu echipament profesional BGA, microscopie și diagnosticare avansată.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 mb-10">
+                    <div class="flex items-center gap-2 text-gray-400"><i class="fas fa-users text-blue-400"></i> Echipă profesionistă</div>
+                    <div class="flex items-center gap-2 text-gray-400"><i class="fas fa-microscope text-green-400"></i> Micro-soldering</div>
+                    <div class="flex items-center gap-2 text-gray-400"><i class="fas fa-certificate text-yellow-400"></i> Certificați</div>
+                    <div class="flex items-center gap-2 text-gray-400"><i class="fas fa-tools text-purple-400"></i> Echipament profesional</div>
+                </div>
+                <a href="/#contacts" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition">
+                    <i class="fas fa-phone"></i> Contactați-ne
+                </a>
+            </div>
+        </section>
+
+        <!-- Company Info -->
+        <section class="py-12 px-4 bg-slate-950 border-t border-slate-800">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <i class="fas fa-building text-2xl text-gray-500 mb-3"></i>
+                        <h3 class="font-bold mb-1">NEXX GSM SERVICE POINT SRL</h3>
+                        <p class="text-gray-400 text-sm">CUI: 53879866</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt text-2xl text-gray-500 mb-3"></i>
+                        <h3 class="font-bold mb-1">Adresa</h3>
+                        <p class="text-gray-400 text-sm">Calea Șerban Vodă 47, Sector 4, București</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock text-2xl text-gray-500 mb-3"></i>
+                        <h3 class="font-bold mb-1">Program</h3>
+                        <p class="text-gray-400 text-sm">Lun-Vin 10:00-19:00 • Sâm 11:00-17:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER — same as landing -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="/static/nexx-logo.png" alt="NEXX" class="h-6">
+                        <span class="font-bold text-white">NEXX GSM</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Service profesional multibrand. Garanție inclusă. Diagnostic gratuit. București.</p>
+                    <div class="flex gap-3">
+                        <a href="https://instagram.com/nexx_gsm" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/nexx_support" class="text-gray-400 hover:text-white transition"><i class="fab fa-telegram"></i></a>
+                        <a href="https://facebook.com/nexxgsm" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@nexxgsm" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-3">Companie</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition">Despre noi</a></li>
+                        <li><a href="/#contacts" class="text-gray-400 hover:text-white transition">Contacte</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Joburi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-3">Servicii</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/#services" class="text-gray-400 hover:text-white transition">Reparații telefoane</a></li>
+                        <li><a href="/#services" class="text-gray-400 hover:text-white transition">Reparații laptopuri</a></li>
+                        <li><a href="/#calculator" class="text-gray-400 hover:text-white transition">Cost aproximativ reparație</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-3">Informații</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition">Confidențialitate</a></li>
+                        <li><a href="/terms" class="text-gray-400 hover:text-white transition">Termeni</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-6 text-center text-gray-500 text-sm">
+                &copy; 2026 NEXX GSM SERVICE POINT SRL. CUI: 53879866. Toate drepturile rezervate.
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

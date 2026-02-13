@@ -13,6 +13,17 @@ interface DocumentData {
   [key: string]: any;
 }
 
+/** Escape HTML entities to prevent XSS */
+const escapeHtml = (str: unknown): string => {
+  const s = String(str ?? '')
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 /**
  * Generate HTML document from template
  */
@@ -25,7 +36,7 @@ export const generateHTMLDocument = (
   const templateLang = template[language] || template.en;
 
   const getFieldValue = (fieldKey: string): string => {
-    return data[fieldKey] || `_________________`;
+    return data[fieldKey] ? escapeHtml(data[fieldKey]) : `_________________`;
   };
 
   let content = ``;
@@ -200,10 +211,10 @@ const renderHeaderHTML = (template: any, data: DocumentData): string => {
         <p>Service Center</p>
         <p>Str. Victoriei 15, Bucharest, Romania</p>
         <p>Phone: +40 721 234 567</p>
-        <p>Email: info@nexx.ro</p>
+        <p>Email: info@nexxgsm.ro</p>
       </div>
       <div class="document-title">
-        <h2>${template.title}</h2>
+        <h2>${escapeHtml(template.title)}</h2>
         <p>Date: ${new Date().toLocaleDateString()}</p>
       </div>
     </div>
@@ -224,23 +235,23 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
         <div class="field-group">
           <div class="field">
             <div class="field-label">Order Number:</div>
-            <div class="field-value">${data.orderNumber || ''}</div>
+            <div class="field-value">${escapeHtml(data.orderNumber)}</div>
           </div>
           <div class="field">
             <div class="field-label">Date of Intake:</div>
-            <div class="field-value">${data.date || new Date().toLocaleDateString()}</div>
+            <div class="field-value">${escapeHtml(data.date || new Date().toLocaleDateString())}</div>
           </div>
           <div class="field">
             <div class="field-label">Customer Name:</div>
-            <div class="field-value">${data.customerName || ''}</div>
+            <div class="field-value">${escapeHtml(data.customerName)}</div>
           </div>
           <div class="field">
             <div class="field-label">Phone:</div>
-            <div class="field-value">${data.customerPhone || ''}</div>
+            <div class="field-value">${escapeHtml(data.customerPhone)}</div>
           </div>
           <div class="field">
             <div class="field-label">Email:</div>
-            <div class="field-value">${data.customerEmail || ''}</div>
+            <div class="field-value">${escapeHtml(data.customerEmail)}</div>
           </div>
         </div>
       </div>
@@ -250,27 +261,27 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
         <div class="field-group">
           <div class="field">
             <div class="field-label">Device Type:</div>
-            <div class="field-value">${data.deviceType || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceType)}</div>
           </div>
           <div class="field">
             <div class="field-label">Brand:</div>
-            <div class="field-value">${data.deviceBrand || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceBrand)}</div>
           </div>
           <div class="field">
             <div class="field-label">Model:</div>
-            <div class="field-value">${data.deviceModel || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceModel)}</div>
           </div>
           <div class="field">
             <div class="field-label">Color:</div>
-            <div class="field-value">${data.deviceColor || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceColor)}</div>
           </div>
           <div class="field">
             <div class="field-label">Serial Number:</div>
-            <div class="field-value">${data.deviceSerial || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceSerial)}</div>
           </div>
           <div class="field">
             <div class="field-label">IMEI:</div>
-            <div class="field-value">${data.deviceIMEI || ''}</div>
+            <div class="field-value">${escapeHtml(data.deviceIMEI)}</div>
           </div>
         </div>
       </div>
@@ -280,19 +291,19 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
         <div class="field-group">
           <div class="field">
             <div class="field-label">Device Condition:</div>
-            <div class="field-value" style="min-height: 40px;">${data.condition || ''}</div>
+            <div class="field-value" style="min-height: 40px;">${escapeHtml(data.condition)}</div>
           </div>
           <div class="field">
             <div class="field-label">Visible Damage:</div>
-            <div class="field-value" style="min-height: 40px;">${data.damage || ''}</div>
+            <div class="field-value" style="min-height: 40px;">${escapeHtml(data.damage)}</div>
           </div>
           <div class="field">
             <div class="field-label">Accessories Received:</div>
-            <div class="field-value" style="min-height: 40px;">${data.accessories || ''}</div>
+            <div class="field-value" style="min-height: 40px;">${escapeHtml(data.accessories)}</div>
           </div>
           <div class="field">
             <div class="field-label">Estimated Repair Cost:</div>
-            <div class="field-value">${data.estimatedPrice || ''}</div>
+            <div class="field-value">${escapeHtml(data.estimatedPrice)}</div>
           </div>
         </div>
       </div>
@@ -300,7 +311,7 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
       <div class="section">
         <div class="section-title">${template.sections[3] || 'Special Notes'}</div>
         <div class="field">
-          <div class="field-value" style="min-height: 60px;">${data.notes || ''}</div>
+          <div class="field-value" style="min-height: 60px;">${escapeHtml(data.notes)}</div>
         </div>
       </div>
     `;
@@ -314,19 +325,19 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
         <div class="field-group">
           <div class="field">
             <div class="field-label">Order Number:</div>
-            <div class="field-value">${data.orderNumber || ''}</div>
+            <div class="field-value">${escapeHtml(data.orderNumber)}</div>
           </div>
           <div class="field">
             <div class="field-label">Release Date:</div>
-            <div class="field-value">${data.releaseDate || new Date().toLocaleDateString()}</div>
+            <div class="field-value">${escapeHtml(data.releaseDate || new Date().toLocaleDateString())}</div>
           </div>
           <div class="field">
             <div class="field-label">Repair Start Date:</div>
-            <div class="field-value">${data.repairStartDate || ''}</div>
+            <div class="field-value">${escapeHtml(data.repairStartDate)}</div>
           </div>
           <div class="field">
             <div class="field-label">Repair End Date:</div>
-            <div class="field-value">${data.repairEndDate || ''}</div>
+            <div class="field-value">${escapeHtml(data.repairEndDate)}</div>
           </div>
         </div>
       </div>
@@ -334,7 +345,7 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
       <div class="section">
         <div class="section-title">${template.sections[1] || 'Work Completed'}</div>
         <div class="field">
-          <div class="field-value" style="min-height: 60px;">${data.repairWork || ''}</div>
+          <div class="field-value" style="min-height: 60px;">${escapeHtml(data.repairWork)}</div>
         </div>
       </div>
 
@@ -347,23 +358,23 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
           </tr>
           <tr>
             <td>Subtotal</td>
-            <td>${data.subtotal || '___________'}</td>
+            <td>${escapeHtml(data.subtotal || '___________')}</td>
           </tr>
           <tr>
             <td>Tax</td>
-            <td>${data.tax || '___________'}</td>
+            <td>${escapeHtml(data.tax || '___________')}</td>
           </tr>
           <tr style="font-weight: bold;">
             <td>Total Cost</td>
-            <td>${data.totalCost || '___________'}</td>
+            <td>${escapeHtml(data.totalCost || '___________')}</td>
           </tr>
           <tr>
             <td>Amount Paid</td>
-            <td>${data.paid || '___________'}</td>
+            <td>${escapeHtml(data.paid || '___________')}</td>
           </tr>
           <tr>
             <td>Remaining</td>
-            <td>${data.remaining || '___________'}</td>
+            <td>${escapeHtml(data.remaining || '___________')}</td>
           </tr>
         </table>
       </div>
@@ -373,11 +384,11 @@ const renderContentHTML = (templateType: TemplateType, template: any, data: Docu
         <div class="field-group">
           <div class="field">
             <div class="field-label">Warranty Period (Days):</div>
-            <div class="field-value">${data.warranty || '30'}</div>
+            <div class="field-value">${escapeHtml(data.warranty || '30')}</div>
           </div>
           <div class="field">
             <div class="field-label">Warranty Valid Until:</div>
-            <div class="field-value">${data.warrantyValid || ''}</div>
+            <div class="field-value">${escapeHtml(data.warrantyValid)}</div>
           </div>
         </div>
       </div>

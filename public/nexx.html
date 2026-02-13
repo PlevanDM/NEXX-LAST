@@ -7,6 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>NEXX Database - База знань для ремонту Apple</title>
     <link rel="manifest" href="/manifest.json">
+    <script>
+    (function(){
+      var path = (window.location.pathname || '');
+      if (path.indexOf('power-tracker') === -1) return;
+      var link = document.querySelector('link[rel="manifest"]');
+      if (link) link.href = '/ecoflow-manifest.json';
+      if ('serviceWorker' in navigator) navigator.serviceWorker.register('/ecoflow-sw.js', { scope: '/' }).catch(function(){});
+      window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); window.__PWA_DEFERRED_PROMPT__ = e; });
+      window.addEventListener('appinstalled', function(){ window.__PWA_DEFERRED_PROMPT__ = null; });
+    })();
+    </script>
     <meta name="theme-color" content="#1e3a8a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="NEXX Database - Професійна база знань: 680 пристроїв, 167 кодів помилок, 115 IC, діагностика">
@@ -95,13 +106,15 @@
     <script src="/static/ui-components.js?v=20260131"></script>
     <script src="/static/navigation-system.min.js?v=2.1"></script>
     
+    <!-- Enrichment Engine Ticker (auto-enrichment activity feed) -->
+    <script defer src="/static/enrichment-ticker.js?v=1.0"></script>
+    
     <script>
     (() => {
       const { useState, createElement: h } = React;
       const { createRoot } = ReactDOM;
       const { Header, Footer } = window.NEXXDesign;
       const { Breadcrumbs, QuickActions, BackButton, GlobalSearch } = window.NEXXNavigation;
-      const CORRECT_PIN = '31618585';
       
       // Render Unified Header with Search (only when authenticated)
       let headerRoot = null;
@@ -203,9 +216,9 @@
         const isDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
         const script = document.createElement('script');
         script.id = 'nexx-db-script';
+        // Always load as ES module (Vite output uses import statements)
+        script.type = 'module';
         if (isDev) {
-          // Dev mode: load source directly via Vite module transform
-          script.type = 'module';
           script.src = '/src/client.tsx';
         } else {
           script.src = '/static/client-v2.js?v=2.0.3';
@@ -273,7 +286,8 @@
             if (res.ok && body.success === true) {
               localStorage.setItem('nexx_pin', pin);
               localStorage.setItem('nexx_auth', 'true');
-              requestAnimationFrame(() => requestAnimationFrame(() => loadDatabaseApp()));
+              // Даём браузеру время обработать Set-Cookie перед загрузкой приложения
+              setTimeout(() => loadDatabaseApp(), 150);
             } else {
               throw new Error(body.error || 'Invalid PIN');
             }

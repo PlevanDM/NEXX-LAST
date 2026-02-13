@@ -346,8 +346,8 @@
         style: { opacity: 1 },
         'data-scrolled': isScrolled ? 'true' : 'false'
       },
-      h('div', { className: 'max-w-7xl mx-auto px-4 flex items-center justify-center', style: { height: '104px', minHeight: '104px', paddingLeft: 'max(1rem, env(safe-area-inset-left, 0))', paddingRight: 'max(1rem, env(safe-area-inset-right, 0))' } },
-        h('div', { className: 'flex items-center justify-center gap-6 xl:gap-10 min-w-0 w-full max-w-5xl' },
+      h('div', { className: 'max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-center nexx-header-inner', style: { height: 'var(--header-h, 104px)', minHeight: 'var(--header-h, 104px)', paddingLeft: 'max(0.75rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.75rem, env(safe-area-inset-right, 0))' } },
+        h('div', { className: 'flex items-center justify-between md:justify-center gap-2 sm:gap-4 md:gap-6 xl:gap-10 min-w-0 w-full max-w-5xl' },
           // Логотип: белый на тёмном фоне, по центру с нав
           h('a', {
             href: '/',
@@ -362,9 +362,9 @@
               className: 'object-contain block logo-pulse logo-header-img',
               style: {
                 display: 'block',
-                height: '99px',
+                height: 'var(--logo-h, 99px)',
                 width: 'auto',
-                maxWidth: '340px',
+                maxWidth: 'var(--logo-mw, 340px)',
                 background: 'transparent'
               },
               onLoad: function(e) {
@@ -415,10 +415,10 @@
           )
         ),
         
-        // Mobile Menu Dropdown (below 104px header, compact margins)
+        // Mobile Menu Dropdown (below header, compact margins)
         isMobileMenuOpen && h('div', { 
-          className: 'md:hidden absolute top-[104px] left-2 right-2 sm:left-4 sm:right-4 py-3 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-[100]',
-          style: { maxHeight: 'calc(100vh - 100px)', overflowY: 'auto', paddingLeft: 'max(0.5rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.5rem, env(safe-area-inset-right, 0))' }
+          className: 'md:hidden absolute left-2 right-2 sm:left-4 sm:right-4 py-3 bg-white rounded-2xl shadow-2xl animate-slide-down border border-gray-200 z-[100] nexx-mobile-menu',
+          style: { top: 'var(--header-h, 104px)', maxHeight: 'calc(100vh - var(--header-h, 104px))', overflowY: 'auto', paddingLeft: 'max(0.5rem, env(safe-area-inset-left, 0))', paddingRight: 'max(0.5rem, env(safe-area-inset-right, 0))' }
         },
           ...navLinks.map(link => h('a', {
             key: link.id,

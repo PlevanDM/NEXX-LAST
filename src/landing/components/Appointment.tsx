@@ -124,8 +124,11 @@ const Appointment: React.FC = () => {
               <div className="relative">
                 <i className="fas fa-calendar-day absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
                 <input
-                  type="date"
+                  type={form.preferredDate ? 'date' : 'text'}
                   value={form.preferredDate}
+                  placeholder={t('booking.form.datePlaceholder') !== 'booking.form.datePlaceholder' ? (t('booking.form.datePlaceholder') as string) : 'zz.ll.aaaa'}
+                  onFocus={(e) => { e.currentTarget.type = 'date'; }}
+                  onBlur={(e) => { if (!e.currentTarget.value) e.currentTarget.type = 'text'; }}
                   onChange={(e) => setForm(prev => ({ ...prev, preferredDate: e.target.value }))}
                   className="w-full pl-12 pr-4 py-4 bg-gray-900 border-2 border-gray-700 rounded-xl text-white outline-none focus:border-blue-500 transition-colors"
                 />

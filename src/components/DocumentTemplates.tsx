@@ -306,7 +306,7 @@ export const DocumentTemplates: React.FC<DocumentTemplatesProps> = ({
         <div className="border-t border-slate-300 pt-4">
           <p className="font-semibold mb-2">Contact for Support</p>
           <p className={`text-sm ${textMutedTheme}`}>
-            Email: info@nexx.ro
+            Email: info@nexxgsm.ro
             <br />
             Phone: +40 721 234 567
             <br />

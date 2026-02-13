@@ -56,11 +56,25 @@ interface AppData {
 const AUTH_OPTIONS = { credentials: 'include' as RequestCredentials, mode: 'same-origin' as RequestMode };
 
 export const fetchAppData = async (): Promise<AppData> => {
-  const pin = localStorage.getItem('nexx_pin') || '';
+  const pin = (localStorage.getItem('nexx_pin') || '').trim();
   const headers = { 'X-NEXX-PIN': pin };
 
   try {
+    // Try D1 API first (/api/d1/chunks/*), fallback to static JSON (/data/chunks/*)
     const fetchChunk = async (name: string) => {
+      // Try D1 first (публичные данные, PIN передаём для единообразия)
+      try {
+        const d1Res = await fetch(`/api/d1/chunks/${name}.json`, { headers, ...AUTH_OPTIONS });
+        if (d1Res.ok) {
+          const data = await d1Res.json().catch(() => null);
+          if (data !== null && data !== undefined) {
+            console.log(`[D1] ✓ ${name} (source: ${d1Res.headers.get('X-Source') || 'd1'})`);
+            return data;
+          }
+        }
+      } catch { /* D1 unavailable, fallback */ }
+
+      // Fallback to static JSON
       const response = await fetch(`/data/chunks/${name}.json`, { headers, ...AUTH_OPTIONS });
       if (response.status === 401) {
         throw new Error('UNAUTHORIZED');
@@ -68,6 +82,7 @@ export const fetchAppData = async (): Promise<AppData> => {
       if (!response.ok) {
         throw new Error(`Failed to load chunk ${name}: ${response.status} ${response.statusText}`);
       }
+      console.log(`[Static] ✓ ${name}`);
       return response.json();
     };
 

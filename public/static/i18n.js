@@ -137,6 +137,7 @@
         title: 'Ремонт iPhone, MacBook, Samsung',
         subtitle: 'Експрес Сервіс • Гарантія Включена',
         description: 'Професійний ремонт Apple, Samsung, Xiaomi, Huawei. Безкоштовна діагностика. Оригінальні запчастини.',
+        subline: 'Не дозволяйте зіпсувати собі день — ми повернемо ваш пристрій як новий.',
         onlineLabel: 'клієнтів на сайті',
         yearsExperience: 'років досвіду',
         mastersCount: 'майстрів',
@@ -205,70 +206,76 @@
         title: 'Послуги Ремонту',
         subtitle: 'Мультибрендний сервіс з сертифікованими фахівцями',
         notFound: 'Не знайшли потрібну послугу?',
+        prevSlide: 'Попередній слайд',
+        nextSlide: 'Наступний слайд',
+        slides: 'Слайди',
+        slide: 'Слайд',
         items: {
           battery: { 
             title: 'Ремонт Батарей', 
-            desc: 'Заміна + відновлення акумуляторів',
-            detailsText: 'Оригінальні батареї та преміум якість. Тестування ємності. Гарантія.',
+            desc: 'Заміна + відновлення — включаючи iPhone 17',
+            detailsText: 'Оригінальні батареї та преміум якість. Тестування ємності. Гарантія 12 місяців.',
             details: ['Заміна батарей', 'Відновлення ємності', 'Калібрування BMS', 'Тестування'],
             subServices: [
-              { name: 'iPhone 12-16', price: '150-250 lei', time: '30 хв' },
-              { name: 'iPhone SE/11', price: '100-150 lei', time: '30 хв' },
-              { name: 'Samsung S/Note', price: '120-200 lei', time: '45 хв' },
-              { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 год' },
-              { name: 'iPad', price: '200-350 lei', time: '1 год' }
+              { name: 'iPhone 17 / 17 Pro', price: 'від 599 lei', time: '30 хв' },
+              { name: 'iPhone 16 / 16 Pro', price: 'від 499 lei', time: '30 хв' },
+              { name: 'iPhone 15 / 14 / SE', price: 'від 349 lei', time: '30 хв' },
+              { name: 'Samsung S25 / S24', price: 'від 399 lei', time: '45 хв' },
+              { name: 'MacBook Pro / Air', price: 'від 499 lei', time: '1-2 год' },
+              { name: 'iPad Pro / Air / Mini', price: 'від 600 lei', time: '1 год' }
             ]
           },
           board: { 
             title: 'Ремонт Плат', 
-            desc: 'Пайка IC, BGA ребол, ремонт доріжок',
-            detailsText: 'Ремонт на рівні компонентів. Діагностика під мікроскопом. BGA ребол.',
+            desc: 'Пайка IC, BGA ребол, A19/A18 Bionic',
+            detailsText: 'Ремонт на рівні компонентів. Діагностика під мікроскопом. Ребол BGA.',
             details: ['Пайка IC', 'BGA ребол', 'Ремонт доріжок', 'Пошкодження водою'],
             subServices: [
-              { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 год' },
-              { name: 'Ремонт доріжок', price: '150-400 lei', time: '1-3 год' },
-              { name: 'Заміна IC', price: '200-500 lei', time: '1-2 год' },
-              { name: 'Пошкодження водою', price: '250-700 lei', time: '2-8 год' },
-              { name: 'Діагностика', price: '50-100 lei', time: '30 хв' }
+              { name: 'iPhone 17 (A19 Bionic)', price: 'від 1199 lei', time: '3-6 год' },
+              { name: 'iPhone 16/15 Pro', price: 'від 999 lei', time: '2-4 год' },
+              { name: 'Reballing CPU/GPU', price: 'від 899 lei', time: '2-4 год' },
+              { name: 'Пошкодження водою', price: 'від 999 lei', time: '2-8 год' },
+              { name: 'MacBook M4/M3 SoC', price: 'від 499 lei', time: '1-3 дні' }
             ]
           },
           display: { 
             title: 'Заміна Дисплею', 
-            desc: 'Оригінальні або якісні екрани',
-            detailsText: 'Оригінальні, відновлені або сумісні преміум. Гарантія від битих пікселів.',
-            details: ['LCD/OLED', 'Сенсор', 'Ламінування', 'Калібрування'],
+            desc: 'OLED оригінал — включаючи iPhone 17 ProMotion',
+            detailsText: 'Оригінальні екрани OLED/LTPO. Калібрування True Tone. Гарантія від битих пікселів.',
+            details: ['OLED/LTPO', 'Сенсор', 'Ламінування', 'Калібрування True Tone'],
             subServices: [
-              { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 хв' },
-              { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 хв' },
-              { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 год' },
-              { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 год' },
-              { name: 'iPad Display', price: '400-900 lei', time: '1-2 год' }
+              { name: 'iPhone 17 Pro / Pro Max', price: 'від 1999 lei', time: '50-60 хв' },
+              { name: 'iPhone 17 / 17 Plus', price: 'від 1499 lei', time: '45 хв' },
+              { name: 'iPhone 16 / 15 OLED', price: 'від 895 lei', time: '45 хв' },
+              { name: 'Samsung S25 / S24', price: 'від 999 lei', time: '1 год' },
+              { name: 'MacBook Retina', price: 'від 999 lei', time: '2-3 год' },
+              { name: 'iPad Pro / Air', price: 'від 899 lei', time: '1-2 год' }
             ]
           },
           port: { 
             title: 'Порт Зарядки', 
-            desc: 'Заміна конектора, очищення',
-            detailsText: 'Заміна конектора. Очищення окислення. Ремонт доріжок плати.',
-            details: ['Очищення порту', 'Заміна', 'Ремонт доріжок', 'Тестування зарядки'],
+            desc: 'USB-C / USB4 / Lightning — всі стандарти',
+            detailsText: 'Заміна конектора USB-C/USB4. Очищення окислення. Ремонт доріжок.',
+            details: ['Очищення порту', 'Заміна конектора', 'Ремонт доріжок', 'Тестування зарядки'],
             subServices: [
-              { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 хв' },
-              { name: 'iPhone USB-C', price: '150-250 lei', time: '45 хв' },
-              { name: 'Samsung USB-C', price: '80-150 lei', time: '30 хв' },
-              { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 год' },
-              { name: 'Очищення окислення', price: '30-60 lei', time: '15 хв' }
+              { name: 'iPhone 17 USB4', price: 'від 599 lei', time: '45 хв' },
+              { name: 'iPhone 16/15 USB-C', price: 'від 499 lei', time: '45 хв' },
+              { name: 'iPhone 14 Lightning', price: 'від 449 lei', time: '30-45 хв' },
+              { name: 'Samsung / Android', price: 'від 449 lei', time: '30 хв' },
+              { name: 'MacBook USB-C', price: 'від 499 lei', time: '1-2 год' }
             ]
           },
           modular: { 
             title: 'Модульний Сервіс', 
-            desc: 'Камера, динамік, кнопки, датчики',
-            detailsText: 'Заміна модулів: камера, динамік, кнопка Home, кнопка живлення, шлейфи.',
-            details: ['Камера', 'Динамік/Мікрофон', 'Кнопки', 'Датчики'],
+            desc: 'Камера, динамік, Face ID, датчики',
+            detailsText: 'Заміна модулів: камера, динамік, Face ID, кнопки, шлейфи.',
+            details: ['Камера', 'Динамік/Мікрофон', 'Face ID', 'Датчики'],
             subServices: [
-              { name: 'Основна камера', price: '150-400 lei', time: '30-60 хв' },
-              { name: 'Фронтальна камера', price: '80-200 lei', time: '30 хв' },
-              { name: 'Динамік/Мікрофон', price: '60-150 lei', time: '20-40 хв' },
-              { name: 'Кнопки/Датчики', price: '80-200 lei', time: '30-60 хв' },
-              { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 год' }
+              { name: 'Камера iPhone 17 Pro', price: 'від 999 lei', time: '45-60 хв' },
+              { name: 'Камера iPhone 16/15', price: 'від 449 lei', time: '30-60 хв' },
+              { name: 'Face ID / Touch ID', price: 'від 599 lei', time: '1 год' },
+              { name: 'Динамік / Мікрофон', price: 'від 449 lei', time: '30 хв' },
+              { name: 'Камера Samsung S25', price: 'від 499 lei', time: '45 хв' }
             ]
           },
           diagnostics: { 
@@ -389,6 +396,11 @@
         loadingModels: 'Завантаження моделей...',
         noModels: 'Немає моделей для цієї комбінації',
         noModelsHint: 'не виробляє цей тип пристрою.',
+        priceReady: 'Ціну розраховано!',
+        unlockPrice: 'Введіть дані, щоб побачити приблизну ціну',
+        contactForPrice: 'Дізнайтеся ціну — залиште дані',
+        contactBonus: 'Зателефонуємо за 5 хвилин з фінальною пропозицією + БОНУС безкоштовна діагностика!',
+        unlockBtn: 'Дізнатися ціну',
         continueWithoutModelBtn: 'Продовжити без моделі',
       },
       tracker: {
@@ -427,6 +439,7 @@
           problem: 'Опис проблеми',
           problemPlaceholder: 'Не заряджається, тріснутий екран...',
           date: 'Бажана дата',
+          datePlaceholder: 'дд.мм.рррр',
           comment: 'Коментар',
           submit: 'Відправити заявку',
           submitting: 'Відправляємо...'
@@ -866,70 +879,76 @@
         title: 'Ce reparăm',
         subtitle: 'Apple, Samsung, Xiaomi, Huawei - toate sub un singur acoperiș',
         notFound: 'Nu ați găsit serviciul? Contactați-ne.',
+        prevSlide: 'Slide anterior',
+        nextSlide: 'Slide următor',
+        slides: 'Slide-uri',
+        slide: 'Slide',
         items: {
           battery: { 
             title: 'Reparații Baterii', 
-            desc: 'Înlocuire + regenerare acumulatori',
-            detailsText: 'Baterii originale și calitate premium. Testare capacitate. Garanție.',
+            desc: 'Înlocuire + regenerare — inclusiv iPhone 17',
+            detailsText: 'Baterii originale și calitate premium. Testare capacitate. Garanție 12 luni.',
             details: ['Înlocuire baterie', 'Regenerare celule', 'Calibrare BMS', 'Test capacitate'],
             subServices: [
-              { name: 'iPhone 12-16', price: '150-250 lei', time: '30 min' },
-              { name: 'iPhone SE/11', price: '100-150 lei', time: '30 min' },
-              { name: 'Samsung S/Note', price: '120-200 lei', time: '45 min' },
-              { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 ore' },
-              { name: 'iPad', price: '200-350 lei', time: '1 oră' }
+              { name: 'iPhone 17 / 17 Pro', price: 'de la 599 lei', time: '30 min' },
+              { name: 'iPhone 16 / 16 Pro', price: 'de la 499 lei', time: '30 min' },
+              { name: 'iPhone 15 / 14 / SE', price: 'de la 349 lei', time: '30 min' },
+              { name: 'Samsung S25 / S24', price: 'de la 399 lei', time: '45 min' },
+              { name: 'MacBook Pro / Air', price: 'de la 499 lei', time: '1-2 ore' },
+              { name: 'iPad Pro / Air / Mini', price: 'de la 600 lei', time: '1 oră' }
             ]
           },
           board: { 
             title: 'Reparații Plăci', 
-            desc: 'Lipire IC, BGA reballing, reparare piste',
-            detailsText: 'Reparații la nivel de componentă. Diagnostic sub microscop. BGA reballing.',
+            desc: 'Lipire IC, BGA reballing, A19/A18 Bionic',
+            detailsText: 'Reparații la nivel de componentă. Diagnostic sub microscop. Reballing BGA.',
             details: ['Lipire IC', 'BGA reballing', 'Reparare piste', 'Deteriorare prin apă'],
             subServices: [
-              { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 ore' },
-              { name: 'Reparare piste', price: '150-400 lei', time: '1-3 ore' },
-              { name: 'Înlocuire IC', price: '200-500 lei', time: '1-2 ore' },
-              { name: 'Deteriorare apă', price: '250-700 lei', time: '2-8 ore' },
-              { name: 'Diagnostic avansat', price: '50-100 lei', time: '30 min' }
+              { name: 'iPhone 17 (A19 Bionic)', price: 'de la 1199 lei', time: '3-6 ore' },
+              { name: 'iPhone 16/15 Pro', price: 'de la 999 lei', time: '2-4 ore' },
+              { name: 'Reballing CPU/GPU', price: 'de la 899 lei', time: '2-4 ore' },
+              { name: 'Deteriorare apă', price: 'de la 999 lei', time: '2-8 ore' },
+              { name: 'MacBook M4/M3 SoC', price: 'de la 499 lei', time: '1-3 zile' }
             ]
           },
           display: { 
             title: 'Înlocuire Display', 
-            desc: 'Ecrane originale sau de calitate',
-            detailsText: 'Ecrane originale, refabricate sau compatibile premium. Garanție dead pixel.',
-            details: ['LCD/OLED', 'Touchscreen', 'Laminare', 'Calibrare True Tone'],
+            desc: 'OLED original — inclusiv iPhone 17 ProMotion',
+            detailsText: 'Ecrane originale OLED/LTPO. Calibrare True Tone. Garanție dead pixel.',
+            details: ['OLED/LTPO', 'Touchscreen', 'Laminare', 'Calibrare True Tone'],
             subServices: [
-              { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 min' },
-              { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 min' },
-              { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 oră' },
-              { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 ore' },
-              { name: 'iPad Display', price: '400-900 lei', time: '1-2 ore' }
+              { name: 'iPhone 17 Pro / Pro Max', price: 'de la 1999 lei', time: '50-60 min' },
+              { name: 'iPhone 17 / 17 Plus', price: 'de la 1499 lei', time: '45 min' },
+              { name: 'iPhone 16 / 15 OLED', price: 'de la 895 lei', time: '45 min' },
+              { name: 'Samsung S25 / S24', price: 'de la 999 lei', time: '1 oră' },
+              { name: 'MacBook Retina', price: 'de la 999 lei', time: '2-3 ore' },
+              { name: 'iPad Pro / Air', price: 'de la 899 lei', time: '1-2 ore' }
             ]
           },
           port: { 
             title: 'Port Încărcare', 
-            desc: 'Înlocuire conector, curățare',
-            detailsText: 'Înlocuire conector. Curățare oxidare. Reparare piste placa.',
-            details: ['Curățare port', 'Înlocuire', 'Reparare piste', 'Testare încărcare'],
+            desc: 'USB-C / USB4 / Lightning — toate standardele',
+            detailsText: 'Înlocuire conector USB-C/USB4. Curățare oxidare. Reparare piste.',
+            details: ['Curățare port', 'Înlocuire conector', 'Reparare piste', 'Testare încărcare'],
             subServices: [
-              { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 min' },
-              { name: 'iPhone USB-C', price: '150-250 lei', time: '45 min' },
-              { name: 'Samsung USB-C', price: '80-150 lei', time: '30 min' },
-              { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 ore' },
-              { name: 'Curățare oxidare', price: '30-60 lei', time: '15 min' }
+              { name: 'iPhone 17 USB4', price: 'de la 599 lei', time: '45 min' },
+              { name: 'iPhone 16/15 USB-C', price: 'de la 499 lei', time: '45 min' },
+              { name: 'iPhone 14 Lightning', price: 'de la 449 lei', time: '30-45 min' },
+              { name: 'Samsung / Android', price: 'de la 449 lei', time: '30 min' },
+              { name: 'MacBook USB-C', price: 'de la 499 lei', time: '1-2 ore' }
             ]
           },
           modular: { 
             title: 'Service Modular', 
-            desc: 'Cameră, difuzor, butoane, senzori',
-            detailsText: 'Înlocuire module: cameră, speaker, home button, power button, flex-uri.',
-            details: ['Cameră foto', 'Speaker/Mic', 'Butoane', 'Senzori'],
+            desc: 'Cameră, difuzor, Face ID, senzori',
+            detailsText: 'Înlocuire module: cameră, speaker, Face ID, butoane, flex-uri.',
+            details: ['Cameră foto', 'Speaker/Mic', 'Face ID', 'Senzori'],
             subServices: [
-              { name: 'Cameră principală', price: '150-400 lei', time: '30-60 min' },
-              { name: 'Cameră frontală', price: '80-200 lei', time: '30 min' },
-              { name: 'Speaker/Microfon', price: '60-150 lei', time: '20-40 min' },
-              { name: 'Butoane/Senzori', price: '80-200 lei', time: '30-60 min' },
-              { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 oră' }
+              { name: 'Cameră iPhone 17 Pro', price: 'de la 999 lei', time: '45-60 min' },
+              { name: 'Cameră iPhone 16/15', price: 'de la 449 lei', time: '30-60 min' },
+              { name: 'Face ID / Touch ID', price: 'de la 599 lei', time: '1 oră' },
+              { name: 'Speaker / Microfon', price: 'de la 449 lei', time: '30 min' },
+              { name: 'Cameră Samsung S25', price: 'de la 499 lei', time: '45 min' }
             ]
           },
           diagnostics: { 
@@ -945,11 +964,11 @@
         price: 'Preț',
         time: 'Timp',
         specs: {
-          battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'Calitate premium', 'Regenerare celule'],
-          board: ['Diagnostic precis — găsim cauza', 'Reparare chipuri și microcipuri', 'Înlocuire BGA', 'Diagnostic gratuit', 'Echipament profesional', 'Componente originale'],
-          display: ['OLED Original', 'LCD Premium', 'Garanție dead pixel', 'Ecran tactil', 'Laminare', 'Calibrare True Tone'],
-          port: ['Conectori originali', 'Curățare profesională', 'Test încărcare', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'],
-          modular: ['Module originale', 'Cameră HD test', 'Calibrare audio', 'Senzori verificați', 'Reparație Face ID', 'Pereche Touch ID']
+          battery: ['Baterii originale', 'Garanție 12 luni', 'Test capacitate', 'Calibrare BMS', 'iPhone 17 suportat', 'Regenerare celule'],
+          board: ['A19/A18 Bionic repair', 'BGA reballing 3nm', 'Diagnostic gratuit', 'Echipament profesional', 'Componente originale', 'Garanție 6 luni'],
+          display: ['OLED/LTPO Original', 'ProMotion 120Hz', 'Garanție dead pixel', 'Calibrare True Tone', 'Always-On Display', 'Face ID transfer'],
+          port: ['USB4 / USB-C / Lightning', 'Curățare profesională', 'Test încărcare rapidă', 'Reparare piste', 'Flex cablu nou', 'Garanție 6 luni'],
+          modular: ['Cameră 48MP originală', 'LiDAR calibrare', 'Face ID repair', 'Speaker/Mic OEM', 'Senzori verificați', 'Touch ID pairing']
         }
       },
       
@@ -1049,6 +1068,11 @@
         loadingDatabase: 'Se încarcă baza de date...',
         loadingModels: 'Se încarcă modelele...',
         noModels: 'Nu avem modele pentru această combinație',
+        priceReady: 'Prețul este calculat!',
+        unlockPrice: 'Introduceți datele pentru a vedea prețul estimat',
+        contactForPrice: 'Aflați prețul — lăsați datele',
+        contactBonus: 'Vă contactăm în 5 minute cu oferta finală + BONUS diagnostic gratuit!',
+        unlockBtn: 'Vezi prețul estimat',
         noModelsHint: 'nu produce acest tip de dispozitiv.',
         continueWithoutModelBtn: 'Continuați fără model',
         chooseOtherType: 'Alegeți alt tip',
@@ -1089,6 +1113,7 @@
           problem: 'Descriere problemă',
           problemPlaceholder: 'Nu se încarcă, ecran spart...',
           date: 'Data dorită',
+          datePlaceholder: 'zz.ll.aaaa',
           comment: 'Comentariu',
           submit: 'Trimite cererea',
           submitting: 'Trimitere...'
@@ -1431,6 +1456,7 @@
         title: 'Ремонт iPhone, MacBook, Samsung',
         subtitle: 'Экспресс Сервис • Гарантия Включена',
         description: 'Профессиональный ремонт Apple, Samsung, Xiaomi, Huawei. Бесплатная диагностика. Оригинальные запчасти.',
+        subline: 'Не позволяйте испортить себе день — мы вернём ваше устройство как новое.',
         onlineLabel: 'клиентов на сайте',
         yearsExperience: 'лет опыта',
         mastersCount: 'мастеров',
@@ -1499,70 +1525,76 @@
         title: 'Что мы ремонтируем',
         subtitle: 'Все бренды под одной крышей',
         notFound: 'Не нашли нужную услугу? Свяжитесь с нами.',
+        prevSlide: 'Предыдущий слайд',
+        nextSlide: 'Следующий слайд',
+        slides: 'Слайды',
+        slide: 'Слайд',
         items: {
           battery: { 
             title: 'Ремонт Батарей', 
-            desc: 'Замена + восстановление аккумуляторов',
-            detailsText: 'Оригинальные батареи и премиум качество. Тестирование ёмкости. Гарантия.',
+            desc: 'Замена + восстановление — включая iPhone 17',
+            detailsText: 'Оригинальные батареи и премиум качество. Тестирование ёмкости. Гарантия 12 месяцев.',
             details: ['Замена батарей', 'Восстановление ёмкости', 'Калибровка BMS', 'Тестирование'],
             subServices: [
-              { name: 'iPhone 12-16', price: '150-250 lei', time: '30 мин' },
-              { name: 'iPhone SE/11', price: '100-150 lei', time: '30 мин' },
-              { name: 'Samsung S/Note', price: '120-200 lei', time: '45 мин' },
-              { name: 'MacBook Pro', price: '400-700 lei', time: '1-2 часа' },
-              { name: 'iPad', price: '200-350 lei', time: '1 час' }
+              { name: 'iPhone 17 / 17 Pro', price: 'от 599 lei', time: '30 мин' },
+              { name: 'iPhone 16 / 16 Pro', price: 'от 499 lei', time: '30 мин' },
+              { name: 'iPhone 15 / 14 / SE', price: 'от 349 lei', time: '30 мин' },
+              { name: 'Samsung S25 / S24', price: 'от 399 lei', time: '45 мин' },
+              { name: 'MacBook Pro / Air', price: 'от 499 lei', time: '1-2 часа' },
+              { name: 'iPad Pro / Air / Mini', price: 'от 600 lei', time: '1 час' }
             ]
           },
           board: { 
             title: 'Ремонт Плат', 
-            desc: 'Пайка IC, BGA ребол, ремонт дорожек',
-            detailsText: 'Ремонт на уровне компонентов. Диагностика под микроскопом. BGA ребол.',
+            desc: 'Пайка IC, BGA ребол, A19/A18 Bionic',
+            detailsText: 'Ремонт на уровне компонентов. Диагностика под микроскопом. Ребол BGA.',
             details: ['Пайка IC', 'BGA ребол', 'Ремонт дорожек', 'Повреждение водой'],
             subServices: [
-              { name: 'Reballing CPU/GPU', price: '300-600 lei', time: '2-4 часа' },
-              { name: 'Ремонт дорожек', price: '150-400 lei', time: '1-3 часа' },
-              { name: 'Замена IC', price: '200-500 lei', time: '1-2 часа' },
-              { name: 'Повреждение водой', price: '250-700 lei', time: '2-8 часов' },
-              { name: 'Диагностика', price: '50-100 lei', time: '30 мин' }
+              { name: 'iPhone 17 (A19 Bionic)', price: 'от 1199 lei', time: '3-6 часов' },
+              { name: 'iPhone 16/15 Pro', price: 'от 999 lei', time: '2-4 часа' },
+              { name: 'Reballing CPU/GPU', price: 'от 899 lei', time: '2-4 часа' },
+              { name: 'Повреждение водой', price: 'от 999 lei', time: '2-8 часов' },
+              { name: 'MacBook M4/M3 SoC', price: 'от 499 lei', time: '1-3 дня' }
             ]
           },
           display: { 
             title: 'Замена Дисплея', 
-            desc: 'Оригинальные или качественные экраны',
-            detailsText: 'Оригинальные, восстановленные или совместимые премиум. Гарантия от битых пикселей.',
-            details: ['LCD/OLED', 'Сенсор', 'Ламинирование', 'Калибровка'],
+            desc: 'OLED оригинал — включая iPhone 17 ProMotion',
+            detailsText: 'Оригинальные экраны OLED/LTPO. Калибровка True Tone. Гарантия от битых пикселей.',
+            details: ['OLED/LTPO', 'Сенсор', 'Ламинирование', 'Калибровка True Tone'],
             subServices: [
-              { name: 'iPhone 14-16 OLED', price: '450-900 lei', time: '45 мин' },
-              { name: 'iPhone 12/13 OLED', price: '300-550 lei', time: '45 мин' },
-              { name: 'Samsung AMOLED', price: '350-800 lei', time: '1 час' },
-              { name: 'MacBook Retina', price: '1200-2500 lei', time: '2-3 часа' },
-              { name: 'iPad Display', price: '400-900 lei', time: '1-2 часа' }
+              { name: 'iPhone 17 Pro / Pro Max', price: 'от 1999 lei', time: '50-60 мин' },
+              { name: 'iPhone 17 / 17 Plus', price: 'от 1499 lei', time: '45 мин' },
+              { name: 'iPhone 16 / 15 OLED', price: 'от 895 lei', time: '45 мин' },
+              { name: 'Samsung S25 / S24', price: 'от 999 lei', time: '1 час' },
+              { name: 'MacBook Retina', price: 'от 999 lei', time: '2-3 часа' },
+              { name: 'iPad Pro / Air', price: 'от 899 lei', time: '1-2 часа' }
             ]
           },
           port: { 
             title: 'Порт Зарядки', 
-            desc: 'Замена коннектора, очистка',
-            detailsText: 'Замена коннектора. Очистка окисления. Ремонт дорожек платы.',
-            details: ['Очистка порта', 'Замена', 'Ремонт дорожек', 'Тестирование зарядки'],
+            desc: 'USB-C / USB4 / Lightning — все стандарты',
+            detailsText: 'Замена коннектора USB-C/USB4. Очистка окисления. Ремонт дорожек.',
+            details: ['Очистка порта', 'Замена коннектора', 'Ремонт дорожек', 'Тестирование зарядки'],
             subServices: [
-              { name: 'iPhone Lightning', price: '100-180 lei', time: '30-45 мин' },
-              { name: 'iPhone USB-C', price: '150-250 lei', time: '45 мин' },
-              { name: 'Samsung USB-C', price: '80-150 lei', time: '30 мин' },
-              { name: 'MacBook USB-C', price: '200-400 lei', time: '1-2 часа' },
-              { name: 'Очистка окисления', price: '30-60 lei', time: '15 мин' }
+              { name: 'iPhone 17 USB4', price: 'от 599 lei', time: '45 мин' },
+              { name: 'iPhone 16/15 USB-C', price: 'от 499 lei', time: '45 мин' },
+              { name: 'iPhone 14 Lightning', price: 'от 449 lei', time: '30-45 мин' },
+              { name: 'Samsung / Android', price: 'от 449 lei', time: '30 мин' },
+              { name: 'MacBook USB-C', price: 'от 499 lei', time: '1-2 часа' }
             ]
           },
           modular: { 
             title: 'Модульный Сервис', 
-            desc: 'Камера, динамик, кнопки, датчики',
-            detailsText: 'Замена модулей: камера, динамик, кнопка Home, кнопка питания, шлейфы.',
-            details: ['Камера', 'Динамик/Микрофон', 'Кнопки', 'Датчики'],
+            desc: 'Камера, динамик, Face ID, датчики',
+            detailsText: 'Замена модулей: камера, динамик, Face ID, кнопки, шлейфы.',
+            details: ['Камера', 'Динамик/Микрофон', 'Face ID', 'Датчики'],
             subServices: [
-              { name: 'Основная камера', price: '150-400 lei', time: '30-60 мин' },
-              { name: 'Фронтальная камера', price: '80-200 lei', time: '30 мин' },
-              { name: 'Динамик/Микрофон', price: '60-150 lei', time: '20-40 мин' },
-              { name: 'Кнопки/Датчики', price: '80-200 lei', time: '30-60 мин' },
-              { name: 'Face ID/Touch ID', price: '200-500 lei', time: '1 час' }
+              { name: 'Камера iPhone 17 Pro', price: 'от 999 lei', time: '45-60 мин' },
+              { name: 'Камера iPhone 16/15', price: 'от 449 lei', time: '30-60 мин' },
+              { name: 'Face ID / Touch ID', price: 'от 599 lei', time: '1 час' },
+              { name: 'Динамик / Микрофон', price: 'от 449 lei', time: '30 мин' },
+              { name: 'Камера Samsung S25', price: 'от 499 lei', time: '45 мин' }
             ]
           },
           diagnostics: { 
@@ -1683,6 +1715,11 @@
         loadingModels: 'Загрузка моделей...',
         noModels: 'Нет моделей для этой комбинации',
         noModelsHint: 'не производит этот тип устройства.',
+        priceReady: 'Цена рассчитана!',
+        unlockPrice: 'Введите данные, чтобы увидеть примерную цену',
+        contactForPrice: 'Узнайте цену — оставьте данные',
+        contactBonus: 'Позвоним за 5 минут с финальным предложением + БОНУС бесплатная диагностика!',
+        unlockBtn: 'Узнать цену',
         continueWithoutModelBtn: 'Продолжить без модели',
         chooseOtherType: 'Выбрать другой тип',
       },
@@ -1722,6 +1759,7 @@
           problem: 'Описание проблемы',
           problemPlaceholder: 'Не заряжается, треснутый экран...',
           date: 'Желаемая дата',
+          datePlaceholder: 'дд.мм.гггг',
           comment: 'Комментарий',
           submit: 'Отправить заявку',
           submitting: 'Отправляем...'
@@ -2051,6 +2089,7 @@
         title: 'iPhone, MacBook, Samsung Repair',
         subtitle: 'Express Service • Warranty Included',
         description: 'Professional Apple, Samsung, Xiaomi, Huawei repair. Free diagnostics. Original parts.',
+        subline: 'Don\'t let it ruin your day — we\'ll return your device like new.',
         onlineLabel: 'clients online',
         yearsExperience: 'years experience',
         mastersCount: 'technicians',
@@ -2119,6 +2158,10 @@
         title: 'What we repair',
         subtitle: 'All brands under one roof',
         notFound: 'Can\'t find the service? Contact us.',
+        prevSlide: 'Previous slide',
+        nextSlide: 'Next slide',
+        slides: 'Slides',
+        slide: 'Slide',
         items: {
           battery: { 
             title: 'Battery Repair', 
@@ -2315,6 +2358,11 @@
         loadingModels: 'Loading models...',
         noModels: 'No models for this combination',
         noModelsHint: 'does not produce this device type.',
+        priceReady: 'Price is calculated!',
+        unlockPrice: 'Enter your details to see the estimated price',
+        contactForPrice: 'Get the price — leave your details',
+        contactBonus: 'We will call you in 5 minutes with the final offer + FREE diagnostic bonus!',
+        unlockBtn: 'See estimated price',
         continueWithoutModelBtn: 'Continue without model',
         chooseOtherType: 'Choose other type',
       },
@@ -2354,6 +2402,7 @@
           problem: 'Problem description',
           problemPlaceholder: 'Not charging, broken screen...',
           date: 'Preferred date',
+          datePlaceholder: 'dd/mm/yyyy',
           comment: 'Comment',
           submit: 'Send request',
           submitting: 'Sending...'

@@ -9,7 +9,28 @@ compatibility_flags = ["nodejs_compat"]
 # Pages build output directory
 pages_build_output_dir = "dist"
 
+# ============================================
+# D1 Database — structured device/IC/service data
+# Region: EEUR (Eastern Europe — ideal for Bucharest)
+# Free tier: 5M rows read/day, 100K rows written/day, 5GB storage
+# ============================================
+[[d1_databases]]
+binding = "DB"
+database_name = "nexx-gsm-db"
+database_id = "5cf7d4dd-b58a-4240-92a8-01e0082e1824"
+
+# ============================================
+# KV — global cache (330 locations worldwide)
+# Free tier: 100K reads/day, 1K writes/day
+# ============================================
+[[kv_namespaces]]
+binding = "CACHE"
+id = "0e4b1d4c04e841bdb93097e54934e35b"
+
 # Environment variables (optional, for Pages Functions)
+# Enrichment Engine: triggered via /api/enrichment/run or GitHub Actions cron
+# See .github/workflows/enrichment-cron.yml
+
 [vars]
 PROJECT_NAME = "nexx-gsm"
 ENVIRONMENT = "production"

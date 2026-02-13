@@ -1,25 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * Custom hook for internationalization
- * Provides access to translations and current language
+ * Delegates to window.i18n which is loaded via public/static/i18n.js
  */
 export function useTranslation() {
-  const [language, setLanguage] = useState<string>('uk');
-  const [translations, setTranslations] = useState<any>(null);
+  const [language, setLanguage] = useState<string>(() => {
+    if (typeof window !== 'undefined' && (window as any).i18n) {
+      const lang = (window as any).i18n.getCurrentLanguage();
+      return lang?.code || 'ro';
+    }
+    return 'ro';
+  });
+
+  // Force re-render counter to keep t() in sync after language change
+  const [, setTick] = useState(0);
 
   useEffect(() => {
-    // Initialize from window.i18n if available
     if (typeof window !== 'undefined' && (window as any).i18n) {
       const i18n = (window as any).i18n;
       const currentLang = i18n.getCurrentLanguage();
-      setLanguage(currentLang.code);
-      setTranslations(i18n.getCurrentTranslations());
+      if (currentLang?.code) {
+        setLanguage(currentLang.code);
+      }
 
       // Subscribe to language changes
       const unsubscribe = i18n.subscribe((lang: any) => {
-        setLanguage(lang.code);
-        setTranslations(i18n.getCurrentTranslations());
+        setLanguage(lang?.code || 'ro');
+        setTick((prev: number) => prev + 1);
       });
 
       return unsubscribe;
@@ -27,44 +35,16 @@ export function useTranslation() {
   }, []);
 
   /**
-   * Translate a key with fallback
+   * Translate a key with fallback — delegates to window.i18n.t()
    */
-  const t = (key: string, defaultValue: string = key): string => {
-    if (!translations) return defaultValue;
-
-    const keys = key.split('.');
-    let value = translations;
-
-    for (const k of keys) {
-      if (typeof value === 'object' && value !== null && k in value) {
-        value = value[k];
-      } else {
-        return defaultValue;
-      }
+  const t = useCallback((key: string, defaultValue: string = key): string => {
+    if (typeof window !== 'undefined' && (window as any).i18n) {
+      const result = (window as any).i18n.t(key);
+      // i18n.t() returns the key itself if not found, so check against that
+      return (result !== undefined && result !== null && result !== key) ? String(result) : defaultValue;
     }
-
-    return typeof value === 'string' ? value : defaultValue;
-  };
-
-  /**
-   * Translate a nested object
-   */
-  const translateObject = (key: string): Record<string, any> => {
-    if (!translations) return {};
-
-    const keys = key.split('.');
-    let value = translations;
-
-    for (const k of keys) {
-      if (typeof value === 'object' && value !== null && k in value) {
-        value = value[k];
-      } else {
-        return {};
-      }
-    }
-
-    return typeof value === 'object' ? value : {};
-  };
+    return defaultValue;
+  }, [language]);
 
   /**
    * Change language
@@ -96,7 +76,6 @@ export function useTranslation() {
     changeLanguage,
     getCurrentLanguage,
     getAvailableLanguages,
-    translateObject,
   };
 }
 

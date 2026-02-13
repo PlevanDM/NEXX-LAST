@@ -1,5 +1,5 @@
-# robots.txt for NEXX Service Center
-# https://nexx.com.ua
+# robots.txt for NEXX GSM Service
+# https://nexxgsm.com
 
 User-agent: *
 Allow: /
@@ -19,7 +19,7 @@ Disallow: /data/
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://nexx.com.ua/sitemap.xml
+Sitemap: https://nexxgsm.com/sitemap.xml
 
 # Search engines
 User-agent: Googlebot

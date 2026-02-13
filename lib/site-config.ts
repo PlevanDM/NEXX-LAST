@@ -18,8 +18,8 @@ export const SITE_CONFIG = {
     phoneWhatsApp: '',
     
     // Email
-    email: 'info@nexx.ro',
-    supportEmail: 'support@nexx.ro',
+    email: 'info@nexxgsm.ro',
+    supportEmail: 'support@nexxgsm.ro',
 
     // Address - Bucharest, Romania (Sector 4)
     addressLine1: 'Calea Șerban Vodă 47',

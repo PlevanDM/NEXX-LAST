@@ -9,17 +9,17 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nexx.ro/">
+    <meta property="og:url" content="https://nexxgsm.com/">
     <meta property="og:title" content="NEXX - Reparații Profesionale iPhone, MacBook, iPad, Samsung în București">
     <meta property="og:description" content="Service multibrand profesional. Reparații Express. Experiență 10+ ani. Diagnostic gratuit. Garanție inclusă. Reparații: iPhone, iPad, MacBook, Samsung. Preț de la 50 lei.">
-    <meta property="og:image" content="https://nexx.ro/static/nexx-logo.png">
+    <meta property="og:image" content="https://nexxgsm.com/static/nexx-logo.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nexx.ro/">
+    <meta property="twitter:url" content="https://nexxgsm.com/">
     <meta property="twitter:title" content="NEXX - Reparații Apple, Samsung, Telefoane în București | Service Profesional">
     <meta property="twitter:description" content="Reparații urgent: iPhone, iPad, MacBook, Samsung. Experți 10+ ani. Diagnostic gratuit. Garanție inclusă. Preț transparent. Service Express.">
-    <meta property="twitter:image" content="https://nexx.ro/static/nexx-logo.png">
+    <meta property="twitter:image" content="https://nexxgsm.com/static/nexx-logo.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/static/nexx-logo.png">
@@ -35,7 +35,7 @@
     <meta name="apple-mobile-web-app-title" content="NEXX">
     
     <!-- Canonical -->
-    <link rel="canonical" href="https://nexx.ro/">
+    <link rel="canonical" href="https://nexxgsm.com/">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -47,16 +47,16 @@
       "taxID": "RO53879866",
       "legalName": "NEXX GSM SERVICE POINT SRL",
       "description": "Service profesional multibrand cu experiență 10+ ani. Reparații Express iPhone, iPad, MacBook, Samsung. Diagnostic gratuit, garanție inclusă.",
-      "image": "https://nexx.ro/static/nexx-logo.png",
-      "@id": "https://nexx.ro",
-      "url": "https://nexx.ro",
+      "image": "https://nexxgsm.com/static/nexx-logo.png",
+      "@id": "https://nexxgsm.com",
+      "url": "https://nexxgsm.com",
       "telephone": "",
       "email": "info@nexxgsm.ro",
       "priceRange": "50-500 RON",
       "areaServed": {
         "@type": "City",
         "name": "București",
-        "url": "https://nexx.ro"
+        "url": "https://nexxgsm.com"
       },
       "address": {
         "@type": "PostalAddress",
@@ -138,25 +138,25 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Acasă",
-          "item": "https://nexx.ro/"
+          "item": "https://nexxgsm.com/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Servicii Reparații",
-          "item": "https://nexx.ro/#services"
+          "item": "https://nexxgsm.com/#services"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Calculator Preț",
-          "item": "https://nexx.ro/#calculator"
+          "item": "https://nexxgsm.com/#calculator"
         },
         {
           "@type": "ListItem",
           "position": 4,
           "name": "Contacte",
-          "item": "https://nexx.ro/#contacts"
+          "item": "https://nexxgsm.com/#contacts"
         }
       ]
     }
@@ -232,12 +232,29 @@
         .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
         .flex { display: flex; }
         .grid { display: grid; }
-        .hidden:not([class*="md:flex"]):not([class*="md:block"]):not([class*="md:inline"]) { display: none; }
-        /* Allow Tailwind responsive classes to override hidden */
+        .hidden { display: none !important; }
+        /* Allow Tailwind responsive classes to override hidden at desktop */
         @media (min-width: 768px) {
             .hidden.md\:flex { display: flex !important; }
             .hidden.md\:block { display: block !important; }
             .hidden.md\:inline-flex { display: inline-flex !important; }
+            .hidden.md\:inline { display: inline !important; }
+        }
+        @media (min-width: 640px) {
+            .hidden.sm\:flex { display: flex !important; }
+            .hidden.sm\:block { display: block !important; }
+            .hidden.sm\:inline-flex { display: inline-flex !important; }
+            .hidden.sm\:inline { display: inline !important; }
+        }
+        @media (min-width: 1024px) {
+            .hidden.lg\:flex { display: flex !important; }
+            .hidden.lg\:block { display: block !important; }
+            .hidden.lg\:inline-flex { display: inline-flex !important; }
+            .hidden.lg\:inline { display: inline !important; }
+        }
+        /* md:hidden — show on mobile, hide on desktop */
+        @media (min-width: 768px) {
+            .md\:hidden { display: none !important; }
         }
         /* Common utility classes - more specific selectors */
         [class*="bg-slate-900"], [class*="bg-gray-900"], [class*="bg-zinc-900"] { background-color: #0f172a; }
@@ -337,7 +354,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Lucide Icons (modern, lightweight) -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     
     <!-- Local React -->
     <script src="/static/vendor/react.production.min.js"></script>
@@ -456,32 +473,250 @@
             top: 0;
         }
         
-        /* Mobile: один блок, компактно и удобно */
-        @media (max-width: 768px) {
+        /* ═══════════════════════════════════════
+           MOBILE RESPONSIVE OVERRIDES
+           ═══════════════════════════════════════ */
+        
+        /* CSS custom properties for responsive header */
+        :root {
+            --header-h: 104px;
+            --logo-h: 99px;
+            --logo-mw: 340px;
+        }
+        @media (max-width: 767px) {
+            :root {
+                --header-h: 64px;
+                --logo-h: 56px;
+                --logo-mw: 200px;
+            }
+        }
+        @media (max-width: 480px) {
+            :root {
+                --header-h: 60px;
+                --logo-h: 48px;
+                --logo-mw: 170px;
+            }
+        }
+        @media (max-width: 360px) {
+            :root {
+                --header-h: 56px;
+                --logo-h: 40px;
+                --logo-mw: 140px;
+            }
+        }
+        
+        /* Scroll snap utilities (for service cards swipe) */
+        .snap-x { scroll-snap-type: x mandatory; }
+        .snap-mandatory { scroll-snap-type: x mandatory; }
+        .snap-start { scroll-snap-align: start; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* === BASE MOBILE (< 768px) === */
+        @media (max-width: 767px) {
             body {
                 padding-bottom: env(safe-area-inset-bottom, 0);
                 -webkit-font-smoothing: antialiased;
                 -webkit-tap-highlight-color: transparent;
                 touch-action: manipulation;
+                font-size: 16px;
+                -webkit-text-size-adjust: 100%;
             }
             #app, .landing-app { width: 100%; max-width: 100vw; min-width: 0; overflow-x: hidden; box-sizing: border-box; }
-            header { padding-left: max(1rem, env(safe-area-inset-left, 0)); padding-right: max(1rem, env(safe-area-inset-right, 0)); }
-            button:not([class*="icon-only"]), input, select, textarea { min-height: 44px; }
-            nav a { min-height: 48px; display: flex; align-items: center; padding: 12px 16px; }
             html, body { overscroll-behavior-x: none; -webkit-overflow-scrolling: touch; }
-            input, textarea, select { font-size: 16px; max-width: 100%; box-sizing: border-box; }
+            
+            /* --- HEADER: compact on mobile --- */
+            header { 
+                padding-left: max(0.75rem, env(safe-area-inset-left, 0)); 
+                padding-right: max(0.75rem, env(safe-area-inset-right, 0));
+            }
+            header > div > div:not(.nexx-mobile-menu),
+            header .nexx-header-inner {
+                height: 64px !important;
+                min-height: 64px !important;
+                gap: 8px !important;
+            }
+            /* Mobile menu dropdown: auto height, don't clip */
+            header .nexx-mobile-menu {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: calc(100vh - var(--header-h, 64px)) !important;
+                overflow-y: auto !important;
+            }
+            /* Logo on mobile */
+            header .logo-header-img,
+            header img[alt="NEXX GSM"] {
+                height: 56px !important;
+                max-width: 200px !important;
+            }
+            
+            /* --- TOUCH TARGETS --- */
+            button:not([class*="icon-only"]):not([class*="slider"]):not([class*="tab"]),
+            input, select, textarea { min-height: 44px; }
+            nav a { min-height: 48px; display: flex; align-items: center; padding: 12px 16px; }
+            input, textarea, select { font-size: 16px !important; max-width: 100%; box-sizing: border-box; }
+            
+            /* --- HERO: responsive text --- */
+            .hero-bg h1,
+            .landing-app h1 {
+                font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+                line-height: 1.2 !important;
+                padding: 0 16px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            .hero-bg p,
+            .hero-bg h2 {
+                font-size: clamp(1rem, 4vw, 1.25rem) !important;
+                padding: 0 16px;
+            }
+            
+            /* --- CTA BUTTONS: stack vertically --- */
+            .hero-bg .flex-col,
+            .hero-bg [class*="flex"][class*="gap"] {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            .hero-bg a[href*="calculator"],
+            .hero-bg button[class*="bg-"] {
+                width: 100% !important;
+                min-height: 52px !important;
+                font-size: 16px !important;
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            
+            /* --- SERVICE CARDS: full width, no text cut --- */
+            .landing-app section [class*="grid-cols-2"],
+            .landing-app section [class*="grid-cols-3"] {
+                grid-template-columns: 1fr !important;
+            }
+            .landing-app section h3 {
+                font-size: 1.25rem !important;
+                word-wrap: break-word;
+            }
+            
+            /* --- CALCULATOR: 3 columns for brands --- */
+            section#calculator [class*="grid-cols-4"],
+            section#calculator [class*="grid-cols-5"] {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            
+            /* --- WHY NEXX FEATURES: 1 column --- */
+            [class*="grid-cols-4"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            
+            /* --- GALLERY: full width images --- */
+            [class*="aspect-"][class*="sm:aspect-"] {
+                aspect-ratio: 16/9 !important;
+            }
+            
+            /* --- REVIEWS: single column --- */
+            /* handled by grid-cols override above */
+            
+            /* --- FORMS: full width inputs --- */
+            form input, form textarea, form select, form button {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            form button[type="submit"],
+            form button[class*="bg-"] {
+                min-height: 52px !important;
+                font-size: 16px !important;
+            }
+            
+            /* --- FOOTER: stack columns --- */
+            footer [class*="grid"][class*="md:grid-cols"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            footer [class*="flex-col"][class*="md:flex-row"] {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+            }
+            footer a {
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+            }
+            
+            /* --- GENERAL: prevent overflow --- */
             .fas, .far, .fab, .fal, .fad { font-size: 1.2em; line-height: 1; }
+            main, section, article, div { max-width: 100vw; }
+            section { overflow-x: hidden; }
             footer, [class*="footer"] {
                 padding-left: max(1rem, env(safe-area-inset-left, 0));
                 padding-right: max(1rem, env(safe-area-inset-right, 0));
                 padding-bottom: max(1rem, env(safe-area-inset-bottom, 0));
             }
+            
+            /* --- SLIDERS: touch-friendly controls --- */
+            button[class*="slider"],
+            [aria-label*="slide"],
+            [aria-label*="Slide"] {
+                min-width: 40px !important;
+                min-height: 40px !important;
+            }
+            [role="tab"] {
+                min-width: 32px !important;
+                min-height: 32px !important;
+                padding: 8px !important;
+            }
         }
+        
+        /* === NARROW MOBILE (< 480px) === */
         @media (max-width: 480px) {
-            .container, [class*="container"] { padding-left: 16px; padding-right: 16px; }
-            /* Компактные секции на узких экранах */
-            .landing-app section.hero-bg { padding-top: 5rem !important; padding-bottom: 2rem !important; }
-            .landing-app section:not(.hero-bg) { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+            .container, [class*="container"] { padding-left: 12px !important; padding-right: 12px !important; }
+            .landing-app section.hero-bg { padding-top: 4.5rem !important; padding-bottom: 1.5rem !important; }
+            .landing-app section:not(.hero-bg) { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            
+            /* Logo on narrow mobile */
+            header .logo-header-img,
+            header img[alt="NEXX GSM"] {
+                height: 48px !important;
+                max-width: 170px !important;
+            }
+            
+            /* Calculator: 2 columns on very narrow */
+            section#calculator [class*="grid-cols"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            /* Features: single column */
+            [class*="grid-cols-4"],
+            [class*="grid-cols-2"]:not(section#calculator *) {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Reduce section title sizes */
+            h2 { font-size: 1.5rem !important; }
+            h3 { font-size: 1.1rem !important; }
+        }
+        
+        /* === VERY NARROW (< 360px — old Android) === */
+        @media (max-width: 360px) {
+            body { font-size: 14px !important; }
+            .hero-bg h1, .landing-app h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+            
+            header > div > div:not(.nexx-mobile-menu),
+            header .nexx-header-inner {
+                height: 56px !important;
+                min-height: 56px !important;
+            }
+            header .logo-header-img,
+            header img[alt="NEXX GSM"] {
+                height: 40px !important;
+                max-width: 140px !important;
+            }
+            
+            .container, [class*="container"] { padding-left: 8px !important; padding-right: 8px !important; }
+            section#calculator [class*="grid-cols"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
         }
     </style>
     <!-- Tailwind CSS CDN - Non-blocking with script tag -->
@@ -489,7 +724,7 @@
 </head>
 <body>
     <!-- Skip to main content (accessibility) -->
-    <a href="#main-content" class="skip-to-content" id="skip-link"></a>
+    <a href="#main-content" class="skip-to-content" id="skip-link">Sari la conținut</a>
     
     <!-- Show app progressively: invisible first, then fade in when React is ready -->
     <style>

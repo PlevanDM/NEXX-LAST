@@ -95,13 +95,21 @@ const Contact: React.FC = () => {
     }
     setSending(true);
     try {
-      await fetch('/api/callback', {
+      const res = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, name: 'Quick Callback', source: 'contact_section' })
       });
-      setSent(true);
-      if ((window as any).showToast) (window as any).showToast(txt.sent, 'success');
+      const data = await res.json().catch(() => ({ success: false }));
+      if (data.success) {
+        setSent(true);
+        if ((window as any).showToast) (window as any).showToast(txt.sent, 'success');
+      } else {
+        const msg = data.code === 'SUBSCRIPTION_EXPIRED'
+          ? 'Serviciu temporar indisponibil. Sunați-ne direct!'
+          : (data.error || txt.errorGeneric);
+        if ((window as any).showToast) (window as any).showToast(msg, 'error');
+      }
     } catch (e) {
       if ((window as any).showToast) (window as any).showToast(txt.errorGeneric, 'error');
     }

@@ -27,7 +27,7 @@ const SITE_CONFIG = {
     display: '+380 12 345 6789',
     tel: '+380123456789',
   },
-  email: 'info@nexx.com.ua',
+  email: 'info@nexxgsm.ro',
   address: {
     line1: 'вул. Хрещатик, 22',
     line2: 'Київ, Україна 01001',
