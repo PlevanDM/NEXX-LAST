@@ -8,11 +8,9 @@
 /cabinet           /                 200
 /cabinet/          /                 200
 
-# База NEXX — nexx.html served by Cloudflare Pretty URLs (/nexx → nexx.html)
-# /nexx and /nexx.html excluded from worker in _routes.json
-# /nexx/* subpaths — handled by Hono worker which fetches nexx.html via ASSETS
-/database          /nexx             301
-/db                /nexx             301
+# База NEXX — убрана с сайта, редирект на главную
+/database          /                 301
+/db                /                 301
 
 # Clean URLs for static pages
 /about             /about.html       200

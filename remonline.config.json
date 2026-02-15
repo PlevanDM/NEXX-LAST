@@ -1,90 +1,89 @@
 {
-  "baseUrl": "https://api.remonline.app",
-  "branchId": "218970",
-  "orderType": "334611",
+  "baseUrl": "https://api.roapp.io",
+  "apiVersion": "v1.4",
+  "branchId": "222200",
+  "branchName": "NEXX GSM",
+  "orderType": "339054",
   "orderTypeName": "Carry-in repair",
   "testMode": false,
-  "note": "REMONLINE_API_KEY in env (.dev.vars local, Cloudflare secrets prod). Auto-configured by scripts/configure-remonline-api.cjs",
+  "company": {
+    "name": "NEXX GSM Service Center",
+    "owner": "Dmytro Plevan",
+    "email": "dmitro.plevan@gmail.com",
+    "phone": "+40758117409",
+    "employeeId": 319679,
+    "country": "Romania",
+    "city": "Bucharest",
+    "currency": "RON",
+    "timezone": "Europe/Bucharest"
+  },
+  "note": "RO App API v1.4 (roapp.io). REMONLINE_API_KEY used as Bearer token directly. No token exchange needed. Key in env (.dev.vars local, Cloudflare secrets prod).",
   "endpoints": {
-    "orders": "/order",
-    "inquiries": "/inquiries",
-    "services": "/services",
-    "people": "/people",
-    "branches": "/branches",
-    "statuses": "/statuses",
-    "clients": "/clients"
+    "orders": "/orders",
+    "orderById": "/orders/{id}",
+    "orderItems": "/orders/{id}/items",
+    "orderStatus": "/orders/{id}/status",
+    "orderStatuses": "/orders/statuses",
+    "people": "/contacts/people",
+    "personById": "/contacts/people/{id}",
+    "services": "/services/",
+    "serviceById": "/services/{id}",
+    "locations": "/settings/locations",
+    "employees": "/settings/employees",
+    "companySettings": "/settings/company",
+    "orderTypes": "/settings/order-types"
   },
   "branches": [
     {
-      "id": 219237,
-      "name": "Apple Plus Odessa"
-    },
-    {
-      "id": 218970,
-      "name": "NEXX GSM Bucharest"
+      "id": 222200,
+      "name": "NEXX GSM"
     }
+  ],
+  "orderTypes": [
+    { "id": 339053, "name": "Onsite service" },
+    { "id": 339054, "name": "Carry-in repair" },
+    { "id": 339055, "name": "Warranty repair" },
+    { "id": 339056, "name": "Mail-in repair" }
   ],
   "statuses": [
-    {
-      "id": 4136961,
-      "name": "New"
-    },
-    {
-      "id": 4136986,
-      "name": "Diagnostic"
-    },
-    {
-      "id": 4136987,
-      "name": "In progress"
-    },
-    {
-      "id": 4136988,
-      "name": "Accepted"
-    },
-    {
-      "id": 4136976,
-      "name": "Approval"
-    },
-    {
-      "id": 4136973,
-      "name": "Waiting for parts"
-    },
-    {
-      "id": 4136974,
-      "name": "Invoiced"
-    },
-    {
-      "id": 4136972,
-      "name": "Rejected"
-    },
-    {
-      "id": 4136977,
-      "name": "Delivery"
-    },
-    {
-      "id": 4136957,
-      "name": "Done"
-    },
-    {
-      "id": 4136958,
-      "name": "Waiting for collection"
-    },
-    {
-      "id": 4136979,
-      "name": "Closed"
-    },
-    {
-      "id": 4136981,
-      "name": "Archived"
-    },
-    {
-      "id": 4136964,
-      "name": "Dropped off - price"
-    },
-    {
-      "id": 4136969,
-      "name": "Dropped off - quality"
-    }
+    { "id": 4205386, "name": "New", "color": "#428BCA", "group": 1 },
+    { "id": 4205411, "name": "Diagnostic", "color": "#099B49", "group": 2 },
+    { "id": 4205412, "name": "In progress", "color": "#099B49", "group": 2 },
+    { "id": 4205413, "name": "Accepted", "color": "#099B49", "group": 2 },
+    { "id": 4205401, "name": "Approval", "color": "#F89200", "group": 3 },
+    { "id": 4205398, "name": "Waiting for parts", "color": "#F89200", "group": 3 },
+    { "id": 4205399, "name": "Invoiced", "color": "#F89200", "group": 3 },
+    { "id": 4205397, "name": "Rejected", "color": "#F89200", "group": 3 },
+    { "id": 4205402, "name": "Delivery", "color": "#5BC0DE", "group": 5 },
+    { "id": 4205382, "name": "Done", "color": "#555555", "group": 4 },
+    { "id": 4205383, "name": "Waiting for collection", "color": "#555555", "group": 4 },
+    { "id": 4205404, "name": "Closed", "color": "#999999", "group": 6 },
+    { "id": 4205406, "name": "Archived", "color": "#999999", "group": 6 },
+    { "id": 4205389, "name": "Dropped off - price", "color": "#D6D6D6", "group": 7 },
+    { "id": 4205394, "name": "Dropped off - quality", "color": "#D6D6D6", "group": 7 },
+    { "id": 4205393, "name": "Dropped off - terms", "color": "#D6D6D6", "group": 7 }
   ],
-  "lastConfigured": "2026-02-01T00:59:33.723Z"
+  "services": [
+    { "id": 60670361, "title": "Misc. Repair", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670362, "title": "Battery Replacement", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670363, "title": "Charging Port Repair", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670364, "title": "Data Recovery", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670365, "title": "Data Transfer", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670366, "title": "Diagnostic", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670367, "title": "Screen Repair", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670368, "title": "Screen Replacement", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670369, "title": "Software Reset", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670370, "title": "Test Service", "categoryId": 1801171, "category": "Services", "price": 50 },
+    { "id": 60670371, "title": "Virus Removal", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670372, "title": "Water Damage", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670373, "title": "iPhone Data Recovery", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670374, "title": "iPhone Home Button Repair (no TouchID)", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670375, "title": "iPhone Recovery", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670376, "title": "iPhone Screen Replacement", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670377, "title": "iPhone Software Reset", "categoryId": 1801171, "category": "Services" },
+    { "id": 60670378, "title": "Tempered Glass Screen Protection", "categoryId": 1801171, "category": "Services" }
+  ],
+  "priceListId": "652354",
+  "lastConfigured": "2026-01-31T12:00:00.000Z",
+  "migratedToV14": "2026-01-31"
 }

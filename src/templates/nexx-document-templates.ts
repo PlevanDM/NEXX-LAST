@@ -653,14 +653,922 @@ export const RECYCLING_TEMPLATE = {
 };
 
 // ============================================
-// Export all templates
+// ESTIMATE (СМЕТА / ОЦЕНКА) TEMPLATE
+// ============================================
+
+export const ESTIMATE_TEMPLATE = {
+  uk: {
+    title: 'Кошторис',
+    form: {
+      companyName: 'Назва компанії',
+      companyAddress: 'Адреса компанії',
+      companyEmail: 'Email компанії',
+      companyNote: 'Примітка компанії',
+      clientName: 'Ім\'я клієнта',
+      clientEmail: 'Email клієнта',
+      clientPhone: 'Телефон клієнта',
+      clientAddress: 'Адреса клієнта',
+      orderNumber: 'Номер замовлення',
+      date: 'Дата',
+      validUntil: 'Дійсний до',
+      rowNumber: '№',
+      productName: 'Назва послуги',
+      productQty: 'Кількість',
+      unitPrice: 'Ціна за одиницю (без ПДВ)',
+      taxAmount: 'Сума ПДВ',
+      productAmount: 'Сума',
+      subtotal: 'Підсумок',
+      taxName: 'Назва податку',
+      taxRate: 'Ставка',
+      taxValue: 'Сума податку',
+      totalAmount: 'Загальна сума'
+    },
+    sections: {
+      header: 'Кошторис на ремонт',
+      clientInfo: 'Інформація про клієнта',
+      serviceTable: 'Послуги та запчастини',
+      totals: 'Підсумок',
+      terms: 'Умови',
+      signatures: 'Підписи'
+    },
+    terms: 'Наведені кошториси є орієнтовними. Вони базуються на очікуваних роботах. Непередбачені ускладнення можуть призвести до відхилення від початкової оцінки. Підписуючи, ви надаєте дозвіл на проведення описаних робіт.',
+    allPartsNew: 'Всі запасні частини нові, якщо не зазначено інше.'
+  },
+  ru: {
+    title: 'Смета',
+    form: {
+      companyName: 'Название компании',
+      companyAddress: 'Адрес компании',
+      companyEmail: 'Email компании',
+      companyNote: 'Примечание компании',
+      clientName: 'Имя клиента',
+      clientEmail: 'Email клиента',
+      clientPhone: 'Телефон клиента',
+      clientAddress: 'Адрес клиента',
+      orderNumber: 'Номер заказа',
+      date: 'Дата',
+      validUntil: 'Действителен до',
+      rowNumber: '№',
+      productName: 'Название услуги',
+      productQty: 'Количество',
+      unitPrice: 'Цена за единицу (без НДС)',
+      taxAmount: 'Сумма НДС',
+      productAmount: 'Сумма',
+      subtotal: 'Итого',
+      taxName: 'Название налога',
+      taxRate: 'Ставка',
+      taxValue: 'Сумма налога',
+      totalAmount: 'Общая сумма'
+    },
+    sections: {
+      header: 'Смета на ремонт',
+      clientInfo: 'Информация о клиенте',
+      serviceTable: 'Услуги и запчасти',
+      totals: 'Итого',
+      terms: 'Условия',
+      signatures: 'Подписи'
+    },
+    terms: 'Приведённые сметы являются ориентировочными. Они основаны на ожидаемых работах. Непредвиденные осложнения могут привести к отклонению от первоначальной оценки. Подписывая, вы даёте разрешение на проведение описанных работ.',
+    allPartsNew: 'Все запасные части новые, если не указано иное.'
+  },
+  en: {
+    title: 'Estimate',
+    form: {
+      companyName: 'Company Name',
+      companyAddress: 'Company Address',
+      companyEmail: 'Company Email',
+      companyNote: 'Company Note',
+      clientName: 'Client Name',
+      clientEmail: 'Client Email',
+      clientPhone: 'Client Phone',
+      clientAddress: 'Client Address',
+      orderNumber: 'Order Number',
+      date: 'Date',
+      validUntil: 'Valid Until',
+      rowNumber: '#',
+      productName: 'Description',
+      productQty: 'Qty',
+      unitPrice: 'Unit Price (Without Taxes)',
+      taxAmount: 'Product Tax Amount',
+      productAmount: 'Amount',
+      subtotal: 'Subtotal',
+      taxName: 'Tax Name',
+      taxRate: 'Tax Rate',
+      taxValue: 'Tax Value',
+      totalAmount: 'Total Amount'
+    },
+    sections: {
+      header: 'Repair Estimate',
+      clientInfo: 'Client Information',
+      serviceTable: 'Services & Parts',
+      totals: 'Totals',
+      terms: 'Terms & Conditions',
+      signatures: 'Signatures'
+    },
+    terms: 'Estimates provided are an approximation of charges to you for the services requested. They are based on the anticipated work to be done. Unexpected complications may cause some deviation from the original quote. By signing, you authorize the repair work described in this estimate to be done and procuring the necessary material(s), including permission to operate testing or inspection. If any additional repairs are required, we will prepare a revised work order providing the cost of additional parts and labor and the total revised cost. All parts are new unless specified otherwise.',
+    allPartsNew: 'All parts are new unless specified otherwise.'
+  },
+  ro: {
+    title: 'Deviz estimativ',
+    form: {
+      companyName: 'Numele companiei',
+      companyAddress: 'Adresa companiei',
+      companyEmail: 'Email companie',
+      companyNote: 'Notă companie',
+      clientName: 'Numele clientului',
+      clientEmail: 'Email client',
+      clientPhone: 'Telefon client',
+      clientAddress: 'Adresa client',
+      orderNumber: 'Numărul comenzii',
+      date: 'Data',
+      validUntil: 'Valabil până la',
+      rowNumber: '#',
+      productName: 'Descriere serviciu',
+      productQty: 'Cantitate',
+      unitPrice: 'Preț unitar (fără TVA)',
+      taxAmount: 'TVA produs',
+      productAmount: 'Sumă',
+      subtotal: 'Subtotal',
+      taxName: 'Denumire taxă',
+      taxRate: 'Cotă',
+      taxValue: 'Valoare taxă',
+      totalAmount: 'Total'
+    },
+    sections: {
+      header: 'Deviz estimativ pentru reparație',
+      clientInfo: 'Informații client',
+      serviceTable: 'Servicii și piese',
+      totals: 'Total',
+      terms: 'Termeni și condiții',
+      signatures: 'Semnături'
+    },
+    terms: 'Devizele furnizate sunt o aproximare a costurilor pentru serviciile solicitate. Acestea se bazează pe lucrările anticipate. Complicațiile neprevăzute pot cauza abateri de la estimarea inițială. Prin semnare, autorizați efectuarea lucrărilor de reparație descrise și procurarea materialelor necesare. Toate piesele sunt noi, dacă nu se specifică altfel.',
+    allPartsNew: 'Toate piesele sunt noi, dacă nu se specifică altfel.'
+  }
+};
+
+// ============================================
+// INVOICE (ФАКТУРА) TEMPLATE
+// ============================================
+
+export const INVOICE_TEMPLATE = {
+  uk: {
+    title: 'Рахунок-фактура',
+    form: {
+      companyName: 'Назва компанії',
+      companyAddress: 'Адреса',
+      companyEmail: 'Email',
+      clientName: 'Ім\'я клієнта',
+      clientPhone: 'Телефон',
+      clientEmail: 'Email клієнта',
+      clientAddress: 'Адреса клієнта',
+      invoiceNumber: 'Номер рахунку',
+      orderNumber: 'Номер замовлення',
+      date: 'Дата',
+      dueDate: 'Оплатити до',
+      paymentMethod: 'Спосіб оплати',
+      rowNumber: '№',
+      productName: 'Назва послуги',
+      productQty: 'Кількість',
+      unitPrice: 'Ціна',
+      productAmount: 'Сума',
+      subtotal: 'Підсумок',
+      taxRate: 'ПДВ',
+      taxValue: 'Сума ПДВ',
+      totalAmount: 'До сплати',
+      paid: 'Оплачено',
+      remaining: 'Залишок'
+    },
+    sections: {
+      header: 'Рахунок-фактура за ремонт',
+      clientInfo: 'Платник',
+      serviceTable: 'Послуги',
+      payment: 'Оплата',
+      notes: 'Примітки'
+    }
+  },
+  ru: {
+    title: 'Счёт-фактура',
+    form: {
+      companyName: 'Название компании',
+      companyAddress: 'Адрес',
+      companyEmail: 'Email',
+      clientName: 'Имя клиента',
+      clientPhone: 'Телефон',
+      clientEmail: 'Email клиента',
+      clientAddress: 'Адрес клиента',
+      invoiceNumber: 'Номер счёта',
+      orderNumber: 'Номер заказа',
+      date: 'Дата',
+      dueDate: 'Оплатить до',
+      paymentMethod: 'Способ оплаты',
+      rowNumber: '№',
+      productName: 'Название услуги',
+      productQty: 'Количество',
+      unitPrice: 'Цена',
+      productAmount: 'Сумма',
+      subtotal: 'Итого',
+      taxRate: 'НДС',
+      taxValue: 'Сумма НДС',
+      totalAmount: 'К оплате',
+      paid: 'Оплачено',
+      remaining: 'Остаток'
+    },
+    sections: {
+      header: 'Счёт-фактура за ремонт',
+      clientInfo: 'Плательщик',
+      serviceTable: 'Услуги',
+      payment: 'Оплата',
+      notes: 'Примечания'
+    }
+  },
+  en: {
+    title: 'Invoice',
+    form: {
+      companyName: 'Company Name',
+      companyAddress: 'Address',
+      companyEmail: 'Email',
+      clientName: 'Client Name',
+      clientPhone: 'Phone',
+      clientEmail: 'Client Email',
+      clientAddress: 'Client Address',
+      invoiceNumber: 'Invoice Number',
+      orderNumber: 'Order Number',
+      date: 'Date',
+      dueDate: 'Due Date',
+      paymentMethod: 'Payment Method',
+      rowNumber: '#',
+      productName: 'Description',
+      productQty: 'Qty',
+      unitPrice: 'Unit Price',
+      productAmount: 'Amount',
+      subtotal: 'Subtotal',
+      taxRate: 'Tax Rate',
+      taxValue: 'Tax',
+      totalAmount: 'Total Due',
+      paid: 'Paid',
+      remaining: 'Balance Due'
+    },
+    sections: {
+      header: 'Repair Invoice',
+      clientInfo: 'Bill To',
+      serviceTable: 'Services',
+      payment: 'Payment',
+      notes: 'Notes'
+    }
+  },
+  ro: {
+    title: 'Factură',
+    form: {
+      companyName: 'Numele companiei',
+      companyAddress: 'Adresa',
+      companyEmail: 'Email',
+      clientName: 'Numele clientului',
+      clientPhone: 'Telefon',
+      clientEmail: 'Email client',
+      clientAddress: 'Adresa client',
+      invoiceNumber: 'Număr factură',
+      orderNumber: 'Număr comandă',
+      date: 'Data',
+      dueDate: 'Scadența',
+      paymentMethod: 'Metoda de plată',
+      rowNumber: '#',
+      productName: 'Descriere serviciu',
+      productQty: 'Cantitate',
+      unitPrice: 'Preț unitar',
+      productAmount: 'Sumă',
+      subtotal: 'Subtotal',
+      taxRate: 'Cotă TVA',
+      taxValue: 'TVA',
+      totalAmount: 'Total de plată',
+      paid: 'Achitat',
+      remaining: 'Rest de plată'
+    },
+    sections: {
+      header: 'Factură pentru reparație',
+      clientInfo: 'Plătitor',
+      serviceTable: 'Servicii',
+      payment: 'Plată',
+      notes: 'Observații'
+    }
+  }
+};
+
+// ============================================
+// WARRANTY (ГАРАНТИЯ) TEMPLATE
+// ============================================
+
+export const WARRANTY_TEMPLATE = {
+  uk: {
+    title: 'Гарантійний талон',
+    form: {
+      date: 'Дата видачі',
+      warrantyNumber: 'Номер гарантії',
+      orderNumber: 'Номер замовлення',
+      customerName: 'Ім\'я клієнта',
+      customerPhone: 'Телефон',
+      deviceType: 'Тип пристрою',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серійний номер',
+      repairWork: 'Виконані роботи',
+      partsUsed: 'Використані запчастини',
+      warrantyPeriod: 'Гарантійний термін (днів)',
+      warrantyExpires: 'Гарантія дійсна до',
+      conditions: 'Умови гарантії',
+      executorName: 'Майстер',
+      executorSign: 'Підпис майстра',
+      clientSign: 'Підпис клієнта'
+    },
+    sections: {
+      header: 'Гарантійний талон',
+      repairInfo: 'Інформація про ремонт',
+      warranty: 'Умови гарантії',
+      signatures: 'Підписи'
+    },
+    conditions: 'Гарантія поширюється виключно на виконані роботи та замінені деталі. Гарантія не поширюється на пошкодження, спричинені механічним впливом, потраплянням вологи, самостійним ремонтом або використанням не за призначенням.'
+  },
+  ru: {
+    title: 'Гарантийный талон',
+    form: {
+      date: 'Дата выдачи',
+      warrantyNumber: 'Номер гарантии',
+      orderNumber: 'Номер заказа',
+      customerName: 'Имя клиента',
+      customerPhone: 'Телефон',
+      deviceType: 'Тип устройства',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серийный номер',
+      repairWork: 'Выполненные работы',
+      partsUsed: 'Использованные запчасти',
+      warrantyPeriod: 'Гарантийный срок (дней)',
+      warrantyExpires: 'Гарантия действительна до',
+      conditions: 'Условия гарантии',
+      executorName: 'Мастер',
+      executorSign: 'Подпись мастера',
+      clientSign: 'Подпись клиента'
+    },
+    sections: {
+      header: 'Гарантийный талон',
+      repairInfo: 'Информация о ремонте',
+      warranty: 'Условия гарантии',
+      signatures: 'Подписи'
+    },
+    conditions: 'Гарантия распространяется исключительно на выполненные работы и замененные детали. Гарантия не распространяется на повреждения, вызванные механическим воздействием, попаданием влаги, самостоятельным ремонтом или использованием не по назначению.'
+  },
+  en: {
+    title: 'Warranty Card',
+    form: {
+      date: 'Issue Date',
+      warrantyNumber: 'Warranty Number',
+      orderNumber: 'Order Number',
+      customerName: 'Customer Name',
+      customerPhone: 'Phone',
+      deviceType: 'Device Type',
+      deviceBrand: 'Brand',
+      deviceModel: 'Model',
+      deviceSerial: 'Serial Number',
+      repairWork: 'Work Performed',
+      partsUsed: 'Parts Used',
+      warrantyPeriod: 'Warranty Period (days)',
+      warrantyExpires: 'Warranty Expires',
+      conditions: 'Warranty Conditions',
+      executorName: 'Technician',
+      executorSign: 'Technician Signature',
+      clientSign: 'Client Signature'
+    },
+    sections: {
+      header: 'Warranty Card',
+      repairInfo: 'Repair Information',
+      warranty: 'Warranty Terms',
+      signatures: 'Signatures'
+    },
+    conditions: 'Warranty covers only the performed repairs and replaced parts. Warranty does not cover damage caused by mechanical impact, liquid exposure, unauthorized repair, or misuse.'
+  },
+  ro: {
+    title: 'Certificat de garanție',
+    form: {
+      date: 'Data emiterii',
+      warrantyNumber: 'Număr garanție',
+      orderNumber: 'Număr comandă',
+      customerName: 'Numele clientului',
+      customerPhone: 'Telefon',
+      deviceType: 'Tip dispozitiv',
+      deviceBrand: 'Marcă',
+      deviceModel: 'Model',
+      deviceSerial: 'Număr de serie',
+      repairWork: 'Lucrări efectuate',
+      partsUsed: 'Piese folosite',
+      warrantyPeriod: 'Perioada de garanție (zile)',
+      warrantyExpires: 'Garanția expiră la',
+      conditions: 'Condiții de garanție',
+      executorName: 'Tehnician',
+      executorSign: 'Semnătura tehnicianului',
+      clientSign: 'Semnătura clientului'
+    },
+    sections: {
+      header: 'Certificat de garanție',
+      repairInfo: 'Informații reparație',
+      warranty: 'Termeni garanție',
+      signatures: 'Semnături'
+    },
+    conditions: 'Garanția acoperă exclusiv lucrările efectuate și piesele înlocuite. Garanția nu acoperă daunele cauzate de impact mecanic, expunere la lichide, reparații neautorizate sau utilizare necorespunzătoare.'
+  }
+};
+
+// ============================================
+// TICKET (КВИТАНЦИЯ) TEMPLATE
+// ============================================
+
+export const TICKET_TEMPLATE = {
+  uk: {
+    title: 'Квитанція',
+    form: {
+      companyName: 'Назва компанії',
+      companyAddress: 'Адреса',
+      companyPhone: 'Телефон',
+      orderNumber: 'Номер замовлення',
+      date: 'Дата прийому',
+      customerName: 'Ім\'я клієнта',
+      customerPhone: 'Телефон клієнта',
+      deviceType: 'Тип пристрою',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серійний номер',
+      problem: 'Несправність',
+      estimatedPrice: 'Орієнтовна вартість',
+      estimatedDate: 'Орієнтовна дата готовності',
+      prepaid: 'Передоплата',
+      executorName: 'Прийняв',
+      notes: 'Примітки'
+    },
+    sections: {
+      header: 'Квитанція про прийом',
+      deviceInfo: 'Пристрій',
+      orderInfo: 'Замовлення',
+      footer: 'Зберігайте квитанцію до отримання пристрою'
+    }
+  },
+  ru: {
+    title: 'Квитанция',
+    form: {
+      companyName: 'Название компании',
+      companyAddress: 'Адрес',
+      companyPhone: 'Телефон',
+      orderNumber: 'Номер заказа',
+      date: 'Дата приема',
+      customerName: 'Имя клиента',
+      customerPhone: 'Телефон клиента',
+      deviceType: 'Тип устройства',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серийный номер',
+      problem: 'Неисправность',
+      estimatedPrice: 'Ориентировочная стоимость',
+      estimatedDate: 'Ориентировочная дата готовности',
+      prepaid: 'Предоплата',
+      executorName: 'Принял',
+      notes: 'Примечания'
+    },
+    sections: {
+      header: 'Квитанция о приеме',
+      deviceInfo: 'Устройство',
+      orderInfo: 'Заказ',
+      footer: 'Сохраняйте квитанцию до получения устройства'
+    }
+  },
+  en: {
+    title: 'Ticket',
+    form: {
+      companyName: 'Company Name',
+      companyAddress: 'Address',
+      companyPhone: 'Phone',
+      orderNumber: 'Order Number',
+      date: 'Date',
+      customerName: 'Customer Name',
+      customerPhone: 'Customer Phone',
+      deviceType: 'Device Type',
+      deviceBrand: 'Brand',
+      deviceModel: 'Model',
+      deviceSerial: 'Serial Number',
+      problem: 'Problem Description',
+      estimatedPrice: 'Estimated Cost',
+      estimatedDate: 'Estimated Completion',
+      prepaid: 'Prepaid Amount',
+      executorName: 'Received By',
+      notes: 'Notes'
+    },
+    sections: {
+      header: 'Repair Ticket',
+      deviceInfo: 'Device',
+      orderInfo: 'Order',
+      footer: 'Keep this ticket until device pickup'
+    }
+  },
+  ro: {
+    title: 'Bon de primire',
+    form: {
+      companyName: 'Numele companiei',
+      companyAddress: 'Adresa',
+      companyPhone: 'Telefon',
+      orderNumber: 'Număr comandă',
+      date: 'Data',
+      customerName: 'Numele clientului',
+      customerPhone: 'Telefon client',
+      deviceType: 'Tip dispozitiv',
+      deviceBrand: 'Marcă',
+      deviceModel: 'Model',
+      deviceSerial: 'Număr de serie',
+      problem: 'Defecțiune',
+      estimatedPrice: 'Cost estimat',
+      estimatedDate: 'Data estimată finalizare',
+      prepaid: 'Avans',
+      executorName: 'Primit de',
+      notes: 'Observații'
+    },
+    sections: {
+      header: 'Bon de primire reparație',
+      deviceInfo: 'Dispozitiv',
+      orderInfo: 'Comandă',
+      footer: 'Păstrați bonul până la ridicarea dispozitivului'
+    }
+  }
+};
+
+// ============================================
+// WORK ORDER (НАРЯД-ЗАКАЗ) TEMPLATE
+// ============================================
+
+export const WORK_ORDER_TEMPLATE = {
+  uk: {
+    title: 'Наряд-замовлення',
+    form: {
+      companyName: 'Компанія',
+      orderNumber: 'Номер замовлення',
+      date: 'Дата',
+      dueDate: 'Термін виконання',
+      customerName: 'Клієнт',
+      customerPhone: 'Телефон',
+      deviceType: 'Тип пристрою',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серійний номер',
+      deviceIMEI: 'IMEI',
+      problem: 'Опис несправності',
+      diagnosticNotes: 'Результати діагностики',
+      repairPlan: 'План робіт',
+      partsNeeded: 'Необхідні запчастини',
+      estimatedCost: 'Орієнтовна вартість',
+      priority: 'Пріоритет',
+      assignedTo: 'Виконавець',
+      status: 'Статус'
+    },
+    sections: {
+      header: 'Наряд-замовлення на ремонт',
+      client: 'Клієнт',
+      device: 'Пристрій',
+      work: 'Роботи',
+      parts: 'Запчастини',
+      notes: 'Примітки'
+    }
+  },
+  ru: {
+    title: 'Наряд-заказ',
+    form: {
+      companyName: 'Компания',
+      orderNumber: 'Номер заказа',
+      date: 'Дата',
+      dueDate: 'Срок выполнения',
+      customerName: 'Клиент',
+      customerPhone: 'Телефон',
+      deviceType: 'Тип устройства',
+      deviceBrand: 'Марка',
+      deviceModel: 'Модель',
+      deviceSerial: 'Серийный номер',
+      deviceIMEI: 'IMEI',
+      problem: 'Описание неисправности',
+      diagnosticNotes: 'Результаты диагностики',
+      repairPlan: 'План работ',
+      partsNeeded: 'Необходимые запчасти',
+      estimatedCost: 'Ориентировочная стоимость',
+      priority: 'Приоритет',
+      assignedTo: 'Исполнитель',
+      status: 'Статус'
+    },
+    sections: {
+      header: 'Наряд-заказ на ремонт',
+      client: 'Клиент',
+      device: 'Устройство',
+      work: 'Работы',
+      parts: 'Запчасти',
+      notes: 'Примечания'
+    }
+  },
+  en: {
+    title: 'Work Order',
+    form: {
+      companyName: 'Company',
+      orderNumber: 'Order Number',
+      date: 'Date',
+      dueDate: 'Due Date',
+      customerName: 'Customer',
+      customerPhone: 'Phone',
+      deviceType: 'Device Type',
+      deviceBrand: 'Brand',
+      deviceModel: 'Model',
+      deviceSerial: 'Serial Number',
+      deviceIMEI: 'IMEI',
+      problem: 'Problem Description',
+      diagnosticNotes: 'Diagnostic Notes',
+      repairPlan: 'Repair Plan',
+      partsNeeded: 'Parts Needed',
+      estimatedCost: 'Estimated Cost',
+      priority: 'Priority',
+      assignedTo: 'Assigned To',
+      status: 'Status'
+    },
+    sections: {
+      header: 'Repair Work Order',
+      client: 'Client',
+      device: 'Device',
+      work: 'Work',
+      parts: 'Parts',
+      notes: 'Notes'
+    }
+  },
+  ro: {
+    title: 'Ordin de lucru',
+    form: {
+      companyName: 'Companie',
+      orderNumber: 'Număr comandă',
+      date: 'Data',
+      dueDate: 'Termen de finalizare',
+      customerName: 'Client',
+      customerPhone: 'Telefon',
+      deviceType: 'Tip dispozitiv',
+      deviceBrand: 'Marcă',
+      deviceModel: 'Model',
+      deviceSerial: 'Număr de serie',
+      deviceIMEI: 'IMEI',
+      problem: 'Descrierea defecțiunii',
+      diagnosticNotes: 'Rezultate diagnostic',
+      repairPlan: 'Plan de lucru',
+      partsNeeded: 'Piese necesare',
+      estimatedCost: 'Cost estimat',
+      priority: 'Prioritate',
+      assignedTo: 'Atribuit lui',
+      status: 'Status'
+    },
+    sections: {
+      header: 'Ordin de lucru reparație',
+      client: 'Client',
+      device: 'Dispozitiv',
+      work: 'Lucrări',
+      parts: 'Piese',
+      notes: 'Observații'
+    }
+  }
+};
+
+// ============================================
+// PAYMENT RECEIPT (КВИТАНЦИЯ ОБ ОПЛАТЕ) TEMPLATE
+// ============================================
+
+export const PAYMENT_RECEIPT_TEMPLATE = {
+  uk: {
+    title: 'Квитанція про оплату',
+    form: {
+      companyName: 'Компанія',
+      companyAddress: 'Адреса',
+      receiptNumber: 'Номер квитанції',
+      orderNumber: 'Номер замовлення',
+      date: 'Дата',
+      customerName: 'Клієнт',
+      customerPhone: 'Телефон',
+      paymentMethod: 'Спосіб оплати',
+      amount: 'Сума',
+      currency: 'Валюта',
+      description: 'Опис платежу',
+      cashierName: 'Касир',
+      notes: 'Примітки'
+    },
+    sections: {
+      header: 'Квитанція про оплату',
+      payment: 'Деталі платежу',
+      footer: 'Дякуємо за оплату!'
+    }
+  },
+  ru: {
+    title: 'Квитанция об оплате',
+    form: {
+      companyName: 'Компания',
+      companyAddress: 'Адрес',
+      receiptNumber: 'Номер квитанции',
+      orderNumber: 'Номер заказа',
+      date: 'Дата',
+      customerName: 'Клиент',
+      customerPhone: 'Телефон',
+      paymentMethod: 'Способ оплаты',
+      amount: 'Сумма',
+      currency: 'Валюта',
+      description: 'Описание платежа',
+      cashierName: 'Кассир',
+      notes: 'Примечания'
+    },
+    sections: {
+      header: 'Квитанция об оплате',
+      payment: 'Детали платежа',
+      footer: 'Спасибо за оплату!'
+    }
+  },
+  en: {
+    title: 'Payment Receipt',
+    form: {
+      companyName: 'Company',
+      companyAddress: 'Address',
+      receiptNumber: 'Receipt Number',
+      orderNumber: 'Order Number',
+      date: 'Date',
+      customerName: 'Customer',
+      customerPhone: 'Phone',
+      paymentMethod: 'Payment Method',
+      amount: 'Amount',
+      currency: 'Currency',
+      description: 'Payment Description',
+      cashierName: 'Cashier',
+      notes: 'Notes'
+    },
+    sections: {
+      header: 'Payment Receipt',
+      payment: 'Payment Details',
+      footer: 'Thank you for your payment!'
+    }
+  },
+  ro: {
+    title: 'Chitanță de plată',
+    form: {
+      companyName: 'Companie',
+      companyAddress: 'Adresa',
+      receiptNumber: 'Număr chitanță',
+      orderNumber: 'Număr comandă',
+      date: 'Data',
+      customerName: 'Client',
+      customerPhone: 'Telefon',
+      paymentMethod: 'Metoda de plată',
+      amount: 'Sumă',
+      currency: 'Monedă',
+      description: 'Descriere plată',
+      cashierName: 'Casier',
+      notes: 'Observații'
+    },
+    sections: {
+      header: 'Chitanță de plată',
+      payment: 'Detalii plată',
+      footer: 'Vă mulțumim pentru plată!'
+    }
+  }
+};
+
+// ============================================
+// SALE INVOICE (ТОВАРНАЯ НАКЛАДНАЯ) TEMPLATE
+// ============================================
+
+export const SALE_INVOICE_TEMPLATE = {
+  uk: {
+    title: 'Товарна накладна',
+    form: {
+      companyName: 'Постачальник',
+      companyAddress: 'Адреса',
+      invoiceNumber: 'Номер накладної',
+      date: 'Дата',
+      customerName: 'Покупець',
+      customerAddress: 'Адреса покупця',
+      rowNumber: '№',
+      productName: 'Найменування товару',
+      productQty: 'Кількість',
+      unitPrice: 'Ціна',
+      productAmount: 'Сума',
+      subtotal: 'Підсумок',
+      tax: 'ПДВ',
+      totalAmount: 'Всього до оплати',
+      paymentMethod: 'Спосіб оплати'
+    },
+    sections: {
+      header: 'Товарна накладна',
+      seller: 'Постачальник',
+      buyer: 'Покупець',
+      products: 'Товари',
+      totals: 'Підсумок',
+      signatures: 'Підписи'
+    }
+  },
+  ru: {
+    title: 'Товарная накладная',
+    form: {
+      companyName: 'Поставщик',
+      companyAddress: 'Адрес',
+      invoiceNumber: 'Номер накладной',
+      date: 'Дата',
+      customerName: 'Покупатель',
+      customerAddress: 'Адрес покупателя',
+      rowNumber: '№',
+      productName: 'Наименование товара',
+      productQty: 'Количество',
+      unitPrice: 'Цена',
+      productAmount: 'Сумма',
+      subtotal: 'Итого',
+      tax: 'НДС',
+      totalAmount: 'Всего к оплате',
+      paymentMethod: 'Способ оплаты'
+    },
+    sections: {
+      header: 'Товарная накладная',
+      seller: 'Поставщик',
+      buyer: 'Покупатель',
+      products: 'Товары',
+      totals: 'Итого',
+      signatures: 'Подписи'
+    }
+  },
+  en: {
+    title: 'Sale Invoice',
+    form: {
+      companyName: 'Seller',
+      companyAddress: 'Address',
+      invoiceNumber: 'Invoice Number',
+      date: 'Date',
+      customerName: 'Buyer',
+      customerAddress: 'Buyer Address',
+      rowNumber: '#',
+      productName: 'Product Name',
+      productQty: 'Qty',
+      unitPrice: 'Unit Price',
+      productAmount: 'Amount',
+      subtotal: 'Subtotal',
+      tax: 'Tax',
+      totalAmount: 'Total Due',
+      paymentMethod: 'Payment Method'
+    },
+    sections: {
+      header: 'Sale Invoice',
+      seller: 'Seller',
+      buyer: 'Buyer',
+      products: 'Products',
+      totals: 'Totals',
+      signatures: 'Signatures'
+    }
+  },
+  ro: {
+    title: 'Factură de vânzare',
+    form: {
+      companyName: 'Furnizor',
+      companyAddress: 'Adresa',
+      invoiceNumber: 'Număr factură',
+      date: 'Data',
+      customerName: 'Cumpărător',
+      customerAddress: 'Adresa cumpărător',
+      rowNumber: '#',
+      productName: 'Denumire produs',
+      productQty: 'Cantitate',
+      unitPrice: 'Preț unitar',
+      productAmount: 'Sumă',
+      subtotal: 'Subtotal',
+      tax: 'TVA',
+      totalAmount: 'Total de plată',
+      paymentMethod: 'Metoda de plată'
+    },
+    sections: {
+      header: 'Factură de vânzare',
+      seller: 'Furnizor',
+      buyer: 'Cumpărător',
+      products: 'Produse',
+      totals: 'Total',
+      signatures: 'Semnături'
+    }
+  }
+};
+
+// ============================================
+// Export all templates (matches Remonline document types)
 // ============================================
 
 export const NEXX_TEMPLATES = {
+  // Orders & Estimates
+  estimate: ESTIMATE_TEMPLATE,
+  ticket: TICKET_TEMPLATE,
+  work_order: WORK_ORDER_TEMPLATE,
+  // Invoices
+  invoice: INVOICE_TEMPLATE,
+  payment_receipt: PAYMENT_RECEIPT_TEMPLATE,
+  // Sales
+  sale_invoice: SALE_INVOICE_TEMPLATE,
+  // Service documents
   intake: INTAKE_TEMPLATE,
   release: RELEASE_TEMPLATE,
+  warranty: WARRANTY_TEMPLATE,
   buyback: BUYBACK_TEMPLATE,
-  recycling: RECYCLING_TEMPLATE
+  recycling: RECYCLING_TEMPLATE,
 };
 
 export default NEXX_TEMPLATES;

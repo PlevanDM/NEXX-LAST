@@ -9,7 +9,7 @@ import RemonlineServices from './components/RemonlineServices';
 import Appointment from './components/Appointment';
 import Contact from './components/Contact';
 import CallbackModal from './components/CallbackModal';
-import ServiceModAuth from './components/ServiceModAuth';
+// ServiceModAuth removed — database/service mod disabled
 
 const LandingApp: React.FC = () => {
   const [lang, setLang] = useState(window.i18n?.getCurrentLanguage?.()?.code || 'ro');
@@ -46,7 +46,6 @@ const LandingApp: React.FC = () => {
       {/* @ts-ignore */}
       {window.NEXXDesign?.ToastContainer ? React.createElement(window.NEXXDesign.ToastContainer) : null}
       <CallbackModal />
-      <ServiceModAuth />
       <Hero />
       <Services />
       <section id="calculator" className="py-12 sm:py-16 md:py-24 px-3 sm:px-4 bg-gray-950">

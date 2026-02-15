@@ -45,14 +45,6 @@
     <priority>0.7</priority>
   </url>
   
-  <!-- NEXX Database -->
-  <url>
-    <loc>https://nexxgsm.com/nexx.html</loc>
-    <lastmod>2026-02-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <!-- FAQ -->
   <url>
     <loc>https://nexxgsm.com/faq.html</loc>

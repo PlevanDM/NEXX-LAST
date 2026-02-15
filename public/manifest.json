@@ -33,10 +33,10 @@
   "scope": "/",
   "shortcuts": [
     {
-      "name": "Baza NEXX",
-      "short_name": "Baza",
-      "description": "Baza de date dispozitive, IC, diagnosticare",
-      "url": "/nexx",
+      "name": "Contul meu",
+      "short_name": "Cabinet",
+      "description": "Cabinet personal — urmărire comenzi",
+      "url": "/cabinet",
       "icons": [
         {
           "src": "/static/nexx-logo.png",

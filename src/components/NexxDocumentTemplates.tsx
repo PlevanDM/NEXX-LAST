@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { cn } from '@/utils';
 import useTranslation from '@/hooks/useTranslation';
-import { NEXX_TEMPLATES } from '@/templates/nexx-document-templates';
+import { NEXX_TEMPLATES, NEXX_COMPANY } from '@/templates';
 
-type TemplateType = 'intake' | 'release' | 'buyback' | 'recycling';
+type TemplateType = 'estimate' | 'ticket' | 'work_order' | 'invoice' | 'payment_receipt' | 'sale_invoice' | 'intake' | 'release' | 'warranty' | 'buyback' | 'recycling';
 
 interface NexxDocumentTemplatesProps {
   templateType?: TemplateType;
@@ -35,6 +35,45 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
   const textMutedTheme = theme === 'dark' ? 'text-slate-400' : 'text-slate-600';
 
   const templates: Array<{ id: TemplateType; label: string; icon: string; description: string }> = [
+    // Orders & Estimates
+    {
+      id: 'estimate',
+      label: 'Estimate / Кошторис',
+      icon: '📋',
+      description: 'Repair cost estimate / Кошторис на ремонт',
+    },
+    {
+      id: 'ticket',
+      label: 'Ticket / Квитанція',
+      icon: '🎫',
+      description: 'Repair ticket / Квитанція про прийом',
+    },
+    {
+      id: 'work_order',
+      label: 'Work Order / Наряд',
+      icon: '🔧',
+      description: 'Repair work order / Наряд-замовлення',
+    },
+    // Invoices & Payments
+    {
+      id: 'invoice',
+      label: 'Invoice / Рахунок',
+      icon: '🧾',
+      description: 'Repair invoice / Рахунок-фактура',
+    },
+    {
+      id: 'payment_receipt',
+      label: 'Payment Receipt / Оплата',
+      icon: '💳',
+      description: 'Payment receipt / Квитанція про оплату',
+    },
+    {
+      id: 'sale_invoice',
+      label: 'Sale Invoice / Накладна',
+      icon: '📦',
+      description: 'Sale invoice / Товарна накладна',
+    },
+    // Service Documents
     {
       id: 'intake',
       label: 'Intake / Приемка',
@@ -45,19 +84,25 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
       id: 'release',
       label: 'Release / Выдача',
       icon: '📤',
-      description: 'Device release / completion / Видача відремонтованого',
+      description: 'Device release / Видача відремонтованого',
+    },
+    {
+      id: 'warranty',
+      label: 'Warranty / Гарантія',
+      icon: '🛡️',
+      description: 'Warranty card / Гарантійний талон',
     },
     {
       id: 'buyback',
       label: 'Buyback / Выкуп',
       icon: '💰',
-      description: 'Device buyback / trade-in / Виконання послуги',
+      description: 'Device buyback / trade-in',
     },
     {
       id: 'recycling',
       label: 'Recycling / Утилизация',
       icon: '♻️',
-      description: 'Device recycling / disposal / Утилізація',
+      description: 'Device recycling / disposal',
     },
   ];
 
@@ -88,7 +133,7 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
             <p className={`text-sm ${textMutedTheme}`}>{(content as { subtitle?: string }).subtitle}</p>
           )}
           <p className={`text-xs ${textMutedTheme} mt-2`}>
-            NEXX GSM Service Center • {new Date().toLocaleDateString()}
+            {NEXX_COMPANY.fullName} · {NEXX_COMPANY.address} · Tel: {NEXX_COMPANY.phone} · {new Date().toLocaleDateString()}
           </p>
         </div>
 
@@ -120,7 +165,7 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
 
         {/* Footer */}
         <div className="border-t border-slate-300 pt-4 flex justify-between">
-          <div className="text-xs text-gray-400">NEXX GSM © 2026</div>
+          <div className="text-xs text-gray-400">{NEXX_COMPANY.fullName} © {NEXX_COMPANY.year}</div>
           <div className="text-xs text-gray-400">Document ID: {selectedTemplate.toUpperCase()}-{Date.now()}</div>
         </div>
       </div>
@@ -129,7 +174,7 @@ export const NexxDocumentTemplates: React.FC<NexxDocumentTemplatesProps> = ({
 
   return (
     <div className={cn(`${bgTheme} rounded-lg p-6`, className)}>
-      <h2 className="text-2xl font-bold mb-6">NEXX GSM Document Templates</h2>
+      <h2 className="text-2xl font-bold mb-6">{NEXX_COMPANY.name} Document Templates</h2>
 
       {/* Template Selection */}
       <div className="mb-8">

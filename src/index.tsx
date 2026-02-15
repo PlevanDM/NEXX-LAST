@@ -133,63 +133,83 @@ function detectDeviceType (device?: string): string {
   return 'Telefon'
 }
 
-// --- RemOnline token cache (tokens valid for 10 minutes) ---
-let _remonlineTokenCache: { token: string; expiresAt: number } | null = null
+// --- RO App API v1.4 (roapp.io) — Bearer auth, no token exchange ---
+const ROAPP_DEFAULT_BASE = 'https://api.roapp.io'
 
-async function getRemonlineTokenCached (apiKey: string, baseUrl: string): Promise<{ token: string | null; error?: string; code?: number }> {
-  // Return cached token if still valid (with 60s safety margin)
-  if (_remonlineTokenCache && _remonlineTokenCache.expiresAt > Date.now() + 60_000) {
-    return { token: _remonlineTokenCache.token }
-  }
-  _remonlineTokenCache = null
-
-  if (!apiKey) return { token: null, error: 'REMONLINE_API_KEY not configured', code: 503 }
-
-  try {
-    const res = await fetch(`${baseUrl}/token/new`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `api_key=${apiKey}`
-    })
-    const json = await res.json() as { success?: boolean; token?: string; message?: string; code?: number }
-
-    if (!json.success || !json.token) {
-      const msg = json.message || 'Authentication failed'
-      const isExpired = msg.toLowerCase().includes('expired') || msg.toLowerCase().includes('subscription') || json.code === 403
-      console.error(`[RemOnline] Token error: ${msg} (code: ${json.code || res.status})`)
-      return {
-        token: null,
-        error: isExpired
-          ? 'Abonamentul RemOnline a expirat. Contactați administratorul.'
-          : `Eroare autentificare RemOnline: ${msg}`,
-        code: isExpired ? 403 : 500
-      }
-    }
-
-    // Cache token for 9 minutes (tokens valid for 10 min)
-    _remonlineTokenCache = { token: json.token, expiresAt: Date.now() + 9 * 60 * 1000 }
-    return { token: json.token }
-  } catch (e) {
-    console.error('[RemOnline] Network error getting token:', e)
-    return { token: null, error: 'Nu se poate conecta la RemOnline. Încercați mai târziu.', code: 503 }
+/** Build Authorization + JSON headers for RO App API */
+function roappHeaders (apiKey: string): Record<string, string> {
+  return {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
 }
 
-/** Create or find client in RemOnline, returns client_id or null */
-async function getOrCreateClient (token: string, baseUrl: string, name: string, phone: string): Promise<{ clientId: number | null; error?: string }> {
-  // Try to create client
-  const createRes = await fetch(`${baseUrl}/clients/?token=${token}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({ name, phone: [phone] })
-  })
-  const createData = await createRes.json() as { data?: { id: number }; success?: boolean }
-  if (createData.data?.id) return { clientId: createData.data.id }
+/** Validate that the API key is configured */
+function requireApiKey (apiKey: string): { ok: true } | { ok: false; error: string; code: number } {
+  if (!apiKey) return { ok: false, error: 'REMONLINE_API_KEY not configured', code: 503 }
+  return { ok: true }
+}
 
-  // Client may already exist — search by phone
-  const searchRes = await fetch(`${baseUrl}/clients/?token=${token}&phones[]=${encodeURIComponent(phone)}`)
-  const searchData = await searchRes.json() as { data?: Array<{ id: number }> }
-  if (searchData.data?.length) return { clientId: searchData.data[0].id }
+/** Create or find client (person) in RO App, returns client_id or null */
+async function getOrCreateClient (apiKey: string, baseUrl: string, name: string, phone: string): Promise<{ clientId: number | null; error?: string }> {
+  const headers = roappHeaders(apiKey)
+
+  // First try to find existing person by phone
+  try {
+    const searchRes = await fetch(`${baseUrl}/contacts/people?client_phones[]=${encodeURIComponent(phone)}`, { headers })
+    if (searchRes.ok) {
+      const searchData = await searchRes.json() as { people?: Array<{ id: number }> }
+      if (searchData.people?.length) return { clientId: searchData.people[0].id }
+    }
+  } catch { /* continue to create */ }
+
+  // Try searching via orders endpoint (client_phones filter)
+  try {
+    const ordersSearch = await fetch(`${baseUrl}/orders?client_phones[]=${encodeURIComponent(phone)}&page=1`, { headers })
+    if (ordersSearch.ok) {
+      const ordersData = await ordersSearch.json() as { orders?: Array<{ client?: { id: number } }> }
+      const clientId = ordersData.orders?.[0]?.client?.id
+      if (clientId) return { clientId }
+    }
+  } catch { /* continue to create */ }
+
+  // Create new person
+  try {
+    const nameParts = (name || 'Client Website').trim().split(/\s+/)
+    const firstName = nameParts[0] || 'Client'
+    const lastName = nameParts.slice(1).join(' ') || ''
+
+    const createRes = await fetch(`${baseUrl}/contacts/people`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        first_name: firstName,
+        ...(lastName ? { last_name: lastName } : {}),
+        phones: [{
+          title: 'Mobile',
+          phone,
+          notify: true,
+          has_viber: false,
+          has_whatsapp: true
+        }]
+      })
+    })
+    const createData = await createRes.json() as { id?: number; person_id?: number; message?: string }
+    const newId = createData.id ?? createData.person_id
+    if (newId) return { clientId: newId }
+
+    // If creation returned an error about existing contact, try search one more time
+    if (createRes.status === 409 || (createData.message || '').toLowerCase().includes('exist')) {
+      const retryRes = await fetch(`${baseUrl}/contacts/people?client_phones[]=${encodeURIComponent(phone)}`, { headers })
+      if (retryRes.ok) {
+        const retryData = await retryRes.json() as { people?: Array<{ id: number }> }
+        if (retryData.people?.length) return { clientId: retryData.people[0].id }
+      }
+    }
+  } catch (e) {
+    console.error('[RO App] Create client error:', e)
+  }
 
   return { clientId: null, error: 'Nu s-a putut crea/găsi clientul' }
 }
@@ -382,74 +402,69 @@ app.get('/api/settings', (c) => {
   })
 })
 
-// Callback API - creates order in Remonline CRM
+// Callback API - creates order in RO App CRM
 app.post('/api/callback', async (c) => {
   try {
     const body = await c.req.json()
     const { phone, name, device, problem, source } = body
-    
+
     // Validate phone
     if (!phone || phone.replace(/\D/g, '').length < 9) {
       return c.json({ success: false, error: 'Număr de telefon invalid' }, 400)
     }
-    
+
     const cleanPhone = normalizePhone(phone)
-    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970')
-    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611')
-    
-      // Get token
-    const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) {
-      console.error('[Callback] Token error:', tokenError)
-      return c.json({
-        success: false,
-        error: tokenError || 'Serviciul temporar indisponibil',
-        code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'SERVICE_UNAVAILABLE'
-      }, (tokenCode || 503) as 200 | 400 | 401 | 403 | 404 | 500 | 503)
+    const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+    const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '222200')
+    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '339054')
+
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) {
+      return c.json({ success: false, error: check.error, code: 'SERVICE_UNAVAILABLE' }, 503)
     }
-    
+
     // Get or create client
-    const { clientId, error: clientError } = await getOrCreateClient(token, REMONLINE_BASE, name || 'Client Website', cleanPhone)
-        if (!clientId) {
-      return c.json({ success: false, error: clientError || 'Eroare creare client' }, 500 as const)
+    const { clientId, error: clientError } = await getOrCreateClient(API_KEY, BASE, name || 'Client Website', cleanPhone)
+    if (!clientId) {
+      return c.json({ success: false, error: clientError || 'Eroare creare client' }, 500)
     }
-    
-          // Create order
-          const now = new Date().toISOString()
+
+    // Create order via RO App API v1.4
+    const now = new Date().toISOString()
     const brand = detectBrand(device)
     const deviceType = detectDeviceType(device)
     const sourceLabel = source ? ` (${source})` : ''
-          
-          const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              branch_id: BRANCH_ID,
-              order_type: ORDER_TYPE,
-              client_id: clientId,
-        kindof_good: deviceType,
-        brand,
-              model: device || '',
-              malfunction: problem || 'Callback de pe website',
-        manager_notes: `🌐 CALLBACK WEBSITE${sourceLabel}\n🎁 BONUS: DIAGNOSTIC GRATUIT!\n📱 ${device || 'N/A'}\n📞 ${cleanPhone}\n❓ ${problem || 'N/A'}\n⏰ ${now}\n\n✅ Comandă online - diagnostic gratuit inclus`
+
+    const orderRes = await fetch(`${BASE}/orders`, {
+      method: 'POST',
+      headers: roappHeaders(API_KEY),
+      body: JSON.stringify({
+        branch_id: BRANCH_ID,
+        order_type_id: ORDER_TYPE,
+        client_id: clientId,
+        malfunction: problem || 'Callback de pe website',
+        manager_notes: `🌐 CALLBACK WEBSITE${sourceLabel}\n🎁 BONUS: DIAGNOSTIC GRATUIT!\n📱 ${device || 'N/A'} (${deviceType}, ${brand || 'N/A'})\n📞 ${cleanPhone}\n❓ ${problem || 'N/A'}\n⏰ ${now}\n\n✅ Comandă online - diagnostic gratuit inclus`,
+        urgent: false
       })
     })
-    const orderData = await orderRes.json() as { success?: boolean; data?: { id: number }; message?: string }
-    
-    if (!orderData.success || !orderData.data) {
-      console.error('[Callback] Order creation failed:', orderData)
-      return c.json({ success: false, error: orderData.message || 'Eroare creare comandă' }, 500)
+
+    if (!orderRes.ok) {
+      const errBody = await orderRes.text().catch(() => 'Unknown error')
+      console.error('[Callback] Order creation failed:', orderRes.status, errBody)
+      return c.json({ success: false, error: 'Eroare creare comandă' }, 500)
     }
-    
+
+    const orderData = await orderRes.json() as { id?: number; order_id?: number; message?: string }
+    const orderId = orderData.id ?? orderData.order_id
+
     return c.json({
       success: true,
-      order_id: orderData.data.id,
-      orderId: orderData.data.id,
+      order_id: orderId,
+      orderId: orderId,
       message: 'Mulțumim! Vă vom contacta în câteva minute!'
     })
-    
+
   } catch (error) {
     console.error('[Callback] Error:', error)
     return c.json({ success: false, error: 'Eroare server. Încercați din nou sau sunați-ne.' }, 500)
@@ -571,41 +586,14 @@ app.get('/test-click', (c) => {
   `)
 })
 
-// NEXX Database — served as static nexx.html by Cloudflare Pages Pretty URLs
-// /nexx and /nexx/ are excluded in _routes.json (served as static)
-// /nexx/* subpaths (power-tracker, ics, errors, etc.) go through worker for SPA routing
-app.get('/nexx/:path{.+}', async (c) => {
-  try {
-    const origin = new URL(c.req.url).origin
-    const assetResponse = await c.env.ASSETS.fetch(`${origin}/nexx.html`)
-    const path = (c.req.param('path') || '').toLowerCase()
-    // Для power-tracker отдаём HTML с манифестом PWA с первого байта — тогда Chrome покажет нативный "Установить?" при клике
-    if (path === 'power-tracker') {
-      let html = await assetResponse.text()
-      html = html.replace(/<link rel="manifest" href="[^"]*">/, '<link rel="manifest" href="/ecoflow-manifest.json">')
-      html = html.replace(/<meta name="theme-color" content="[^"]*">/, '<meta name="theme-color" content="#f59e0b">')
-      return new Response(html, {
-        status: 200,
-        headers: {
-          'content-type': 'text/html; charset=utf-8',
-          'cache-control': 'no-cache',
-        }
-      })
-    }
-    return new Response(assetResponse.body, {
-      status: 200,
-      headers: {
-        'content-type': 'text/html; charset=utf-8',
-        'cache-control': 'no-cache',
-      }
-    })
-  } catch {
-    return c.redirect('/nexx')
-  }
-})
+// NEXX Database — убрана с сайта: все запросы к /nexx* перенаправляются на главную
+app.get('/nexx', (c) => c.redirect('/', 302))
+app.get('/nexx/', (c) => c.redirect('/', 302))
+app.get('/nexx.html', (c) => c.redirect('/', 302))
+app.get('/nexx/:path{.+}', (c) => c.redirect('/', 302))
 
 
-// Booking API - creates order in RemOnline
+// Booking API - creates order via RO App API
 app.post('/api/booking', async (c) => {
   try {
     const body = await c.req.json()
@@ -617,53 +605,53 @@ app.post('/api/booking', async (c) => {
     }
 
     const cleanPhone = normalizePhone(phone)
-    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970')
-    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611')
+    const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+    const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '222200')
+    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '339054')
 
-    const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) {
-      return c.json({ success: false, error: tokenError, code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'SERVICE_UNAVAILABLE' }, tokenCode || 503)
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) {
+      return c.json({ success: false, error: check.error, code: 'SERVICE_UNAVAILABLE' }, 503)
     }
 
-    const { clientId, error: clientError } = await getOrCreateClient(token, REMONLINE_BASE, name, cleanPhone)
+    const { clientId, error: clientError } = await getOrCreateClient(API_KEY, BASE, name, cleanPhone)
     if (!clientId) {
       return c.json({ success: false, error: clientError }, 500)
     }
 
     const device = body.device || ''
-    const brand = detectBrand(device)
-    const deviceType = detectDeviceType(device)
     const now = new Date().toISOString()
     const preferredDate = body.preferredDate || ''
     const comment = body.comment || body.problem || ''
 
-    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
+    const orderRes = await fetch(`${BASE}/orders`, {
+      method: 'POST',
+      headers: roappHeaders(API_KEY),
       body: JSON.stringify({
         branch_id: BRANCH_ID,
-        order_type: ORDER_TYPE,
+        order_type_id: ORDER_TYPE,
         client_id: clientId,
-        kindof_good: deviceType,
-        brand,
-        model: device,
         malfunction: comment || 'Programare vizită',
-        manager_notes: `📅 BOOKING WEBSITE\n👤 ${name}\n📱 ${device || 'N/A'}\n📞 ${cleanPhone}\n🗓️ Data preferată: ${preferredDate || 'Cât mai curând'}\n💬 ${comment || 'N/A'}\n⏰ ${now}`
+        manager_notes: `📅 BOOKING WEBSITE\n👤 ${name}\n📱 ${device || 'N/A'}\n📞 ${cleanPhone}\n🗓️ Data preferată: ${preferredDate || 'Cât mai curând'}\n💬 ${comment || 'N/A'}\n⏰ ${now}`,
+        ...(preferredDate ? { scheduled_for: new Date(preferredDate).toISOString() } : {})
       })
     })
-    const orderData = await orderRes.json() as { success?: boolean; data?: { id: number }; message?: string }
 
-    if (!orderData.success || !orderData.data) {
-      return c.json({ success: false, error: orderData.message || 'Eroare creare comandă' }, 500)
+    if (!orderRes.ok) {
+      const errBody = await orderRes.text().catch(() => 'Unknown error')
+      console.error('[Booking] Order creation failed:', orderRes.status, errBody)
+      return c.json({ success: false, error: 'Eroare creare comandă' }, 500)
     }
-    
+
+    const orderData = await orderRes.json() as { id?: number; order_id?: number }
+    const orderId = orderData.id ?? orderData.order_id
+
     return c.json({
       success: true,
       message: 'Programare confirmată! Vă așteptăm.',
-      order_id: orderData.data.id,
-      orderId: orderData.data.id
+      order_id: orderId,
+      orderId: orderId
     })
   } catch (error) {
     console.error('[Booking] Error:', error)
@@ -671,26 +659,21 @@ app.post('/api/booking', async (c) => {
   }
 })
 
-// Remonline unified API endpoint
+// RO App unified API endpoint (order creation for all form types)
 app.post('/api/remonline', async (c) => {
   try {
     const body = await c.req.json()
     const action = new URL(c.req.url).searchParams.get('action')
     const formType = body.formType || action
 
-    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970')
-    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '334611')
+    const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+    const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+    const BRANCH_ID = parseInt((c.env as Bindings)?.REMONLINE_BRANCH_ID || '222200')
+    const ORDER_TYPE = parseInt((c.env as Bindings)?.REMONLINE_ORDER_TYPE || '339054')
 
-    // Get token (cached)
-    const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) {
-      return c.json({ 
-        success: false,
-        error: tokenError,
-        code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'SERVICE_UNAVAILABLE'
-      }, tokenCode || 503)
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) {
+      return c.json({ success: false, error: check.error, code: 'SERVICE_UNAVAILABLE' }, 503)
     }
 
     // Get phone and name (support multiple field names for compatibility)
@@ -707,9 +690,9 @@ app.post('/api/remonline', async (c) => {
     if (!cleanPhone || cleanPhone.replace(/\D/g, '').length < 9) {
       return c.json({ success: false, error: 'Număr de telefon invalid' }, 400)
     }
-    
-    // Get or create client
-    const { clientId, error: clientError } = await getOrCreateClient(token, REMONLINE_BASE, customerName, cleanPhone)
+
+    // Get or create client via RO App API
+    const { clientId, error: clientError } = await getOrCreateClient(API_KEY, BASE, customerName, cleanPhone)
     if (!clientId) {
       return c.json({ success: false, error: clientError }, 500)
     }
@@ -717,93 +700,77 @@ app.post('/api/remonline', async (c) => {
     // Build order data based on form type
     const now = new Date().toISOString()
     let notes = ''
-    let deviceType = 'Telefon'
-    let brand = ''
-    let model = ''
     let malfunction = ''
 
     if (formType === 'callback') {
       const deviceStr = body.device || ''
-      brand = detectBrand(deviceStr)
-      model = deviceStr
-      deviceType = detectDeviceType(deviceStr)
       malfunction = body.problem || 'Callback request'
       notes = `🌐 CALLBACK\n👤 ${customerName} | ${cleanPhone}\n📱 ${deviceStr || 'N/A'}\n❓ ${body.problem || 'N/A'}\n⏰ ${body.preferredTime || 'ASAP'}\n📅 ${now}\n\n✅ Diagnostic gratuit inclus`
 
     } else if (formType === 'repair_order' || action === 'create_order') {
-      deviceType = body.device?.type || body.deviceType || 'Telefon'
-      brand = body.device?.brand || detectBrand(body.device)
-      model = body.device?.model || (typeof body.device === 'string' ? body.device : '')
+      const deviceType = body.device?.type || body.deviceType || 'Telefon'
+      const brand = body.device?.brand || detectBrand(body.device)
+      const model = body.device?.model || (typeof body.device === 'string' ? body.device : '')
       malfunction = body.problem || body.problemDetails || 'Repair request'
       notes = `🔧 REPAIR ORDER\n👤 ${customerName}\n📱 ${deviceType} ${brand} ${model}\n❓ ${malfunction}\n💰 Estimare: ${body.estimatedCost || 'N/A'}\n📅 ${now}`
 
     } else if (action === 'create_inquiry' || action === 'create_lead') {
-      const typeMap: Record<string, string> = { phone: 'Telefon', tablet: 'Tablet', laptop: 'Laptop', watch: 'Smartwatch' }
-      deviceType = typeMap[body.device?.type] || body.device?.type || 'Telefon'
-      brand = body.device?.brand || ''
-      model = body.device?.model || ''
+      const brand = body.device?.brand || ''
+      const model = body.device?.model || ''
       malfunction = body.issue || 'Calculator inquiry'
       const estimate = body.estimated_price || body.estimatedPrice || 'N/A'
       notes = `🧮 CALCULATOR LEAD\n👤 ${customerName}\n📱 ${brand} ${model}\n❓ ${body.issue || 'N/A'}\n💰 Estimare: ${estimate}\n🔗 Source: ${body.source || 'website'}\n📅 ${now}`
 
     } else if (formType === 'booking' || formType === 'appointment') {
       const device = body.device || ''
-      brand = detectBrand(device)
-      model = device
-      deviceType = detectDeviceType(device)
       malfunction = body.comment || body.problem || 'Programare vizită'
       notes = `📅 BOOKING\n👤 ${customerName}\n📞 ${cleanPhone}\n📱 ${device || 'N/A'}\n🗓️ ${body.preferredDate || 'Cât mai curând'}\n💬 ${body.comment || 'N/A'}\n📅 ${now}`
 
     } else if (formType === 'diagnostic') {
-      deviceType = detectDeviceType(body.device)
-      brand = detectBrand(body.device)
-      model = body.device || ''
       malfunction = body.diagnosticResults || body.findings || 'Diagnostic request'
       notes = `🔍 DIAGNOSTIC\n📱 ${body.device || 'N/A'}\nStatus: ${body.status || 'N/A'}\nFindings: ${body.findings || 'N/A'}\n📅 ${now}`
 
-      } else {
+    } else {
       const device = typeof body.device === 'string' ? body.device : ''
-      brand = detectBrand(device)
-      model = device
-      deviceType = detectDeviceType(device)
       malfunction = body.problem || 'Website inquiry'
       notes = `🌐 WEBSITE INQUIRY\n👤 ${customerName}\n📱 ${device || 'N/A'}\n❓ ${body.problem || 'N/A'}\n📅 ${now}`
     }
 
-    // Create order in RemOnline
-    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`, {
+    // Create order via RO App API v1.4
+    const orderRes = await fetch(`${BASE}/orders`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: roappHeaders(API_KEY),
       body: JSON.stringify({
         branch_id: BRANCH_ID,
-        order_type: ORDER_TYPE,
+        order_type_id: ORDER_TYPE,
         client_id: clientId,
-        kindof_good: deviceType,
-        brand,
-        model,
         malfunction,
-        manager_notes: notes
+        manager_notes: notes,
+        ...(body.preferredDate ? { scheduled_for: new Date(body.preferredDate).toISOString() } : {}),
+        ...(body.estimatedCost ? { estimated_price: String(body.estimatedCost) } : {})
       })
     })
 
-    const orderData = await orderRes.json() as { success: boolean; data?: { id: number }; message?: string }
-
-    if (!orderData.success || !orderData.data) {
-      console.error('[RemOnline] Order creation failed:', orderData)
-      return c.json({ success: false, error: orderData.message || 'Eroare creare comandă' }, 500)
+    if (!orderRes.ok) {
+      const errBody = await orderRes.text().catch(() => 'Unknown error')
+      console.error('[RO App] Order creation failed:', orderRes.status, errBody)
+      return c.json({ success: false, error: 'Eroare creare comandă' }, 500)
     }
-    
+
+    const orderData = await orderRes.json() as { id?: number; order_id?: number; message?: string }
+    const orderId = orderData.id ?? orderData.order_id
+
     return c.json({
       success: true,
-      id: orderData.data.id,
-      orderId: orderData.data.id,
-      formId: orderData.data.id,
+      id: orderId,
+      orderId: orderId,
+      formId: orderId,
       message: 'Cerere trimisă cu succes!',
-      data: orderData.data
+      data: orderData
     })
-    
+
   } catch (error) {
-    console.error('[RemOnline POST] Error:', error)
+    console.error('[RO App POST] Error:', error)
     return c.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -815,82 +782,129 @@ app.post('/api/remonline', async (c) => {
 app.get('/api/remonline', async (c) => {
   const url = new URL(c.req.url)
   const action = url.searchParams.get('action')
-  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+  const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+  const headers = roappHeaders(API_KEY)
 
-  // Health check — also validates the API key / subscription status
+  // Health check — validates the API key via a lightweight call
   if (action === 'health' || action === 'ping') {
-    if (!REMONLINE_API_KEY) {
+    if (!API_KEY) {
       return c.json({ success: false, status: 'error', error: 'REMONLINE_API_KEY not configured' }, 503)
     }
-    const { token, error, code } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) {
+    try {
+      const res = await fetch(`${BASE}/settings/company`, { headers })
+      if (!res.ok) {
+        return c.json({
+          success: false,
+          status: 'error',
+          error: res.status === 401 ? 'API key invalid or expired' : `API error: ${res.status}`,
+          code: res.status === 401 ? 'AUTH_FAILED' : 'API_ERROR'
+        }, res.status === 401 ? 401 : 500)
+      }
       return c.json({
-        success: false,
-        status: 'error',
-        error,
-        code: code === 403 ? 'SUBSCRIPTION_EXPIRED' : 'AUTH_FAILED'
-      }, code || 500)
+        success: true,
+        status: 'ok',
+        apiVersion: 'v1.4',
+        baseUrl: BASE,
+        branchId: (c.env as Bindings)?.REMONLINE_BRANCH_ID || '222200',
+        message: 'RO App API v1.4 is connected and authenticated'
+      })
+    } catch (e) {
+      return c.json({ success: false, status: 'error', error: 'Cannot reach RO App API' }, 503)
     }
-    return c.json({
-      success: true,
-      status: 'ok',
-      branchId: (c.env as Bindings)?.REMONLINE_BRANCH_ID || '218970',
-      message: 'RemOnline API is connected and authenticated'
-    })
   }
 
-  if (!REMONLINE_API_KEY) {
-    return c.json({ success: false, error: 'Remonline API not configured' }, 503)
-  }
-
-  // All other actions need a token
-  const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-  if (!token) {
-    return c.json({ success: false, error: tokenError, code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'AUTH_FAILED' }, tokenCode || 500)
+  const check = requireApiKey(API_KEY)
+  if (!check.ok) {
+    return c.json({ success: false, error: check.error }, 503)
   }
 
   if (action === 'get_order') {
     const orderId = url.searchParams.get('id')
     if (!orderId) return c.json({ error: 'Missing id parameter' }, 400)
-    const res = await fetch(`${REMONLINE_BASE}/order/?token=${token}&ids[]=${encodeURIComponent(orderId)}`)
-    const data = await res.json() as { data?: any[]; success?: boolean }
-    const order = data.data?.[0] ?? data.data ?? data
-    return c.json({ success: data.success !== false, data: order }, 200, { 'Cache-Control': 'private, max-age=60' })
+    try {
+      const res = await fetch(`${BASE}/orders/${encodeURIComponent(orderId)}`, { headers })
+      if (!res.ok) return c.json({ success: false, error: `Order not found (${res.status})` }, res.status === 404 ? 404 : 500)
+      const data = await res.json()
+      return c.json({ success: true, data }, 200, { 'Cache-Control': 'private, max-age=60' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch order' }, 500)
+    }
   }
 
-  if (action === 'get_branches') {
-    const res = await fetch(`${REMONLINE_BASE}/branches/?token=${token}`)
-    const data = await res.json() as { data?: any }
-    return c.json({ success: true, data: data.data ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+  if (action === 'get_branches' || action === 'get_locations') {
+    try {
+      const res = await fetch(`${BASE}/settings/locations`, { headers })
+      const data = await res.json() as { locations?: any[] }
+      return c.json({ success: true, data: data.locations ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch locations' }, 500)
+    }
   }
 
   if (action === 'get_statuses') {
-    const res = await fetch(`${REMONLINE_BASE}/statuses/?token=${token}`)
-    const data = await res.json() as { data?: any }
-    return c.json({ success: true, data: data.data ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    try {
+      const res = await fetch(`${BASE}/orders/statuses`, { headers })
+      const data = await res.json() as { statuses?: any[] }
+      return c.json({ success: true, data: data.statuses ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch statuses' }, 500)
+    }
   }
 
   if (action === 'get_services') {
-    const res = await fetch(`${REMONLINE_BASE}/services/?token=${token}`)
-    const data = await res.json().catch(() => ({})) as { data?: any; services?: any }
-    const list = data.data ?? data.services ?? (Array.isArray(data) ? data : [])
-    return c.json({ success: true, data: list }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    try {
+      const res = await fetch(`${BASE}/services/`, { headers })
+      const data = await res.json() as { services?: any[] }
+      return c.json({ success: true, data: data.services ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch services' }, 500)
+    }
+  }
+
+  if (action === 'get_settings') {
+    try {
+      const res = await fetch(`${BASE}/settings/company`, { headers })
+      const data = await res.json()
+      return c.json({ success: true, data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch settings' }, 500)
+    }
+  }
+
+  if (action === 'get_employees') {
+    try {
+      const res = await fetch(`${BASE}/settings/employees`, { headers })
+      const data = await res.json() as { employees?: any[] }
+      return c.json({ success: true, data: data.employees ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch employees' }, 500)
+    }
+  }
+
+  if (action === 'get_order_types') {
+    try {
+      const res = await fetch(`${BASE}/settings/order-types`, { headers })
+      const data = await res.json() as { order_types?: any[] }
+      return c.json({ success: true, data: data.order_types ?? data }, 200, { 'Cache-Control': 'public, max-age=3600' })
+    } catch {
+      return c.json({ success: false, error: 'Failed to fetch order types' }, 500)
+    }
   }
 
   return c.json({
     success: false,
     error: 'Unknown action',
-    supported: ['health', 'ping', 'get_order', 'get_branches', 'get_statuses', 'get_services']
+    supported: ['health', 'ping', 'get_order', 'get_branches', 'get_locations', 'get_statuses', 'get_services', 'get_settings', 'get_employees', 'get_order_types']
   }, 400)
 })
 
-// --- Cabinet (personal account): login by phone, list orders from Remonline ---
+// --- Cabinet (personal account): login by phone, list orders via RO App API ---
 
 app.post('/api/cabinet/login', async (c) => {
-  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || REMONLINE_API_KEY
+  const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || API_KEY
   if (!secret) return c.json({ success: false, error: 'Cabinet not configured' }, 503)
   try {
     const body = await c.req.json() as { phone?: string }
@@ -901,12 +915,40 @@ app.post('/api/cabinet/login', async (c) => {
       return c.json({ success: false, error: 'Invalid phone format' }, 400)
     }
 
-    const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) return c.json({ success: false, error: tokenError, code: tokenCode === 403 ? 'SUBSCRIPTION_EXPIRED' : 'SERVICE_UNAVAILABLE' }, tokenCode || 503)
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) return c.json({ success: false, error: check.error, code: 'SERVICE_UNAVAILABLE' }, 503)
 
-    const searchRes = await fetch(`${REMONLINE_BASE}/clients/?token=${token}&phones[]=${encodeURIComponent(phone)}`)
-    const searchData = await searchRes.json() as { data?: Array<{ id: number; name?: string }> }
-    const client = searchData.data?.[0]
+    const headers = roappHeaders(API_KEY)
+
+    // Search for person by phone via RO App API
+    let client: { id: number; first_name?: string; last_name?: string; name?: string } | null = null
+
+    // Try people endpoint with phone filter
+    try {
+      const searchRes = await fetch(`${BASE}/contacts/people?client_phones[]=${encodeURIComponent(phone)}`, { headers })
+      if (searchRes.ok) {
+        const searchData = await searchRes.json() as { people?: Array<{ id: number; first_name?: string; last_name?: string }> }
+        const person = searchData.people?.[0]
+        if (person?.id) {
+          client = { id: person.id, name: [person.first_name, person.last_name].filter(Boolean).join(' ') || undefined }
+        }
+      }
+    } catch { /* continue */ }
+
+    // Fallback: search via orders by phone
+    if (!client) {
+      try {
+        const ordersRes = await fetch(`${BASE}/orders?client_phones[]=${encodeURIComponent(phone)}&page=1`, { headers })
+        if (ordersRes.ok) {
+          const ordersData = await ordersRes.json() as { orders?: Array<{ client?: { id: number; name?: string } }> }
+          const orderClient = ordersData.orders?.[0]?.client
+          if (orderClient?.id) {
+            client = { id: orderClient.id, name: orderClient.name }
+          }
+        }
+      } catch { /* continue */ }
+    }
+
     if (!client?.id) {
       return c.json({ success: false, error: 'Client not found. Contactați-ne pentru a crea un cont.', code: 'NOT_FOUND' }, 404)
     }
@@ -926,9 +968,9 @@ app.post('/api/cabinet/login', async (c) => {
 })
 
 app.get('/api/cabinet/orders', async (c) => {
-  const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-  const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
-  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || REMONLINE_API_KEY
+  const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+  const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
+  const secret = (c.env as Bindings)?.CABINET_JWT_SECRET || API_KEY
   if (!secret) return c.json({ success: false, error: 'Cabinet not configured' }, 503)
 
   const auth = c.req.header('Authorization')
@@ -940,32 +982,19 @@ app.get('/api/cabinet/orders', async (c) => {
 
   const clientId = Number(payload.client_id)
   try {
-    const { token, error: tokenError } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) return c.json({ success: false, error: tokenError }, 503)
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) return c.json({ success: false, error: check.error }, 503)
 
-    // Fetch orders for this client
-    const orderUrl = `${REMONLINE_BASE}/order/?token=${token}&client_id=${clientId}`
-    const res = await fetch(orderUrl)
-    let data: { data?: any[]; success?: boolean }
-    try {
-      data = (await res.json()) as { data?: any[]; success?: boolean }
-    } catch {
-      return c.json({ success: false, error: 'RemOnline response error' }, 503)
+    const headers = roappHeaders(API_KEY)
+
+    // Fetch orders for this client via RO App API v1.4
+    const res = await fetch(`${BASE}/orders?clients_ids[]=${clientId}`, { headers })
+    if (!res.ok) {
+      return c.json({ success: false, error: `RO App API error: ${res.status}` }, 503)
     }
 
-    let orders = Array.isArray(data.data) ? data.data : (data.data && !Array.isArray(data.data) ? [data.data] : [])
-
-    // Fallback: if no orders found by client_id param, fetch all and filter
-    if (orders.length === 0) {
-      try {
-        const allRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}`)
-        const allData = (await allRes.json()) as { data?: any[] }
-        const all = Array.isArray(allData.data) ? allData.data : []
-        orders = all.filter((o: any) => o.client_id === clientId || o.client?.id === clientId)
-      } catch {
-        // Ignore fallback errors
-      }
-    }
+    const data = await res.json() as { orders?: any[] }
+    const orders = Array.isArray(data.orders) ? data.orders : (Array.isArray(data) ? data : [])
 
     return c.json({ success: true, data: orders }, 200, { 'Cache-Control': 'private, max-age=60' })
   } catch (e) {
@@ -995,18 +1024,22 @@ app.post('/api/remonline/documents/generate', async (c) => {
       return c.json({ success: false, error: 'orderId is required' }, 400)
     }
 
-    const REMONLINE_API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
-    const REMONLINE_BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || 'https://api.remonline.app'
+    const API_KEY = (c.env as Bindings)?.REMONLINE_API_KEY || ''
+    const BASE = (c.env as Bindings)?.REMONLINE_BASE_URL || ROAPP_DEFAULT_BASE
 
-    const { token, error: tokenError, code: tokenCode } = await getRemonlineTokenCached(REMONLINE_API_KEY, REMONLINE_BASE)
-    if (!token) {
-      return c.json({ success: false, error: tokenError }, tokenCode || 503)
+    const check = requireApiKey(API_KEY)
+    if (!check.ok) {
+      return c.json({ success: false, error: check.error }, 503)
     }
 
-    // Fetch order data from RemOnline
-    const orderRes = await fetch(`${REMONLINE_BASE}/order/?token=${token}&ids[]=${encodeURIComponent(String(body.orderId))}`)
-    const orderJson = await orderRes.json() as { data?: any[]; success?: boolean }
-    const order = orderJson.data?.[0]
+    // Fetch order data from RO App API v1.4
+    const orderRes = await fetch(`${BASE}/orders/${encodeURIComponent(String(body.orderId))}`, {
+      headers: roappHeaders(API_KEY)
+    })
+    if (!orderRes.ok) {
+      return c.json({ success: false, error: `Order fetch failed (${orderRes.status})` }, orderRes.status === 404 ? 404 : 500)
+    }
+    const order = await orderRes.json() as Record<string, any>
 
     if (!order) {
       return c.json({ success: false, error: 'Order not found' }, 404)

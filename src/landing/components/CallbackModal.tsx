@@ -120,7 +120,11 @@ const CallbackModal: React.FC = () => {
               <div className="w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
               <p className="text-green-400 font-bold text-lg">{t('callback.callingNow')}</p>
             </div>
-            <p className="text-gray-400 mb-8 leading-relaxed">{t('callback.confirmDetails')}</p>
+            <p className="text-gray-400 mb-4 leading-relaxed">{t('callback.confirmDetails')}</p>
+            <p className="text-gray-500 text-sm mb-6">
+              Puteți urmări comenzile în{' '}
+              <a href="/cabinet" className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-2" onClick={closeModal}>cabinetul personal</a>.
+            </p>
             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-2xl p-4 mb-8">
               <p className="text-yellow-400 font-semibold">{t('callback.freeIncluded')}</p>
             </div>

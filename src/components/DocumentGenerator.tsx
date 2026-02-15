@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { cn } from '@/utils';
 import useTranslation from '@/hooks/useTranslation';
-import { NEXX_TEMPLATES } from '@/templates/nexx-document-templates';
+import { NEXX_TEMPLATES, NEXX_COMPANY } from '@/templates';
 
-type TemplateType = 'intake' | 'release' | 'buyback' | 'recycling';
+type TemplateType = 'estimate' | 'ticket' | 'work_order' | 'invoice' | 'payment_receipt' | 'sale_invoice' | 'intake' | 'release' | 'warranty' | 'buyback' | 'recycling';
 
 export interface DocumentGeneratorProps {
   templateType: TemplateType;
@@ -56,13 +56,13 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
         <div className="border-b-2 border-black pb-4">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-2xl font-bold">NEXX GSM</h1>
-              <p className="text-sm">Service Center</p>
-              <p className="text-xs text-gray-600">Str. Victoriei 15, Bucharest, Romania</p>
+              <h1 className="text-2xl font-bold">{NEXX_COMPANY.name}</h1>
+              <p className="text-sm">Service Center · {NEXX_COMPANY.owner}</p>
+              <p className="text-xs text-gray-600">{NEXX_COMPANY.address} · Tel: {NEXX_COMPANY.phone}</p>
             </div>
             <div className="text-right">
               <h2 className="text-xl font-bold">{template.title}</h2>
-              <p className="text-xs">Bucharest, {new Date().toLocaleDateString()}</p>
+              <p className="text-xs">{NEXX_COMPANY.city}, {new Date().toLocaleDateString()}</p>
             </div>
           </div>
         </div>
@@ -161,7 +161,8 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         {/* Footer */}
         <div className="border-t-2 border-black pt-4 text-center text-xs text-gray-600 mt-8">
-          <p>NEXX GSM © 2026 • Professional Device Repair Service</p>
+          <p>{NEXX_COMPANY.fullName} © {NEXX_COMPANY.year} · {NEXX_COMPANY.address}</p>
+          <p>Tel: {NEXX_COMPANY.phone} · Email: {NEXX_COMPANY.email}</p>
           <p>Document ID: {templateType.toUpperCase()}-{Date.now()}</p>
         </div>
       </div>
@@ -186,8 +187,8 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
         <div className="border-b-2 border-black pb-4">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-2xl font-bold">NEXX GSM</h1>
-              <p className="text-sm">Service Center</p>
+              <h1 className="text-2xl font-bold">{NEXX_COMPANY.name}</h1>
+              <p className="text-sm">Service Center · {NEXX_COMPANY.owner}</p>
             </div>
             <div className="text-right">
               <h2 className="text-xl font-bold">{template.title}</h2>
@@ -244,7 +245,7 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
 
         {/* Footer */}
         <div className="border-t-2 border-black pt-4 text-center text-xs text-gray-600 mt-8">
-          <p>NEXX GSM © 2026 • All repairs covered by warranty</p>
+          <p>{NEXX_COMPANY.fullName} © {NEXX_COMPANY.year} · All repairs covered by {NEXX_COMPANY.warranty}-day warranty</p>
         </div>
       </div>
     );
@@ -267,9 +268,9 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
     return (
       <div className="print:p-8 print:bg-white max-w-4xl mx-auto space-y-6">
         <div className="border-b-2 border-black pb-4 text-center">
-          <h1 className="text-2xl font-bold">NEXX GSM</h1>
+          <h1 className="text-2xl font-bold">{NEXX_COMPANY.name}</h1>
           <h2 className="text-xl font-bold text-blue-600">{template.title}</h2>
-          <p className="text-xs">Date: {data.date}</p>
+          <p className="text-xs">{NEXX_COMPANY.address} · {data.date}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-8 text-sm">
@@ -327,9 +328,9 @@ export const DocumentGenerator: React.FC<DocumentGeneratorProps> = ({
     return (
       <div className="print:p-8 print:bg-white max-w-4xl mx-auto space-y-6">
         <div className="border-b-2 border-black pb-4 text-center">
-          <h1 className="text-2xl font-bold">NEXX GSM</h1>
+          <h1 className="text-2xl font-bold">{NEXX_COMPANY.name}</h1>
           <h2 className="text-xl font-bold text-green-600">{template.title}</h2>
-          <p className="text-xs">Date: {data.date}</p>
+          <p className="text-xs">{NEXX_COMPANY.address} · {data.date}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 text-sm">

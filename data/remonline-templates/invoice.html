@@ -1,0 +1,115 @@
+<style>
+ body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; }
+ .b-table > thead { background: #1e293b; color: #fff; border: 0; }
+ .b-table > thead > th { border: 0; padding: 10px 8px; font-size: 11pt; }
+ .b-table > tbody > tr:nth-child(2n) { background: #f8fafc; }
+ .b-table > tbody { border-left: 0; border-right: 0; border-bottom: 2px solid #1e293b; }
+ .right > * { text-align: right !important; margin-right: 0 !important; margin-left: auto !important; padding: 0 !important; border: 0 !important; }
+ .nexx-accent { color: #f59e0b; }
+</style>
+
+<table style="border-collapse: collapse; width: 100%; border-bottom: 3px solid #f59e0b; padding-bottom: 15px;" border="0">
+<tbody>
+<tr>
+<td style="width: 50%; vertical-align: top;">
+<p style="font-size: 22pt; font-weight: bold; margin: 0; color: #1e293b;">NEXX <span class="nexx-accent">GSM</span></p>
+<p style="font-size: 10pt; color: #64748b; margin: 2px 0;">Service Center · Professional Device Repair</p>
+<p style="font-size: 18pt; font-weight: bold; margin: 15px 0 0 0; color: #1e293b;">INVOICE</p>
+</td>
+<td style="width: 50%; text-align: right; vertical-align: top;">
+<p style="font-weight: bold; margin: 0;">{Company Name}</p>
+<p style="margin: 2px 0; color: #475569;">{Company Email}</p>
+<p style="margin: 2px 0; color: #475569;">{Company Address}</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p> </p>
+
+<table style="border-collapse: collapse; width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="width: 50%; vertical-align: top; background: #f8fafc; padding: 12px; border-radius: 4px;">
+<p style="font-weight: bold; font-size: 11pt; margin: 0 0 8px 0; color: #1e293b;">BILL TO:</p>
+<p style="margin: 2px 0;">{Client Name}</p>
+<p style="margin: 2px 0; color: #475569;">{Client Phone}</p>
+<p style="margin: 2px 0; color: #475569;">{Client Email}</p>
+<p style="margin: 2px 0; color: #475569;">{Client Address}</p>
+</td>
+<td style="width: 5%;"> </td>
+<td style="width: 45%; vertical-align: top;">
+<table style="width: 100%;" border="0">
+<tbody>
+<tr><td><strong>Invoice #</strong></td><td style="text-align: right;">{Order Number}</td></tr>
+<tr><td><strong>Date</strong></td><td style="text-align: right;">{Today Date}</td></tr>
+<tr><td><strong>Due Date</strong></td><td style="text-align: right;">{Order Due Date}</td></tr>
+<tr><td><strong>Status</strong></td><td style="text-align: right;">{Order Status Name}</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p> </p>
+
+<table class="Products b-table b-table_style_simple" style="border-collapse: collapse; width: 100%; border: 0;" border="0" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th style="width: 8%; border: 0; padding: 10px 8px;">#</th>
+<th style="width: 44%; border: 0; padding: 10px 8px;">Description</th>
+<th style="width: 10%; border: 0; padding: 10px 8px; text-align: center;">Qty</th>
+<th style="width: 14%; border: 0; padding: 10px 8px; text-align: center;">Unit Price</th>
+<th style="width: 10%; border: 0; padding: 10px 8px; text-align: center;">Tax</th>
+<th style="width: 14%; border: 0; padding: 10px 8px; text-align: right;">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 0; padding: 8px; text-align: center;">{Row Number}</td>
+<td style="border: 0; padding: 8px;">{Product Name}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Qty}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Price Without Taxes}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Tax Amount}</td>
+<td style="border: 0; padding: 8px; text-align: right; font-weight: bold;">{Product Amount}</td>
+</tr>
+</tbody>
+<tfoot style="display: table-row-group;">
+<tr>
+<td style="text-align: right; border: 0; padding: 6px 8px;" colspan="5"><strong>Subtotal:</strong></td>
+<td class="right" style="font-weight: bold; border-bottom: 1px solid #e2e8f0; padding: 6px 8px; text-align: right;">{Subtotal}</td>
+</tr>
+<tr>
+<td style="text-align: right; border: 0; padding: 6px 8px;" colspan="5"><strong>Tax {Tax Name} {Tax Rate}</strong></td>
+<td class="right" style="text-align: right; padding: 6px 8px;"><strong>{Tax Value}</strong></td>
+</tr>
+<tr>
+<td style="text-align: right; border: 0; padding: 6px 8px;" colspan="5"><strong style="font-size: 13pt;">TOTAL DUE:</strong></td>
+<td class="right" style="font-weight: bold; font-size: 13pt; border-bottom: 3px solid #1e293b; padding: 6px 8px; text-align: right; color: #f59e0b;">{Total Amount}</td>
+</tr>
+</tfoot>
+</table>
+
+<p> </p>
+
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="width: 50%;">
+<p><strong>PAYMENT TERMS</strong></p>
+<p style="font-size: 9pt; color: #64748b;">Payment due within 14 days of invoice date.</p>
+<p style="font-size: 9pt; color: #64748b;">Cash, card, or bank transfer accepted.</p>
+</td>
+<td style="width: 50%; text-align: right;">
+<p style="margin-top: 40px;">____________________________</p>
+<p style="font-size: 9pt; color: #64748b;">Client Signature</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align: center; font-size: 8pt; color: #94a3b8; border-top: 2px solid #1e293b; margin-top: 30px; padding-top: 15px;">
+<p><strong>NEXX GSM Service Center</strong> · Bucharest, Romania · Tel: +40 758 117 409 · dmitro.plevan@gmail.com</p>
+<p>Thank you for choosing NEXX GSM!</p>
+</div>

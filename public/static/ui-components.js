@@ -331,7 +331,7 @@
     
     const confirmLogout = () => {
       localStorage.removeItem('nexx_auth');
-      window.location.href = '/nexx.html';
+      window.location.href = '/';
     };
     
     const isAuthenticated = localStorage.getItem('nexx_auth') === 'true';
@@ -396,16 +396,8 @@
             )
           ),
           
-          // Service + язык + мобильное меню
+          // Язык + мобильное меню (Service Mod hidden — database disabled temporarily)
           h('div', { className: 'flex items-center gap-3' },
-            h('button', {
-              onClick: () => window.openServiceModAuth && window.openServiceModAuth(),
-              className: `hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800' : 'bg-transparent hover:bg-white/10 border border-white/20 text-white/70 hover:text-white'} rounded-md text-xs transition-all duration-200`,
-              title: 'Service Mod (PIN)'
-            },
-              h('i', { className: 'fas fa-cog text-xs' }),
-              h('span', null, 'Service')
-            ),
             window.LanguageSwitcher && h(window.LanguageSwitcher, { isScrolled }),
             h('button', {
               onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
@@ -430,14 +422,7 @@
             h('i', { className: `fas ${link.icon} w-5 text-lg` }),
             h('span', { className: 'text-base' }, link.label)
           )),
-          // Service Mod link in mobile menu (PIN protected) - Small, subtle
-          h('button', {
-            onClick: () => { setIsMobileMenuOpen(false); window.openServiceModAuth && window.openServiceModAuth(); },
-            className: 'flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition text-xs border-t border-gray-100 mt-2 w-full text-left'
-          },
-            h('i', { className: 'fas fa-cog w-4 text-xs' }),
-            h('span', null, 'Service')
-          )
+          // Service Mod hidden — database disabled temporarily
         )
       )
     ),

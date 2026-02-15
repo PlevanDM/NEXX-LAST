@@ -3,9 +3,9 @@
  * Handles conversion of templates to PDF, HTML, DOCX formats
  */
 
-import { NEXX_TEMPLATES } from '@/templates/nexx-document-templates';
+import { NEXX_TEMPLATES, NEXX_COMPANY } from '@/templates';
 
-type TemplateType = 'intake' | 'release' | 'buyback' | 'recycling';
+type TemplateType = 'estimate' | 'ticket' | 'work_order' | 'invoice' | 'payment_receipt' | 'sale_invoice' | 'intake' | 'release' | 'warranty' | 'buyback' | 'recycling';
 type Language = 'uk' | 'ru' | 'en' | 'ro';
 type Format = 'pdf' | 'html' | 'docx';
 
@@ -207,11 +207,10 @@ const renderHeaderHTML = (template: any, data: DocumentData): string => {
   return `
     <div class="header">
       <div class="company-info">
-        <h1>NEXX GSM</h1>
-        <p>Service Center</p>
-        <p>Str. Victoriei 15, Bucharest, Romania</p>
-        <p>Phone: +40 721 234 567</p>
-        <p>Email: info@nexxgsm.ro</p>
+        <h1>${escapeHtml(NEXX_COMPANY.name)}</h1>
+        <p>Service Center · ${escapeHtml(NEXX_COMPANY.owner)}</p>
+        <p>${escapeHtml(NEXX_COMPANY.address)} · Tel: ${escapeHtml(NEXX_COMPANY.phone)}</p>
+        <p>Email: ${escapeHtml(NEXX_COMPANY.email)}</p>
       </div>
       <div class="document-title">
         <h2>${escapeHtml(template.title)}</h2>
@@ -424,8 +423,9 @@ const renderSignaturesHTML = (template: any): string => {
 const renderFooterHTML = (): string => {
   return `
     <div class="footer">
-      <p>NEXX GSM Service Center © 2026 • Professional Device Repair</p>
-      <p>All work is guaranteed for 30 days from completion date</p>
+      <p>${escapeHtml(NEXX_COMPANY.fullName)} © ${NEXX_COMPANY.year} · ${escapeHtml(NEXX_COMPANY.address)}</p>
+      <p>Tel: ${escapeHtml(NEXX_COMPANY.phone)} · Email: ${escapeHtml(NEXX_COMPANY.email)}</p>
+      <p>All work is guaranteed for ${NEXX_COMPANY.warranty} days from completion date</p>
       <p>Document ID: ${Date.now()}</p>
     </div>
   `;

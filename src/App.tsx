@@ -17,6 +17,7 @@ import { MacBookDisplayRepairTool } from './components/MacBookDisplayRepairTool'
 import { KeyCombinations } from './components/KeyCombinations'; // NEW: DFU/Recovery
 import { PowerStationTracker } from './components/PowerStationTracker'; // EcoFlow / Power Tracker
 import { ExchangePriceListModal } from './components/ExchangePriceListModal'; // Apple Official UA
+import { EnrichmentPanel } from './components/EnrichmentPanel'; // ENGINE — Enrichment Engine
 import { Device, PriceData, ErrorDetail, ICComponent, OfficialServiceData, MacBoard, SchematicResource, RepairGuide, ConnectorPinout, LogicBoard, BootSequence, DiodeMeasurement, ExchangePrice, ServicePrices } from './types';
 import { convertPrice, formatPrice } from './utils';
 
@@ -66,6 +67,7 @@ export const App = () => {
   const [showKeyCombo, setShowKeyCombo] = React.useState(false); // NEW: DFU/Recovery
   const [showPowerTracker, setShowPowerTracker] = React.useState(false); // Power Tracker (EcoFlow, Bluetti, DJI)
   const [showMacBookDisplay, setShowMacBookDisplay] = React.useState(false); // NEW: MacBook Display Repair Tool
+  const [showEngine, setShowEngine] = React.useState(false); // ENGINE — Enrichment Engine
   
   // Новое состояние
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -161,7 +163,8 @@ export const App = () => {
       'powerTracker': '/nexx/power-tracker',
       'keycombo': '/nexx/key-combo',
       'prices': '/nexx/prices',
-      'macbook_display': '/nexx/macbook-display-repair'
+      'macbook_display': '/nexx/macbook-display-repair',
+      'engine': '/nexx/engine'
     };
     navigate(routeMap[sectionName] || '/nexx');
     setShowMobileMenu(false);
@@ -196,6 +199,7 @@ export const App = () => {
     setShowKeyCombo(false);
     setShowPowerTracker(false);
     setShowMacBookDisplay(false);
+    setShowEngine(false);
     setSelectedDevice(null);
     setSelectedIC(null);
     setSelectedPart(null);
@@ -241,6 +245,9 @@ export const App = () => {
     } else if (path === '/nexx/macbook-display-repair') {
       setShowMacBookDisplay(true);
       setActiveSection('macbook_display');
+    } else if (path === '/nexx/engine') {
+      setShowEngine(true);
+      setActiveSection('engine');
     } else if (path.startsWith('/nexx/ic/')) {
       const icName = decodeURIComponent(path.replace('/nexx/ic/', ''));
       if (ics[icName]) {
@@ -311,7 +318,7 @@ export const App = () => {
   // Блокировка скролла body при открытии модальных окон
   React.useEffect(() => {
     const isAnyModalOpen = showPriceTable || showErrors || showICs || showCalculator || 
-                           showMacBoards || showKnowledge || showServicePrices || showExchangeUA || showKeyCombo || showPowerTracker || 
+                           showMacBoards || showKnowledge || showServicePrices || showExchangeUA || showKeyCombo || showPowerTracker || showEngine ||
                            selectedDevice || selectedIC || selectedPart;
     
     if (isAnyModalOpen) {
@@ -323,7 +330,7 @@ export const App = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, showExchangeUA, showKeyCombo, showPowerTracker, selectedDevice, selectedIC, selectedPart]);
+  }, [showPriceTable, showErrors, showICs, showCalculator, showMacBoards, showKnowledge, showServicePrices, showExchangeUA, showKeyCombo, showPowerTracker, showEngine, selectedDevice, selectedIC, selectedPart]);
   
   // Глобальный поиск
   const globalSearchResults = React.useMemo(() => {
@@ -386,7 +393,7 @@ export const App = () => {
         <p className="text-slate-300 text-center mt-2 max-w-md">{error}</p>
         <div className="flex flex-wrap gap-3 mt-6 justify-center">
           {isSessionExpired && (
-            <button
+        <button 
               type="button"
               onClick={() => {
                 try { localStorage.removeItem('nexx_auth'); localStorage.removeItem('nexx_pin'); } catch (_) {}
@@ -399,11 +406,11 @@ export const App = () => {
           )}
           <button
             type="button"
-            onClick={loadData}
+          onClick={loadData}
             className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl transition"
-          >
+        >
             Спробувати знову
-          </button>
+        </button>
           <a
             href="/"
             className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl transition inline-flex items-center justify-center"
@@ -552,7 +559,7 @@ export const App = () => {
 
               {/* ─── Tools Dropdown ─── */}
               <div className="relative" ref={toolsMenuRef}>
-                <button
+              <button
                   onClick={() => setShowToolsMenu(!showToolsMenu)}
                   className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
                     showToolsMenu ? 'bg-slate-600 text-white' : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
@@ -560,10 +567,11 @@ export const App = () => {
                 >
                   <span>Ещё</span>
                   <svg className={`w-3.5 h-3.5 transition-transform ${showToolsMenu ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                </button>
+              </button>
                 {showToolsMenu && (
                   <div className="absolute right-0 top-full mt-2 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in">
                     {[
+                      { label: 'ENGINE', icon: '🔬', section: 'engine', setter: setShowEngine },
                       { label: 'EcoFlow / PowerStation', icon: '⚡', section: 'powerTracker', setter: setShowPowerTracker },
                       { label: 'MacBook Дисплей', icon: '🖥️', section: 'macbook_display', setter: setShowMacBookDisplay },
                       { label: 'MacBook платы', icon: null, iconEl: <Icons.Board />, section: 'boards', setter: setShowMacBoards, count: counts.boards },
@@ -572,7 +580,7 @@ export const App = () => {
                       { label: 'Микросхемы (IC)', icon: null, iconEl: <Icons.Chip />, section: 'ics', setter: setShowICs, count: counts.ics },
                       { label: 'Коды ошибок', icon: null, iconEl: <Icons.Error />, section: 'errors', setter: setShowErrors, count: counts.errors },
                     ].map((item) => (
-                      <button
+              <button
                         key={item.section}
                         onClick={() => { openModal(item.setter, item.section); setShowToolsMenu(false); }}
                         className={`w-full flex items-center gap-3 px-4 py-3 text-sm text-left transition-colors ${
@@ -584,7 +592,7 @@ export const App = () => {
                         {item.count ? (
                           <span className="text-[10px] text-slate-400 bg-slate-700 px-1.5 py-0.5 rounded-full font-mono" title={`${item.count} записей в базе`}>{item.count}</span>
                         ) : null}
-                      </button>
+              </button>
                     ))}
                     <div className="border-t border-slate-700">
                       <a href="/" className="w-full flex items-center gap-3 px-4 py-3 text-sm text-slate-400 hover:bg-slate-700 hover:text-white transition-colors">
@@ -616,7 +624,7 @@ export const App = () => {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icons.Search /></div>
                 <input type="text" placeholder="Поиск..." value={globalSearch} onChange={(e) => setGlobalSearch(e.target.value)} className="w-full pl-10 pr-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-400 text-sm" />
               </div>
-
+              
               {/* Primary tools */}
               <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2 pt-2">Инструменты</p>
               {[
@@ -631,12 +639,13 @@ export const App = () => {
                   }`}>
                   <span className="w-5">{item.icon}</span>
                   <span>{item.label}</span>
-                </button>
+              </button>
               ))}
               
               {/* Database sections */}
               <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2 pt-3">База данных</p>
               {[
+                { label: 'ENGINE — Обновление базы', icon: <span>🔬</span>, section: 'engine', setter: setShowEngine },
                 { label: '🖥️ MacBook Дисплей', icon: '🖥️', section: 'macbook_display', setter: setShowMacBookDisplay },
                 { label: 'MacBook платы', icon: <Icons.Board />, section: 'boards', setter: setShowMacBoards },
                 { label: 'База знаний', icon: <Icons.Book />, section: 'knowledge', setter: setShowKnowledge },
@@ -648,7 +657,7 @@ export const App = () => {
                   className="w-full flex items-center gap-3 px-4 py-3 bg-slate-700/50 hover:bg-slate-600 rounded-lg text-left text-white transition-colors">
                   <span className="w-5">{item.icon}</span>
                   <span>{item.label}</span>
-                </button>
+              </button>
               ))}
 
               {/* Back to site */}
@@ -667,34 +676,35 @@ export const App = () => {
       <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6">
         {/* Breadcrumbs — clean, no duplicate stats */}
         <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-600">
-          {navigationHistory.length > 1 && (
+              {navigationHistory.length > 1 && (
             <button onClick={navigateBack} className="flex items-center gap-1 px-2.5 py-1.5 bg-white hover:bg-slate-100 rounded-lg transition-colors text-slate-700 font-medium text-xs border border-slate-200">← Назад</button>
           )}
           <button type="button" onClick={() => navigate('/nexx')} className="font-bold text-slate-900 hover:text-blue-600 transition-colors">Database</button>
-          {activeSection !== 'devices' && (
-            <>
-              <span className="text-slate-400">›</span>
+              {activeSection !== 'devices' && (
+                <>
+                  <span className="text-slate-400">›</span>
               <span className="text-slate-700">
-                {activeSection === 'calculator' && 'Калькулятор'}
-                {activeSection === 'services' && 'Услуги'}
-                {activeSection === 'exchangeUA' && 'Прайс Украина'}
-                {activeSection === 'boards' && 'MacBook платы'}
-                {activeSection === 'knowledge' && 'База знаний'}
-                {activeSection === 'keycombo' && 'DFU/Recovery'}
-                {activeSection === 'powerTracker' && 'Power Tracker'}
-                {activeSection === 'ics' && 'Микросхемы'}
-                {activeSection === 'errors' && 'Коды ошибок'}
-                {activeSection === 'prices' && 'Прайс-лист'}
-                {activeSection === 'device-detail' && 'Устройство'}
-              </span>
-            </>
-          )}
-          {selectedDevice && (
-            <>
-              <span className="text-slate-400">›</span>
-              <span className="font-medium text-blue-600 truncate max-w-[200px] sm:max-w-none">{selectedDevice.name}</span>
-            </>
-          )}
+                    {activeSection === 'calculator' && 'Калькулятор'}
+                    {activeSection === 'services' && 'Услуги'}
+                    {activeSection === 'exchangeUA' && 'Прайс Украина'}
+                    {activeSection === 'boards' && 'MacBook платы'}
+                    {activeSection === 'knowledge' && 'База знаний'}
+                    {activeSection === 'keycombo' && 'DFU/Recovery'}
+                    {activeSection === 'powerTracker' && 'Power Tracker'}
+                {activeSection === 'engine' && 'ENGINE'}
+                    {activeSection === 'ics' && 'Микросхемы'}
+                    {activeSection === 'errors' && 'Коды ошибок'}
+                    {activeSection === 'prices' && 'Прайс-лист'}
+                    {activeSection === 'device-detail' && 'Устройство'}
+                  </span>
+                </>
+              )}
+              {selectedDevice && (
+                <>
+                  <span className="text-slate-400">›</span>
+                  <span className="font-medium text-blue-600 truncate max-w-[200px] sm:max-w-none">{selectedDevice.name}</span>
+                </>
+              )}
           {/* Compact stats — non-intrusive, right-aligned */}
           <div className="ml-auto flex items-center gap-1.5 text-xs text-slate-400">
             <span title={`${counts.devices} устройств в базе`}>📱 {counts.devices}</span>
@@ -885,6 +895,15 @@ export const App = () => {
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden">
              <PowerStationTracker onClose={closeAllModals} />
+          </div>
+        </div>
+      )}
+
+      {/* ENGINE — Enrichment Engine */}
+      {showEngine && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[90vh] overflow-hidden">
+             <EnrichmentPanel onClose={closeAllModals} />
           </div>
         </div>
       )}

@@ -1,0 +1,134 @@
+<style>
+ body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; }
+ .b-table > thead { background: #1e293b; color: #fff; border: 0; }
+ .b-table > thead > th { border: 0; padding: 10px 8px; font-size: 11pt; }
+ .b-table > tbody > tr:nth-child(2n) { background: #f8fafc; }
+ .b-table > tfoot > tr > td.right:nth-child(n+1) { background: #f8fafc; }
+ .b-table > tbody { border-left: 0; border-right: 0; border-bottom: 2px solid #1e293b; }
+ .right > * { text-align: right !important; margin-right: 0 !important; margin-left: auto !important; padding: 0 !important; border: 0 !important; }
+ .nexx-header { border-bottom: 3px solid #f59e0b; padding-bottom: 15px; margin-bottom: 20px; }
+ .nexx-accent { color: #f59e0b; }
+ .nexx-footer { border-top: 2px solid #1e293b; margin-top: 30px; padding-top: 15px; }
+</style>
+
+<table class="nexx-header" style="border-collapse: collapse; width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="width: 50%; vertical-align: top;">
+<p style="font-size: 22pt; font-weight: bold; margin: 0; color: #1e293b;">NEXX <span class="nexx-accent">GSM</span></p>
+<p style="font-size: 10pt; color: #64748b; margin: 2px 0;">Service Center · Professional Device Repair</p>
+<p style="font-size: 18pt; font-weight: bold; margin: 15px 0 0 0; color: #1e293b;">ESTIMATE</p>
+</td>
+<td style="width: 50%; text-align: right; vertical-align: top;">
+<p style="font-weight: bold; margin: 0;">{Company Name}</p>
+<p style="margin: 2px 0; color: #475569;">{Company Email}</p>
+<p style="margin: 2px 0; color: #475569;">{Company Address}</p>
+<p style="margin: 2px 0; color: #475569;">{Company Note}</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<table style="border-collapse: collapse; width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="width: 16%;"><strong>Client</strong></td>
+<td style="width: 32%;">{Client Name}</td>
+<td style="width: 4%;"> </td>
+<td style="width: 14%;"><strong>Email</strong></td>
+<td style="width: 34%;">{Client Email}</td>
+</tr>
+<tr>
+<td><strong>Number</strong></td>
+<td style="color: #f59e0b; font-weight: bold;">{Order Number}</td>
+<td> </td>
+<td><strong>Phone</strong></td>
+<td>{Client Phone}</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>{Today Date}</td>
+<td> </td>
+<td><strong>Address</strong></td>
+<td>{Client Address}</td>
+</tr>
+<tr>
+<td><strong>Valid until</strong></td>
+<td>{Order Due Date}</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+
+<p> </p>
+
+<table class="Products b-table b-table_style_simple" style="border-collapse: collapse; width: 100%; border: 0;" border="0" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th style="width: 8%; border: 0; padding: 10px 8px;">#</th>
+<th style="width: 42%; border: 0; padding: 10px 8px;">Description</th>
+<th style="width: 10%; border: 0; padding: 10px 8px; text-align: center;">Qty</th>
+<th style="width: 14%; border: 0; padding: 10px 8px; text-align: center;">Unit Price</th>
+<th style="width: 12%; border: 0; padding: 10px 8px; text-align: center;">Tax</th>
+<th style="width: 14%; border: 0; padding: 10px 8px; text-align: right;">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 0; padding: 8px; text-align: center;">{Row Number}</td>
+<td style="border: 0; padding: 8px;">{Product Name}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Qty}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Price Without Taxes}</td>
+<td style="border: 0; padding: 8px; text-align: center;">{Product Tax Amount}</td>
+<td style="border: 0; padding: 8px; text-align: right; font-weight: bold;">{Product Amount}</td>
+</tr>
+</tbody>
+<tfoot style="display: table-row-group;">
+<tr>
+<td style="text-align: right; border: 0; padding: 8px 8px 4px;" colspan="5"><strong>Subtotal:</strong></td>
+<td class="right" style="font-weight: bold; border-left: 0; border-right: 0; border-bottom: 1px solid #e2e8f0; padding: 8px; text-align: right;">{Subtotal}</td>
+</tr>
+<tr>
+<td style="text-align: right; border: 0; padding: 4px 8px;" colspan="5"><strong>Total taxes {Tax Name} {Tax Rate}</strong></td>
+<td class="right" style="text-align: right; padding: 4px 8px;"><strong>{Tax Value}</strong></td>
+</tr>
+<tr>
+<td style="text-align: right; border: 0; padding: 4px 8px 8px;" colspan="5"><strong style="font-size: 12pt;">Total:</strong></td>
+<td class="right" style="font-weight: bold; font-size: 12pt; border-left: 0; border-right: 0; border-bottom: 2px solid #1e293b; padding: 4px 8px 8px; text-align: right; color: #f59e0b;">{Total Amount}</td>
+</tr>
+</tfoot>
+</table>
+
+<p> </p>
+
+<p style="text-align: justify; font-size: 9pt; color: #64748b; line-height: 1.5;">Estimates provided are an approximation of charges to you for the services requested. They are based on the anticipated work to be done. Unexpected complications may cause some deviation from the original quote. By signing, you authorize the repair work described in this estimate to be done and procuring the necessary material(s), including permission to operate testing or inspection. If any additional repairs are required, we will prepare a revised work order providing the cost of additional parts and labor and the total revised cost. All parts are new unless specified otherwise.</p>
+
+<p style="text-align: justify; font-size: 9pt; color: #64748b; line-height: 1.5;">You agree that we are not responsible for any delays caused by the unavailability of parts or delays in delivery by the supplier or transporter. Before authorizing any additional repairs, you have the right to know what those repairs will be and what they will cost. We must obtain your approval to perform the repairs if required repairs exceed the estimated amount.</p>
+
+<p> </p>
+
+<table style="border-collapse: collapse; width: 100%;" border="0">
+<tbody>
+<tr>
+<td style="width: 50%; vertical-align: top;">
+<p><strong>TERMS &amp; CONDITIONS</strong></p>
+<p style="font-size: 9pt; color: #64748b;">Discount applies to invoices paid on or before the due date.</p>
+<p style="font-size: 9pt; color: #64748b;"><strong>PAYMENT TERMS:</strong> Payment due within 14 days of invoice.</p>
+</td>
+<td style="width: 50%; vertical-align: top; text-align: right;">
+<p><strong>SIGNATURES</strong></p>
+<p style="margin-top: 40px;">____________________________</p>
+<p style="font-size: 9pt; color: #64748b;">Client Signature</p>
+<p style="margin-top: 20px;">____________________________</p>
+<p style="font-size: 9pt; color: #64748b;">Technician Signature</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="nexx-footer" style="text-align: center; font-size: 8pt; color: #94a3b8;">
+<p><strong>NEXX GSM Service Center</strong> · Bucharest, Romania · Tel: +40 758 117 409 · dmitro.plevan@gmail.com</p>
+<p>All work guaranteed for 30 days · Professional device repair since 2024</p>
+</div>

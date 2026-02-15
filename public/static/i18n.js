@@ -130,6 +130,12 @@
         backToHome: 'На головну',
         trackOrder: 'Відстежити замовлення',
         refresh: 'Оновити',
+        problem: 'Проблема',
+        estimatedCost: 'Орієнтовна вартість',
+        notes: 'Нотатки',
+        lastUpdate: 'Останнє оновлення',
+        firstVisitHint: 'Акаунт створюється автоматично при першому візиті. Якщо у вас немає акаунту, запишіться на ремонт.',
+        bookRepair: 'Записатися на ремонт',
       },
       
       // Hero Section
@@ -800,6 +806,12 @@
         backToHome: 'Acasă',
         trackOrder: 'Urmăriți comanda',
         refresh: 'Actualizează',
+        problem: 'Problemă',
+        estimatedCost: 'Cost estimat',
+        notes: 'Note',
+        lastUpdate: 'Ultima actualizare',
+        firstVisitHint: 'Contul se creează automat la prima vizită. Dacă nu aveți cont, programați o reparație.',
+        bookRepair: 'Programează reparație',
       },
       
       // Hero Section (ton local, emoțional — inspirat din Depanero)
@@ -866,6 +878,7 @@
         sending: 'Se trimite...',
         submit: 'Trimite cererea',
         orCall: 'sau sunați direct: ',
+        orContact: 'Sau contactați-ne pe ',
         thanks: 'Mulțumim!',
         callingNow: '📞 AI vă sună acum...',
         confirmDetails: 'Asistentul nostru virtual vă va contacta în câteva secunde pentru a confirma detaliile.',
@@ -883,6 +896,7 @@
         nextSlide: 'Slide următor',
         slides: 'Slide-uri',
         slide: 'Slide',
+        swipeHint: 'Glisați pentru mai multe servicii',
         items: {
           battery: { 
             title: 'Reparații Baterii', 
@@ -1449,6 +1463,12 @@
         backToHome: 'На главную',
         trackOrder: 'Отследить заказ',
         refresh: 'Обновить',
+        problem: 'Проблема',
+        estimatedCost: 'Ориентировочная стоимость',
+        notes: 'Заметки',
+        lastUpdate: 'Последнее обновление',
+        firstVisitHint: 'Аккаунт создаётся автоматически при первом визите. Если у вас нет аккаунта, запишитесь на ремонт.',
+        bookRepair: 'Записаться на ремонт',
       },
       
       // Hero Section
@@ -2082,6 +2102,12 @@
         backToHome: 'Home',
         trackOrder: 'Track order',
         refresh: 'Refresh',
+        problem: 'Problem',
+        estimatedCost: 'Estimated cost',
+        notes: 'Notes',
+        lastUpdate: 'Last update',
+        firstVisitHint: 'Account is created automatically on your first visit. If you don\'t have an account, book a repair.',
+        bookRepair: 'Book a repair',
       },
       
       // Hero Section

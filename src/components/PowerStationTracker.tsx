@@ -128,7 +128,7 @@ function getTodos(): { watch: TodoItem[]; buy: TodoItem[] } {
     const data = JSON.parse(raw);
     return { watch: data.watch || [], buy: data.buy || [] };
   } catch { return { watch: [], buy: [] }; }
-}
+  }
 function saveTodos(todos: { watch: TodoItem[]; buy: TodoItem[] }) {
   localStorage.setItem(STORAGE_KEY_TODOS, JSON.stringify(todos));
 }
@@ -273,10 +273,10 @@ const AddPriceRecordModal: React.FC<{
             <input type="text" inputMode="decimal" value={priceEu} onChange={(e) => setPriceEu(e.target.value)} className={inputCls} placeholder="1360" required />
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div>
+          <div>
               <label className="block text-xs font-semibold text-slate-600 mb-1.5">Amazon DE, €</label>
               <input type="text" inputMode="decimal" value={priceAmazon} onChange={(e) => setPriceAmazon(e.target.value)} className={inputCls} placeholder="—" />
-            </div>
+          </div>
             <div>
               <label className="block text-xs font-semibold text-slate-600 mb-1.5">UA, €</label>
               <input type="text" inputMode="decimal" value={priceUa} onChange={(e) => setPriceUa(e.target.value)} className={inputCls} placeholder="—" />
@@ -639,14 +639,14 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                 {fetchingLive ? 'Оновлення...' : `${Object.keys(livePrices).length} джерел`}
                 {lastFetch && !fetchingLive && <span className="text-slate-400"> · {timeAgo(lastFetch)}</span>}
               </span>
-            </div>
           </div>
+        </div>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {/* PWA Install Button */}
           {pwa.canInstall && (
-            <button
-              type="button"
+          <button
+            type="button"
               onClick={pwa.install}
               className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-xl text-xs font-semibold transition-all shadow-sm"
               title="Встановити як додаток"
@@ -690,15 +690,15 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                   </span>
                 ))}
                 {priceDropAlerts.length > 4 && <span className="text-[11px] text-emerald-600">+{priceDropAlerts.length - 4}</span>}
-              </div>
+          </div>
             ) : liveError ? (
               <span className="text-xs text-red-700">Помилка: {liveError}. Кешовані дані.</span>
             ) : null}
-          </div>
+        </div>
           <button onClick={() => setShowBanner(false)} className="p-1 hover:bg-emerald-100 rounded text-emerald-500 flex-shrink-0">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-        </div>
+      </div>
       )}
 
       {/* ─── Filters ─── */}
@@ -720,16 +720,16 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
         <div className="flex items-center gap-2 overflow-x-auto pb-0.5 scrollbar-hide">
           {/* Categories */}
           <div className="flex items-center gap-1 flex-shrink-0">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setCategoryFilter(cat)}
+          {categories.map(cat => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setCategoryFilter(cat)}
                 className={`px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${categoryFilter === cat ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-              >
-                {cat}
-              </button>
-            ))}
+            >
+              {cat}
+            </button>
+          ))}
           </div>
           <div className="w-px h-5 bg-slate-200 flex-shrink-0" />
           {/* Sort */}
@@ -754,15 +754,15 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                 className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${viewMode === mode ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 {label}
-              </button>
+          </button>
             ))}
           </div>
           <div className="ml-auto flex gap-1 flex-shrink-0">
             <button type="button" onClick={selectAllVisible} className="px-2 py-1 text-xs text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-md transition-colors">Все</button>
             <button type="button" onClick={clearSelection} className="px-2 py-1 text-xs text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-md transition-colors">Скинути</button>
-          </div>
         </div>
-      </div>
+            </div>
+            </div>
 
       {/* ─── Selected Summary ─── */}
       {selectedIds.size > 0 && (
@@ -771,8 +771,8 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
           <span className="text-emerald-700 font-bold tabular-nums">{totalFromBest} €</span>
           <span className="text-slate-500">UA: <span className="font-semibold text-slate-700">{totalUa} €</span></span>
           {savings > 0 && <span className="text-emerald-600 font-semibold">−{savings} € економія</span>}
-        </div>
-      )}
+            </div>
+              )}
 
       {/* ─── Modals ─── */}
       {addTodoFor && (
@@ -809,12 +809,12 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {sortedStations.map((station) => {
+            {sortedStations.map((station) => {
                   const ep = getEffectivePrice(station);
                   const sparkData = getSparklineData(station.id);
                   const prevPrice = getPreviousPrice(station.id);
 
-                  return (
+              return (
                     <tr key={station.id} className="hover:bg-slate-50/80 transition-colors">
                       <td className="px-5 py-3">
                         <div className="font-semibold text-slate-900">{station.name}</div>
@@ -826,7 +826,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                           <div className="flex flex-col items-end">
                             <span className={`font-semibold ${ep.isLiveOfficial ? 'text-amber-700' : 'text-amber-600/70'}`}>{ep.official}€</span>
                             {ep.isLiveOfficial && <span className="text-[9px] text-emerald-500 font-medium">● live</span>}
-                          </div>
+                  </div>
                         ) : <span className="text-slate-300">—</span>}
                       </td>
                       <td className="px-3 py-3 text-right tabular-nums">
@@ -834,7 +834,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                           <div className="flex flex-col items-end">
                             <span className={`font-semibold ${ep.isLiveAmazon ? 'text-blue-700' : 'text-blue-600/70'}`}>{ep.amazon}€</span>
                             {ep.isLiveAmazon && <span className="text-[9px] text-emerald-500 font-medium">● live</span>}
-                          </div>
+                </div>
                         ) : <span className="text-slate-300">—</span>}
                       </td>
                       <td className="px-3 py-3 text-right">
@@ -856,8 +856,8 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                         </button>
                       </td>
                     </tr>
-                  );
-                })}
+              );
+            })}
               </tbody>
             </table>
           </div>
@@ -871,30 +871,30 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                   <span>{icon}</span> {title}
                   <span className="ml-auto text-xs font-normal text-slate-400">{todos[key].length}</span>
                 </h3>
-                <ul className="divide-y divide-slate-100">
+              <ul className="divide-y divide-slate-100">
                   {todos[key].length === 0 && <li className="px-5 py-8 text-slate-400 text-sm text-center">Порожньо</li>}
                   {todos[key].map(t => {
-                    const station = stations.find(s => s.id === t.productId);
-                    const overdue = isOverdue(t.deadline);
-                    return (
+                  const station = stations.find(s => s.id === t.productId);
+                  const overdue = isOverdue(t.deadline);
+                  return (
                       <li key={t.id} className="px-5 py-3 flex items-center justify-between gap-3 hover:bg-slate-50 transition-colors">
-                        <div className="min-w-0 flex-1">
-                          <span className="font-medium text-slate-800">{station?.name ?? t.productId}</span>
-                          {t.deadline && (
+                      <div className="min-w-0 flex-1">
+                        <span className="font-medium text-slate-800">{station?.name ?? t.productId}</span>
+                        {t.deadline && (
                             <span className={`ml-2 text-xs ${overdue ? 'text-red-600 font-bold' : 'text-slate-400'}`}>
                               {overdue ? '⚠ ' : ''}до {t.deadline}
-                            </span>
-                          )}
+                          </span>
+                        )}
                           {t.note && <p className="text-xs text-slate-400 mt-0.5">{t.note}</p>}
-                        </div>
+                      </div>
                         <button type="button" onClick={() => { removeTodo(key, t.id); refreshTodos(); }} className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
             ))}
           </div>
         ) : sortedStations.length > 0 ? (
@@ -902,13 +902,13 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
           <div className="p-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {sortedStations.map((station) => {
               const ep = getEffectivePrice(station);
-              const isSelected = selectedIds.has(station.id);
+            const isSelected = selectedIds.has(station.id);
               const isExpanded = expandedId === station.id;
               const history = allHistory[station.id] || [];
               const sparkData = getSparklineData(station.id);
               const prevPrice = getPreviousPrice(station.id);
 
-              return (
+            return (
                 <div
                   key={station.id}
                   className={`bg-white rounded-2xl border transition-all cursor-pointer ${isSelected ? 'border-emerald-400 ring-1 ring-emerald-200 shadow-md' : 'border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md'}`}
@@ -923,15 +923,15 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                           <span className="text-[10px] text-slate-300">·</span>
                           <span className="text-[10px] text-slate-400">{station.category}</span>
                           <TrendBadge trend={ep.trend} diff={ep.trendDiff} compact />
-                        </div>
+                      </div>
                         <h3 className="font-bold text-slate-900 text-[15px] leading-tight">{station.name}</h3>
                         {station.specs && <p className="text-xs text-slate-500 mt-1">{station.specs}</p>}
-                      </div>
-                      <div className="text-right flex-shrink-0">
+                  </div>
+                  <div className="text-right flex-shrink-0">
                         <div className="text-xl font-black text-emerald-600 tabular-nums">{ep.best}€</div>
                         <PriceChange current={ep.best} previous={prevPrice} />
-                      </div>
-                    </div>
+                  </div>
+                </div>
 
                     {/* Price sources row — all real data from offers/live */}
                     <div className="flex items-center gap-3 text-xs mt-2">
@@ -954,15 +954,15 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                         </span>
                       )}
                       <span className="text-slate-400 ml-auto">UA ≈ <span className="font-semibold text-slate-600 tabular-nums">{calcUaPrice(ep.best).total.toFixed(0)}€</span></span>
-                    </div>
+                  </div>
 
                     {/* Sparkline */}
                     {sparkData.length >= 2 && (
                       <div className="mt-2">
                         <Sparkline data={sparkData} width={999} height={32} color={ep.trend === 'down' ? '#059669' : ep.trend === 'up' ? '#dc2626' : '#94a3b8'} />
-                      </div>
+                </div>
                     )}
-                  </div>
+                          </div>
 
                   {/* Card Actions (always visible, compact) */}
                   <div className="px-4 pb-3 flex items-center gap-1.5">
@@ -1024,7 +1024,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                       {/* History */}
                       <div>
                         <div className="text-[10px] font-semibold text-slate-500 uppercase mb-1.5">Історія ({history.length})</div>
-                        {history.length === 0 ? (
+                      {history.length === 0 ? (
                           <p className="text-xs text-slate-400">Ще немає записів</p>
                         ) : (
                           <div className="space-y-0.5 max-h-40 overflow-y-auto">
@@ -1040,13 +1040,13 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
                                 </div>
                               </div>
                             ))}
-                          </div>
-                        )}
-                      </div>
                     </div>
                   )}
                 </div>
-              );
+                    </div>
+                  )}
+              </div>
+            );
             })}
           </div>
         ) : (
@@ -1062,7 +1062,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
       <div className="px-5 py-2.5 bg-slate-900 text-slate-400 text-[11px] flex items-center justify-between" style={{ paddingBottom: 'max(0.625rem, env(safe-area-inset-bottom, 0px))' }}>
         <span>EcoFlow EU · BLUETTI · Jackery · Amazon DE</span>
         <span className="tabular-nums">UA = ЄС + НДС {UA_VAT_PERCENT}% + ${UA_DELIVERY_USD} + {UA_PROFIT_PERCENT}%</span>
-      </div>
+        </div>
 
       {/* ─── iOS Install Guide ─── */}
       {pwa.showIOSGuide && (
@@ -1073,7 +1073,7 @@ export const PowerStationTracker: React.FC<Props> = ({ onClose }) => {
               <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-lg">⚡</div>
               <h3 className="text-lg font-bold text-slate-900">Встановити додаток</h3>
               <p className="text-sm text-slate-500 mt-1">Price Tracker на головний екран</p>
-            </div>
+      </div>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm flex-shrink-0">1</div>

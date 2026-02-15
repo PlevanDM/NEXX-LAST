@@ -32,7 +32,10 @@ const Contact: React.FC = () => {
       directions: 'Cum ajungeți',
       address: 'Calea Șerban Vodă 47, Sector 4',
       phoneError: 'Introduceți un număr valid',
-      errorGeneric: 'Eroare. Încercați din nou.'
+      errorGeneric: 'Eroare. Încercați din nou.',
+      cabinetHint: 'Urmăriți comenzile în',
+      cabinetLink: 'contul personal',
+      sendAnother: 'Trimite alt număr',
     },
     en: {
       title: 'Contact Us',
@@ -49,7 +52,10 @@ const Contact: React.FC = () => {
       directions: 'Directions',
       address: 'Calea Șerban Vodă 47, Sector 4',
       phoneError: 'Please enter a valid number',
-      errorGeneric: 'Error. Please try again.'
+      errorGeneric: 'Error. Please try again.',
+      cabinetHint: 'Track your orders in',
+      cabinetLink: 'your account',
+      sendAnother: 'Send another number',
     },
     ru: {
       title: 'Свяжитесь с нами',
@@ -66,7 +72,10 @@ const Contact: React.FC = () => {
       directions: 'Как добраться',
       address: 'Calea Șerban Vodă 47, Sector 4',
       phoneError: 'Введите корректный номер',
-      errorGeneric: 'Ошибка. Попробуйте снова.'
+      errorGeneric: 'Ошибка. Попробуйте снова.',
+      cabinetHint: 'Отслеживайте заказы в',
+      cabinetLink: 'личном кабинете',
+      sendAnother: 'Отправить другой номер',
     },
     uk: {
       title: 'Зв\'яжіться з нами',
@@ -83,7 +92,10 @@ const Contact: React.FC = () => {
       directions: 'Як дістатися',
       address: 'Calea Șerban Vodă 47, Sector 4',
       phoneError: 'Введіть коректний номер',
-      errorGeneric: 'Помилка. Спробуйте знову.'
+      errorGeneric: 'Помилка. Спробуйте знову.',
+      cabinetHint: 'Відстежуйте замовлення в',
+      cabinetLink: 'особистому кабінеті',
+      sendAnother: 'Надіслати інший номер',
     }
   };
   const txt = texts[lang] || texts.ro;
@@ -167,7 +179,11 @@ const Contact: React.FC = () => {
                   <i className="fas fa-check text-white text-4xl"></i>
                 </div>
                 <p className="text-green-400 text-2xl font-bold">{txt.sent}</p>
-                <button onClick={() => setSent(false)} className="mt-6 text-gray-400 hover:text-white transition-colors underline underline-offset-4">Trimite alt număr</button>
+                <p className="text-gray-500 text-sm mt-4">
+                  {txt.cabinetHint}{' '}
+                  <a href="/cabinet" className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-2">{txt.cabinetLink}</a>.
+                </p>
+                <button onClick={() => setSent(false)} className="mt-4 text-gray-400 hover:text-white transition-colors underline underline-offset-4">{txt.sendAnother}</button>
               </div>
             )}
           </div>

@@ -36,15 +36,16 @@ PROJECT_NAME = "nexx-gsm"
 ENVIRONMENT = "production"
 ZONE_NAME = "nexxgsm.com"
 
-# RemOnline - set in Cloudflare Dashboard (Pages > nexx-gsm > Settings > Environment variables):
-#   REMONLINE_API_KEY (required)
-#   REMONLINE_BASE_URL = https://api.remonline.app
-#   REMONLINE_BRANCH_ID = 218970
-#   REMONLINE_ORDER_TYPE = 334611
+# RemOnline — configured 2026-02-13 via API
+# Secrets (set via wrangler pages secret put):
+#   REMONLINE_API_KEY       = *** (encrypted)
+#   REMONLINE_BASE_URL      = https://api.remonline.app
+#   REMONLINE_BRANCH_ID     = 222200  (NEXX GSM)
+#   REMONLINE_ORDER_TYPE    = 339054  (Carry-in repair)
+#   NEXX_PIN                = *** (encrypted)
 # Local dev: use .dev.vars (gitignored)
-# - VAPI_API_KEY
-# - VAPI_PHONE_ID
-# - VAPI_ASSISTANT_ID
+# Optional:
+# - CABINET_JWT_SECRET
+# - VAPI_API_KEY / VAPI_PHONE_ID / VAPI_ASSISTANT_ID
 # - EMAIL_API_KEY (Mailgun)
-# - TELEGRAM_BOT_TOKEN
-# - TELEGRAM_CHAT_ID
+# - TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID

@@ -48,9 +48,13 @@ const Appointment: React.FC = () => {
             <i className="fas fa-check text-4xl text-green-500"></i>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('booking.success.title')}</h2>
+          <p className="text-gray-400 mb-6 text-sm">
+            Puteți urmări statusul comenzii în{' '}
+            <a href="/cabinet" className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-2">cabinetul personal</a>.
+          </p>
           <button 
             onClick={() => setSuccess(false)} 
-            className="mt-6 px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-xl transition-all shadow-lg active:scale-95"
+            className="mt-2 px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-xl transition-all shadow-lg active:scale-95"
           >
             {t('booking.success.newRequest')}
           </button>
