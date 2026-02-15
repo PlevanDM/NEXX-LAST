@@ -1,14 +1,18 @@
 # Cloudflare Pages Redirects
 # https://developers.cloudflare.com/pages/platform/redirects/
 
-# Главная / — лендинг (index.html), база — по /nexx
+# Главная / — лендинг (index.html)
 # / и /index.html отдаются статикой (index.html)
 
 # Личный кабинет — SPA (тот же index.html)
 /cabinet           /                 200
 /cabinet/          /                 200
 
-# База NEXX — убрана с сайта, редирект на главную
+# База NEXX — убрана с сайта, все пути → главная
+/nexx              /                 301
+/nexx/             /                 301
+/nexx.html         /                 301
+/nexx/*            /                 301
 /database          /                 301
 /db                /                 301
 
@@ -30,4 +34,3 @@
 /data/*            /data/:splat      200
 
 # SPA fallback - only for non-existent routes
-# Note: nexx.html and other HTML files should work directly
